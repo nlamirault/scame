@@ -7,7 +7,6 @@
 (require 'erc-match)
 
 (setq erc-notifications-icon "~/.emacs.d/icons/irc.png")
-(setq erc-keywords '("nicolas" "lamirault" "l_a_m"))
 
 (setq erc-track-exclude-server-buffer t)
 (setq erc-track-exclude '("*stickychan" "*status"))
