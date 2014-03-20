@@ -1,0 +1,4 @@
+scame
+=====
+
+An Emacs configuration.
