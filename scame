@@ -30,7 +30,7 @@ import sys
 
 
 HOME = path.expanduser('~')
-TARGET_DIRECTORY = path.join(HOME, '.emacs.d2')
+TARGET_DIRECTORY = path.join(HOME, '.emacs.d')
 REPOSITORY = 'https://github.com/nlamirault/scame.git'
 
 OKGREEN = '\033[32m'

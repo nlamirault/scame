@@ -1,5 +1,4 @@
-Scame
-=====
+# Scame
 
 An Emacs configuration.
 
@@ -11,16 +10,27 @@ An Emacs configuration.
 
 ## Installation
 
+## Automated
+
+You can install via the command line with curl:
+
+	curl -L https://github.com/nlamirault/scame/raw/master/scame | python
+
+
 ### Manual
 
     $ mkdir $HOME/.emacs.d
 	$ cd $HOME/.emacs.d
 	$ git clone https://github.com/nlamirault/scame
-    $ cask install
+	$ mv scame/* .
+	$ rm -fr scame
+	$ cask install
+
 
 ## Changelog
 
 A changelog is available [here](ChangeLog.md).
+
 
 ## Contact
 
