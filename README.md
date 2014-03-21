@@ -19,12 +19,8 @@ You can install via the command line with curl:
 
 ### Manual
 
-    $ mkdir $HOME/.emacs.d
-    $ cd $HOME/.emacs.d
     $ git clone https://github.com/nlamirault/scame
-    $ mv scame/* .
-    $ rm -fr scame
-    $ cask install
+    $ ./scame
 
 
 ## Changelog
