@@ -24,6 +24,7 @@
 Install Scame.
 """
 
+import os
 from os import path
 import subprocess
 import sys
