@@ -8,15 +8,17 @@
 
 
 ;;(require 'package)
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+;;(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+;;                         ("marmalade" . "http://marmalade-repo.org/packages/")
+;;                         ("melpa" . "http://melpa.milkbox.net/packages/")))
 ;;(package-initialize)
 
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
 (require 'pallet)
+
+(setq package-enable-at-startup nil)    ; Don't initialize packages twice
 
 (require 'f)
 
