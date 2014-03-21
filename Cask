@@ -9,10 +9,11 @@
 (depends-on "pallet")
 
 (depends-on "auto-complete")
-(depends-on "markdown-mode")
 (depends-on "sr-speedbar")
-(depends-on "yaml-mode")
+
 (depends-on "flycheck")
+(depends-on "flycheck-cask")
+(depends-on "flycheck-color-mode-line")
 
 ;; Go lang
 (depends-on "go-mode")
@@ -27,6 +28,7 @@
 (depends-on "elpy")
 (depends-on "tox")
 (depends-on "virtualenvwrapper")
+(depends-on "pyvenv")
 (depends-on "flymake-python-pyflakes")
 
 ;; Ruby
@@ -41,7 +43,11 @@
 ;; Web
 (depends-on "web-mode")
 (depends-on "php-mode")
-(depends-on "flymake-php")
+;;(depends-on "flymake-php")
+
+;; Markup languages
+(depends-on "markdown-mode")
+(depends-on "yaml-mode")
 
 ;; Other development mode
 
@@ -49,6 +55,9 @@
 (depends-on "dockerfile-mode")
 (depends-on "vagrant")
 (depends-on "puppet-mode")
+
+;; File handling
+(depends-on "launch")
 
 ;; Utilities
 (depends-on "pkg-info")
@@ -68,6 +77,9 @@
 (depends-on "init-loader")
 (depends-on "fabric")
 (depends-on "prodigy")
+(depends-on "helm-mode-manager")
+(depends-on "ag")
+(depends-on "json-reformat")
 
 ;; Mail
 ;;(depends-on "mu4e")
