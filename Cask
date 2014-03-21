@@ -71,7 +71,7 @@
 
 ;; Mail
 ;;(depends-on "mu4e")
-(depends-on "w3m")
+;;(depends-on "w3m")
 ;;(depends-on "offlineimap")
 
 ;; Organisation
