@@ -25,6 +25,18 @@ You can install via the command line with curl:
     $ ./scame
 
 
+## Customization
+
+If file `$HOME/.config/scame/user.el` exists, *scame* will be loaded.
+Example of customization :
+
+```lisp
+(setq user-full-name "Nicolas Lamirault")
+(setq user-mail-address "nicolas.lamirault@gmail.com")
+(load-theme 'monokai t)
+```
+
+
 ## Changelog
 
 A changelog is available [here](ChangeLog.md).

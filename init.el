@@ -20,10 +20,12 @@
 
 (require 'f)
 
+(setq user-home-directory (f-full (getenv "HOME")))
+
 (require 'init-loader)
 (init-loader-load (f-expand "lisp"))
 
-(let ((user-customization (f-expand "custom/user.el")))
+(let ((user-customization (f-join user-home-directory ".config/scame/user.el")))
   (when (file-readable-p user-customization)
     (load user-customization)))
 
