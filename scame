@@ -52,7 +52,7 @@ def install():
     subprocess.check_call(['git', 'clone', REPOSITORY, TARGET_DIRECTORY])
 
 def cask():
-    cask = path.join(TARGET_DIRECTORY, 'bin', 'cask')
+    cask = path.join(HOME, '.cask/bin/cask')
     subprocess.check_call([cask, 'install'])
 
 def main():
