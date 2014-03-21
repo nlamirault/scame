@@ -14,7 +14,7 @@ An Emacs configuration.
 
 You can install via the command line with curl:
 
-	curl -L https://github.com/nlamirault/scame/raw/master/scame | python
+	curl -L https://raw.githubusercontent.com/nlamirault/scame/master/scame | python
 
 
 ### Manual
