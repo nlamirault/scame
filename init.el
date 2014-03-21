@@ -28,9 +28,9 @@
 
 ;; Scame
 
-(defvar scame-version "0.1.0")
+(defvar scame-package-version "0.1.0")
 
-(defun show-scame-version ()
+(defun scame-version ()
   "Return the Scame's version."
   (interactive)
-  (message "Scame version: %s" scame-version))
+  (message "Scame version: %s" scame-package-version))
