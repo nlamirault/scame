@@ -53,7 +53,9 @@ def install():
 def cask():
     success("Install dependencies using Cask")
     cask = path.join(HOME, '.cask/bin/cask')
+    os.chdir(path.join(HOME, '.emacs.d')
     subprocess.check_call([cask, 'install'])
+    os.chdir(HOME)
 
 def main():
     try:

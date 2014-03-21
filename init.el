@@ -31,5 +31,6 @@
 (defvar scame-version "0.1.0")
 
 (defun show-scame-version ()
+  "Return the Scame's version."
   (interactive)
   (message "Scame version: %s" scame-version))
