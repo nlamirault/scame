@@ -18,17 +18,21 @@
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
 (require 'pallet)
 
-(require 'init-loader)
-(init-loader-load "~/.emacs.d/lisp/")
+(require 'f)
 
-(let ((user-customization "~/.emacs.d/custom/user.el"))
+(require 'init-loader)
+(init-loader-load (f-expand "lisp"))
+
+(let ((user-customization (f-expand "custom/user.el")))
   (when (file-readable-p user-customization)
     (load user-customization)))
 
 
 ;; Scame
+;; -------
 
-(defvar scame-package-version "0.1.0")
+(defvar scame-package-version "0.1.0"
+  "Release version of Scame.")
 
 (defun scame-version ()
   "Return the Scame's version."
