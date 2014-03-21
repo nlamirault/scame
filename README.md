@@ -37,6 +37,16 @@ Example of customization :
 ```
 
 
+## Support / Contribute
+
+Feel free to ask question or make suggestions in the [issue tracker](https://github.com/nlamirault/scame/issues)
+
+
+## License
+
+Scame is released under the [MIT License](LICENSE)
+
+
 ## Changelog
 
 A changelog is available [here](ChangeLog.md).
