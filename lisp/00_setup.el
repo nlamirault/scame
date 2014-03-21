@@ -4,8 +4,6 @@
 ;;
 
 
-(setq home-dir (concat (expand-file-name "~") "/"))
-
 (load "server")
 (unless (server-running-p)
     (server-start))

@@ -21,9 +21,10 @@
 (require 'f)
 
 (setq user-home-directory (f-full (getenv "HOME")))
+(setq user-emacs-directory (f-join user-home-directory ".emacs.d"))
 
 (require 'init-loader)
-(init-loader-load (f-expand "lisp"))
+(init-loader-load (f-slash (f-join user-emacs-directory "lisp")))
 
 (let ((user-customization (f-join user-home-directory ".config/scame/user.el")))
   (when (file-readable-p user-customization)
