@@ -40,6 +40,11 @@
 ;; Scheme
 (depends-on "geiser")
 
+;; Clojure
+(depends-on "cider")
+(depends-on "company-cider")
+(depends-on "clj-refactor")
+
 ;; Web
 (depends-on "web-mode")
 (depends-on "php-mode")
