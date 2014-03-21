@@ -51,9 +51,14 @@ def fail(s):
 def install():
     subprocess.check_call(['git', 'clone', REPOSITORY, TARGET_DIRECTORY])
 
+def cask():
+    cask = path.join(TARGET_DIRECTORY, 'bin', 'cask')
+    subprocess.check_call([cask, 'install'])
+
 def main():
     try:
         install()
+        cask()
         success("""Scame installed.""")
     except Exception as error:
         fail('{0!s}'.format(error))

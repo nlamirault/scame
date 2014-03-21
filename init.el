@@ -25,3 +25,11 @@
   (when (file-readable-p user-customization)
     (load user-customization)))
 
+
+;; Scame
+
+(defvar scame-version "0.1.0")
+
+(defun show-scame-version ()
+  (interactive)
+  (message "Scame version: %s" scame-version))
