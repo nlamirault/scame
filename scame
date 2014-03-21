@@ -40,18 +40,18 @@ ENDC = '\033[0m'
 
 def success(s):
     print(OKGREEN + s + ENDC)
-    sys.exit(0)
 
 
 def fail(s):
     print(FAIL + s + ENDC)
-    sys.exit(1)
 
 
 def install():
+    success("Download Emacs configuration")
     subprocess.check_call(['git', 'clone', REPOSITORY, TARGET_DIRECTORY])
 
 def cask():
+    success("Install dependencies using Cask")
     cask = path.join(HOME, '.cask/bin/cask')
     subprocess.check_call([cask, 'install'])
 
@@ -62,6 +62,7 @@ def main():
         success("""Scame installed.""")
     except Exception as error:
         fail('{0!s}'.format(error))
+        sys.exit(1)
 
 
 
