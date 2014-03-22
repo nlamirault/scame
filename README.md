@@ -1,6 +1,6 @@
 # Scame
 
-[![Build Status](https://drone.io/github.com/nlamirault/scame/status2.png)](https://drone.io/github.com/nlamirault/scame/latest)
+[![Build Status](https://drone.io/github.com/nlamirault/scame/status.png)](https://drone.io/github.com/nlamirault/scame/latest)
 
 An Emacs configuration.
 
