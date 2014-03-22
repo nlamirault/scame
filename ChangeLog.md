@@ -1,6 +1,6 @@
 # Scame ChangeLog
 
-## Version 0.2.0 (IN PROGRESS)
+## Version 0.2.0 (22-03-2014)
 
 - Customization in $HOME/config/scame/user.el file
 - Setup Drone.io build

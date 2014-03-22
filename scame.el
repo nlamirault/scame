@@ -1,4 +1,4 @@
-;; init.el --- Emacs initialization file
+;; scame.el --- Scame for Emacs
 
 ;; Copyright (c) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -25,38 +25,26 @@
 
 ;;; Code:
 
-;; Debug or not
-;;(setq debug-on-error t)
-
-
-;;(require 'package)
-;;(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-;;                         ("marmalade" . "http://marmalade-repo.org/packages/")
-;;                         ("melpa" . "http://melpa.milkbox.net/packages/")))
-;;(package-initialize)
-
-(require 'cask "~/.cask/cask.el")
-(cask-initialize)
-(add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
-(require 'pallet)
-
-(setq package-enable-at-startup nil)    ; Don't initialize packages twice
-
 (require 'f)
 
-(setq user-home-directory (f-full (getenv "HOME")))
-(setq user-emacs-directory (f-join user-home-directory ".emacs.d"))
 
-(require 'init-loader)
-(init-loader-load (f-slash (f-join user-emacs-directory "lisp")))
-
-(let ((user-customization (f-join user-home-directory ".config/scame/user.el")))
-  (when (file-readable-p user-customization)
-    (load user-customization)))
+(defvar scame-package-version "0.1.0"
+  "Release version of Scame.")
 
 
-(load (f-expand "scame.el" user-emacs-directory))
+(defun scame-version ()
+  "Return the Scame's version."
+  (interactive)
+  (message "Scame version: %s" scame-package-version))
 
 
-(provide 'init)
-;;; init.el ends here
+(defun scame-changelog ()
+  "Display the ChangeLog."
+  (interactive)
+  (let ((changelog (f-join user-emacs-directory "ChangeLog.md")))
+    (when (file-readable-p changelog)
+      (switch-to-buffer (find-file-noselect changelog)))))
+
+
+(provide 'scame)
+;;; scame.el ends here
