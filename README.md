@@ -4,11 +4,16 @@
 
 An Emacs configuration.
 
-## Dependencies
+## Support
 
 - [Emacs 24](http://wikemacs.org/wiki/Installing_Emacs)
-- [Cask](https://github.com/cask/cask)
 
+## Tools
+
+*Scame* use this tools to perform an Emacs installation :
+
+- [Cask](https://github.com/cask/cask)
+- [EVM](https://github.com/rejeep/evm)
 
 ## Installation
 

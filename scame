@@ -32,7 +32,10 @@ import sys
 
 HOME = path.expanduser('~')
 TARGET_DIRECTORY = path.join(HOME, '.emacs.d')
-REPOSITORY = 'https://github.com/nlamirault/scame.git'
+
+SCAME_REPOSITORY = 'https://github.com/nlamirault/scame.git'
+EVM_REPOSITORY = 'https://raw.github.com/rejeep/evm/master/go'
+CASK_REPOSITORY = 'https://raw.github.com/cask/cask/master/go'
 
 OKGREEN = '\033[32m'
 FAIL = '\033[31m'
@@ -47,21 +50,43 @@ def fail(s):
     print(FAIL + s + ENDC)
 
 
-def install():
+def scame_install():
+    """Download Scame from git repository and launch installation."""
     success("Download Emacs configuration")
-    subprocess.check_call(['git', 'clone', REPOSITORY, TARGET_DIRECTORY])
+    subprocess.check_call(['git', 'clone', SCAME_REPOSITORY, TARGET_DIRECTORY])
 
-def cask():
+
+def evm_install():
+    """Download Emacs Version Manager from git repository."""
+    success("Install Emacs Version Manager")
+    subprocess.check_call(['sudo', 'mkdir', '/usr/local/evm'])
+    subprocess.check_call(['sudo', 'chown', os.environ['USER'],
+                           '/usr/local/evm'])
+    subprocess.check_call(['curl', '-fsSkL', EVM_REPOSITORY,
+                           '-o', '/tmp/evm.sh'])
+    subprocess.check_call(['bash', '/tmp/evm.sh'])
+    evm = path.join(HOME, '.evm/bin/evm')
+    subprocess.check_call([evm, 'list'])
+    subprocess.check_call([evm, 'install', 'emacs-git-snapshot'])
+
+
+def cask_install():
+    """Download Cask and launch Emacs configuration."""
     success("Install dependencies using Cask")
+    subprocess.check_call(['curl', '-fsSkL', CASK_REPOSITORY,
+                           '-o', '/tmp/cask.py'])
+    subprocess.check_call(['/tmp/cask.py'])
     cask = path.join(HOME, '.cask/bin/cask')
     os.chdir(path.join(HOME, '.emacs.d'))
     subprocess.check_call([cask, 'install'])
     os.chdir(HOME)
 
+
 def main():
     try:
-        install()
-        cask()
+        scame_install()
+        evm_install()
+        cask_install()
         success("""Scame installed.""")
     except Exception as error:
         fail('{0!s}'.format(error))
