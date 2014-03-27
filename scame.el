@@ -28,7 +28,7 @@
 (require 'f)
 
 
-(defvar scame-package-version "0.1.0"
+(defvar scame-package-version "0.3.0"
   "Release version of Scame.")
 
 
