@@ -24,6 +24,7 @@
 Install Scame.
 """
 
+import argparse
 import os
 from os import path
 import subprocess
@@ -49,6 +50,10 @@ def success(s):
 
 def fail(s):
     print(FAIL + s + ENDC)
+
+
+def scame_version():
+    return '0.3.0'
 
 
 def scame_install():
@@ -96,16 +101,19 @@ def scame_destroy():
     subprocess.check_call(['sudo', 'rm', '-fr', '/usr/local/evm'])
 
 
-def main(argv):
+def main(args):
     try:
-        if len(argv) > 1 and argv[1] == "--cleanup":
+        #if len(argv) > 1 and argv[1] == "--cleanup":
+        if args.cleanup:
             scame_destroy()
         scame_install()
         emacs_version = 'emacs-git-snapshot'
-        if len(argv) > 0:
-            emacs_version = argv[0]
+        #if len(argv) > 0:
+        if args.emacs:
+            emacs_version = args.emacs
+        print emacs_version
         evm_install(emacs_version)
-        #cask_install()
+        cask_install()
         success("""Scame installed.""")
     except Exception as error:
         fail('{0!s}'.format(error))
@@ -113,4 +121,14 @@ def main(argv):
 
 
 if __name__ == '__main__':
-    sys.exit(main(sys.argv[1:]))
+    parser = argparse.ArgumentParser(prog='scame',
+                                     description='An Emacs installation tool.',
+                                     usage='%(prog)s [options]')
+    parser.add_argument('--version', action='version', version='%(prog)s 2.0')
+    #parser.add_argument('--help')
+    parser.add_argument('--cleanup', action='store_true',
+                        help="Destroy or not Scame, Evm and Cask directories")
+    parser.add_argument('--emacs',
+                        help="Specify the version of Emacs to install")
+    args = parser.parse_args()
+    sys.exit(main(args))
