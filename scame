@@ -104,7 +104,6 @@ def main(args):
         emacs_version = 'emacs-git-snapshot'
         if args.emacs:
             emacs_version = args.emacs
-        print emacs_version
         evm_install(emacs_version)
         cask_install()
         success("""Scame installed.""")
