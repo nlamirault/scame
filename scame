@@ -75,7 +75,7 @@ def cask_install():
     success("Install dependencies using Cask")
     subprocess.check_call(['curl', '-fsSkL', CASK_REPOSITORY,
                            '-o', '/tmp/cask.py'])
-    subprocess.check_call(['/tmp/cask.py'])
+    subprocess.check_call(['python', '/tmp/cask.py'])
     cask = path.join(HOME, '.cask/bin/cask')
     os.chdir(path.join(HOME, '.emacs.d'))
     subprocess.check_call([cask, 'install'])
