@@ -80,18 +80,32 @@ def cask_install():
     subprocess.check_call(['python', '/tmp/cask.py'])
     cask = path.join(HOME, '.cask/bin/cask')
     os.chdir(path.join(HOME, '.emacs.d'))
-    subprocess.check_call([cask, 'install'])
+    # check_call doens't find emacs executable installed by EVM.
+    os.system("%s install" % cask)
     os.chdir(HOME)
+
+
+def scame_destroy():
+    """Cleanup Scame, Cask and EVM installations."""
+    #response = raw_input("Fresh installation ? [y/n]")
+    #if response == "y":
+    success("Delete directories used by Scame, Cask and EVM.")
+    subprocess.check_call(['rm', '-fr', path.join(HOME, '.emacs.d')])
+    subprocess.check_call(['rm', '-fr', path.join(HOME, '.cask')])
+    subprocess.check_call(['rm', '-fr', path.join(HOME, '.evm')])
+    subprocess.check_call(['sudo', 'rm', '-fr', '/usr/local/evm'])
 
 
 def main(argv):
     try:
+        if len(argv) > 1 and argv[1] == "--cleanup":
+            scame_destroy()
         scame_install()
         emacs_version = 'emacs-git-snapshot'
         if len(argv) > 0:
             emacs_version = argv[0]
         evm_install(emacs_version)
-        cask_install()
+        #cask_install()
         success("""Scame installed.""")
     except Exception as error:
         fail('{0!s}'.format(error))
