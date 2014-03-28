@@ -1,4 +1,4 @@
-;; scame.el --- Scame for Emacs
+;; 999_scame.el --- Scame for Emacs
 
 ;; Copyright (c) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -26,11 +26,13 @@
 ;;; Code:
 
 (require 'f)
-
+(require 'easymenu)
 
 (defvar scame-package-version "0.3.0"
   "Release version of Scame.")
 
+
+;; Misc
 
 (defun scame-version ()
   "Return the Scame's version."
@@ -46,5 +48,70 @@
       (switch-to-buffer (find-file-noselect changelog)))))
 
 
-(provide 'scame)
-;;; scame.el ends here
+(defun scame-project-website ()
+  "Open in a browser the project's website."
+  (interactive)
+  ;;(browse-url
+  (helm-browse-url
+   "https://github.com/nlamirault/scame"))
+
+
+
+;; Scame mode map
+
+(defvar scame-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "C-c v") 'scame-version)
+    map))
+
+;; Scame main menu
+
+(defun scame-mode-add-menu ()
+  "Add a menu entry for `scame-mode' under Tools."
+  (easy-menu-add-item nil '("Tools")
+		      '("Scame"
+			("Search"
+			 ["Google" scame-search-google]
+			 ["Github" scame-search-github]
+			 ["Twitter" scame-search-twitter]
+			 ["Launchpad" scame-search-launchpad]
+			 ["Arch-AUR" scame-search-arch-aur])
+			("General"
+			 ["Project site" scame-project-website]
+			 ["Changelog" scame-changelog]
+			 ["Version" scame-version]))))
+
+
+(defun scame-mode-remove-menu ()
+  "Remove `same-mode' menu entry."
+  (easy-menu-remove-item nil '("Tools") "Scame"))
+
+
+;; Scame mode
+
+(define-minor-mode scame-mode
+  "Minor mode for Scame..
+
+\\{scame-mode-map}"
+  :lighter " Scame"
+  :keymap scame-mode-map
+  (if scame-mode
+      ;; on start
+      (scame-mode-add-menu)
+    ;; on stop
+    (scame-mode-remove-menu)))
+
+(defun scame-on ()
+  "Turn on `scame-mode'."
+  (interactive)
+  (scame-mode +1))
+
+(defun scame-off ()
+  "Turn off `scame-mode'."
+  (interactive)
+  (scame-mode -1))
+
+
+
+(provide '999_scame)
+;;; 999_scame.el ends here

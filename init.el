@@ -35,6 +35,11 @@
 ;;                         ("melpa" . "http://melpa.milkbox.net/packages/")))
 ;;(package-initialize)
 
+
+(when (version< emacs-version "24.3")
+  (error "Scame requires at least GNU Emacs 24.3"))
+
+
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
@@ -53,9 +58,6 @@
 (let ((user-customization (f-join user-home-directory ".config/scame/user.el")))
   (when (file-readable-p user-customization)
     (load user-customization)))
-
-
-(load (f-expand "scame.el" user-emacs-directory))
 
 
 (provide 'init)

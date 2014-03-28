@@ -52,10 +52,6 @@ def fail(s):
     print(FAIL + s + ENDC)
 
 
-def scame_version():
-    return '0.3.0'
-
-
 def scame_install():
     """Download Scame from git repository and launch installation."""
     success("Download Emacs configuration")
@@ -64,7 +60,7 @@ def scame_install():
 
 def evm_install(emacs_version):
     """Download Emacs Version Manager from git repository."""
-    success("Install Emacs Version Manager")
+    success("Install Emacs Version Manager. Setup for %s" % emacs_version)
     subprocess.check_call(['sudo', 'mkdir', '/usr/local/evm'])
     subprocess.check_call(['sudo', 'chown', os.environ['USER'],
                            '/usr/local/evm'])
@@ -95,20 +91,17 @@ def scame_destroy():
     #response = raw_input("Fresh installation ? [y/n]")
     #if response == "y":
     success("Delete directories used by Scame, Cask and EVM.")
-    subprocess.check_call(['rm', '-fr', path.join(HOME, '.emacs.d')])
-    subprocess.check_call(['rm', '-fr', path.join(HOME, '.cask')])
-    subprocess.check_call(['rm', '-fr', path.join(HOME, '.evm')])
+    for dir in ['.emacs.d', '.cask', '.evm']:
+        subprocess.check_call(['rm', '-fr', path.join(HOME, dir)])
     subprocess.check_call(['sudo', 'rm', '-fr', '/usr/local/evm'])
 
 
 def main(args):
     try:
-        #if len(argv) > 1 and argv[1] == "--cleanup":
         if args.cleanup:
             scame_destroy()
         scame_install()
         emacs_version = 'emacs-git-snapshot'
-        #if len(argv) > 0:
         if args.emacs:
             emacs_version = args.emacs
         print emacs_version
@@ -124,8 +117,9 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(prog='scame',
                                      description='An Emacs installation tool.',
                                      usage='%(prog)s [options]')
-    parser.add_argument('--version', action='version', version='%(prog)s 2.0')
-    #parser.add_argument('--help')
+    parser.add_argument('--version',
+                        action='version',
+                        version="%(prog)s 0.3.0")
     parser.add_argument('--cleanup', action='store_true',
                         help="Destroy or not Scame, Evm and Cask directories")
     parser.add_argument('--emacs',
