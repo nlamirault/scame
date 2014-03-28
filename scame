@@ -69,6 +69,7 @@ def evm_install(emacs_version):
     evm = path.join(HOME, '.evm/bin/evm')
     subprocess.check_call([evm, 'list'])
     subprocess.check_call([evm, 'install', emacs_version])
+    subprocess.check_call([evm, 'use', emacs_version])
 
 
 def cask_install():
