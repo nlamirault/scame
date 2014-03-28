@@ -56,7 +56,7 @@ def scame_install():
     subprocess.check_call(['git', 'clone', SCAME_REPOSITORY, TARGET_DIRECTORY])
 
 
-def evm_install():
+def evm_install(emacs_version):
     """Download Emacs Version Manager from git repository."""
     success("Install Emacs Version Manager")
     subprocess.check_call(['sudo', 'mkdir', '/usr/local/evm'])
@@ -67,7 +67,7 @@ def evm_install():
     subprocess.check_call(['bash', '/tmp/evm.sh'])
     evm = path.join(HOME, '.evm/bin/evm')
     subprocess.check_call([evm, 'list'])
-    subprocess.check_call([evm, 'install', 'emacs-git-snapshot'])
+    subprocess.check_call([evm, 'install', emacs_version])
 
 
 def cask_install():
@@ -82,10 +82,13 @@ def cask_install():
     os.chdir(HOME)
 
 
-def main():
+def main(argv):
     try:
         scame_install()
-        evm_install()
+        emacs_version = 'emacs-git-snapshot'
+        if len(argv) > 0:
+            emacs_version = argv[0]
+        evm_install(emacs_version)
         cask_install()
         success("""Scame installed.""")
     except Exception as error:
@@ -93,6 +96,5 @@ def main():
         sys.exit(1)
 
 
-
 if __name__ == '__main__':
-    sys.exit(main())
+    sys.exit(main(sys.argv[1:]))
