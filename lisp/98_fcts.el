@@ -23,6 +23,8 @@
 
 ;;; Code:
 
+(require 's)
+
 
 (defun kill-all-buffers ()
   "Delete all active buffers."
