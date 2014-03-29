@@ -37,6 +37,7 @@
 
 
 ;; Search engines
+;; ----------------
 
 (defun perform-search (url prompt)
   (let ((query (if mark-active
@@ -60,6 +61,18 @@
 (def-search-engine "github" "https://github.com/search?q=")
 (def-search-engine "twitter" "https://twitter.com/search?src=typd&q=")
 (def-search-engine "launchpad" "https://launchpad.net/+search?field.text=")
+
+
+;; Path
+;; -------
+
+
+(defun show-complete-filename ()
+  "Show the complete path of the file associated with the current buffer."
+  (interactive)
+  (message (file-truename buffer-file-name)))
+
+
 
 
 (provide '98_fcts)

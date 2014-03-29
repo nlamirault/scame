@@ -51,8 +51,8 @@
 (defun scame-project-website ()
   "Open in a browser the project's website."
   (interactive)
-  ;;(browse-url
-  (helm-browse-url
+  (browse-url
+  ;;(helm-browse-url
    "https://github.com/nlamirault/scame"))
 
 
