@@ -28,7 +28,7 @@
 (use-package easymenu)
 
 
-(defvar scame-package-version "0.3.0"
+(defvar scame-package-version "0.4.0"
   "Release version of Scame.")
 
 
