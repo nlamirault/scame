@@ -36,8 +36,7 @@ TARGET_DIRECTORY = path.join(HOME, '.emacs.d')
 
 SCAME_REPOSITORY = 'https://github.com/nlamirault/scame.git'
 EVM_REPOSITORY = 'https://raw.github.com/rejeep/evm/master/go'
-#CASK_REPOSITORY = 'https://raw.github.com/cask/cask/master/go'
-CASK_REPOSITORY = 'https://raw.githubusercontent.com/nlamirault/cask/master/go'
+CASK_REPOSITORY = 'https://raw.github.com/cask/cask/master/go'
 
 OKGREEN = '\033[32m'
 FAIL = '\033[31m'
