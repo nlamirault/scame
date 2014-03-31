@@ -2,7 +2,7 @@
 
 ## Version 0.4.0 (IN PROGRESS)
 
-- Add [use-package](https://github.com/jwiegley/use-package) to packages configuration
+- Migrate to [use-package](https://github.com/jwiegley/use-package) for packages configuration
 
 ## Version 0.3.0 (03/27/2014)
 
@@ -11,7 +11,7 @@
 
 ## Version 0.2.0 (03/22/2014)
 
-- Customization in $HOME/config/scame/user.el file
+- Customization in ``$HOME/config/scame/user.el`` file
 - Setup [Drone.io](https://drone.io) build
 - FIX Scame's installer
 
