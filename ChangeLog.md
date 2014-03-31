@@ -11,7 +11,7 @@
 
 ## Version 0.2.0 (03/22/2014)
 
-- Customization in ``$HOME/config/scame/user.el`` file
+- Customization in ``$HOME/.config/scame/user.el`` file
 - Setup [Drone.io](https://drone.io) build
 - FIX Scame's installer
 
