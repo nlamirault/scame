@@ -23,12 +23,24 @@
 
 ;;; Code:
 
-(require 'server)
-(unless (server-running-p)
-  (server-start))
+;;(require 'server)
+(use-package server
+  :init (unless (server-running-p)
+	  (server-start)))
 
-(require 'ido)
-(ido-mode t)
+;; (require 'ido)
+;; (ido-mode t)
+(use-package ido
+  :init (ido-mode 1)
+  :config
+  (progn
+    (setq ido-case-fold t)
+    (setq ido-everywhere t)
+    (setq ido-enable-prefix nil)
+    (setq ido-enable-flex-matching t)
+    (setq ido-create-new-buffer 'always)
+    (setq ido-max-prospects 10)
+    (add-to-list 'ido-ignore-files "\\.DS_Store")))
 
 ;;; Some constants to check the system type
 (defconst darwin-p (eq system-type 'darwin)

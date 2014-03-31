@@ -23,42 +23,24 @@
 
 ;;; Code:
 
-(require 'haskell-mode)
-(require 'haskell-simple-indent)
-(require 'ghc)
+;; (require 'haskell-mode)
+;; (require 'haskell-simple-indent)
+;; (require 'ghc)
 
-(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+(use-package haskell-mode
+  :init (progn
+	  (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+	  (add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
+	  (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+	  (add-hook 'haskell-mode-hook 'turn-on-haskell-doc)
+	  (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan))
+  :bind (("C-," . haskell-move-nested-left)
+	 ("C-." . haskell-move-nested-right)
+	 ("M-o" . editutil-edit-next-line-same-column)
+	 ("TAB" . haskell-simple-indent)
+	 ("<backtab>" . haskell-simple-indent-backtab)
+	 ("C-<return>" . haskell-simple-indent-newline-indent)))
 
-(eval-after-load "haskell-mode"
-  '(progn
-     (define-key haskell-mode-map (kbd "C-,")
-       'haskell-move-nested-left)
-     (define-key haskell-mode-map (kbd "C-.")
-       'haskell-move-nested-right)
-     (define-key haskell-mode-map (kbd "M-o")
-       'editutil-edit-next-line-same-column)
-     (define-key haskell-mode-map (kbd "TAB")
-       'haskell-simple-indent)
-     (define-key haskell-mode-map (kbd "<backtab>")
-       'haskell-simple-indent-backtab)
-     (define-key haskell-mode-map [remap newline]
-       'haskell-simple-indent-newline-same-col)
-     (define-key haskell-mode-map [remap newline-and-indent]
-       'haskell-simple-indent-newline-indent)
-     (define-key haskell-mode-map (kbd "C-<return>")
-       'haskell-simple-indent-newline-indent)))
 
-;; (eval-after-load "haskell-mode"
-;;   '(progn
-;;      ;; ghc
-;;      (setq ghc-module-command (executable-find "ghc-mod"))
-;;      ;; bindings
-;;      (define-key haskell-mode-map (kbd "M-o") 'editutil-edit-next-line-same-column)
-;;      (define-key haskell-mode-map (kbd "TAB") 'haskell-simple-indent)
-;;      (define-key haskell-mode-map (kbd "<backtab>") 'haskell-simple-indent-backtab)
-;;      (define-key haskell-mode-map [remap newline] 'haskell-simple-indent-newline-same-col)
-;;      (define-key haskell-mode-map [remap newline-and-indent] 'haskell-simple-indent-newline-indent)
-;;      (define-key haskell-mode-map (kbd "C-<return>") 'haskell-simple-indent-newline-indent))
-;;   )
+(provide '40_haskell)
+;;; 40_haskell.el ends here

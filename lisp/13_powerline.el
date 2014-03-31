@@ -24,9 +24,11 @@
 ;;; Code:
 
 
-(require 'powerline)
-(powerline-default-theme)
-(setq powerline-default-separator 'arrow-fade)
+;;(require 'powerline)
+(use-package powerline
+  :config (progn
+	    (powerline-default-theme)
+	    (setq powerline-default-separator 'arrow-fade)))
 
 (provide '13_powerline)
 ;;; 13_powerline.el ends here

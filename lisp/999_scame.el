@@ -25,8 +25,8 @@
 
 ;;; Code:
 
-(require 'f)
-(require 'easymenu)
+(use-package easymenu)
+
 
 (defvar scame-package-version "0.3.0"
   "Release version of Scame.")

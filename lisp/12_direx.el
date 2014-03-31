@@ -24,10 +24,19 @@
 ;;; Code:
 
 
-(require 'direx)
-(require 'direx-project)
+(use-package dired-x
+  :init (progn
+	  (add-hook 'dired-mode-hook 'dired-hide-details-mode)
+	  (put 'dired-find-alternate-file 'disabled nil)
+	  (setq dired-recursive-deletes 'always)
+	  (setq dired-recursive-copies 'always))
+  :bind ("C-x C-j" . direx:jump-to-directory))
 
-(global-set-key (kbd "C-x C-j") 'direx:jump-to-directory)
+;;(require 'direx)
+;;(require 'direx-project)
+(use-package direx-project)
+
+;;(global-set-key (kbd "C-x C-j") 'direx:jump-to-directory)
 
 (provide '12_direx)
 ;;; 12_direx.el ends here

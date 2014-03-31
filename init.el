@@ -44,16 +44,19 @@
 (cask-initialize)
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
 ;;(require 'pallet)
+(require 'use-package)
+
+(use-package f)
+(use-package s)
 
 (setq package-enable-at-startup nil)    ; Don't initialize packages twice
-
-(require 'f)
 
 (setq user-home-directory (f-full (getenv "HOME")))
 (setq user-emacs-directory (f-join user-home-directory ".emacs.d"))
 
-(require 'init-loader)
-(init-loader-load (f-slash (f-join user-emacs-directory "lisp")))
+;;(require 'init-loader)
+(use-package init-loader
+  :config (init-loader-load (f-slash (f-join user-emacs-directory "lisp"))))
 
 (let ((user-customization (f-join user-home-directory ".config/scame/user.el")))
   (when (file-readable-p user-customization)

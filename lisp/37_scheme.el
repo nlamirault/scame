@@ -23,10 +23,13 @@
 
 ;;; Code:
 
-(require 'geiser-install)
+;;(require 'geiser-install)
 
-(setq geiser-active-implementations '(guile))
-(setq geiser-default-implementation 'guile)
+(use-package geiser
+  :config (progn
+	    (setq geiser-active-implementations '(guile))
+	    (setq geiser-default-implementation 'guile)))
+
 ;;(setq geiser-impl-installed-implementations '(guile))
 
 

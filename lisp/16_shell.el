@@ -26,15 +26,24 @@
 ;; Terminal
 ;; ---------
 
+(defun launch-term ()
+  "Launch a new terminal."
+  (interactive)
+  (unless (multi-term-dedicated-exist-p)
+    (multi-term-dedicated-open))
+  (multi-term-dedicated-select))
 
-(require 'multi-term)
 
-(setq multi-term-program "/bin/bash")
-(global-set-key "\C-xt"
-		(lambda () (interactive)
-		  (unless (multi-term-dedicated-exist-p)
-		    (multi-term-dedicated-open))
-		  (multi-term-dedicated-select)))
+;;(require 'multi-term)
+(use-package multi-term
+  :config (setq multi-term-program "/bin/bash")
+  :bind (("C-x t" . launch-term)))
+
+;;        (global-set-key "\C-xt"
+		;; (lambda () (interactive)
+		;;   (unless (multi-term-dedicated-exist-p)
+		;;     (multi-term-dedicated-open))
+		;;   (multi-term-dedicated-select)))
 
 
 (provide '16_shell)

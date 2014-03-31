@@ -23,18 +23,19 @@
 
 ;;; Code:
 
-(require 'ielm)
+;;(require 'ielm)
 
-(find-function-setup-keys)
+;; (find-function-setup-keys)
 
-(dolist (hook '(emacs-lisp-mode-hook
-                lisp-interaction-mode-hook
-                ielm-mode-hook))
-  (add-hook hook 'turn-on-eldoc-mode))
+;; (dolist (hook '(emacs-lisp-mode-hook
+;;                 lisp-interaction-mode-hook
+;;                 ielm-mode-hook))
+;;   (add-hook hook 'turn-on-eldoc-mode))
 
 
-(custom-set-variables
- '(eldoc-idle-delay 0.2))
+;; (custom-set-variables
+;;  '(eldoc-idle-delay 0.2))
+
 
 (defun ielm-other-window ()
   "Run ielm on other window."
@@ -42,6 +43,23 @@
   (switch-to-buffer-other-window
    (get-buffer-create "*ielm*"))
   (call-interactively 'ielm))
+
+
+(use-package emacs-lisp-mode
+  :init (progn
+	  (use-package eldoc
+	    :init (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)))
+  :mode (("\\.el$" . emacs-lisp-mode)
+	 ("gnus" . emacs-lisp-mode)
+	 ("Cask" . emacs-lisp-mode)))
+
+(use-package ielm
+  :init (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode))
+
+(use-package elisp-slime-nav
+  :init (progn
+	  (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
+	    (add-hook hook 'elisp-slime-nav-mode))))
 
 
 (provide '39_elisp)

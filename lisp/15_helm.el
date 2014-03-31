@@ -24,23 +24,35 @@
 ;;; Code:
 
 
-(require 'helm)
+;;(require 'helm)
 
-(helm-mode 1)
+(use-package helm
+  :init (helm-mode 1)
+  :config (progn
+	    (setq helm-ff-tramp-not-fancy nil)
+	    (setq helm-ff-skip-boring-files t)
+	    (add-to-list 'helm-boring-buffer-regexp-list "\\*tramp")
+	    (add-to-list 'helm-boring-buffer-regexp-list "\\*epc")
+	    (add-to-list 'helm-boring-buffer-regexp-list "\\.elc$")
+	    (add-to-list 'helm-boring-buffer-regexp-list "\\.pyc$"))
+  :bind (("C-x M-f" . helm-find-files)
+	 ("C-x b" . helm-buffers-list)
+	 ("C-x C-i" . helm-imenu)))
 
-(global-set-key (kbd "C-c h") 'helm-mini)
-(global-set-key (kbd "C-x M-f") 'helm-find-files)
-(global-set-key (kbd "C-x b") 'helm-buffers-list)
-(global-set-key (kbd "C-x C-i") 'helm-imenu)
 
-(custom-set-variables
-   '(helm-ff-tramp-not-fancy nil)
-    '(helm-ff-skip-boring-files t))
+;; (global-set-key (kbd "C-c h") 'helm-mini)
+;; (global-set-key (kbd "C-x M-f") 'helm-find-files)
+;; (global-set-key (kbd "C-x b") 'helm-buffers-list)
+;; (global-set-key (kbd "C-x C-i") 'helm-imenu)
 
-(loop for name in '("\\*tramp" "\\*epc")
-      do (add-to-list 'helm-boring-buffer-regexp-list name))
-(loop for ext in '("\\.elc$" "\\.pyc$")
-      do (add-to-list 'helm-boring-file-regexp-list ext))
+;; (custom-set-variables
+;;  '(helm-ff-tramp-not-fancy nil)
+;;  '(helm-ff-skip-boring-files t))
+
+;; (loop for name in '("\\*tramp" "\\*epc")
+;;       do (add-to-list 'helm-boring-buffer-regexp-list name))
+;; (loop for ext in '("\\.elc$" "\\.pyc$")
+;;       do (add-to-list 'helm-boring-file-regexp-list ext))
 
 
 (provide '15_helm)

@@ -23,16 +23,29 @@
 
 ;;; Code:
 
-(require 'jedi)
-(require 'elpy)
+;; (require 'jedi)
+;; (require 'elpy)
 
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:setup-keys t)
-(setq jedi:complete-on-dot t)
+(use-package jedi
+  :commands jedi:setup
+  :config (progn
+	    (setq jedi:setup-keys t)
+	    (setq jedi:complete-on-dot t)
+	    (add-hook 'python-mode-hook 'jedi:setup)
+	    (add-hook 'python-mode-hook (lambda ()
+					  (setq fill-column 79)))))
 
-(elpy-enable)
+(use-package elpy
+  :config (elpy-enable))
 
-(add-hook 'python-mode-hook (lambda () (setq fill-column 79)))
+;; (add-hook 'python-mode-hook 'jedi:setup)
+;; (setq jedi:setup-keys t)
+;; (setq jedi:complete-on-dot t)
+
+;;(elpy-enable)
+
+;;(add-hook 'python-mode-hook (lambda () (setq fill-column 79)))
+
 ;;(add-hook 'python-mode-hook
 ;;	  (lambda ()
 ;;	    (unless (eq buffer-file-name nil) (flymake-mode 1))
@@ -67,15 +80,30 @@
 
 ;;(add-hook 'post-command-hook 'my-flymake-show-help)
 
-(require 'virtualenvwrapper)
-(setq venv-location "~/.virtualenvs/")
-(venv-initialize-interactive-shells)
-(venv-initialize-eshell)
-(add-hook 'python-mode-hook
-          (lambda ()
-            (hack-local-variables)
-            (venv-workon project-venv-name)))
-(setq-default mode-line-format (cons '(:exec venv-current-name) mode-line-format))
+;;(require 'virtualenvwrapper)
+
+(use-package virtualenvwrapper
+  :commands venv-workon
+  :config (progn
+	    (setq venv-location "~/.virtualenvs/")
+	    (venv-initialize-interactive-shells)
+	    (venv-initialize-eshell)
+	    (setq-default mode-line-format
+			  (cons '(:exec venv-current-name)
+				mode-line-format))
+	    (add-hook 'python-mode-hook
+		      (lambda ()
+			(hack-local-variables)
+			(venv-workon project-venv-name)
+
+;; (setq venv-location "~/.virtualenvs/")
+;; (venv-initialize-interactive-shells)
+;; (venv-initialize-eshell)
+;; (add-hook 'python-mode-hook
+;;           (lambda ()
+;;             (hack-local-variables)
+;;             (venv-workon project-venv-name)))
+;; (setq-default mode-line-format (cons '(:exec venv-current-name) mode-line-format))
 
 ;; Elpy switch to pyvenv: https://github.com/jorgenschaefer/elpy/issues/149
 ;; Set in python project directory a file *.dir-locals.el* :

@@ -28,8 +28,9 @@
 ;; --------
 
 
-(require 'epa-file)
-(epa-file-enable)
+;;(require 'epa-file)
+(use-package epa-file
+  :config (epa-file-enable))
 
 
 (provide '11_crypto)

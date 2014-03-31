@@ -1,4 +1,4 @@
-;; 41_clojure.el --- Clojure configuration
+;;; 42_ruby.el --- Ruby mode configuration
 
 ;; Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -23,32 +23,32 @@
 
 ;;; Code:
 
-;;(require 'cider)
 
-(use-package cider
-  :init (progn
-	  (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
-	  (add-hook 'cider-repl-mode-hook 'subword-mode))
+(use-package rvm
+	     :init (rvm-use-default)
+	     :config (setq rvm-verbose nil))
+
+(use-package rhtml-mode
+	     :mode (("\\.rhtml$" . rhtml-mode)
+		    ("\\.html\\.erb$" . rhtml-mode)))
+
+(use-package ruby-tools)
+
+(use-package ruby-mode
   :config (progn
-	    (setq cider-popup-stacktraces t)
-	    (setq cider-repl-popup-stacktraces t)
-	    (setq cider-repl-pop-to-buffer-on-connect t)
-	    (setq cider-repl-use-clojure-font-lock t)
-	    (setq nrepl-hide-special-buffers t)
-	    (setq cider-repl-tab-command 'indent-for-tab-command)
-	    (setq cider-repl-wrap-history t)
-	    (setq cider-repl-history-size 1000)))
+	    (add-hook 'ruby-mode-hook 'rvm-activate-corresponding-ruby)
+	    (setq ruby-deep-indent-paren nil))
+  :bind (("C-M-h" . backward-kill-word)
+         ("C-M-n" . scroll-up-five)
+         ("C-M-p" . scroll-down-five))
+  :mode (("\\.rake$" . ruby-mode)
+         ("\\.gemspec$" . ruby-mode)
+         ("\\.ru$" . ruby-mode)
+         ("Rakefile$" . ruby-mode)
+         ("Gemfile$" . ruby-mode)
+         ("Capfile$" . ruby-mode)
+         ("Guardfile$" . ruby-mode)))
 
 
-;;(require 'company-cider)
-(use-package company-cider
-  :init (add-to-list 'company-backends 'company-cider))
-;;(eval-after-load 'company '(add-to-list 'company-backends 'company-cider))
-
-;;(require 'clj-refactor)
-(use-package clj-refactor
-  :init (add-hook 'clojure-mode-hook (lambda ()
-				       (clj-refactor-mode 1))))
-
-(provide '41_clojure)
-;;; 41_clojure.el ends here
+(provide '42_ruby)
+;;; 42_ruby.el ends here

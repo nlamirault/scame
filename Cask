@@ -4,9 +4,10 @@
 (source "gnu" "http://elpa.gnu.org/packages/")
 (source "marmalade" "http://marmalade-repo.org/packages/")
 
-;; Misc
+;; Scame tools
 (depends-on "cask")
 (depends-on "pallet")
+(depends-on "use-package")
 
 (depends-on "auto-complete")
 (depends-on "sr-speedbar")
@@ -14,6 +15,9 @@
 (depends-on "flycheck")
 (depends-on "flycheck-cask")
 (depends-on "flycheck-color-mode-line")
+
+;; Common Lisp
+(depends-on "slime")
 
 ;; Emacs Lisp
 (depends-on "elisp-slime-nav")
@@ -36,6 +40,9 @@
 
 ;; Ruby
 (depends-on "ruby-mode")
+(depends-on "ruby-tools")
+(depends-on "rvm")
+(depends-on "rhtml-mode")
 
 ;; Erlang
 (depends-on "erlang")

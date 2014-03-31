@@ -2,8 +2,6 @@
 
 ;; Copyright (c) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
-;; Copyright (C) 2014  Nicolas Lamirault
-
 ;; Permission is hereby granted, free of charge, to any person obtaining a copy
 ;; of this software and associated documentation files (the "Software"), to deal
 ;; in the Software without restriction, including without limitation the rights
@@ -27,13 +25,19 @@
 
 
 
-(require 'flycheck-color-mode-line)
+;;(require 'flycheck-color-mode-line)
+
+(use-package flycheck
+  :config (add-hook 'after-init-hook #'global-flycheck-mode))
+
+(use-package flycheck-color-mode-line
+  :config (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
 
 ;;(add-hook 'find-file-hook 'flymake-find-file-hook)
-(add-hook 'after-init-hook #'global-flycheck-mode)
+;; (add-hook 'after-init-hook #'global-flycheck-mode)
 
-(eval-after-load "flycheck"
-  '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
+;; (eval-after-load "flycheck"
+;;   '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
 
 
 (provide '17_flycheck)

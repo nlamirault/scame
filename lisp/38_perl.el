@@ -23,20 +23,29 @@
 
 ;;; Code:
 
-(require 'cperl-mode)
-(require 'helm)
+;; (require 'cperl-mode)
 
-(defalias 'perl-mode 'cperl-mode)
-(add-to-list 'auto-mode-alist
-	     '("\\.\\(pl\\|pm\\|cgi\\|t\\|psgi\\)\\'" . cperl-mode))
-(add-to-list 'auto-mode-alist '("cpanfile\\'" . cperl-mode))
-(add-to-list 'auto-mode-alist '("\\.pod\\'" . pod-mode))
+;; (defalias 'perl-mode 'cperl-mode)
+;; (add-to-list 'auto-mode-alist
+;; 	     '("\\.\\(pl\\|pm\\|cgi\\|t\\|psgi\\)\\'" . cperl-mode))
+;; (add-to-list 'auto-mode-alist '("cpanfile\\'" . cperl-mode))
+;; (add-to-list 'auto-mode-alist '("\\.pod\\'" . pod-mode))
 
-(eval-after-load "cperl-mode"
-  '(progn
-     (cperl-set-style "PerlStyle")
-     (setq cperl-auto-newline nil)
-     (helm-perldoc:setup)))
+;; (eval-after-load "cperl-mode"
+;;   '(progn
+;;      (cperl-set-style "PerlStyle")
+;;      (setq cperl-auto-newline nil)
+;;      (helm-perldoc:setup)))
+
+
+(use-package cperl-mode
+  :init (defalias 'perl-mode 'cperl-mode)
+  :mode (("\\.\\(pl\\|pm\\|cgi\\|t\\|psgi\\)\\'" . cperl-mode)
+	 ("cpanfile\\'" . perl-mode))
+  :init (progn
+	  (cperl-set-style "PerlStyle")
+	  (setq cperl-auto-newline nil)
+	  (helm-perldoc:setup)))
 
 
 (provide '38_perl)

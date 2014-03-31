@@ -1,4 +1,4 @@
-;; 41_clojure.el --- Clojure configuration
+;;; 18_smex.el --- Smex configuration
 
 ;; Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -23,32 +23,15 @@
 
 ;;; Code:
 
-;;(require 'cider)
 
-(use-package cider
+
+(use-package smex
   :init (progn
-	  (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
-	  (add-hook 'cider-repl-mode-hook 'subword-mode))
-  :config (progn
-	    (setq cider-popup-stacktraces t)
-	    (setq cider-repl-popup-stacktraces t)
-	    (setq cider-repl-pop-to-buffer-on-connect t)
-	    (setq cider-repl-use-clojure-font-lock t)
-	    (setq nrepl-hide-special-buffers t)
-	    (setq cider-repl-tab-command 'indent-for-tab-command)
-	    (setq cider-repl-wrap-history t)
-	    (setq cider-repl-history-size 1000)))
+	  (setq smex-save-file "~/.emacs.d/.smex-items")
+	  (smex-initialize))
+  :bind (("M-x" . smex)
+         ("M-X" . smex-major-mode-commands)))
 
 
-;;(require 'company-cider)
-(use-package company-cider
-  :init (add-to-list 'company-backends 'company-cider))
-;;(eval-after-load 'company '(add-to-list 'company-backends 'company-cider))
-
-;;(require 'clj-refactor)
-(use-package clj-refactor
-  :init (add-hook 'clojure-mode-hook (lambda ()
-				       (clj-refactor-mode 1))))
-
-(provide '41_clojure)
-;;; 41_clojure.el ends here
+(provide '18_smex)
+;;; 18_smex.el ends here
