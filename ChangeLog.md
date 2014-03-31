@@ -18,4 +18,4 @@
 ## Version 0.1.0 (03/20/2014)
 
 - Add installer
-- Init project from [Divona](ttps://github.com/nlamirault/divona).
+- Init project from [Divona](https://github.com/nlamirault/divona).
