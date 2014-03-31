@@ -15,6 +15,9 @@
 (depends-on "flycheck-cask")
 (depends-on "flycheck-color-mode-line")
 
+;; Emacs Lisp
+(depends-on "elisp-slime-nav")
+
 ;; Go lang
 (depends-on "go-mode")
 (depends-on "go-play")
@@ -85,6 +88,7 @@
 (depends-on "helm-mode-manager")
 (depends-on "ag")
 (depends-on "json-reformat")
+(depends-on "sos")
 
 ;; Mail
 ;;(depends-on "mu4e")
@@ -103,6 +107,9 @@
 (depends-on "htmlize")
 (depends-on "web-server")
 
+;; Security
+(depends-on "password-store")
+
 ;; UI
 (depends-on "smart-mode-line")
 (depends-on "diminish")
@@ -113,6 +120,8 @@
 ;; Gnus
 (depends-on "google-contacts")
 
+
+;; Themes
 (depends-on "moe-theme")
 (depends-on "zenburn-theme")
 (depends-on "color-theme-sanityinc-tomorrow")
