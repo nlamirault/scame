@@ -97,7 +97,15 @@ Keybinding           | Description
 <kbd>C-down</kbd>    | Scroll line down
 <kbd>C-up </kbd>     | Scroll line up
 <kbd>C-c w</kbd>     | Launch eww
-
+<kbd>C-o</kbd>       | Swoop
+<kbd>C-M-o</kbd>     | Swoop-multi
+<kbd>M-o</kbd>       | Swoop-pcre-regexp
+<kbd>C-x C-j</kbd>   | direx:jump-to-directory
+<kbd>C-x M-f</kbd>   | helm-find-files
+<kbd>C-x b</kbd>     | helm-buffer-list
+<kbd>C-x t</kbd>     | launch-term
+<kbd>M-x</kbd>       | smex
+<kbd>M-X</kbd>       | smex-major-mode-commands
 
 ### Scame mode
 
@@ -105,6 +113,28 @@ Keybinding           | Description
 ---------------------|------------------------------------------------------------
 <kbd>C-c v</kbd>     | Display Scame version
 <kbd>C-c c</kbd>     | Show Scame changelog
+
+### Python-mode
+
+Keybinding           | Description
+---------------------|------------------------------------------------------------
+<kbd>C-c t</kbd>     | tox-current-test
+<kbd>C-c c</kbd>     | tox-current-class
+
+### Go mode
+
+Keybinding           | Description
+---------------------|------------------------------------------------------------
+<kbd>C-c C-r</kbd>   | go-remove-unused-imports
+<kbd>C-c i</kbd>     | go-goto-imports
+
+### Org
+
+Keybinding           | Description
+---------------------|------------------------------------------------------------
+<kbd>C-c a</kbd>     | org-agenda
+<kbd>C-c b</kbd>     | org-iswitchb
+<kbd>C-c l</kbd>     | org-store-link
 
 
 ## Customization

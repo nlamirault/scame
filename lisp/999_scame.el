@@ -62,7 +62,6 @@
 (defvar scame-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map (kbd "C-c v") 'scame-version)
-    (define-key map (kbd "C-c c") 'scame-changelog)
     map))
 
 ;; Scame main menu

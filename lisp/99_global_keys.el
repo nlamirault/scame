@@ -54,7 +54,5 @@
 (global-set-key "\C-cw" 'eww)
 
 
-
-
 (provide '99_global_keys)
 ;;; 99_global_keys.el ends here
