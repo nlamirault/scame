@@ -34,13 +34,13 @@
 	  (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 	  (add-hook 'haskell-mode-hook 'turn-on-haskell-doc)
 	  (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan))
-  :bind (("C-," . haskell-move-nested-left)
-	 ("C-." . haskell-move-nested-right)
+  :bind (;;("C-," . haskell-move-nested-left)
+	 ;;("C-." . haskell-move-nested-right)
 	 ("M-o" . editutil-edit-next-line-same-column)
-	 ("TAB" . haskell-simple-indent)
-	 ("<backtab>" . haskell-simple-indent-backtab)
-	 ("C-<return>" . haskell-simple-indent-newline-indent)))
-
+	 ;;("TAB" . haskell-simple-indent)
+	 ;;("<backtab>" . haskell-simple-indent-backtab)
+	 ;;("C-<return>" . haskell-simple-indent-newline-indent)))
+         )
 
 (provide '40_haskell)
 ;;; 40_haskell.el ends here

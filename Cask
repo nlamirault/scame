@@ -55,6 +55,10 @@
 (depends-on "company-cider")
 (depends-on "clj-refactor")
 
+;; Haskell
+(depends-on "haskell-mode")
+(depends-on "flycheck-haskell")
+
 ;; Web
 (depends-on "web-mode")
 (depends-on "php-mode")
