@@ -26,17 +26,18 @@
 ;; Terminal
 ;; ---------
 
-(defun launch-term ()
-  "Launch a new terminal."
-  (interactive)
-  (unless (multi-term-dedicated-exist-p)
-    (multi-term-dedicated-open))
-  (multi-term-dedicated-select))
 
 
 ;;(require 'multi-term)
 (use-package multi-term
-  :config (setq multi-term-program "/bin/bash")
+  :config (progn
+	    (setq multi-term-program "/bin/bash")
+	    (defun launch-term ()
+	      "Launch a new terminal."
+	      (interactive)
+	      (unless (multi-term-dedicated-exist-p)
+		(multi-term-dedicated-open))
+	      (multi-term-dedicated-select)))
   :bind (("C-x t" . launch-term)))
 
 ;;        (global-set-key "\C-xt"
@@ -44,6 +45,9 @@
 		;;   (unless (multi-term-dedicated-exist-p)
 		;;     (multi-term-dedicated-open))
 		;;   (multi-term-dedicated-select)))
+
+
+
 
 
 (provide '16_shell)
