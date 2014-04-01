@@ -86,6 +86,25 @@ Misc:
 - [powerline](https://github.com/milkypostman/powerline)
 - [direx.el](https://github.com/m2ym/direx-el)
 
+
+## Keymap
+
+### Global
+
+Keybinding           | Description
+---------------------|------------------------------------------------------------
+<kbd>C-c l</kbd>     | List packages from Melpa.
+<kbd>C-<down></kbd>  | Scroll line down
+<kbd>C-<up></kbd>    | Scroll line up
+<kbd>C-c w</kbd>     | Launch eww
+
+
+### Scame mode
+
+<kbd>C-c v</kbd>     | Display Scame version
+<kbd>C-c c</kbd>     | Show Scame changelog
+
+
 ## Customization
 
 If file `$HOME/.config/scame/user.el` exists, *scame* will be loaded.

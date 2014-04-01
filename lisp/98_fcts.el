@@ -36,6 +36,12 @@
     (kill-buffer (car liste))))
 
 
+(defun create-new-buffer ()
+  "Create a new buffer."
+  (interactive)
+  (switch-to-buffer (generate-new-buffer-name "*Scame buffer*")))
+
+
 ;; Search engines
 ;; ----------------
 
