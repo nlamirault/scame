@@ -94,13 +94,15 @@ Misc:
 Keybinding           | Description
 ---------------------|------------------------------------------------------------
 <kbd>C-c l</kbd>     | List packages from Melpa.
-<kbd>C-<down></kbd>  | Scroll line down
-<kbd>C-<up></kbd>    | Scroll line up
+<kbd>C-down</kbd>    | Scroll line down
+<kbd>C-up </kbd>     | Scroll line up
 <kbd>C-c w</kbd>     | Launch eww
 
 
 ### Scame mode
 
+Keybinding           | Description
+---------------------|------------------------------------------------------------
 <kbd>C-c v</kbd>     | Display Scame version
 <kbd>C-c c</kbd>     | Show Scame changelog
 
