@@ -115,11 +115,13 @@ def exec_scame_command(command_name):
     """Execute Scame command with Emacs CLI."""
     #emacs = get_emacs_executable()
     #cli = path.join(SCAME_HOME, 'scame-cli.el')
-    cli = path.join(path.dirname(path.realpath(__file__)), 'scame-cli.el')
+    #cli = path.join(path.dirname(path.realpath(__file__)), 'scame-cli.el')
+    cli = 'scame-cli.el'
     command = ['cask', 'exec', 'emacs', '-Q', '--script',
                cli,
                '--', command_name]
-    print(command)
+    # os.system("%s exec emacs -Q --script %s -- %s" %
+    #           (CASK_EXECUTABLE, cli, command_name))
     os.execvp(command[0], command)
 
 
@@ -138,7 +140,12 @@ def main(args):
             success("""Add scame binary to your $PATH: """)
             success("""export PATH=$PATH:%s""" % SCAME_HOME)
         elif args.cmd:
-            exec_scame_command(args.cmd)
+            if args.cmd == 'install':
+                os.chdir(SCAME_HOME)
+                exec_scame_command(args.cmd)
+                os.chdir(HOME)
+            else:
+                exec_scame_command(args.cmd)
 
     except Exception as error:
         fail('{0!s}'.format(error))
@@ -149,12 +156,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(prog='scame',
                                      description='An Emacs installation tool.',
                                      usage='%(prog)s [options]')
-    # parser.add_argument('--version', action='store_true',
-    #                     help="Display Scame version")
-    #                     # action='version',
-    #                     # version="%(prog)s 0.3.0")
-    # parser.add_argument('--cleanup', action='store_true',
-    #                     help="Destroy or not Scame, Evm and Cask directories")
     parser.add_argument('--init', action='store_true',
                         help="Initialize Scame")
     parser.add_argument('--cmd',
