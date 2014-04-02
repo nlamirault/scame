@@ -140,23 +140,6 @@ def main(args):
         elif args.cmd:
             exec_scame_command(args.cmd)
 
-        # if '--version' in args:
-        #     exec_scame_command('--version')
-        #     sys.exit(0)
-        # if '--help' in args:
-        #     exec_scame_command('--help')
-        #     sys.exit(0)
-        # if '--cleanup' in args:
-        #     scame_destroy()
-
-        # scame_install()
-        # emacs_version = 'emacs-git-snapshot'
-        # if args.emacs:
-        #     emacs_version = args.emacs
-        # evm_install(emacs_version)
-        # cask_install()
-        # success("""Scame installed.""")
-
     except Exception as error:
         fail('{0!s}'.format(error))
         sys.exit(1)
