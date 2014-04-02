@@ -48,11 +48,11 @@
 ;;   (let ((git-repo target))
 ;;     (git-clone scame-repository target)))
 
+
 (defun scame-cli--update-repo (target)
   "With `TARGET' as Scame's local git repository, update it."
   (let ((git-repo target))
-    (git-pull git-repo))
-  (scame-cli--cask target))
+    (git-pull git-repo)))
 
 (defun scame-cli--cleanup (source)
   "Remove Scame's installation files from `SOURCE'."
@@ -69,9 +69,9 @@
   (f-copy (f-join source "lisp") target))
 
 
-(defun scame-cli--update-deps ()
-  "Update dependencies using Cask."
-  (let ((bundle (cask-initialize emacs-directory)))
+(defun scame-cli--update-deps (target)
+  "Update dependencies using Cask for `TARGET' directory."
+  (let ((bundle (cask-initialize target)))
     (cask-install bundle)
     (cask-update bundle)))
 
@@ -94,7 +94,7 @@
 (defun scame-cli/install ()
   "Install Scame."
   (scame-cli--copy-files (f-join scame-directory "src") emacs-directory)
-  (scame-cli--update-deps))
+  (scame-cli--update-deps emacs-directory))
 
 (defun scame-cli/update ()
   "Update a Scame installation."

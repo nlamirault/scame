@@ -32,6 +32,7 @@ import sys
 
 
 HOME = path.expanduser('~')
+EMACS_DIRECTORY = path.join(HOME, '.emacs.d')
 SCAME_HOME = path.join(HOME, '.scame')
 SCAME_DIRECTORY = path.join(SCAME_HOME, 'lisp')
 EVM_HOME = '/usr/local/evm'
@@ -120,6 +121,7 @@ def exec_scame_command(command_name):
     command = ['cask', 'exec', 'emacs', '-Q', '--script',
                cli,
                '--', command_name]
+    print(command)
     # os.system("%s exec emacs -Q --script %s -- %s" %
     #           (CASK_EXECUTABLE, cli, command_name))
     os.execvp(command[0], command)
@@ -140,12 +142,15 @@ def main(args):
             success("""Add scame binary to your $PATH: """)
             success("""export PATH=$PATH:%s""" % SCAME_HOME)
         elif args.cmd:
-            if args.cmd == 'install':
-                os.chdir(SCAME_HOME)
-                exec_scame_command(args.cmd)
-                os.chdir(HOME)
-            else:
-                exec_scame_command(args.cmd)
+            # if args.cmd == 'update':
+            #     os.chdir(EMACS_DIRECTORY)
+            #     exec_scame_command(args.cmd)
+            #     os.chdir(HOME)
+            # else:
+            os.chdir(SCAME_HOME)
+            exec_scame_command(args.cmd)
+            os.chdir(HOME)
+
 
     except Exception as error:
         fail('{0!s}'.format(error))
