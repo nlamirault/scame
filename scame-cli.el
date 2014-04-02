@@ -26,6 +26,7 @@
 ;;; Code:
 
 
+(require 'cask)
 (require 'commander)
 (require 'f)
 (require 'git)
@@ -50,7 +51,8 @@
 (defun scame-cli--update-repo (target)
   "With `TARGET' as Scame's local git repository, update it."
   (let ((git-repo target))
-    (git-pull git-repo)))
+    (git-pull git-repo))
+  (scame-cli--cask target))
 
 (defun scame-cli--cleanup (source)
   "Remove Scame's installation files from `SOURCE'."
@@ -92,8 +94,10 @@
   "Update a Scame installation."
   (scame-cli--cleanup emacs-directory)
   (scame-cli--update-repo scame-directory)
-  (scame-cli--copy-files (f-join scame-directory "src") emacs-directory))
-
+  (scame-cli--copy-files (f-join scame-directory "src") emacs-directory)
+  (print "Cask setup")
+  (let ((bundle (cask-initialize emacs-directory)))
+    (cask-update bundle)))
 
 (defun scame-cli/debug ()
   "Turn on debug output."
@@ -101,6 +105,7 @@
 
 
 ;; CLI commands
+(setq debug-on-error t)
 
 (commander
 
