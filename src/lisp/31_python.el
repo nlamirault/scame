@@ -36,7 +36,9 @@
 					  (setq fill-column 79)))))
 
 (use-package elpy
-  :config (elpy-enable))
+  :config (progn
+	    (elpy-enable)
+	    (delq 'highlight-indentation-mode elpy-default-minor-modes)))
 
 ;; (add-hook 'python-mode-hook 'jedi:setup)
 ;; (setq jedi:setup-keys t)
