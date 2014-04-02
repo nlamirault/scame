@@ -76,7 +76,7 @@
 
 (defun scame-cli/help (&optional command-name)
   "Display usage information or documentation for COMMAND-NAME."
-  (princ (concat "Help: " command-name "]"))
+  ;;(princ (concat "Help: " command-name "]"))
   (if command-name
       (commander-print-usage-for-and-exit command-name)
     (commander-print-usage-and-exit)))
