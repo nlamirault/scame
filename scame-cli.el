@@ -41,12 +41,12 @@
 
 ;; Internal
 
-(defun scame-cli--clone-repo (target)
-  "Clone Scame repository into `TARGET'."
-  (when (f-exists? target)
-    (error (s-concat target " already exists.")))
-  (let ((git-repo target))
-    (git-clone scame-repository target)))
+;; (defun scame-cli--clone-repo (target)
+;;   "Clone Scame repository into `TARGET'."
+;;   (when (f-exists? target)
+;;     (error (s-concat target " already exists.")))
+;;   (let ((git-repo target))
+;;     (git-clone scame-repository target)))
 
 (defun scame-cli--update-repo (target)
   "With `TARGET' as Scame's local git repository, update it."
@@ -68,6 +68,14 @@
     (f-copy file target))
   (f-copy (f-join source "lisp") target))
 
+
+(defun scame-cli--update-deps ()
+  "Update dependencies using Cask."
+  (let ((bundle (cask-initialize emacs-directory)))
+    (cask-install bundle)
+    (cask-update bundle)))
+
+
 ;; API
 
 (defun scame-cli/version ()
@@ -85,19 +93,14 @@
 
 (defun scame-cli/install ()
   "Install Scame."
-  (if (f-directory? scame-directory)
-      (error "Emacs directory already exists. Please update.")
-    (scame-cli--clone-repo scame-directory)
-    (scame-cli--copy-files (f-join scame-directory "src") emacs-directory)))
+  (scame-cli--copy-files (f-join scame-directory "src") emacs-directory)
+  (scame-cli--update-deps))
 
 (defun scame-cli/update ()
   "Update a Scame installation."
   (scame-cli--cleanup emacs-directory)
   (scame-cli--update-repo scame-directory)
-  (scame-cli--copy-files (f-join scame-directory "src") emacs-directory)
-  (print "Cask setup")
-  (let ((bundle (cask-initialize emacs-directory)))
-    (cask-update bundle)))
+  (scame-cli/install))
 
 (defun scame-cli/debug ()
   "Turn on debug output."

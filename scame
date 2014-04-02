@@ -35,7 +35,6 @@ HOME = path.expanduser('~')
 SCAME_HOME = path.join(HOME, '.scame')
 SCAME_DIRECTORY = path.join(SCAME_HOME, 'lisp')
 EVM_HOME = '/usr/local/evm'
-CASK_DIRECTORY = path.join(SCAME_HOME, '.cask/24.4.50.1/elpa/')
 
 CASK_EXECUTABLE = path.join(HOME, '.cask/bin/cask')
 EVM_EXECUTABLE = path.join(HOME, '.evm/bin/evm')
@@ -43,10 +42,6 @@ EVM_EXECUTABLE = path.join(HOME, '.evm/bin/evm')
 SCAME_REPOSITORY = 'https://github.com/nlamirault/scame.git'
 EVM_REPOSITORY = 'https://raw.github.com/rejeep/evm/master/go'
 CASK_REPOSITORY = 'https://raw.github.com/cask/cask/master/go'
-
-# OS_ENV = getattr(os, 'environ', os.environ)
-# OS_ENV[b'EMACSLOADPATH'] = '%s/:%s' % (SCAME_DIRECTORY, CASK_DIRECTORY)
-# print OS_ENV[b'EMACSLOADPATH']
 
 OKGREEN = '\033[32m'
 FAIL = '\033[31m'
@@ -72,7 +67,6 @@ def scame_install():
     success("Install Scame.")
     if not path.isdir(path.join(HOME, '.cask')):
         cask_install()
-    #cask = path.join(HOME, '.cask/bin/cask')
     os.chdir(SCAME_HOME)
     # check_call doens't find emacs executable installed by EVM. So we use 'os'
     os.system("%s install" % CASK_EXECUTABLE)
@@ -97,8 +91,6 @@ def evm_install(emacs_version):
         subprocess.check_call(['curl', '-fsSkL', EVM_REPOSITORY,
                                '-o', '/tmp/evm.sh'])
         subprocess.check_call(['bash', '/tmp/evm.sh'])
-    #evm = path.join(HOME, '.evm/bin/evm')
-    #subprocess.check_call([evm, 'list'])
     if not path.isdir(path.join(HOME, EVM_HOME, emacs_version)):
         subprocess.check_call([EVM_EXECUTABLE, 'install', emacs_version])
     subprocess.check_call([EVM_EXECUTABLE, 'use', emacs_version])
@@ -124,7 +116,7 @@ def exec_scame_command(command_name):
     #emacs = get_emacs_executable()
     #cli = path.join(SCAME_HOME, 'scame-cli.el')
     cli = path.join(path.dirname(path.realpath(__file__)), 'scame-cli.el')
-    command = ['cask', 'exec', 'emacs', '-debug-init', '-Q', '--script',
+    command = ['cask', 'exec', 'emacs', '-Q', '--script',
                cli,
                '--', command_name]
     print(command)
@@ -146,9 +138,7 @@ def main(args):
             success("""Add scame binary to your $PATH: """)
             success("""export PATH=$PATH:%s""" % SCAME_HOME)
         elif args.cmd:
-            os.chdir(SCAME_HOME)
             exec_scame_command(args.cmd)
-            os.chdir(HOME)
 
         # if '--version' in args:
         #     exec_scame_command('--version')

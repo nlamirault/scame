@@ -6,6 +6,7 @@
 
 ;; Development
 (development
+ (depends-on "cask")
  (depends-on "s")
  (depends-on "request")
  (depends-on "pkg-info")
