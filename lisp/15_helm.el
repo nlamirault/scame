@@ -36,7 +36,8 @@
 	    (add-to-list 'helm-boring-buffer-regexp-list "\\.elc$")
 	    (add-to-list 'helm-boring-buffer-regexp-list "\\.pyc$"))
   :bind (("C-x M-f" . helm-find-files)
-	 ("C-x b" . helm-buffers-list)))
+         ("C-x f" . helm-for-files)
+	     ("C-x b" . helm-buffers-list)))
 	 ;;("C-x C-i" . helm-imenu)))
 
 (use-package helm-imenu
