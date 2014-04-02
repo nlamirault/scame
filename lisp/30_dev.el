@@ -30,7 +30,7 @@
 
 (use-package projectile
   :init (projectile-global-mode 1)
-  :bind (("C-c h" . helm-projectile))
+  ;;:bind (("C-c h" . helm-projectile))
   :config (progn
 	    (setq projectile-enable-caching t)
 	    (setq projectile-require-project-root nil)
@@ -38,6 +38,9 @@
 	    (setq projectile-completion-system 'ido)
 	    (add-to-list 'projectile-globally-ignored-files
 			 ".DS_Store")))
+
+(use-package helm-projectile
+  :bind (("C-c h" . helm-projectile)))
 
 
 ;; (projectile-global-mode)
