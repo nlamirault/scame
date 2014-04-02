@@ -24,7 +24,7 @@
 Install Scame.
 """
 
-import argparse
+#import argparse
 import os
 from os import path
 import subprocess
@@ -33,10 +33,16 @@ import sys
 
 HOME = path.expanduser('~')
 TARGET_DIRECTORY = path.join(HOME, '.emacs.d')
+SCAME_DIRECTORY = path.join(TARGET_DIRECTORY, 'lisp')
+CASK_DIRECTORY = path.join(TARGET_DIRECTORY, '.cask/24.4.50.1/elpa/')
 
 SCAME_REPOSITORY = 'https://github.com/nlamirault/scame.git'
 EVM_REPOSITORY = 'https://raw.github.com/rejeep/evm/master/go'
 CASK_REPOSITORY = 'https://raw.github.com/cask/cask/master/go'
+
+# OS_ENV = getattr(os, 'environ', os.environ)
+# OS_ENV[b'EMACSLOADPATH'] = '%s/:%s' % (SCAME_DIRECTORY, CASK_DIRECTORY)
+# print OS_ENV[b'EMACSLOADPATH']
 
 OKGREEN = '\033[32m'
 FAIL = '\033[31m'
@@ -95,32 +101,62 @@ def scame_destroy():
     subprocess.check_call(['sudo', 'rm', '-fr', '/usr/local/evm'])
 
 
+# def get_emacs_executable():
+#     """Retrieve Emacs executable."""
+#     return "cask exec emacs"
+
+
+def exec_scame_command(command_name):
+    """Execute Scame command with Emacs CLI."""
+    #emacs = get_emacs_executable()
+    #cli = path.join(TARGET_DIRECTORY, 'scame-cli.el')
+    cli = 'scame-cli.el'
+    command = ['cask', 'exec', 'emacs', '-Q', '--script',
+               cli,
+               '--', command_name]
+    print(command)
+    os.execvp(command[0], command)
+
+
 def main(args):
+    print args
     try:
-        if args.cleanup:
-            scame_destroy()
-        scame_install()
-        emacs_version = 'emacs-git-snapshot'
-        if args.emacs:
-            emacs_version = args.emacs
-        evm_install(emacs_version)
-        cask_install()
-        success("""Scame installed.""")
+        # if '--version' in args:
+        #     exec_scame_command('--version')
+        #     sys.exit(0)
+        # if '--help' in args:
+        #     exec_scame_command('--help')
+        #     sys.exit(0)
+        # if '--cleanup' in args:
+        #     scame_destroy()
+        
+        # scame_install()
+        # emacs_version = 'emacs-git-snapshot'
+        # if args.emacs:
+        #     emacs_version = args.emacs
+        # evm_install(emacs_version)
+        # cask_install()
+        # success("""Scame installed.""")
+
+        exec_scame_command(args[0])
+        
     except Exception as error:
         fail('{0!s}'.format(error))
         sys.exit(1)
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(prog='scame',
-                                     description='An Emacs installation tool.',
-                                     usage='%(prog)s [options]')
-    parser.add_argument('--version',
-                        action='version',
-                        version="%(prog)s 0.3.0")
-    parser.add_argument('--cleanup', action='store_true',
-                        help="Destroy or not Scame, Evm and Cask directories")
-    parser.add_argument('--emacs',
-                        help="Specify the version of Emacs to install")
-    args = parser.parse_args()
-    sys.exit(main(args))
+    # parser = argparse.ArgumentParser(prog='scame',
+    #                                  description='An Emacs installation tool.',
+    #                                  usage='%(prog)s [options]')
+    # parser.add_argument('--version', action='store_true',
+    #                     help="Display Scame version")
+    #                     # action='version',
+    #                     # version="%(prog)s 0.3.0")
+    # parser.add_argument('--cleanup', action='store_true',
+    #                     help="Destroy or not Scame, Evm and Cask directories")
+    # parser.add_argument('--emacs',
+    #                     help="Specify the version of Emacs to install")
+    # args = parser.parse_args()
+    #sys.exit(main(args))
+    sys.exit(main(sys.argv[1:]))
