@@ -48,9 +48,8 @@
 	   (f-delete scame-test/sandbox-path 'force))
 	 (f-mkdir scame-test/sandbox-path)
 	 ,@body)
-     (when (f-dir? scame-test/sandbox-path)
-       (f-delete scame-test/sandbox-path 'force))))
-
+      (when (f-dir? scame-test/sandbox-path)
+        (f-delete scame-test/sandbox-path 'force))))
 
 (provide 'test-helper)
 ;;; test-helper.el ends here
