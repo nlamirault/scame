@@ -28,7 +28,7 @@
 
 (require 'commander)
 (require 'f)
-;;(require 'git)
+(require 'git)
 (require 's)
 
 
@@ -41,32 +41,30 @@
 ;; Internal
 
 (defun scame-cli--clone-repo (target)
-  "Clone Scame repository."
+  "Clone Scame repository into `TARGET'."
   (when (f-exists? target)
     (error (s-concat target " already exists.")))
-  ;;(shell-command (concat "git clone " scame-repository " " target)))
   (let ((git-repo target))
     (git-clone scame-repository target)))
 
+(defun scame-cli--update-repo (target)
+  "With `TARGET' as Scame's local git repository, update it."
+  (let ((git-repo target))
+    (git-pull git-repo)))
 
 (defun scame-cli--cleanup (source)
-  "Remove Scame's installation files."
+  "Remove Scame's installation files from `SOURCE'."
   (dolist (file (f-files source))
     (f-delete file))
   (let ((dir (f-join source "lisp")))
     (when (f-exists? dir)
       (f-delete dir t))))
 
-
 (defun scame-cli--copy-files (source target)
-  "Copy Scame's files into target directory."
+  "Copy Scame's files from `SOURCE' into `TARGET' directory."
   (dolist (file (f-files source))
     (f-copy file target))
   (f-copy (f-join source "lisp") target))
-
-(defun scame-cli--rename-cask ()
-  "Rename file Cask.el to Cask."
-
 
 ;; API
 
@@ -90,15 +88,11 @@
     (scame-cli--clone-repo scame-directory)
     (scame-cli--copy-files (f-join scame-directory "src") emacs-directory)))
 
-
 (defun scame-cli/update ()
   "Update a Scame installation."
-  ;;(let ((repo (s-concat "/tmp/scame-" (number-to-string (float-time)))))
-  ;;(scame-cli--clone-repo repo)
-
-    (scame-cli--cleanup emacs-directory)
-    (scame-cli--copy-files repo emacs-directory)
-    (scame-cli--rename-cask)))
+  (scame-cli--cleanup emacs-directory)
+  (scame-cli--update-repo scame-directory)
+  (scame-cli--copy-files (f-join scame-directory "src") emacs-directory))
 
 
 (defun scame-cli/debug ()

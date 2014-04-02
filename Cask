@@ -11,6 +11,6 @@
  (depends-on "pkg-info")
  (depends-on "f")
  (depends-on "commander")
- ;;(depends-on "git")
+ (depends-on "git")
  (depends-on "ert")
  (depends-on "ert-runner"))
