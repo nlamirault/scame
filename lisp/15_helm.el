@@ -36,9 +36,11 @@
 	    (add-to-list 'helm-boring-buffer-regexp-list "\\.elc$")
 	    (add-to-list 'helm-boring-buffer-regexp-list "\\.pyc$"))
   :bind (("C-x M-f" . helm-find-files)
-	 ("C-x b" . helm-buffers-list)
-	 ("C-x C-i" . helm-imenu)))
+	 ("C-x b" . helm-buffers-list)))
+	 ;;("C-x C-i" . helm-imenu)))
 
+(use-package helm-imenu
+  :bind (("C-x C-i" . helm-imenu)))
 
 ;; (global-set-key (kbd "C-c h") 'helm-mini)
 ;; (global-set-key (kbd "C-x M-f") 'helm-find-files)
