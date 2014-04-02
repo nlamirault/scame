@@ -35,7 +35,8 @@
 (defconst scame-test/sandbox-path
   (f-expand "sandbox" scame-test/test-path))
 
-(defconst scame-cask-file (f-join scame-test/root-path "Cask"))
+(defconst scame-cli-cask-file (f-join scame-test/root-path "Cask"))
+(defconst scame-install-cask-file (f-join scame-test/root-path "src/Cask"))
 ;;(defconst scame-cask-cli-file (f-join scame-test/root-path "scame-cli.el"))
 
 (add-to-list 'load-path scame-test/root-path)

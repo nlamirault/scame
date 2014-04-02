@@ -27,11 +27,19 @@
 (require 'test-helper)
 
 
-(ert-deftest scame-find-dependencies ()
+(ert-deftest scame-find-cli-dependencies ()
   (with-scame-sandbox
-   (f-copy scame-cask-file scame-test/sandbox-path)
+   (f-copy scame-cli-cask-file scame-test/sandbox-path)
    (let ((bundle (cask-setup scame-test/sandbox-path)))
      (should (eql 9 (length (cask-development-dependencies bundle)))))))
+
+(ert-deftest scame-find-scame-install-dependencies ()
+  (with-scame-sandbox
+   (f-copy scame-install-cask-file scame-test/sandbox-path)
+   (let ((bundle (cask-setup scame-test/sandbox-path)))
+     (should (eql 9 (length (cask-development-dependencies bundle))))
+     (should (eql 95 (length (cask-dependencies bundle)))))))
+
 
 
 (provide 'scame-test)
