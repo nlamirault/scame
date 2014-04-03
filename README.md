@@ -29,12 +29,15 @@ Using command line arguments, you can specify another version of Emacs.
     $ git clone https://github.com/nlamirault/scame
     $ ./scame -h
 	usage: scame [options]
-	An Emacs installation tool.
-	optional arguments:
-		-h, --help     show this help message and exit
-		--version      show program's version number and exit
-		--cleanup      Destroy or not Scame, Evm and Cask directories
-		--emacs EMACS  Specify the version of Emacs to install
+	
+    An Emacs installation tool.
+	
+    optional arguments:
+       -h, --help     show this help message and exit
+       --init         Initialize Scame
+       --cmd CMD      Scame CLI commands
+       --emacs EMACS  Specify the version of Emacs to install
+
 
 ## Packages
 
