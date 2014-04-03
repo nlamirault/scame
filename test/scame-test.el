@@ -40,11 +40,12 @@
      (should (eql 9 (length (cask-development-dependencies bundle))))
      (should (eql 95 (length (cask-dependencies bundle)))))))
 
-(ert-deftest check-scame-installation ()
-  (with-scame-sandbox
-   (f-copy scame-install-cask-file scame-test/sandbox-path)
-   (let ((bundle (cask-setup scame-test/sandbox-path)))
-     (cask-install bundle))))
+;; Too long
+;; (ert-deftest check-scame-installation ()
+;;   (with-scame-sandbox
+;;    (f-copy scame-install-cask-file scame-test/sandbox-path)
+;;    (let ((bundle (cask-setup scame-test/sandbox-path)))
+;;      (cask-install bundle))))
 
 
 (provide 'scame-test)
