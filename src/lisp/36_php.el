@@ -58,5 +58,10 @@
          ("\\.php\\'" . web-mode)))
 
 
+(use-package phpunit
+   :bind (("C-c c" . phpunit-current-class)
+          ("C-c p" . phpunit-current-project)))
+
+
 (provide '36_php)
 ;;; 36_php.el ends here

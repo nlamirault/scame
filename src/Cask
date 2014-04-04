@@ -65,6 +65,7 @@
 ;; Php
 (depends-on "php-mode")
 (depends-on "emacsagist")
+(depends-on "phpunit")
 ;;(depends-on "flymake-php")
 
 ;; Markup languages
