@@ -29,9 +29,9 @@ Using command line arguments, you can specify another version of Emacs.
     $ git clone https://github.com/nlamirault/scame
     $ ./scame -h
 	usage: scame [options]
-	
+
     An Emacs installation tool.
-	
+
     optional arguments:
        -h, --help     show this help message and exit
        --init         Initialize Scame
@@ -154,7 +154,7 @@ Example of customization :
 
 ## Support / Contribute
 
-Feel free to ask question or make suggestions in the [issue tracker](https://github.com/nlamirault/scame/issues)
+See [here](CONTRIBUTING.md)
 
 
 ## License
