@@ -23,12 +23,19 @@
 
 ;;; Code:
 
-
 ;;(require 'auto-complete)
 ;;(ac-config-default)
 ;;(setq ac-ignore-case nil)
 ;;(add-to-list 'ac-modes 'web-mode)
 ;;(add-to-list 'ac-modes 'php-mode)
+
+(use-package company
+  :init (setq company-minimum-prefix-length 1)
+  )
+
+(global-company-mode)
+
+
 
 (provide '03_ac)
 ;;; 03_ac.el ends here

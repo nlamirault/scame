@@ -10,6 +10,9 @@
 (depends-on "use-package")
 
 (depends-on "auto-complete")
+(depends-on "company")
+(depends-on "helm-company")
+
 (depends-on "sr-speedbar")
 
 (depends-on "flycheck")
@@ -73,7 +76,6 @@
 (depends-on "yaml-mode")
 
 ;; Other development mode
-(depends-on "diff-hl-mode")
 
 ;; Cloud
 (depends-on "dockerfile-mode")
