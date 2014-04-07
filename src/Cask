@@ -21,6 +21,7 @@
 
 ;; Common Lisp
 (depends-on "slime")
+(depends-on "slime-company")
 
 ;; Emacs Lisp
 (depends-on "elisp-slime-nav")
@@ -42,10 +43,13 @@
 (depends-on "flymake-python-pyflakes")
 
 ;; Ruby
-(depends-on "ruby-mode")
-(depends-on "ruby-tools")
+
 (depends-on "rvm")
 (depends-on "rhtml-mode")
+(depends-on "ruby-tools")
+(depends-on "inf-ruby")
+(depends-on "ruby-mode")
+(depends-on "company-inf-ruby")
 
 ;; Erlang
 (depends-on "erlang")
@@ -70,6 +74,10 @@
 (depends-on "emacsagist")
 (depends-on "phpunit")
 ;;(depends-on "flymake-php")
+
+;; Javascript
+(depends-on "company-tern")
+
 
 ;; Markup languages
 (depends-on "markdown-mode")
@@ -133,7 +141,14 @@
 (depends-on "diminish")
 (depends-on "powerline")
 (depends-on "popwin")
+
+;; Dired and friends
 (depends-on "direx")
+;;(depends-on "dired-k")
+(depends-on "dired-filter")
+(depends-on "dired-open")
+(depends-on "dired-rainbow")
+(depends-on "dired-subtree")
 
 ;; Gnus
 (depends-on "google-contacts")

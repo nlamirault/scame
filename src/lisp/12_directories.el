@@ -1,4 +1,4 @@
-;;; 12_direx.el --- Direx configuration
+;;; 12_directories.el --- Dired and friends configurations
 
 ;; Copyright (c) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -21,6 +21,8 @@
 
 ;;; Commentary:
 
+;; Dired and cie.
+
 ;;; Code:
 
 
@@ -32,11 +34,24 @@
 	  (setq dired-recursive-copies 'always))
   :bind ("C-x C-j" . direx:jump-to-directory))
 
-;;(require 'direx)
-;;(require 'direx-project)
+
 (use-package direx-project)
 
-;;(global-set-key (kbd "C-x C-j") 'direx:jump-to-directory)
+
+;; Not available in MELP
+;; (use-package dired-k
+;;   :init (add-hook 'dired-initial-position-hook 'dired-k)
+;;   :map (dired-mode-map ("K" . dired-k)))
+
+
+(use-package dired-filter)
+
+(use-package dired-open)
+
+(use-package dired-rainbow)
+
+(use-package dired-subtree)
+
 
 (provide '12_direx)
-;;; 12_direx.el ends here
+;;; 12_directories.el ends here

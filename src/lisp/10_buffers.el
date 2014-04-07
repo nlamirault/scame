@@ -23,7 +23,9 @@
 
 ;;; Code:
 
-;;(require 'swoop)
+
+(use-package uniquify)
+
 (use-package swoop
   :config (progn
 	    (global-set-key (kbd "C-o")   'swoop)

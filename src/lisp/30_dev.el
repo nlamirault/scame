@@ -30,12 +30,13 @@
 
 (use-package projectile
   :init (projectile-global-mode 1)
-  ;;:bind (("C-c h" . helm-projectile))
   :config (progn
 	    (setq projectile-enable-caching t)
 	    (setq projectile-require-project-root nil)
 	    ;;(setq projectile-completion-system 'grizzl)
 	    (setq projectile-completion-system 'ido)
+	    ;;(setq projectile-switch-project-action 'projectile-dired)
+	    (setq projectile-switch-project-action 'projectile-find-dir)
 	    (add-to-list 'projectile-globally-ignored-files
 			 ".DS_Store")))
 
@@ -43,11 +44,7 @@
   :bind (("C-c h" . helm-projectile)))
 
 
-;; (projectile-global-mode)
-;; (global-set-key (kbd "C-c h") 'helm-projectile)
-
 (use-package project-explorer)
-;;(require 'project-explorer)
 
 
 (add-hook 'write-file-hooks 'delete-trailing-whitespace)

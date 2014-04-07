@@ -30,10 +30,8 @@
 ;;(add-to-list 'ac-modes 'php-mode)
 
 (use-package company
-  :init (setq company-minimum-prefix-length 1)
-  )
+  :init (add-hook 'after-init-hook 'global-company-mode))
 
-(global-company-mode)
 
 
 

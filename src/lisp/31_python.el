@@ -23,66 +23,23 @@
 
 ;;; Code:
 
-;; (require 'jedi)
-;; (require 'elpy)
-
 (use-package jedi
   :commands jedi:setup
   :config (progn
+	    (add-hook 'python-mode-hook 'jedi:setup)
 	    (setq jedi:setup-keys t)
 	    (setq jedi:complete-on-dot t)
-	    (add-hook 'python-mode-hook 'jedi:setup)
 	    (add-hook 'python-mode-hook (lambda ()
 					  (setq fill-column 79)))))
 
 (use-package elpy
   :config (progn
 	    (elpy-enable)
+	    (setq elpy-rpc-backend "jedi")
+	    (delq 'flymake-mode elpy-default-minor-modes)
 	    (delq 'highlight-indentation-mode elpy-default-minor-modes)))
 
-;; (add-hook 'python-mode-hook 'jedi:setup)
-;; (setq jedi:setup-keys t)
-;; (setq jedi:complete-on-dot t)
 
-;;(elpy-enable)
-
-;;(add-hook 'python-mode-hook (lambda () (setq fill-column 79)))
-
-;;(add-hook 'python-mode-hook
-;;	  (lambda ()
-;;	    (unless (eq buffer-file-name nil) (flymake-mode 1))
-;;	    (local-set-key [f2] 'flymake-goto-prev-error)
-;;	    (local-set-key [f3] 'flymake-goto-next-error)))
-;; (add-hook 'python-mode-hook
-;; 	  (lambda ()
-;; 	    (local-set-key (kbd "C-c t") 'tox-current-test)
-;; 	    (local-set-key (kbd "C-c c") 'tox-current-class)))
-
-(define-key python-mode-map (kbd "C-c t") 'tox-current-test)
-(define-key python-mode-map (kbd "C-c c") 'tox-current-class)
-
-;; enable pep8
-;; sudo pip install pep8
-;;(when (load "flymake" t)
-;;  (defun flymake-pylint-init ()
-;;    (let* ((temp-file (flymake-init-create-temp-buffer-copy
-;;		       'flymake-create-temp-inplace))
-;;	   (local-file (file-relative-name
-;;			temp-file
-;;			(file-name-directory buffer-file-name))))
-;;    (list "pep8" (list "--repeat" local-file))))
-
-;;(add-to-list 'flymake-allowed-file-name-masks
-;;	       '("\\.py\\'" flymake-pylint-init)))
-
-;;(defun my-flymake-show-help ()
-;;  (when (get-char-property (point) 'flymake-overlay)
-;;   (let ((help (get-char-property (point) 'help-echo)))
-;;      (if help (message "%s" help)))))
-
-;;(add-hook 'post-command-hook 'my-flymake-show-help)
-
-;;(require 'virtualenvwrapper)
 
 (use-package virtualenvwrapper
   :commands venv-workon
@@ -96,21 +53,15 @@
 	    (add-hook 'python-mode-hook
 		      (lambda ()
 			(hack-local-variables)
-			(venv-workon project-venv-name)
+			(venv-workon project-venv-name)))))
 
-;; (setq venv-location "~/.virtualenvs/")
-;; (venv-initialize-interactive-shells)
-;; (venv-initialize-eshell)
-;; (add-hook 'python-mode-hook
-;;           (lambda ()
-;;             (hack-local-variables)
-;;             (venv-workon project-venv-name)))
-;; (setq-default mode-line-format (cons '(:exec venv-current-name) mode-line-format))
 
 ;; Elpy switch to pyvenv: https://github.com/jorgenschaefer/elpy/issues/149
 ;; Set in python project directory a file *.dir-locals.el* :
 ;; ((python-mode . ((pyvenv-workon . "xxxxx")))
 
+(define-key python-mode-map (kbd "C-c t") 'tox-current-test)
+(define-key python-mode-map (kbd "C-c c") 'tox-current-class)
 
 (provide '31_python)
 ;;; 31_python.el ends here

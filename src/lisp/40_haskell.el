@@ -40,7 +40,7 @@
 	 ;;("TAB" . haskell-simple-indent)
 	 ;;("<backtab>" . haskell-simple-indent-backtab)
 	 ;;("C-<return>" . haskell-simple-indent-newline-indent)))
-         )
+         ))
 
 (provide '40_haskell)
 ;;; 40_haskell.el ends here

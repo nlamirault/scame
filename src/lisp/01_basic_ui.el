@@ -39,7 +39,7 @@
 (column-number-mode t)
 (blink-cursor-mode nil)
 
-(when (not console-p)
+(when (display-graphic-p)
   (setq x-select-enable-clipboard t))
 
 (provide '01_basic_ui)
