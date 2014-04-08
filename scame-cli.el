@@ -25,16 +25,18 @@
 
 ;;; Code:
 
-
 (require 'cask)
 (require 'commander)
 (require 'f)
 (require 'git)
 (require 's)
 
-
+(defvar scame-copyright
+  (s-concat "Scame v0.1.0"
+	    "\nCopyright (c) Nicolas Lamirault <nicolas.lamirault@gmail.com>\n"))
 
 (defvar scame-repository "https://github.com/nlamirault/scame.git")
+
 (defvar scame-directory (f-join (f-full (getenv "HOME")) ".scame"))
 (defvar emacs-directory (f-join (f-full (getenv "HOME")) ".emacs.d"))
 
@@ -80,9 +82,8 @@
 
 (defun scame-cli/version ()
   "Print version for Scame project."
-  (princ (concat "Scame v0.1.0"
-		 "\nCopyright (c) Nicolas Lamirault <nicolas.lamirault@gmail.com>\n"))
-  (kill-emacs 0))
+  (princ scame-copyright))
+  ;;(kill-emacs 0))
 
 (defun scame-cli/help (&optional command-name)
   "Display usage information or documentation for COMMAND-NAME."
@@ -98,7 +99,6 @@
 
 (defun scame-cli/update ()
   "Update a Scame installation."
-  ;;(scame-cli--cleanup emacs-directory)
   (scame-cli/cleanup)
   (scame-cli--update-repo scame-directory)
   (scame-cli/install))

@@ -8,7 +8,7 @@ or with other flavors of Emacs (e.g. XEmacs).
 
 These tools are used to perform the *scame* installation :
 
-- [Cask](https://github.com/cask/cask)
+- [Cask](https://github.com/cask/cask) (>= 0.6.0)
 - [EVM](https://github.com/rejeep/evm)
 
 
@@ -33,6 +33,14 @@ These tools are used to perform the *scame* installation :
 
 * Initialize Scame :
 
+        $ ./scame --init
+
+* Using Scame :
+
+        $ ./scame --cmd=cleanup
+		$ ./scame --cmd=install
+		$ ./scame --cmd=update
+
 
 ## Packages
 
@@ -46,7 +54,7 @@ Collections of packages installed by *Scame*:
 
 Python :
 - [jedi](https://github.com/tkf/emacs-jedi)
-- [dlpy](https://github.com/jorgenschaefer/elpy)
+- [elpy](https://github.com/jorgenschaefer/elpy)
 - [virtualenvwrapper](https://github.com/porterjamesj/virtualenvwrapper.el)
 - [tox]()
 
@@ -55,6 +63,10 @@ Go:
 - [go-play](https://github.com/dominikh/go-play.el)
 - [go-autocomplete](https://github.com/nsf/gocode)
 - [go-eldoc](https://github.com/syohex/emacs-go-eldoc)
+
+Php:
+- [web-mode](http://www.web-mode.org)
+- [phpunit.el](https://github.com/nlamirault/phpunit.el)
 
 Clojure:
 - [cider](http://melpa.milkbox.net/#/cider)
@@ -77,6 +89,7 @@ Productivity:
 Misc:
 - [helm]()
 - [auto-complete](http://cx4a.org/software/auto-complete/)
+- [company-mode](http://company-mode.github.io/)
 - [sr-speedbar](http://www.emacswiki.org/emacs/SrSpeedbar)
 - [lice.el](https://github.com/buzztaiki/lice-el)
 - [prodigy.el](https://github.com/rejeep/prodigy.el)
@@ -125,6 +138,15 @@ Keybinding           | Description
 ---------------------|------------------------------------------------------------
 <kbd>C-c C-r</kbd>   | go-remove-unused-imports
 <kbd>C-c i</kbd>     | go-goto-imports
+
+
+### PHP Mode
+
+Keybinding           | Description
+---------------------|------------------------------------------------------------
+<kbd>C-c t</kbd>     | php-current-test
+<kbd>C-c c</kbd>     | php-current-class
+
 
 ### Org
 
