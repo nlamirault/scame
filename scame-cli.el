@@ -98,9 +98,14 @@
 
 (defun scame-cli/update ()
   "Update a Scame installation."
-  (scame-cli--cleanup emacs-directory)
+  ;;(scame-cli--cleanup emacs-directory)
+  (scame-cli/cleanup)
   (scame-cli--update-repo scame-directory)
   (scame-cli/install))
+
+(defun scame-cli/cleanup ()
+  "Destroy a previous Scame installation."
+   (scame-cli--cleanup emacs-directory))
 
 (defun scame-cli/debug ()
   "Turn on debug output."
@@ -118,6 +123,7 @@
  (default commander-print-usage-and-exit)
  ;;(default "install")
 
+ (command "cleanup" "Cleanup" scame-cli/cleanup)
  (command "install" "Install" scame-cli/install)
  (command "update" "Update" scame-cli/update)
 

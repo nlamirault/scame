@@ -148,7 +148,7 @@ def main(args):
             #     os.chdir(HOME)
             # else:
             if not path.isdir(path.join(SCAME_HOME, '.cask')):
-                cask_install()
+                scame_install()
             os.chdir(SCAME_HOME)
             exec_scame_command(args.cmd)
             os.chdir(HOME)
