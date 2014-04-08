@@ -147,10 +147,11 @@ def main(args):
             #     exec_scame_command(args.cmd)
             #     os.chdir(HOME)
             # else:
+            if not path.isdir(path.join(SCAME_HOME, '.cask')):
+                cask_install()
             os.chdir(SCAME_HOME)
             exec_scame_command(args.cmd)
             os.chdir(HOME)
-
 
     except Exception as error:
         fail('{0!s}'.format(error))

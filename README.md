@@ -14,29 +14,24 @@ These tools are used to perform the *scame* installation :
 
 ## Installation
 
-### Automated
+* Clone the repository :
 
-By default, *Scame* install a git snapshot version of Emacs.
-You can install via the command line with curl:
+        $ git clone https://github.com/nlamirault/scame
 
-	curl -L https://raw.github.com/nlamirault/scame/master/scame | python
+* Help
 
+		$ ./scame -h
+		usage: scame [options]
 
-### Manual
+		An Emacs installation tool.
 
-Using command line arguments, you can specify another version of Emacs.
+		optional arguments:
+			-h, --help     show this help message and exit
+			--init         Initialize Scame
+			--cmd CMD      Scame CLI commands
+			--emacs EMACS  Specify the version of Emacs to install
 
-    $ git clone https://github.com/nlamirault/scame
-    $ ./scame -h
-	usage: scame [options]
-
-    An Emacs installation tool.
-
-    optional arguments:
-       -h, --help     show this help message and exit
-       --init         Initialize Scame
-       --cmd CMD      Scame CLI commands
-       --emacs EMACS  Specify the version of Emacs to install
+* Initialize Scame :
 
 
 ## Packages
