@@ -2,6 +2,8 @@
 
 ## Version 0.4.0 (IN PROGRESS)
 
+- Allow users to customize Scame default keymap prefix
+- Uniform keybindings
 - Migrate to [use-package](https://github.com/jwiegley/use-package) for packages configuration
 
 ## Version 0.3.0 (03/27/2014)

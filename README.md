@@ -168,6 +168,15 @@ Keybinding           | Description
 <kbd>C-c s c</kbd>   | Show Scame changelog
 
 
+If you ever forget any of Scame's keybindings just do a:
+<kbd>C-c s C-h</kbd>
+
+You can change the default keymap prefix C-c p like this:
+
+```lisp
+(setq scame-keymap-prefix (kbd "C-c C-s"))
+```
+
 ## Customization
 
 If file `$HOME/.config/scame/user.el` exists, *scame* will be loaded.

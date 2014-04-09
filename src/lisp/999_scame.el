@@ -27,12 +27,23 @@
 
 (use-package easymenu)
 
+;;; Customization
+
+(defgroup scame nil
+  "Emacs starter kit."
+  :group 'tools)
+
+(defcustom scame-keymap-prefix (kbd "C-c s")
+  "Scame keymap prefix."
+  :group 'scame
+  :type 'string)
+
+
+;; Misc
 
 (defvar scame-package-version "0.4.0"
   "Release version of Scame.")
 
-
-;; Misc
 
 (defun scame-version ()
   "Return the Scame's version."
@@ -44,8 +55,9 @@
   "Display the ChangeLog."
   (interactive)
   (let ((changelog (f-join user-emacs-directory "ChangeLog.md")))
-    (when (file-readable-p changelog)
-      (switch-to-buffer (find-file-noselect changelog)))))
+    (if (file-readable-p changelog)
+	(switch-to-buffer (find-file-noselect changelog))
+      (message "No Changelog available."))))
 
 
 (defun scame-project-website ()
@@ -61,9 +73,13 @@
 
 (defvar scame-mode-map
   (let ((map (make-sparse-keymap)))
-    (define-key map (kbd "C-c s v") 'scame-version)
-    (define-key map (kbd "C-c s c") 'scame-changelog)
-    map))
+    (let ((prefix-map (make-sparse-keymap)))
+      (define-key prefix-map (kbd "v") 'scame-version)
+      (define-key prefix-map (kbd "c") 'scame-changelog)
+      (define-key map scame-keymap-prefix prefix-map))
+    map)
+  "Keymap for Scame mode.")
+
 
 ;; Scame main menu
 
@@ -96,6 +112,8 @@
 \\{scame-mode-map}"
   :lighter " Scame"
   :keymap scame-mode-map
+  :group 'scame
+  :require 'scame
   (if scame-mode
       ;; on start
       (scame-mode-add-menu)

@@ -70,7 +70,6 @@
     (f-copy file target))
   (f-copy (f-join source "lisp") target))
 
-
 (defun scame-cli--update-deps (target)
   "Update dependencies using Cask for `TARGET' directory."
   (let ((bundle (cask-initialize target)))
