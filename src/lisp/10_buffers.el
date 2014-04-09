@@ -33,5 +33,10 @@
 	    (global-set-key (kbd "M-o")   'swoop-pcre-regexp)
 	    (global-set-key (kbd "C-S-o") 'swoop-back-to-last-position)))
 
+
+(use-package ace-jump-mode
+  :bind (("C-c SPC" . ace-jump-mode))
+
+
 (provide '10_buffers)
 ;;; 10_buffers.el ends here
