@@ -36,7 +36,8 @@
 	    ;;(setq projectile-completion-system 'grizzl)
 	    (setq projectile-completion-system 'ido)
 	    ;;(setq projectile-switch-project-action 'projectile-dired)
-	    (setq projectile-switch-project-action 'projectile-find-dir)
+	    ;;(setq projectile-switch-project-action 'projectile-find-dir)
+        (setq projectile-switch-project-action 'projectile-find-file)
 	    (add-to-list 'projectile-globally-ignored-files
 			 ".DS_Store")))
 
