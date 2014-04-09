@@ -25,6 +25,7 @@
 
 ;; Emacs Lisp
 (depends-on "elisp-slime-nav")
+(depends-on "erefactor")
 
 ;; Go lang
 (depends-on "go-mode")
@@ -115,6 +116,7 @@
 (depends-on "ag")
 (depends-on "json-reformat")
 (depends-on "sos")
+(depends-on "ace-jump-mode")
 
 ;; Mail
 ;;(depends-on "mu4e")

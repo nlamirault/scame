@@ -61,6 +61,8 @@
 	  (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
 	    (add-hook hook 'elisp-slime-nav-mode))))
 
+(use-package erefactor
+  :config (define-key emacs-lisp-mode-map "\C-c\C-v" erefactor-map))
 
 (provide '39_elisp)
 ;;; 39_elisp.el ends here
