@@ -49,6 +49,8 @@
 (use-package f)
 (use-package s)
 
+(fset 'yes-or-no-p 'y-or-n-p)
+
 (setq package-enable-at-startup nil)    ; Don't initialize packages twice
 
 (setq user-home-directory (f-full (getenv "HOME")))
