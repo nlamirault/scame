@@ -59,8 +59,9 @@
 
 
 (use-package phpunit
-   :bind (("C-c c" . phpunit-current-class)
-          ("C-c p" . phpunit-current-project)))
+  :bind (("C-x t" . phpunit-current-test)
+	 ("C-x c" . phpunit-current-class)
+	 ("C-x p" . phpunit-current-project)))
 
 
 (provide '36_php)

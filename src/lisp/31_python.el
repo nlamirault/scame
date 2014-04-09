@@ -60,8 +60,8 @@
 ;; Set in python project directory a file *.dir-locals.el* :
 ;; ((python-mode . ((pyvenv-workon . "xxxxx")))
 
-(define-key python-mode-map (kbd "C-c t") 'tox-current-test)
-(define-key python-mode-map (kbd "C-c c") 'tox-current-class)
+(define-key python-mode-map (kbd "C-x t") 'tox-current-test)
+(define-key python-mode-map (kbd "C-x c") 'tox-current-class)
 
 (provide '31_python)
 ;;; 31_python.el ends here

@@ -25,22 +25,24 @@
 
 
 (require 'test-helper)
+(require 'cask)
+(require 'f)
 
 
-(ert-deftest check-cli-dependencies ()
+(ert-deftest test-scame-cli-dependencies ()
   (with-scame-sandbox
    (f-copy scame-cli-cask-file scame-test/sandbox-path)
    (let ((bundle (cask-setup scame-test/sandbox-path)))
      (should (eql 9 (length (cask-development-dependencies bundle)))))))
 
-(ert-deftest check-scame-install-dependencies ()
+(ert-deftest test-scame-install-dependencies ()
   (with-scame-sandbox
    (f-copy scame-install-cask-file scame-test/sandbox-path)
    (let ((bundle (cask-setup scame-test/sandbox-path)))
      (should (eql 9 (length (cask-development-dependencies bundle))))
-     (should (eql 95 (length (cask-dependencies bundle)))))))
+     (should (eql 106 (length (cask-dependencies bundle)))))))
 
-;; Too long
+;; Too long !
 ;; (ert-deftest check-scame-installation ()
 ;;   (with-scame-sandbox
 ;;    (f-copy scame-install-cask-file scame-test/sandbox-path)

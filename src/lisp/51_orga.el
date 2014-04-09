@@ -145,10 +145,10 @@
 	    ;; Include current clocking task in clock reports
 	    (setq org-clock-report-include-clocking-task t)
 	    (setq org-alphabetical-lists t))
-  :bind (("C-c l" . org-store-link)
-	 ("C-c c" . org-capture)
-	 ("C-c a" . org-agenda)
-	 ("C-c b" . org-iswitchb)))
+  :bind (("C-c o l" . org-store-link)
+	 ("C-c o c" . org-capture)
+	 ("C-c o a" . org-agenda)
+	 ("C-c o b" . org-iswitchb)))
 
 	    ;; Exporting
 	    ;; -----------

@@ -118,19 +118,12 @@ Keybinding           | Description
 <kbd>M-x</kbd>       | smex
 <kbd>M-X</kbd>       | smex-major-mode-commands
 
-### Scame mode
-
-Keybinding           | Description
----------------------|------------------------------------------------------------
-<kbd>C-c v</kbd>     | Display Scame version
-<kbd>C-c c</kbd>     | Show Scame changelog
-
 ### Python-mode
 
 Keybinding           | Description
 ---------------------|------------------------------------------------------------
-<kbd>C-c t</kbd>     | tox-current-test
-<kbd>C-c c</kbd>     | tox-current-class
+<kbd>C-x t</kbd>     | tox-current-test
+<kbd>C-x c</kbd>     | tox-current-class
 
 ### Go mode
 
@@ -144,17 +137,35 @@ Keybinding           | Description
 
 Keybinding           | Description
 ---------------------|------------------------------------------------------------
-<kbd>C-c t</kbd>     | php-current-test
-<kbd>C-c c</kbd>     | php-current-class
+<kbd>C-x t</kbd>     | php-current-test
+<kbd>C-x c</kbd>     | php-current-class
+<kbd>C-x p</kbd>     | php-current-project
 
+
+### Magit
+
+Keybinding           | Description
+---------------------|------------------------------------------------------------
+<kbd>C-c g s</kbd>   | magit-status
+<kbd>C-c g d</kbd>   | magit-pull
+<kbd>C-c g p</kbd>   | magit-push
+<kbd>C-c g l</kbd>   | magit-log
+<kbd>C-c g b</kbd>   | magit-branch-manager
 
 ### Org
 
 Keybinding           | Description
 ---------------------|------------------------------------------------------------
-<kbd>C-c a</kbd>     | org-agenda
-<kbd>C-c b</kbd>     | org-iswitchb
-<kbd>C-c l</kbd>     | org-store-link
+<kbd>C-c o a</kbd>   | org-agenda
+<kbd>C-c o b</kbd>   | org-iswitchb
+<kbd>C-c o l</kbd>   | org-store-link
+
+### Scame mode
+
+Keybinding           | Description
+---------------------|------------------------------------------------------------
+<kbd>C-c s v</kbd>   | Display Scame version
+<kbd>C-c s c</kbd>   | Show Scame changelog
 
 
 ## Customization
