@@ -2,6 +2,7 @@
 
 ## Version 0.4.0 (IN PROGRESS)
 
+- Add a command top open the Scame user customization file
 - Allow users to customize Scame default keymap prefix
 - Uniform keybindings
 - Migrate to [use-package](https://github.com/jwiegley/use-package) for packages configuration

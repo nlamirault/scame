@@ -49,12 +49,14 @@ FAIL = '\033[31m'
 ENDC = '\033[0m'
 
 
-def success(s):
-    print(OKGREEN + s + ENDC)
+def success(message):
+    """Print MESSAGE with a green color."""
+    print(OKGREEN + message + ENDC)
 
 
-def fail(s):
-    print(FAIL + s + ENDC)
+def fail(message):
+    """Print MESSAGE with a red color."""
+    print(FAIL + message + ENDC)
 
 
 def scame_clone():
@@ -102,8 +104,8 @@ def scame_destroy():
     #response = raw_input("Fresh installation ? [y/n]")
     #if response == "y":
     success("Delete directories used by Scame, Cask and EVM.")
-    for d in ['.emacs.d', '.cask', '.evm']:
-        subprocess.check_call(['rm', '-fr', path.join(HOME, d)])
+    for name in ['.emacs.d', '.cask', '.evm']:
+        subprocess.check_call(['rm', '-fr', path.join(HOME, name)])
     subprocess.check_call(['sudo', 'rm', '-fr', EVM_HOME])
 
 
@@ -121,13 +123,14 @@ def exec_scame_command(command_name):
     command = ['cask', 'exec', 'emacs', '-Q', '--script',
                cli,
                '--', command_name]
-    print(command)
+    #print(command)
     # os.system("%s exec emacs -Q --script %s -- %s" %
     #           (CASK_EXECUTABLE, cli, command_name))
     os.execvp(command[0], command)
 
 
 def main(args):
+    """Main function. """
     #print args
     try:
         emacs_version = 'emacs-24.3'  # emacs-git-snapshot'
@@ -168,6 +171,4 @@ if __name__ == '__main__':
                         help="Scame CLI commands")
     parser.add_argument('--emacs',
                         help="Specify the version of Emacs to install")
-    args = parser.parse_args()
-    sys.exit(main(args))
-    #sys.exit(main(sys.argv[1:]))
+    sys.exit(main(parser.parse_args()))

@@ -166,6 +166,7 @@ Keybinding           | Description
 ---------------------|------------------------------------------------------------
 <kbd>C-c s v</kbd>   | Display Scame version
 <kbd>C-c s c</kbd>   | Show Scame changelog
+<kbd>C-c s z</kbd>   | Open the Scame user customization file
 
 
 If you ever forget any of Scame's keybindings just do a:

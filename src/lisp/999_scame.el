@@ -44,6 +44,7 @@
 (defvar scame-package-version "0.4.0"
   "Release version of Scame.")
 
+;;(setq user-home-directory (f-full (getenv "HOME")))
 
 (defun scame-version ()
   "Return the Scame's version."
@@ -54,10 +55,19 @@
 (defun scame-changelog ()
   "Display the ChangeLog."
   (interactive)
-  (let ((changelog (f-join user-emacs-directory "ChangeLog.md")))
+  (let ((changelog (f-join user-home-directory ".scame/ChangeLog.md")))
     (if (file-readable-p changelog)
 	(switch-to-buffer (find-file-noselect changelog))
-      (message "No Changelog available."))))
+      (message "Scame: No Changelog available."))))
+
+
+(defun scame-customization ()
+  "Open the customization file."
+  (interactive)
+  (let ((customization (f-join user-home-directory ".config/scame/user2.el")))
+    (if (file-readable-p customization)
+	(switch-to-buffer (find-file-noselect customization))
+      (message "Scame: No customization file"))))
 
 
 (defun scame-project-website ()
@@ -76,6 +86,7 @@
     (let ((prefix-map (make-sparse-keymap)))
       (define-key prefix-map (kbd "v") 'scame-version)
       (define-key prefix-map (kbd "c") 'scame-changelog)
+      (define-key prefix-map (kbd "z") 'scame-customization)
       (define-key map scame-keymap-prefix prefix-map))
     map)
   "Keymap for Scame mode.")

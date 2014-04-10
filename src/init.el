@@ -53,8 +53,8 @@
 
 (setq package-enable-at-startup nil)    ; Don't initialize packages twice
 
-(setq user-home-directory (f-full (getenv "HOME")))
-(setq user-emacs-directory (f-join user-home-directory ".emacs.d"))
+(defvar user-home-directory (f-full (getenv "HOME")))
+(defvar user-emacs-directory (f-join user-home-directory ".emacs.d"))
 
 ;;(require 'init-loader)
 (use-package init-loader
