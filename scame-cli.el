@@ -51,9 +51,14 @@
 ;;     (git-clone scame-repository target)))
 
 
+(defun print-message (message)
+  "Print `MESSAGE' to stdout."""
+  (message "[SCAME] %s" message))
+
 (defun scame-cli--update-repo (target)
   "With `TARGET' as Scame's local git repository, update it."
   (let ((git-repo target))
+    (print-message "Update repository")
     (git-pull git-repo)))
 
 (defun scame-cli--cleanup (source)
@@ -98,13 +103,15 @@
 
 (defun scame-cli/update ()
   "Update a Scame installation."
+  (print-message "Update current installation")
   (scame-cli/cleanup)
   (scame-cli--update-repo scame-directory)
   (scame-cli/install))
 
 (defun scame-cli/cleanup ()
   "Destroy a previous Scame installation."
-   (scame-cli--cleanup emacs-directory))
+  (print-message "Cleanup installation")
+  (scame-cli--cleanup emacs-directory))
 
 (defun scame-cli/debug ()
   "Turn on debug output."
