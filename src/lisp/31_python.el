@@ -23,6 +23,13 @@
 
 ;;; Code:
 
+(use-package python
+  :mode (("\\.py\\'" . python-mode))
+  :config (progn
+	    (define-key python-mode-map (kbd "RET") 'newline-and-indent)
+	    (setq tab-width 4)))
+
+
 (use-package jedi
   :commands jedi:setup
   :config (progn
@@ -60,8 +67,19 @@
 ;; Set in python project directory a file *.dir-locals.el* :
 ;; ((python-mode . ((pyvenv-workon . "xxxxx")))
 
-(define-key python-mode-map (kbd "C-x t") 'tox-current-test)
-(define-key python-mode-map (kbd "C-x c") 'tox-current-class)
+(use-package tox
+  :config (add-hook 'python-mode-hook
+		    (lambda ()
+		      (local-set-key (kbd "C-x t") 'tox-current-test)
+		      (local-set-key (kbd "C-x c") 'tox-current-class))))
+  ;; :bind (("C-x y t" . tox-current-test)
+  ;;  	 ("C-x y c" . tox-current-class)))
+  ;; :bind ((python-mode-map . ("C-x t"  . tox-current-test))
+  ;; 	 (python-mode-map . ("C-x c"  . tox-current-class))))
+
+;; (define-key python-mode-map (kbd "C-x t") 'tox-current-test)
+;; (define-key python-mode-map (kbd "C-x c") 'tox-current-class)
+
 
 (provide '31_python)
 ;;; 31_python.el ends here

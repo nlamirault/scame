@@ -38,7 +38,7 @@
 	      (unless (multi-term-dedicated-exist-p)
 		(multi-term-dedicated-open))
 	      (multi-term-dedicated-select)))
-  :bind (("C-x t" . launch-term)))
+  :bind (("C-c t" . launch-term)))
 
 ;;        (global-set-key "\C-xt"
 		;; (lambda () (interactive)

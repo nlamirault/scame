@@ -129,9 +129,10 @@ Keybinding           | Description
 
 Keybinding           | Description
 ---------------------|------------------------------------------------------------
-<kbd>C-c C-r</kbd>   | go-remove-unused-imports
-<kbd>C-c i</kbd>     | go-goto-imports
-
+<kbd>C-x C-r</kbd>   | go-remove-unused-imports
+<kbd>C-x i</kbd>     | go-goto-imports
+<kbd>C-x t</kbd>     | go-test-current-test
+<kbd>C-x c</kbd>     | go-test-current-file
 
 ### PHP Mode
 
@@ -140,7 +141,6 @@ Keybinding           | Description
 <kbd>C-x t</kbd>     | php-current-test
 <kbd>C-x c</kbd>     | php-current-class
 <kbd>C-x p</kbd>     | php-current-project
-
 
 ### Magit
 
