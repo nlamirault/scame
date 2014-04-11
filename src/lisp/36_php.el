@@ -59,9 +59,12 @@
 
 
 (use-package phpunit
-  :bind (("C-x t" . phpunit-current-test)
-	 ("C-x c" . phpunit-current-class)
-	 ("C-x p" . phpunit-current-project)))
+  :map ((web-mode-map ("C-x t" . phpunit-current-test))
+	(web-mode-map ("C-x c" . phpunit-current-class))
+	(web-mode-map ("C-x p" . phpunit-current-project))))
+  ;; :bind (("C-x t" . phpunit-current-test)
+  ;; 	 ("C-x c" . phpunit-current-class)
+  ;; 	 ("C-x p" . phpunit-current-project)))
 
 
 (provide '36_php)
