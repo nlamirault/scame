@@ -19,9 +19,9 @@
 (depends-on "flycheck-cask")
 (depends-on "flycheck-color-mode-line")
 
-;; Common Lisp
-(depends-on "slime")
-(depends-on "slime-company")
+;; Common Lisp: Use Quicklisp
+;;(depends-on "slime")
+;;(depends-on "slime-company")
 
 ;; Emacs Lisp
 (depends-on "elisp-slime-nav")
