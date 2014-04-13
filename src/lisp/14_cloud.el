@@ -32,25 +32,11 @@
 		      (setq indent-tabs-mode nil))))
 
 
-(defun puppet-block-align ()
-  "Align the => characters for a block."
-  (interactive)
-  (save-excursion
-    (let ((apoint (search-backward " {" nil t))
-          (epoint (re-search-forward "}[\n \t]" nil t)))
-      (when apoint
-        (align-regexp apoint epoint "\\(\\s-*\\)=>" 1 1)
-        (puppet-flash-region apoint epoint)))))
-
-
 ;; Vagrant files
 (use-package vagrant
   :mode (("Vagrantfile" . ruby-mode)))
 
-;;(add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
-
 ;; Docker files
-;;(require 'dockerfile-mode)
 (use-package dockerfile-mode
   :mode (("Dockerfile" . dockerfile-mode)))
 

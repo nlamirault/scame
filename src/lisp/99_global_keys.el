@@ -30,7 +30,7 @@
 (global-set-key "\C-cl" 'package-list-packages-no-fetch)
 
 (global-set-key "\C-cq"
-                (defun my:quit-emacs ()
+                (defun scame-quit-emacs ()
                   (interactive)
                   (if (yes-or-no-p "Quit emacs? ")
                       (save-buffers-kill-emacs))))

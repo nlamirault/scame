@@ -66,8 +66,7 @@
 (when (file-readable-p scame-user-customization-file)
   (load user-customization))
 
-
-(scame-on)
+(scame-global-mode)
 
 (provide 'init)
 ;;; init.el ends here

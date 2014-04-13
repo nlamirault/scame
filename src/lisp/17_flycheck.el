@@ -33,12 +33,6 @@
 (use-package flycheck-color-mode-line
   :config (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
 
-;;(add-hook 'find-file-hook 'flymake-find-file-hook)
-;; (add-hook 'after-init-hook #'global-flycheck-mode)
-
-;; (eval-after-load "flycheck"
-;;   '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
-
 
 (provide '17_flycheck)
 ;;; 17_flycheck.el ends here

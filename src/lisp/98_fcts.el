@@ -24,7 +24,7 @@
 ;;; Code:
 
 
-(defun kill-all-buffers ()
+(defun scame-kill-all-buffers ()
   "Delete all active buffers."
   (interactive)
   (let* ((liste (reverse (buffer-list)))
@@ -39,7 +39,7 @@
 ;; Search engines
 ;; ----------------
 
-(defun perform-search (url prompt)
+(defun scame-perform-search (url prompt)
   (let ((query (if mark-active
 		   (buffer-substring (region-beginning) (region-end))
 		 (read-string prompt))))
@@ -55,7 +55,7 @@
   `(defun ,(intern (format "scame-search-%s" name)) ()
      (interactive)
      (let ((prompt (s-concat (upcase-initials ,name) ": ")))
-       (perform-search ,url prompt))))
+       (scame-perform-search ,url prompt))))
 
 (def-search-engine "google" "http://www.google.com/search?q=")
 (def-search-engine "github" "https://github.com/search?q=")
@@ -67,11 +67,10 @@
 ;; -------
 
 
-(defun show-complete-filename ()
+(defun scame-show-complete-filename ()
   "Show the complete path of the file associated with the current buffer."
   (interactive)
   (message (file-truename buffer-file-name)))
-
 
 
 

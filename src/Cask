@@ -52,6 +52,7 @@
 (depends-on "virtualenvwrapper")
 (depends-on "pyvenv")
 (depends-on "flymake-python-pyflakes")
+(depends-on "anaconda-mode")
 
 ;; Ruby
 

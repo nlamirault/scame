@@ -1,4 +1,4 @@
-;;; 03_ac.el --- Auto complete
+;;; 03_completion.el --- Auto complete
 
 ;; Copyright (c) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -35,5 +35,5 @@
 
 
 
-(provide '03_ac)
-;;; 03_ac.el ends here
+(provide '03_completion)
+;;; 03_completion.el ends here

@@ -50,6 +50,18 @@
 
 (add-hook 'write-file-hooks 'delete-trailing-whitespace)
 
+(add-hook 'find-file-hook 'copyright-update)
+
+(which-function-mode)
+
+(use-package ansi-color)
+
+(defun scame-colorize-compilation-buffer ()
+  (toggle-read-only)
+  (ansi-color-apply-on-region (point-min) (point-max))
+  (toggle-read-only))
+(add-hook 'compilation-filter-hook 'scame-colorize-compilation-buffer)
+
 
 (provide '30_dev)
 ;;; 30_dev.el ends here

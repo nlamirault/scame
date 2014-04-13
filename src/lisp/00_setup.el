@@ -33,7 +33,9 @@
 (defconst console-p (eq (symbol-value 'window-system) nil)
   "Are we in a console?")
 
-(defvar init-keybinding (kbd "C-c s"))
+;; See https://github.com/sfllaw/emacs-launch
+(use-package launch
+  :config (global-launch-mode +1))
 
 (provide '00_setup)
 ;;; 00_setup.el ends here

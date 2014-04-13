@@ -27,26 +27,16 @@
 ;; ---------
 
 
-
-;;(require 'multi-term)
 (use-package multi-term
   :config (progn
 	    (setq multi-term-program "/bin/bash")
-	    (defun launch-term ()
+	    (defun scame-launch-term ()
 	      "Launch a new terminal."
 	      (interactive)
 	      (unless (multi-term-dedicated-exist-p)
 		(multi-term-dedicated-open))
 	      (multi-term-dedicated-select)))
-  :bind (("C-c t" . launch-term)))
-
-;;        (global-set-key "\C-xt"
-		;; (lambda () (interactive)
-		;;   (unless (multi-term-dedicated-exist-p)
-		;;     (multi-term-dedicated-open))
-		;;   (multi-term-dedicated-select)))
-
-
+  :bind (("C-c t" . scame-launch-term)))
 
 
 

@@ -135,6 +135,7 @@
     ;; on stop
     (scame-mode-remove-menu)))
 
+;;;###autoload
 (define-globalized-minor-mode scame-global-mode scame-mode scame-on)
 
 (defun scame-on ()

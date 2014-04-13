@@ -29,25 +29,6 @@
 	    (define-key python-mode-map (kbd "RET") 'newline-and-indent)
 	    (setq tab-width 4)))
 
-
-(use-package jedi
-  :commands jedi:setup
-  :config (progn
-	    (add-hook 'python-mode-hook 'jedi:setup)
-	    (setq jedi:setup-keys t)
-	    (setq jedi:complete-on-dot t)
-	    (add-hook 'python-mode-hook (lambda ()
-					  (setq fill-column 79)))))
-
-(use-package elpy
-  :config (progn
-	    (elpy-enable)
-	    (setq elpy-rpc-backend "jedi")
-	    (delq 'flymake-mode elpy-default-minor-modes)
-	    (delq 'highlight-indentation-mode elpy-default-minor-modes)))
-
-
-
 (use-package virtualenvwrapper
   :commands venv-workon
   :config (progn
@@ -60,7 +41,35 @@
 	    (add-hook 'python-mode-hook
 		      (lambda ()
 			(hack-local-variables)
+			(setq python-shell-virtualenv-path
+			      (f-join venv-location project-venv-name))
 			(venv-workon project-venv-name)))))
+
+
+(use-package jedi
+  :commands jedi:setup
+  :config (progn
+	    (add-hook 'python-mode-hook 'jedi:setup)
+	    (setq jedi:setup-keys t)
+	    (setq jedi:complete-on-dot t)
+	    (add-hook 'python-mode-hook (lambda ()
+					  (setq fill-column 79)))))
+
+
+(use-package anaconda-mode
+  :config (progn
+	    (add-hook 'python-mode-hook 'anaconda-mode)
+	    (add-hook 'python-mode-hook 'anaconda-eldoc)
+	    (add-to-list 'company-backends 'company-anaconda)))
+
+
+;; (use-package elpy
+;;   :config (progn
+;; 	    (elpy-enable)
+;; 	    (setq elpy-rpc-backend "jedi")
+;; 	    (delq 'flymake-mode elpy-default-minor-modes)
+;; 	    (delq 'highlight-indentation-mode elpy-default-minor-modes)))
+
 
 
 ;; Elpy switch to pyvenv: https://github.com/jorgenschaefer/elpy/issues/149
