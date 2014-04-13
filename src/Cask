@@ -4,6 +4,13 @@
 (source "gnu" "http://elpa.gnu.org/packages/")
 (source "marmalade" "http://marmalade-repo.org/packages/")
 
+
+;; Common libraries
+(depends-on "s")
+(depends-on "f")
+(depends-on "epl")
+(depends-on "dash")
+
 ;; Scame tools
 (depends-on "cask")
 (depends-on "pallet")
@@ -69,9 +76,11 @@
 ;; Haskell
 (depends-on "haskell-mode")
 (depends-on "flycheck-haskell")
+(depends-on "ghci-completion")
 
 ;; OCaml
 (depends-on "tuareg")
+(depends-on "merlin")
 
 ;; Web
 (depends-on "web-mode")
@@ -100,9 +109,18 @@
 ;; File handling
 (depends-on "launch")
 
+;; Git and friends
+(depends-on "magit")
+(depends-on "git-commit-mode")
+(depends-on "gitconfig-mode")
+(depends-on "gitignore-mode")
+(depends-on "gitattributes-mode")
+(depends-on "git-rebase-mode")
+(depends-on "gist")
+
+
 ;; Utilities
 (depends-on "pkg-info")
-(depends-on "magit")
 (depends-on "projectile")
 (depends-on "helm")
 (depends-on "helm-projectile")
@@ -175,12 +193,9 @@
 
 ;; Development
 (development
- (depends-on "s")
- (depends-on "dash")
  (depends-on "ctable")
  (depends-on "request")
  (depends-on "pkg-info")
- (depends-on "f")
  (depends-on "commander")
  (depends-on "ert")
  (depends-on "ert-runner"))
