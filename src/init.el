@@ -60,10 +60,12 @@
 (use-package init-loader
   :config (init-loader-load (f-slash (f-join user-emacs-directory "lisp"))))
 
-(let ((user-customization (f-join user-home-directory ".config/scame/user.el")))
+(let ((user-customization (f-join user-home-directory ".config/scame/scame-user.el")))
   (when (file-readable-p user-customization)
     (load user-customization)))
 
+
+(scame-on)
 
 (provide 'init)
 ;;; init.el ends here
