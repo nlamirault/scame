@@ -15,11 +15,14 @@
 
 (depends-on "sr-speedbar")
 
+(depends-on "imenu-anywhere")
+(depends-on "dired-imenu")
+
 (depends-on "flycheck")
 (depends-on "flycheck-cask")
 (depends-on "flycheck-color-mode-line")
 
-;; Common Lisp: Use Quicklisp
+;; Common Lisp
 ;;(depends-on "slime")
 ;;(depends-on "slime-company")
 
@@ -66,6 +69,9 @@
 ;; Haskell
 (depends-on "haskell-mode")
 (depends-on "flycheck-haskell")
+
+;; OCaml
+(depends-on "tuareg")
 
 ;; Web
 (depends-on "web-mode")

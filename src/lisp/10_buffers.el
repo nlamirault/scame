@@ -35,7 +35,11 @@
 
 
 (use-package ace-jump-mode
-  :bind (("C-c SPC" . ace-jump-mode))
+  :bind (("C-c SPC" . ace-jump-mode)))
+
+
+(use-package imenu-anywhere
+  :bind (("C-." . imenu-anywhere)))
 
 
 (provide '10_buffers)

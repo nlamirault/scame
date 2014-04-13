@@ -117,6 +117,7 @@ Keybinding           | Description
 <kbd>C-x t</kbd>     | launch-term
 <kbd>M-x</kbd>       | smex
 <kbd>M-X</kbd>       | smex-major-mode-commands
+<kbd>C-.</kbd>       | imenu-anywhere
 
 ### Python-mode
 
