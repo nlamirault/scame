@@ -23,33 +23,17 @@
 
 ;;; Code:
 
-;;(require 'server)
-(use-package server
-  :init (unless (server-running-p)
-	  (server-start)))
-
-;; (require 'ido)
-;; (ido-mode t)
-(use-package ido
-  :init (ido-mode 1)
-  :config
-  (progn
-    (setq ido-case-fold t)
-    (setq ido-everywhere t)
-    (setq ido-enable-prefix nil)
-    (setq ido-enable-flex-matching t)
-    (setq ido-create-new-buffer 'always)
-    (setq ido-max-prospects 10)
-    (add-to-list 'ido-ignore-files "\\.DS_Store")))
-
 ;;; Some constants to check the system type
 (defconst darwin-p (eq system-type 'darwin)
   "Are we on OSX?")
+
 (defconst linux-p (or (eq system-type 'gnu/linux)
                       (eq system-type 'linux))
   "Are we running on a GNU/Linux system?")
 (defconst console-p (eq (symbol-value 'window-system) nil)
   "Are we in a console?")
+
+(defvar init-keybinding (kbd "C-c s"))
 
 (provide '00_setup)
 ;;; 00_setup.el ends here

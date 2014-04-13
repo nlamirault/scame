@@ -1,6 +1,6 @@
-;;; 10_buffers.el --- Tools for buffers
+;;; 05_server.el --- Server configuration
 
-;; Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; Permission is hereby granted, free of charge, to any person obtaining a copy
 ;; of this software and associated documentation files (the "Software"), to deal
@@ -23,28 +23,9 @@
 
 ;;; Code:
 
+(use-package server
+  :init (unless (server-running-p)
+	  (server-start)))
 
-(use-package uniquify)
-
-(use-package swoop
-  ;; :config (progn
-  ;; 	    (global-set-key (kbd "C-o")   'swoop)
-  ;; 	    (global-set-key (kbd "C-M-o") 'swoop-multi)
-  ;; 	    (global-set-key (kbd "M-o")   'swoop-pcre-regexp)
-  ;; 	    (global-set-key (kbd "C-S-o") 'swoop-back-to-last-position)))
-  :bind (("C-o" . swoop)
-	 ("C-M-o" . swoop-multi)
-	 ("M-o" . swoop-pcre-regexp)
-	 ("C-S-o" . swoop-back-to-last-position)))
-
-
-(use-package ace-jump-mode
-  :bind (("C-c SPC" . ace-jump-mode)))
-
-
-(use-package imenu-anywhere
-  :bind (("C-." . imenu-anywhere)))
-
-
-(provide '10_buffers)
-;;; 10_buffers.el ends here
+(provide '05_server)
+;;; 05_server.el ends here

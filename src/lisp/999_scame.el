@@ -87,6 +87,10 @@
       (define-key prefix-map (kbd "v") 'scame-version)
       (define-key prefix-map (kbd "c") 'scame-changelog)
       (define-key prefix-map (kbd "z") 'scame-customization)
+      (define-key prefix-map (kbd "s g") 'scame-search-google)
+      (define-key prefix-map (kbd "s t") 'scame-search-twitter)
+      (define-key prefix-map (kbd "s l") 'scame-search-launchpad)
+      (define-key prefix-map (kbd "s a") 'scame-search-arch-aur)
       (define-key map scame-keymap-prefix prefix-map))
     map)
   "Keymap for Scame mode.")
@@ -130,6 +134,8 @@
       (scame-mode-add-menu)
     ;; on stop
     (scame-mode-remove-menu)))
+
+(define-globalized-minor-mode scame-global-mode scame-mode scame-on)
 
 (defun scame-on ()
   "Turn on `scame-mode'."

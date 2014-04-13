@@ -181,7 +181,7 @@ You can change the default keymap prefix C-c p like this:
 
 ## Customization
 
-If file `$HOME/.config/scame/user.el` exists, *scame* will be loaded.
+If file `$HOME/.config/scame/scame-user.el` exists, *scame* will be loaded.
 Example of customization :
 
 ```lisp
