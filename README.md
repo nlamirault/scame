@@ -111,10 +111,10 @@ Keybinding           | Description
 <kbd>C-o</kbd>       | Swoop
 <kbd>C-M-o</kbd>     | Swoop-multi
 <kbd>M-o</kbd>       | Swoop-pcre-regexp
-<kbd>C-x C-j</kbd>   | direx:jump-to-directory
-<kbd>C-x M-f</kbd>   | helm-find-files
-<kbd>C-x b</kbd>     | helm-buffer-list
-<kbd>C-x t</kbd>     | launch-term
+<kbd>C-c C-j</kbd>   | direx:jump-to-directory
+<kbd>C-c M-f</kbd>   | helm-find-files
+<kbd>C-c b</kbd>     | helm-buffer-list
+<kbd>C-c t</kbd>     | launch-term
 <kbd>M-x</kbd>       | smex
 <kbd>M-X</kbd>       | smex-major-mode-commands
 <kbd>C-.</kbd>       | imenu-anywhere
