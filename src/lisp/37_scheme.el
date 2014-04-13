@@ -27,8 +27,9 @@
 
 (use-package geiser
   :config (progn
-	    (setq geiser-active-implementations '(guile))
-	    (setq geiser-default-implementation 'guile)))
+	    (setq geiser-active-implementations
+		  '(guile racket chicken))))
+	    ;;(setq geiser-default-implementation 'guile)))
 
 ;;(setq geiser-impl-installed-implementations '(guile))
 
