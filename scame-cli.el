@@ -58,7 +58,7 @@
 (defun scame-cli--update-repo (target)
   "With `TARGET' as Scame's local git repository, update it."
   (let ((git-repo target))
-    (print-message "Update repository")
+    (print-message "Update Scame repository")
     (git-pull git-repo)))
 
 (defun scame-cli--cleanup (source)
