@@ -29,7 +29,7 @@
   :mode (("\\.ml\\w?" . tuareg-mode)
          ("\\.topml\\'" . taureg-mode)
          ("\\.fs[ix]?" . tuareg-mode))
-  :bind ("C-x o" . run-ocaml)
+  ;;:bind ("C-x o" . run-ocaml)
   :config (progn
 	    (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
 	    (autoload 'ocamldebug "ocamldebug" "Run the Caml debugger" t)))
