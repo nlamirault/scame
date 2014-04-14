@@ -1,6 +1,6 @@
 ;;; 36_php.el --- PHP configuration
 
-;; Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; Permission is hereby granted, free of charge, to any person obtaining a copy
 ;; of this software and associated documentation files (the "Software"), to deal
@@ -48,6 +48,7 @@
 ;; (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 
 (use-package web-mode
+  :config (setq web-mode-code-indent-offset 4)
   :mode (("\\.html\\'" . web-mode)
 	 ("\\.phtml\\'" . web-mode)
 	 ("\\.tpl\\'" . web-mode)
