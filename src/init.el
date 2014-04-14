@@ -64,7 +64,7 @@
 
 ;;(let ((user-customization (f-join user-home-directory ".config/scame/scame-user.el")))
 (when (file-readable-p scame-user-customization-file)
-  (load user-customization))
+  (load scame-user-customization-file))
 
 (scame-global-mode)
 
