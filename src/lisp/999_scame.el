@@ -88,6 +88,7 @@
       (define-key prefix-map (kbd "c") 'scame-changelog)
       (define-key prefix-map (kbd "z") 'scame-customization)
       (define-key prefix-map (kbd "s g") 'scame-search-google)
+      (define-key prefix-map (kbd "s h") 'scame-search-github)
       (define-key prefix-map (kbd "s t") 'scame-search-twitter)
       (define-key prefix-map (kbd "s l") 'scame-search-launchpad)
       (define-key prefix-map (kbd "s a") 'scame-search-arch-aur)
