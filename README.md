@@ -49,23 +49,41 @@ Collections of packages installed by *Scame*:
 - [cask](https://github.com/cask/cask)
 - [init-loader](https://github.com/emacs-jp/init-loader)
 
+Project managment :
 - [projectile](https://github.com/bbatsov/projectile)
 - [project-explorer](https://github.com/sabof/project-explorer)
+- [nav](https://code.google.com/p/emacs-nav/)
+- [lice.el](https://github.com/buzztaiki/lice-el)
 
 Python :
 - [jedi](https://github.com/tkf/emacs-jedi)
 - [elpy](https://github.com/jorgenschaefer/elpy)
 - [virtualenvwrapper](https://github.com/porterjamesj/virtualenvwrapper.el)
-- [tox]()
+- [tox](https://github.com/chmouel/tox.el)
+- [anaconda-mode](https://github.com/proofit404/anaconda-mode)
 
 Go:
 - [go-mode](http://melpa.milkbox.net/#/go-mode)
 - [go-play](https://github.com/dominikh/go-play.el)
 - [go-autocomplete](https://github.com/nsf/gocode)
 - [go-eldoc](https://github.com/syohex/emacs-go-eldoc)
+- [gotest](https://github.com/nlamirault/gotest.el)
+
+Emacs lisp:
+- [elisp-slime-nav](https://github.com/purcell/elisp-slime-nav)
+- [erefactor](https://github.com/mhayashi1120/Emacs-erefactor)
+
+Ruby:
+- [ruby-mode](http://www.emacswiki.org/emacs/RubyMode)
+- [rvm](https://github.com/senny/rvm.el)
+- [rhtml-mode](https://github.com/eschulte/rhtml)
+- [ruby-tools](https://github.com/rejeep/ruby-tools.el)
+- [inf-ruby](https://github.com/nonsequitur/inf-ruby)
+- [company-inf-ruby](https://github.com/company-mode/company-inf-ruby)
 
 Php:
 - [web-mode](http://www.web-mode.org)
+- [emacsagist](https://github.com/echosa/emacsagist)
 - [phpunit.el](https://github.com/nlamirault/phpunit.el)
 
 Clojure:
@@ -73,6 +91,13 @@ Clojure:
 
 Scheme:
 - [Geiser](https://github.com/jaor/geiser)
+
+Erlang:
+- [Erlang](https://github.com/erlang/otp)
+
+Haskell:
+- [Haskell-mode](https://github.com/haskell/haskell-mode)
+- [flycheck-haskell](https://github.com/flycheck/flycheck-haskell)
 
 Cloud:
 - [puppet-mode](https://github.com/lunaryorn/puppet-mode)
@@ -86,16 +111,25 @@ Productivity:
 - [Org](http://orgmode.org)
 - [calfw](https://github.com/kiwanami/emacs-calfw)
 
-Misc:
+Completion:
 - [helm]()
 - [auto-complete](http://cx4a.org/software/auto-complete/)
 - [company-mode](http://company-mode.github.io/)
+- [helm-company](https://github.com/yasuyk/helm-company)
+
+I/O:
+- [direx.el](https://github.com/m2ym/direx-el)
+- [dired-imenu](https://github.com/DamienCassou/dired-imenu)
+
+VC:
+- [magit](https://github.com/magit/magit)
+
+Misc:
 - [sr-speedbar](http://www.emacswiki.org/emacs/SrSpeedbar)
-- [lice.el](https://github.com/buzztaiki/lice-el)
 - [prodigy.el](https://github.com/rejeep/prodigy.el)
 - [swoop](https://github.com/ShingoFukuyama/emacs-swoop)
 - [powerline](https://github.com/milkypostman/powerline)
-- [direx.el](https://github.com/m2ym/direx-el)
+- [multi-term](http://www.emacswiki.org/emacs/multi-term.el)
 
 
 ## Keymap
