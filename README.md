@@ -224,6 +224,31 @@ Example of customization :
 (load-theme 'monokai t)
 ```
 
+## Debug
+
+You could keep track of where time is being spent during Emacs startup in
+order to optimize startup times with [benchmark-init](https://github.com/dholm/benchmark-init-el).
+
+```lisp
+M-x benchmark-init/show-durations-tree
+Benchmark results
+
+╼►[benchmark-init/root nil 0ms]
+  ├─[vc-git load 20ms]
+  ├─[company-dabbrev require 6ms]
+  ├─[company-capf require 5ms]
+  ├─[company-cmake require 5ms]
+  ├─[company-ropemacs require 5ms]
+  ├─[company-clang require 6ms]
+  ├─[company-eclim require 5ms]
+  │ ╰─[company-template require 5ms]
+  ├─[default load 11ms]
+  ├─[~/.config/scame/scame-user.el load 491ms]
+  ├─[linux-config load 1ms]
+  ├─[99_global_keys load 1ms]
+  ...
+```
+
 
 ## Support / Contribute
 

@@ -17,6 +17,8 @@
 (depends-on "use-package")
 (depends-on "paradox")
 
+(depends-on "benchmark-init")
+
 (depends-on "auto-complete")
 (depends-on "company")
 (depends-on "helm-company")

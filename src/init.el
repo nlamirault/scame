@@ -43,6 +43,11 @@
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
+
+
+(require 'benchmark-init)
+
+
 ;;(require 'pallet)
 (require 'use-package)
 
