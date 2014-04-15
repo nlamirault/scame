@@ -1,8 +1,14 @@
 # Scame ChangeLog
 
-## Version 0.4.0 (IN PROGRESS)
+## Version 0.4.0 (15/04/2014)
 
+- `#6`: Update command argument doens't perform a git pull on scame local installation
+- `#4`: Add uniquify configuration
 - Add a command top open the Scame user customization file
+- Refactoring Scame installation directory
+- Migrating to a CLI in Emacs Lisp using [commander](https://github.com/rejeep/commander.el)
+- `#3` : configure helm-projectile and key binding
+- `#2` : configure helm-imenu and key binding
 - Allow users to customize Scame default keymap prefix
 - Uniform keybindings
 - Migrate to [use-package](https://github.com/jwiegley/use-package) for packages configuration

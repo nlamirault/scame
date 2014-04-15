@@ -31,14 +31,17 @@
 (require 'git)
 (require 's)
 
-(defvar scame-copyright
-  (s-concat "Scame v0.1.0"
+(defconst scame-version "0.4.0")
+
+(defconst scame-copyright
+  (s-concat "Scame v"
+	    scame-version
 	    "\nCopyright (c) Nicolas Lamirault <nicolas.lamirault@gmail.com>\n"))
 
-(defvar scame-repository "https://github.com/nlamirault/scame.git")
+(defconst scame-repository "https://github.com/nlamirault/scame.git")
 
-(defvar scame-directory (f-join (f-full (getenv "HOME")) ".scame"))
-(defvar emacs-directory (f-join (f-full (getenv "HOME")) ".emacs.d"))
+(defconst scame-directory (f-join (f-full (getenv "HOME")) ".scame"))
+(defconst emacs-directory (f-join (f-full (getenv "HOME")) ".emacs.d"))
 
 
 ;; Internal
