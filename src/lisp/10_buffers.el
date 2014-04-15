@@ -24,14 +24,18 @@
 ;;; Code:
 
 
-(use-package uniquify)
+(use-package uniquify
+  :config (setq uniquify-buffer-name-style 'forward
+		uniquify-separator "/"
+		uniquify-after-kill-buffer-p t
+		uniquify-ignore-buffers-re "^\\*"))
+
+(use-package ag
+  :commands (ag ag-project)
+  :config (setq ag-highlight-search t))
+
 
 (use-package swoop
-  ;; :config (progn
-  ;; 	    (global-set-key (kbd "C-o")   'swoop)
-  ;; 	    (global-set-key (kbd "C-M-o") 'swoop-multi)
-  ;; 	    (global-set-key (kbd "M-o")   'swoop-pcre-regexp)
-  ;; 	    (global-set-key (kbd "C-S-o") 'swoop-back-to-last-position)))
   :bind (("C-o" . swoop)
 	 ("C-M-o" . swoop-multi)
 	 ("M-o" . swoop-pcre-regexp)
