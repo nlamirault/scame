@@ -58,8 +58,9 @@
 (defun scame-cli--update-repo (target)
   "With `TARGET' as Scame's local git repository, update it."
   (let ((git-repo target))
-    (print-message "Update Scame repository")
-    (git-pull git-repo)))
+    (print-message "Update Scame GIT repository")
+    (git-log)
+    (git-pull))); git-repo)))
 
 (defun scame-cli--cleanup (source)
   "Remove Scame's installation files from `SOURCE'."
@@ -96,6 +97,11 @@
       (commander-print-usage-for-and-exit command-name)
     (commander-print-usage-and-exit)))
 
+(defun scame-cli/cleanup ()
+  "Destroy a previous Scame installation."
+  (print-message "Cleanup installation")
+  (scame-cli--cleanup emacs-directory))
+
 (defun scame-cli/install ()
   "Install Scame."
   (scame-cli--copy-files (f-join scame-directory "src") emacs-directory)
@@ -107,11 +113,6 @@
   (scame-cli/cleanup)
   (scame-cli--update-repo scame-directory)
   (scame-cli/install))
-
-(defun scame-cli/cleanup ()
-  "Destroy a previous Scame installation."
-  (print-message "Cleanup installation")
-  (scame-cli--cleanup emacs-directory))
 
 (defun scame-cli/debug ()
   "Turn on debug output."
