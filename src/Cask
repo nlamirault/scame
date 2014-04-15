@@ -15,6 +15,7 @@
 (depends-on "cask")
 (depends-on "pallet")
 (depends-on "use-package")
+(depends-on "paradox")
 
 (depends-on "auto-complete")
 (depends-on "company")
