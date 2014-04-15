@@ -53,8 +53,8 @@
 
 (setq package-enable-at-startup nil)    ; Don't initialize packages twice
 
-(defvar user-home-directory (f-full (getenv "HOME")))
-(defvar user-emacs-directory (f-join user-home-directory ".emacs.d"))
+(defconst user-home-directory (f-full (getenv "HOME")))
+(defconst user-emacs-directory (f-join user-home-directory ".emacs.d"))
 (defconst scame-user-customization-file
   (f-join user-home-directory ".config/scame/scame-user.el")
   "File used to store user customization.")
