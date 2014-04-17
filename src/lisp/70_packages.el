@@ -26,5 +26,6 @@
 
 (use-package paradox)
 
+
 (provide '70_packages)
 ;;; 70_packages.el ends here

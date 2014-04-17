@@ -25,8 +25,8 @@
 
 (setq-default fill-column 120)
 
-(global-linum-mode t)
-(setq column-number-mode t)
+;;(global-linum-mode t)
+;;(setq column-number-mode t)
 
 (require 'tool-bar)
 (menu-bar-mode -1)

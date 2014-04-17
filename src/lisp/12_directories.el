@@ -25,14 +25,16 @@
 
 ;;; Code:
 
-
-(use-package dired-x
+(use-package dired
   :init (progn
 	  (add-hook 'dired-mode-hook 'dired-hide-details-mode)
 	  (put 'dired-find-alternate-file 'disabled nil)
 	  (setq dired-recursive-deletes 'always)
-	  (setq dired-recursive-copies 'always))
-  :bind ("C-x C-j" . direx:jump-to-directory))
+	  (setq dired-recursive-copies 'always)))
+
+
+(use-package direx
+  :bind ("C-x M-j" . direx:jump-to-directory))
 
 
 (use-package direx-project)

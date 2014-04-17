@@ -25,29 +25,35 @@
 
 
 (require 'test-helper)
-(require 'cask)
 (require 'f)
 
 
-(ert-deftest test-scame-cli-dependencies ()
-  (with-scame-sandbox
-   (f-copy scame-cli-cask-file scame-test/sandbox-path)
-   (let ((bundle (cask-setup scame-test/sandbox-path)))
-     (should (eql 9 (length (cask-development-dependencies bundle)))))))
+(ert-deftest test-scame-version ()
+  (should (require '999_scame))
+  (should (string-equal "0.4.0" scame-package-version)))
 
-(ert-deftest test-scame-install-dependencies ()
-  (with-scame-sandbox
-   (f-copy scame-install-cask-file scame-test/sandbox-path)
-   (let ((bundle (cask-setup scame-test/sandbox-path)))
-     (should (eql 9 (length (cask-development-dependencies bundle))))
-     (should (eql 106 (length (cask-dependencies bundle)))))))
 
-;; Too long !
-;; (ert-deftest check-scame-installation ()
-;;   (with-scame-sandbox
-;;    (f-copy scame-install-cask-file scame-test/sandbox-path)
-;;    (let ((bundle (cask-setup scame-test/sandbox-path)))
-;;      (cask-install bundle))))
+(ert-deftest test-scame-keybindings ()
+  (with-temp-buffer
+    (scame-mode)
+    (should (eql 'scame-version
+		 (key-binding (kbd "C-c s v"))))
+    (should (eql 'scame-changelog
+		 (key-binding (kbd "C-c s c"))))
+    (should (eql 'scame-customization
+		 (key-binding (kbd "C-c s z"))))
+    (should (eql 'scame-search-google
+		 (key-binding (kbd "C-c s s g"))))
+    (should (eql 'scame-search-github
+		 (key-binding (kbd "C-c s s h"))))
+    (should (eql 'scame-search-twitter
+		 (key-binding (kbd "C-c s s t"))))
+    (should (eql 'scame-search-launchpad
+		 (key-binding (kbd "C-c s s l"))))
+    (should (eql 'scame-search-arch-aur
+		 (key-binding (kbd "C-c s s a"))))
+    ))
+
 
 
 (provide 'scame-test)

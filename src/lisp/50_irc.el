@@ -67,13 +67,6 @@
 	    (add-to-list 'erc-modules 'match)
 	    (add-to-list 'erc-modules 'scrolltobottom)))
 
-;;(add-to-list 'erc-modules 'notifications)
-
-;; (setq erc-autojoin-channels-alist
-;;       '(("freenode.net" "#cvf" "#cloudstack" "#openstack-dev" "#openstack-fr")))
-
-
-
 
 
 (provide '50_irc)

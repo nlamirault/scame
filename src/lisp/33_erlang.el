@@ -45,7 +45,8 @@
 	    (add-hook 'erlang-mode-hook
 		      (lambda ()
 			(setq inferior-erlang-machine-options '("-sname" "syl20bnr"))))
-	    (require 'edts-start)))
+	    ))
+	    ;;(require 'edts-start)))
 
 
 (provide '33_erlang)

@@ -53,7 +53,7 @@
 
 (use-package org
   :config (progn
-	    (setq org-directory "~/Org")
+	    (setq org-directory (concat user-home-directory "Org"))
 	    (setq org-agenda-files (list org-directory))
 
 

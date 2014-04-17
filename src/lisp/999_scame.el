@@ -94,7 +94,7 @@
       (define-key prefix-map (kbd "s a") 'scame-search-arch-aur)
       (define-key map scame-keymap-prefix prefix-map))
     map)
-  "Keymap for Scame mode.")
+  "Keymap used by `scame-mode'.")
 
 
 ;; Scame main menu

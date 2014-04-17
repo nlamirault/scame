@@ -27,7 +27,8 @@
   :mode (("\\.py\\'" . python-mode))
   :config (progn
 	    (define-key python-mode-map (kbd "RET") 'newline-and-indent)
-	    (setq tab-width 4)))
+	    (setq tab-width 4)
+	    (setq python-indent-offset 4)))
 
 (use-package virtualenvwrapper
   :commands venv-workon
