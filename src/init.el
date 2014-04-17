@@ -21,57 +21,9 @@
 
 ;;; Commentary:
 
-;; Scame is a configuration for Emacs.
-
 ;;; Code:
 
-;; Debug or not
-;;(setq debug-on-error t)
-
-
-;;(require 'package)
-;;(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-;;                         ("marmalade" . "http://marmalade-repo.org/packages/")
-;;                         ("melpa" . "http://melpa.milkbox.net/packages/")))
-;;(package-initialize)
-
-
-(when (version< emacs-version "24.3")
-  (error "Scame requires at least GNU Emacs 24.3"))
-
-
-(require 'cask "~/.cask/cask.el")
-(cask-initialize)
-(add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
-
-
-;;(require 'benchmark-init)
-
-
-;;(require 'pallet)
-(require 'use-package)
-
-(use-package f)
-(use-package s)
-
-(fset 'yes-or-no-p 'y-or-n-p)
-
-(setq package-enable-at-startup nil)    ; Don't initialize packages twice
-
-(defconst user-home-directory (f-full (getenv "HOME")))
-(defconst user-emacs-directory (f-join user-home-directory ".emacs.d"))
-(defconst scame-user-customization-file
-  (f-join user-home-directory ".config/scame/scame-user.el")
-  "File used to store user customization.")
-
-(use-package init-loader
-  :config (init-loader-load (f-slash (f-join user-emacs-directory "lisp"))))
-
-;;(let ((user-customization (f-join user-home-directory ".config/scame/scame-user.el")))
-(when (file-readable-p scame-user-customization-file)
-  (load scame-user-customization-file))
-
-(scame-global-mode)
+(require 'scame)
 
 (provide 'init)
 ;;; init.el ends here

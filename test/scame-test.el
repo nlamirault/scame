@@ -55,6 +55,18 @@
     ))
 
 
+(ert-deftest test-scame-customization-file ()
+  (should (require '999_scame))
+  (should (string-equal
+	   (f-join (getenv "HOME") ".config/scame/scame-user.el")
+	   scame-user-customization-file)))
+
+
+(ert-deftest test-scame-init-file ()
+  (should (require '999_scame))
+  (should (string-equal
+	   (f-join (getenv "HOME") ".emacs.d/scame.el")
+	   scame-init-file)))
 
 (provide 'scame-test)
 ;;; scame-test.el ends here
