@@ -1,6 +1,11 @@
 # Scame ChangeLog
 
-## Version 0.4.0 (15/04/2014)
+## Version 0.5.0 (IN PROGRESS)
+
+- `#7`: Change Scame initialisation filename
+- Add unit tests for Scame configuration
+
+## Version 0.4.0 (04/15/2014)
 
 - `#6`: Update command argument doens't perform a git pull on scame local installation
 - `#4`: Add uniquify configuration
