@@ -9,4 +9,6 @@ env:
   - EVM_EMACS=emacs-24.3-bin
 script:
   - emacs --version
+  - ./scame --cmd=install
+  - ls -l /home/ubuntu/.emacs.d/.cask/
   - make test
