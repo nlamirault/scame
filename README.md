@@ -196,6 +196,15 @@ Keybinding           | Description
 <kbd>C-c o b</kbd>   | org-iswitchb
 <kbd>C-c o l</kbd>   | org-store-link
 
+### Perspective (Default key bindings)
+
+Keybinding           | Description
+---------------------|------------------------------------------------------------
+<kbd>C-x x s</kbd>   | persp-switch
+<kbd>C-x x n</kbd>   | persp-next
+<kbd>C-x x p</kbd>   | persp-prev
+<kbd>C-x x c</kbd>   | persp-kill
+
 ### Scame mode
 
 Keybinding           | Description
