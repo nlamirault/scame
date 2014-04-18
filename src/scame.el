@@ -75,8 +75,7 @@
 (when (file-readable-p scame-user-customization-file)
   (load scame-user-customization-file))
 
-
-(scame-global-mode)
+(scame-global-mode 1)
 
 (provide 'scame)
 ;;; scame.el ends here

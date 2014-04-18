@@ -135,8 +135,9 @@
 
 ;; Utilities
 (depends-on "pkg-info")
-(depends-on "projectile")
 (depends-on "helm")
+(depends-on "perspective")
+(depends-on "projectile")
 (depends-on "helm-projectile")
 (depends-on "project-persist")
 (depends-on "helm-project-persist")
