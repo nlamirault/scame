@@ -28,6 +28,7 @@
   :config (progn
 	    (define-key python-mode-map (kbd "RET") 'newline-and-indent)
 	    (setq tab-width 4)
+            ;;(setq python-indent-guess-indent-offset 4)
 	    (setq python-indent-offset 4)))
 
 (use-package virtualenvwrapper
@@ -77,18 +78,12 @@
 ;; Set in python project directory a file *.dir-locals.el* :
 ;; ((python-mode . ((pyvenv-workon . "xxxxx")))
 
-(use-package tox
-  :config (add-hook 'python-mode-hook
-		    (lambda ()
-		      (local-set-key (kbd "C-x t") 'tox-current-test)
-		      (local-set-key (kbd "C-x c") 'tox-current-class))))
-  ;; :bind (("C-x y t" . tox-current-test)
-  ;;  	 ("C-x y c" . tox-current-class)))
-  ;; :bind ((python-mode-map . ("C-x t"  . tox-current-test))
-  ;; 	 (python-mode-map . ("C-x c"  . tox-current-class))))
-
-;; (define-key python-mode-map (kbd "C-x t") 'tox-current-test)
-;; (define-key python-mode-map (kbd "C-x c") 'tox-current-class)
+;; DEPRECATED. See Cerbere
+;; (use-package tox
+;;   :config (add-hook 'python-mode-hook
+;; 		    (lambda ()
+;; 		      (local-set-key (kbd "C-x t") 'tox-current-test)
+;; 		      (local-set-key (kbd "C-x c") 'tox-current-class))))
 
 
 (use-package jedi-direx

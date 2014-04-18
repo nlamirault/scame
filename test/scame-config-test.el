@@ -368,6 +368,22 @@
     (should (eql 'inf-ruby (key-binding (kbd "C-c r r"))))))
 
 
+;; TDD
+
+(ert-deftest test-scame-cerbere-python ()
+  (should (require 'cerbere))
+  (with-temp-buffer
+    (python-mode)
+    (cerbere-mode)
+    (should (require 'cerbere-tox))
+    (should (eql 'cerbere-current-test
+                 (key-binding (kbd "C-c c t"))))
+    (should (eql 'cerbere-current-file
+                 (key-binding (kbd "C-c c f"))))
+    (should (eql 'cerbere-current-project
+                 (key-binding (kbd "C-c c p"))))))
+
+
 ;; IRC
 
 (ert-deftest test-scame-erc ()

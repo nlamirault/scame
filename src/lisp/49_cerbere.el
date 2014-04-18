@@ -1,6 +1,6 @@
-;;; 34_go-lang.el -- Configuration for the GO language
+;;; 49_cerbere.el --- Cerbere configuration for Scame
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; Permission is hereby granted, free of charge, to any person obtaining a copy
 ;; of this software and associated documentation files (the "Software"), to deal
@@ -23,41 +23,8 @@
 
 ;;; Code:
 
+(use-package cerbere
+  :config (cerbere-mode +1))
 
-(use-package go-mode
-  :mode (("\\.go$" . go-mode))
-  :init (progn
-	  (use-package go-eldoc
-	    :config (add-hook 'go-mode-hook 'go-eldoc-setup))
-	  (use-package go-mode-load))
-  :config (progn
-	    (add-hook 'before-save-hook 'gofmt-before-save)
-	    (add-hook 'go-mode-hook
-		      (lambda ()
-			(local-set-key (kbd "C-x M-r") 'go-remove-unused-imports)
-			(local-set-key (kbd "C-x i") 'go-goto-imports)
-			(local-set-key (kbd "M-.") 'godef-jump)))))
-
-;; DEPRECATED. See Cerbere
-;; (use-package gotest
-;;   (add-hook 'go-mode-hook
-;; 	    (lambda ()
-;; 	      (local-set-key (kbd "C-x t") 'go-test-current-test)
-;; 	      (local-set-key (kbd "C-x c") 'go-test-current-file))))
-
-
-;; Gocode
-;;(require 'go-autocomplete)
-;;(require 'auto-complete-config)
-
-
-(use-package go-direx
-  :config (progn
-	    (add-hook 'go-mode-hook
-		      (lambda ()
-			(local-set-key (kbd "C-x j")
-				       'go-direx-pop-to-buffer)))))
-
-
-(provide '34_go-lang)
-;;; 34_go-lang.el ends here
+(provide '49_cerbere)
+;;; 49_cerbere.el ends here

@@ -59,19 +59,14 @@
          ("\\.php\\'" . web-mode)))
 
 
-(use-package phpunit
-  ;; :bind (("C-x p t" . phpunit-current-test)
-  ;; 	 ("C-x p c" . phpunit-current-class)
-  ;; 	 ("C-x p p" . phpunit-current-project)))
-  :config (add-hook 'web-mode-hook
-		    (lambda ()
-		      (local-set-key (kbd "C-x t") 'phpunit-current-test)
-		      (local-set-key (kbd "C-x c") 'phpunit-current-class)
-		      (local-set-key (kbd "C-x p") 'phpunit-current-project))))
+;; DEPRECATED. See Cerbere
+;; (use-package phpunit
+;;   :config (add-hook 'web-mode-hook
+;; 		    (lambda ()
+;; 		      (local-set-key (kbd "C-x t") 'phpunit-current-test)
+;; 		      (local-set-key (kbd "C-x c") 'phpunit-current-class)
+;; 		      (local-set-key (kbd "C-x p") 'phpunit-current-project))))
 
-;; (define-key web-mode-map (kbd "C-x t") 'phpunit-current-test)
-;; (define-key web-mode-map (kbd "C-x c") 'phpunit-current-class
-;; (define-key web-mode-map (kbd "C-x p") 'phpunit-current-project)
 
 (provide '36_php)
 ;;; 36_php.el ends here

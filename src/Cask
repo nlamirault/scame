@@ -47,7 +47,7 @@
 (depends-on "go-autocomplete")
 (depends-on "go-eldoc")
 ;;(depends-on "flymake-go")
-(depends-on "gotest")
+;;(depends-on "gotest")
 (depends-on "go-direx")
 
 ;; Python
@@ -96,7 +96,7 @@
 ;; Php
 (depends-on "php-mode")
 (depends-on "emacsagist")
-(depends-on "phpunit")
+;;(depends-on "phpunit")
 ;;(depends-on "flymake-php")
 
 ;; Perl
@@ -111,6 +111,9 @@
 (depends-on "yaml-mode")
 
 ;; Other development mode
+
+;; TDD
+(depends-on "cerbere")
 
 ;; Cloud
 (depends-on "dockerfile-mode")
