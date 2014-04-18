@@ -56,12 +56,13 @@ Project managment :
 - [project-explorer](https://github.com/sabof/project-explorer)
 - [nav](https://code.google.com/p/emacs-nav/)
 - [lice.el](https://github.com/buzztaiki/lice-el)
+- [cerbere](https://github.com/nlamirault/cerbere)
+- [perspective](https://github.com/nex3/perspective-el)
 
 Python :
 - [jedi](https://github.com/tkf/emacs-jedi)
 - [elpy](https://github.com/jorgenschaefer/elpy)
 - [virtualenvwrapper](https://github.com/porterjamesj/virtualenvwrapper.el)
-- [tox](https://github.com/chmouel/tox.el)
 - [anaconda-mode](https://github.com/proofit404/anaconda-mode)
 
 Go:
@@ -69,7 +70,6 @@ Go:
 - [go-play](https://github.com/dominikh/go-play.el)
 - [go-autocomplete](https://github.com/nsf/gocode)
 - [go-eldoc](https://github.com/syohex/emacs-go-eldoc)
-- [gotest](https://github.com/nlamirault/gotest.el)
 
 Emacs lisp:
 - [elisp-slime-nav](https://github.com/purcell/elisp-slime-nav)
@@ -86,7 +86,6 @@ Ruby:
 Php:
 - [web-mode](http://www.web-mode.org)
 - [emacsagist](https://github.com/echosa/emacsagist)
-- [phpunit.el](https://github.com/nlamirault/phpunit.el)
 
 Clojure:
 - [cider](http://melpa.milkbox.net/#/cider)
