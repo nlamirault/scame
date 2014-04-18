@@ -54,9 +54,10 @@
 ;;     (git-clone scame-repository target)))
 
 
-(defun print-message (message)
-  "Print `MESSAGE' to stdout."""
-  (message "[SCAME] %s" message))
+(defun print-message (tokens)
+  "Print `TOKENS' to stdout."
+  ;;(message "[SCAME] %s" tokens))
+  (message "[SCAME] %s" (propertize tokens 'face '(:foreground "green"))))
 
 (defun scame-cli--update-repo (target)
   "With `TARGET' as Scame's local git repository, update it."
