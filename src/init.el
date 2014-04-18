@@ -23,7 +23,9 @@
 
 ;;; Code:
 
+(add-to-list 'load-path "~/.emacs.d/")
 (require 'scame)
+;;(load "~/.emacs.d/scame.el")
 
 (provide 'init)
 ;;; init.el ends here
