@@ -29,15 +29,16 @@
 ;;(setq debug-on-error t)
 
 
-;;(require 'package)
-;;(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-;;                         ("marmalade" . "http://marmalade-repo.org/packages/")
-;;                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+(require 'package)
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
 ;;(package-initialize)
+;; Don't initialize packages twice
+(setq package-enable-at-startup nil)
 
+;; Benchmark Emacs installation
 ;;(require 'benchmark-init)
-;;(require 'pallet)
-
 
 
 (when (version< emacs-version "24.3")
@@ -46,10 +47,10 @@
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
+;;(require 'pallet)
+
 
 (fset 'yes-or-no-p 'y-or-n-p)
-
-(setq package-enable-at-startup nil)    ; Don't initialize packages twice
 
 (require 'use-package)
 (use-package f)

@@ -2,6 +2,8 @@
 
 [![Build Status](https://drone.io/github.com/nlamirault/scame/status.png)](https://drone.io/github.com/nlamirault/scame/latest)
 
+[![Build Status](https://travis-ci.org/nlamirault/scame.svg?branch=master)](https://travis-ci.org/nlamirault/scame)
+
 *Scame* is a 'Starter Kit' for Emacs.
 This mode needs [GNU Emacs 24](http://wikemacs.org/wiki/Installing_Emacs). It will not work with GNU Emacs 23 and below,
 or with other flavors of Emacs (e.g. XEmacs).
