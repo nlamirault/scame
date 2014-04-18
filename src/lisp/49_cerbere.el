@@ -24,7 +24,11 @@
 ;;; Code:
 
 (use-package cerbere
-  :config (cerbere-mode +1))
+  :config (progn
+            (add-hook 'python-mode-hook 'cerbere-mode)
+            (add-hook 'go-mode-hook 'cerbere-mode)
+            (add-hook 'web-mode-hook 'cerbere-mode)))
+
 
 (provide '49_cerbere)
 ;;; 49_cerbere.el ends here
