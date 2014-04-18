@@ -247,12 +247,18 @@
     (should (= 4 python-indent-offset))
     (should (eql nil indent-tabs-mode))))
 
-
 (ert-deftest test-scame-anaconda ()
   (should (require 'anaconda-mode))
   (should (require 'anaconda-eldoc))
   (should (require 'company-anaconda)))
 
+
+(ert-deftest test-scame-jedi-direx ()
+  (should (require 'jedi-direx))
+  (with-temp-buffer
+    (python-mode)
+    (should (eql 'jedi-direx:pop-to-buffer
+		 (key-binding (kbd "C-x x"))))))
 
 ;; Common Lisp
 

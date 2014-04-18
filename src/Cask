@@ -58,6 +58,7 @@
 (depends-on "pyvenv")
 ;;(depends-on "flymake-python-pyflakes")
 (depends-on "anaconda-mode")
+(depends-on "jedi-direx")
 
 ;; Ruby
 

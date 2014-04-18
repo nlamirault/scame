@@ -91,5 +91,16 @@
 ;; (define-key python-mode-map (kbd "C-x c") 'tox-current-class)
 
 
+(use-package jedi-direx
+  :config (progn
+	    (add-hook 'jedi-mode-hook 'jedi-direx:setup)
+	    (add-hook 'jedi-mode-hook
+		      (lambda ()
+			(local-set-key (kbd "C-x x")
+				       'jedi-direx:pop-to-buffer)))))
+
+
+
+
 (provide '31_python)
 ;;; 31_python.el ends here
