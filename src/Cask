@@ -48,6 +48,7 @@
 (depends-on "go-eldoc")
 ;;(depends-on "flymake-go")
 (depends-on "gotest")
+(depends-on "go-direx")
 
 ;; Python
 (depends-on "python-mode")

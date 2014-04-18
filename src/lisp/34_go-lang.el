@@ -52,5 +52,14 @@
 ;;(require 'go-autocomplete)
 ;;(require 'auto-complete-config)
 
+
+(use-package go-direx
+  :config (progn
+	    (add-hook 'go-mode-hook
+		      (lambda ()
+			(local-set-key (kbd "C-x x")
+				       'go-direx-pop-to-buffer)))))
+
+
 (provide '34_go-lang)
 ;;; 34_go-lang.el ends here

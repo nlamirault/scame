@@ -289,6 +289,15 @@
 		 (key-binding (kbd "M-."))))))
 
 
+(ert-deftest test-scame-go-direx ()
+  (should (require 'go-direx))
+  (with-temp-buffer
+    (go-mode)
+    (should (eql 'go-direx-pop-to-buffer
+		 (key-binding (kbd "C-x x"))))))
+
+
+
 ;; OCaml
 
 (ert-deftest test-scame-ocaml ()
