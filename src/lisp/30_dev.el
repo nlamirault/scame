@@ -48,6 +48,10 @@
 (use-package helm-projectile
   :bind (("C-c h" . helm-projectile)))
 
+;; (use-package persp-projectile
+;;   :config (define-key projectile-mode-map (kbd "s-s")
+;;             'projectile-persp-switch-project))
+
 
 (use-package project-explorer)
 

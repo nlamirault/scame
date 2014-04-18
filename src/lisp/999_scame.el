@@ -122,11 +122,16 @@
 
 ;; Scame mode
 
+;;;###autoload
+(defconst scame-mode-line-lighter
+  (s-concat " {SCAME-" scame-package-version "}")
+  "The default lighter for `scame-mode'.")
+
 (define-minor-mode scame-mode
-  "Minor mode for Scame..
+  "Scame minor mode.
 
 \\{scame-mode-map}"
-  :lighter " Scame"
+  :lighter scame-mode-line-lighter
   :keymap scame-mode-map
   :group 'scame
   :require 'scame
@@ -142,7 +147,7 @@
 (defun scame-on ()
   "Turn on `scame-mode'."
   (interactive)
-  (scame-mode +1))
+  (scame-mode 1))
 
 (defun scame-off ()
   "Turn off `scame-mode'."
