@@ -226,7 +226,7 @@
   (should (require 'helm-projectile))
   (should (eql 'helm-projectile (key-binding (kbd "C-c h")))))
 
-(ert-deftest test-scame-magit ()
+(ert-deftest test-scame-project-explorer ()
   (should (require 'project-explorer)))
 
 

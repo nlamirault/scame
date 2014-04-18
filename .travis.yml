@@ -9,5 +9,4 @@ script:
   - ./scame --init --emacs=emacs-24.3-bin
   - emacs --version
   - ./scame --cmd=install
-  - ls -l /home/ubuntu/.emacs.d/.cask/
   - make test
