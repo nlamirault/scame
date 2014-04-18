@@ -204,6 +204,9 @@ Keybinding           | Description
 <kbd>C-x x n</kbd>   | persp-next
 <kbd>C-x x p</kbd>   | persp-prev
 <kbd>C-x x c</kbd>   | persp-kill
+<kbd>C-x x k</kbd>   | persp-remove-buffer
+<kbd>C-x x a</kbd>   | persp-add-buffer
+<kbd>C-x x i</kbd>   | persp-import
 
 ### Scame mode
 
