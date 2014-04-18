@@ -217,6 +217,14 @@
 ;; (ert-deftest test-scame-development-commons ()
 ;;   (should (eql nil indent-tabs-mode)))
 
+(ert-deftest test-scame-fill-column ()
+  (should (= 120 fill-column)))
+
+(ert-deftest test-scame-changelog-mode ()
+  (with-temp-buffer
+    (change-log-mode)
+    (should (eql nil indent-tabs-mode))))
+
 (ert-deftest test-scame-projectile ()
   (should (require 'projectile))
   (should (eql 'projectile-find-file

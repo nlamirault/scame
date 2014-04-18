@@ -28,6 +28,10 @@
 
 ;;(require 'projectile)
 
+;; change-log-mode is hard-coded to use TABs for indentation. Get around that with:
+(add-hook 'change-log-mode-hook
+          (function (lambda () (setq indent-tabs-mode nil))))
+
 (use-package projectile
   :init (projectile-global-mode 1)
   :config (progn
