@@ -99,6 +99,9 @@
 (depends-on "phpunit")
 ;;(depends-on "flymake-php")
 
+;; Perl
+(depends-on "plsense-direx")
+
 ;; Javascript
 (depends-on "company-tern")
 

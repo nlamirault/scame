@@ -258,7 +258,7 @@
   (with-temp-buffer
     (python-mode)
     (should (eql 'jedi-direx:pop-to-buffer
-		 (key-binding (kbd "C-x x"))))))
+		 (key-binding (kbd "C-x j"))))))
 
 ;; Common Lisp
 
@@ -294,7 +294,7 @@
   (with-temp-buffer
     (go-mode)
     (should (eql 'go-direx-pop-to-buffer
-		 (key-binding (kbd "C-x x"))))))
+		 (key-binding (kbd "C-x j"))))))
 
 
 
@@ -320,6 +320,14 @@
 
 (ert-deftest test-scame-perl ()
   (should (require 'cperl-mode)))
+
+(ert-deftest test-scame-plsense-direx ()
+  (should (require 'plsense-direx))
+  (with-temp-buffer
+    (cperl-mode)
+    (should (eql 'plsense-direx:open-explorer-key
+		 (key-binding (kbd "C-x j"))))))
+
 
 
 ;; Elisp

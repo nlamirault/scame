@@ -47,6 +47,18 @@
 	  (setq cperl-auto-newline nil)
 	  (helm-perldoc:setup)))
 
+(use-package plsense-direx
+  :config (progn
+	    (plsense-direx:config-default)
+	    (add-hook 'cperl-mode-hook
+		      (lambda ()
+			(local-set-key (kbd "C-x j")
+				       'plsense-direx:open-explorer-key)))))
+
+
+
+
+
 
 (provide '38_perl)
 ;;; 38_perl.el ends here
