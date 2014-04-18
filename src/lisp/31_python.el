@@ -96,7 +96,7 @@
 	    (add-hook 'jedi-mode-hook 'jedi-direx:setup)
 	    (add-hook 'jedi-mode-hook
 		      (lambda ()
-			(local-set-key (kbd "C-x x")
+			(local-set-key (kbd "C-x j")
 				       'jedi-direx:pop-to-buffer)))))
 
 

@@ -57,7 +57,7 @@
   :config (progn
 	    (add-hook 'go-mode-hook
 		      (lambda ()
-			(local-set-key (kbd "C-x x")
+			(local-set-key (kbd "C-x j")
 				       'go-direx-pop-to-buffer)))))
 
 
