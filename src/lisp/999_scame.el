@@ -78,6 +78,25 @@
    "https://github.com/nlamirault/scame"))
 
 
+(defun perform-rest-request (url)
+  "Perform an HTTP request using URL and return the response."
+  (let ((buffer (url-retrieve-synchronously url)))
+    (save-excursion
+      (set-buffer buffer)
+      (goto-char (point-min))
+      (re-search-forward "^$" nil 'move)
+      (setq response (buffer-substring-no-properties (point) (point-max)))
+      (kill-buffer (current-buffer)))
+    response))
+
+
+(defun scame-last-release ()
+  "Find from GitHub last release."
+  (interactive)
+  (let* ((response (perform-rest-request "https://github.com/nlamirault/scame/releases"))
+	 (release (caar (s-match-strings-all "/[0-9.]*.zip" response))))
+    (message "Scame last version: %s" (s-replace-all '((".zip" . "") ("/" . "")) release))))
+
 
 ;; Scame mode map
 
