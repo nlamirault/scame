@@ -48,14 +48,15 @@
 			(venv-workon project-venv-name)))))
 
 
-(use-package jedi
-  :commands jedi:setup
-  :config (progn
-	    (add-hook 'python-mode-hook 'jedi:setup)
-	    (setq jedi:setup-keys t)
-	    (setq jedi:complete-on-dot t)
-	    (add-hook 'python-mode-hook (lambda ()
-					  (setq fill-column 79)))))
+;; FIXME
+;; (use-package jedi
+;;   :commands jedi:setup
+;;   :config (progn
+;; 	    (add-hook 'python-mode-hook 'jedi:setup)
+;; 	    (setq jedi:setup-keys t)
+;; 	    (setq jedi:complete-on-dot t)
+;; 	    (add-hook 'python-mode-hook (lambda ()
+;; 					  (setq fill-column 79)))))
 
 
 (use-package anaconda-mode
@@ -95,6 +96,11 @@
 				       'jedi-direx:pop-to-buffer)))))
 
 
+(use-package sphinx-doc
+  :config (add-hook 'python-mode-hook
+                    (lambda ()
+                      (require 'sphinx-doc)
+                      (sphinx-doc-mode t))))
 
 
 (provide '31_python)

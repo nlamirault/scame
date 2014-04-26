@@ -60,6 +60,7 @@
 ;;(depends-on "flymake-python-pyflakes")
 (depends-on "anaconda-mode")
 (depends-on "jedi-direx")
+(depends-on "sphinx-doc")
 
 ;; Ruby
 

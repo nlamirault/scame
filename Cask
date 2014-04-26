@@ -13,5 +13,6 @@
  (depends-on "f")
  (depends-on "commander")
  (depends-on "git")
+ (depends-on "epc")
  (depends-on "ert")
  (depends-on "ert-runner"))
