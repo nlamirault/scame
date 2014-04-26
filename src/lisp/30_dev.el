@@ -28,7 +28,7 @@
 
 ;;(require 'projectile)
 
-s;; change-log-mode is hard-coded to use TABs for indentation. Get around that with:
+;; change-log-mode is hard-coded to use TABs for indentation. Get around that with:
 (add-hook 'change-log-mode-hook
           (function (lambda () (setq indent-tabs-mode nil))))
 
