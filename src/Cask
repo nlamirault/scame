@@ -132,13 +132,15 @@
 (depends-on "git-rebase-mode")
 (depends-on "gist")
 
+;; Project
+(depends-on "projectile")
+(depends-on "helm-projectile")
+(depends-on "persp-projectile")
 
 ;; Utilities
 (depends-on "pkg-info")
 (depends-on "helm")
 (depends-on "perspective")
-(depends-on "projectile")
-(depends-on "helm-projectile")
 (depends-on "project-persist")
 (depends-on "helm-project-persist")
 (depends-on "multi-term")
