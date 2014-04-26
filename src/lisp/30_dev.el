@@ -28,7 +28,7 @@
 
 ;;(require 'projectile)
 
-;; change-log-mode is hard-coded to use TABs for indentation. Get around that with:
+s;; change-log-mode is hard-coded to use TABs for indentation. Get around that with:
 (add-hook 'change-log-mode-hook
           (function (lambda () (setq indent-tabs-mode nil))))
 
@@ -48,9 +48,7 @@
 (use-package helm-projectile
   :bind (("C-c h" . helm-projectile)))
 
-(use-package persp-projectile
-  :config (define-key projectile-mode-map (kbd "s-s")
-            'projectile-persp-switch-project))
+(use-package persp-projectile)
 
 
 (use-package project-explorer)

@@ -207,6 +207,7 @@ Keybinding           | Description
 <kbd>C-x x k</kbd>   | persp-remove-buffer
 <kbd>C-x x a</kbd>   | persp-add-buffer
 <kbd>C-x x i</kbd>   | persp-import
+<kbd>C-x x r</kbd>   | persp-rename
 
 ### Scame mode
 
