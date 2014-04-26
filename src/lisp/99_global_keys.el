@@ -53,6 +53,14 @@
 
 (global-set-key "\C-cw" 'eww)
 
+;; Editing
+;; --------
+
+;;(bind-key "M-g" 'goto-line)
+;;(bind-key "M-}" 'next-buffer)
+;;(bind-key "M-{" 'previous-buffer)
+
+
 
 (provide '99_global_keys)
 ;;; 99_global_keys.el ends here

@@ -52,6 +52,8 @@
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
+(setq-default show-trailing-whitespace t)
+
 (require 'use-package)
 (use-package f)
 (use-package s)
