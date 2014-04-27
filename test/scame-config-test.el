@@ -376,6 +376,17 @@
     (should (eql 'inf-ruby (key-binding (kbd "C-c r r"))))))
 
 
+;; C/C++
+
+(ert-deftest test-scame-c ()
+  (should (require 'google-c-style))
+  (should (require 'auto-complete-c-headers))
+  (should (require 'c-eldoc))
+  (with-temp-buffer
+    (cc-mode)
+    (should (= 4 c-basic-offset))
+    (should (= 120 c-eldoc-buffer-regenerate-time))
+
 ;; TDD
 
 ;; FIXME

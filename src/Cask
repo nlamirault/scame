@@ -32,6 +32,7 @@
 (depends-on "flycheck")
 (depends-on "flycheck-cask")
 (depends-on "flycheck-color-mode-line")
+;;(depends-on "flycheck-google-cpplint")
 
 ;; Common Lisp
 ;;(depends-on "slime")
@@ -106,6 +107,10 @@
 ;; Javascript
 (depends-on "company-tern")
 
+;; C/C++
+(depends-on "google-c-style")
+(depends-on "c-eldoc")
+(depends-on "auto-complete-c-headers")
 
 ;; Markup languages
 (depends-on "markdown-mode")
