@@ -1,3 +1,4 @@
+
 # Scame
 
 [![Build Status](https://drone.io/github.com/nlamirault/scame/status.png)](https://drone.io/github.com/nlamirault/scame/latest)
@@ -56,7 +57,7 @@ Project managment :
 - [project-explorer](https://github.com/sabof/project-explorer)
 - [nav](https://code.google.com/p/emacs-nav/)
 - [lice.el](https://github.com/buzztaiki/lice-el)
-- [cerbere](https://github.com/nlamirault/cerbere)
+- [cerbere](https://github.com/nlamirault/cerbere) (*)
 - [perspective](https://github.com/nex3/perspective-el)
 
 Python :
@@ -158,8 +159,11 @@ Keybinding           | Description
 
 Keybinding           | Description
 ---------------------|------------------------------------------------------------
-<kbd>C-x t</kbd>     | tox-current-test
-<kbd>C-x c</kbd>     | tox-current-class
+<kbd>C-c c t</kbd>   | launch current unit test
+<kbd>C-c c f</kbd>   | launch tests in current file
+<kbd>C-c c p</kbd>   | launch tests in all project
+<kbd>C-x j</kbd>     | display source code in tree style viewer
+<kbd>C-c M-d</kbd>   | generate Sphinx documentation for current function
 
 ### Go mode
 
@@ -167,16 +171,18 @@ Keybinding           | Description
 ---------------------|------------------------------------------------------------
 <kbd>C-x C-r</kbd>   | go-remove-unused-imports
 <kbd>C-x i</kbd>     | go-goto-imports
-<kbd>C-x t</kbd>     | go-test-current-test
-<kbd>C-x c</kbd>     | go-test-current-file
+<kbd>C-c c t</kbd>   | launch current unit test
+<kbd>C-c c f</kbd>   | launch tests in current file
+<kbd>C-c c p</kbd>   | launch tests in all project
+<kbd>C-x j</kbd>     | display source code in tree style viewer
 
 ### PHP Mode
 
 Keybinding           | Description
 ---------------------|------------------------------------------------------------
-<kbd>C-x t</kbd>     | php-current-test
-<kbd>C-x c</kbd>     | php-current-class
-<kbd>C-x p</kbd>     | php-current-project
+<kbd>C-c c t</kbd>   | launch current unit test
+<kbd>C-c c f</kbd>   | launch tests in current file
+<kbd>C-c c p</kbd>   | launch tests in all project
 
 ### Magit
 
