@@ -245,6 +245,11 @@ order to optimize startup times with [benchmark-init](https://github.com/dholm/b
 
 ```lisp
 M-x benchmark-init/show-durations-tree
+```
+
+And results :
+
+```lisp
 Benchmark results
 
 ╼►[benchmark-init/root nil 0ms]

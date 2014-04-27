@@ -2,6 +2,14 @@
 
 ## Version 0.5.0 (IN PROGRESS)
 
+- `#14`: Add sphinx-doc
+- Add perspective for projectile
+- `#12`: FIX Key bindings not enabled by default
+- Add perspective.el
+- Migrate to Cerbere mode (gotest.el, phpunit.el, tox.el)
+- `#11`: Add plsense-direx
+- `#9`: Add jedi-direx
+- `#8`: Add go-direx
 - `#7`: Change Scame initialisation filename
 - Add unit tests for Scame configuration
 
