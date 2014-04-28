@@ -303,5 +303,3 @@ Nicolas Lamirault <nicolas.lamirault@gmail.com>
 [MELPA]: http://melpa.milkbox.net/
 [Cask]: http://cask.github.io/
 [Evm]: https://github.com/rejeep/evm
-[Issue tracker]: https://github.com/nlamirault/scame/issues
-[Github]: https://github.com/nlamirault/scame
