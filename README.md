@@ -5,9 +5,9 @@
 [![travis][badge-travis]][travis]
 [![drone][badge-drone]][drone]
 
-*Scame* is a 'Starter Kit' for [GNU Emacs][] 24. It will not work with [GNU Emacs][] 23 and below, or with other flavors of Emacs (e.g. XEmacs).
+[Scame][] is a 'Starter Kit' for [GNU Emacs][] 24. It will not work with [GNU Emacs][] 23 and below, or with other flavors of Emacs (e.g. XEmacs).
 
-These tools are used to perform the *scame* installation :
+These tools are used to perform the [Scame][] installation :
 
 - [Cask][] (>= 0.6.0)
 - [EVM][]
@@ -32,11 +32,11 @@ These tools are used to perform the *scame* installation :
 			--cmd CMD      Scame CLI commands
 			--emacs EMACS  Specify the version of Emacs to install
 
-* Initialize Scame :
+* Initialize [Scame][] :
 
         $ ./scame --init
 
-* Using Scame :
+* Using [Scame][] :
 
         $ ./scame --cmd=cleanup
 		$ ./scame --cmd=install
@@ -45,7 +45,7 @@ These tools are used to perform the *scame* installation :
 
 ## Packages
 
-Collections of packages installed by *Scame*:
+Collections of packages installed:
 
 - [cask](https://github.com/cask/cask)
 - [init-loader](https://github.com/emacs-jp/init-loader)
@@ -233,7 +233,7 @@ You can change the default keymap prefix C-c p like this:
 
 ## Customization
 
-If file `$HOME/.config/scame/scame-user.el` exists, *scame* will be loaded.
+If file `$HOME/.config/scame/scame-user.el` exists, [Scame][] load it.
 Example of customization :
 
 ```lisp
@@ -307,6 +307,7 @@ A changelog is available [here](ChangeLog.md).
 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 
+[Scame]: https://github.com/nlamirault/scame
 [badge-license]: https://img.shields.io/badge/license-GPL_3-green.svg?style=flat
 [COPYING]: https://github.com/nlamirault/scame/blob/master/COPYING
 [travis]: https://travis-ci.org/nlamirault/scame
