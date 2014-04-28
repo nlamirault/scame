@@ -385,6 +385,17 @@
   (with-temp-buffer
     (c-mode)
     (should (= 4 c-basic-offset))
+    (should (string-equal "google" c-indentation-style))
+    (should (= 120 c-eldoc-buffer-regenerate-time))))
+
+(ert-deftest test-scame-cpp ()
+  (should (require 'google-c-style))
+  (should (require 'auto-complete-c-headers))
+  (should (require 'c-eldoc))
+  (with-temp-buffer
+    (c-mode)
+    (should (= 4 c-basic-offset))
+    (should (string-equal "google" c-indentation-style))
     (should (= 120 c-eldoc-buffer-regenerate-time))))
 
 ;; TDD
