@@ -1,7 +1,9 @@
 # Scame ChangeLog
 
-## Version 0.5.0 (IN PROGRESS)
+## Version 0.5.0 (04/28/2014)
 
+- Migrate from MIT to GPL-3
+- `#16`: Add C and C++ configuration
 - `#14`: Add sphinx-doc
 - Add perspective for projectile
 - `#12`: FIX Key bindings not enabled by default
