@@ -1,7 +1,7 @@
 
 # Scame
 
-[![License GPL 3][badge-license]][LICENSE]
+[![License GPL 3][badge-license]][COPYING]
 [![travis][badge-travis]][travis]
 [![drone][badge-drone]][drone]
 
