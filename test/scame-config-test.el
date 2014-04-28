@@ -383,9 +383,9 @@
   (should (require 'auto-complete-c-headers))
   (should (require 'c-eldoc))
   (with-temp-buffer
-    (cc-mode)
+    (c-mode)
     (should (= 4 c-basic-offset))
-    (should (= 120 c-eldoc-buffer-regenerate-time))
+    (should (= 120 c-eldoc-buffer-regenerate-time))))
 
 ;; TDD
 
