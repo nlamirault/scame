@@ -5,10 +5,6 @@
 [![travis][badge-travis]][travis]
 [![drone][badge-drone]][drone]
 
-[![Build Status](https://drone.io/github.com/nlamirault/scame/status.png)](https://drone.io/github.com/nlamirault/scame/latest)
-
-[![Build Status](https://travis-ci.org/nlamirault/scame.svg?branch=master)](https://travis-ci.org/nlamirault/scame)
-
 *Scame* is a 'Starter Kit' for [GNU Emacs][] 24. It will not work with GNU Emacs 23 and below, or with other flavors of Emacs (e.g. XEmacs).
 
 These tools are used to perform the *scame* installation :
@@ -302,6 +298,7 @@ Nicolas Lamirault <nicolas.lamirault@gmail.com>
 [travis]: https://travis-ci.org/nlamirault/scame
 [badge-travis]: https://travis-ci.org/nlamirault/scame.svg?branch=master
 [badge-drone]: https://drone.io/github.com/nlamirault/scame/status.png
+[drone]: https://drone.io/github.com/nlamirault/scame/latest
 [GNU Emacs]: https://www.gnu.org/software/emacs/
 [MELPA]: http://melpa.milkbox.net/
 [Cask]: http://cask.github.io/
