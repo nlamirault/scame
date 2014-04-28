@@ -48,10 +48,12 @@ These tools are used to perform the [Scame][] installation :
 Collections of packages installed:
 
 - [cask](https://github.com/cask/cask)
+- [use-package](https://github.com/jwiegley/use-package)
 - [init-loader](https://github.com/emacs-jp/init-loader)
 
 Project managment :
 - [projectile](https://github.com/bbatsov/projectile)
+- [persp-projectile](https://github.com/bbatsov/projectile)
 - [project-explorer](https://github.com/sabof/project-explorer)
 - [nav](https://code.google.com/p/emacs-nav/)
 - [lice.el](https://github.com/buzztaiki/lice-el)
@@ -60,15 +62,18 @@ Project managment :
 
 Python :
 - [jedi](https://github.com/tkf/emacs-jedi)
+- [jedi-direx](https://github.com/tkf/emacs-jedi-direx)
 - [elpy](https://github.com/jorgenschaefer/elpy)
 - [virtualenvwrapper](https://github.com/porterjamesj/virtualenvwrapper.el)
 - [anaconda-mode](https://github.com/proofit404/anaconda-mode)
+- [sphinx-doc](https://github.com/naiquevin/sphinx-doc.el)
 
 Go:
 - [go-mode](http://melpa.milkbox.net/#/go-mode)
 - [go-play](https://github.com/dominikh/go-play.el)
 - [go-autocomplete](https://github.com/nsf/gocode)
 - [go-eldoc](https://github.com/syohex/emacs-go-eldoc)
+- [go-direx](https://github.com/syohex/emacs-go-direx)
 
 Emacs lisp:
 - [elisp-slime-nav](https://github.com/purcell/elisp-slime-nav)
@@ -99,6 +104,9 @@ Haskell:
 - [Haskell-mode](https://github.com/haskell/haskell-mode)
 - [flycheck-haskell](https://github.com/flycheck/flycheck-haskell)
 
+Perl:
+- [plsense-direx](https://github.com/aki2o/plsense-direx)
+
 Cloud:
 - [puppet-mode](https://github.com/lunaryorn/puppet-mode)
 - [dockerfile-mode](https://github.com/spotify/dockerfile-mode)
@@ -120,6 +128,9 @@ Completion:
 I/O:
 - [direx.el](https://github.com/m2ym/direx-el)
 - [dired-imenu](https://github.com/DamienCassou/dired-imenu)
+- [dired-filter](https://github.com/Fuco1/dired-hacks)
+- [dired-open](https://github.com/Fuco1/dired-hacks)
+- [dired-subtree](https://github.com/Fuco1/dired-hacks)
 
 VC:
 - [magit](https://github.com/magit/magit)
