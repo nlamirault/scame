@@ -1,7 +1,7 @@
 
 # Scame
 
-[![MIT][badge-license]][LICENSE]
+[![License GPL 3][badge-license]][LICENSE]
 [![travis][badge-travis]][travis]
 [![drone][badge-drone]][drone]
 
@@ -307,7 +307,7 @@ A changelog is available [here](ChangeLog.md).
 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 
-[badge-license]: https://img.shields.io/badge/license-mit-green.svg?style=flat
+[badge-license]: https://img.shields.io/badge/license-GPL_3-green.svg?style=flat
 [LICENSE]: https://github.com/nlamirault/scame/blob/master/LICENSE
 [travis]: https://travis-ci.org/nlamirault/scame
 [badge-travis]: http://img.shields.io/travis/nlamirault/scame.svg?style=flat
