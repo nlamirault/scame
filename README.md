@@ -308,7 +308,7 @@ Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 
 [badge-license]: https://img.shields.io/badge/license-GPL_3-green.svg?style=flat
-[LICENSE]: https://github.com/nlamirault/scame/blob/master/LICENSE
+[COPYING]: https://github.com/nlamirault/scame/blob/master/COPYING
 [travis]: https://travis-ci.org/nlamirault/scame
 [badge-travis]: http://img.shields.io/travis/nlamirault/scame.svg?style=flat
 [badge-drone]: https://drone.io/github.com/nlamirault/scame/status.png
