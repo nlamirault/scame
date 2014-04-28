@@ -296,7 +296,7 @@ Nicolas Lamirault <nicolas.lamirault@gmail.com>
 [badge-license]: https://img.shields.io/badge/license-mit-green.svg?style=flat
 [LICENSE]: https://github.com/nlamirault/scame/blob/master/LICENSE
 [travis]: https://travis-ci.org/nlamirault/scame
-[badge-travis]: https://travis-ci.org/nlamirault/scame.svg?branch=master
+[badge-travis]: http://img.shields.io/travis/nlamirault/scame.svg?style=flat
 [badge-drone]: https://drone.io/github.com/nlamirault/scame/status.png
 [drone]: https://drone.io/github.com/nlamirault/scame/latest
 [GNU Emacs]: https://www.gnu.org/software/emacs/
