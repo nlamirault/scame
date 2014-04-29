@@ -21,6 +21,9 @@
 
 ;;(require 'cider)
 
+;; Add to your $HOME/.lein/profiles.clj :
+;; {:user {:plugins [[cider/cider-nrepl "0.6.0"]]}}
+
 (use-package cider
   :init (progn
 	  (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
