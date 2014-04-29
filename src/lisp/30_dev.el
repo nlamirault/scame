@@ -46,8 +46,9 @@
 
 (use-package persp-projectile)
 
-
-(use-package project-explorer)
+(condition-case e
+    (use-package project-explorer)
+  (error (message "%s" e)))
 
 (setq-default indent-tabs-mode nil)
 
