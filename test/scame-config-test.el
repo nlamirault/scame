@@ -279,12 +279,17 @@
 
 ;; Go lang
 
+(defconst testsuite-go-filename
+  (f-join scame-test/test-path "var/hello.go")
+  "File name for testing Golang setup.")
+
 (ert-deftest test-scame-golang ()
-  (should (require 'go-mode))
-  (should (require 'go-eldoc))
-  (should (require 'go-mode-load))
-  (with-temp-buffer
-    (go-mode)
+  ;; (should (require 'go-mode))
+  ;; (should (require 'go-eldoc))
+  ;; (should (require 'go-mode-load))
+  ;; (with-temp-buffer
+  ;;   (go-mode)
+  (with-current-buffer (find-file-noselect testsuite-go-filename)
     (should (eql 'go-remove-unused-imports
 		 (key-binding (kbd "C-x M-r"))))
     (should (eql 'go-goto-imports
@@ -295,12 +300,18 @@
 
 (ert-deftest test-scame-go-direx ()
   (should (require 'go-direx))
-  (with-temp-buffer
-    (go-mode)
+  ;; (with-temp-buffer
+  ;;   (go-mode)
+  (with-current-buffer (find-file-noselect testsuite-go-filename)
     (should (eql 'go-direx-pop-to-buffer
 		 (key-binding (kbd "C-x j"))))))
 
-
+(ert-deftest test-scame-go-projectile ()
+  (should (require 'go-projectile))
+  (with-current-buffer (find-file-noselect testsuite-go-filename)
+    (projectile-mode)
+    (should (eql 'go-projectile-get
+		 (key-binding (kbd "C-c p N"))))))
 
 ;; OCaml
 

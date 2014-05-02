@@ -53,6 +53,11 @@
 (depends-on "flycheck-color-mode-line")
 ;;(depends-on "flycheck-google-cpplint")
 
+;; Project
+(depends-on "projectile")
+(depends-on "helm-projectile")
+(depends-on "persp-projectile")
+
 ;; Common Lisp
 ;;(depends-on "slime")
 ;;(depends-on "slime-company")
@@ -69,6 +74,7 @@
 ;;(depends-on "flymake-go")
 ;;(depends-on "gotest")
 (depends-on "go-direx")
+(depends-on "go-projectile")
 
 ;; Python
 (depends-on "python-mode")
@@ -156,11 +162,6 @@
 (depends-on "gitattributes-mode")
 (depends-on "git-rebase-mode")
 (depends-on "gist")
-
-;; Project
-(depends-on "projectile")
-(depends-on "helm-projectile")
-(depends-on "persp-projectile")
 
 ;; Utilities
 (depends-on "pkg-info")
