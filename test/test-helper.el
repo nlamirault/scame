@@ -55,5 +55,13 @@
       (when (f-dir? scame-test/sandbox-path)
         (f-delete scame-test/sandbox-path 'force))))
 
+
+(defmacro with-current-file (filename &rest body)
+  "Open the `FILENAME' in the current buffer and execute `BODY'."
+  `(let ((file (f-join scame-test/test-path ,filename)))
+     (with-current-buffer (find-file-noselect file)
+       ,@body)))
+
+
 (provide 'test-helper)
 ;;; test-helper.el ends here
