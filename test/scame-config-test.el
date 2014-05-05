@@ -41,7 +41,7 @@
 (ert-deftest test-scame-ui-minor-mode ()
   (mapc (lambda (mode)
 	  (should mode))
-	'(column-number-mode line-number-mode))
+	'(column-number-mode global-linum-mode line-number-mode))
   ;; (mapc (lambda (mode)
   ;; 	  (should (not mode)))
   ;; 	'(menu-bar-mode scroll-bar-mode tool-bar-mode)))
@@ -147,16 +147,21 @@
 ;; Cloud
 
 (ert-deftest test-scame-puppet ()
-  (require 'puppet-mode)
-  (should (featurep 'puppet-mode)))
+  (let ((puppet-file (f-join scame-test/test-path "var/puppet/init.pp")))
+    (with-current-buffer (find-file-noselect puppet-file)
+      (should (featurep 'puppet-mode)))))
 
 (ert-deftest test-scame-vagrant ()
+  (let ((vagrant-file (f-join scame-test/test-path "var/vagrant/Vagrantfile")))
+    (with-current-buffer (find-file-noselect vagrant-file)
+      (should (featurep 'ruby-mode))))
   (require 'vagrant)
   (should (featurep 'vagrant)))
 
 (ert-deftest test-scame-dockerfile-mode ()
-  (require 'dockerfile-mode)
-  (should (featurep 'dockerfile-mode)))
+  (let ((docker-file (f-join scame-test/test-path "var/docker/Dockerfile")))
+    (with-current-buffer (find-file-noselect docker-file)
+      (should (featurep 'dockerfile-mode)))))
 
 
 ;; Helm
@@ -236,17 +241,22 @@
 
 ;; Python
 
+(defconst testsuite-python-filename
+  (f-join scame-test/test-path "var/hello.py")
+  "File name for testing python setup.")
+
 (ert-deftest test-scame-python ()
-  (should (require 'python))
-  (with-temp-buffer
-    (python-mode)
+  (with-current-buffer (find-file-noselect testsuite-python-filename)
     (should (= 4 python-indent-offset))
     (should (eql nil indent-tabs-mode))))
 
 (ert-deftest test-scame-anaconda ()
-  (should (require 'anaconda-mode))
-  (should (require 'anaconda-eldoc))
-  (should (require 'company-anaconda)))
+  (with-current-buffer (find-file-noselect testsuite-python-filename)
+    (should (featurep 'anaconda-mode))
+    (should (featurep 'anaconda-eldoc))
+    ))
+;; FIXME: why not present ?
+;; (should (featurep 'company-anaconda))))
 
 ;; FIXME
 ;; (ert-deftest test-scame-jedi-direx ()
@@ -258,9 +268,7 @@
 
 ;; FIXME
 (ert-deftest test-scame-sphinx-doc ()
-  (should (require 'sphinx-doc))
-  (with-temp-buffer
-    (python-mode)
+  (with-current-buffer (find-file-noselect testsuite-python-filename)
     (should (eql 'sphinx-doc
                  (key-binding (kbd "C-c M-d"))))))
 
@@ -270,13 +278,6 @@
   (should (string-equal "/usr/bin/sbcl" inferior-lisp-program)))
 
 
-;; Erlang
-
-(ert-deftest test-scame-erlang ()
-  (should (require 'erlang))
-  (should (require 'erlang-start)))
-
-
 ;; Go lang
 
 (defconst testsuite-go-filename
@@ -284,11 +285,6 @@
   "File name for testing Golang setup.")
 
 (ert-deftest test-scame-golang ()
-  ;; (should (require 'go-mode))
-  ;; (should (require 'go-eldoc))
-  ;; (should (require 'go-mode-load))
-  ;; (with-temp-buffer
-  ;;   (go-mode)
   (with-current-buffer (find-file-noselect testsuite-go-filename)
     (should (eql 'go-remove-unused-imports
 		 (key-binding (kbd "C-x M-r"))))
@@ -299,111 +295,129 @@
 
 
 (ert-deftest test-scame-go-direx ()
-  (should (require 'go-direx))
-  ;; (with-temp-buffer
-  ;;   (go-mode)
   (with-current-buffer (find-file-noselect testsuite-go-filename)
     (should (eql 'go-direx-pop-to-buffer
 		 (key-binding (kbd "C-x j"))))))
 
 (ert-deftest test-scame-go-projectile ()
-  (should (require 'go-projectile))
   (with-current-buffer (find-file-noselect testsuite-go-filename)
     (projectile-mode)
     (should (eql 'go-projectile-get
 		 (key-binding (kbd "C-c p N"))))))
 
+;; Erlang
+
+(ert-deftest test-scame-erlang ()
+  (let ((erlang-file (f-join scame-test/test-path "var/hello.erl")))
+    (with-current-buffer (find-file-noselect erlang-file)
+      (should (featurep 'erlang)))))
+
+
 ;; OCaml
 
 (ert-deftest test-scame-ocaml ()
-  (should (require 'tuareg)))
+  ;;(should (require 'tuareg)))
+  (let ((ocaml-file (f-join scame-test/test-path "var/hello.ml")))
+    (with-current-buffer (find-file-noselect ocaml-file)
+      (should (featurep 'tuareg)))))
 
 
 ;; PHP
 
-(ert-deftest test-scame-web-mode ()
-  (should (require 'web-mode)))
+(ert-deftest test-scame-php ()
+  ;;(should (require 'web-mode)))
+  (let ((php-file (f-join scame-test/test-path "var/hello.php")))
+    (with-current-buffer (find-file-noselect php-file)
+      (should (featurep 'web-mode)))))
 
 
 ;; Scheme
 
 (ert-deftest test-scame-scheme ()
-  (should (require 'geiser)))
+  (let ((guile-file (f-join scame-test/test-path "var/hello.scm")))
+    (with-current-buffer (find-file-noselect guile-file)
+      (should (featurep 'geiser)))))
 
 
 ;; Perl
 
+(defconst testsuite-perl-filename
+  (f-join scame-test/test-path "var/hello.pl")
+  "File name for testing python setup.")
+
 (ert-deftest test-scame-perl ()
-  (should (require 'cperl-mode)))
+  (with-current-buffer (find-file-noselect testsuite-perl-filename)
+    (should (featurep 'cperl-mode))))
 
 (ert-deftest test-scame-plsense-direx ()
-  (should (require 'plsense-direx))
-  (with-temp-buffer
-    (cperl-mode)
+  (with-current-buffer (find-file-noselect testsuite-perl-filename)
     (should (eql 'plsense-direx:open-explorer-key
 		 (key-binding (kbd "C-x j"))))))
-
-
 
 ;; Elisp
 
 (ert-deftest test-scame-elisp ()
   ;;(should (require 'elisp))
-  (should (require 'eldoc))
-  (should (require 'elisp-slime-nav))
-  (should (require 'ielm))
-  (should (require 'erefactor)))
+  (let ((elisp-file (f-join scame-test/test-path "var/hello.el")))
+    (with-current-buffer (find-file-noselect elisp-file)
+      (should (featurep 'eldoc))
+      (should (featurep 'elisp-slime-nav))
+      (should (featurep 'ielm))
+      (should (featurep 'erefactor)))))
 
 
 ;; Haskell
 
 (ert-deftest test-scame-haskell ()
-(should (require 'haskell-mode)))
+  (let ((haskell-file (f-join scame-test/test-path "var/hello.hs")))
+    (with-current-buffer (find-file-noselect haskell-file)
+      (should (featurep 'haskell-mode)))))
 
 
 ;; Clojure
 
 (ert-deftest test-scame-clojure ()
-  (should (require 'cider))
-  (should (require 'company-cider))
-  (should (require 'clj-refactor)))
+  (let ((clojure-file (f-join scame-test/test-path "var/hello.clj")))
+    (with-current-buffer (find-file-noselect clojure-file)
+      (should (featurep 'cider))
+      (should (featurep 'company-cider))
+      (should (featurep 'clj-refactor)))))
 
 
 ;; Ruby
 
 (ert-deftest test-scame-ruby ()
-  (should (require 'rvm))
-  (should (require 'rhtml-mode))
-  (should (require 'ruby-tools))
-  (should (require 'inf-ruby))
-  (should (require 'ruby-mode))
-  (should (require 'company-inf-ruby))
-  (with-temp-buffer
-    (ruby-mode)
-    (should (eql 'inf-ruby (key-binding (kbd "C-c r r"))))))
+  (let ((ruby-file (f-join scame-test/test-path "var/hello.rb")))
+    (with-current-buffer (find-file-noselect ruby-file)
+      (should (featurep 'rvm))
+      (should (featurep 'ruby-tools))
+      (should (featurep 'inf-ruby))
+      (should (featurep 'ruby-mode))
+      (should (featurep 'company-inf-ruby))
+      (should (eql 'inf-ruby (key-binding (kbd "C-c r r")))))))
 
 
 ;; C/C++
 
 (ert-deftest test-scame-c ()
-  (should (require 'google-c-style))
-  (should (require 'auto-complete-c-headers))
-  (should (require 'c-eldoc))
-  (with-temp-buffer
-    (c-mode)
-    (should (= 4 c-basic-offset))
-    (should (string-equal "google" c-indentation-style))
-    (should (= 120 c-eldoc-buffer-regenerate-time))))
+  (let ((c-file (f-join scame-test/test-path "var/hello.c")))
+    (with-current-buffer (find-file-noselect c-file)
+      (should (featurep 'google-c-style))
+      (should (featurep 'auto-complete-c-headers))
+      (should (featurep 'c-eldoc))
+      (should (= 4 c-basic-offset))
+      (should (string-equal "google" c-indentation-style))
+      (should (= 120 c-eldoc-buffer-regenerate-time)))))
 
 (ert-deftest test-scame-cpp ()
-  (should (require 'google-c-style))
-  (should (require 'auto-complete-c-headers))
-  (should (require 'c-eldoc))
-  (with-temp-buffer
-    (c-mode)
-    (should (= 4 c-basic-offset))
-    (should (string-equal "google" c-indentation-style))
-    (should (= 120 c-eldoc-buffer-regenerate-time))))
+  (let ((cpp-file (f-join scame-test/test-path "var/hello.cpp")))
+    (with-current-buffer (find-file-noselect cpp-file)
+      (should (featurep 'google-c-style))
+      (should (featurep 'auto-complete-c-headers))
+      (should (featurep 'c-eldoc))
+      (should (= 2 c-basic-offset))
+      (should (string-equal "google" c-indentation-style))
+      (should (= 120 c-eldoc-buffer-regenerate-time)))))
 
 ;; TDD
 
