@@ -54,6 +54,8 @@
 			(local-set-key (kbd "C-x j")
 				       'go-direx-pop-to-buffer)))))
 
+(use-package go-projectile)
+
 
 (provide '34_go-lang)
 ;;; 34_go-lang.el ends here
