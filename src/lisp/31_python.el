@@ -70,17 +70,17 @@
 ;; 	    (delq 'highlight-indentation-mode elpy-default-minor-modes)))
 
 
-
 ;; Elpy switch to pyvenv: https://github.com/jorgenschaefer/elpy/issues/149
 ;; Set in python project directory a file *.dir-locals.el* :
 ;; ((python-mode . ((pyvenv-workon . "xxxxx")))
 
-;; DEPRECATED. See Cerbere
-;; (use-package tox
-;;   :config (add-hook 'python-mode-hook
-;; 		    (lambda ()
-;; 		      (local-set-key (kbd "C-x t") 'tox-current-test)
-;; 		      (local-set-key (kbd "C-x c") 'tox-current-class))))
+
+;; FIXME: See Cerbere or not ?
+(use-package tox
+  :config (add-hook 'python-mode-hook
+		    (lambda ()
+		      (local-set-key (kbd "C-x y t") 'tox-current-test)
+		      (local-set-key (kbd "C-x y f") 'tox-current-class))))
 
 
 (use-package jedi-direx
@@ -88,7 +88,7 @@
 	    (add-hook 'jedi-mode-hook 'jedi-direx:setup)
 	    (add-hook 'jedi-mode-hook
 		      (lambda ()
-			(local-set-key (kbd "C-x j")
+			(local-set-key (kbd "C-x y x")
 				       'jedi-direx:pop-to-buffer)))))
 
 

@@ -55,13 +55,13 @@
          ("\\.php\\'" . web-mode)))
 
 
-;; DEPRECATED. See Cerbere
-;; (use-package phpunit
-;;   :config (add-hook 'web-mode-hook
-;; 		    (lambda ()
-;; 		      (local-set-key (kbd "C-x t") 'phpunit-current-test)
-;; 		      (local-set-key (kbd "C-x c") 'phpunit-current-class)
-;; 		      (local-set-key (kbd "C-x p") 'phpunit-current-project))))
+;; FIXME: See Cerbere or not ?
+(use-package phpunit
+  :config (add-hook 'web-mode-hook
+ 		    (lambda ()
+ 		      (local-set-key (kbd "C-x p t") 'phpunit-current-test)
+ 		      (local-set-key (kbd "C-x p f") 'phpunit-current-class)
+ 		      (local-set-key (kbd "C-x p p") 'phpunit-current-project))))
 
 
 (provide '36_php)

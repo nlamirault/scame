@@ -258,16 +258,22 @@
     (should (featurep 'anaconda-mode))
     (should (featurep 'anaconda-eldoc))
     ))
+
+(ert-deftest test-scame-tox ()
+  (with-current-file testsuite-python-filename
+    (should (eql 'tox-current-test
+                 (key-binding (kbd "C-x y t"))))
+    (should (eql 'tox-current-class
+                 (key-binding (kbd "C-x y f"))))))
+
 ;; FIXME: why not present ?
 ;; (should (featurep 'company-anaconda))))
 
-;; FIXME
+;; FIXME: jedi ??
 ;; (ert-deftest test-scame-jedi-direx ()
-;;   (should (require 'jedi-direx))
-;;   (with-temp-buffer
-;;     (python-mode)
+;;   (with-current-file testsuite-python-filename
 ;;     (should (eql 'jedi-direx:pop-to-buffer
-;; 		 (key-binding (kbd "C-x j"))))))
+;; 		 (key-binding (kbd "C-x y x"))))))
 
 ;; FIXME
 (ert-deftest test-scame-sphinx-doc ()
@@ -290,17 +296,23 @@
 (ert-deftest test-scame-golang ()
   (with-current-file testsuite-go-filename
     (should (eql 'go-remove-unused-imports
-		 (key-binding (kbd "C-x M-r"))))
+		 (key-binding (kbd "C-x g r"))))
     (should (eql 'go-goto-imports
-		 (key-binding (kbd "C-x i"))))
+		 (key-binding (kbd "C-x g i"))))
     (should (eql 'godef-jump
-		 (key-binding (kbd "M-."))))))
+		 (key-binding (kbd "C-x g j"))))
+    (should (eql 'go-test-current-test
+                 (key-binding (kbd "C-x g t"))))
+    (should (eql 'go-test-current-file
+                 (key-binding (kbd "C-x g f"))))
+    (should (eql 'go-test-current-project
+                 (key-binding (kbd "C-x g p"))))))
 
 
 (ert-deftest test-scame-go-direx ()
   (with-current-file testsuite-go-filename
     (should (eql 'go-direx-pop-to-buffer
-		 (key-binding (kbd "C-x j"))))))
+		 (key-binding (kbd "C-x g x"))))))
 
 (ert-deftest test-scame-go-projectile ()
   (with-current-file testsuite-go-filename
@@ -326,8 +338,13 @@
 
 (ert-deftest test-scame-php ()
   (with-current-file "var/hello.php"
-      (should (featurep 'web-mode))))
-
+      (should (featurep 'web-mode))
+      (should (eql 'phpunit-current-test
+                 (key-binding (kbd "C-x p t"))))
+      (should (eql 'phpunit-current-class
+                   (key-binding (kbd "C-x p f"))))
+      (should (eql 'phpunit-current-project
+                   (key-binding (kbd "C-x p p"))))))
 
 ;; Scheme
 

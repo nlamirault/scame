@@ -17,44 +17,49 @@
 
 ;;; Commentary:
 
-;;; Code:
+;; Go dependencies :
+;; - code.google.com/p/rog-go/exp/cmd/godef
+;; - https://github.com/nsf/gocode
 
+;;; Code:
 
 (use-package go-mode
   :mode (("\\.go$" . go-mode))
-  :init (progn
-	  (use-package go-eldoc
-	    :config (add-hook 'go-mode-hook 'go-eldoc-setup))
-	  (use-package go-mode-load))
   :config (progn
 	    (add-hook 'before-save-hook 'gofmt-before-save)
 	    (add-hook 'go-mode-hook
 		      (lambda ()
-			(local-set-key (kbd "C-x M-r") 'go-remove-unused-imports)
-			(local-set-key (kbd "C-x i") 'go-goto-imports)
-			(local-set-key (kbd "M-.") 'godef-jump)))))
-
-;; DEPRECATED. See Cerbere
-;; (use-package gotest
-;;   (add-hook 'go-mode-hook
-;; 	    (lambda ()
-;; 	      (local-set-key (kbd "C-x t") 'go-test-current-test)
-;; 	      (local-set-key (kbd "C-x c") 'go-test-current-file))))
+			(local-set-key (kbd "C-x g r") 'go-remove-unused-imports)
+			(local-set-key (kbd "C-x g i") 'go-goto-imports)
+			(local-set-key (kbd "C-x g j") 'godef-jump)))))
 
 
-;; Gocode
-;;(require 'go-autocomplete)
-;;(require 'auto-complete-config)
 
+(use-package go-eldoc
+  :config (add-hook 'go-mode-hook 'go-eldoc-setup))
+
+;; FIXMEE. See Cerbere or not ?
+(use-package gotest
+  :config (add-hook 'go-mode-hook
+                    (lambda ()
+                      (local-set-key (kbd "C-x g t") 'go-test-current-test)
+                      (local-set-key (kbd "C-x g f") 'go-test-current-file)
+                      (local-set-key (kbd "C-x g p") 'go-test-current-project))))
 
 (use-package go-direx
   :config (progn
 	    (add-hook 'go-mode-hook
 		      (lambda ()
-			(local-set-key (kbd "C-x j")
+			(local-set-key (kbd "C-x g x")
 				       'go-direx-pop-to-buffer)))))
 
 (use-package go-projectile)
+
+(use-package company-go
+  :config (add-hook 'go-mode-hook
+                    (lambda ()
+                      (set (make-local-variable 'company-backends) '(company-go))
+                      (company-mode))))
 
 
 (provide '34_go-lang)

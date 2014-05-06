@@ -69,10 +69,11 @@
 ;; Go lang
 (depends-on "go-mode")
 (depends-on "go-play")
-(depends-on "go-autocomplete")
+;;(depends-on "go-autocomplete")
+(depends-on "company-go")
 (depends-on "go-eldoc")
 ;;(depends-on "flymake-go")
-;;(depends-on "gotest")
+(depends-on "gotest")
 (depends-on "go-direx")
 (depends-on "go-projectile")
 
@@ -123,7 +124,7 @@
 ;; Php
 (depends-on "php-mode")
 (depends-on "emacsagist")
-;;(depends-on "phpunit")
+(depends-on "phpunit")
 ;;(depends-on "flymake-php")
 
 ;; Perl

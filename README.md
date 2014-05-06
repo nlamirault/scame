@@ -57,7 +57,6 @@ Project managment :
 - [project-explorer](https://github.com/sabof/project-explorer)
 - [nav](https://code.google.com/p/emacs-nav/)
 - [lice.el](https://github.com/buzztaiki/lice-el)
-- [cerbere](https://github.com/nlamirault/cerbere) (*)
 - [perspective](https://github.com/nex3/perspective-el)
 
 Python :
@@ -67,6 +66,7 @@ Python :
 - [virtualenvwrapper](https://github.com/porterjamesj/virtualenvwrapper.el)
 - [anaconda-mode](https://github.com/proofit404/anaconda-mode)
 - [sphinx-doc](https://github.com/naiquevin/sphinx-doc.el)
+- [tox.el](https://github.com/chmouel/tox.el)
 
 Go:
 - [go-mode](http://melpa.milkbox.net/#/go-mode)
@@ -74,6 +74,9 @@ Go:
 - [go-autocomplete](https://github.com/nsf/gocode)
 - [go-eldoc](https://github.com/syohex/emacs-go-eldoc)
 - [go-direx](https://github.com/syohex/emacs-go-direx)
+- [go-test.el](https://github.com/nlamirault/gotest.el)
+- [go-projectile](https://github.com/dougm/go-projectile)
+- [company-go](https://github.com/nsf/gocode/tree/master/emacs-company)
 
 Emacs lisp:
 - [elisp-slime-nav](https://github.com/purcell/elisp-slime-nav)
@@ -90,6 +93,7 @@ Ruby:
 Php:
 - [web-mode](http://www.web-mode.org)
 - [emacsagist](https://github.com/echosa/emacsagist)
+- [phpunit.el](https://github.com/nlamirault/phpunit.el)
 
 Clojure:
 - [cider](http://melpa.milkbox.net/#/cider)
@@ -168,30 +172,29 @@ Keybinding           | Description
 
 Keybinding           | Description
 ---------------------|------------------------------------------------------------
-<kbd>C-c c t</kbd>   | launch current unit test
-<kbd>C-c c f</kbd>   | launch tests in current file
-<kbd>C-c c p</kbd>   | launch tests in all project
-<kbd>C-x j</kbd>     | display source code in tree style viewer
+<kbd>C-x y t</kbd>   | launch current unit test
+<kbd>C-x y f</kbd>   | launch tests in current file
 <kbd>C-c M-d</kbd>   | generate Sphinx documentation for current function
 
 ### Go mode
 
 Keybinding           | Description
 ---------------------|------------------------------------------------------------
-<kbd>C-x C-r</kbd>   | go-remove-unused-imports
-<kbd>C-x i</kbd>     | go-goto-imports
-<kbd>C-c c t</kbd>   | launch current unit test
-<kbd>C-c c f</kbd>   | launch tests in current file
-<kbd>C-c c p</kbd>   | launch tests in all project
-<kbd>C-x j</kbd>     | display source code in tree style viewer
+<kbd>C-x g r</kbd>   | go-remove-unused-imports
+<kbd>C-x g i</kbd>   | go-goto-imports
+<kbd>C-x g j</kbd>   | godef-jump
+<kbd>C-x g t</kbd>   | launch current unit test
+<kbd>C-x g f</kbd>   | launch tests in current file
+<kbd>C-x g p</kbd>   | launch tests in all project
+<kbd>C-x g x</kbd>   | display source code in tree style viewer
 
 ### PHP Mode
 
 Keybinding           | Description
 ---------------------|------------------------------------------------------------
-<kbd>C-c c t</kbd>   | launch current unit test
-<kbd>C-c c f</kbd>   | launch tests in current file
-<kbd>C-c c p</kbd>   | launch tests in all project
+<kbd>C-x p t</kbd>   | launch current unit test
+<kbd>C-x p f</kbd>   | launch tests in current file
+<kbd>C-x p p</kbd>   | launch tests in all project
 
 ### Magit
 
