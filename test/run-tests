@@ -1,16 +1,38 @@
 #!/usr/bin/env emacs --script
 
-(let ((current-directory (file-name-directory load-file-name)))
-  (setq cerbere-test-path (expand-file-name "." current-directory))
-  (setq cerbere-root-path (expand-file-name "../src" current-directory)))
+;; Copyright (C) 2014  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
-(add-to-list 'load-path cerbere-root-path)
-(add-to-list 'load-path cerbere-test-path)
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; Script to run Scame unit tests
+
+;;; Code:
+
+
+(let ((current-directory (file-name-directory load-file-name)))
+  (setq test-path (expand-file-name "." current-directory))
+  (setq root-path (expand-file-name "../src" current-directory)))
+
+(add-to-list 'load-path root-path)
+(add-to-list 'load-path test-path)
 
 (require 'init)
 (require 'cl)
 
-(dolist (test-file (or argv (directory-files cerbere-test-path t "-test.el$")))
+(dolist (test-file (or argv (directory-files test-path t "-test.el$")))
   (load test-file nil t))
 
 ;; run tests

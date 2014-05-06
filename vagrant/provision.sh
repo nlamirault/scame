@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Title           : Vagrant provision
-# Description     : Install Emacs Snapshot
+# Description     : Install Emacs for Scame tests
 # ------------------------------------------------------
 
 CASK_VERSION='0.6.0'

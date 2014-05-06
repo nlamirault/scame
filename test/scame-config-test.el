@@ -21,7 +21,6 @@
 
 
 (require 'test-helper)
-;;(require 'cask)
 (require 'f)
 
 
