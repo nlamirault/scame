@@ -2,33 +2,34 @@
 
 ## Version 0.6.0 (IN PROGRESS)
 
+- [#13][]: Refactor unit test to creates sandbox to test Scame installation and not use local installation
 - Remove [cerbere][]
 - Update Python and Go configuration to use [phpunit.el][] and [go-test.el][]
 
 ## Version 0.5.0 (04/28/2014)
 
 - Migrate from MIT to GPL-3
-- [#16](https://github.com/nlamirault/scame): Add C and C++ configuration
-- [#14](https://github.com/nlamirault/scame): Add sphinx-doc
+- [#16][]: Add C and C++ configuration
+- [#14][]: Add sphinx-doc
 - Add perspective for projectile
-- [#12](https://github.com/nlamirault/scame): FIX Key bindings not enabled by default
+- [#12][]: FIX Key bindings not enabled by default
 - Add perspective.el
 - Migrate to [cerbere][] mode ([gotest.el][], [phpunit.el][], [tox.el][])
-- [#11](https://github.com/nlamirault/scame): Add plsense-direx
-- [#9](https://github.com/nlamirault/scame): Add jedi-direx
-- [#8](https://github.com/nlamirault/scame): Add go-direx
-- [#7](https://github.com/nlamirault/scame): Change Scame initialisation filename
+- [#11][]: Add plsense-direx
+- [#9][]: Add jedi-direx
+- [#8][]: Add go-direx
+- [#7][]: Change Scame initialisation filename
 - Add unit tests for Scame configuration
 
 ## Version 0.4.0 (04/15/2014)
 
-- [#6](https://github.com/nlamirault/scame): Update command argument doens't perform a git pull on scame local installation
-- [#4](https://github.com/nlamirault/scame): Add uniquify configuration
+- [#6][]: Update command argument doens't perform a git pull on scame local installation
+- [#4][]: Add uniquify configuration
 - Add a command top open the Scame user customization file
 - Refactoring Scame installation directory
 - Migrating to a CLI in Emacs Lisp using [commander.el][]
-- [#3](https://github.com/nlamirault/scame): configure helm-projectile and key binding
-- [#2](https://github.com/nlamirault/scame): configure helm-imenu and key binding
+- [#3][]: configure helm-projectile and key binding
+- [#2][]: configure helm-imenu and key binding
 - Allow users to customize Scame default keymap prefix
 - Uniform keybindings
 - Migrate to [use-package][] for packages configuration
@@ -60,3 +61,16 @@
 [divona]: https://github.com/nlamirault/divona
 [Cask]: https://github.com/cask/cask
 [EVM]: https://github.com/rejeep/evm
+
+[#16]: https://github.com/nlamirault/scame/issues/16
+[#14]: https://github.com/nlamirault/scame/issues/14
+[#13]: https://github.com/nlamirault/scame/issues/13
+[#12]: https://github.com/nlamirault/scame/issues/12
+[#11]: https://github.com/nlamirault/scame/issues/11
+[#9]: https://github.com/nlamirault/scame/issues/9
+[#8]: https://github.com/nlamirault/scame/issues/8
+[#7]: https://github.com/nlamirault/scame/issues/7
+[#6]: https://github.com/nlamirault/scame/issues/6
+[#4]: https://github.com/nlamirault/scame/issues/4
+[#3]: https://github.com/nlamirault/scame/issues/3
+[#2]: https://github.com/nlamirault/scame/issues/2
