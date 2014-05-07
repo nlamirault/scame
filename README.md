@@ -297,6 +297,19 @@ Feel free to ask question or make suggestions in our [Issue Tracker][].
 See [here](CONTRIBUTING.md)
 
 
+## Development
+
+The unit tests use your personal Emacs configuration (in `$HOME/.emacs.d`).
+To run the unit tests:
+
+    $ make test
+
+The integration tests make an Emacs sandbox, install all dependencies using [Cask][], and launch tests.
+To run the integration tests:
+
+    $ make integration-test
+
+
 ## License
 
 Scame is free software: you can redistribute it and/or modify it under the

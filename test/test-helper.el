@@ -45,15 +45,15 @@
 ;;   (when (f-dir? sandbox-path)
 ;;     (-each (f--files sandbox-path (f-ext? it "el")) 'load)))
 
-(defmacro with-scame-sandbox (&rest body)
-  `(unwind-protect
-       (progn
-	 (when (f-dir? scame-test/sandbox-path)
-	   (f-delete scame-test/sandbox-path 'force))
-	 (f-mkdir scame-test/sandbox-path)
-	 ,@body)
-      (when (f-dir? scame-test/sandbox-path)
-        (f-delete scame-test/sandbox-path 'force))))
+;; (defmacro with-scame-sandbox (&rest body)
+;;   `(unwind-protect
+;;        (progn
+;; 	 (when (f-dir? scame-test/sandbox-path)
+;; 	   (f-delete scame-test/sandbox-path 'force))
+;; 	 (f-mkdir scame-test/sandbox-path)
+;; 	 ,@body)
+;;       (when (f-dir? scame-test/sandbox-path)
+;;         (f-delete scame-test/sandbox-path 'force))))
 
 
 (defmacro with-current-file (filename &rest body)

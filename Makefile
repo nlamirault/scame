@@ -28,6 +28,13 @@ test : build
 	$(EMACSFLAGS) \
 	-l test/run-tests
 
+.PHONY: integration-test
+integration-test : build
+	$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
+	$(EMACSFLAGS) \
+	-l test/run-global-tests
+
+
 .PHONY: virtual-test
 virtual-test :
 	$(VAGRANT) up
