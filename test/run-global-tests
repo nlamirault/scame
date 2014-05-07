@@ -1,0 +1,84 @@
+#!/usr/bin/env emacs --script
+
+;; Copyright (C) 2014  Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; Script to run Scame integrations tests:
+;; - Perform a fresh installation using cask
+;; - Launch unit tests
+
+;;; Code:
+
+
+;;(let ((current-directory (file-name-directory load-file-name)))
+;;   (setq test-path (expand-file-name "." current-directory))
+;;   (setq root-path (expand-file-name "../src" current-directory))
+;;   (setq sandbox-path (expand-file-name "sandbox" current-directory)))
+
+;;(require 'f)
+;;(require 'cask)
+
+(let ((current-directory (file-name-directory load-file-name)))
+  (add-to-list 'load-path current-directory)
+  (require 'test-helper))
+
+(defvar username (getenv "HOME"))
+
+(defun cleanup-load-path ()
+  (mapc #'(lambda (path)
+            (when (string-match username path)
+              (setq load-path (delete path load-path))))
+        load-path))
+
+(defun load-unit-tests (path)
+  (dolist (test-file (or argv (directory-files path t "-test.el$")))
+    (load test-file nil t)))
+
+(defun setup-scame (path)
+  (mapc #'(lambda (elem)
+            (f-copy (f-join scame-test/root-path elem)
+                    scame-test/sandbox-path))
+        '("src/Cask" "src/init.el" "src/scame.el" "src/lisp"))
+  (let ((bundle (cask-initialize scame-test/sandbox-path)))
+    (cask-update bundle)
+    (cask-install bundle)
+    (add-to-list 'load-path scame-test/sandbox-path)
+    (add-to-list 'load-path (f-join scame-test/sandbox-path
+                                    ".cask"))
+    (dolist (dir (f-directories (f-join scame-test/sandbox-path
+                                        ".cask"
+                                        emacs-version
+                                        "elpa")))
+      (add-to-list 'load-path dir))
+    (print (cask-load-path bundle))))
+
+(defmacro with-emacs-sandbox (&rest body)
+  `(unwind-protect
+       (progn
+         (when (f-dir? scame-test/sandbox-path)
+           (f-delete scame-test/sandbox-path 'force))
+         (f-mkdir scame-test/sandbox-path)
+         (cleanup-load-path)
+         (setup-scame scame-test/sandbox-path)
+         (require 'scame)
+         ,@body)))
+
+;; run tests
+(with-emacs-sandbox
+ ;;(print load-path)
+ (load-unit-tests scame-test/test-path)
+ (ert-run-tests-batch-and-exit t))
