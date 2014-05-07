@@ -59,8 +59,8 @@
 (depends-on "persp-projectile")
 
 ;; Common Lisp
-;;(depends-on "slime")
-;;(depends-on "slime-company")
+(depends-on "slime")
+(depends-on "slime-company")
 
 ;; Emacs Lisp
 (depends-on "elisp-slime-nav")
@@ -211,6 +211,7 @@
 (depends-on "diminish")
 (depends-on "powerline")
 (depends-on "popwin")
+;;(depends-on "golden-ratio")
 
 ;; Dired and friends
 (depends-on "direx")
