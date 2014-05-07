@@ -27,7 +27,7 @@
 (require 'git)
 (require 's)
 
-(defconst scame-version "0.4.0")
+(defconst scame-version "0.6.0")
 
 (defconst scame-copyright
   (s-concat "Scame v"
@@ -130,13 +130,18 @@
  (default commander-print-usage-and-exit)
  ;;(default "install")
 
- (command "cleanup" "Cleanup" scame-cli/cleanup)
- (command "install" "Install" scame-cli/install)
- (command "update" "Update" scame-cli/update)
-
+ (command "cleanup"
+          "Cleanup the $HOME/.emacs.d directory from Scame installation "
+          scame-cli/cleanup)
+ (command "install"
+          "Install Scame into $HOME/.emacs.d directory"
+          scame-cli/install)
+ (command "update"
+          "Update local Scame installation"
+          scame-cli/update)
  (option "--version" "Show version" scame-cli/version)
  (option "-h [command], --help [command]" "Help" scame-cli/help)
- (option "--debug" "Debug mode" scame-cli/debug))
+ (option "--debug" "Active debug mode" scame-cli/debug))
 
 
 (provide 'scame-cli)
