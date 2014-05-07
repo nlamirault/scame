@@ -47,6 +47,10 @@
   )
 
 
+(ert-deftest test-scame-golden-radio ()
+  (should (golden-radio-mode)))
+
+
 ;; Check encodings
 
 (ert-deftest test-scame-encodings ()

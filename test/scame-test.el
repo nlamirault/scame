@@ -21,7 +21,6 @@
 
 
 (require 'test-helper)
-(require 'f)
 
 
 (ert-deftest test-scame-version ()

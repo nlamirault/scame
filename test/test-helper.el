@@ -33,27 +33,9 @@
 
 (defconst scame-cli-cask-file (f-join scame-test/root-path "Cask"))
 (defconst scame-install-cask-file (f-join scame-test/root-path "src/Cask"))
-;;(defconst scame-cask-cli-file (f-join scame-test/root-path "scame-cli.el"))
+(defconst scame-cask-cli-file (f-join scame-test/root-path "scame-cli.el"))
 
 (add-to-list 'load-path scame-test/root-path)
-
-
-;;;; Sandbox
-
-;; TODO: load Scame in a sandbox and not using local installation
-;; (let ((sandbox-path (f-expand "sandbox" user-emacs-directory)))
-;;   (when (f-dir? sandbox-path)
-;;     (-each (f--files sandbox-path (f-ext? it "el")) 'load)))
-
-;; (defmacro with-scame-sandbox (&rest body)
-;;   `(unwind-protect
-;;        (progn
-;; 	 (when (f-dir? scame-test/sandbox-path)
-;; 	   (f-delete scame-test/sandbox-path 'force))
-;; 	 (f-mkdir scame-test/sandbox-path)
-;; 	 ,@body)
-;;       (when (f-dir? scame-test/sandbox-path)
-;;         (f-delete scame-test/sandbox-path 'force))))
 
 
 (defmacro with-current-file (filename &rest body)
