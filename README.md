@@ -183,6 +183,7 @@ Keybinding           | Description
 <kbd>C-x g r</kbd>   | go-remove-unused-imports
 <kbd>C-x g i</kbd>   | go-goto-imports
 <kbd>C-x g j</kbd>   | godef-jump
+<kbd>C-x g d</kbd>   | show the go documentation for a given package
 <kbd>C-x g t</kbd>   | launch current unit test
 <kbd>C-x g f</kbd>   | launch tests in current file
 <kbd>C-x g p</kbd>   | launch tests in all project
