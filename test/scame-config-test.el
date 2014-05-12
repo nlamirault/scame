@@ -46,9 +46,9 @@
   ;; 	'(menu-bar-mode scroll-bar-mode tool-bar-mode)))
   )
 
-
-(ert-deftest test-scame-golden-radio ()
-  (should (golden-radio-mode)))
+;; Disable
+;; (ert-deftest test-scame-golden-radio ()
+;;   (should (golden-radio-mode)))
 
 
 ;; Check encodings
@@ -304,6 +304,8 @@
 		 (key-binding (kbd "C-x g i"))))
     (should (eql 'godef-jump
 		 (key-binding (kbd "C-x g j"))))
+    (should (eql 'godoc
+                 (key-binding (kbd "C-x g d"))))
     (should (eql 'go-test-current-test
                  (key-binding (kbd "C-x g t"))))
     (should (eql 'go-test-current-file
