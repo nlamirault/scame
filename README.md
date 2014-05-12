@@ -242,7 +242,7 @@ If you ever forget any of Scame's keybindings just do a:
 
 You can change the default keymap prefix C-c p like this:
 
-```lisp
+```el
 (setq scame-keymap-prefix (kbd "C-c C-s"))
 ```
 
@@ -251,7 +251,7 @@ You can change the default keymap prefix C-c p like this:
 If file `$HOME/.config/scame/scame-user.el` exists, [Scame][] load it.
 Example of customization :
 
-```lisp
+```el
 (setq user-full-name "Nicolas Lamirault")
 (setq user-mail-address "nicolas.lamirault@gmail.com")
 (load-theme 'monokai t)
@@ -262,13 +262,13 @@ Example of customization :
 You could keep track of where time is being spent during Emacs startup in
 order to optimize startup times with [benchmark-init](https://github.com/dholm/benchmark-init-el).
 
-```lisp
+```el
 M-x benchmark-init/show-durations-tree
 ```
 
 And results :
 
-```lisp
+```el
 Benchmark results
 
 ╼►[benchmark-init/root nil 0ms]
