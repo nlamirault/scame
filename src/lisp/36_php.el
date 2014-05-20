@@ -53,7 +53,12 @@
          ("\\.mustache\\'" . web-mode)
          ("\\.jinja\\'" . web-mode)
          ("\\.php\\'" . web-mode)))
+         ;;))
 
+;; (use-package php-mode
+;;   :config (progn
+;;             (setq c-basic-offset 4)
+;;             (subword-mode 1)))
 
 ;; FIXME: See Cerbere or not ?
 (use-package phpunit

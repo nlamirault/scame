@@ -431,6 +431,20 @@
       (should (string-equal "google" c-indentation-style))
       (should (= 120 c-eldoc-buffer-regenerate-time))))
 
+
+;; Markup text
+
+(ert-deftest test-markdown-mode ()
+  (with-current-file "var/readme.md"
+                     (should (featurep 'markdown-mode)))
+  (with-current-file "var/readme.markdown"
+                     (should (featurep 'markdown-mode))))
+
+(ert-deftest test-fountain-mode ()
+  (with-current-file "var/scame.fountain"
+                     (should (featurep 'fountain-mode))))
+
+
 ;; TDD
 
 ;; FIXME

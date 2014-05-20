@@ -141,6 +141,7 @@
 ;; Markup languages
 (depends-on "markdown-mode")
 (depends-on "yaml-mode")
+(depends-on "fountain-mode")
 
 ;; Other development mode
 

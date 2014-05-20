@@ -1,6 +1,6 @@
-;;; Scame Cask file
+;;; 60_markup.el --- Markup language
 
-;; Copyright (C) 2014  Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -15,20 +15,15 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-(source "melpa" "http://melpa.milkbox.net/packages/")
-(source "gnu" "http://elpa.gnu.org/packages/")
-(source "marmalade" "http://marmalade-repo.org/packages/")
+;;; Commentary:
 
-;; Development
-(development
- (depends-on "cask")
- (depends-on "s")
- (depends-on "request")
- (depends-on "pkg-info")
- (depends-on "f")
- (depends-on "commander")
- (depends-on "git")
- (depends-on "epc")
- (depends-on "el-mock")
- (depends-on "ert")
- (depends-on "ert-runner"))
+;;; Code:
+
+(use-package markdown-mode
+  :mode ("\\.\\(m\\(ark\\)?down\\|md\\)$" . markdown-mode))
+
+(use-package fountain-mode
+  :mode ("\\.fountain$" . fountain-mode))
+
+(provide '60_markup)
+;;; 60_markup.el ends here
