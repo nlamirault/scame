@@ -22,3 +22,7 @@ ADD ./src/init.el /.emacs.d/init.el
 ADD ./src/scame.el /.emacs.d/scame.el
 ADD ./src/lisp /.emacs.d/lisp
 RUN cd /.emacs.d && /.cask/bin/cask install
+ADD ./emacs.sh /emacs.sh
+
+# Emacs
+CMD ["/usr/bin/emacs"]

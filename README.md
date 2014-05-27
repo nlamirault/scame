@@ -13,7 +13,9 @@ These tools are used to perform the [Scame][] installation :
 - [EVM][]
 
 
-## Installation from source
+## Installation
+
+### From source
 
 * Clone the repository :
 
@@ -43,7 +45,7 @@ These tools are used to perform the [Scame][] installation :
 		$ ./scame --cmd=update
 
 
-## Installation using Docker
+### Using Docker
 
 * Search from registry the Scame image :
 
