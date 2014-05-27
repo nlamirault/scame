@@ -8,8 +8,16 @@ CONTAINER = scame
 ELS = $(wildcard *.el)
 OBJECTS = $(ELS:.el=.elc)
 
-# VIRTUAL_EMACS = ${CASK} exec ${EMACS} -Q $(EMACSFLAGS) \
-# 	--eval "(require 'python)"
+
+help:
+	@echo " ==== Scame ===="
+	@echo "   - test               : launch unit tests"
+	@echo "   - integration-test   : launch integration tests"
+	@echo "   - clean              : clean Scame installation"
+	@echo "   - reset              : remote Scame dependencies for development"
+	@echo "   - docker-build       : build the Docker image"
+	@echo "   - docker-clean       : remove the Docker image"
+	@echo "   - docker-run         : launch Emacs using Scame docker image"
 
 elpa:
 	$(CASK) install
