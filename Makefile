@@ -3,6 +3,8 @@ EMACSFLAGS = --debug-init -L .
 CASK = cask
 VAGRANT = vagrant
 
+CONTAINER = scame
+
 ELS = $(wildcard *.el)
 OBJECTS = $(ELS:.el=.elc)
 
@@ -56,3 +58,12 @@ reset : clean
 
 # %.elc : %.el
 # 	${VIRTUAL_EMACS} --batch -f batch-byte-compile $<
+
+docker-build:
+	sudo docker build -t $(CONTAINER) .
+
+docker-clean:
+	sudo docker rm $(CONTAINER)
+
+docker-run:
+	sudo docker run $(CONTAINER)

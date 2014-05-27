@@ -2,6 +2,11 @@
 
 ## Version 0.6.0 (IN PROGRESS)
 
+- Add Dockerfile to publish a Scame image on the [Docker registry][]
+- Update Common lisp and go setup
+- `FIX` Enable global-linum-mode
+- `FIX` UTF-8 encodings
+- [#18][]: Add go-projectile
 - [#13][]: Refactor unit test to creates sandbox to test Scame installation and not use local installation
 - Remove [cerbere][]
 - Update Python and Go configuration to use [phpunit.el][] and [go-test.el][]
@@ -62,6 +67,7 @@
 [Cask]: https://github.com/cask/cask
 [EVM]: https://github.com/rejeep/evm
 
+[#18]: https://github.com/nlamirault/scame/issues/18
 [#16]: https://github.com/nlamirault/scame/issues/16
 [#14]: https://github.com/nlamirault/scame/issues/14
 [#13]: https://github.com/nlamirault/scame/issues/13
