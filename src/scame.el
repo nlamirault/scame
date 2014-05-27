@@ -22,7 +22,7 @@
 ;;; Code:
 
 ;; Debug or not
-;;(setq debug-on-error t)
+(setq debug-on-error t)
 
 
 (require 'package)
@@ -33,10 +33,6 @@
 ;; Don't initialize packages twice
 (setq package-enable-at-startup nil)
 
-;; Benchmark Emacs installation
-;;(require 'benchmark-init)
-
-
 (when (version< emacs-version "24.3")
   (error "Scame requires at least GNU Emacs 24.3"))
 
@@ -45,6 +41,8 @@
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
 ;;(require 'pallet)
 
+;; Benchmark Emacs installation
+(require 'benchmark-init)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
