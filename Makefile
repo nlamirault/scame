@@ -74,4 +74,6 @@ docker-clean:
 	sudo docker rm $(CONTAINER)
 
 docker-run:
-	sudo docker run $(CONTAINER)
+	#sudo docker run $(CONTAINER)
+	sudo docker run -v /tmp/.X11-unix:/tmp/.X11-unix \
+		-e DISPLAY=unix$(DISPLAY) $(CONTAINER)

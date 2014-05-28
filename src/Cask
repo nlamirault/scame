@@ -78,7 +78,7 @@
 (depends-on "go-projectile")
 
 ;; Python
-(depends-on "python-mode")
+;;(depends-on "python-mode")
 (depends-on "jedi")
 (depends-on "elpy")
 (depends-on "tox")
