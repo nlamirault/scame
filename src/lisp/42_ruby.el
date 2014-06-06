@@ -19,22 +19,6 @@
 
 ;;; Code:
 
-
-(use-package rvm
-	     :init (rvm-use-default)
-	     :config (setq rvm-verbose nil))
-
-(use-package rhtml-mode
-	     :mode (("\\.rhtml$" . rhtml-mode)
-		    ("\\.html\\.erb$" . rhtml-mode)))
-
-(use-package ruby-tools)
-
-(use-package inf-ruby
-  :init (add-hook 'after-init-hook 'inf-ruby-switch-setup)
-  :bind (("C-c r r" . inf-ruby)
-	 ("C-c r a" . rvm-activate-corresponding-ruby)))
-
 (use-package ruby-mode
   :config (progn
 	    (add-hook 'ruby-mode-hook 'rvm-activate-corresponding-ruby)
@@ -49,6 +33,21 @@
          ("Gemfile$" . ruby-mode)
          ("Capfile$" . ruby-mode)
          ("Guardfile$" . ruby-mode)))
+
+(use-package ruby-tools)
+
+(use-package rvm
+	     :init (rvm-use-default)
+	     :config (setq rvm-verbose nil))
+
+(use-package rhtml-mode
+	     :mode (("\\.rhtml$" . rhtml-mode)
+		    ("\\.html\\.erb$" . rhtml-mode)))
+
+(use-package inf-ruby
+  :init (add-hook 'after-init-hook 'inf-ruby-switch-setup)
+  :bind (("C-c r r" . inf-ruby)
+	 ("C-c r a" . rvm-activate-corresponding-ruby)))
 
 
 

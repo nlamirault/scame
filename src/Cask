@@ -78,7 +78,7 @@
 (depends-on "go-projectile")
 
 ;; Python
-(depends-on "python-mode")
+;;(depends-on "python-mode")
 (depends-on "jedi")
 (depends-on "elpy")
 (depends-on "tox")
@@ -91,12 +91,13 @@
 
 ;; Ruby
 
+(depends-on "ruby-mode")
 (depends-on "rvm")
 (depends-on "rhtml-mode")
 (depends-on "ruby-tools")
 (depends-on "inf-ruby")
-(depends-on "ruby-mode")
 (depends-on "company-inf-ruby")
+(depends-on "ruby-test-mode")
 
 ;; Erlang
 (depends-on "erlang")

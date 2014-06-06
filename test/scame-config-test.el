@@ -408,7 +408,16 @@
       (should (featurep 'inf-ruby))
       (should (featurep 'ruby-mode))
       (should (featurep 'company-inf-ruby))
-      (should (eql 'inf-ruby (key-binding (kbd "C-c r r"))))))
+      (should (eql 'inf-ruby (key-binding (kbd "C-c r r"))))
+      (should (eql 'ruby-tools-to-single-quote-string
+                   (key-binding (kbd "C-'"))))
+      (should (eql 'ruby-tools-to-double-quote-string
+                   (key-binding (kbd "C-\""))))
+      (should (eql 'ruby-tools-to-symbol
+                   (key-binding (kbd "C-:"))))
+      (should (eql 'ruby-tools-clear-string
+                   (key-binding (kbd "C-;"))))))
+
 
 
 ;; C/C++

@@ -214,6 +214,15 @@ Keybinding           | Description
 <kbd>C-x p f</kbd>   | launch tests in current file
 <kbd>C-x p p</kbd>   | launch tests in all project
 
+### Ruby
+
+Keybinding           | Description
+---------------------|------------------------------------------------------------
+<kbd>C-'</kbd>       | Convert symbol to simple quote string
+<kbd>C-"</kbd>       | Convert symbol to double quote string
+<kbd>C-:</kbd>       | Convert string to symbol
+<kbd>C-;</kbd>       | Clear string content
+
 ### Magit
 
 Keybinding           | Description
