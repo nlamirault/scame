@@ -1,7 +1,8 @@
 # Scame ChangeLog
 
-## Version 0.6.0 (IN PROGRESS)
+## Version 0.6.0 (06/17/2014)
 
+- Add toml-mode mode
 - Add Dockerfile to publish a Scame image on the [Docker registry][]
 - Update Common lisp and go setup
 - `FIX` Enable global-linum-mode
