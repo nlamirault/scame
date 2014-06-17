@@ -454,6 +454,10 @@
                      (should (featurep 'fountain-mode))))
 
 
+(ert-deftest test-toml-mode ()
+  (with-current-file "var/scame.toml"
+                     (should (featurep 'toml-mode))))
+
 ;; TDD
 
 ;; FIXME

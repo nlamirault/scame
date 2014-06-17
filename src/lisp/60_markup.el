@@ -25,5 +25,8 @@
 (use-package fountain-mode
   :mode ("\\.fountain$" . fountain-mode))
 
+(use-package toml-mode
+  :mode ("\\.toml$" . toml-mode))
+
 (provide '60_markup)
 ;;; 60_markup.el ends here
