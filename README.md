@@ -57,7 +57,7 @@ These tools are used to perform the [Scame][] installation :
 
 * Launch Scame image :
 
-        $ docker run scame
+        $ docker run -i -t scame
 
 
 ## Packages
