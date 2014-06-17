@@ -192,7 +192,7 @@ Keybinding           | Description
 <kbd>C-x y t</kbd>   | launch current unit test
 <kbd>C-x y f</kbd>   | launch tests in current file
 <kbd>C-c M-d</kbd>   | generate Sphinx documentation for current function
-<kbd>C-c ! c</kbd>   | check syntax in the current buffer
+<kbd>C-c ! C-c</kbd> | check syntax in the current buffer
 
 ### Go mode
 
