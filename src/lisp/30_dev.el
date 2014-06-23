@@ -69,5 +69,8 @@
 (add-hook 'compilation-filter-hook 'scame-colorize-compilation-buffer)
 
 
+(use-package know-your-http-well)
+
+
 (provide '30_dev)
 ;;; 30_dev.el ends here

@@ -209,6 +209,9 @@
 ;; Security
 (depends-on "password-store")
 
+;; Specs
+(depends-on "know-your-http-well")
+
 ;; UI
 (depends-on "smart-mode-line")
 (depends-on "diminish")
