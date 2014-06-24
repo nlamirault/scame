@@ -139,6 +139,9 @@
 (depends-on "c-eldoc")
 (depends-on "auto-complete-c-headers")
 
+;; Rust
+(depends-on "rust-mode")
+
 ;; Markup languages
 (depends-on "markdown-mode")
 (depends-on "yaml-mode")
