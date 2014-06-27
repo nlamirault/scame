@@ -144,8 +144,6 @@
 ;; Cloud
 
 (ert-deftest test-scame-puppet ()
-  ;; (let ((puppet-file (f-join scame-test/test-path "var/puppet/init.pp")))
-  ;;   (with-current-buffer (find-file-noselect puppet-file)
   (with-current-file "var/puppet/init.pp"
       (should (featurep 'puppet-mode))))
 

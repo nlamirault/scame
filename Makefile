@@ -32,11 +32,17 @@ build : elpa $(OBJECTS)
 # test : build
 # 	${VIRTUAL_EMACS} --batch -l test/run-tests
 
-.PHONY: test
+.PHONY: local-test
 test : build
 	$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
 	$(EMACSFLAGS) \
 	-l test/run-tests
+
+.PHONY: test
+local-test: build
+	$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
+	$(EMACSFLAGS) \
+	-l test/run-local-tests
 
 .PHONY: integration-test
 integration-test : build
