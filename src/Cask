@@ -210,7 +210,8 @@
 (depends-on "web-server")
 
 ;; Security
-(depends-on "password-store")
+;; FIXME: website unavailable
+;;(depends-on "password-store")
 
 ;; Specs
 (depends-on "know-your-http-well")
