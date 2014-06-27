@@ -120,7 +120,7 @@
 (depends-on "merlin")
 
 ;; Web
-(depends-on "web-mode")
+;;(depends-on "web-mode")
 
 ;; Php
 (depends-on "php-mode")
