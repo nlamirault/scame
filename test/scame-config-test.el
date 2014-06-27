@@ -72,12 +72,6 @@
   (should (featurep 'ido)))
 
 
-;; Emacs server
-
-(ert-deftest test-scame-emacs-server ()
-  (should (server-running-p)))
-
-
 ;; Buffers
 
 (ert-deftest test-scame-uniquify ()
@@ -314,16 +308,16 @@
                  (key-binding (kbd "C-x g p"))))))
 
 
-(ert-deftest test-scame-go-direx ()
-  (with-current-file testsuite-go-filename
-    (should (eql 'go-direx-pop-to-buffer
-		 (key-binding (kbd "C-x g x"))))))
+;; (ert-deftest test-scame-go-direx ()
+;;   (with-current-file testsuite-go-filename
+;;     (should (eql 'go-direx-pop-to-buffer
+;; 		 (key-binding (kbd "C-x g x"))))))
 
-(ert-deftest test-scame-go-projectile ()
-  (with-current-file testsuite-go-filename
-    (projectile-mode)
-    (should (eql 'go-projectile-get
-		 (key-binding (kbd "C-c p N"))))))
+;; (ert-deftest test-scame-go-projectile ()
+;;   (with-current-file testsuite-go-filename
+;;     (projectile-mode)
+;;     (should (eql 'go-projectile-get
+;; 		 (key-binding (kbd "C-c p N"))))))
 
 ;; Erlang
 
