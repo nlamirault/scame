@@ -120,7 +120,7 @@
 (depends-on "merlin")
 
 ;; Web
-;;(depends-on "web-mode")
+(depends-on "web-mode")
 
 ;; Php
 (depends-on "php-mode")
@@ -207,7 +207,7 @@
 (depends-on "orgbox")
 
 (depends-on "htmlize")
-(depends-on "web-server")
+;;(depends-on "web-server")
 
 ;; Security
 ;; FIXME: website unavailable
@@ -253,4 +253,5 @@
  (depends-on "pkg-info")
  (depends-on "commander")
  (depends-on "ert")
+ (depends-on "el-mock")
  (depends-on "ert-runner"))

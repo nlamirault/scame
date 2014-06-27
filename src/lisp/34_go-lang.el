@@ -23,14 +23,14 @@
 
 ;;; Code:
 
-(load "$GOPATH/src/code.google.com/p/go.tools/cmd/oracle/oracle.el")
+;;(load "$GOPATH/src/code.google.com/p/go.tools/cmd/oracle/oracle.el")
 
 (use-package go-mode
   :mode (("\\.go$" . go-mode))
   :config (progn
             (subword-mode +1)
 	    (add-hook 'before-save-hook 'gofmt-before-save)
-            (add-hook 'go-mode-hook 'go-oracle-mode)
+            ;;(add-hook 'go-mode-hook 'go-oracle-mode)
 	    (add-hook 'go-mode-hook
 		      (lambda ()
 			(local-set-key (kbd "C-x g r") 'go-remove-unused-imports)
