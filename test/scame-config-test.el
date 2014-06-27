@@ -41,9 +41,9 @@
   (mapc (lambda (mode)
 	  (should mode))
 	'(column-number-mode global-linum-mode line-number-mode))
-  ;; (mapc (lambda (mode)
-  ;; 	  (should (not mode)))
-  ;; 	'(menu-bar-mode scroll-bar-mode tool-bar-mode)))
+   ;; (mapc (lambda (mode)
+   ;; 	  (should-not mode))
+   ;;       '(menu-bar-mode scroll-bar-mode tool-bar-mode)))
   )
 
 ;; Disable
@@ -440,6 +440,11 @@
       (should (string-equal "google" c-indentation-style))
       (should (= 120 c-eldoc-buffer-regenerate-time))))
 
+;; Rust
+
+(ert-deftest test-scame-rust ()
+  (with-current-file "var/hello.rs"
+      (should (featurep 'rust-mode))))
 
 ;; Markup text
 

@@ -24,4 +24,4 @@ ADD ./src/lisp /.emacs.d/lisp
 RUN cd /.emacs.d && /.cask/bin/cask install
 
 # Emacs
-CMD ["/usr/bin/emacs"]
+CMD ["/usr/bin/emacs-snapshot"]

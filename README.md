@@ -53,11 +53,11 @@ These tools are used to perform the [Scame][] installation :
 
 * Download the Scame image :
 
-        $ docker pull scame
+        $ docker pull nlamirault/scame
 
 * Launch Scame image :
 
-        $ docker run -i -t scame
+        $ docker run -i -t nlamirault/scame
 
 
 ## Packages
