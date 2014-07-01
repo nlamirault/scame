@@ -65,6 +65,9 @@
                 (f-copy (f-join scame-test/root-path "src" elem)
                         scame-test/sandbox-path))))
         '("Cask" "scame.el" "lisp"))
+  (let ((output (f-join scame-test/sandbox-path "init.el")))
+    (when (f-exists? output)
+      (f-delete output 'force)))
   (f-copy (f-join scame-test/test-path "init.el")
           scame-test/sandbox-path))
 
