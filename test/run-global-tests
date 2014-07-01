@@ -36,35 +36,9 @@
   (add-to-list 'load-path current-directory)
   (require 'test-helper))
 
-;; (defvar username (getenv "HOME"))
-
-;; (defun cleanup-load-path ()
-;;   (mapc #'(lambda (path)
-;;             (when (string-match username path)
-;;               (setq load-path (delete path load-path))))
-;;         load-path))
-
 (defun load-unit-tests (path)
   (dolist (test-file (or argv (directory-files path t "-test.el$")))
     (load test-file nil t)))
-
-;; (defun setup-scame (path)
-;;   (mapc #'(lambda (elem)
-;;             (f-copy (f-join scame-test/root-path elem)
-;;                     scame-test/sandbox-path))
-;;         '("src/Cask" "src/init.el" "src/scame.el" "src/lisp"))
-;;   (let ((bundle (cask-initialize scame-test/sandbox-path)))
-;;     (cask-update bundle)
-;;     (cask-install bundle)
-;;     (add-to-list 'load-path scame-test/sandbox-path)
-;;     (add-to-list 'load-path (f-join scame-test/sandbox-path
-;;                                     ".cask"))
-;;     (dolist (dir (f-directories (f-join scame-test/sandbox-path
-;;                                         ".cask"
-;;                                         emacs-version
-;;                                         "elpa")))
-;;       (add-to-list 'load-path dir))
-;;     (print (cask-load-path bundle))))
 
 (defmacro with-scame-new-sandbox (&rest body)
   `(unwind-protect
@@ -75,8 +49,9 @@
          (cleanup-load-path)
          (install-scame)
          (setup-scame scame-test/sandbox-path)
-         (require 'scame)
-         ,@body)))
+         (let ((load-path scame-test/sandbox-path))
+           (require 'scame)
+           ,@body))))
 
 ;; run tests
 (with-scame-new-sandbox

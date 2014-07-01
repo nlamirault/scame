@@ -49,10 +49,9 @@
 
 (defun cleanup-load-path ()
   (mapc #'(lambda (path)
-            (when (string-match username path)
+            (when (string-match (s-concat username "/.emacs.d") path)
               (setq load-path (delete path load-path))))
         load-path))
-
 
 (defun load-unit-tests (path)
   (dolist (test-file (or argv (directory-files path t "-test.el$")))
@@ -65,25 +64,22 @@
               (unless (f-exists? output)
                 (f-copy (f-join scame-test/root-path "src" elem)
                         scame-test/sandbox-path))))
-        '("Cask" "init.el" "scame.el" "lisp")))
+        '("Cask" "scame.el" "lisp"))
+  (f-copy (f-join scame-test/test-path "init.el")
+          scame-test/sandbox-path))
 
 (defun setup-scame (path)
-  ;; (mapc #'(lambda (elem)
-  ;;           (f-copy (f-join scame-test/root-path elem)
-  ;;                   scame-test/sandbox-path))
-  ;;       '("src/Cask" "src/init.el" "src/scame.el" "src/lisp"))
   (let ((bundle (cask-initialize scame-test/sandbox-path)))
     (cask-update bundle)
     (cask-install bundle)
-    (add-to-list 'load-path scame-test/sandbox-path)
-    (add-to-list 'load-path (f-join scame-test/sandbox-path
-                                    ".cask"))
-    (dolist (dir (f-directories (f-join scame-test/sandbox-path
-                                        ".cask"
-                                        emacs-version
-                                        "elpa")))
-      (add-to-list 'load-path dir))
-    (print (cask-load-path bundle))))
+    ;; (dolist (dir (f-directories
+    ;;               (f-join path ".cask" emacs-version "elpa")))
+    ;;   (add-to-list 'load-path dir))
+    (add-to-list 'load-path (f-join path ".cask"))
+    (add-to-list 'load-path (f-slash path))
+    ;;(print (cask-load-path bundle))))
+    (print load-path)
+    ))
 
 
 (provide 'test-helper)

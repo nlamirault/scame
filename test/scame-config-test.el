@@ -170,6 +170,10 @@
 	       (key-binding (kbd "C-c M-f"))))
   (should (eql 'helm-for-files
 	       (key-binding (kbd "C-c f"))))
+  (should (eql 'helm-M-x
+               (key-binding (kbd "C-c M-x"))))
+  (should (eql 'helm-show-kill-ring
+               (key-binding (kbd "M-y"))))
   (should (eql 'helm-buffers-list
 	       (key-binding (kbd "C-c b")))))
 
@@ -208,6 +212,22 @@
   (should (eql 'magit-push (key-binding (kbd "C-c g p"))))
   (should (eql 'magit-log (key-binding (kbd "C-c g l"))))
   (should (eql 'magit-branch-manager (key-binding (kbd "C-c g b")))))
+
+
+;; perspective
+
+;; FIX: Issue 25
+;; (ert-deftest test-perspective ()
+;;   (with-current-file "var/hello.php"
+;;     (should (require 'perspective))
+;;     (should (eql 'persp-switch (key-binding (kbd "C-x x s"))))
+;;     (should (eql 'persp-remove-buffer (key-binding (kbd "C-x x k"))))
+;;     (should (eql 'persp-kill (key-binding (kbd "C-x x c"))))
+;;     (should (eql 'persp-rename (key-binding (kbd "C-x x r"))))
+;;     (should (eql 'persp-add-buffer (key-binding (kbd "C-x x a"))))
+;;     (should (eql 'persp-import (key-binding (kbd "C-x x i"))))
+;;     (should (eql 'persp-next (key-binding (kbd "C-x x n"))))
+;;     (should (eql 'persp-prev (key-binding (kbd "C-x x p"))))))
 
 
 ;; Commons dev

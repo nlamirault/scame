@@ -33,6 +33,8 @@
 	    (add-to-list 'helm-boring-buffer-regexp-list "\\.pyc$"))
   :bind (("C-c M-f" . helm-find-files)
          ("C-c f" . helm-for-files)
+         ("C-c M-x" . helm-M-x)
+         ("M-y" . helm-show-kill-ring)
 	 ("C-c b" . helm-buffers-list)))
 	 ;;("C-x C-i" . helm-imenu)))
 
