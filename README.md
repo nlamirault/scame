@@ -174,16 +174,38 @@ Keybinding           | Description
 <kbd>C-down</kbd>    | Scroll line down
 <kbd>C-up </kbd>     | Scroll line up
 <kbd>C-c w</kbd>     | Launch eww
-<kbd>C-o</kbd>       | Swoop
-<kbd>C-M-o</kbd>     | Swoop-multi
-<kbd>M-o</kbd>       | Swoop-pcre-regexp
 <kbd>C-c C-j</kbd>   | direx:jump-to-directory
-<kbd>C-c M-f</kbd>   | helm-find-files
-<kbd>C-c b</kbd>     | helm-buffer-list
 <kbd>C-c t</kbd>     | launch-term
 <kbd>M-x</kbd>       | smex
 <kbd>M-X</kbd>       | smex-major-mode-commands
 <kbd>C-.</kbd>       | imenu-anywhere
+<kbd>C-c t</kbd>     | launch terminal
+
+### Helm
+
+Keybinding           | Description
+---------------------|------------------------------------------------------------
+<kbd>C-c M-f</kbd>   | helm-find-files
+<kbd>C-c f</kbd>     | helm-for-files
+<kbd>C-c b</kbd>     | helm-buffers-list
+<kbd>C-c M-x</kbd>   | helm-M-x
+<kbd>M-y</kbd>       | helm-show-kill-ring
+
+### Swoop
+
+Keybinding           | Description
+---------------------|------------------------------------------------------------
+<kbd>C-o</kbd>       | Swoop
+<kbd>C-M-o</kbd>     | Swoop-multi
+<kbd>M-o</kbd>       | Swoop-pcre-regexp
+
+### Projectile
+
+See [Projectile][]
+
+Keybinding           | Description
+---------------------|------------------------------------------------------------
+<kbd>C-c h</kbd>     | helm-projectile
 
 ### Python-mode
 
@@ -242,7 +264,9 @@ Keybinding           | Description
 <kbd>C-c o b</kbd>   | org-iswitchb
 <kbd>C-c o l</kbd>   | org-store-link
 
-### Perspective (Default key bindings)
+### Perspective
+
+See [Perspective][]
 
 Keybinding           | Description
 ---------------------|------------------------------------------------------------
