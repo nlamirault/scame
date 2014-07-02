@@ -25,7 +25,7 @@
 
 (ert-deftest test-scame-version ()
   (should (require '999_scame))
-  (should (string-equal "0.4.0" scame-package-version)))
+  (should (string-equal "0.7.0" scame-package-version)))
 
 
 (ert-deftest test-scame-keybindings ()
