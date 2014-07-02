@@ -28,5 +28,22 @@
 	 ("C-c g b" . magit-branch-manager)))
 
 
+(use-package gitconfig-mode)
+
+(use-package gitignore-mode)
+
+(use-package gist
+  :init (setq gist-authenticate-function 'gist-oauth2-authentication)
+  :bind (("C-c g g") . gist-region-or-buffer))
+
+(use-package git-gutter-fringe+
+  :config (git-gutter-fr+-minimal))
+
+(use-package git-gutter+
+  :config (global-git-gutter+-mode 1)
+  :bind (("C-c g m" . global-git-gutter+-mode)
+         ("C-c g >" . git-gutter+-next-hunk)
+         ("C-c g <" . git-gutter+-previous-hunk)))
+
 (provide '19_vc)
 ;;; 19_vc.el ends here

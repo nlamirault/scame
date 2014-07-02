@@ -169,6 +169,7 @@
 (depends-on "gitattributes-mode")
 (depends-on "git-rebase-mode")
 (depends-on "gist")
+(depends-on "git-gutter+")
 
 ;; Utilities
 (depends-on "pkg-info")
