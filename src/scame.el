@@ -58,7 +58,10 @@
 
 (defconst scame-user-customization-file
   (f-join user-home-directory ".config/scame/scame-user.el")
-  "File used to store user customization.")
+  "File used to store user customizations.")
+
+;; Emacs saving customizations
+(setq custom-file (f-join user-emacs-directory "emacs-custom.el"))
 
 (defconst scame-init-file
   (f-join user-emacs-directory "scame.el")
