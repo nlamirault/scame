@@ -41,6 +41,14 @@
 (use-package go-eldoc
   :config (add-hook 'go-mode-hook 'go-eldoc-setup))
 
+;; (use-package helm-godoc
+;;   :config (add-hook 'go-mode-hook
+;; 		    (lambda ()
+;; 		      (local-set-key (kbd "C-x g d") 'helm-godoc))))
+
+(use-package helm-go-package)
+
+
 ;; FIXMEE. See Cerbere or not ?
 (use-package gotest
   :config (add-hook 'go-mode-hook
