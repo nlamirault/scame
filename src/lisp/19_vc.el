@@ -46,5 +46,12 @@
          ("C-c g >" . git-gutter+-next-hunk)
          ("C-c g <" . git-gutter+-previous-hunk)))
 
+(use-package helm-open-github
+  :bind (("C-c g h f" . helm-open-github-from-file)
+         ("C-c g h c" . helm-open-github-from-commit)
+         ("C-c g h i" . helm-open-github-from-issues)
+         ("C-c g h p" . helm-open-github-from-pull-requests)))
+
+
 (provide '19_vc)
 ;;; 19_vc.el ends here
