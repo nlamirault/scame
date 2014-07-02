@@ -58,8 +58,13 @@
 (use-package anaconda-mode
   :config (progn
 	    (add-hook 'python-mode-hook 'anaconda-mode)
-	    (add-hook 'python-mode-hook 'eldoc-mode)
-	    (add-to-list 'company-backends 'company-anaconda)))
+	    (add-hook 'python-mode-hook 'eldoc-mode)))
+
+(use-package company-anaconda
+  :config (add-to-list 'company-backends 'company-anaconda))
+
+(use-package company-inf-python
+  :config (add-to-list 'company-backends 'company-inf-python))
 
 
 ;; (use-package elpy
