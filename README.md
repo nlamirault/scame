@@ -176,8 +176,6 @@ Keybinding           | Description
 <kbd>C-c w</kbd>     | Launch eww
 <kbd>C-c C-j</kbd>   | direx:jump-to-directory
 <kbd>C-c t</kbd>     | launch-term
-<kbd>M-x</kbd>       | smex
-<kbd>M-X</kbd>       | smex-major-mode-commands
 <kbd>C-.</kbd>       | imenu-anywhere
 <kbd>C-c t</kbd>     | launch terminal
 
@@ -198,6 +196,14 @@ Keybinding           | Description
 <kbd>C-o</kbd>       | Swoop
 <kbd>C-M-o</kbd>     | Swoop-multi
 <kbd>M-o</kbd>       | Swoop-pcre-regexp
+
+### Smex
+
+Keybinding           | Description
+---------------------|------------------------------------------------------------
+<kbd>C-x M-x</kbd>   | smex
+<kbd>C-x M-X</kbd>   | smex-major-mode-commands
+
 
 ### Projectile
 
@@ -246,7 +252,7 @@ Keybinding           | Description
 <kbd>C-:</kbd>       | Convert string to symbol
 <kbd>C-;</kbd>       | Clear string content
 
-### Magit
+### Git
 
 Keybinding           | Description
 ---------------------|------------------------------------------------------------
@@ -255,6 +261,9 @@ Keybinding           | Description
 <kbd>C-c g p</kbd>   | magit-push
 <kbd>C-c g l</kbd>   | magit-log
 <kbd>C-c g b</kbd>   | magit-branch-manager
+<kbd>C-c g m</kbd>   | Turn on/off git-gutter+-mode globally
+<kbd>C-c g <</kbd>   | git-gutter+-previous-hunk
+<kbd>C-c g ></kbd>   | git-gutter+-next-hunk
 
 ### Org
 
