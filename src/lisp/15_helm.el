@@ -42,5 +42,8 @@
   :bind (("C-x C-i" . helm-imenu)))
 
 
+(use-package helm-proc)
+
+
 (provide '15_helm)
 ;;; 15_helm.el ends here
