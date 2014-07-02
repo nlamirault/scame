@@ -64,6 +64,29 @@
 	    (add-to-list 'erc-modules 'scrolltobottom)))
 
 
+(defun my-circe-prompt ()
+  (lui-set-prompt
+   (concat (propertize (concat (buffer-name) ">")
+                       'face 'circe-prompt-face)
+           " ")))
+
+(defun my-lui-setup ()
+  (setq fringes-outside-margins t
+        lui-time-stamp-position 'right-margin
+        lui-fill-type nil
+        lui-time-stamp-format "%H:%M"
+        right-margin-width 5
+        word-wrap t
+        wrap-prefix "    "))
+
+(use-package circe
+  :config (progn
+
+            (setq circe-reduce-lurker-spam t)
+            (setq lui-time-stamp-position 'right-margin)
+            (add-hook 'circe-chat-mode-hook 'my-circe-prompt)
+            (add-hook 'lui-mode-hook 'my-lui-setup)))
+
 
 (provide '50_irc)
 ;;; 50_irc.el ends here

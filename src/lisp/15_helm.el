@@ -44,6 +44,8 @@
 
 (use-package helm-proc)
 
+(use-package helm-descbinds)
+
 
 (provide '15_helm)
 ;;; 15_helm.el ends here

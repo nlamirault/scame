@@ -17,6 +17,10 @@
 
 ;;; Commentary:
 
+;; This is Scame dependencies
+;; Install cask (https://github.com/cask/cask) and run in your ~/.emacs.d/
+;;  $ `cask install'
+
 ;;; Code:
 
 (source "melpa" "http://melpa.milkbox.net/packages/")
@@ -179,6 +183,9 @@
 (depends-on "git-gutter+")
 (depends-on "helm-open-github")
 
+;; IRC
+(depends-on "circe")
+
 ;; Utilities
 (depends-on "pkg-info")
 (depends-on "helm")
@@ -201,7 +208,7 @@
 (depends-on "sos")
 (depends-on "ace-jump-mode")
 (depends-on "helm-proc")
-
+(depends-on "helm-descbinds")
 ;; Mail
 ;;(depends-on "mu4e")
 ;;(depends-on "w3m")
@@ -265,3 +272,5 @@
  (depends-on "ert")
  (depends-on "el-mock")
  (depends-on "ert-runner"))
+
+;;; Cask ends here.

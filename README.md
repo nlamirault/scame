@@ -321,9 +321,13 @@ If file `$HOME/.config/scame/scame-user.el` exists, [Scame][] load it.
 Example of customization :
 
 ```el
+;; User
 (setq user-full-name "Nicolas Lamirault")
 (setq user-mail-address "nicolas.lamirault@gmail.com")
+;; UI
 (load-theme 'monokai t)
+;; IRC
+
 ```
 
 ## Debug
