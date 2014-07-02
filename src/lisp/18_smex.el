@@ -25,8 +25,8 @@
   :init (progn
 	  (setq smex-save-file "~/.emacs.d/.smex-items")
 	  (smex-initialize))
-  :bind (("M-x" . smex)
-         ("M-X" . smex-major-mode-commands)))
+  :bind (("C-x M-x" . smex)
+         ("C-x M-X" . smex-major-mode-commands)))
 
 
 (provide '18_smex)

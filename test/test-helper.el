@@ -81,7 +81,6 @@
     (add-to-list 'load-path (f-join path ".cask"))
     (add-to-list 'load-path (f-slash path))
     ;;(print (cask-load-path bundle))))
-    (print load-path)
     ))
 
 

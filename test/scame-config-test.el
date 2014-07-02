@@ -198,8 +198,8 @@
 
 (ert-deftest test-scame-smex ()
   (should (featurep 'smex))
-  (should (eql 'smex (key-binding (kbd "M-x"))))
-  (should (eql 'smex-major-mode-commands (key-binding (kbd "M-X")))))
+  (should (eql 'smex (key-binding (kbd "C-x M-x"))))
+  (should (eql 'smex-major-mode-commands (key-binding (kbd "C-x M-X")))))
 
 
 ;; vc
@@ -212,6 +212,12 @@
   (should (eql 'magit-push (key-binding (kbd "C-c g p"))))
   (should (eql 'magit-log (key-binding (kbd "C-c g l"))))
   (should (eql 'magit-branch-manager (key-binding (kbd "C-c g b")))))
+
+;; FIXME: #27
+;; (ert-deftest test-scame-git-gutter+ ()
+;;   (should (eql 'global-git-gutter+-mode (key-binding (kbd "C-c g m"))))
+;;   (should (eql 'git-gutter+-next-hunk (key-binding (kbd "C-c g >"))))
+;;   (should (eql 'git-gutter+-previous-hunk (key-binding (kbd "C-c g <")))))
 
 
 ;; perspective
