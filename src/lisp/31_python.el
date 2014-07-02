@@ -98,6 +98,11 @@
                       (require 'sphinx-doc)
                       (sphinx-doc-mode t))))
 
+(use-package helm-pydoc
+  :config (add-hook 'python-mode-hook
+		    (lambda ()
+		      (local-set-key (kbd "C-x y d") 'helm-pydoc))))
+
 
 (provide '31_python)
 ;;; 31_python.el ends here

@@ -88,6 +88,7 @@
 (depends-on "anaconda-mode")
 (depends-on "jedi-direx")
 (depends-on "sphinx-doc")
+(depends-on "helm-pydoc")
 
 ;; Ruby
 
@@ -129,7 +130,9 @@
 ;;(depends-on "flymake-php")
 
 ;; Perl
-(depends-on "plsense-direx")
+(depends-on "cperl-mode")
+;;(depends-on "plsense-direx")
+(depends-on "helm-perldoc")
 
 ;; Javascript
 (depends-on "company-tern")

@@ -23,7 +23,7 @@
 (use-package rust-mode
   :mode (("\\.rs\\'" . rust-mode))
   :init (add-hook 'rust-mode-hook 'flycheck-mode)
-  :config (setq tab-width 4)
+  :config (setq tab-width 4))
 
 (provide '44_rust)
 ;;; 44_rust.el ends here

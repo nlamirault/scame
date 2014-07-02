@@ -297,11 +297,17 @@
 ;;     (should (eql 'jedi-direx:pop-to-buffer
 ;; 		 (key-binding (kbd "C-x y x"))))))
 
-;; FIXME
 (ert-deftest test-scame-sphinx-doc ()
   (with-current-file testsuite-python-filename
     (should (eql 'sphinx-doc
                  (key-binding (kbd "C-c M-d"))))))
+
+;; FIXME: doesn't works on unit tests, works on Emacs instance
+;; (ert-deftest test-scame-helm-pydoc ()
+;;   (with-current-file testsuite-python-filename
+;;     (should (eql 'helm-pydoc
+;;                  (key-binding (kbd "C-x y d"))))))
+
 
 ;; Common Lisp
 

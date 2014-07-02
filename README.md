@@ -221,6 +221,7 @@ Keybinding           | Description
 <kbd>C-x y f</kbd>   | launch tests in current file
 <kbd>C-c M-d</kbd>   | generate Sphinx documentation for current function
 <kbd>C-c ! C-c</kbd> | check syntax in the current buffer
+<kbd>C-x y d</kbd>   | helm-pydoc
 
 ### Go mode
 
@@ -242,6 +243,14 @@ Keybinding           | Description
 <kbd>C-x p t</kbd>   | launch current unit test
 <kbd>C-x p f</kbd>   | launch tests in current file
 <kbd>C-x p p</kbd>   | launch tests in all project
+
+
+### Perl Mode
+
+Keybinding           | Description
+---------------------|------------------------------------------------------------
+<kbd>C-x e d</kbd>   | helm-perldoc
+
 
 ### Ruby
 

@@ -32,9 +32,10 @@
 
 (use-package gitignore-mode)
 
-(use-package gist
-  :init (setq gist-authenticate-function 'gist-oauth2-authentication)
-  :bind (("C-c g g") . gist-region-or-buffer))
+;; FIXME
+;; (use-package gist
+;;   :init (setq gist-authenticate-function 'gist-oauth2-authentication)
+;;   :bind (("C-c g g") . gist-region-or-buffer))
 
 (use-package git-gutter-fringe+
   :config (git-gutter-fr+-minimal))

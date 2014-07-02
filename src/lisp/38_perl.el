@@ -34,24 +34,29 @@
 ;;      (helm-perldoc:setup)))
 
 
-(use-package cperl-mode
-  :init (defalias 'perl-mode 'cperl-mode)
-  :mode (("\\.\\(pl\\|pm\\|cgi\\|t\\|psgi\\)\\'" . cperl-mode)
-	 ("cpanfile\\'" . perl-mode))
-  :init (progn
-	  (cperl-set-style "PerlStyle")
-	  (setq cperl-auto-newline nil)
-	  (helm-perldoc:setup)))
+;; (use-package perl-mode
+;;   :init (defalias 'perl-mode 'cperl-mode)
+;;   :mode (("\\.\\(pl\\|pm\\|cgi\\|t\\|psgi\\)\\'" . perl-mode)
+;; 	 ("cpanfile\\'" . perl-mode))
+;;   :config (setq cperl-invalid-face nil
+;;                 cperl-close-paren-offset -4
+;;                 cperl-continued-statement-offset 0
+;;                 cperl-indent-level 4
+;;                 cperl-indent-parens-as-block t))
 
-(use-package plsense-direx
-  :config (progn
-	    (plsense-direx:config-default)
-	    (add-hook 'cperl-mode-hook
-		      (lambda ()
-			(local-set-key (kbd "C-x j")
-				       'plsense-direx:open-explorer-key)))))
+;; (use-package plsense-direx
+;;   :config (progn
+;; 	    (plsense-direx:config-default)
+;; 	    (add-hook 'perl-mode-hook
+;; 		      (lambda ()
+;; 			(local-set-key (kbd "C-x e j")
+;; 				       'plsense-direx:open-explorer-key)))))
 
 
+(use-package helm-perldoc
+  :config (add-hook 'perl-mode-hook
+		    (lambda ()
+		      (local-set-key (kbd "C-x e d") 'helm-perldoc))))
 
 
 
