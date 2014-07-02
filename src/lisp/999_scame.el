@@ -37,7 +37,7 @@
 
 ;; Misc
 
-(defvar scame-package-version "0.4.0"
+(defvar scame-package-version "0.7.0"
   "Release version of Scame.")
 
 ;;(setq user-home-directory (f-full (getenv "HOME")))
@@ -60,10 +60,10 @@
 (defun scame-customization ()
   "Open the customization file."
   (interactive)
-  (let ((customization (f-join user-home-directory ".config/scame/user2.el")))
+  (let ((customization (f-join user-home-directory ".config/scame/user.el")))
     (if (file-readable-p customization)
 	(switch-to-buffer (find-file-noselect customization))
-      (message "Scame: No customization file"))))
+      (message "Scame: No customization file %s" customization))))
 
 
 (defun scame-project-website ()
