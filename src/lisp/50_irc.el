@@ -87,6 +87,12 @@
             (add-hook 'circe-chat-mode-hook 'my-circe-prompt)
             (add-hook 'lui-mode-hook 'my-lui-setup)))
 
+(use-package circe-color-nicks
+  :config (enable-circe-color-nicks))
+
+(use-package circe-highlight-all-nicks
+  :config (enable-circe-highlight-all-nicks))
+
 
 (provide '50_irc)
 ;;; 50_irc.el ends here

@@ -23,7 +23,8 @@
 ;; General
 ;; ------------
 
-(global-set-key "\C-cl" 'package-list-packages-no-fetch)
+(global-set-key "\C-cl" ;;'package-list-packages-no-fetch)
+                'package-list-packages)
 
 (global-set-key "\C-cq"
                 (defun scame-quit-emacs ()
@@ -44,6 +45,10 @@
                 (function (lambda ()
                             (interactive)
                             (scroll-down 1))))
+
+
+;; Web
+;; ----
 
 (global-set-key "\C-cu" 'browse-url-at-point)
 

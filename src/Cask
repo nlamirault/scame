@@ -181,6 +181,7 @@
 (depends-on "git-rebase-mode")
 (depends-on "gist")
 (depends-on "git-gutter+")
+(depends-on "git-timemachine")
 (depends-on "helm-open-github")
 
 ;; IRC
@@ -209,6 +210,8 @@
 (depends-on "ace-jump-mode")
 (depends-on "helm-proc")
 (depends-on "helm-descbinds")
+(depends-on "helm-delicious")
+
 ;; Mail
 ;;(depends-on "mu4e")
 ;;(depends-on "w3m")

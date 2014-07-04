@@ -41,10 +41,11 @@
 (use-package helm-imenu
   :bind (("C-x C-i" . helm-imenu)))
 
-
 (use-package helm-proc)
 
 (use-package helm-descbinds)
+
+(use-package helm-delicious)
 
 
 (provide '15_helm)

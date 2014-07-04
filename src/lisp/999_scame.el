@@ -100,6 +100,7 @@
   (let ((map (make-sparse-keymap)))
     (let ((prefix-map (make-sparse-keymap)))
       (define-key prefix-map (kbd "v") 'scame-version)
+      (define-key prefix-map (kbd "u") 'scame-last-release)
       (define-key prefix-map (kbd "c") 'scame-changelog)
       (define-key prefix-map (kbd "z") 'scame-customization)
       (define-key prefix-map (kbd "s g") 'scame-search-google)

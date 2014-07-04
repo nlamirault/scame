@@ -53,5 +53,9 @@
          ("C-c g h p" . helm-open-github-from-pull-requests)))
 
 
+(use-package git-timemachine
+  :bind (("C-c g t" . git-timemachine)))
+
+
 (provide '19_vc)
 ;;; 19_vc.el ends here

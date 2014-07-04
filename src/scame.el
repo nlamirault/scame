@@ -60,6 +60,11 @@
   (f-join user-home-directory ".config/scame/scame-user.el")
   "File used to store user customizations.")
 
+(setq auth-sources
+      (list (f-join user-home-directory ".authinfo.gpg")
+            (f-join user-home-directory ".authinfo")
+            (f-join user-home-directory ".netrc")))
+
 ;; Emacs saving customizations
 (setq custom-file (f-join user-emacs-directory "emacs-custom.el"))
 
@@ -73,6 +78,8 @@
 ;;(let ((user-customization (f-join user-home-directory ".config/scame/scame-user.el")))
 (when (file-readable-p scame-user-customization-file)
   (load scame-user-customization-file))
+
+
 
 (scame-global-mode 1)
 
