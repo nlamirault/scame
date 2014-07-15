@@ -1,6 +1,6 @@
 # Scame ChangeLog
 
-## Version 0.7.0 (xx)
+## Version 0.7.0 (07/15/2014)
 
 - Add Docker container to launch unit tests
 - ``FIX`` unit tests
