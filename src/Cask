@@ -219,7 +219,7 @@
 
 ;; Organisation
 (depends-on "org")
-(depends-on "google-weather")
+;;(depends-on "google-weather")
 (depends-on "weather-metno")
 ;;(depends-on "org-jira")
 ;;(depends-on "org-ehtml")
