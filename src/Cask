@@ -222,9 +222,9 @@
 (depends-on "google-weather")
 (depends-on "weather-metno")
 ;;(depends-on "org-jira")
-(depends-on "org-ehtml")
-(depends-on "calfw")
-(depends-on "orgbox")
+;;(depends-on "org-ehtml")
+;;(depends-on "calfw")
+;;(depends-on "orgbox")
 
 (depends-on "htmlize")
 ;;(depends-on "web-server")
