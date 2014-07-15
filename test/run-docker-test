@@ -1,0 +1,9 @@
+#!/bin/bash
+
+CASK="/.cask/bin/cask"
+EMACS="emacs"
+
+cd /.emacs.d/
+$CASK exec $EMACS --no-site-file --no-site-lisp --batch \
+      --debug-init -L . -l test/run-local-tests
+exit

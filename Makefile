@@ -82,4 +82,4 @@ docker-run:
 
 .PHONY: docker-test
 docker-test:
-	docker run -i -t $(CONTAINER) "cd /.emacs.d && make local-test"
+	docker run --rm -t $(CONTAINER) /.emacs.d/test/run-docker-test

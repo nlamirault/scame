@@ -373,15 +373,21 @@ See [here](CONTRIBUTING.md)
 
 ## Development
 
-The unit tests use your personal Emacs configuration (in `$HOME/.emacs.d`).
-To run the unit tests:
+The `local-test` command use your Scame installation and current dependencies t
+
+    $ make local-test
+
+The `test` command download dependencies using [Cask][] and use your personal Emacs configuration :
 
     $ make test
 
-The integration tests make an Emacs sandbox, install all dependencies using [Cask][], and launch tests.
-To run the integration tests:
+The integration tests make an Emacs sandbox, install all dependencies using [Cask][], and launch tests :
 
     $ make integration-test
+
+A [Docker][] container could be used to launch unit tests:
+
+    $ make docker-build docker-test
 
 
 ## License
@@ -422,3 +428,4 @@ Nicolas Lamirault <nicolas.lamirault@gmail.com>
 [Issue tracker]: https://github.com/nlamirault/scame/issues
 
 [projectile]: https://github.com/bbatsov/projectile
+[Docker]: http://www.docker.com

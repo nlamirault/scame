@@ -24,14 +24,6 @@
 ;;; Code:
 
 
-;;(let ((current-directory (file-name-directory load-file-name)))
-;;   (setq test-path (expand-file-name "." current-directory))
-;;   (setq root-path (expand-file-name "../src" current-directory))
-;;   (setq sandbox-path (expand-file-name "sandbox" current-directory)))
-
-;;(require 'f)
-;;(require 'cask)
-
 (let ((current-directory (file-name-directory load-file-name)))
   (add-to-list 'load-path current-directory)
   (require 'test-helper))
@@ -49,9 +41,10 @@
          (cleanup-load-path)
          (install-scame)
          (setup-scame scame-test/sandbox-path)
-         (let ((load-path scame-test/sandbox-path))
-           (require 'scame)
-           ,@body))))
+         ;;(let ((load-path scame-test/sandbox-path))
+         (require 'scame)
+         (message "Execute tests")
+         ,@body)))
 
 ;; run tests
 (with-scame-new-sandbox

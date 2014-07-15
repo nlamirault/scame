@@ -1,7 +1,9 @@
 # Scame ChangeLog
 
-## Version 0.7.0 (07/15/2014)
+## Version 0.7.0 (xx)
 
+- Add Docker container to launch unit tests
+- ``FIX`` unit tests
 - Due to Emacs 24.4 required, remove some modules.
 - ``FIX`` Anaconda configuration
 - Change Smex keybindings

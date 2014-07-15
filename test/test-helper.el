@@ -48,6 +48,7 @@
 
 
 (defun cleanup-load-path ()
+  (message "Cleanup path")
   (mapc #'(lambda (path)
             (when (string-match (s-concat username "/.emacs.d") path)
               (setq load-path (delete path load-path))))
@@ -59,6 +60,7 @@
 
 
 (defun install-scame ()
+  (message"Install Scame")
   (mapc #'(lambda (elem)
             (let ((output (f-join scame-test/sandbox-path elem)))
               (unless (f-exists? output)
@@ -72,12 +74,13 @@
           scame-test/sandbox-path))
 
 (defun setup-scame (path)
-  (let ((bundle (cask-initialize scame-test/sandbox-path)))
+  (message "Setup Scame")
+  (let ((bundle (cask-initialize path))) ;;scame-test/sandbox-path)))
     (cask-update bundle)
     (cask-install bundle)
-    ;; (dolist (dir (f-directories
-    ;;               (f-join path ".cask" emacs-version "elpa")))
-    ;;   (add-to-list 'load-path dir))
+    (dolist (dir (f-directories
+                  (f-join path ".cask" emacs-version "elpa")))
+      (add-to-list 'load-path dir))
     (add-to-list 'load-path (f-join path ".cask"))
     (add-to-list 'load-path (f-slash path))
     ;;(print (cask-load-path bundle))))

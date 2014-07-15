@@ -259,8 +259,8 @@
   (should (require 'helm-projectile))
   (should (eql 'helm-projectile (key-binding (kbd "C-c h")))))
 
-(ert-deftest test-scame-project-explorer ()
-  (should (require 'project-explorer)))
+;; (ert-deftest test-scame-project-explorer ()
+;;   (should (require 'project-explorer)))
 
 
 ;; Python
@@ -398,10 +398,10 @@
 ;;     (should (eql 'plsense-direx:open-explorer-key
 ;; 		 (key-binding (kbd "C-x j"))))))
 
-;; (ert-deftest test-scame-helm-perldoc ()
-;;   (with-current-file testsuite-perl-filename
-;;     (should (eql 'helm-perldoc
-;; 		 (key-binding (kbd "C-x e d"))))))
+(ert-deftest test-scame-helm-perldoc ()
+  (with-current-file testsuite-perl-filename
+    (should (eql 'helm-perldoc
+		 (key-binding (kbd "C-x e d"))))))
 
 ;; Elisp
 

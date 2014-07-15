@@ -27,5 +27,8 @@ RUN apt-get -y install make
 ADD ./Makefile /.emacs.d/Makefile
 ADD ./test /.emacs.d/test
 
+# Set the default directory where CMD will execute
+# WORKDIR /.emacs.d
+
 # Emacs
-CMD ["/usr/bin/emacs-snapshot"]
+# CMD ["/usr/bin/emacs-snapshot"]
