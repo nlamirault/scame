@@ -175,7 +175,6 @@ Keybinding           | Description
 <kbd>C-up </kbd>     | Scroll line up
 <kbd>C-c w</kbd>     | Launch eww
 <kbd>C-c C-j</kbd>   | direx:jump-to-directory
-<kbd>C-c t</kbd>     | launch-term
 <kbd>C-.</kbd>       | imenu-anywhere
 <kbd>C-c t</kbd>     | launch terminal
 
@@ -207,7 +206,7 @@ Keybinding           | Description
 
 ### Projectile
 
-See [Projectile][]
+See [projectile][]
 
 Keybinding           | Description
 ---------------------|------------------------------------------------------------
@@ -302,6 +301,7 @@ Keybinding           | Description
 Keybinding           | Description
 ---------------------|------------------------------------------------------------
 <kbd>C-c s v</kbd>   | Display Scame version
+<kbd>C-c s u</kbd>   | Display Scame last release
 <kbd>C-c s c</kbd>   | Show Scame changelog
 <kbd>C-c s z</kbd>   | Open the Scame user customization file
 
@@ -420,3 +420,5 @@ Nicolas Lamirault <nicolas.lamirault@gmail.com>
 [Cask]: http://cask.github.io/
 [Evm]: https://github.com/rejeep/evm
 [Issue tracker]: https://github.com/nlamirault/scame/issues
+
+[projectile]: https://github.com/bbatsov/projectile

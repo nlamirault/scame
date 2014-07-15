@@ -3,7 +3,7 @@ EMACSFLAGS = --debug-init -L .
 CASK = cask
 VAGRANT = vagrant
 
-CONTAINER = scame
+CONTAINER = nlamirault/scame
 
 ELS = $(wildcard *.el)
 OBJECTS = $(ELS:.el=.elc)
@@ -11,13 +11,14 @@ OBJECTS = $(ELS:.el=.elc)
 
 help:
 	@echo " ==== Scame ===="
-	@echo "   - test               : launch unit tests"
-	@echo "   - integration-test   : launch integration tests"
-	@echo "   - clean              : clean Scame installation"
-	@echo "   - reset              : remote Scame dependencies for development"
-	@echo "   - docker-build       : build the Docker image"
-	@echo "   - docker-clean       : remove the Docker image"
-	@echo "   - docker-run         : launch Emacs using Scame docker image"
+	@echo "  - test               : launch unit tests"
+	@echo "  - local-test         : launch unit test using local configuration"
+	@echo "  - integration-test   : launch integration tests"
+	@echo "  - clean              : clean Scame installation"
+	@echo "  - reset              : remote Scame dependencies for development"
+	@echo "  - docker-build       : build the Docker image"
+	@echo "  - docker-clean       : remove the Docker image"
+	@echo "  - docker-run         : launch Emacs using Scame docker image"
 
 elpa:
 	$(CASK) install
@@ -45,14 +46,14 @@ local-test: build
 	-l test/run-local-tests
 
 .PHONY: integration-test
-integration-test : build
+integration-test: build
 	$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
 	$(EMACSFLAGS) \
 	-l test/run-global-tests
 
 
 .PHONY: virtual-test
-virtual-test :
+virtual-test:
 	$(VAGRANT) up
 	$(VAGRANT) ssh -c "make -C /vagrant EMACS=$(EMACS) clean test"
 
@@ -70,16 +71,15 @@ reset : clean
 	$(EMACSFLAGS) \
 	-f batch-byte-compile $<
 
-# %.elc : %.el
-# 	${VIRTUAL_EMACS} --batch -f batch-byte-compile $<
-
 docker-build:
-	sudo docker build -t $(CONTAINER) .
+	docker build -t $(CONTAINER) .
 
 docker-clean:
-	sudo docker rm $(CONTAINER)
+	docker rm $(CONTAINER)
 
 docker-run:
-	#sudo docker run $(CONTAINER)
-	sudo docker run -v /tmp/.X11-unix:/tmp/.X11-unix \
-		-e DISPLAY=unix$(DISPLAY) $(CONTAINER)
+	docker run -i -t $(CONTAINER)
+
+.PHONY: docker-test
+docker-test:
+	docker run -i -t $(CONTAINER) "cd /.emacs.d && make local-test"

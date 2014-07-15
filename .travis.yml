@@ -6,7 +6,4 @@ before_install:
 env:
   - EVM_EMACS=emacs-24.3-bin
 script:
-  - ./scame --init --emacs=emacs-24.3-bin
-  - emacs --version
-  - ./scame --cmd=install
-  - make test
+  - ./scame --init --emacs=emacs-24.3-bin && emacs --version && ./scame --cmd=install && make test

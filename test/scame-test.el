@@ -33,7 +33,7 @@
     (scame-mode)
     (should (eql 'scame-version
 		 (key-binding (kbd "C-c s v"))))
-    (should (eql 'scame-version
+    (should (eql 'scame-last-release
 		 (key-binding (kbd "C-c s u"))))
     (should (eql 'scame-changelog
 		 (key-binding (kbd "C-c s c"))))

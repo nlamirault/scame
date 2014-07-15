@@ -387,16 +387,21 @@
 
 (defconst testsuite-perl-filename
   "var/hello.pl"
-  "File name for testing python setup.")
+  "File name for testing Perl setup.")
 
 (ert-deftest test-scame-perl ()
   (with-current-file testsuite-perl-filename
-    (should (featurep 'cperl-mode))))
+    (should (featurep 'perl-mode))))
 
-(ert-deftest test-scame-plsense-direx ()
-  (with-current-file testsuite-perl-filename
-    (should (eql 'plsense-direx:open-explorer-key
-		 (key-binding (kbd "C-x j"))))))
+;; (ert-deftest test-scame-plsense-direx ()
+;;   (with-current-file testsuite-perl-filename
+;;     (should (eql 'plsense-direx:open-explorer-key
+;; 		 (key-binding (kbd "C-x j"))))))
+
+;; (ert-deftest test-scame-helm-perldoc ()
+;;   (with-current-file testsuite-perl-filename
+;;     (should (eql 'helm-perldoc
+;; 		 (key-binding (kbd "C-x e d"))))))
 
 ;; Elisp
 

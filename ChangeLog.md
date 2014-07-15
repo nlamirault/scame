@@ -1,5 +1,14 @@
 # Scame ChangeLog
 
+## Version 0.7.0 (07/15/2014)
+
+- Due to Emacs 24.4 required, remove some modules.
+- ``FIX`` Anaconda configuration
+- Change Smex keybindings
+- ``FIX`` golang configuration
+- ``FIX`` Remove password manager due website down
+- Add Rust support
+
 ## Version 0.6.0 (06/17/2014)
 
 - Add toml-mode mode
