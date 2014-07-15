@@ -1,4 +1,4 @@
-;;; 14_cloud.el --- Cloud configuration
+;;; 21_sysadmin.el --- Tools for sysadmin
 
 ;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -19,28 +19,14 @@
 
 ;;; Code:
 
-;; Puppet files
 
-(use-package puppet-mode
-  :mode (("\\.pp\\'" . puppet-mode))
-  :config (add-hook 'puppet-mode-hook
-		    (lambda ()
-		      (make-local-variable 'indent-tabs-mode)
-		      (setq indent-tabs-mode nil))))
-
-(use-package ansible-mode
-  :config (add-hook 'yaml-mode-hook
-                    (lambda ()
-                      (ansible 1))))
-
-;; Vagrant files
-(use-package vagrant
-  :mode (("Vagrantfile" . ruby-mode)))
-
-;; Docker files
-(use-package dockerfile-mode
-  :mode (("Dockerfile" . dockerfile-mode)))
+(use-package apache-mode
+  :mode (("\\.htaccess\\'" . apache-mode)
+         ("httpd\\.conf\\'"  . apache-mode)
+         ("srm\\.conf\\'"    . apache-mode)
+         ("access\\.conf\\'" . apache-mode)
+         ("sites-\\(available\\|enabled\\)/" . apache-mode)))
 
 
-(provide '14_cloud)
-;;; 14_cloud.el ends here
+(provide '21_sysadmin)
+;;; 21_sysadmin.el ends here

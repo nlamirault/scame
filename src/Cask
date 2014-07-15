@@ -24,8 +24,9 @@
 ;;; Code:
 
 (source "melpa" "http://melpa.milkbox.net/packages/")
-(source "gnu" "http://elpa.gnu.org/packages/")
-(source "marmalade" "http://marmalade-repo.org/packages/")
+;;(source "gnu" "http://elpa.gnu.org/packages/")
+;;(source "marmalade" "http://marmalade-repo.org/packages/")
+(source "org" "http://orgmode.org/elpa/")
 
 
 ;; Common libraries
@@ -168,6 +169,7 @@
 (depends-on "dockerfile-mode")
 (depends-on "vagrant")
 (depends-on "puppet-mode")
+(depends-on "ansible")
 
 ;; File handling
 (depends-on "launch")
@@ -194,7 +196,7 @@
 (depends-on "project-persist")
 (depends-on "helm-project-persist")
 (depends-on "multi-term")
-(depends-on "project-explorer")
+;;(depends-on "project-explorer")
 (depends-on "lice")
 (depends-on "commander")
 (depends-on "smex")
@@ -210,7 +212,7 @@
 (depends-on "ace-jump-mode")
 (depends-on "helm-proc")
 (depends-on "helm-descbinds")
-(depends-on "helm-delicious")
+;;(depends-on "helm-delicious")
 
 ;; Mail
 ;;(depends-on "mu4e")
@@ -251,8 +253,13 @@
 (depends-on "dired-rainbow")
 (depends-on "dired-subtree")
 
+;; Sysadmin
+(depends-on "nginx-mode")
+(depends-on "syslog-mode")
+(depends-on "apache-mode")
+
 ;; Gnus
-(depends-on "google-contacts")
+;; (depends-on "google-contacts")
 
 
 ;; Themes

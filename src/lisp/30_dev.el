@@ -50,7 +50,7 @@
     (require 'es-windows)
    (error (message "%s" e)))
 
-(use-package project-explorer)
+;;(use-package project-explorer)
 
 (setq-default indent-tabs-mode nil)
 
