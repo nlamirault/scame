@@ -155,13 +155,15 @@
 (use-package ox-latex)
 (use-package ox-ascii)
 
-(use-package google-weather)
-(use-package org-google-weather)
+;; FIXME: requires Emacs 24.4
 
-(use-package calfw)
-(use-package calfw-org)
-(use-package calfw-org)
-(use-package calfw-ical)
+;; (use-package google-weather)
+;; (use-package org-google-weather)
+
+;; (use-package calfw)
+;; (use-package calfw-org)
+;; (use-package calfw-org)
+;; (use-package calfw-ical)
 
 
 
