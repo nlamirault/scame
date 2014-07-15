@@ -20,11 +20,7 @@
 ;;; Code:
 
 
-(use-package weather-metno
-  :config (progn
-	    (setq weather-metno-location-name "Bordeaux, France"
-		  weather-metno-location-latitude 44.83
-		  weather-metno-location-longitude -0.57)))
+(use-package weather-metno)
 
 
 (provide '52_weather)

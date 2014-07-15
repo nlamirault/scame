@@ -24,6 +24,9 @@
 (setq user-full-name "Nicolas Lamirault")
 (setq user-mail-address "nicolas.lamirault@gmail.com")
 (load-theme 'monokai t)
+(setq weather-metno-location-name "Bordeaux, France"
+      weather-metno-location-latitude 44.83
+      weather-metno-location-longitude -0.57)
 
 (provide 'scame-user)
 ;;; scame-user.el ends here
