@@ -324,9 +324,18 @@ Example of customization :
 ;; User
 (setq user-full-name "Nicolas Lamirault")
 (setq user-mail-address "nicolas.lamirault@gmail.com")
+
 ;; UI
 (load-theme 'monokai t)
-;; IRC
+
+;; Fonts
+(custom-set-faces
+ '(default ((t (:family "Bitstream Vera Sans Mono"
+                        :foundry "bitstream"
+                        :slant normal
+                        :weight normal
+                        :height 81
+                        :width normal)))))
 
 ```
 
