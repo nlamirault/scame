@@ -97,7 +97,7 @@
 ;;(depends-on "flymake-python-pyflakes")
 (depends-on "anaconda-mode")
 (depends-on "company-anaconda")
-(depends-on "company-inf-python")
+;;(depends-on "company-inf-python")
 (depends-on "jedi-direx")
 (depends-on "sphinx-doc")
 (depends-on "helm-pydoc")

@@ -63,8 +63,9 @@
 (use-package company-anaconda
   :config (add-to-list 'company-backends 'company-anaconda))
 
-(use-package company-inf-python
-  :config (add-to-list 'company-backends 'company-inf-python))
+;; Seems dead : https://github.com/proofit404/company-inf-python/
+;; (use-package company-inf-python
+;;   :config (add-to-list 'company-backends 'company-inf-python))
 
 
 ;; (use-package elpy
