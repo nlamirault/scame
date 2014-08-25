@@ -49,6 +49,7 @@
 
 (depends-on "sr-speedbar")
 (depends-on "nav")
+(depends-on "neotree")
 
 (depends-on "imenu-anywhere")
 (depends-on "dired-imenu")
