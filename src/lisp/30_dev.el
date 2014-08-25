@@ -72,7 +72,7 @@
 (use-package know-your-http-well)
 
 (use-package neotree
-  :bind (("C-x d t" . neotree-toggle)))
+  :bind (("C-x t t" . neotree-toggle)))
 
 (provide '30_dev)
 ;;; 30_dev.el ends here
