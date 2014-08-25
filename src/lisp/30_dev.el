@@ -71,6 +71,25 @@
 
 (use-package know-your-http-well)
 
+;; (use-package fixmee
+;;   :config (global-fixmee-mode 1))
+
+(use-package find-file-in-project)
+
+(use-package neotree
+  :init (progn
+          (defun neotree-project-dir ()
+            "Open dirtree using the git root."
+            (interactive)
+            (let ((project-dir (ffip-project-root))
+                  (file-name (buffer-file-name)))
+              (if project-dir
+                  (progn
+                    (neotree-dir project-dir)
+                    (neotree-find file-name))
+                (message "Could not find git project root.")))))
+  :bind (("C-x t t" . neotree-toggle)
+         ("C-x t p" . neotree-project-dir)))
 
 (provide '30_dev)
 ;;; 30_dev.el ends here

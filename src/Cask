@@ -43,12 +43,19 @@
 
 (depends-on "benchmark-init")
 
+;; Completion
 (depends-on "auto-complete")
 (depends-on "company")
 (depends-on "helm-company")
 
+;; Project
+(depends-on "projectile")
+(depends-on "helm-projectile")
+(depends-on "persp-projectile")
+(depends-on "find-file-in-project")
 (depends-on "sr-speedbar")
 (depends-on "nav")
+(depends-on "neotree")
 
 (depends-on "imenu-anywhere")
 (depends-on "dired-imenu")
@@ -58,10 +65,6 @@
 (depends-on "flycheck-color-mode-line")
 ;;(depends-on "flycheck-google-cpplint")
 
-;; Project
-(depends-on "projectile")
-(depends-on "helm-projectile")
-(depends-on "persp-projectile")
 
 ;; Common Lisp
 (depends-on "slime")
@@ -213,6 +216,10 @@
 (depends-on "helm-proc")
 (depends-on "helm-descbinds")
 ;;(depends-on "helm-delicious")
+
+;; Search
+(depends-on "helm-ack")
+(depends-on "helm-ag")
 
 ;; Mail
 ;;(depends-on "mu4e")
