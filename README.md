@@ -1,4 +1,3 @@
-
 # Scame
 
 [![License GPL 3][badge-license]][COPYING]
@@ -67,6 +66,24 @@ Collections of packages installed:
 - [cask](https://github.com/cask/cask)
 - [use-package](https://github.com/jwiegley/use-package)
 - [init-loader](https://github.com/emacs-jp/init-loader)
+- [paradox](https://github.com/Bruce-Connor/paradox)
+
+Interface Enhancement:
+- [helm](https://github.com/emacs-helm/helm)
+- [smex](https://github.com/nonsequitur/smex)
+
+File manager:
+- [direx.el](https://github.com/m2ym/direx-el)
+- [dired-imenu](https://github.com/DamienCassou/dired-imenu)
+- [dired-filter](https://github.com/Fuco1/dired-hacks)
+- [dired-open](https://github.com/Fuco1/dired-hacks)
+- [dired-subtree](https://github.com/Fuco1/dired-hacks)
+- [sr-speedbar](http://www.emacswiki.org/emacs/SrSpeedbar)
+- [neotree](http://www.emacswiki.org/emacs/NeoTree)
+
+Navigation:
+- [imenu-anywhere](https://github.com/vitoshka/imenu-anywhere)
+- [helm-swoop](https://github.com/ShingoFukuyama/helm-swoop)
 
 Project managment :
 - [projectile](https://github.com/bbatsov/projectile)
@@ -75,6 +92,7 @@ Project managment :
 - [nav](https://code.google.com/p/emacs-nav/)
 - [lice.el](https://github.com/buzztaiki/lice-el)
 - [perspective](https://github.com/nex3/perspective-el)
+- [prodigy.el](https://github.com/rejeep/prodigy.el)
 
 Python :
 - [jedi](https://github.com/tkf/emacs-jedi)
@@ -133,7 +151,7 @@ Cloud:
 - [dockerfile-mode](https://github.com/spotify/dockerfile-mode)
 - [vagrant](https://github.com/ottbot/vagrant.el)
 
-Syntax :
+Error checking:
 - [flycheck](https://github.com/flycheck/flycheck)
 
 Productivity:
@@ -141,28 +159,32 @@ Productivity:
 - [calfw](https://github.com/kiwanami/emacs-calfw)
 
 Completion:
-- [helm]()
 - [auto-complete](http://cx4a.org/software/auto-complete/)
 - [company-mode](http://company-mode.github.io/)
 - [helm-company](https://github.com/yasuyk/helm-company)
 
-I/O:
-- [direx.el](https://github.com/m2ym/direx-el)
-- [dired-imenu](https://github.com/DamienCassou/dired-imenu)
-- [dired-filter](https://github.com/Fuco1/dired-hacks)
-- [dired-open](https://github.com/Fuco1/dired-hacks)
-- [dired-subtree](https://github.com/Fuco1/dired-hacks)
-
-VC:
+Version Control:
 - [magit](https://github.com/magit/magit)
 
-Misc:
-- [sr-speedbar](http://www.emacswiki.org/emacs/SrSpeedbar)
-- [prodigy.el](https://github.com/rejeep/prodigy.el)
-- [swoop](https://github.com/ShingoFukuyama/emacs-swoop)
+Search:
+- [helm-ack](https://github.com/syohex/emacs-helm-ack)
+- [helm-ag](https://github.com/syohex/emacs-helm-ag)
+
+Appearence:
 - [powerline](https://github.com/milkypostman/powerline)
+
+Console:
 - [multi-term](http://www.emacswiki.org/emacs/multi-term.el)
 
+Theme:
+- [moe-theme](https://github.com/kuanyui/moe-theme.el)
+- [zenburn-theme](https://github.com/bbatsov/zenburn-emacs)
+- [color-theme-sanityinc-tomorrow]()
+- [noctilux-theme](https://github.com/stafu/noctilux-theme)
+- [afternoon-theme](https://github.com/osener/emacs-afternoon-theme)
+- [ample-theme](https://github.com/jordonbiondo/ample-theme)
+- [subatomic-theme](https://github.com/cryon/subatomic)
+- [monokai-theme](https://github.com/oneKelvinSmith/monokai-emacs)
 
 ## Keymap
 
