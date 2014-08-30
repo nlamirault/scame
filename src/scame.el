@@ -22,7 +22,7 @@
 ;;; Code:
 
 ;; Debug or not
-(setq debug-on-error t)
+;;(setq debug-on-error t)
 
 
 (require 'package)
@@ -33,6 +33,9 @@
 ;; Don't initialize packages twice
 (setq package-enable-at-startup nil)
 
+;; Benchmark Emacs installation
+;;(require 'benchmark-init)
+
 (when (version< emacs-version "24.3")
   (error "Scame requires at least GNU Emacs 24.3"))
 
@@ -41,8 +44,6 @@
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
 ;;(require 'pallet)
 
-;; Benchmark Emacs installation
-(require 'benchmark-init)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -58,19 +59,13 @@
 
 (defconst scame-user-customization-file
   (f-join user-home-directory ".config/scame/scame-user.el")
-  "File used to store user customizations.")
-
-(setq auth-sources
-      (list (f-join user-home-directory ".authinfo.gpg")
-            (f-join user-home-directory ".authinfo")
-            (f-join user-home-directory ".netrc")))
-
-;; Emacs saving customizations
-(setq custom-file (f-join user-emacs-directory "emacs-custom.el"))
+  "File used to store user customization.")
 
 (defconst scame-init-file
   (f-join user-emacs-directory "scame.el")
   "Scame initialization file.")
+
+(setq gnus-init-file "~/.emacs.d/scame-gnus.el")
 
 (use-package init-loader
   :config (init-loader-load (f-slash (f-join user-emacs-directory "lisp"))))
@@ -78,8 +73,6 @@
 ;;(let ((user-customization (f-join user-home-directory ".config/scame/scame-user.el")))
 (when (file-readable-p scame-user-customization-file)
   (load scame-user-customization-file))
-
-
 
 (scame-global-mode 1)
 
