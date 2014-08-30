@@ -98,6 +98,8 @@
          (signature "~/.signature"))
 	))
 
+;; No archive
+(setq gnus-message-archive-group nil)
 
 ;; Contacts
 ;; ---------
