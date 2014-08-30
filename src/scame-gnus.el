@@ -104,8 +104,8 @@
 ;; Contacts
 ;; ---------
 
-;; (require 'google-contacts-gnus)
-;; (require 'google-contacts-message)
+(require 'google-contacts-gnus)
+(require 'google-contacts-message)
 
 
 ;; Misc
@@ -170,11 +170,6 @@
 
 (setq gnus-group-line-format "%p%M%B%S%P%(%G: %N%)\n")
 
-
-(setq gnus-face-1 'font-lock-string-face)
-(setq gnus-face-2 'font-lock-comment-face)
-(setq gnus-face-3 'font-lock-variable-name-face)
-
 (setq gnus-message-setup-hook
       '(font-lock-fontify-buffer))
 
@@ -224,6 +219,35 @@
 	gnus-thread-sort-by-date))
 
 (setq gnus-sort-gathered-threads-function 'gnus-thread-sort-by-date)
+
+
+;; Colors
+;; -------
+
+
+(setq gnus-face-1 'font-lock-string-face)
+(setq gnus-face-2 'font-lock-comment-face)
+(setq gnus-face-3 'font-lock-variable-name-face)
+
+(set-face-foreground 'gnus-summary-normal-ancient-face "white")
+(set-face-foreground 'gnus-summary-normal-read-face "green")
+(set-face-foreground 'gnus-summary-normal-ticked-face "cyan")
+(set-face-foreground 'gnus-summary-normal-unread-face "SkyBlue")
+(set-face-foreground 'gnus-summary-high-ancient-face "red")
+(set-face-foreground 'gnus-summary-high-read-face "white")
+(set-face-foreground 'gnus-summary-high-ticked-face "cyan")
+(set-face-foreground 'gnus-summary-high-unread-face "SkyBlue")
+(set-face-foreground 'gnus-summary-low-ancient-face "red")
+(set-face-foreground 'gnus-summary-low-read-face "white")
+(set-face-foreground 'gnus-summary-low-ticked-face "cyan")
+(set-face-foreground 'gnus-summary-low-read-face "SkyBlue")
+
+(set-face-foreground 'gnus-header-content-face "green")
+(set-face-foreground 'gnus-header-from-face "orange")
+(set-face-foreground 'gnus-header-name-face "cyan")
+(set-face-foreground 'gnus-header-newsgroups-face "white")
+(set-face-foreground 'gnus-header-subject-face "white")
+(set-face-foreground 'gnus-signature-face "white")
 
 
 (provide 'scame-gnus)
