@@ -33,6 +33,7 @@
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier nil)
 
+(setq w3m-command "w3m")
 
 (provide 'cocoa-emacs-config)
 ;;; cocoa-emacs-config.el ends here
