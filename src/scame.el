@@ -65,7 +65,31 @@
   (f-join user-emacs-directory "scame.el")
   "Scame initialization file.")
 
-(setq gnus-init-file "~/.emacs.d/scame-gnus.el")
+;; (setq gnus-init-file
+;;       (f-join user-emacs-directory "scame-gnus.el"))
+
+;; TODO :
+
+(defun gnus-gmail ()
+  "Launch Gnus using GMail configuration."
+  (interactive)
+  (setq gnus-init-file (f-join user-emacs-directory "gnus/gnus-gmail.el")
+        gnus-startup-file (f-join user-home-directory ".gmail-newsrc"))
+  (gnus))
+
+(defun gnus-exchange ()
+  "Launch Gnus using Exchange configuration."
+  (interactive)
+  (setq gnus-init-file (f-join user-emacs-directory "gnus/gnus-exchange.el")
+        gnus-startup-file (f-join user-home-directory ".exchange-newsrc"))
+  (gnus))
+
+(defun gnus-offlineimap ()
+  "Launch Gnus using Offlineimap configuration."
+  (interactive)
+  (setq gnus-init-file (f-join user-emacs-directory "gnus/gnus-offlineimap.el")
+        gnus-startup-file (f-join user-home-directory ".offlineimap-newsrc"))
+  (gnus))
 
 (use-package init-loader
   :config (init-loader-load (f-slash (f-join user-emacs-directory "lisp"))))
