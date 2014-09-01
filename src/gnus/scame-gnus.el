@@ -20,58 +20,10 @@
 ;;; Code:
 
 ;;(require 'gnus)
-;;(require 'smtpmail)
+;; (require 'smtpmail)
 
 (require 'gnus-art)
 (require 'gnus-cite)
-
-
-
-;; Gmail configuration
-;; --------------------
-
-;; Place a line like the following in ~/.authinfo
-;; machine imap.gmail.com login your-name@gmail.com password your-password port 993
-;; and make sure that no-one else can read it with
-;; chmod 600 ~/.authinfo
-
-;; (setq gnus-select-method
-;;       '(nnimap "gmail"
-;;                (nnimap-address "imap.gmail.com")
-;;                (nnimap-server-port 993)
-;;                (nnimap-stream ssl)))
-
-;; If you don't want to be prompted for a password on every mail sent,
-;; you can add the following line to your ~/.authinfo.
-;; machine smtp.gmail.com login your-name@gmail.com password your-password port 465
-;; chmod 600 ~/.authinfo
-
-;; (setq smtpmail-smtp-service 465
-;;       smtpmail-smtp-server "smtp.gmail.com"
-;;       smtpmail-default-smtp-server smtpmail-smtp-server
-;;       smtpmail-auth-credentials (expand-file-name "~/.authinfo")
-;;       smtpmail-stream-type 'ssl)
-
-
-;; OfflineImap
-;; ------------
-
-;; Configure Offlineimap using ~/.offlineimaprc file.
-
-;; (setq gnus-select-method
-;;       '(nnmaildir "FT"
-;;                   (directory "~/Mail/FT")
-;;                   (nnfolder "archive")
-;;                   (nnfolder-directory "~/Mail/FT/archive")
-;;                   (nnfolder-active-file "~/Mail/FT/archive/active")
-;;                   (nnfolder-get-new-mail nil)
-;;                   (nnfolder-inhibit-expiry t)))
-
-;; (setq smtpmail-smtp-service 25
-;;       smtpmail-smtp-server "exch-ntr-smtp.si.francetelecom.fr"
-;;       smtpmail-default-smtp-server smtpmail-smtp-server
-;;       smtpmail-auth-credentials (expand-file-name "~/.authinfo")
-;;       smtpmail-stream-type 'ssl)
 
 
 ;; SMTP
@@ -192,7 +144,8 @@
 
 ;;(setq gnus-summary-line-format "%U%R%z %o %I%(%[%-25,25n%]%) %s\n")
 (setq gnus-summary-mode-line-format "Gnus: %G %Z")
-(setq gnus-summary-line-format "%U%R%z %(%&user-date;  %-15,15f  %B%s%)\n")
+(setq gnus-summary-line-format "%U%R%z %(%&user-date;  %-15,35f  %B%s%)\n")
+;;(setq gnus-summary-line-format "%U%R%z%I%(%[%4L: %-23,23f%]%) %s\n")
 (setq gnus-user-date-format-alist '((t . "%Y-%m-%d %H:%M")))
 
 (setq gnus-group-line-format "%p%M%B%S%P%(%G: %N%)\n")

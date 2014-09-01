@@ -21,6 +21,7 @@
 
 (require 'gnus)
 (require 'smtpmail)
+(require 'starttls)
 
 (require 'scame-gnus)
 
@@ -34,7 +35,7 @@
 
 (setq gnus-select-method
       '(nnimap "exchange"
-               (nnimap-address "exch-ntr-imap.microsoft.fr")
+               (nnimap-address "exch-imap.microsoft.fr")
                (nnimap-server-port 993)
                (nnimap-stream ssl)))
 
@@ -43,12 +44,51 @@
 ;; machine smtp.microsoft.com login your-name@microsoft.com password your-password port 465
 ;; chmod 600 ~/.authinfo
 
-(setq smtpmail-smtp-service 25
-      smtpmail-smtp-server "exch-ntr-smtp.microsoft.fr"
-      smtpmail-default-smtp-server smtpmail-smtp-server
-      smtpmail-auth-credentials (expand-file-name "~/.authinfo")
-      smtpmail-stream-type 'ssl)
+;; (setq smtpmail-debug-info t
+;;       smtpmail-debug-vert t)
 
+;; (defun gnutls-available-p ()
+;;   "Function redefined in order not to use built-in GnuTLS support"
+;;   nil)
+
+;; (setq smtpmail-smtp-service 25 ;;587(starttls) or 465(tls/ssl)
+;;       smtpmail-smtp-server "exch-smtp.microsoft.fr"
+;;       smtpmail-default-smtp-server smtpmail-smtp-server
+;;       smtpmail-auth-credentials (expand-file-name "~/.authinfo")
+;;       smtpmail-starttls-credentials (expand-file-name "~/.authinfo")
+;;       ;;smtpmail-stream-type 'ssl)
+;;       smtpmail-stream-type 'starttls
+;;       starttls-use-gnutls t
+;;       starttls-gnutls-program "gnutls-cli"
+;;       starttls-extra-arguments nil ;'("--priority" "NORMAL:%COMPAT")
+;;       )
+
+;; MSMTP
+;; -------
+
+;; Exemple of configuration file :
+;; ##################
+;; defaults
+;; tls on
+;; tls_starttls on
+;; tls_trust_file /etc/certificate.crt
+
+;; account test
+;; host exch-smtp.microsoft.fr
+;; domain exch-smtp.microsoft.fr
+;; auth login
+;; user mylogin
+;; from myemail
+;; password mypassword
+;; port 25
+;; logfile /tmp/msmtp.log
+;; ##################
+
+
+(setq message-sendmail-f-is-evil 't
+      message-sendmail-extra-arguments '("--read-envelope-from")
+      message-send-mail-function 'message-send-mail-with-sendmail
+      sendmail-program "/usr/sbin/msmtp")
 
 (provide 'gnus-exchange)
 ;;; gnus-exchange.el ends here
