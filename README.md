@@ -180,6 +180,7 @@ Console:
 
 Mail
 - [gnus](http://www.gnus.org/)
+- [google-contacts](https://julien.danjou.info/projects/emacs-packages#google-contacts)
 
 Theme:
 - [moe-theme](https://github.com/kuanyui/moe-theme.el)

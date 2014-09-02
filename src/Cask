@@ -266,8 +266,7 @@
 (depends-on "apache-mode")
 
 ;; Gnus
-;; (depends-on "google-contacts")
-
+(depends-on "google-contacts")
 
 ;; Themes
 (depends-on "moe-theme")
