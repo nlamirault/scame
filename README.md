@@ -11,6 +11,8 @@ These tools are used to perform the [Scame][] installation :
 - [Cask][] (>= 0.6.0)
 - [EVM][]
 
+The current version has been tested on Linux and Mac OS X.
+
 
 ## Installation
 
@@ -175,6 +177,9 @@ Appearence:
 
 Console:
 - [multi-term](http://www.emacswiki.org/emacs/multi-term.el)
+
+Mail
+- [gnus](http://www.gnus.org/)
 
 Theme:
 - [moe-theme](https://github.com/kuanyui/moe-theme.el)

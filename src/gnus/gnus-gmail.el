@@ -36,7 +36,10 @@
       '(nnimap "gmail"
                (nnimap-address "imap.gmail.com")
                (nnimap-server-port 993)
-               (nnimap-stream ssl)))
+               (nnimap-stream ssl)
+               ;; press 'E' to expire email
+               (nnmail-expiry-target "nnimap+gmail:[Gmail]/Trash")
+               ))
 
 ;; If you don't want to be prompted for a password on every mail sent,
 ;; you can add the following line to your ~/.authinfo.
