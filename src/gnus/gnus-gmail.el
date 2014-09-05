@@ -23,6 +23,8 @@
 (require 'smtpmail)
 
 (require 'scame-gnus)
+(require 'scame-bbdb)
+
 
 ;; Gmail configuration
 ;; --------------------
@@ -52,6 +54,20 @@
       smtpmail-auth-credentials (expand-file-name "~/.authinfo")
       smtpmail-stream-type 'ssl)
 
+
+;; Keybindings
+
+(define-key gnus-summary-mode-map
+  (kbd "B d")
+  (lambda ()
+    (interactive)
+    (gnus-summary-move-article nil "nnimap+gmail:[Gmail]/Trash")))
+
+(define-key gnus-summary-mode-map
+  (kbd "B s")
+  (lambda ()
+    (interactive)
+    (gnus-summary-move-article nil "nnimap+gmail:[Gmail]/Spam")))
 
 
 (provide 'gnus-gmail)

@@ -24,6 +24,7 @@
 (require 'starttls)
 
 (require 'scame-gnus)
+(require 'scame-bbdb)
 
 ;; Exchange configuration
 ;; ----------------------
