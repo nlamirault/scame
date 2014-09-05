@@ -1,4 +1,4 @@
-;;; 52_weather.el --- Weather informations
+;;; 53_bbdb.el --- BBDB configuration
 
 ;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -20,9 +20,10 @@
 ;;; Code:
 
 
-(use-package weather-metno)
+(use-package bbdb-com
+  :bind (("C-c d s" . bbdb)
+         ("C-c d n" . bbdb-search-name)
+         ("C-c d m" . bbdb-search-mail)))
 
-(use-package org-weather-metno)
-
-(provide '52_weather)
-;;; 52_weather.el ends here
+(provide '53_bbdb)
+;;; 53_bbdb.el ends here

@@ -32,14 +32,10 @@
                          (local-set-key "<TAB>" 'bbdb-complete-name)))
             ))
 
-(use-package bbdb-com
-  :bind (("C-c d s" . bbdb)
-         ("C-c d n" . bbdb-search-name)
-         ("C-c d m" . bbdb-search-mail)))
-
-;; :bind (("C-c o l" . org-store-link)
-;;        ("C-c o a" . org-agenda)
-;;        ("C-c o b" . org-iswitchb)))
+;; (use-package bbdb-com
+;;   :bind (("C-c d s" . bbdb)
+;;          ("C-c d n" . bbdb-search-name)
+;;          ("C-c d m" . bbdb-search-mail)))
 
 (use-package bbdb-
   :init (bbdb-:setup))
