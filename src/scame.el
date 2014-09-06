@@ -65,10 +65,7 @@
   (f-join user-emacs-directory "scame.el")
   "Scame initialization file.")
 
-;; (setq gnus-init-file
-;;       (f-join user-emacs-directory "scame-gnus.el"))
-
-;; TODO :
+(add-to-list 'load-path "~/.emacs.d/gnus")
 
 (defun gnus-gmail ()
   "Launch Gnus using GMail configuration."
