@@ -15,7 +15,6 @@ before_script:
   - export PATH="/home/travis/.cask/bin:$PATH"
 env:
     #- EVM_EMACS=emacs-24.3-bin
-    - EMACS=emacs23
     - EMACS=emacs24
     - EMACS=emacs-snapshot
 script:
