@@ -88,12 +88,12 @@ Navigation:
 - [helm-swoop](https://github.com/ShingoFukuyama/helm-swoop)
 
 Project managment :
-- [projectile](https://github.com/bbatsov/projectile)
+- [projectile][]
 - [persp-projectile](https://github.com/bbatsov/projectile)
 - [project-explorer](https://github.com/sabof/project-explorer)
 - [nav](https://code.google.com/p/emacs-nav/)
 - [lice.el](https://github.com/buzztaiki/lice-el)
-- [perspective](https://github.com/nex3/perspective-el)
+- [perspective][]
 - [prodigy.el](https://github.com/rejeep/prodigy.el)
 
 Python :
@@ -311,7 +311,7 @@ Keybinding           | Description
 
 ### Perspective
 
-See [Perspective][]
+See [perspective][]
 
 Keybinding           | Description
 ---------------------|------------------------------------------------------------
@@ -323,6 +323,14 @@ Keybinding           | Description
 <kbd>C-x x a</kbd>   | persp-add-buffer
 <kbd>C-x x i</kbd>   | persp-import
 <kbd>C-x x r</kbd>   | persp-rename
+
+### Gnus / BBDB
+
+Keybinding           | Description
+---------------------|------------------------------------------------------------
+<kbd>C-c d s</kbd>   | bbdb
+<kbd>C-c d n</kbd>   | bbdb-search-name
+<kbd>C-c d m</kbd>   | bbdb-search-mail
 
 ### Scame mode
 
@@ -465,4 +473,5 @@ Nicolas Lamirault <nicolas.lamirault@gmail.com>
 [Issue tracker]: https://github.com/nlamirault/scame/issues
 
 [projectile]: https://github.com/bbatsov/projectile
+[perspective]: https://github.com/nex3/perspective-el
 [Docker]: http://www.docker.com

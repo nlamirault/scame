@@ -480,18 +480,26 @@
 
 (ert-deftest test-markdown-mode ()
   (with-current-file "var/readme.md"
-                     (should (featurep 'markdown-mode)))
+      (should (featurep 'markdown-mode)))
   (with-current-file "var/readme.markdown"
-                     (should (featurep 'markdown-mode))))
+      (should (featurep 'markdown-mode))))
 
 (ert-deftest test-fountain-mode ()
   (with-current-file "var/scame.fountain"
-                     (should (featurep 'fountain-mode))))
+      (should (featurep 'fountain-mode))))
 
 
 (ert-deftest test-toml-mode ()
   (with-current-file "var/scame.toml"
-                     (should (featurep 'toml-mode))))
+      (should (featurep 'toml-mode))))
+
+
+(ert-deftest test-fixmee-mode ()
+  (with-current-file "var/hello.py"
+      (should fixmee-mode)
+      (should (eql 'fixmee-view-listing
+                   (key-binding (kbd "C-c v"))))
+
 
 ;; TDD
 
