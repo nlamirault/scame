@@ -48,12 +48,12 @@ ENDC = '\033[0m'
 
 def success(message):
     """Print MESSAGE with a green color."""
-    print(OKGREEN + message + ENDC)
+    print(OKGREEN + "[SCAME] " + message + ENDC)
 
 
 def fail(message):
     """Print MESSAGE with a red color."""
-    print(FAIL + message + ENDC)
+    print(FAIL + "[SCAME] " + message + ENDC)
 
 
 def scame_clone():
