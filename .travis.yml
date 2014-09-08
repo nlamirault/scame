@@ -10,6 +10,9 @@ before_install:
   # Update and install the Emacs for our environment
   - sudo apt-get update -qq
   - sudo apt-get install -qq -yy ${EMACS}-nox ${EMACS}-el
+before_script:
+  - curl -fsSkL https://gist.github.com/rejeep/7736123/raw | sh
+  - export PATH="/home/travis/.cask/bin:$PATH"
 env:
     #- EVM_EMACS=emacs-24.3-bin
     - EMACS=emacs23
@@ -18,4 +21,3 @@ env:
 script:
         # - ./scame --init --emacs=emacs-24.3-bin && emacs --version && ./scame --cmd=install && make local-test
     make local-test
-
