@@ -64,13 +64,14 @@ def scame_clone():
 
 def scame_install():
     """Launch Scame installation using Cask."""
-    success("Install Scame.")
     if not path.isdir(path.join(HOME, '.cask')):
         cask_install()
     if not path.isdir(SCAME_HOME):
-        subprocess.check_call(['sudo', 'mkdir', SCAME_HOME])
+        scame_clone()
+        #subprocess.check_call(['sudo', 'mkdir', SCAME_HOME])
     os.chdir(SCAME_HOME)
     # check_call doens't find emacs executable installed by EVM. So we use 'os'
+    success("Install Scame.")
     os.system("%s install" % CASK_EXECUTABLE)
     os.chdir(HOME)
 
@@ -137,7 +138,6 @@ def main(args):
             emacs_version = args.emacs
 
         if args.init:
-            scame_clone()
             evm_install(emacs_version)
             scame_install()
             success("""Scame installed.""")
