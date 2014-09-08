@@ -67,6 +67,8 @@ def scame_install():
     success("Install Scame.")
     if not path.isdir(path.join(HOME, '.cask')):
         cask_install()
+    if not path.isdir(SCAME_HOME):
+        subprocess.check_call(['sudo', 'mkdir', SCAME_HOME])
     os.chdir(SCAME_HOME)
     # check_call doens't find emacs executable installed by EVM. So we use 'os'
     os.system("%s install" % CASK_EXECUTABLE)
@@ -128,7 +130,7 @@ def exec_scame_command(command_name):
 
 def main(args):
     """Main function. """
-    #print args
+    # print args
     try:
         emacs_version = 'emacs-24.3'  # emacs-git-snapshot'
         if args.emacs:
