@@ -311,7 +311,7 @@
 
 ;; Common Lisp
 
-(ert-deftest test-scame-slime ()
+(ert-deftest test-scame-commonslisp ()
   (should (string-equal "/usr/bin/sbcl" inferior-lisp-program)))
 
 
@@ -459,7 +459,7 @@
       (should (featurep 'c-eldoc))
       (should (= 4 c-basic-offset))
       (should (string-equal "google" c-indentation-style))
-      (should (= 120 c-eldoc-buffer-regenerate-time))))
+      (should (= 30 c-eldoc-buffer-regenerate-time))))
 
 (ert-deftest test-scame-cpp ()
   (with-current-file "var/hello.cpp"
@@ -468,7 +468,7 @@
       (should (featurep 'c-eldoc))
       (should (= 2 c-basic-offset))
       (should (string-equal "google" c-indentation-style))
-      (should (= 120 c-eldoc-buffer-regenerate-time))))
+      (should (= 30 c-eldoc-buffer-regenerate-time))))
 
 ;; Rust
 
@@ -494,11 +494,12 @@
       (should (featurep 'toml-mode))))
 
 
-(ert-deftest test-fixmee-mode ()
-  (with-current-file "var/hello.py"
-      (should fixmee-mode)
-      (should (eql 'fixmee-view-listing
-                   (key-binding (kbd "C-c v"))))
+;; FIXME: package broken ?
+;; (ert-deftest test-fixmee-mode ()
+;;   (with-current-file "var/hello.py"
+;;       (should fixmee-mode)
+;;       (should (eql 'fixmee-view-listing
+;;                    (key-binding (kbd "C-x v f"))))))
 
 
 ;; TDD

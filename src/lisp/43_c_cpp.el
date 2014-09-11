@@ -24,17 +24,20 @@
   :config (progn
             (add-hook 'c-mode-common-hook 'google-set-c-style)
             (add-hook 'c-mode-common-hook 'google-make-newline-indent)
-            (add-hook 'c-mode-hook '(lambda ()
-                                      (setq c-basic-offset 4)))
+            (add-hook 'c-mode-hook
+                      '(lambda ()
+                         (setq c-basic-offset 4)))
             (add-hook 'c++-mode-common-hook 'google-set-c-style)))
 
 (use-package auto-complete-c-headers
   :config (progn
             (add-to-list 'ac-sources 'ac-source-c-headers)
-            (add-hook 'c++-mode-hook '(lambda ()
-                                        (add-to-list 'ac-sources 'ac-source-c-headers)))
-            (add-hook 'c-mode-hook '(lambda ()
-                                      (add-to-list 'ac-sources 'ac-source-c-headers)))))
+            (add-hook 'c++-mode-hook
+                      '(lambda ()
+                         (add-to-list 'ac-sources 'ac-source-c-headers)))
+            (add-hook 'c-mode-hook
+                      '(lambda ()
+                         (add-to-list 'ac-sources 'ac-source-c-headers)))))
 
 
 (use-package c-eldoc

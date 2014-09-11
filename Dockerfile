@@ -2,7 +2,6 @@ FROM ubuntu:14.04
 MAINTAINER Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 RUN apt-get -y update
-RUN apt-get -y upgrade
 
 RUN apt-get -y install python curl software-properties-common git
 
@@ -21,6 +20,7 @@ ADD ./src/Cask /.emacs.d/Cask
 ADD ./src/init.el /.emacs.d/init.el
 ADD ./src/scame.el /.emacs.d/scame.el
 ADD ./src/lisp /.emacs.d/lisp
+ADD ./src/gnus /.emacs.d/gnus
 RUN cd /.emacs.d && /.cask/bin/cask install
 
 RUN apt-get -y install make

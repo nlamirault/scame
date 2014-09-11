@@ -1,3 +1,19 @@
+# Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
 EMACS ?= emacs
 EMACSFLAGS = --debug-init -L .
 CASK = cask
@@ -8,17 +24,28 @@ CONTAINER = nlamirault/scame
 ELS = $(wildcard *.el)
 OBJECTS = $(ELS:.el=.elc)
 
+VERSION=$(shell \
+        grep scame-version scame-cli.el \
+	|awk -F'"' '{print $$2}')
+
+
+NO_COLOR=\033[0m
+OK_COLOR=\033[32;01m
+ERROR_COLOR=\033[31;01m
+WARN_COLOR=\033[33;01m
+
+all: help
 
 help:
-	@echo " ==== Scame ===="
-	@echo "  - test               : launch unit tests"
-	@echo "  - local-test         : launch unit test using local configuration"
-	@echo "  - integration-test   : launch integration tests"
-	@echo "  - clean              : clean Scame installation"
-	@echo "  - reset              : remote Scame dependencies for development"
-	@echo "  - docker-build       : build the Docker image"
-	@echo "  - docker-clean       : remove the Docker image"
-	@echo "  - docker-run         : launch Emacs using Scame docker image"
+	@echo -e "$(OK_COLOR) ==== Scame [$(VERSION)]====$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)  - test$(NO_COLOR)               : launch unit tests$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)  - local-test$(NO_COLOR)         : launch unit test using local configuration$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)  - integration-test$(NO_COLOR)   : launch integration tests$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)  - clean$(NO_COLOR)              : clean Scame installation$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)  - reset$(NO_COLOR)              : remote Scame dependencies for development$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)  - docker-build$(NO_COLOR)       : build the Docker image$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)  - docker-clean$(NO_COLOR)       : remove the Docker image$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)  - docker-run$(NO_COLOR)         : launch Emacs using Scame docker image$(NO_COLOR)"
 
 elpa:
 	$(CASK) install
@@ -71,12 +98,15 @@ reset : clean
 	$(EMACSFLAGS) \
 	-f batch-byte-compile $<
 
+.PHONY: docker-test
 docker-build:
 	docker build -t $(CONTAINER) .
 
+.PHONY: docker-test
 docker-clean:
 	docker rm $(CONTAINER)
 
+.PHONY: docker-test
 docker-run:
 	docker run -i -t $(CONTAINER)
 

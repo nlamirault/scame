@@ -67,8 +67,9 @@
 
 
 ;; Common Lisp
-(depends-on "slime")
-(depends-on "slime-company")
+;; (depends-on "slime")
+;; (depends-on "slime-company")
+(depends-on "sly")
 
 ;; Emacs Lisp
 (depends-on "elisp-slime-nav")
@@ -165,6 +166,8 @@
 
 ;; Other development mode
 
+(depends-on "fixmee")
+
 ;; TDD
 (depends-on "cerbere")
 
@@ -211,7 +214,7 @@
 (depends-on "helm-mode-manager")
 (depends-on "ag")
 (depends-on "json-reformat")
-(depends-on "sos")
+;;(depends-on "sos")
 (depends-on "ace-jump-mode")
 (depends-on "helm-proc")
 (depends-on "helm-descbinds")
@@ -223,16 +226,21 @@
 
 ;; Mail
 ;;(depends-on "mu4e")
-;;(depends-on "w3m")
+(depends-on "w3m")
 ;;(depends-on "offlineimap")
 
 ;; Organisation
 (depends-on "org")
+(depends-on "org-agenda-property")
+(depends-on "org-caldav")
+(depends-on "org-journal")
+(depends-on "org-outlook")
+(depends-on "orgbox")
 ;;(depends-on "google-weather")
 (depends-on "weather-metno")
 ;;(depends-on "org-jira")
 ;;(depends-on "org-ehtml")
-;;(depends-on "calfw")
+(depends-on "calfw")
 ;;(depends-on "orgbox")
 
 (depends-on "htmlize")
@@ -266,7 +274,11 @@
 (depends-on "apache-mode")
 
 ;; Gnus
-(depends-on "google-contacts")
+;;(depends-on "google-contacts")
+(depends-on "bbdb")
+(depends-on "bbdb-")
+(depends-on "bbdb-ext")
+(depends-on "bbdb-csv-import")
 
 ;; Themes
 (depends-on "moe-theme")
