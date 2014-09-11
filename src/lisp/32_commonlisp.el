@@ -20,14 +20,16 @@
 ;;; Code:
 
 
-(use-package slime-autoloads
-  :config (progn
-            (setq inferior-lisp-program "/usr/bin/sbcl")
-            (slime-setup '(slime-fancy))))
+;; (use-package slime-autoloads
+;;   :config (progn
+;;             (setq inferior-lisp-program "/usr/bin/sbcl")
+;;             (slime-setup '(slime-fancy))))
 
-(use-package slime-company
-  :config (slime-setup '(slime-company)))
+;; (use-package slime-company
+;;   :config (slime-setup '(slime-company)))
 
+(use-package sly-autoloads
+     :config (setq inferior-lisp-program "/usr/bin/sbcl"))
 
 
 ;; Use Quicklisp to install Slime
