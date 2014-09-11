@@ -1,6 +1,6 @@
-;;; 03_completion.el --- Completion system
+;;; 80_misc.el -- Misc components
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,17 +19,13 @@
 
 ;;; Code:
 
-;;(require 'auto-complete)
-;;(ac-config-default)
-;;(setq ac-ignore-case nil)
-;;(add-to-list 'ac-modes 'web-mode)
-;;(add-to-list 'ac-modes 'php-mode)
-
-(use-package company
-  :init (add-hook 'after-init-hook 'global-company-mode))
+(use-package guide-key
+  :init (progn
+         (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-c"))
+         (setq guide-key/idle-delay 0.5)
+         (setq guide-key/align-command-by-space-flag t)
+         (guide-key-mode 1)))
 
 
-
-
-(provide '03_completion)
-;;; 03_completion.el ends here
+(provide '80_misc)
+;;; 80_misc.el ends here

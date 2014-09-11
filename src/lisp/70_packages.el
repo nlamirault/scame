@@ -19,7 +19,6 @@
 
 ;;; Code:
 
-
 (use-package paradox)
 
 

@@ -27,7 +27,7 @@
 (require 'git)
 (require 's)
 
-(defconst scame-version "0.7.0")
+(defconst scame-version "0.8.0")
 
 (defconst scame-copyright
   (s-concat "Scame v"

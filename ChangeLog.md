@@ -1,5 +1,14 @@
 # Scame ChangeLog
 
+## Version 0.8.0 (09/11/2014)
+
+- Update Common Lisp environment
+- Update TravisCI setup
+- `FIX` Remove Emacs 23 support
+- Configure [BBDB][]
+- Add [Gnus][] configuration
+- Add neotree package
+
 ## Version 0.7.0 (07/15/2014)
 
 - Add Docker container to launch unit tests
@@ -78,6 +87,8 @@
 [divona]: https://github.com/nlamirault/divona
 [Cask]: https://github.com/cask/cask
 [EVM]: https://github.com/rejeep/evm
+[Gnus]: http://www.gnus.org/
+[BBDB]: https://github.com/emacsmirror/bbdb
 
 [#18]: https://github.com/nlamirault/scame/issues/18
 [#16]: https://github.com/nlamirault/scame/issues/16

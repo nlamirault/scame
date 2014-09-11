@@ -73,6 +73,7 @@ Collections of packages installed:
 Interface Enhancement:
 - [helm](https://github.com/emacs-helm/helm)
 - [smex](https://github.com/nonsequitur/smex)
+- [guide-key](https://github.com/kai2nenobu/guide-key)
 
 File manager:
 - [direx.el](https://github.com/m2ym/direx-el)
@@ -104,6 +105,9 @@ Python :
 - [anaconda-mode](https://github.com/proofit404/anaconda-mode)
 - [sphinx-doc](https://github.com/naiquevin/sphinx-doc.el)
 - [tox.el](https://github.com/chmouel/tox.el)
+
+Common Lisp:
+- [sly](https://github.com/capitaomorte/sly)
 
 Go:
 - [go-mode](http://melpa.milkbox.net/#/go-mode)
@@ -180,6 +184,7 @@ Console:
 
 Mail
 - [gnus](http://www.gnus.org/)
+- [bbdb](https://github.com/emacsmirror/bbdb)
 - [google-contacts](https://julien.danjou.info/projects/emacs-packages#google-contacts)
 
 Theme:
@@ -205,6 +210,7 @@ Keybinding           | Description
 <kbd>C-c C-j</kbd>   | direx:jump-to-directory
 <kbd>C-.</kbd>       | imenu-anywhere
 <kbd>C-c t</kbd>     | launch terminal
+<kbd>C-x r</kbd>     | key bindings are automatically popped up after a short delay
 
 ### Helm
 

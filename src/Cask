@@ -280,6 +280,9 @@
 (depends-on "bbdb-ext")
 (depends-on "bbdb-csv-import")
 
+;; Misc
+(depends-on "guide-key")
+
 ;; Themes
 (depends-on "moe-theme")
 (depends-on "zenburn-theme")
