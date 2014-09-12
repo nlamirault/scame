@@ -20,7 +20,9 @@ The current version has been tested on Linux and Mac OS X.
 
 * Clone the repository :
 
+        $ rm -r ~/.emacs.d && mkdir ~/.emacs.d
         $ git clone https://github.com/nlamirault/scame
+        $ cp -r scame/src/* ~/.emacs.d/
 
 * Help
 
@@ -34,6 +36,8 @@ The current version has been tested on Linux and Mac OS X.
 			--init         Initialize Scame
 			--cmd CMD      Scame CLI commands
 			--emacs EMACS  Specify the version of Emacs to install
+
+### From CLI (not available)
 
 * Initialize [Scame][] :
 
@@ -216,11 +220,12 @@ Keybinding           | Description
 
 Keybinding           | Description
 ---------------------|------------------------------------------------------------
-<kbd>C-c M-f</kbd>   | helm-find-files
-<kbd>C-c f</kbd>     | helm-for-files
-<kbd>C-c b</kbd>     | helm-buffers-list
-<kbd>C-c M-x</kbd>   | helm-M-x
-<kbd>M-y</kbd>       | helm-show-kill-ring
+<kbd>C-x h F</kbd>   | helm-find-files
+<kbd>C-x h f</kbd>   | helm-for-files
+<kbd>C-x h b</kbd>   | helm-buffers-list
+<kbd>C-x h x</kbd>   | helm-M-x
+<kbd>C-x h y</kbd>   | helm-show-kill-ring
+<kbd>C-x h i</kbd>   | helm-imenu
 
 ### Swoop
 
@@ -334,6 +339,8 @@ Keybinding           | Description
 
 Keybinding           | Description
 ---------------------|------------------------------------------------------------
+<kbd>C-c m g</kbd>   | Launch Gnus using GMail setup
+<kbd>C-c m e</kbd>   | Launch Gnus using Exchange setup
 <kbd>C-c d s</kbd>   | bbdb
 <kbd>C-c d n</kbd>   | bbdb-search-name
 <kbd>C-c d m</kbd>   | bbdb-search-mail

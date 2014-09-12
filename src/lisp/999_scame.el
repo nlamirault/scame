@@ -60,10 +60,10 @@
 (defun scame-customization ()
   "Open the customization file."
   (interactive)
-  (let ((customization (f-join user-home-directory ".config/scame/user.el")))
-    (if (file-readable-p customization)
-	(switch-to-buffer (find-file-noselect customization))
-      (message "Scame: No customization file %s" customization))))
+;;  (let ((customization (f-join user-home-directory ".config/scame/scame-user.el")))
+  (if (file-readable-p scame-user-customization-file) ;customization)
+      (switch-to-buffer (find-file-noselect scame-user-customization-file))
+    (message "Scame: No customization file %s" customization)))
 
 
 (defun scame-project-website ()

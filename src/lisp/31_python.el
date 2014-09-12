@@ -88,7 +88,6 @@
 		      (local-set-key (kbd "C-x y t") 'tox-current-test)
 		      (local-set-key (kbd "C-x y f") 'tox-current-class))))
 
-
 (use-package jedi-direx
   :config (progn
 	    (add-hook 'jedi-mode-hook 'jedi-direx:setup)
@@ -96,7 +95,6 @@
 		      (lambda ()
 			(local-set-key (kbd "C-x y x")
 				       'jedi-direx:pop-to-buffer)))))
-
 
 (use-package sphinx-doc
   :config (add-hook 'python-mode-hook
@@ -109,6 +107,12 @@
 		    (lambda ()
 		      (local-set-key (kbd "C-x y d") 'helm-pydoc))))
 
+(use-package pip-requirements
+  :mode (("\\requirements.txt\\'" . pip-requirements-mode)
+         ("\\requirements-dev.txt\\'" . pip-requirements-mode)
+         ("\\requirements-doc.txt\\'" . pip-requirements-mode)
+         ("\\requirements-style.txt\\'" . pip-requirements-mode)
+         ("\\requirements-test.txt\\'" . pip-requirements-mode)))
 
 (provide '31_python)
 ;;; 31_python.el ends here

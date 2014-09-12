@@ -102,6 +102,7 @@
 (depends-on "jedi-direx")
 (depends-on "sphinx-doc")
 (depends-on "helm-pydoc")
+(depends-on "pip-requirements")
 
 ;; Ruby
 
@@ -227,7 +228,7 @@
 ;; Mail
 ;;(depends-on "mu4e")
 (depends-on "w3m")
-;;(depends-on "offlineimap")
+(depends-on "offlineimap")
 
 ;; Organisation
 (depends-on "org")

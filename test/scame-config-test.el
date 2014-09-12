@@ -167,15 +167,15 @@
 (ert-deftest test-scame-helm ()
   (should (featurep 'helm-mode))
   (should (eql 'helm-find-files
-	       (key-binding (kbd "C-c M-f"))))
+	       (key-binding (kbd "C-x h M-f"))))
   (should (eql 'helm-for-files
-	       (key-binding (kbd "C-c f"))))
+	       (key-binding (kbd "C-x h f"))))
   (should (eql 'helm-M-x
-               (key-binding (kbd "C-c M-x"))))
+               (key-binding (kbd "C-x h M-x"))))
   (should (eql 'helm-show-kill-ring
-               (key-binding (kbd "M-y"))))
+               (key-binding (kbd "C-x h M-y"))))
   (should (eql 'helm-buffers-list
-	       (key-binding (kbd "C-c b")))))
+	       (key-binding (kbd "C-x h b")))))
 
 (ert-deftest test-scame-helm-imenu ()
   (require 'helm-imenu)
@@ -257,7 +257,8 @@
 
 (ert-deftest test-scame-helm-projectile ()
   (should (require 'helm-projectile))
-  (should (eql 'helm-projectile (key-binding (kbd "C-c h")))))
+  (should (eql 'helm-projectile
+               (key-binding (kbd "C-c h p")))))
 
 ;; (ert-deftest test-scame-project-explorer ()
 ;;   (should (require 'project-explorer)))

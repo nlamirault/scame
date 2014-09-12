@@ -23,7 +23,10 @@
 ;;(require 'helm)
 
 (use-package helm
-  :init (helm-mode 1)
+  :init (progn
+          (helm-mode 1)
+          (define-prefix-command 'scame-helm-map)
+          (global-set-key (kbd "C-x h") 'scame-helm-map))
   :config (progn
 	    (setq helm-ff-tramp-not-fancy nil)
 	    (setq helm-ff-skip-boring-files t)
@@ -31,15 +34,14 @@
 	    (add-to-list 'helm-boring-buffer-regexp-list "\\*epc")
 	    (add-to-list 'helm-boring-buffer-regexp-list "\\.elc$")
 	    (add-to-list 'helm-boring-buffer-regexp-list "\\.pyc$"))
-  :bind (("C-c M-f" . helm-find-files)
-         ("C-c f" . helm-for-files)
-         ("C-c M-x" . helm-M-x)
-         ("M-y" . helm-show-kill-ring)
-	 ("C-c b" . helm-buffers-list)))
-	 ;;("C-x C-i" . helm-imenu)))
+  :bind (("C-x h F" . helm-find-files)
+         ("C-x h f" . helm-for-files)
+         ("C-x h x" . helm-M-x)
+         ("C-x h y" . helm-show-kill-ring)
+	 ("C-x h b" . helm-buffers-list)))
 
 (use-package helm-imenu
-  :bind (("C-x C-i" . helm-imenu)))
+  :bind (("C-x h i" . helm-imenu)))
 
 (use-package helm-proc)
 
