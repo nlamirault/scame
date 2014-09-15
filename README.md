@@ -24,6 +24,9 @@ The current version has been tested on Linux and Mac OS X.
         $ git clone https://github.com/nlamirault/scame
         $ cp -r scame/src/* ~/.emacs.d/
 
+
+### From CLI (not yet available)
+
 * Help
 
 		$ ./scame -h
@@ -36,8 +39,6 @@ The current version has been tested on Linux and Mac OS X.
 			--init         Initialize Scame
 			--cmd CMD      Scame CLI commands
 			--emacs EMACS  Specify the version of Emacs to install
-
-### From CLI (not available)
 
 * Initialize [Scame][] :
 
@@ -344,6 +345,7 @@ Keybinding           | Description
 <kbd>C-c d s</kbd>   | bbdb
 <kbd>C-c d n</kbd>   | bbdb-search-name
 <kbd>C-c d m</kbd>   | bbdb-search-mail
+<kbd>C-c d h</kbd>   | helm-bbdb
 
 ### Scame mode
 

@@ -25,5 +25,8 @@
          ("C-c d n" . bbdb-search-name)
          ("C-c d m" . bbdb-search-mail)))
 
+(use-package helm-bbdb
+  :bind (("C-c d h" . helm-bbdb)))
+
 (provide '53_bbdb)
 ;;; 53_bbdb.el ends here
