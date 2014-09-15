@@ -206,7 +206,6 @@
 (depends-on "lice")
 (depends-on "commander")
 (depends-on "smex")
-(depends-on "swoop")
 (depends-on "emamux")
 (depends-on "init-loader")
 (depends-on "fabric")
@@ -223,6 +222,8 @@
 ;; Search
 (depends-on "helm-ack")
 (depends-on "helm-ag")
+(depends-on "swoop")
+(depends-on "helm-swoop")
 
 ;; Mail
 ;;(depends-on "mu4e")

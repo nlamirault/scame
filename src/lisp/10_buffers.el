@@ -32,6 +32,7 @@
 
 
 (use-package swoop
+  :config (depends-on "helm-swoop")
   :bind (("C-o" . swoop)
 	 ("C-M-o" . swoop-multi)
 	 ("M-o" . swoop-pcre-regexp)
