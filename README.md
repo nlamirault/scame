@@ -347,6 +347,16 @@ Keybinding           | Description
 <kbd>C-c d m</kbd>   | bbdb-search-mail
 <kbd>C-c d h</kbd>   | helm-bbdb
 
+### Encryption
+
+Keybinding           | Description
+---------------------|------------------------------------------------------------
+<kbd>C-c c f</kbd>   | Encrypt file
+<kbd>C-c c F</kbd>   | Decrypt file
+<kbd>C-c c r</kbd>   | Encrypt region
+<kbd>C-c c R</kbd>   | Decrypt region
+<kbd>C-c c l</kbd>   | List keys
+
 ### Scame mode
 
 Keybinding           | Description

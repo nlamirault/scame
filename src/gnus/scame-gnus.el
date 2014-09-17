@@ -71,7 +71,7 @@
          (address user-mail-address)
          (organization "None")
 	 ("X-PGP-Fingerprint" user-fingerprint)
-         (signature "~/.signature"))
+         (signature-file "~/.signature"))
 	))
 
 ;; No archive

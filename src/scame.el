@@ -28,6 +28,7 @@
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("org" . "http://orgmode.org/elpa/")
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
 ;;(package-initialize)
 ;; Don't initialize packages twice
@@ -64,8 +65,6 @@
 (defconst scame-init-file
   (f-join user-emacs-directory "scame.el")
   "Scame initialization file.")
-
-(add-to-list 'load-path "~/.emacs.d/gnus")
 
 (defun scame-mail-gmail ()
   "Launch Gnus using GMail configuration."

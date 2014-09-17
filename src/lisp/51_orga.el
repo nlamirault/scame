@@ -40,12 +40,17 @@
     (holiday-fixed 12 25 "Noël")
     (holiday-easter-etc 1 "Lundi de Pâques")
     (holiday-easter-etc 39 "Ascension")
-    (holiday-easter-etc 50 "Lundi de Pentecôte")))
+    (holiday-easter-etc 50 "Lundi de Pentecôte")
+    ;; Misc
+    (holiday-fixed 3 17 "St. Patrick's Day")
+    (holiday-float 5 0 -1 "Fête des Mères")
+    (holiday-float 6 0 3 "Fête des Pères")
+    ))
 
 (setq calendar-date-style 'european
       calendar-holidays french-holiday
-      calendar-mark-holidays-flag t)
-
+      calendar-mark-holidays-flag t
+      calendar-week-start-day 1)	; Weeks start on monday
 
 (use-package org
   :config (progn
@@ -165,6 +170,13 @@
 ;; (use-package calfw-org)
 ;; (use-package calfw-ical)
 
+(use-package org-crypt
+  :config (progn
+            (org-crypt-use-before-save-magic)
+            (setq org-tags-exclude-from-inheritance (quote ("crypt")))
+            ;; GPG key to use for encryption
+            ;; Either the Key ID or set to nil to use symmetric encryption.
+            (setq org-crypt-key nil)))
 
 
 (provide '51_orga)
