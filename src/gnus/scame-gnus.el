@@ -209,19 +209,46 @@
 (setq gnus-face-2 'font-lock-comment-face)
 (setq gnus-face-3 'font-lock-variable-name-face)
 
+(set-face-foreground 'gnus-group-mail-1-face "green")
+(set-face-foreground 'gnus-group-mail-1-empty-face "orange")
+(set-face-foreground 'gnus-group-mail-2-face "blue")
+(set-face-foreground 'gnus-group-mail-2-empty-face "cyan")
+(set-face-foreground 'gnus-group-mail-3-face "cyan")
+(set-face-foreground 'gnus-group-mail-3-empty-face "green")
+(set-face-foreground 'gnus-group-mail-low-face "red")
+(set-face-foreground 'gnus-group-mail-low-empty-face "cyan")
+
+(set-face-foreground 'gnus-group-news-1-face "red")
+(set-face-foreground 'gnus-group-news-1-empty-face "orange")
+(set-face-foreground 'gnus-group-news-2-face "blue")
+(set-face-foreground 'gnus-group-news-2-empty-face "cyan")
+(set-face-foreground 'gnus-group-news-3-face "SkyBlue")
+(set-face-foreground 'gnus-group-news-3-empty-face "Salmon")
+(set-face-foreground 'gnus-group-news-4-face "white")
+(set-face-foreground 'gnus-group-news-4-empty-face "red")
+(set-face-foreground 'gnus-group-news-5-face "beige")
+(set-face-foreground 'gnus-group-news-5-empty-face "pink")
+(set-face-foreground 'gnus-group-news-6-face "green")
+(set-face-foreground 'gnus-group-news-6-empty-face "violet")
+(set-face-foreground 'gnus-group-news-low-face "white")
+(set-face-foreground 'gnus-group-news-low-empty-face "cyan")
+
+
 (set-face-foreground 'gnus-summary-normal-ancient-face "white")
 (set-face-foreground 'gnus-summary-normal-read-face "green")
 (set-face-foreground 'gnus-summary-normal-ticked-face "cyan")
-(set-face-foreground 'gnus-summary-normal-unread-face "SkyBlue")
+(set-face-foreground 'gnus-summary-normal-unread-face "white")
 (set-face-foreground 'gnus-summary-high-ancient-face "red")
 (set-face-foreground 'gnus-summary-high-read-face "white")
 (set-face-foreground 'gnus-summary-high-ticked-face "cyan")
-(set-face-foreground 'gnus-summary-high-unread-face "SkyBlue")
+(set-face-foreground 'gnus-summary-high-unread-face "yellow")
 (set-face-foreground 'gnus-summary-low-ancient-face "red")
 (set-face-foreground 'gnus-summary-low-read-face "white")
 (set-face-foreground 'gnus-summary-low-ticked-face "cyan")
-(set-face-foreground 'gnus-summary-low-read-face "SkyBlue")
+(set-face-foreground 'gnus-summary-low-read-face "yellow")
 
+;; Invalid face ??
+;;(set-face-foreground 'gnus-header-to-face "yellow")
 (set-face-foreground 'gnus-header-content-face "green")
 (set-face-foreground 'gnus-header-from-face "orange")
 (set-face-foreground 'gnus-header-name-face "cyan")
@@ -229,6 +256,8 @@
 (set-face-foreground 'gnus-header-subject-face "white")
 (set-face-foreground 'gnus-signature-face "white")
 
+(set-face-foreground 'message-header-name-face "green")
+(set-face-foreground 'message-header-xheader-face "cyan")
 
 (provide 'scame-gnus)
 ;;; scame-gnus.el ends here
