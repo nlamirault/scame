@@ -93,5 +93,10 @@
   :bind (("C-x t t" . neotree-toggle)
          ("C-x t p" . neotree-project-dir)))
 
+
+(use-package pt
+  :bind (("C-c p s p" . projectile-pt)))
+
+
 (provide '30_dev)
 ;;; 30_dev.el ends here
