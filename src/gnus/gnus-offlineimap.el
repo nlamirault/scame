@@ -58,27 +58,28 @@
 ;; OfflineImap
 ;; ------------
 
-(setq gnus-secondary-select-methods
-      '((nnmaildir "GMail" (directory "~/Maildir/Gmail")) ; grab mail from here
-        (nnfolder "archive"
-                  (nnfolder-directory   "~/Maildir/archive") ; where I archive sent email
-                  (nnfolder-active-file "~/Maildir/archive/active")
-                  (nnfolder-get-new-mail nil)
-                  (nnfolder-inhibit-expiry t))))
+(setq gnus-select-method
+      '(nnmaildir "GMail" (directory "~/Maildir/Gmail")))
 
-;; SMTP
+(add-to-list 'gnus-secondary-select-methods
+             ;;(setq gnus-secondary-select-methods
+             ;;      '((nnmaildir "GMail" (directory "~/Maildir/Gmail")) ; grab mail from here
+             '((nnfolder "archive"
+                         (nnfolder-directory   "~/Maildir/archive") ; where I archive sent email
+                         (nnfolder-active-file "~/Maildir/archive/active")
+                         (nnfolder-get-new-mail nil)
+                         (nnfolder-inhibit-expiry t))))
+
+;; MSMTP
 ;; -----
 
-;; If you don't want to be prompted for a password on every mail sent,
-;; you can add the following line to your ~/.authinfo.
-;; machine smtp.gmail.com login your-name@gmail.com password your-password port 465
-;; chmod 600 ~/.authinfo
+(setq message-sendmail-f-is-evil 't
+      ;;message-sendmail-extra-arguments '("--read-envelope-from")
+      message-sendmail-extra-arguments '("-a" "gmail"))
+      message-send-mail-function 'message-send-mail-with-sendmail
+      sendmail-program "/usr/sbin/msmtp")
 
-(setq smtpmail-smtp-service 465
-      smtpmail-smtp-server "smtp.gmail.com"
-      smtpmail-default-smtp-server smtpmail-smtp-server
-      smtpmail-auth-credentials (expand-file-name "~/.authinfo")
-      smtpmail-stream-type 'ssl)
+
 
 
 (provide 'gnus-offlineimap)
