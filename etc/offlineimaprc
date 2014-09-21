@@ -14,7 +14,7 @@ status_backend = sqlite
 labelsheader = X-GMail-Keywords
 
 [Repository Gmail-local]
-# type = Maildir
+type = Maildir
 localfolders = ~/Maildir/Gmail
 nametrans = lambda folder: {'drafts':   '[Gmail]/Drafts',
                             'sent':     '[Gmail]/Sent Mail',
@@ -46,6 +46,6 @@ folderfilter = lambda folder: folder not in ['[Gmail]/All Mail',
                                              ]
 # Necessary as of OfflineIMAP 6.5.4
 # OSX
-sslcacertfile = /Users/nicolas/etc/ca-bundle.crt
+# sslcacertfile = /Users/nicolas/etc/ca-bundle.crt
 # Linux
-
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
