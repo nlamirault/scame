@@ -377,6 +377,24 @@ You can change the default keymap prefix C-c p like this:
 (setq scame-keymap-prefix (kbd "C-c C-s"))
 ```
 
+## Mail
+
+### GMail: Imap
+
+Using <kbd>C-c m g</kbd>, Gnus is starting using a GMail configuration
+(IMAP)
+
+### Exchange
+
+Using <kbd>C-c m e</kbd>, Gnus is starting using for a Microsoft Exchange
+mail account.
+
+### Offlineimap / MSMTP
+
+Using <kbd>C-c m o</kbd>, Gnus is starting using your `offlineimap` and `msmtp`
+configuration.
+
+
 ## Customization
 
 If file `$HOME/.config/scame/scame-user.el` exists, [Scame][] load it.
