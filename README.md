@@ -342,6 +342,7 @@ Keybinding           | Description
 ---------------------|------------------------------------------------------------
 <kbd>C-c m g</kbd>   | Launch Gnus using GMail setup
 <kbd>C-c m e</kbd>   | Launch Gnus using Exchange setup
+<kbd>C-c m o</kbd>   | Launch Gnus using offlineimap
 <kbd>C-c d s</kbd>   | bbdb
 <kbd>C-c d n</kbd>   | bbdb-search-name
 <kbd>C-c d m</kbd>   | bbdb-search-mail

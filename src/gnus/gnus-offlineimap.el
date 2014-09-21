@@ -21,8 +21,12 @@
 
 (require 'gnus)
 (require 'smtpmail)
+(require 'offlineimap)
 
 (require 'scame-gnus)
+
+
+(add-hook 'gnus-before-startup-hook 'offlineimap)
 
 ;; exemple of $HOME/.offlineimaprc file :
 
@@ -54,16 +58,28 @@
 ;; OfflineImap
 ;; ------------
 
-(setq gnus-select-method
-      '(nnmaildir "FT"
-                  (directory "~/Mail/FT")
-                  (get-new-mail nil)
-                  ;; (nnfolder "archive")
-                  ;; (nnfolder-directory "~/Mail/archive")
-                  ;; (nnfolder-active-file "~/Mail/archive/active")
-                  ;; (nnfolder-get-new-mail nil)
-                  ;; (nnfolder-inhibit-expiry t)))
-                  ))
+(setq gnus-secondary-select-methods
+      '((nnmaildir "GMail" (directory "~/Maildir/Gmail")) ; grab mail from here
+        (nnfolder "archive"
+                  (nnfolder-directory   "~/Maildir/archive") ; where I archive sent email
+                  (nnfolder-active-file "~/Maildir/archive/active")
+                  (nnfolder-get-new-mail nil)
+                  (nnfolder-inhibit-expiry t))))
+
+;; SMTP
+;; -----
+
+;; If you don't want to be prompted for a password on every mail sent,
+;; you can add the following line to your ~/.authinfo.
+;; machine smtp.gmail.com login your-name@gmail.com password your-password port 465
+;; chmod 600 ~/.authinfo
+
+(setq smtpmail-smtp-service 465
+      smtpmail-smtp-server "smtp.gmail.com"
+      smtpmail-default-smtp-server smtpmail-smtp-server
+      smtpmail-auth-credentials (expand-file-name "~/.authinfo")
+      smtpmail-stream-type 'ssl)
+
 
 (provide 'gnus-offlineimap)
 ;;; gnus-offlineimap.el ends here
