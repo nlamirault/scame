@@ -334,6 +334,7 @@ Keybinding           | Description
 ---------------------|------------------------------------------------------------
 <kbd>C-c m g</kbd>   | Launch Gnus using GMail setup
 <kbd>C-c m e</kbd>   | Launch Gnus using Exchange setup
+<kbd>C-c m o</kbd>   | Launch Gnus using offlineimap
 <kbd>C-c d s</kbd>   | bbdb
 <kbd>C-c d n</kbd>   | bbdb-search-name
 <kbd>C-c d m</kbd>   | bbdb-search-mail
@@ -385,6 +386,24 @@ You can change the default keymap prefix C-c p like this:
 ```el
 (setq scame-keymap-prefix (kbd "C-c C-s"))
 ```
+
+## Mail
+
+### GMail: Imap
+
+Using <kbd>C-c m g</kbd>, Gnus is starting using a GMail configuration
+(IMAP)
+
+### Exchange
+
+Using <kbd>C-c m e</kbd>, Gnus is starting using for a Microsoft Exchange
+mail account.
+
+### Offlineimap / MSMTP
+
+Using <kbd>C-c m o</kbd>, Gnus is starting using your `offlineimap` and `msmtp`
+configuration.
+
 
 ## Customization
 
