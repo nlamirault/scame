@@ -313,14 +313,6 @@ Keybinding           | Description
 <kbd>C-c g <</kbd>   | git-gutter+-previous-hunk
 <kbd>C-c g ></kbd>   | git-gutter+-next-hunk
 
-### Org
-
-Keybinding           | Description
----------------------|------------------------------------------------------------
-<kbd>C-c o a</kbd>   | org-agenda
-<kbd>C-c o b</kbd>   | org-iswitchb
-<kbd>C-c o l</kbd>   | org-store-link
-
 ### Perspective
 
 See [perspective][]
@@ -346,6 +338,24 @@ Keybinding           | Description
 <kbd>C-c d n</kbd>   | bbdb-search-name
 <kbd>C-c d m</kbd>   | bbdb-search-mail
 <kbd>C-c d h</kbd>   | helm-bbdb
+
+### IRC / IM
+
+Keybinding           | Description
+---------------------|------------------------------------------------------------
+<kbd>C-c i c</kbd>   | Launch IRC mode
+<kbd>C-c i j</kbd>   | Jabber connect all
+<kbd>C-c i o</kbd>   | Jabber disconnect
+<kbd>C-c i i</kbd>   | Jabber chat with
+<kbd>C-c i r</kbd>   | Jabber display roster
+
+### Org
+
+Keybinding           | Description
+---------------------|------------------------------------------------------------
+<kbd>C-c o a</kbd>   | org-agenda
+<kbd>C-c o b</kbd>   | org-iswitchb
+<kbd>C-c o l</kbd>   | org-store-link
 
 ### Encryption
 

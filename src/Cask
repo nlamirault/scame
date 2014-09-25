@@ -193,9 +193,6 @@
 (depends-on "git-timemachine")
 (depends-on "helm-open-github")
 
-;; IRC
-(depends-on "circe")
-
 ;; Utilities
 (depends-on "pkg-info")
 (depends-on "helm")
@@ -230,6 +227,15 @@
 ;;(depends-on "mu4e")
 (depends-on "w3m")
 (depends-on "offlineimap")
+
+;; IM
+(depends-on "jabber")
+
+;; IRC
+(depends-on "circe")
+(depends-on "rcirc-groups")
+(depends-on "rcirc-alertify")
+(depends-on "rcirc-notify")
 
 ;; Organisation
 (depends-on "org")

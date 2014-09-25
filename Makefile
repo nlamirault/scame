@@ -108,7 +108,11 @@ docker-clean:
 
 .PHONY: docker-test
 docker-run:
-	docker run -i -t $(CONTAINER)
+#	docker run -it --rm=true $(CONTAINER)
+	docker run -it --rm=true $(CONTAINER) \
+		-e DISPLAY=$(DISPLAY) \
+		-v /tmp/.X11-unix:/tmp/.X11-unix \
+		emacs-snapshot
 
 .PHONY: docker-test
 docker-test:

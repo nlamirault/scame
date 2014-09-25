@@ -64,6 +64,10 @@
 	    (add-to-list 'erc-modules 'scrolltobottom)))
 
 
+
+;; Circe
+;; ------
+
 (defun my-circe-prompt ()
   (lui-set-prompt
    (concat (propertize (concat (buffer-name) ">")
@@ -81,7 +85,6 @@
 
 (use-package circe
   :config (progn
-
             (setq circe-reduce-lurker-spam t)
             (setq lui-time-stamp-position 'right-margin)
             (add-hook 'circe-chat-mode-hook 'my-circe-prompt)
@@ -92,6 +95,24 @@
 
 (use-package circe-highlight-all-nicks
   :config (enable-circe-highlight-all-nicks))
+
+
+;; Rcirc
+;; ------
+
+(use-package rcirc
+  :config (add-hook 'rcirc-mode-hook
+                    (lambda ()
+                      (rcirc-track-minor-mode 1)))
+  :bind (("C-c i c" . rcirc)))
+
+(use-package rcirc-groups
+  :bind (("C-c i g" . rcirc-groups:switch-to-groups-buffer)))
+
+(use-package rcirc-alertify
+  :config (rcirc-alertify-enable))
+
+(use-package rcirc-notify)
 
 
 (provide '50_irc)
