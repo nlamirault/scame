@@ -183,6 +183,7 @@
 
 ;; Git and friends
 (depends-on "magit")
+(depends-on "magit-gerrit")
 (depends-on "git-commit-mode")
 (depends-on "gitconfig-mode")
 (depends-on "gitignore-mode")
@@ -242,7 +243,6 @@
 (depends-on "org-agenda-property")
 (depends-on "org-caldav")
 (depends-on "org-journal")
-(depends-on "org-outlook")
 (depends-on "orgbox")
 ;;(depends-on "google-weather")
 (depends-on "weather-metno")

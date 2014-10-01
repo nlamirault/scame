@@ -27,6 +27,7 @@
 	 ("C-c g l" . magit-log)
 	 ("C-c g b" . magit-branch-manager)))
 
+(use-package magit-gerrit)
 
 (use-package gitconfig-mode)
 
