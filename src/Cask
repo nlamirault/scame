@@ -154,7 +154,8 @@
 ;; C/C++
 (depends-on "google-c-style")
 (depends-on "c-eldoc")
-(depends-on "auto-complete-c-headers")
+;; (depends-on "auto-complete-c-headers")
+(depends-on "company-c-headers")
 
 ;; Rust
 (depends-on "rust-mode")
