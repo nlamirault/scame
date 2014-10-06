@@ -283,6 +283,7 @@
 (depends-on "apache-mode")
 
 ;; Gnus
+(depends-on "gnus-x-gm-raw")
 ;;(depends-on "google-contacts")
 (depends-on "bbdb")
 (depends-on "bbdb-")

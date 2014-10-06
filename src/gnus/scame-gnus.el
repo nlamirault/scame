@@ -225,6 +225,11 @@
 ;;            (browse-url url)
 ;;          (w3-fetch-orig url target)))))
 
+;; Research
+;; ---------
+
+(require 'gnus-x-gm-raw)
+
 ;; Colors
 ;; -------
 
