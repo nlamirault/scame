@@ -206,16 +206,26 @@ Theme:
 
 ### Global
 
+Keybinding             | Description
+---------------------  |------------------------------------------------------------
+<kbd>C-c l</kbd>       | List packages from Melpa.
+<kbd>C-c w</kbd>       | Launch eww
+<kbd>C-c C-j</kbd>     | direx:jump-to-directory
+<kbd>C-.</kbd>         | imenu-anywhere
+<kbd>C-c t</kbd>       | launch terminal
+<kbd>C-x r</kbd>       | key bindings are automatically popped up after a short delay
+<kbd>C-c <left></kbd>  | Select the window to the left of the current one
+<kbd>C-c <right></kbd> | Select the window to the right of the current one
+<kbd>C-c <up></kbd>    | Select the window to the up of the current one
+<kbd>C-c <down></kbd>  | Select the window to the down of the current one
+
+### UI
+
 Keybinding           | Description
 ---------------------|------------------------------------------------------------
-<kbd>C-c l</kbd>     | List packages from Melpa.
 <kbd>C-down</kbd>    | Scroll line down
 <kbd>C-up </kbd>     | Scroll line up
-<kbd>C-c w</kbd>     | Launch eww
-<kbd>C-c C-j</kbd>   | direx:jump-to-directory
-<kbd>C-.</kbd>       | imenu-anywhere
-<kbd>C-c t</kbd>     | launch terminal
-<kbd>C-x r</kbd>     | key bindings are automatically popped up after a short delay
+
 
 ### Helm
 
@@ -274,6 +284,7 @@ Keybinding           | Description
 <kbd>C-x g f</kbd>   | launch tests in current file
 <kbd>C-x g p</kbd>   | launch tests in all project
 <kbd>C-x g x</kbd>   | display source code in tree style viewer
+<kbd>C-c C-a<kbd>    | prompt you for an import path
 
 ### PHP Mode
 

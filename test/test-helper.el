@@ -21,6 +21,7 @@
 
 
 (require 'cask)
+(require 'undercover)
 
 (defconst scame-test/test-path
   (f-parent (f-this-file)))
