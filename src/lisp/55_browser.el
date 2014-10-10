@@ -19,9 +19,19 @@
 
 ;;; Code:
 
+;; FIX:
+;; Debugger entered--Lisp error: (file-error "Cannot open load file" "w3m-cookie")
+;;   w3m-cookie-shutdown()
+;;   kill-emacs(t)
+;;   command-line()
+;;   normal-top-level()
+;; Use:
+;; (remove-hook 'kill-emacs-hook 'w3m-cookie-shutdown)
+
 
 (use-package w3m
   :commands w3m
+  :init (remove-hook 'kill-emacs-hook 'w3m-cookie-shutdown)
   :config (progn
             (setq w3m-coding-system 'utf-8)
             (setq w3m-file-coding-system 'utf-8)
