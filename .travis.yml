@@ -16,7 +16,7 @@ before_script:
   - export PATH="/home/travis/.cask/bin:$PATH"
 env:
     #- EVM_EMACS=emacs-24.3-bin
-    #- EMACS=emacs24
+    - EMACS=emacs24
     - EMACS=emacs-snapshot
 script:
   # - ./scame --init --emacs=emacs-24.3-bin && emacs --version && ./scame --cmd=install && make local-test
