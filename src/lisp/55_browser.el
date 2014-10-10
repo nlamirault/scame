@@ -31,15 +31,17 @@
 
 (use-package w3m
   :commands w3m
-  :init (remove-hook 'kill-emacs-hook 'w3m-cookie-shutdown)
   :config (progn
             (setq w3m-coding-system 'utf-8)
             (setq w3m-file-coding-system 'utf-8)
             (setq w3m-file-name-coding-system 'utf-8)
             (setq w3m-input-coding-system 'utf-8)
             (setq w3m-output-coding-system 'utf-8)
-            (setq w3m-terminal-coding-system 'utf-8)
-            (setq w3m-use-cookies t)))
+            (setq w3m-terminal-coding-system 'utf-8)))
+
+(use-package w3m-cookie
+  :init (remove-hook 'kill-emacs-hook 'w3m-cookie-shutdown)
+  :config (setq w3m-use-cookies t)
 
 (provide '55_browser)
 ;;; 55_browser.el ends here
