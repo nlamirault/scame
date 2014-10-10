@@ -41,7 +41,10 @@
 
 (use-package w3m-cookie
   :init (remove-hook 'kill-emacs-hook 'w3m-cookie-shutdown)
-  :config (setq w3m-use-cookies t)
+  :config (setq w3m-use-cookies t))
+
+
+;;(package-activate 'w3m t)
 
 (provide '55_browser)
 ;;; 55_browser.el ends here

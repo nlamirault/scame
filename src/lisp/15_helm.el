@@ -38,6 +38,7 @@
          ("C-x h f" . helm-for-files)
          ("C-x h x" . helm-M-x)
          ("C-x h y" . helm-show-kill-ring)
+         ("C-x h l" . helm-bookmarks)
 	 ("C-x h b" . helm-buffers-list)))
 
 (use-package helm-imenu
