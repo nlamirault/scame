@@ -99,5 +99,13 @@
 
 (scame-global-mode 1)
 
+;; FIX:
+;; Debugger entered--Lisp error: (file-error "Cannot open load file" "w3m-cookie")
+;;   w3m-cookie-shutdown()
+;;   kill-emacs(t)
+;;   command-line()
+;;   normal-top-level()
+(remove-hook 'kill-emacs-hook 'w3m-cookie-shutdown)
+
 (provide 'scame)
 ;;; scame.el ends here
