@@ -99,5 +99,8 @@
 
 (scame-global-mode 1)
 
+;; FIX ?
+(remove-hook 'kill-emacs-hook 'w3m-cookie-shutdown)
+
 (provide 'scame)
 ;;; scame.el ends here

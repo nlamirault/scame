@@ -41,8 +41,5 @@
             (setq w3m-terminal-coding-system 'utf-8)
             (setq w3m-use-cookies t)))
 
-
-(package-activate 'w3m t)
-
 (provide '55_browser)
 ;;; 55_browser.el ends here
