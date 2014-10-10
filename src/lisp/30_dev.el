@@ -42,6 +42,7 @@
 			 ".DS_Store")))
 
 (use-package helm-projectile
+  :config (helm-projectile-on)
   :bind (("C-c h" . helm-projectile)))
 
 (use-package persp-projectile)
