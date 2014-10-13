@@ -28,8 +28,6 @@
 ;; Use:
 ;; (remove-hook 'kill-emacs-hook 'w3m-cookie-shutdown)
 
-(require 'w3m-load)
-
 (use-package w3m
   :commands w3m
   :init (remove-hook 'kill-emacs-hook 'w3m-cookie-shutdown)
