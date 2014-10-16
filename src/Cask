@@ -58,6 +58,7 @@
 (depends-on "nav")
 (depends-on "neotree")
 (depends-on "pt")
+(depends-on "fill-column-indicator")
 
 (depends-on "imenu-anywhere")
 (depends-on "dired-imenu")
