@@ -91,6 +91,7 @@
 (depends-on "gotest")
 (depends-on "go-direx")
 (depends-on "go-projectile")
+(depends-on "go-errcheck")
 
 ;; Python
 ;;(depends-on "python-mode")
@@ -152,6 +153,8 @@
 (depends-on "helm-perldoc")
 
 ;; Javascript
+(depends-on "js3-mode")
+(depends-on "tern")
 (depends-on "company-tern")
 
 ;; C/C++
