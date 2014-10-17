@@ -24,6 +24,9 @@ The current version has been tested on Linux and Mac OS X.
         $ git clone https://github.com/nlamirault/scame
         $ cp -r scame/src/* ~/.emacs.d/
 
+
+### From CLI (not yet available)
+
 * Help
 
 		$ ./scame -h
@@ -36,8 +39,6 @@ The current version has been tested on Linux and Mac OS X.
 			--init         Initialize Scame
 			--cmd CMD      Scame CLI commands
 			--emacs EMACS  Specify the version of Emacs to install
-
-### From CLI (not available)
 
 * Initialize [Scame][] :
 
@@ -205,16 +206,26 @@ Theme:
 
 ### Global
 
+Keybinding             | Description
+---------------------  |------------------------------------------------------------
+<kbd>C-c l</kbd>       | List packages from Melpa.
+<kbd>C-c w</kbd>       | Launch eww
+<kbd>C-c C-j</kbd>     | direx:jump-to-directory
+<kbd>C-.</kbd>         | imenu-anywhere
+<kbd>C-c t</kbd>       | launch terminal
+<kbd>C-x r</kbd>       | key bindings are automatically popped up after a short delay
+<kbd>C-c <left></kbd>  | Select the window to the left of the current one
+<kbd>C-c <right></kbd> | Select the window to the right of the current one
+<kbd>C-c <up></kbd>    | Select the window to the up of the current one
+<kbd>C-c <down></kbd>  | Select the window to the down of the current one
+
+### UI
+
 Keybinding           | Description
 ---------------------|------------------------------------------------------------
-<kbd>C-c l</kbd>     | List packages from Melpa.
 <kbd>C-down</kbd>    | Scroll line down
 <kbd>C-up </kbd>     | Scroll line up
-<kbd>C-c w</kbd>     | Launch eww
-<kbd>C-c C-j</kbd>   | direx:jump-to-directory
-<kbd>C-.</kbd>       | imenu-anywhere
-<kbd>C-c t</kbd>     | launch terminal
-<kbd>C-x r</kbd>     | key bindings are automatically popped up after a short delay
+
 
 ### Helm
 
@@ -273,6 +284,7 @@ Keybinding           | Description
 <kbd>C-x g f</kbd>   | launch tests in current file
 <kbd>C-x g p</kbd>   | launch tests in all project
 <kbd>C-x g x</kbd>   | display source code in tree style viewer
+<kbd>C-c C-a<kbd>    | prompt you for an import path
 
 ### PHP Mode
 
@@ -312,14 +324,6 @@ Keybinding           | Description
 <kbd>C-c g <</kbd>   | git-gutter+-previous-hunk
 <kbd>C-c g ></kbd>   | git-gutter+-next-hunk
 
-### Org
-
-Keybinding           | Description
----------------------|------------------------------------------------------------
-<kbd>C-c o a</kbd>   | org-agenda
-<kbd>C-c o b</kbd>   | org-iswitchb
-<kbd>C-c o l</kbd>   | org-store-link
-
 ### Perspective
 
 See [perspective][]
@@ -341,9 +345,39 @@ Keybinding           | Description
 ---------------------|------------------------------------------------------------
 <kbd>C-c m g</kbd>   | Launch Gnus using GMail setup
 <kbd>C-c m e</kbd>   | Launch Gnus using Exchange setup
+<kbd>C-c m o</kbd>   | Launch Gnus using offlineimap
 <kbd>C-c d s</kbd>   | bbdb
 <kbd>C-c d n</kbd>   | bbdb-search-name
 <kbd>C-c d m</kbd>   | bbdb-search-mail
+<kbd>C-c d h</kbd>   | helm-bbdb
+
+### IRC / IM
+
+Keybinding           | Description
+---------------------|------------------------------------------------------------
+<kbd>C-c i c</kbd>   | Launch IRC mode
+<kbd>C-c i j</kbd>   | Jabber connect all
+<kbd>C-c i o</kbd>   | Jabber disconnect
+<kbd>C-c i i</kbd>   | Jabber chat with
+<kbd>C-c i r</kbd>   | Jabber display roster
+
+### Org
+
+Keybinding           | Description
+---------------------|------------------------------------------------------------
+<kbd>C-c o a</kbd>   | org-agenda
+<kbd>C-c o b</kbd>   | org-iswitchb
+<kbd>C-c o l</kbd>   | org-store-link
+
+### Encryption
+
+Keybinding           | Description
+---------------------|------------------------------------------------------------
+<kbd>C-c c f</kbd>   | Encrypt file
+<kbd>C-c c F</kbd>   | Decrypt file
+<kbd>C-c c r</kbd>   | Encrypt region
+<kbd>C-c c R</kbd>   | Decrypt region
+<kbd>C-c c l</kbd>   | List keys
 
 ### Scame mode
 
@@ -363,6 +397,24 @@ You can change the default keymap prefix C-c p like this:
 ```el
 (setq scame-keymap-prefix (kbd "C-c C-s"))
 ```
+
+## Mail
+
+### GMail: Imap
+
+Using <kbd>C-c m g</kbd>, Gnus is starting using a GMail configuration
+(IMAP)
+
+### Exchange
+
+Using <kbd>C-c m e</kbd>, Gnus is starting using for a Microsoft Exchange
+mail account.
+
+### Offlineimap / MSMTP
+
+Using <kbd>C-c m o</kbd>, Gnus is starting using your `offlineimap` and `msmtp`
+configuration.
+
 
 ## Customization
 

@@ -28,6 +28,17 @@
 (add-hook 'change-log-mode-hook
           (function (lambda () (setq indent-tabs-mode nil))))
 
+(use-package fill-column-indicator
+  :config (progn
+            (fci-mode 1)
+            (setq fci-rule-width 1)
+            ;; (setq fci-rule-color "darkcyan")
+            (setq fci-rule-column 80)
+            (define-globalized-minor-mode global-fci-mode fci-mode
+              (lambda ()
+                (fci-mode 1)))
+            (global-fci-mode 1)))
+
 (use-package projectile
   :init (projectile-global-mode 1)
   :config (progn
@@ -42,6 +53,7 @@
 			 ".DS_Store")))
 
 (use-package helm-projectile
+  :config (helm-projectile-on)
   :bind (("C-c h" . helm-projectile)))
 
 (use-package persp-projectile)
@@ -92,6 +104,11 @@
                 (message "Could not find git project root.")))))
   :bind (("C-x t t" . neotree-toggle)
          ("C-x t p" . neotree-project-dir)))
+
+
+(use-package pt
+  :bind (("C-c p s p" . projectile-pt)))
+
 
 (provide '30_dev)
 ;;; 30_dev.el ends here

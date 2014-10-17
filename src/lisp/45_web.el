@@ -1,6 +1,6 @@
-;; init.el --- Emacs initialization file
+;;; 45_web.el --- web languages configuration
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,9 +19,12 @@
 
 ;;; Code:
 
-(add-to-list 'load-path "~/.emacs.d/")
-(add-to-list 'load-path "~/.emacs.d/gnus/")
-(require 'scame)
+(use-package web-mode
+  :config (setq web-mode-code-indent-offset 4)
+  :mode (("\\.html\\'" . web-mode)
+         ("\\.mustache\\'" . web-mode)
+         ("\\.jinja\\'" . web-mode)
+         ))
 
-(provide 'init)
-;;; init.el ends here
+(provide '45_web)
+;;; 45_web.el ends here

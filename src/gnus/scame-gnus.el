@@ -25,6 +25,8 @@
 (require 'gnus-art)
 (require 'gnus-cite)
 
+(require 'gnus-gpg)
+
 
 ;; SMTP
 ;; ----
@@ -40,7 +42,7 @@
 ;; -----------
 
 (add-to-list 'gnus-secondary-select-methods
-             '(nntp "news.gmane.org"))
+      '(nntp "news.gmane.org"))
 
 
 ;; PGP
@@ -64,14 +66,14 @@
         (".*"
          (name user-full-name)
          (address user-mail-address)
+         (organization "Orange Applications for Business")
          ("X-PGP-Fingerprint" user-fingerprint)
          (signature-file "~/.signature"))
 	((message-news-p)
          (name user-full-name)
          (address user-mail-address)
-         (organization "None")
 	 ("X-PGP-Fingerprint" user-fingerprint)
-         (signature "~/.signature"))
+         (signature-file "~/.signature"))
 	))
 
 ;; No archive
@@ -144,14 +146,19 @@
 
 ;;(setq gnus-summary-line-format "%U%R%z %o %I%(%[%-25,25n%]%) %s\n")
 (setq gnus-summary-mode-line-format "Gnus: %G %Z")
-(setq gnus-summary-line-format "%U%R%z %(%&user-date;  %-15,35f  %B%s%)\n")
+
+; from jd
+(setq gnus-summary-line-format (concat "%z%U%R %~(max-right 17)~(pad-right 17)&user-date;  "
+                                       "%~(max-right 20)~(pad-right 20)f %B%s\n"))
+;;(setq gnus-summary-line-format "%U%R%z %(%&user-date;  %-15,35f  %B%s%)\n")
 ;;(setq gnus-summary-line-format "%U%R%z%I%(%[%4L: %-23,23f%]%) %s\n")
+
+;;(setq gnus-group-line-format "%p%M%B%S%P%(%G: %N%)\n")
+(setq gnus-group-line-format "%1M%1S%5y: %(%-50,50G%)\n")
+
 (setq gnus-user-date-format-alist '((t . "%Y-%m-%d %H:%M")))
 
-(setq gnus-group-line-format "%p%M%B%S%P%(%G: %N%)\n")
-
-(setq gnus-message-setup-hook
-      '(font-lock-fontify-buffer))
+(setq gnus-message-setup-hook '(font-lock-fontify-buffer))
 
 ;;(add-hook 'gnus-article-mode-hook 'turn-on-auto-fill)
 (add-hook 'message-mode-hook 'turn-on-auto-fill)
@@ -201,6 +208,28 @@
 (setq gnus-sort-gathered-threads-function 'gnus-thread-sort-by-date)
 
 
+;; Keybindings
+
+(define-key gnus-summary-mode-map
+  (kbd "B u")
+  'gnus-summary-put-mark-as-unread)
+
+
+;; See https://www.gnu.org/software/emacs/manual/html_node/gnus/Customizing-W3.html
+;; (eval-after-load "w3"
+;;   '(progn
+;;      (fset 'w3-fetch-orig (symbol-function 'w3-fetch))
+;;      (defun w3-fetch (&optional url target)
+;;        (interactive (list (w3-read-url-with-default)))
+;;        (if (eq major-mode 'gnus-article-mode)
+;;            (browse-url url)
+;;          (w3-fetch-orig url target)))))
+
+;; Research
+;; ---------
+
+(require 'gnus-x-gm-raw)
+
 ;; Colors
 ;; -------
 
@@ -227,8 +256,19 @@
 (set-face-foreground 'gnus-header-name-face "cyan")
 (set-face-foreground 'gnus-header-newsgroups-face "white")
 (set-face-foreground 'gnus-header-subject-face "white")
+
 (set-face-foreground 'gnus-signature-face "white")
 
+(set-face-foreground 'message-cited-text "cyan")
+(set-face-foreground 'message-header-cc "white")
+(set-face-foreground 'message-header-name "white")
+(set-face-foreground 'message-header-newsgroups "white")
+(set-face-foreground 'message-header-subject "cyan")
+(set-face-foreground 'message-header-other "red")
+(set-face-foreground 'message-header-to "green")
+(set-face-foreground 'message-header-xheader "blue")
+(set-face-foreground 'message-separator "orange")
+(set-face-foreground 'message-mml "beige")
 
 (provide 'scame-gnus)
 ;;; scame-gnus.el ends here

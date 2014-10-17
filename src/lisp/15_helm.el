@@ -38,6 +38,7 @@
          ("C-x h f" . helm-for-files)
          ("C-x h x" . helm-M-x)
          ("C-x h y" . helm-show-kill-ring)
+         ("C-x h l" . helm-bookmarks)
 	 ("C-x h b" . helm-buffers-list)))
 
 (use-package helm-imenu
@@ -55,8 +56,6 @@
             (setq helm-swoop-split-direction 'split-window-vertically))
   :bind (("C-x h w" . helm-swoop)
          ("C-x h W" . helm-multi-swoop)))
-
-
 
 (provide '15_helm)
 ;;; 15_helm.el ends here

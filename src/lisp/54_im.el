@@ -1,4 +1,4 @@
-;;; 53_bbdb.el --- BBDB configuration
+;;; 54_im.el --- Instant Messaging configuration
 
 ;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -20,13 +20,20 @@
 ;;; Code:
 
 
-(use-package bbdb-com
-  :bind (("C-c d s" . bbdb)
-         ("C-c d n" . bbdb-search-name)
-         ("C-c d m" . bbdb-search-mail)))
+(use-package jabber
+  :bind (("C-c i i" . jabber-chat-with)
+         ("C-c i j" . jabber-connect-all)
+         ("C-c i d" . jabber-disconnect)
+         ("C-c i r" . jabber-display-roster))
+  :config (progn
+            (setq jabber-roster-line-format " %c %-25n %S"
+                  jabber-use-sasl nil
+                  jabber-history-enabled t
+                  jabber-use-global-history nil
+                  jabber-backlog-number 40
+                  jabber-backlog-days 30)
+            (add-hook 'jabber-chat-mode 'visual-line-mode)
+            (setq jabber-chat-buffer-format "Chat: %n")))
 
-(use-package helm-bbdb
-  :bind (("C-c d h" . helm-bbdb)))
-
-(provide '53_bbdb)
-;;; 53_bbdb.el ends here
+(provide '54_im)
+;;; 54_im.el ends here

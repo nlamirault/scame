@@ -21,8 +21,12 @@
 
 (require 'gnus)
 (require 'smtpmail)
+(require 'offlineimap)
 
 (require 'scame-gnus)
+
+
+(add-hook 'gnus-before-startup-hook 'offlineimap)
 
 ;; exemple of $HOME/.offlineimaprc file :
 
@@ -55,15 +59,28 @@
 ;; ------------
 
 (setq gnus-select-method
-      '(nnmaildir "FT"
-                  (directory "~/Mail/FT")
-                  (get-new-mail nil)
-                  ;; (nnfolder "archive")
-                  ;; (nnfolder-directory "~/Mail/archive")
-                  ;; (nnfolder-active-file "~/Mail/archive/active")
-                  ;; (nnfolder-get-new-mail nil)
-                  ;; (nnfolder-inhibit-expiry t)))
-                  ))
+      '(nnmaildir "GMail" (directory "~/Maildir/Gmail")))
+
+(add-to-list 'gnus-secondary-select-methods
+             ;;(setq gnus-secondary-select-methods
+             ;;      '((nnmaildir "GMail" (directory "~/Maildir/Gmail")) ; grab mail from here
+             '((nnfolder "archive"
+                         (nnfolder-directory   "~/Maildir/archive") ; where I archive sent email
+                         (nnfolder-active-file "~/Maildir/archive/active")
+                         (nnfolder-get-new-mail nil)
+                         (nnfolder-inhibit-expiry t))))
+
+;; MSMTP
+;; -----
+
+(setq message-sendmail-f-is-evil 't
+      ;;message-sendmail-extra-arguments '("--read-envelope-from")
+      message-sendmail-extra-arguments '("-a" "gmail"))
+      message-send-mail-function 'message-send-mail-with-sendmail
+      sendmail-program "/usr/sbin/msmtp")
+
+
+
 
 (provide 'gnus-offlineimap)
 ;;; gnus-offlineimap.el ends here

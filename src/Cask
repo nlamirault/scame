@@ -34,6 +34,7 @@
 (depends-on "f")
 (depends-on "epl")
 (depends-on "dash")
+(depends-on "helm")
 
 ;; Scame tools
 (depends-on "cask")
@@ -44,9 +45,9 @@
 (depends-on "benchmark-init")
 
 ;; Completion
-(depends-on "auto-complete")
 (depends-on "company")
 (depends-on "helm-company")
+(depends-on "auto-complete")
 
 ;; Project
 (depends-on "projectile")
@@ -56,6 +57,8 @@
 (depends-on "sr-speedbar")
 (depends-on "nav")
 (depends-on "neotree")
+(depends-on "pt")
+(depends-on "fill-column-indicator")
 
 (depends-on "imenu-anywhere")
 (depends-on "dired-imenu")
@@ -63,6 +66,7 @@
 (depends-on "flycheck")
 (depends-on "flycheck-cask")
 (depends-on "flycheck-color-mode-line")
+(depends-on "helm-flycheck")
 ;;(depends-on "flycheck-google-cpplint")
 
 
@@ -153,7 +157,8 @@
 ;; C/C++
 (depends-on "google-c-style")
 (depends-on "c-eldoc")
-(depends-on "auto-complete-c-headers")
+;; (depends-on "auto-complete-c-headers")
+(depends-on "company-c-headers")
 
 ;; Rust
 (depends-on "rust-mode")
@@ -182,6 +187,7 @@
 
 ;; Git and friends
 (depends-on "magit")
+(depends-on "magit-gerrit")
 (depends-on "git-commit-mode")
 (depends-on "gitconfig-mode")
 (depends-on "gitignore-mode")
@@ -192,12 +198,8 @@
 (depends-on "git-timemachine")
 (depends-on "helm-open-github")
 
-;; IRC
-(depends-on "circe")
-
 ;; Utilities
 (depends-on "pkg-info")
-(depends-on "helm")
 (depends-on "perspective")
 (depends-on "project-persist")
 (depends-on "helm-project-persist")
@@ -230,12 +232,20 @@
 (depends-on "w3m")
 (depends-on "offlineimap")
 
+;; IM
+(depends-on "jabber")
+
+;; IRC
+(depends-on "circe")
+(depends-on "rcirc-groups")
+(depends-on "rcirc-alertify")
+(depends-on "rcirc-notify")
+
 ;; Organisation
 (depends-on "org")
 (depends-on "org-agenda-property")
 (depends-on "org-caldav")
 (depends-on "org-journal")
-(depends-on "org-outlook")
 (depends-on "orgbox")
 ;;(depends-on "google-weather")
 (depends-on "weather-metno")
@@ -275,6 +285,7 @@
 (depends-on "apache-mode")
 
 ;; Gnus
+(depends-on "gnus-x-gm-raw")
 ;;(depends-on "google-contacts")
 (depends-on "bbdb")
 (depends-on "bbdb-")

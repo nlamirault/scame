@@ -19,50 +19,25 @@
 
 ;;; Code:
 
-(setq php-mode-force-pear t)
+(use-package php-mode
+  :config (progn
+            (add-hook 'php-mode-hook
+                      (lambda ()
+                        (setq indent-tabs-mode nil)
+                        (setq-default indent-tabs-mode nil)
+                        (setq-default tab-width 4)
+                        (setq c-basic-offset 4)
+                        (setq c-basic-indent 4)
+                        (column-highlight 150)
+                        (setq fill-column 150)
+                        (turn-on-auto-fill)
+                        (setq php-mode-force-pear t))))
+  :mode (("\\.php\\'" . php-mode)))
 
-;; (add-hook 'php-mode-hook
-;;           (lambda nil
-;;             (setq indent-tabs-mode nil)
-;;             (setq-default indent-tabs-mode nil)
-;;             (setq-default tab-width 4)
-;;             (setq c-basic-offset 4)
-;;             (setq c-basic-indent 4)
-;;             (column-highlight 150)
-;;             (setq fill-column 150)
-;;             (turn-on-auto-fill)))
-
-;; (require 'web-mode)
-;; (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-
-(use-package web-mode
-  :config (setq web-mode-code-indent-offset 4)
-  :mode (("\\.html\\'" . web-mode)
-	 ("\\.phtml\\'" . web-mode)
-	 ("\\.tpl\\'" . web-mode)
-	 ("\\.jsp\\'" . web-mode)
-	 ("\\.erb\\'" . web-mode)
-         ("\\.mustache\\'" . web-mode)
-         ("\\.jinja\\'" . web-mode)
-         ("\\.php\\'" . web-mode)))
-         ;;))
-
-;; (use-package php-mode
-;;   :config (progn
-;;             (setq c-basic-offset 4)
-;;             (subword-mode 1)))
 
 ;; FIXME: See Cerbere or not ?
 (use-package phpunit
-  :config (add-hook 'web-mode-hook
+  :config (add-hook 'php-mode-hook
  		    (lambda ()
  		      (local-set-key (kbd "C-x p t") 'phpunit-current-test)
  		      (local-set-key (kbd "C-x p f") 'phpunit-current-class)

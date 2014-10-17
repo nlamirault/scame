@@ -30,5 +30,6 @@
  (depends-on "git")
  (depends-on "epc")
  (depends-on "el-mock")
+ (depends-on "undercover")
  (depends-on "ert")
  (depends-on "ert-runner"))

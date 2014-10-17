@@ -24,10 +24,15 @@
 ;; --------
 
 
-;;(require 'epa-file)
 (use-package epa-file
-  :config (epa-file-enable))
-
+  :config (progn
+            (epa-file-enable)
+            (setq epg-debug t))
+  :bind (("C-c c f" . epa-encrypt-file)
+         ("C-c c r" . epa-encrypt-region)
+         ("C-c c F" . epa-decrypt-file)
+         ("C-c c R" . epa-encrypt-region)
+         ("C-c c l" . epa-list-keys)))
 
 (provide '11_crypto)
 ;;; 11_crypto.el ends here
