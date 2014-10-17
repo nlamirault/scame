@@ -49,6 +49,14 @@
 
 (use-package helm-delicious)
 
+(use-package helm-swoop
+  :config (progn
+            (setq helm-multi-swoop-edit-save t)
+            (setq helm-swoop-split-direction 'split-window-vertically))
+  :bind (("C-x h w" . helm-swoop)
+         ("C-x h W" . helm-multi-swoop)))
+
+
 
 (provide '15_helm)
 ;;; 15_helm.el ends here

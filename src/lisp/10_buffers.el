@@ -32,11 +32,11 @@
 
 
 (use-package swoop
+  :config (setq swoop-font-size-change: nil)
   :bind (("C-o" . swoop)
 	 ("C-M-o" . swoop-multi)
 	 ("M-o" . swoop-pcre-regexp)
 	 ("C-S-o" . swoop-back-to-last-position)))
-
 
 (use-package ace-jump-mode
   :bind (("C-c SPC" . ace-jump-mode)))
