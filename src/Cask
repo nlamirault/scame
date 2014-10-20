@@ -224,6 +224,7 @@
 (depends-on "helm-proc")
 (depends-on "helm-descbinds")
 ;;(depends-on "helm-delicious")
+(depends-on "discover-my-major")
 
 ;; Search
 (depends-on "helm-ack")

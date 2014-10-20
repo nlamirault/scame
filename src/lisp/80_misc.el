@@ -27,5 +27,9 @@
          (guide-key-mode 1)))
 
 
+(use-package discover-my-major
+  :bind ("C-h C-m" . discover-my-major))
+
+
 (provide '80_misc)
 ;;; 80_misc.el ends here
