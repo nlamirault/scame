@@ -57,6 +57,14 @@
                       (local-set-key (kbd "C-x g f") 'go-test-current-file)
                       (local-set-key (kbd "C-x g p") 'go-test-current-project))))
 
+
+(use-package go-errcheck
+  :config (progn
+            (add-hook 'go-mode-hook
+                      (lambda ()
+                        (local-set-key (kbd "C-x g e") 'go-errcheck)))))
+
+
 (use-package go-direx
   :config (progn
 	    (add-hook 'go-mode-hook
