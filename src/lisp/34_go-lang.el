@@ -65,6 +65,12 @@
                         (local-set-key (kbd "C-x g e") 'go-errcheck)))))
 
 
+(use-package golint
+  :config (progn
+            (add-hook 'go-mode-hook
+                      (lambda ()
+                        (local-set-key (kbd "C-x g l") 'golint)))))
+
 (use-package go-direx
   :config (progn
 	    (add-hook 'go-mode-hook

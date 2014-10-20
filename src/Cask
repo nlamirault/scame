@@ -92,6 +92,7 @@
 (depends-on "go-direx")
 (depends-on "go-projectile")
 (depends-on "go-errcheck")
+(depends-on "golint")
 
 ;; Python
 ;;(depends-on "python-mode")
