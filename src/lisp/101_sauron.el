@@ -1,4 +1,4 @@
-;;; 100_packages.el --- Manage Emacs packages
+;;; 101_sauron.el --- Sauron for Emacs
 
 ;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -19,8 +19,16 @@
 
 ;;; Code:
 
-(use-package paradox)
+(use-package sauron
+  :init (progn
+          (define-prefix-command 'scame-sauron-map)
+          (global-set-key (kbd "C-x s") 'scame-sauron-map))
+  :commands sauron-start-hidden
+  :config (setq sauron-dbus-cookie t
+                sauron-modules '(sauron-erc
+                                 sauron-notifications))
+  :bind (("C-x s s" . sauron-toggle-hide-show)
+         ("C-x s c" . sauron-clear)))
 
-
-(provide '100_packages)
-;;; 100_packages.el ends here
+(provide '101_sauron)
+;;; 101_sauron.el ends here

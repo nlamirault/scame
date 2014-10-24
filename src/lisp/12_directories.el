@@ -23,24 +23,34 @@
 
 (use-package dired
   :init (progn
+          (define-prefix-command 'scame-dired-map)
+          (global-set-key (kbd "C-x d") 'scame-dired-map)
 	  (add-hook 'dired-mode-hook 'dired-hide-details-mode)
 	  (put 'dired-find-alternate-file 'disabled nil)
 	  (setq dired-recursive-deletes 'always)
-	  (setq dired-recursive-copies 'always)))
+	  (setq dired-recursive-copies 'always))
+  :bind (("C-x d d" . dired)))
 
+;; (use-package dired+
+;;   :config (setq diredp-hide-details-initially-flag nil))
+
+;; (use-package dired-details+
+;;   :config (progn
+;;             (setq dired-details-hide-link-targets nil
+;;                   dired-hide-details-mode nil
+;;                   global-dired-hide-details-mode -1)))
 
 (use-package direx
-  :bind ("C-x M-j" . direx:jump-to-directory))
-
+  :bind ("C-x d j" . direx:jump-to-directory))
 
 (use-package direx-project)
 
-
-;; Not available in MELP
-;; (use-package dired-k
-;;   :init (add-hook 'dired-initial-position-hook 'dired-k)
-;;   :map (dired-mode-map ("K" . dired-k)))
-
+(use-package dired-k
+  :init (add-hook 'dired-initial-position-hook 'dired-k)
+  :config (progn
+            (define-key dired-mode-map (kbd "K") 'dired-k)
+            (define-key dired-mode-map (kbd "g") 'dired-k)
+            (add-hook 'dired-initial-position-hook 'dired-k)))
 
 (use-package dired-filter)
 
