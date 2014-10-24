@@ -66,34 +66,9 @@
   (f-join user-emacs-directory "scame.el")
   "Scame initialization file.")
 
-(defun scame-mail-gmail ()
-  "Launch Gnus using GMail configuration."
-  (interactive)
-  (setq gnus-init-file (f-join user-emacs-directory "gnus/gnus-gmail.el")
-        gnus-startup-file (f-join user-home-directory ".gmail-newsrc"))
-  (gnus))
-(global-set-key (kbd "C-c m g") 'scame-mail-gmail)
-
-(defun scame-mail-exchange ()
-  "Launch Gnus using Exchange configuration."
-  (interactive)
-  (setq gnus-init-file (f-join user-emacs-directory "gnus/gnus-exchange.el")
-        gnus-startup-file (f-join user-home-directory ".exchange-newsrc"))
-  (gnus))
-(global-set-key (kbd "C-c m e") 'scame-mail-exchange)
-
-(defun scame-mail-offlineimap ()
-  "Launch Gnus using Offlineimap configuration."
-  (interactive)
-  (setq gnus-init-file (f-join user-emacs-directory "gnus/gnus-offlineimap.el")
-        gnus-startup-file (f-join user-home-directory ".offlineimap-newsrc"))
-  (gnus))
-(global-set-key (kbd "C-c m o") 'scame-mail-offlineimap)
-
 (use-package init-loader
   :config (init-loader-load (f-slash (f-join user-emacs-directory "lisp"))))
 
-;;(let ((user-customization (f-join user-home-directory ".config/scame/scame-user.el")))
 (when (file-readable-p scame-user-customization-file)
   (load scame-user-customization-file))
 

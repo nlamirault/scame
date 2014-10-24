@@ -37,61 +37,59 @@
 
 ;; Misc
 
-(defvar scame-package-version "0.7.0"
-  "Release version of Scame.")
+;; (defvar scame-package-version "0.7.0"
+;;   "Release version of Scame.")
 
-;;(setq user-home-directory (f-full (getenv "HOME")))
-
-(defun scame-version ()
-  "Return the Scame's version."
-  (interactive)
-  (message "Scame version: %s" scame-package-version))
+;; (defun scame-version ()
+;;   "Return the Scame's version."
+;;   (interactive)
+;;   (message "Scame version: %s" scame-package-version))
 
 
-(defun scame-changelog ()
-  "Display the ChangeLog."
-  (interactive)
-  (let ((changelog (f-join user-home-directory ".scame/ChangeLog.md")))
-    (if (file-readable-p changelog)
-	(switch-to-buffer (find-file-noselect changelog))
-      (message "Scame: No Changelog available."))))
+;; (defun scame-changelog ()
+;;   "Display the ChangeLog."
+;;   (interactive)
+;;   (let ((changelog (f-join user-home-directory ".scame/ChangeLog.md")))
+;;     (if (file-readable-p changelog)
+;; 	(switch-to-buffer (find-file-noselect changelog))
+;;       (message "Scame: No Changelog available."))))
 
 
-(defun scame-customization ()
-  "Open the customization file."
-  (interactive)
-;;  (let ((customization (f-join user-home-directory ".config/scame/scame-user.el")))
-  (if (file-readable-p scame-user-customization-file) ;customization)
-      (switch-to-buffer (find-file-noselect scame-user-customization-file))
-    (message "Scame: No customization file %s" customization)))
+;; (defun scame-customization ()
+;;   "Open the customization file."
+;;   (interactive)
+;; ;;  (let ((customization (f-join user-home-directory ".config/scame/scame-user.el")))
+;;   (if (file-readable-p scame-user-customization-file) ;customization)
+;;       (switch-to-buffer (find-file-noselect scame-user-customization-file))
+;;     (message "Scame: No customization file %s" customization)))
 
 
-(defun scame-project-website ()
-  "Open in a browser the project's website."
-  (interactive)
-  (browse-url
-  ;;(helm-browse-url
-   "https://github.com/nlamirault/scame"))
+;; (defun scame-project-website ()
+;;   "Open in a browser the project's website."
+;;   (interactive)
+;;   (browse-url
+;;   ;;(helm-browse-url
+;;    "https://github.com/nlamirault/scame"))
 
 
-(defun perform-rest-request (url)
-  "Perform an HTTP request using URL and return the response."
-  (let ((buffer (url-retrieve-synchronously url)))
-    (save-excursion
-      (set-buffer buffer)
-      (goto-char (point-min))
-      (re-search-forward "^$" nil 'move)
-      (setq response (buffer-substring-no-properties (point) (point-max)))
-      (kill-buffer (current-buffer)))
-    response))
+;; (defun perform-rest-request (url)
+;;   "Perform an HTTP request using URL and return the response."
+;;   (let ((buffer (url-retrieve-synchronously url)))
+;;     (save-excursion
+;;       (set-buffer buffer)
+;;       (goto-char (point-min))
+;;       (re-search-forward "^$" nil 'move)
+;;       (setq response (buffer-substring-no-properties (point) (point-max)))
+;;       (kill-buffer (current-buffer)))
+;;     response))
 
 
-(defun scame-last-release ()
-  "Find from GitHub last release."
-  (interactive)
-  (let* ((response (perform-rest-request "https://github.com/nlamirault/scame/releases"))
-	 (release (caar (s-match-strings-all "/[0-9.]*.zip" response))))
-    (message "Scame last version: %s" (s-replace-all '((".zip" . "") ("/" . "")) release))))
+;; (defun scame-last-release ()
+;;   "Find from GitHub last release."
+;;   (interactive)
+;;   (let* ((response (perform-rest-request "https://github.com/nlamirault/scame/releases"))
+;; 	 (release (caar (s-match-strings-all "/[0-9.]*.zip" response))))
+;;     (message "Scame last version: %s" (s-replace-all '((".zip" . "") ("/" . "")) release))))
 
 
 ;; Scame mode map
@@ -108,6 +106,9 @@
       (define-key prefix-map (kbd "s t") 'scame-search-twitter)
       (define-key prefix-map (kbd "s l") 'scame-search-launchpad)
       (define-key prefix-map (kbd "s a") 'scame-search-arch-aur)
+      (define-key prefix-map (kbd "m g") 'scame-mail-gmail)
+      (define-key prefix-map (kbd "m e") 'scame-mail-exchange)
+      (define-key prefix-map (kbd "m o") 'scame-mail-offlineimap)
       (define-key map scame-keymap-prefix prefix-map))
     map)
   "Keymap used by `scame-mode'.")
@@ -169,8 +170,6 @@
   "Turn off `scame-mode'."
   (interactive)
   (scame-mode -1))
-
-
 
 (provide '999_scame)
 ;;; 999_scame.el ends here
