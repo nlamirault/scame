@@ -40,8 +40,9 @@
             (global-fci-mode 1)))
 
 (use-package projectile
-  :init (projectile-global-mode 1)
+  ;;:init (projectile-global-mode 1)
   :config (progn
+            (projectile-global-mode t)
 	    (setq projectile-enable-caching t)
 	    (setq projectile-require-project-root nil)
 	    ;;(setq projectile-completion-system 'grizzl)
@@ -54,7 +55,7 @@
 
 (use-package helm-projectile
   :config (helm-projectile-on)
-  :bind (("C-c h" . helm-projectile)))
+  :bind (("C-c p h" . helm-projectile)))
 
 (use-package persp-projectile)
 
