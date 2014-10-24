@@ -2,6 +2,7 @@
 
 ## Version 0.9.0 (IN PROGRESS)
 
+- Init configuration for Elixir
 - [#22][]: Add discover-my-major
 - [#32][]: Add go-errcheck package
 - [#31][]: Add golint package

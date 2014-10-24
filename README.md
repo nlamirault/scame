@@ -256,11 +256,11 @@ Keybinding           | Description
 
 ### Projectile
 
-See [projectile][]
+See [projectile][] for default keybindings
 
 Keybinding           | Description
 ---------------------|------------------------------------------------------------
-<kbd>C-c h</kbd>     | helm-projectile
+<kbd>C-c p h</kbd>   | helm-projectile
 
 ### Python-mode
 

@@ -218,10 +218,10 @@
 
 ;; perspective
 
-;; FIX: Issue 25
+;; FIXME: Issue 25
 ;; (ert-deftest test-perspective ()
 ;;   (with-current-file "var/hello.php"
-;;     (should (require 'perspective))
+;;     (should (require 'persp-projectile))
 ;;     (should (eql 'persp-switch (key-binding (kbd "C-x x s"))))
 ;;     (should (eql 'persp-remove-buffer (key-binding (kbd "C-x x k"))))
 ;;     (should (eql 'persp-kill (key-binding (kbd "C-x x c"))))
@@ -451,10 +451,8 @@
       (should (eql 'ruby-tools-clear-string
                    (key-binding (kbd "C-;"))))))
 
-
-
 ;; C/C++
-;; FIXME
+
 (ert-deftest test-scame-c ()
   (with-current-file "var/hello.c"
       ;;(should (featurep 'google-c-style))

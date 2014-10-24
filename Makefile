@@ -47,14 +47,10 @@ help:
 	@echo -e "$(WARN_COLOR)  - docker-clean$(NO_COLOR)       : remove the Docker image$(NO_COLOR)"
 	@echo -e "$(WARN_COLOR)  - docker-run$(NO_COLOR)         : launch Emacs using Scame docker image$(NO_COLOR)"
 
-elpa:
+.PHONY: build
+build :
 	$(CASK) install
 	$(CASK) update
-	touch $@
-
-.PHONY: build
-build : elpa $(OBJECTS)
-
 
 # .PHONY: test
 # test : build
@@ -87,11 +83,11 @@ virtual-test:
 .PHONY: clean
 clean :
 	$(CASK) clean-elc
-	rm -f elpa
 	rm -fr dist
 
 reset : clean
 	rm -rf .cask # Clean packages installed for development
+	rm -fr test/sandbox
 
 %.elc : %.el
 	$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
