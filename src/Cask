@@ -167,6 +167,10 @@
 ;; Rust
 (depends-on "rust-mode")
 
+;; Elixir
+(depends-on "elixir-mode")
+(depends-on "alchemist")
+
 ;; Markup languages
 (depends-on "markdown-mode")
 (depends-on "yaml-mode")
