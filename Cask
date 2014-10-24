@@ -15,8 +15,8 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-(source "melpa" "http://melpa.milkbox.net/packages/")
 (source "gnu" "http://elpa.gnu.org/packages/")
+(source "melpa" "http://melpa.milkbox.net/packages/")
 (source "marmalade" "http://marmalade-repo.org/packages/")
 
 ;; Development

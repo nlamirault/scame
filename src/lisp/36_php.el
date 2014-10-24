@@ -23,19 +23,17 @@
   :config (progn
             (add-hook 'php-mode-hook
                       (lambda ()
-                        (setq indent-tabs-mode nil)
-                        (setq-default indent-tabs-mode nil)
-                        (setq-default tab-width 4)
-                        (setq c-basic-offset 4)
-                        (setq c-basic-indent 4)
-                        (column-highlight 150)
-                        (setq fill-column 150)
-                        (turn-on-auto-fill)
-                        (setq php-mode-force-pear t))))
+                        (php-enable-psr2-coding-style)
+                        (setq flycheck-phpcs-standard "PSR2")
+                        (setq flycheck-phpmd-rulesets
+                              '("codesize"
+                                "controversial"
+                                "design"
+                                "naming"
+                                "unusedcode"))
+                        )))
   :mode (("\\.php\\'" . php-mode)))
 
-
-;; FIXME: See Cerbere or not ?
 (use-package phpunit
   :config (add-hook 'php-mode-hook
  		    (lambda ()

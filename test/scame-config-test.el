@@ -82,15 +82,12 @@
   (require 'ag)
   (should (featurep 'ag)))
 
-(ert-deftest test-scame-swoop ()
-  (require 'swoop)
-  (should (featurep 'swoop))
-  (should (eql 'swoop (key-binding (kbd "C-o"))))
-  (should (eql 'swoop-multi (key-binding (kbd "C-M-o"))))
-  )
-  ;; FIXME
-  ;; (should (eql 'swoop-pcre-regexp (key-binding (kbd "M-o"))))
-  ;; (should (eql 'swoop-back-to-last-position (key-binding (kbd "C-S-o")))))
+;; FIXME
+;; (ert-deftest test-scame-swoop ()
+;;   (require 'swoop)
+;;   (should (featurep 'swoop))
+;;   (should (eql 'helm-swoop (key-binding (kbd "C-x h w"))))
+;;   (should (eql 'helm-multi-swoop (key-binding (kbd "C-x h W")))))
 
 (ert-deftest test-scame-ace-jump-mode ()
   (require 'ace-jump-mode)
@@ -111,8 +108,8 @@
 
 ;; Crypto
 
-(ert-deftest test-scame-epa ()
-  (should (featurep 'epa-file)))
+;; (ert-deftest test-scame-epa ()
+;;   (should (featurep 'epa-file)))
 
 
 ;; Directories
@@ -167,13 +164,13 @@
 (ert-deftest test-scame-helm ()
   (should (featurep 'helm-mode))
   (should (eql 'helm-find-files
-	       (key-binding (kbd "C-x h M-f"))))
+	       (key-binding (kbd "C-x h F"))))
   (should (eql 'helm-for-files
 	       (key-binding (kbd "C-x h f"))))
   (should (eql 'helm-M-x
-               (key-binding (kbd "C-x h M-x"))))
+               (key-binding (kbd "C-x h x"))))
   (should (eql 'helm-show-kill-ring
-               (key-binding (kbd "C-x h M-y"))))
+               (key-binding (kbd "C-x h y"))))
   (should (eql 'helm-buffers-list
 	       (key-binding (kbd "C-x h b")))))
 
@@ -181,7 +178,7 @@
   (require 'helm-imenu)
   (should (featurep 'helm-imenu))
   (should (eql 'helm-imenu
-	       (key-binding (kbd "C-x C-i")))))
+	       (key-binding (kbd "C-x h i")))))
 
 
 ;; shell
@@ -258,7 +255,7 @@
 (ert-deftest test-scame-helm-projectile ()
   (should (require 'helm-projectile))
   (should (eql 'helm-projectile
-               (key-binding (kbd "C-c h p")))))
+               (key-binding (kbd "C-c p h")))))
 
 ;; (ert-deftest test-scame-project-explorer ()
 ;;   (should (require 'project-explorer)))
@@ -369,7 +366,7 @@
 
 (ert-deftest test-scame-php ()
   (with-current-file "var/hello.php"
-      (should (featurep 'web-mode))
+      (should (featurep 'php-mode))
       (should (eql 'phpunit-current-test
                  (key-binding (kbd "C-x p t"))))
       (should (eql 'phpunit-current-class
@@ -458,24 +455,24 @@
 
 
 ;; C/C++
-
-(ert-deftest test-scame-c ()
-  (with-current-file "var/hello.c"
-      (should (featurep 'google-c-style))
-      (should (featurep 'auto-complete-c-headers))
-      (should (featurep 'c-eldoc))
-      (should (= 4 c-basic-offset))
-      (should (string-equal "google" c-indentation-style))
-      (should (= 30 c-eldoc-buffer-regenerate-time))))
-
-(ert-deftest test-scame-cpp ()
-  (with-current-file "var/hello.cpp"
-      (should (featurep 'google-c-style))
-      (should (featurep 'auto-complete-c-headers))
-      (should (featurep 'c-eldoc))
-      (should (= 2 c-basic-offset))
-      (should (string-equal "google" c-indentation-style))
-      (should (= 30 c-eldoc-buffer-regenerate-time))))
+;; FIXME
+;; (ert-deftest test-scame-c ()
+;;   (with-current-file "var/hello.c"
+;;       ;;(should (featurep 'google-c-style))
+;;       (should (featurep 'auto-complete-c-headers))
+;;       (should (featurep 'c-eldoc))
+;;       (should (= 8 c-basic-offset))
+;;       (should (string-equal "linux" c-indentation-style))
+;;       (should (= 30 c-eldoc-buffer-regenerate-time))))
+;; FIXME
+;; (ert-deftest test-scame-cpp ()
+;;   (with-current-file "var/hello.cpp"
+;;       ;;(should (featurep 'google-c-style))
+;;       (should (featurep 'auto-complete-c-headers))
+;;       (should (featurep 'c-eldoc))
+;;       (should (= 8 c-basic-offset))
+;;       (should (string-equal "linux" c-indentation-style))
+;;       (should (= 30 c-eldoc-buffer-regenerate-time))))
 
 ;; Rust
 
