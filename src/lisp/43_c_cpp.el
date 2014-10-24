@@ -34,7 +34,9 @@
 
 (use-package cc-mode
   :config (progn
-            ;;(setq c-default-style "linux")
+            ;; broke php-mode ??
+            ;; (setq c-default-style "linux"
+            ;;       c-basic-offset 4)
             (add-hook 'c-mode-hook
                       (lambda ()
                         (setq flycheck-clang-include-path

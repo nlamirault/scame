@@ -82,7 +82,6 @@
   (require 'ag)
   (should (featurep 'ag)))
 
-;; FIXME
 (ert-deftest test-scame-swoop ()
   (require 'helm-swoop)
   (should (featurep 'helm-swoop))
@@ -456,23 +455,23 @@
 
 ;; C/C++
 ;; FIXME
-;; (ert-deftest test-scame-c ()
-;;   (with-current-file "var/hello.c"
-;;       ;;(should (featurep 'google-c-style))
-;;       (should (featurep 'auto-complete-c-headers))
-;;       (should (featurep 'c-eldoc))
-;;       (should (= 8 c-basic-offset))
-;;       (should (string-equal "linux" c-indentation-style))
-;;       (should (= 30 c-eldoc-buffer-regenerate-time))))
-;; FIXME
-;; (ert-deftest test-scame-cpp ()
-;;   (with-current-file "var/hello.cpp"
-;;       ;;(should (featurep 'google-c-style))
-;;       (should (featurep 'auto-complete-c-headers))
-;;       (should (featurep 'c-eldoc))
-;;       (should (= 8 c-basic-offset))
-;;       (should (string-equal "linux" c-indentation-style))
-;;       (should (= 30 c-eldoc-buffer-regenerate-time))))
+(ert-deftest test-scame-c ()
+  (with-current-file "var/hello.c"
+      ;;(should (featurep 'google-c-style))
+      (should (featurep 'company-c-headers))
+      (should (featurep 'c-eldoc))
+      (should (= 2 c-basic-offset))
+      (should (string-equal "gnu" c-indentation-style))
+      (should (= 30 c-eldoc-buffer-regenerate-time))))
+
+(ert-deftest test-scame-cpp ()
+  (with-current-file "var/hello.cpp"
+      ;;(should (featurep 'google-c-style))
+      (should (featurep 'company-c-headers))
+      (should (featurep 'c-eldoc))
+      (should (= 2 c-basic-offset))
+      (should (string-equal "gnu" c-indentation-style))
+      (should (= 30 c-eldoc-buffer-regenerate-time))))
 
 ;; Rust
 
