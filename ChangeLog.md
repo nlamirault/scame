@@ -1,7 +1,9 @@
 # Scame ChangeLog
 
-## Version 0.9.0 (IN PROGRESS)
+## Version 0.9.0 (10/24/2014)
 
+- Update Javascript configuration
+- Refactoring php-mode and web-mode
 - Init configuration for Elixir
 - [#22][]: Add discover-my-major
 - [#32][]: Add go-errcheck package
