@@ -27,7 +27,9 @@
 (use-package cider
   :init (progn
 	  (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
-	  (add-hook 'cider-repl-mode-hook 'subword-mode))
+	  (add-hook 'cider-repl-mode-hook 'subword-mode)
+          (add-hook 'cider-repl-mode-hook 'company-mode)
+          (add-hook 'cider-mode-hook 'company-mode))
   :config (progn
 	    (setq cider-popup-stacktraces t)
 	    (setq cider-repl-popup-stacktraces t)
