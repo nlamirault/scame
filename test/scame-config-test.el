@@ -429,6 +429,12 @@
       (should (featurep 'company-cider))
       (should (featurep 'clj-refactor))))
 
+;; Elixir
+
+(ert-deftest test-scame-clojure ()
+  (with-current-file "var/hello.ex"
+      (should (featurep 'elixir-mode))))
+
 
 ;; Ruby
 
