@@ -83,11 +83,11 @@
   (should (featurep 'ag)))
 
 ;; FIXME
-;; (ert-deftest test-scame-swoop ()
-;;   (require 'swoop)
-;;   (should (featurep 'swoop))
-;;   (should (eql 'helm-swoop (key-binding (kbd "C-x h w"))))
-;;   (should (eql 'helm-multi-swoop (key-binding (kbd "C-x h W")))))
+(ert-deftest test-scame-swoop ()
+  (require 'helm-swoop)
+  (should (featurep 'helm-swoop))
+  (should (eql 'helm-swoop (key-binding (kbd "C-x h w"))))
+  (should (eql 'helm-multi-swoop (key-binding (kbd "C-x h W")))))
 
 (ert-deftest test-scame-ace-jump-mode ()
   (require 'ace-jump-mode)
