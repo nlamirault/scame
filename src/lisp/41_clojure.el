@@ -40,8 +40,8 @@
 
 
 ;;(require 'company-cider)
-(use-package company-cider
-  :init (add-to-list 'company-backends 'company-cider))
+;; (use-package company-cider
+;;   :init (add-to-list 'company-backends 'company-cider))
 ;;(eval-after-load 'company '(add-to-list 'company-backends 'company-cider))
 
 ;;(require 'clj-refactor)
