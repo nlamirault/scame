@@ -1,8 +1,20 @@
 # Scame ChangeLog
 
+## Version 0.9.0 (IN PROGRESS)
+
+- [#22][]: Add discover-my-major
+- [#32][]: Add go-errcheck package
+- [#31][]: Add golint package
+- Update GPG And Gnus setup
+- Update Linux configuration for offlineimap
+- Update IRC and IM configurations
+- [#24][]: Add the platinum searcher
+- FIX cider setup
+- Add pip-requirements package
+
 ## Version 0.8.0 (09/11/2014)
 
-- Update Common Lisp environment
+- Update Common Lisp environment from SLIME to SLY
 - Update TravisCI setup
 - `FIX` Remove Emacs 23 support
 - Configure [BBDB][]
@@ -90,6 +102,10 @@
 [Gnus]: http://www.gnus.org/
 [BBDB]: https://github.com/emacsmirror/bbdb
 
+[#32]: https://github.com/nlamirault/scame/issues/32
+[#31]: https://github.com/nlamirault/scame/issues/31
+[#24]: https://github.com/nlamirault/scame/issues/24
+[#22]: https://github.com/nlamirault/scame/issues/22
 [#18]: https://github.com/nlamirault/scame/issues/18
 [#16]: https://github.com/nlamirault/scame/issues/16
 [#14]: https://github.com/nlamirault/scame/issues/14
