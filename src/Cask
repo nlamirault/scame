@@ -171,6 +171,9 @@
 (depends-on "elixir-mode")
 (depends-on "alchemist")
 
+;; Java
+(depends-on "malabar-mode")
+
 ;; Markup languages
 (depends-on "markdown-mode")
 (depends-on "yaml-mode")
@@ -236,6 +239,7 @@
 (depends-on "helm-ag")
 (depends-on "swoop")
 (depends-on "helm-swoop")
+(depends-on "helm-dash")
 
 ;; Mail
 ;;(depends-on "mu4e")

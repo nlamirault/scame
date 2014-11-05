@@ -57,5 +57,12 @@
   :bind (("C-x h w" . helm-swoop)
          ("C-x h W" . helm-multi-swoop)))
 
+(use-package helm-dash
+  (progn
+    (setq helm-dash-min-length 1)
+    (setq helm-dash-common-docsets
+          '("Redis" "Python" "Go" "PHP" "Emacs Lisp" "Common Lisp"))
+    (setq helm-dash-browser-func 'eww)))
+
 (provide '15_helm)
 ;;; 15_helm.el ends here
