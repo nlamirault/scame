@@ -213,6 +213,8 @@
 (depends-on "git-gutter+")
 (depends-on "git-timemachine")
 (depends-on "helm-open-github")
+(depends-on "gitlab")
+(depends-on "helm-gitlab")
 
 ;; Utilities
 (depends-on "pkg-info")

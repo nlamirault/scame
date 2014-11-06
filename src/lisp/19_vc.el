@@ -54,6 +54,9 @@
          ("C-c g h p" . helm-open-github-from-pull-requests)))
 
 
+(use-package helm-gitlab)
+
+
 (use-package git-timemachine
   :bind (("C-c g t" . git-timemachine)))
 
