@@ -69,6 +69,8 @@
 (depends-on "helm-flycheck")
 ;;(depends-on "flycheck-google-cpplint")
 
+; Continuous integration
+(depends-on "butler")
 
 ;; Common Lisp
 ;; (depends-on "slime")
