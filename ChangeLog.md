@@ -1,5 +1,11 @@
 # Scame ChangeLog
 
+## Version 0.10.0 (IN PROGRESS)
+
+- Setup music and radio using EMMS
+- Init continuous integration watcher using Butler for Jenkins
+- Update dired configuration
+
 ## Version 0.9.0 (10/24/2014)
 
 - Update Javascript configuration
