@@ -1,4 +1,4 @@
-;;; 55_browser.el --- Browser configuration
+;;; 95_browser.el --- Browser configuration
 
 ;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -40,5 +40,5 @@
             (setq w3m-terminal-coding-system 'utf-8)
             (setq w3m-use-cookies t)))
 
-(provide '55_browser)
-;;; 55_browser.el ends here
+(provide '95_browser)
+;;; 95_browser.el ends here

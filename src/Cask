@@ -328,6 +328,9 @@
 (depends-on "subatomic-theme")
 (depends-on "monokai-theme")
 
+;; Multimedia
+(depends-on "emms")
+(depends-on "bongo")
 
 ;; Development
 (development

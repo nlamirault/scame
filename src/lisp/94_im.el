@@ -1,4 +1,4 @@
-;;; 54_im.el --- Instant Messaging configuration
+;;; 94_im.el --- Instant Messaging configuration
 
 ;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -35,5 +35,5 @@
             (add-hook 'jabber-chat-mode 'visual-line-mode)
             (setq jabber-chat-buffer-format "Chat: %n")))
 
-(provide '54_im)
-;;; 54_im.el ends here
+(provide '94_im)
+;;; 94_im.el ends here

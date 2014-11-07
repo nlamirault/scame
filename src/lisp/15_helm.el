@@ -20,8 +20,6 @@
 ;;; Code:
 
 
-;;(require 'helm)
-
 (use-package helm
   :init (progn
           (helm-mode 1)
