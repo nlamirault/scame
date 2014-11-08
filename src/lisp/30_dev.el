@@ -54,7 +54,7 @@
 			 ".DS_Store")))
 
 (use-package helm-projectile
-  :init (helm-projectile-on)
+  ;;:init (helm-projectile-on)
   :config (setq projectile-completion-system 'helm)
   :bind (("C-c p h" . helm-projectile)))
 
