@@ -148,10 +148,29 @@
 (setq gnus-summary-mode-line-format "Gnus: %G %Z")
 
 ; from jd
-(setq gnus-summary-line-format (concat "%z%U%R %~(max-right 17)~(pad-right 17)&user-date;  "
-                                       "%~(max-right 20)~(pad-right 20)f %B%s\n"))
+;; (setq gnus-summary-line-format
+;;       (concat "%z%U%R %~(max-right 17)~(pad-right 17)&user-date;  "
+;;               "%~(max-right 20)~(pad-right 20)f %B%s\n"))
 ;;(setq gnus-summary-line-format "%U%R%z %(%&user-date;  %-15,35f  %B%s%)\n")
 ;;(setq gnus-summary-line-format "%U%R%z%I%(%[%4L: %-23,23f%]%) %s\n")
+
+
+(defun rs-gnus-get-label (header)
+  "Returns label from X-Label header"
+  (let ((lbl (or (cdr (assq 'X-GM-LABELS (mail-header-extra header))) "")))
+    lbl))
+(defalias 'gnus-user-format-function-r 'rs-gnus-get-label)
+(setq gnus-summary-line-format
+      "%1{%U%R%z: %}%2{%d%}%5{ %[%4i%] %}%4{%-24,24n%}%6{%-4,4ur%}%5{| %}%(%1{%B%}%s%)\n")
+(setq nnmail-extra-headers '(To X-GM-LABELS Newsgroups Content-Type))
+
+(copy-face 'default 'myface)
+(set-face-foreground 'myface "chocolate")
+(setq gnus-face-5 'myface)
+
+(copy-face 'default 'face-label)
+(set-face-foreground 'face-label "red")
+(setq gnus-face-6 'face-label)
 
 ;;(setq gnus-group-line-format "%p%M%B%S%P%(%G: %N%)\n")
 (setq gnus-group-line-format "%1M%1S%5y: %(%-50,50G%)\n")
@@ -184,6 +203,14 @@
                (vertical 30 (group 1.0))
                (vertical 1.0 (summary 1.0 point)))))
 
+;; (loop for type in '(reply forward message post mail-bound)
+;;       do (gnus-add-configuration
+;; 	  `(,type
+;; 	    (horizontal 8
+;; 			(group 50)
+;; 			(vertical 1.0
+;; 				  (summary 20)
+;; 				  (,type 1.0 point))))))
 
 ;; (gnus-add-configuration
 ;;  '(summary (horizontal 1.0
@@ -207,6 +234,19 @@
 
 (setq gnus-sort-gathered-threads-function 'gnus-thread-sort-by-date)
 
+;; (setq gnus-sum-thread-tree-false-root ""
+;;       gnus-sum-thread-tree-indent " "
+;;       gnus-sum-thread-tree-leaf-with-other "├► "
+;;       gnus-sum-thread-tree-root ""
+;;       gnus-sum-thread-tree-single-leaf "╰► "
+;;       gnus-sum-thread-tree-vertical "│")
+(setq
+    gnus-sum-thread-tree-root "● "
+    gnus-sum-thread-tree-false-root "▷ "
+    gnus-sum-thread-tree-single-indent ""
+    gnus-sum-thread-tree-leaf-with-other "├─►"
+    gnus-sum-thread-tree-vertical "│ "
+    gnus-sum-thread-tree-single-leaf "└─►")
 
 ;; Keybindings
 
@@ -224,11 +264,6 @@
 ;;        (if (eq major-mode 'gnus-article-mode)
 ;;            (browse-url url)
 ;;          (w3-fetch-orig url target)))))
-
-;; Research
-;; ---------
-
-(require 'gnus-x-gm-raw)
 
 ;; Colors
 ;; -------
