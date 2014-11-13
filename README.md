@@ -23,6 +23,7 @@ The current version has been tested on Linux and Mac OS X.
         $ rm -r ~/.emacs.d && mkdir ~/.emacs.d
         $ git clone https://github.com/nlamirault/scame
         $ cp -r scame/src/* ~/.emacs.d/
+        $ cask install
 
 
 ### From CLI (not yet available)
