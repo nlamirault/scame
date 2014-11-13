@@ -38,78 +38,74 @@ all: help
 
 help:
 	@echo -e "$(OK_COLOR) ==== Scame [$(VERSION)]====$(NO_COLOR)"
-	@echo -e "$(WARN_COLOR)  - test$(NO_COLOR)               : launch unit tests$(NO_COLOR)"
-	@echo -e "$(WARN_COLOR)  - local-test$(NO_COLOR)         : launch unit test using local configuration$(NO_COLOR)"
-	@echo -e "$(WARN_COLOR)  - integration-test$(NO_COLOR)   : launch integration tests$(NO_COLOR)"
-	@echo -e "$(WARN_COLOR)  - clean$(NO_COLOR)              : clean Scame installation$(NO_COLOR)"
-	@echo -e "$(WARN_COLOR)  - reset$(NO_COLOR)              : remote Scame dependencies for development$(NO_COLOR)"
-	@echo -e "$(WARN_COLOR)  - docker-build$(NO_COLOR)       : build the Docker image$(NO_COLOR)"
-	@echo -e "$(WARN_COLOR)  - docker-clean$(NO_COLOR)       : remove the Docker image$(NO_COLOR)"
-	@echo -e "$(WARN_COLOR)  - docker-run$(NO_COLOR)         : launch Emacs using Scame docker image$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)- test$(NO_COLOR)               : launch unit tests$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)- local-test$(NO_COLOR)         : launch unit test using local configuration$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)- integration-test$(NO_COLOR)   : launch integration tests$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)- clean$(NO_COLOR)              : clean Scame installation$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)- reset$(NO_COLOR)              : remote Scame dependencies for development$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)- docker-build$(NO_COLOR)       : build the Docker image$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)- docker-clean$(NO_COLOR)       : remove the Docker image$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)- docker-run$(NO_COLOR)         : launch Emacs using Scame docker image$(NO_COLOR)"
 
 .PHONY: build
 build :
-	$(CASK) install
-	$(CASK) update
-
-# .PHONY: test
-# test : build
-# 	${VIRTUAL_EMACS} --batch -l test/run-tests
+	@$(CASK) install
+	@$(CASK) update
 
 .PHONY: local-test
 test : build
-	$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
+	@$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
 	$(EMACSFLAGS) \
 	-l test/run-tests
 
 .PHONY: test
 local-test: build
-	$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
+	@$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
 	$(EMACSFLAGS) \
 	-l test/run-local-tests
 
 .PHONY: integration-test
 integration-test: build
-	$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
+	@$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
 	$(EMACSFLAGS) \
 	-l test/run-global-tests
 
 
 .PHONY: virtual-test
 virtual-test:
-	$(VAGRANT) up
-	$(VAGRANT) ssh -c "make -C /vagrant EMACS=$(EMACS) clean test"
+	@$(VAGRANT) up
+	@$(VAGRANT) ssh -c "make -C /vagrant EMACS=$(EMACS) clean test"
 
 .PHONY: clean
 clean :
-	$(CASK) clean-elc
-	rm -fr dist
+	@$(CASK) clean-elc
+	rm -fr dist test/sandboxorg-clock-save.el
 
 reset : clean
-	rm -rf .cask # Clean packages installed for development
-	rm -fr test/sandbox
+	@rm -rf .cask # Clean packages installed for development
+	@rm -fr test/sandbox
 
 %.elc : %.el
-	$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
+	@$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
 	$(EMACSFLAGS) \
 	-f batch-byte-compile $<
 
 .PHONY: docker-test
 docker-build:
-	docker build -t $(CONTAINER) .
+	@docker build -t $(CONTAINER) .
 
 .PHONY: docker-test
 docker-clean:
-	docker rm $(CONTAINER)
+	@docker rm $(CONTAINER)
 
 .PHONY: docker-test
 docker-run:
 #	docker run -it --rm=true $(CONTAINER)
-	docker run -it --rm=true $(CONTAINER) \
+	@docker run -it --rm=true $(CONTAINER) \
 		-e DISPLAY=$(DISPLAY) \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
 		emacs-snapshot
 
 .PHONY: docker-test
 docker-test:
-	docker run --rm -t $(CONTAINER) /.emacs.d/test/run-docker-test
+	@docker run --rm -t $(CONTAINER) /.emacs.d/test/run-docker-test

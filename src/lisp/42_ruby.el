@@ -44,10 +44,10 @@
 	     :mode (("\\.rhtml$" . rhtml-mode)
 		    ("\\.html\\.erb$" . rhtml-mode)))
 
-(use-package inf-ruby
-  :init (add-hook 'after-init-hook 'inf-ruby-switch-setup)
-  :bind (("C-c r r" . inf-ruby)
-	 ("C-c r a" . rvm-activate-corresponding-ruby)))
+;; (use-package inf-ruby
+;;   :init (add-hook 'after-init-hook 'inf-ruby-switch-setup)
+;;   :bind (("C-c r r" . inf-ruby)
+;; 	 ("C-c r a" . rvm-activate-corresponding-ruby)))
 
 
 

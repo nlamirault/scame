@@ -19,9 +19,10 @@
 
 ;;; Code:
 
-
+(require 'ansi)
 (require 'cask)
 (require 'undercover)
+
 
 (defconst scame-test/test-path
   (f-parent (f-this-file)))
@@ -48,20 +49,30 @@
 (defvar username (getenv "HOME"))
 
 
+(defun print-load-path (path)
+  "Output the 'load-path using PATH for Cask bundle."
+  (let ((bundle (cask-initialize path)))
+    (message (ansi-yellow "Path : %s" (cask-load-path bundle)))))
+
+
 (defun cleanup-load-path ()
-  (message "Cleanup path")
+  "Remove home directory from 'load-path."
+  (message (ansi-green "[Scame] Cleanup path"))
   (mapc #'(lambda (path)
             (when (string-match (s-concat username "/.emacs.d") path)
+              (message (ansi-yellow "Suppression path %s" path))
               (setq load-path (delete path load-path))))
         load-path))
 
 (defun load-unit-tests (path)
+  "Load all unit test from PATH."
   (dolist (test-file (or argv (directory-files path t "-test.el$")))
     (load test-file nil t)))
 
 
 (defun install-scame ()
-  (message"Install Scame")
+  "Copy source files to sandbox."
+  (message (ansi-green "[Scame] Install Scame"))
   (mapc #'(lambda (elem)
             (let ((output (f-join scame-test/sandbox-path elem)))
               (unless (f-exists? output)
@@ -75,8 +86,9 @@
           scame-test/sandbox-path))
 
 (defun setup-scame (path)
-  (message "Setup Scame")
-  (let ((bundle (cask-initialize path))) ;;scame-test/sandbox-path)))
+  "Initialize Cask dependencies to PATH and generate 'load-path."
+  (message (ansi-green "[Scame] Setup Scame"))
+  (let ((bundle (cask-initialize path)))
     (cask-update bundle)
     (cask-install bundle)
     (dolist (dir (f-directories

@@ -34,20 +34,24 @@
 
 (defmacro with-scame-new-sandbox (&rest body)
   `(unwind-protect
-       (progn
-         (when (f-dir? scame-test/sandbox-path)
-           (f-delete scame-test/sandbox-path 'force))
-         (f-mkdir scame-test/sandbox-path)
-         (cleanup-load-path)
-         (install-scame)
-         (setup-scame scame-test/sandbox-path)
-         ;;(let ((load-path scame-test/sandbox-path))
-         (require 'scame)
-         (message "Execute tests")
-         ,@body)))
+       (condition-case nil ;ex
+           (let ((user-emacs-directory scame-test/sandbox-path))
+             (when (f-dir? scame-test/sandbox-path)
+               (f-delete scame-test/sandbox-path 'force))
+             (f-mkdir scame-test/sandbox-path)
+             (cleanup-load-path)
+             ;;(print-load-path scame-test/sandbox-path)
+             (install-scame)
+             (setup-scame scame-test/sandbox-path)
+             (message (ansi-yellow "[Scame] Load Scame"))
+             (require 'scame (s-concat scame-test/sandbox-path "/scame.el"))
+             (message (ansi-green "[Scame] Execute unit tests"))
+             ,@body)
+         )))
+         ;; (error
+         ;;  (message (ansi-red "[Scame] Error during unit tests : %s" ex))))))
 
 ;; run tests
 (with-scame-new-sandbox
- ;;(print load-path)
  (load-unit-tests scame-test/test-path)
  (ert-run-tests-batch-and-exit t))

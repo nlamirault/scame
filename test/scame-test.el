@@ -25,7 +25,7 @@
 
 (ert-deftest test-scame-version ()
   (should (require '999_scame))
-  (should (string-equal "0.7.0" scame-package-version)))
+  (should (string-equal "0.10.0" scame-package-version)))
 
 
 (ert-deftest test-scame-keybindings ()
@@ -59,11 +59,11 @@
 	   scame-user-customization-file)))
 
 
-(ert-deftest test-scame-init-file ()
-  (should (require '999_scame))
-  (should (string-equal
-	   (f-join (getenv "HOME") ".emacs.d/scame.el")
-	   scame-init-file)))
+;; (ert-deftest test-scame-init-file ()
+;;   (should (require '999_scame))
+;;   (should (string-equal
+;; 	   (f-join (getenv "HOME") ".emacs.d/scame.el")
+;; 	   scame-init-file)))
 
 (provide 'scame-test)
 ;;; scame-test.el ends here

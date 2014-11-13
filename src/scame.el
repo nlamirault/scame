@@ -56,16 +56,17 @@
 
 (defconst user-home-directory (f-full (getenv "HOME")))
 
-(defconst user-emacs-directory (f-join user-home-directory ".emacs.d"))
+;; (defconst user-emacs-directory (f-join user-home-directory ".emacs.d"))
 
 (defconst scame-user-customization-file
   (f-join user-home-directory ".config/scame/scame-user.el")
   "File used to store user customization.")
 
-(defconst scame-init-file
-  (f-join user-emacs-directory "scame.el")
-  "Scame initialization file.")
+;; (defconst scame-init-file
+;;   (f-join user-emacs-directory "scame.el")
+;;   "Scame initialization file.")
 
+;; (message "User emacs directory for Scame : %s" user-emacs-directory)
 (use-package init-loader
   :config (init-loader-load (f-slash (f-join user-emacs-directory "lisp"))))
 

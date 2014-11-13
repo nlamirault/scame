@@ -19,12 +19,13 @@
 
 ;;; Code:
 
+(global-unset-key (kbd "C-x h"))
+(define-prefix-command 'scame-helm-map)
+(global-set-key (kbd "C-x h") 'scame-helm-map)
 
 (use-package helm
   :init (progn
-          (helm-mode 1)
-          (define-prefix-command 'scame-helm-map)
-          (global-set-key (kbd "C-x h") 'scame-helm-map))
+          (helm-mode 1))
   :config (progn
 	    (setq helm-ff-tramp-not-fancy nil)
 	    (setq helm-ff-skip-boring-files t)

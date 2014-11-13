@@ -22,9 +22,10 @@
 
 
 (use-package smex
-  :init (progn
-	  (setq smex-save-file "~/.emacs.d/.smex-items")
-	  (smex-initialize))
+  :config (progn
+            (setq smex-save-file
+                  (s-concat user-emacs-directory "/.smex-items"))
+            (smex-initialize))
   :bind (("C-x M-x" . smex)
          ("C-x M-X" . smex-major-mode-commands)))
 
