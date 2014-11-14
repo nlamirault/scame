@@ -176,9 +176,6 @@
 ;; Java
 (depends-on "malabar-mode")
 
-;; Java
-(depends-on "malabar-mode")
-
 ;; Markup languages
 (depends-on "markdown-mode")
 (depends-on "yaml-mode")
