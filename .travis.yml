@@ -1,6 +1,6 @@
 language: ruby
 before_install:
-  - sudo apt-get install gcc automake autotools texinfo libmagick++-dev libgtk2.0-dev libxft-dev libgnutls-dev libdbus-1-dev libgif-dev
+  - sudo apt-get install gcc automake texinfo libmagick++-dev libgtk2.0-dev libxft-dev libgnutls-dev libdbus-1-dev libgif-dev
   - sudo mkdir /usr/local/evm
   - sudo chown travis:travis /usr/local/evm
   - curl -fsSkL https://gist.github.com/rejeep/7736123/raw | sh
