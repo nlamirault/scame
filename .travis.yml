@@ -25,4 +25,4 @@ env:
     # - EMACS=emacs-snapshot
 script:
   # - ./scame --init --emacs=emacs-24.3-bin && emacs --version && ./scame --cmd=install && make local-test
-    - make test
+    - make integration-test
