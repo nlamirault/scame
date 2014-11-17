@@ -19,7 +19,6 @@
 
 ;;; Code:
 
-
 ;; (use-package slime-autoloads
 ;;   :config (progn
 ;;             (setq inferior-lisp-program "/usr/bin/sbcl")
@@ -29,8 +28,10 @@
 ;;   :config (slime-setup '(slime-company)))
 
 (use-package sly-autoloads
-     :config (setq inferior-lisp-program "/usr/bin/sbcl"))
+  :config (setq inferior-lisp-program "/usr/bin/sbcl"))
 
+(use-package sly-company-mode
+  :config (add-hook 'sly-mode-hook 'sly-company-mode))
 
 ;; Use Quicklisp to install Slime
 ;; (let ((filename "~/Apps/quicklisp/slime-helper.el"))
