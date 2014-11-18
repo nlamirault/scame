@@ -29,13 +29,10 @@
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
                          ("org" . "http://orgmode.org/elpa/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+                         ("melpa" . "http://melpa.org/packages/")))
 ;;(package-initialize)
 ;; Don't initialize packages twice
 (setq package-enable-at-startup nil)
-
-;; Benchmark Emacs installation
-;;(require 'benchmark-init)
 
 (when (version< emacs-version "24.3")
   (error "Scame requires at least GNU Emacs 24.3"))
@@ -45,14 +42,16 @@
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
 ;;(require 'pallet)
 
+;; Benchmark Emacs installation
+(require 'benchmark-init)
+(require 'use-package)
+(use-package f)
+(use-package s)
+
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (setq-default show-trailing-whitespace t)
-
-(require 'use-package)
-(use-package f)
-(use-package s)
 
 (defconst user-home-directory (f-full (getenv "HOME")))
 
