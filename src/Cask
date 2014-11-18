@@ -42,6 +42,7 @@
 (depends-on "use-package")
 (depends-on "paradox")
 
+;; Profiling
 (depends-on "benchmark-init")
 
 ;; Completion

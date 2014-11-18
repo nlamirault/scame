@@ -4,7 +4,8 @@
 [![travis][badge-travis]][travis]
 [![drone][badge-drone]][drone]
 
-[Scame][] is a 'Starter Kit' for [GNU Emacs][] 24. It will not work with [GNU Emacs][] 23 and below, or with other flavors of Emacs (e.g. XEmacs).
+[Scame][] is a 'Starter Kit' for [GNU Emacs][] 24 (>= 24.3). It will not work
+with [GNU Emacs][] 23 and below, or with other flavors of Emacs (e.g. XEmacs).
 
 These tools are used to perform the [Scame][] installation :
 
