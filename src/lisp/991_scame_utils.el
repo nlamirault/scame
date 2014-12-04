@@ -71,6 +71,11 @@
     (message "Scame last version: %s"
              (s-replace-all '((".zip" . "") ("/" . "")) release))))
 
+;;;###autoload
+(defun scame-bug-report ()
+  "File a bug report about the `scame' project."
+  (interactive)
+  (browse-url "https://github.com/nlamirault/scame/issues/new"))
 
 (provide '991_scame_utils)
 ;;; 991_scame_utils.el ends here
