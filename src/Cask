@@ -161,6 +161,9 @@
 (depends-on "tern")
 (depends-on "company-tern")
 
+;; NodeJS
+(depends-on "jade-mode")
+
 ;; C/C++
 (depends-on "google-c-style")
 (depends-on "c-eldoc")
