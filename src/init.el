@@ -19,8 +19,7 @@
 
 ;;; Code:
 
-(add-to-list 'load-path "~/.emacs.d/")
-(add-to-list 'load-path "~/.emacs.d/gnus/")
+(add-to-list 'load-path "~/.emacs.d/scame/")
 (require 'scame)
 
 (provide 'init)

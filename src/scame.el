@@ -29,7 +29,7 @@
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
                          ("org" . "http://orgmode.org/elpa/")
-                         ("melpa" . "http://melpa.org/packages/")))
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
 ;;(package-initialize)
 ;; Don't initialize packages twice
 (setq package-enable-at-startup nil)
@@ -55,7 +55,8 @@
 
 (defconst user-home-directory (f-full (getenv "HOME")))
 
-;; (defconst user-emacs-directory (f-join user-home-directory ".emacs.d"))
+(defconst scame-user-directory (f-join user-home-directory ".emacs.d/scame")
+  "Scame user directory installation.")
 
 (defconst scame-user-customization-file
   (f-join user-home-directory ".config/scame/scame-user.el")
@@ -67,7 +68,7 @@
 
 ;; (message "User emacs directory for Scame : %s" user-emacs-directory)
 (use-package init-loader
-  :config (init-loader-load (f-slash (f-join user-emacs-directory "lisp"))))
+  :config (init-loader-load (f-slash (f-join scame-user-directory "lisp"))))
 
 (when (file-readable-p scame-user-customization-file)
   (load scame-user-customization-file))
