@@ -64,6 +64,7 @@
               (setq load-path (delete path load-path))))
         load-path))
 
+
 (defun load-unit-tests (path)
   "Load all unit test from PATH."
   (dolist (test-file (or argv (directory-files path t "-test.el$")))
@@ -73,19 +74,30 @@
 (defun install-scame ()
   "Copy source files to sandbox."
   (message (ansi-green "[Scame] Install Scame"))
+  ;; (when (f-dir? scame-test/sandbox-path)
+  ;;   (f-delete scame-test/sandbox-path))
+  (unless (f-dir? scame-test/sandbox-path)
+    (f-mkdir scame-test/sandbox-path))
   (mapc #'(lambda (elem)
             (let ((output (f-join scame-test/sandbox-path elem)))
               (unless (f-exists? output)
-                (f-copy (f-join scame-test/root-path "src/scame" elem)
+                (f-copy (f-join scame-test/root-path "src" elem)
                         scame-test/sandbox-path))))
-        '("scame.el" "lisp"))
+        '("Cask" "scame"))
+  ;; (mapc #'(lambda (elem)
+  ;;           (let ((output (f-join scame-test/sandbox-path elem)))
+  ;;             (unless (f-exists? output)
+  ;;               (let ((path (f-join scame-test/sandbox-path
+  ;;               (f-copy (f-join scame-test/root-path "src/scame" elem)
+  ;;                       scame-test/sandbox-path))))
+  ;;       '("scame.el" "lisp"))
+  ;; (f-copy scame-install-cask-file scame-test/sandbox-path)
   (let ((output (f-join scame-test/sandbox-path "init.el")))
     (when (f-exists? output)
       (f-delete output 'force)))
-  (mapc #'(lambda (file)
-            (f-copy (f-join scame-test/test-path file))
-            scame-test/sandbox-path)
-        '("init.el" "Cask")))
+  (f-copy (f-join scame-test/test-path "init.el")
+          scame-test/sandbox-path))
+
 
 (defun setup-scame (path)
   "Initialize Cask dependencies to PATH and generate 'load-path."
