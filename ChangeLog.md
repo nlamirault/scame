@@ -2,6 +2,8 @@
 
 ## Version 0.10.0 (IN PROGRESS)
 
+- [#35][]: Warning after installation with invalid 'load-path'
+- Update TravisCI configuration
 - Setup music and radio using EMMS
 - Init continuous integration watcher using Butler for Jenkins
 - Update dired configuration
@@ -111,6 +113,7 @@
 [Gnus]: http://www.gnus.org/
 [BBDB]: https://github.com/emacsmirror/bbdb
 
+[#35]: https://github.com/nlamirault/scame/issues/35
 [#32]: https://github.com/nlamirault/scame/issues/32
 [#31]: https://github.com/nlamirault/scame/issues/31
 [#24]: https://github.com/nlamirault/scame/issues/24

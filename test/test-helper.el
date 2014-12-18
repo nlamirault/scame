@@ -76,7 +76,7 @@
   (mapc #'(lambda (elem)
             (let ((output (f-join scame-test/sandbox-path elem)))
               (unless (f-exists? output)
-                (f-copy (f-join scame-test/root-path "src" elem)
+                (f-copy (f-join scame-test/root-path "src/scame" elem)
                         scame-test/sandbox-path))))
         '("Cask" "scame.el" "lisp"))
   (let ((output (f-join scame-test/sandbox-path "init.el")))
