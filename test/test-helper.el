@@ -78,12 +78,14 @@
               (unless (f-exists? output)
                 (f-copy (f-join scame-test/root-path "src/scame" elem)
                         scame-test/sandbox-path))))
-        '("Cask" "scame.el" "lisp"))
+        '("scame.el" "lisp"))
   (let ((output (f-join scame-test/sandbox-path "init.el")))
     (when (f-exists? output)
       (f-delete output 'force)))
-  (f-copy (f-join scame-test/test-path "init.el")
-          scame-test/sandbox-path))
+  (mapc #'(lambda (file)
+            (f-copy (f-join scame-test/test-path file))
+            scame-test/sandbox-path)
+        '("init.el" "Cask")))
 
 (defun setup-scame (path)
   "Initialize Cask dependencies to PATH and generate 'load-path."
