@@ -32,7 +32,7 @@
 (defun scame-mail-gmail ()
   "Launch Gnus using GMail configuration."
   (interactive)
-  (setq gnus-init-file (scame--gnus-init-file "gnus/gnus-gmail.el")
+  (setq gnus-init-file (scame--gnus-init-file "scame/gnus/gnus-gmail.el")
         gnus-startup-file (scame--gnus-startup-file ".gmail-newsrc"))
   (gnus))
 ;;(global-set-key (kbd "C-c m g") 'scame-mail-gmail)
@@ -40,7 +40,7 @@
 (defun scame-mail-exchange ()
   "Launch Gnus using Exchange configuration."
   (interactive)
-  (setq gnus-init-file (scame--gnus-init-file "gnus/gnus-exchange.el")
+  (setq gnus-init-file (scame--gnus-init-file "scame/gnus/gnus-exchange.el")
         gnus-startup-file (scame--gnus-startup-file ".exchange-newsrc"))
   (gnus))
 ;;(global-set-key (kbd "C-c m e") 'scame-mail-exchange)
@@ -48,7 +48,7 @@
 (defun scame-mail-offlineimap ()
   "Launch Gnus using Offlineimap configuration."
   (interactive)
-  (setq gnus-init-file (scame--gnus-init-file "gnus/gnus-offlineimap.el")
+  (setq gnus-init-file (scame--gnus-init-file "scame/gnus/gnus-offlineimap.el")
         gnus-startup-file (scame--gnus-startup-file ".offlineimap-newsrc"))
   (gnus))
 ;;(global-set-key (kbd "C-c m o") 'scame-mail-offlineimap)

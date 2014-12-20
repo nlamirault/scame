@@ -20,6 +20,7 @@
 ;;; Code:
 
 (add-to-list 'load-path "~/.emacs.d/scame/")
+(add-to-list 'load-path "~/.emacs.d/scame/gnus")
 (require 'scame)
 
 (provide 'init)
