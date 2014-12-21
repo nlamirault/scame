@@ -62,9 +62,7 @@
   (f-join user-home-directory ".config/scame/scame-user.el")
   "File used to store user customization.")
 
-
-
-(let ((scame-lisp (f-slash (f-join scame-user-directory "lisp"))))
+(let ((scame-lisp (f-slash (f-join (f-parent (f-this-file)) "lisp"))))
   (message "Scame lisp directory : %s" scame-lisp)
   (use-package init-loader
     :config (init-loader-load scame-lisp)))
