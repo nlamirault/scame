@@ -30,7 +30,7 @@
 	  (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 	  (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 	  ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan))
-          ))
+          )
   ;; :bind (;;("C-," . haskell-move-nested-left)
   ;;        ;;("C-." . haskell-move-nested-right)
   ;;        ;; ("M-o" . editutil-edit-next-line-same-column)
