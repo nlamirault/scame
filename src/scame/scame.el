@@ -62,13 +62,12 @@
   (f-join user-home-directory ".config/scame/scame-user.el")
   "File used to store user customization.")
 
-;; (defconst scame-init-file
-;;   (f-join user-emacs-directory "scame.el")
-;;   "Scame initialization file.")
 
-;; (message "User emacs directory for Scame : %s" user-emacs-directory)
-(use-package init-loader
-  :config (init-loader-load (f-slash (f-join scame-user-directory "lisp"))))
+
+(let ((scame-lisp (f-slash (f-join scame-user-directory "lisp"))))
+  (message "Scame lisp directory : %s" scame-lisp)
+  (use-package init-loader
+    :config (init-loader-load scame-lisp)))
 
 (when (file-readable-p scame-user-customization-file)
   (load scame-user-customization-file))
