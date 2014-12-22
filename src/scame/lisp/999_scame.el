@@ -35,63 +35,6 @@
   :type 'string)
 
 
-;; Misc
-
-;; (defvar scame-package-version "0.7.0"
-;;   "Release version of Scame.")
-
-;; (defun scame-version ()
-;;   "Return the Scame's version."
-;;   (interactive)
-;;   (message "Scame version: %s" scame-package-version))
-
-
-;; (defun scame-changelog ()
-;;   "Display the ChangeLog."
-;;   (interactive)
-;;   (let ((changelog (f-join user-home-directory ".scame/ChangeLog.md")))
-;;     (if (file-readable-p changelog)
-;; 	(switch-to-buffer (find-file-noselect changelog))
-;;       (message "Scame: No Changelog available."))))
-
-
-;; (defun scame-customization ()
-;;   "Open the customization file."
-;;   (interactive)
-;; ;;  (let ((customization (f-join user-home-directory ".config/scame/scame-user.el")))
-;;   (if (file-readable-p scame-user-customization-file) ;customization)
-;;       (switch-to-buffer (find-file-noselect scame-user-customization-file))
-;;     (message "Scame: No customization file %s" customization)))
-
-
-;; (defun scame-project-website ()
-;;   "Open in a browser the project's website."
-;;   (interactive)
-;;   (browse-url
-;;   ;;(helm-browse-url
-;;    "https://github.com/nlamirault/scame"))
-
-
-;; (defun perform-rest-request (url)
-;;   "Perform an HTTP request using URL and return the response."
-;;   (let ((buffer (url-retrieve-synchronously url)))
-;;     (save-excursion
-;;       (set-buffer buffer)
-;;       (goto-char (point-min))
-;;       (re-search-forward "^$" nil 'move)
-;;       (setq response (buffer-substring-no-properties (point) (point-max)))
-;;       (kill-buffer (current-buffer)))
-;;     response))
-
-
-;; (defun scame-last-release ()
-;;   "Find from GitHub last release."
-;;   (interactive)
-;;   (let* ((response (perform-rest-request "https://github.com/nlamirault/scame/releases"))
-;; 	 (release (caar (s-match-strings-all "/[0-9.]*.zip" response))))
-;;     (message "Scame last version: %s" (s-replace-all '((".zip" . "") ("/" . "")) release))))
-
-
 ;; Scame mode map
 
 (defvar scame-mode-map

@@ -21,13 +21,13 @@
 
 ;;; Code:
 
-(defvar scame-package-version "0.10.0"
+(defvar scame-version-number "0.11.0"
   "Release version of Scame.")
 
 (defun scame-version ()
   "Return the Scame's version."
   (interactive)
-  (message "Scame version: %s" scame-package-version))
+  (message "Scame version: %s" scame-version-number))
 
 
 (provide '990_scame_version)

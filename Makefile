@@ -14,6 +14,10 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
+APP = scame
+
+SHELL = /bin/bash
+
 EMACS ?= emacs
 EMACSFLAGS = --debug-init -L .
 CASK = cask
@@ -25,7 +29,7 @@ ELS = $(wildcard *.el)
 OBJECTS = $(ELS:.el=.elc)
 
 VERSION=$(shell \
-        grep scame-version scame-cli.el \
+        grep "defvar scame-version-number" src/scame/lisp/990_scame_version.el \
 	|awk -F'"' '{print $$2}')
 
 
@@ -37,7 +41,7 @@ WARN_COLOR=\033[33;01m
 all: help
 
 help:
-	@echo -e "$(OK_COLOR) ==== Scame [$(VERSION)]====$(NO_COLOR)"
+	@echo -e "$(OK_COLOR)==== $(APP) [$(VERSION)] ====$(NO_COLOR)"
 	@echo -e "$(WARN_COLOR)- test$(NO_COLOR)               : launch unit tests$(NO_COLOR)"
 	@echo -e "$(WARN_COLOR)- local-test$(NO_COLOR)         : launch unit test using local configuration$(NO_COLOR)"
 	@echo -e "$(WARN_COLOR)- integration-test$(NO_COLOR)   : launch integration tests$(NO_COLOR)"
@@ -49,26 +53,30 @@ help:
 
 .PHONY: build
 build :
+	@echo -e "$(OK_COLOR)[$(APP)] Build $(NO_COLOR)"
 	@$(CASK) install
 	@$(CASK) update
 
 .PHONY: local-test
 test : build
+	@echo -e "$(OK_COLOR)[$(APP)] Launch unit tests$(NO_COLOR)"
 	@$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
-	$(EMACSFLAGS) \
-	-l test/run-tests
+		$(EMACSFLAGS) \
+		-l test/run-tests
 
 .PHONY: test
 local-test: build
+	@echo -e "$(OK_COLOR)[$(APP)] Launch unit tests using local installation$(NO_COLOR)"
 	@$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
-	$(EMACSFLAGS) \
-	-l test/run-local-tests
+		$(EMACSFLAGS) \
+		-l test/run-local-tests
 
 .PHONY: integration-test
 integration-test: build
+	@echo -e "$(OK_COLOR)[$(APP)] Launch integration tests using fresh installation$(NO_COLOR)"
 	@$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
-	$(EMACSFLAGS) \
-	-l test/run-global-tests
+		$(EMACSFLAGS) \
+		-l test/run-global-tests
 
 
 .PHONY: virtual-test
@@ -79,7 +87,7 @@ virtual-test:
 .PHONY: clean
 clean :
 	@$(CASK) clean-elc
-	rm -fr dist test/sandboxorg-clock-save.el
+	@rm -fr dist scame-*.tar.gz test/sandboxorg-clock-save.el
 
 reset : clean
 	@rm -rf .cask # Clean packages installed for development
