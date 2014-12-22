@@ -85,6 +85,13 @@ reset : clean
 	@rm -rf .cask # Clean packages installed for development
 	@rm -fr test/sandbox
 
+binaries:
+	rm -fr scame-$(VERSION) && mkdir scame-$(VERSION)
+	cp -r src/* scame-$(VERSION)
+	tar cf scame-$(VERSION).tar scame-$(VERSION)
+	gzip scame-$(VERSION).tar
+	rm -fr scame-$(VERSION)
+
 %.elc : %.el
 	@$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
 	$(EMACSFLAGS) \
