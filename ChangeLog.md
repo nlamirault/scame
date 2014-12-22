@@ -1,6 +1,6 @@
 # Scame ChangeLog
 
-## Version 0.10.0 (IN PROGRESS)
+## Version 0.10.0 (22/12/2014)
 
 - [#35][]: Warning after installation with invalid 'load-path'
 - Update TravisCI configuration
