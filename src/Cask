@@ -264,6 +264,9 @@
 (depends-on "rcirc-alertify")
 (depends-on "rcirc-notify")
 
+;; Twitter
+(depends-on "twittering-mode")
+
 ;; Organisation
 (depends-on "org")
 (depends-on "org-agenda-property")
