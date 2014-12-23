@@ -16,20 +16,16 @@ RUN python /tmp/cask.py
 
 # Install Scame
 #RUN mkdir -p /.emacs.d
-ADD ./src/Cask /.emacs.d/Cask
-ADD ./src/init.el /.emacs.d/init.el
-ADD ./src/scame.el /.emacs.d/scame.el
-ADD ./src/lisp /.emacs.d/lisp
-ADD ./src/gnus /.emacs.d/gnus
-RUN cd /.emacs.d && /.cask/bin/cask install
+ADD ./src/ /.emacs.d/
+#RUN cd /.emacs.d && /.cask/bin/cask install
 
-RUN apt-get -y install make
-ADD ./Makefile /.emacs.d/Makefile
-ADD ./test /.emacs.d/test
+# RUN apt-get -y install make
+# ADD ./Makefile /.emacs.d/Makefile
+# ADD ./test /.emacs.d/test
 
-USER developer
-ENV HOME /home/developer
-CMD /usr/bin/emacs-snapshot
+# USER developer
+# ENV HOME /home/developer
+# CMD /usr/bin/emacs-snapshot
 
 # Set the default directory where CMD will execute
 # WORKDIR /.emacs.d

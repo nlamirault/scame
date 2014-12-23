@@ -23,7 +23,9 @@ EMACSFLAGS = --debug-init -L .
 CASK = cask
 VAGRANT = vagrant
 
-CONTAINER = nlamirault/scame
+DOCKER = docker
+NAMESPACE = nlamirault
+IMAGE = scame
 
 ELS = $(wildcard *.el)
 OBJECTS = $(ELS:.el=.elc)
@@ -94,33 +96,45 @@ reset : clean
 	@rm -fr test/sandbox
 
 binaries:
-	rm -fr scame-$(VERSION) && mkdir scame-$(VERSION)
-	cp -r src/* scame-$(VERSION)
-	tar cf scame-$(VERSION).tar scame-$(VERSION)
-	gzip scame-$(VERSION).tar
-	rm -fr scame-$(VERSION)
+	@echo "$(OK_COLOR)[$(APP)] Make binaries $(VERSION) $(NO_COLOR)"
+	@rm -fr scame-$(VERSION) && mkdir scame-$(VERSION)
+	@cp -r src/* scame-$(VERSION)
+	@tar cf scame-$(VERSION).tar scame-$(VERSION)
+	@gzip scame-$(VERSION).tar
+	@rm -fr scame-$(VERSION)
 
 %.elc : %.el
 	@$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
-	$(EMACSFLAGS) \
-	-f batch-byte-compile $<
+		$(EMACSFLAGS) \
+		-f batch-byte-compile $<
 
-.PHONY: docker-test
+.PHONY: docker-build
 docker-build:
-	@docker build -t $(CONTAINER) .
+	@echo -e "$(OK_COLOR)[$(APP)] Build $(IMAGE):$(VERSION) $(NO_COLOR)"
+	@$(DOCKER) build -t $(NAMESPACE)/$(IMAGE):$(VERSION) .
 
-.PHONY: docker-test
+.PHONY: docker-publish
+docker-publish: build
+	@echo -e "$(OK_COLOR)[$(APP)] Publish $(IMAGE):$(VERSION) $(NO_COLOR)"
+	@$(DOCKER) tag $(NAMESPACE)/$(IMAGE):$(VERSION) $(NAMESPACE)/$(IMAGE):$(VERSION)
+	@$(DOCKER) push $(NAMESPACE)/$(IMAGE):$(VERSION)
+
+.PHONY: docker-clean
 docker-clean:
-	@docker rm $(CONTAINER)
+	@echo -e "$(OK_COLOR)[$(APP)] Clean $(IMAGE):$(VERSION) $(NO_COLOR)"
+	@$(DOCKER) rm $(NAMESPACE)/$(IMAGE):$(VERSION)
 
-.PHONY: docker-test
+.PHONY: docker-run
 docker-run:
-#	docker run -it --rm=true $(CONTAINER)
-	@docker run -it --rm=true $(CONTAINER) \
-		-e DISPLAY=$(DISPLAY) \
-		-v /tmp/.X11-unix:/tmp/.X11-unix \
-		emacs-snapshot
+	@echo -e "$(OK_COLOR)[$(APP)] Run $(IMAGE):$(VERSION) $(NO_COLOR)"
+	@$(DOCKER) run -it --rm=true $(NAMESPACE)/$(IMAGE):$(VERSION) -e DISPLAY=$(DISPLAY) -v /tmp/.X11-unix:/tmp/.X11-unix emacs-snapshot
+
+.PHONY: docker-debug
+docker-debug:
+	@echo -e "$(OK_COLOR)[$(APP)] Run $(IMAGE):$(VERSION) $(NO_COLOR)"
+	@$(DOCKER) run -it --rm=true $(NAMESPACE)/$(IMAGE):$(VERSION) /bin/bash
 
 .PHONY: docker-test
 docker-test:
-	@docker run --rm -t $(CONTAINER) /.emacs.d/test/run-docker-test
+	@echo -e "$(OK_COLOR)[$(APP)] Launch tests using Docker $(IMAGE):$(VERSION) $(NO_COLOR)"
+	@$(DOCKER) run --rm -t $(IMAGE):$(VERSION) /.emacs.d/test/run-docker-test
