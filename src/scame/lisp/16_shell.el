@@ -25,16 +25,15 @@
 
 (use-package multi-term
   :config (progn
-	    (setq multi-term-program "/bin/bash")
-	    (defun scame-launch-term ()
-	      "Launch a new terminal."
-	      (interactive)
-	      (unless (multi-term-dedicated-exist-p)
-		(multi-term-dedicated-open))
-	      (multi-term-dedicated-select)))
-  :bind (("C-c t" . scame-launch-term)))
+	    (setq multi-term-program "/bin/bash")))
 
 
+(defun scame-launch-term ()
+  "Launch a new terminal."
+  (interactive)
+  (unless (multi-term-dedicated-exist-p)
+    (multi-term-dedicated-open))
+  (multi-term-dedicated-select))
 
 (provide '16_shell)
 ;;; 16_shell.el ends here
