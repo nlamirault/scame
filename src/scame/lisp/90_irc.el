@@ -1,4 +1,4 @@
-;;; 50_irc.el --- IRC configuration
+;;; 90_irc.el --- IRC configuration
 
 ;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -25,12 +25,15 @@
 
 
 (use-package erc
+  :bind (("C-c i e" . erc))
   :config (progn
 	    (setq erc-hide-list '("JOIN" "PART" "QUIT"))
 	    (setq erc-nick-uniquifier "$")
 	    (setq erc-autojoin-channels-alist '(("freenode.net"
 						 "#openstack-fr"
-						 "#cloudstack"
+						 "#docker"
+                                                 "#docker-dev"
+                                                 "#google-containers"
 						 "#lisp"
 						 "#emacs")))
 	    (setq erc-notifications-icon "~/.emacs.d/icons/irc.png")
@@ -115,5 +118,5 @@
 (use-package rcirc-notify)
 
 
-(provide '50_irc)
-;;; 50_irc.el ends here
+(provide '90_irc)
+;;; 90_irc.el ends here
