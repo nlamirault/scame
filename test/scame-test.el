@@ -28,42 +28,11 @@
   (should (string-equal "0.11.0" scame-package-version)))
 
 
-(ert-deftest test-scame-keybindings ()
-  (with-temp-buffer
-    (scame-mode)
-    (should (eql 'scame-version
-		 (key-binding (kbd "C-c s v"))))
-    (should (eql 'scame-last-release
-		 (key-binding (kbd "C-c s u"))))
-    (should (eql 'scame-changelog
-		 (key-binding (kbd "C-c s c"))))
-    (should (eql 'scame-customization
-		 (key-binding (kbd "C-c s z"))))
-    (should (eql 'scame-search-google
-		 (key-binding (kbd "C-c s s g"))))
-    (should (eql 'scame-search-github
-		 (key-binding (kbd "C-c s s h"))))
-    (should (eql 'scame-search-twitter
-		 (key-binding (kbd "C-c s s t"))))
-    (should (eql 'scame-search-launchpad
-		 (key-binding (kbd "C-c s s l"))))
-    (should (eql 'scame-search-arch-aur
-		 (key-binding (kbd "C-c s s a"))))
-    ))
-
-
 (ert-deftest test-scame-customization-file ()
   (should (require '999_scame))
   (should (string-equal
 	   (f-join (getenv "HOME") ".config/scame/scame-user.el")
 	   scame-user-customization-file)))
-
-
-;; (ert-deftest test-scame-init-file ()
-;;   (should (require '999_scame))
-;;   (should (string-equal
-;; 	   (f-join (getenv "HOME") ".emacs.d/scame.el")
-;; 	   scame-init-file)))
 
 (provide 'scame-test)
 ;;; scame-test.el ends here

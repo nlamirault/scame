@@ -20,7 +20,10 @@
 ;;; Code:
 
 (use-package twittering-mode
-  :bind ("C-c t" . twit)
+  :init (progn
+          (define-prefix-command 'scame-twitter-map)
+          (global-set-key (kbd "C-c t") 'scame-twitter-map))
+  :bind (("C-c t t" . twit))
   :config (progn
             (setq twittering-private-info-file "~/.twittering-mode.gpg")
             (setq twittering-use-master-password t)

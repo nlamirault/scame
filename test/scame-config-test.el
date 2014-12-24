@@ -188,16 +188,6 @@
   (should (eql 'imenu-anywhere (key-binding (kbd "C-.")))))
 
 
-;; shell
-
-(ert-deftest test-scame-multi-term ()
-  (require 'multi-term)
-  (should (featurep 'multi-term))
-  (should (string-equal "/bin/bash" multi-term-program))
-  (should (eql 'scame-launch-term
-	       (key-binding (kbd "C-c t")))))
-
-
 ;; smex
 
 ;; (ert-deftest test-scame-smex ()
@@ -529,6 +519,12 @@
 
 (ert-deftest test-scame-erc ()
   (should (require 'erc)))
+
+;; Twitter
+
+(ert-deftest test-scame-twitter ()
+  (should (eql 'twit
+               (key-binding (kbd "C-c t t")))))
 
 
 ;; Org

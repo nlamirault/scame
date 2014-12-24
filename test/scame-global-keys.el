@@ -23,16 +23,61 @@
 (require 'test-helper)
 
 
-(ert-deftest test-scame-packages-keybindings ()
-  (with-temp-buffer
+(defmacro with-scame-mode (&rest body)
+  `(with-temp-buffer
+     (scame-mode)
+     ,@body)))
+
+(ert-deftest test-scame-version-keybinding ()
+  (with-scame-mode
+    (should (eql 'scame-version
+		 (key-binding (kbd "C-c s v"))))))
+
+(ert-deftest test-scame-customization-keybinding ()
+  (with-scame-mode
+    (should (eql 'scame-version
+		 (key-binding (kbd "C-c s z"))))))
+
+(ert-deftest test-scame-searchs-keybindings ()
+  (with-scame-mode
+    (should (eql 'scame-search-google
+		 (key-binding (kbd "C-c s s g"))))
+    (should (eql 'scame-search-github
+		 (key-binding (kbd "C-c s s h"))))
+    (should (eql 'scame-search-launchpad
+		 (key-binding (kbd "C-c s s l"))))
+    (should (eql 'scame-search-arch-aur
+		 (key-binding (kbd "C-c s s a"))))))
+
+(ert-deftest test-scame-emails-keybindings ()
+  (with-scame-mode
+    (should (eql 'scame-mail-gmail
+		 (key-binding (kbd "C-c s m g"))))
+    (should (eql 'scame-mail-exchange
+		 (key-binding (kbd "C-c s m e"))))
+    (should (eql 'scame-mail-offlineimap
+		 (key-binding (kbd "C-c s m o"))))))
+
+(ert-deftest test-scame-paradox-list-packages-keybinding ()
+  (with-scame-mode
+    (should (eql 'paradox-list-packages
+                 (key-binding (kbd "C-c s l p"))))))
+
+(ert-deftest test-scame-proced-keybinding ()
+  (with-scame-mode
+    (should (eql 'proced
+                 (key-binding (kbd "C-c s l h"))))))
+
+(ert-deftest test-scame-multi-term-keybinding ()
+  (with-scame-mode
     (scame-mode)
-    (should (eql 'package-list-packages
-		 (key-binding (kbd "C-c l"))))))
+    (should (string-equal "/bin/bash" multi-term-program))
+    (should (eql 'scame-launch-term
+                 (key-binding (kbd "C-c s l t"))))))
 
 
 (ert-deftest test-scame-web-keybindings ()
-  (with-temp-buffer
-    (scame-mode)
+  (with-scame-mode
     (should (eql 'browse-url-at-point
 		 (key-binding (kbd "C-c u"))))
     (should (eql 'eww
