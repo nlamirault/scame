@@ -1,8 +1,12 @@
 # Scame ChangeLog
 
+## Version 0.11.0 (IN PROGRESS)
+
+- Setup `bug-reference-mode`
+
 ## Version 0.10.0 (22/12/2014)
 
-- [#35][]: Warning after installation with invalid 'load-path'
+- [GH-35]: Warning after installation with invalid 'load-path'
 - Update TravisCI configuration
 - Setup music and radio using EMMS
 - Init continuous integration watcher using Butler for Jenkins
@@ -13,13 +17,13 @@
 - Update Javascript configuration
 - Refactoring php-mode and web-mode
 - Init configuration for Elixir
-- [#22][]: Add discover-my-major
-- [#32][]: Add go-errcheck package
-- [#31][]: Add golint package
+- [GH-22]: Add discover-my-major
+- [GH-32]: Add go-errcheck package
+- [GH-31]: Add golint package
 - Update GPG And Gnus setup
 - Update Linux configuration for offlineimap
 - Update IRC and IM configurations
-- [#24][]: Add the platinum searcher
+- [GH-24]: Add the platinum searcher
 - FIX cider setup
 - Add pip-requirements package
 
@@ -50,35 +54,35 @@
 - Update Common lisp and go setup
 - `FIX` Enable global-linum-mode
 - `FIX` UTF-8 encodings
-- [#18][]: Add go-projectile
-- [#13][]: Refactor unit test to creates sandbox to test Scame installation and not use local installation
+- [GH-18]: Add go-projectile
+- [GH-13]: Refactor unit test to creates sandbox to test Scame installation and not use local installation
 - Remove [cerbere][]
 - Update Python and Go configuration to use [phpunit.el][] and [go-test.el][]
 
 ## Version 0.5.0 (04/28/2014)
 
 - Migrate from MIT to GPL-3
-- [#16][]: Add C and C++ configuration
-- [#14][]: Add sphinx-doc
+- [GH-16]: Add C and C++ configuration
+- [GH-14]: Add sphinx-doc
 - Add perspective for projectile
-- [#12][]: FIX Key bindings not enabled by default
+- [GH-12]: FIX Key bindings not enabled by default
 - Add perspective.el
 - Migrate to [cerbere][] mode ([gotest.el][], [phpunit.el][], [tox.el][])
-- [#11][]: Add plsense-direx
-- [#9][]: Add jedi-direx
-- [#8][]: Add go-direx
-- [#7][]: Change Scame initialisation filename
+- [GH-11]: Add plsense-direx
+- [GH-9]: Add jedi-direx
+- [GH-8]: Add go-direx
+- [GH-7]: Change Scame initialisation filename
 - Add unit tests for Scame configuration
 
 ## Version 0.4.0 (04/15/2014)
 
-- [#6][]: Update command argument doens't perform a git pull on scame local installation
-- [#4][]: Add uniquify configuration
+- [GH-6]: Update command argument doens't perform a git pull on scame local installation
+- [GH-4]: Add uniquify configuration
 - Add a command top open the Scame user customization file
 - Refactoring Scame installation directory
 - Migrating to a CLI in Emacs Lisp using [commander.el][]
-- [#3][]: configure helm-projectile and key binding
-- [#2][]: configure helm-imenu and key binding
+- [GH-3]: configure helm-projectile and key binding
+- [GH-2]: configure helm-imenu and key binding
 - Allow users to customize Scame default keymap prefix
 - Uniform keybindings
 - Migrate to [use-package][] for packages configuration
@@ -113,21 +117,21 @@
 [Gnus]: http://www.gnus.org/
 [BBDB]: https://github.com/emacsmirror/bbdb
 
-[#35]: https://github.com/nlamirault/scame/issues/35
-[#32]: https://github.com/nlamirault/scame/issues/32
-[#31]: https://github.com/nlamirault/scame/issues/31
-[#24]: https://github.com/nlamirault/scame/issues/24
-[#22]: https://github.com/nlamirault/scame/issues/22
-[#18]: https://github.com/nlamirault/scame/issues/18
-[#16]: https://github.com/nlamirault/scame/issues/16
-[#14]: https://github.com/nlamirault/scame/issues/14
-[#13]: https://github.com/nlamirault/scame/issues/13
-[#12]: https://github.com/nlamirault/scame/issues/12
-[#11]: https://github.com/nlamirault/scame/issues/11
-[#9]: https://github.com/nlamirault/scame/issues/9
-[#8]: https://github.com/nlamirault/scame/issues/8
-[#7]: https://github.com/nlamirault/scame/issues/7
-[#6]: https://github.com/nlamirault/scame/issues/6
-[#4]: https://github.com/nlamirault/scame/issues/4
-[#3]: https://github.com/nlamirault/scame/issues/3
-[#2]: https://github.com/nlamirault/scame/issues/2
+[GH-35]: https://github.com/nlamirault/scame/issues/35
+[GH-32]: https://github.com/nlamirault/scame/issues/32
+[GH-31]: https://github.com/nlamirault/scame/issues/31
+[GH-24]: https://github.com/nlamirault/scame/issues/24
+[GH-22]: https://github.com/nlamirault/scame/issues/22
+[GH-18]: https://github.com/nlamirault/scame/issues/18
+[GH-16]: https://github.com/nlamirault/scame/issues/16
+[GH-14]: https://github.com/nlamirault/scame/issues/14
+[GH-13]: https://github.com/nlamirault/scame/issues/13
+[GH-12]: https://github.com/nlamirault/scame/issues/12
+[GH-11]: https://github.com/nlamirault/scame/issues/11
+[GH-9]: https://github.com/nlamirault/scame/issues/9
+[GH-8]: https://github.com/nlamirault/scame/issues/8
+[GH-7]: https://github.com/nlamirault/scame/issues/7
+[GH-6]: https://github.com/nlamirault/scame/issues/6
+[GH-4]: https://github.com/nlamirault/scame/issues/4
+[GH-3]: https://github.com/nlamirault/scame/issues/3
+[GH-2]: https://github.com/nlamirault/scame/issues/2
