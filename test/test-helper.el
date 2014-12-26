@@ -114,5 +114,12 @@
     ))
 
 
+(defun load-library (path)
+  "Load current library from PATH."
+  (message (ansi-yellow "[Scame] Load library from %s" path))
+  (undercover "*.el" (:exclude "*-test.el"))
+  (require 'scame path))
+
+
 (provide 'test-helper)
 ;;; test-helper.el ends here
