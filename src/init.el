@@ -1,6 +1,6 @@
 ;; init.el --- Emacs initialization file
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,8 +19,11 @@
 
 ;;; Code:
 
-(add-to-list 'load-path "~/.emacs.d/scame/")
-(add-to-list 'load-path "~/.emacs.d/scame/gnus")
+(require 's)
+
+(mapc (lambda (path)
+        (add-to-list 'load-path (concat user-emacs-directory path)))
+      '("scame/" "scame/gnus"))
 (require 'scame)
 
 (provide 'init)

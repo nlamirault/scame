@@ -58,6 +58,10 @@
 (defconst scame-user-directory (f-join user-home-directory ".emacs.d/scame")
   "Scame user directory installation.")
 
+(defconst scame-vendoring-directory
+  "Vendoring directory for Scame."
+  (f-join user-emacs-directory "vendor")))
+
 (defconst scame-user-customization-file
   (f-join user-home-directory ".config/scame/scame-user.el")
   "File used to store user customization.")
@@ -74,6 +78,8 @@
 
 ;; FIX ?
 (remove-hook 'kill-emacs-hook 'w3m-cookie-shutdown)
+
+(add-to-list 'load-path scame-vendoring-directory)
 
 (provide 'scame)
 ;;; scame.el ends here
