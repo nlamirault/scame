@@ -16,8 +16,9 @@ RUN python /tmp/cask.py
 
 # Install Scame
 #RUN mkdir -p /.emacs.d
-ADD ./src/ /.emacs.d/
-#RUN cd /.emacs.d && /.cask/bin/cask install
+#ADD ./src/ /.emacs.d/
+ADD ./toto /.emacs.d/
+RUN cd /.emacs.d && /.cask/bin/cask install --debug --verbose
 
 # RUN apt-get -y install make
 # ADD ./Makefile /.emacs.d/Makefile
