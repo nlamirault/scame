@@ -23,7 +23,7 @@
 
 ;; Debug or not
 ;;(setq debug-on-error t)
-
+(toggle-debug-on-error)
 
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
