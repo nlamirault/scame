@@ -19,8 +19,6 @@
 
 ;;; Code:
 
-(require 's)
-
 (mapc (lambda (path)
         (add-to-list 'load-path (concat user-emacs-directory path)))
       '("scame/" "scame/gnus"))
