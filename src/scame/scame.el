@@ -22,8 +22,7 @@
 ;;; Code:
 
 ;; Debug or not
-;;(setq debug-on-error t)
-(toggle-debug-on-error)
+(setq debug-on-error t)
 
 (when (version< emacs-version "24.3")
   (error "Scame requires at least GNU Emacs 24.3"))
@@ -37,35 +36,31 @@
 ;; Don't initialize packages twice
 (setq package-enable-at-startup nil)
 
-(require 'f)
-(require 's)
-
-(defconst user-home-directory
-  (f-full (getenv "HOME"))
-  "Path of the user home directory.")
-
-(if (f-directory? (f-join user-home-directory ".cask"))
-    (require 'cask (f-join user-home-directory ".cask/cask.el"))
-  (require 'cask))
+(require 'cask "~/.cask/cask.el")
 (cask-initialize)
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
 ;;(require 'pallet)
 
-;; Benchmark Emacs installation
 (require 'benchmark-init)
 (require 'use-package)
+(require 'f)
+(require 's)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (setq-default show-trailing-whitespace t)
+
+(defconst user-home-directory
+  (f-full (getenv "HOME"))
+  "Path of the user home directory.")
 
 (defconst scame-user-directory
   (f-join user-home-directory ".emacs.d/scame")
   "Scame user directory installation.")
 
 (defconst scame-vendoring-directory
-  "Vendoring directory for Scame."
-  (f-join user-emacs-directory "vendor")))
+  (f-join user-emacs-directory "vendor")
+  "Vendoring directory for Scame.")
 
 (defconst scame-user-customization-file
   (f-join user-home-directory ".config/scame/scame-user.el")
