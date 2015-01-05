@@ -1,6 +1,6 @@
 ;; scame.el --- Scame Emacs initialization file
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -25,6 +25,9 @@
 ;;(setq debug-on-error t)
 (toggle-debug-on-error)
 
+(when (version< emacs-version "24.3")
+  (error "Scame requires at least GNU Emacs 24.3"))
+
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
@@ -34,10 +37,16 @@
 ;; Don't initialize packages twice
 (setq package-enable-at-startup nil)
 
-(when (version< emacs-version "24.3")
-  (error "Scame requires at least GNU Emacs 24.3"))
+(require 'f)
+(require 's)
 
-(require 'cask "~/.cask/cask.el")
+(defconst user-home-directory
+  (f-full (getenv "HOME"))
+  "Path of the user home directory.")
+
+(if (f-directory? (f-join user-home-directory ".cask"))
+    (require 'cask (f-join user-home-directory ".cask/cask.el"))
+  (require 'cask))
 (cask-initialize)
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
 ;;(require 'pallet)
@@ -45,17 +54,13 @@
 ;; Benchmark Emacs installation
 (require 'benchmark-init)
 (require 'use-package)
-(use-package f)
-(use-package s)
-
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (setq-default show-trailing-whitespace t)
 
-(defconst user-home-directory (f-full (getenv "HOME")))
-
-(defconst scame-user-directory (f-join user-home-directory ".emacs.d/scame")
+(defconst scame-user-directory
+  (f-join user-home-directory ".emacs.d/scame")
   "Scame user directory installation.")
 
 (defconst scame-vendoring-directory
