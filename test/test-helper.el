@@ -1,6 +1,6 @@
 ;;; test-helper.el --- Scame: Test helper
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -21,23 +21,36 @@
 
 (require 'ansi)
 (require 'cask)
+(require 'cl) ;; http://emacs.stackexchange.com/questions/2864/symbols-function-definition-is-void-cl-macroexpand-all-when-trying-to-instal
+(require 'ert)
+(require 'f)
 (require 'undercover)
 
+(setq debugger-batch-max-lines (+ 50 max-lisp-eval-depth)
+      debug-on-error t)
+
+(defvar username (getenv "HOME"))
 
 (defconst scame-test/test-path
-  (f-parent (f-this-file)))
+  (f-parent (f-this-file))
+  "The Scame unit tests directory.")
 
 (defconst scame-test/root-path
-  (f-parent scame-test/test-path))
+  (f-parent scame-test/test-path)
+  "The Scame source directory.")
 
 (defconst scame-test/sandbox-path
-  (f-expand "sandbox" scame-test/test-path))
+  (f-expand "sandbox" scame-test/test-path)
+  "The sandbox path for Scame unit tests.")
 
-(defconst scame-cli-cask-file (f-join scame-test/root-path "Cask"))
-(defconst scame-install-cask-file (f-join scame-test/root-path "src/Cask"))
-(defconst scame-cask-cli-file (f-join scame-test/root-path "scame-cli.el"))
+(defconst scame-cli-cask-file
+  (f-join scame-test/root-path "Cask"))
 
-(add-to-list 'load-path scame-test/root-path)
+(defconst scame-install-cask-file
+  (f-join scame-test/root-path "src/Cask"))
+
+(defconst scame-cask-cli-file
+  (f-join scame-test/root-path "scame-cli.el"))
 
 
 (defmacro with-current-file (filename &rest body)
@@ -45,8 +58,6 @@
   `(let ((file (f-join scame-test/test-path ,filename)))
      (with-current-buffer (find-file-noselect file)
        ,@body)))
-
-(defvar username (getenv "HOME"))
 
 
 (defun print-load-path (path)
@@ -62,7 +73,8 @@
             (when (string-match (s-concat username "/.emacs.d") path)
               (message (ansi-yellow "Suppression path %s" path))
               (setq load-path (delete path load-path))))
-        load-path))
+        load-path)
+  (add-to-list 'load-path default-directory))
 
 
 (defun load-unit-tests (path)
@@ -112,6 +124,33 @@
     (add-to-list 'load-path (f-slash path))
     ;;(print (cask-load-path bundle))))
     ))
+
+
+(defun load-library (path)
+  "Load current library from PATH."
+  ;;(message (ansi-yellow "[Scame] Library %s : %s" path default-directory))
+  (let ((path (s-concat default-directory path)))
+    (message (ansi-yellow "[Scame] Load library from %s" path))
+    (undercover "*.el" (:exclude "*-test.el"))
+    (require 'scame path)))
+
+(defmacro with-test-sandbox (&rest body)
+  "Evaluate BODY in an empty sandbox directory."
+  `(unwind-protect
+       (condition-case nil ;ex
+           (let (;(user-emacs-directory scame-test/sandbox-path)
+                 (default-directory scame-test/root-path))
+             ;; (unless (f-dir? scame-test/sandbox-path)
+             ;;   (f-mkdir scame-test/sandbox-path))
+             (cleanup-load-path)
+             (install-scame)
+             (setup-scame scame-test/sandbox-path)
+             (load-library "/src/scame/scame.el")
+             ,@body)
+         ;; (f-delete scame-test/sandbox-path :force)))
+         )))
+         ;; (error
+         ;;  (message (ansi-red "[Scame] Error during unit tests : %s" ex))))))
 
 
 (provide 'test-helper)

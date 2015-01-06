@@ -1,6 +1,6 @@
-;;; 80_misc.el -- Misc components
+;;; scame-scheme-test.el --- Unit tests for Scame Common Lisp development.
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,17 +19,12 @@
 
 ;;; Code:
 
-(use-package guide-key
-  :init (progn
-         (setq guide-key/guide-key-sequence '("C-x" "C-c" "C-c s"))
-         (setq guide-key/idle-delay 0.5)
-         (setq guide-key/align-command-by-space-flag t)
-         (guide-key-mode 1)))
 
+(ert-deftest test-scame-scheme ()
+  (with-test-sandbox
+   (with-current-file
+    "var/hello.scm"
+    (should (featurep 'geiser)))))
 
-(use-package discover-my-major
-  :bind ("C-h C-m" . discover-my-major))
-
-
-(provide '80_misc)
-;;; 80_misc.el ends here
+(provide 'scame-scheme-test)
+;;; scame-scheme-test.el ends here

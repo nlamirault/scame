@@ -47,7 +47,7 @@
 
 (use-package helm-descbinds)
 
-(use-package helm-delicious)
+;;(use-package helm-delicious)
 
 (use-package helm-swoop
   :config (progn

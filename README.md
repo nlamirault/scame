@@ -3,6 +3,7 @@
 [![License GPL 3][badge-license]][COPYING]
 [![travis][badge-travis]][travis]
 [![drone][badge-drone]][drone]
+[![Coverage Status](https://coveralls.io/repos/nlamirault/scame/badge.png)](https://coveralls.io/r/nlamirault/scame)
 
 [Scame][] is a 'Starter Kit' for [GNU Emacs][] 24 (>= 24.3). It will not work
 with [GNU Emacs][] 23 and below, or with other flavors of Emacs (e.g. XEmacs).
@@ -385,8 +386,6 @@ Keybinding           | Description
 Keybinding           | Description
 ---------------------|------------------------------------------------------------
 <kbd>C-c s v</kbd>   | Display Scame version
-<kbd>C-c s u</kbd>   | Display Scame last release
-<kbd>C-c s c</kbd>   | Show Scame changelog
 <kbd>C-c s z</kbd>   | Open the Scame user customization file
 
 

@@ -1,6 +1,6 @@
-#!/usr/bin/env emacs --script
+;;; scame-erlang-test.el --- Unit tests for Scame Common Lisp development.
 
-;; Copyright (C) 2014  Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -17,23 +17,15 @@
 
 ;;; Commentary:
 
-;; Script to run Scame unit tests
-
 ;;; Code:
 
 
-(let ((current-directory (file-name-directory load-file-name)))
-  (setq test-path (expand-file-name "." current-directory))
-  (setq root-path (expand-file-name "../src" current-directory)))
+(ert-deftest test-scame-erlang ()
+  (with-test-sandbox
+   (with-current-file
+    "var/hello.erl"
+    (should (featurep 'erlang)))))
 
-(add-to-list 'load-path root-path)
-(add-to-list 'load-path test-path)
 
-(require 'init)
-(require 'cl)
-
-(dolist (test-file (or argv (directory-files test-path t "-test.el$")))
-  (load test-file nil t))
-
-;; run tests
-(ert-run-tests-batch-and-exit t)
+(provide 'scame-erlang-test)
+;;; scame-erlang-test.el ends here

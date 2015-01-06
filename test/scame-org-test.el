@@ -1,4 +1,4 @@
-;;; Scame Cask file
+;;; scame-org-test.el --- Unit tests for Scame Common Lisp development.
 
 ;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -15,18 +15,25 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-(source "gnu" "http://elpa.gnu.org/packages/")
-(source "melpa" "http://melpa.milkbox.net/packages/")
-(source "marmalade" "http://marmalade-repo.org/packages/")
+;;; Commentary:
 
-;; Development
-(development
- (depends-on "cask")
- (depends-on "ansi")
- (depends-on "s")
- (depends-on "f")
- (depends-on "pkg-info")
- (depends-on "el-mock")
- (depends-on "ert")
- (depends-on "ert-runner")
- (depends-on "undercover"))
+;;; Code:
+
+
+(ert-deftest test-scame-org ()
+  (with-test-sandbox
+   (should (require 'org))
+   (should (string-equal (f-join user-home-directory "Org")
+                         org-directory))
+   (should (eql 'org-store-link
+                (key-binding (kbd "C-c o l"))))
+   (should (eql 'org-agenda
+                (key-binding (kbd "C-c o a"))))
+   (should (eql 'org-iswitchb
+                (key-binding (kbd "C-c o b"))))
+   (should (eql 'org-capture
+                (key-binding (kbd "C-c o c"))))))
+
+
+(provide 'scame-org-test)
+;;; scame-org-test.el ends here

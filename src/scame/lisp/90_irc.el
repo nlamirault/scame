@@ -1,6 +1,6 @@
-;;; 50_irc.el --- IRC configuration
+;;; 90_irc.el --- IRC configuration
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,50 +19,67 @@
 
 ;;; Code:
 
-;; (require 'erc)
-;; (require 'erc-join)
-;; (require 'erc-match)
+;; (use-package erc
+;;   :bind (("C-c i e" . erc))
+;;   :config (progn
+;;             ;; Default server and nick
+;;             (setq erc-hide-list '("JOIN" "PART" "QUIT")
+;;                   erc-nick-uniquifier "$"
+;;                   erc-nick "l_a_m"
+;;                   erc-nick-uniquifier "_")
+;;             (add-to-list 'erc-modules 'smiley)
+;; 	    (add-to-list 'erc-modules 'match)
+;; 	    (add-to-list 'erc-modules 'scrolltobottom)
+;;             (erc-update-modules)))
+
+;; (use-package erc-join                   ; Automatically join channels with ERC
+;;   :config (progn
+;;             (setq erc-join-buffer 'bury)
+;;             (setq erc-autojoin-channels-alist
+;;                 '(("\\.freenode\\.net" . ("#openstack-fr"
+;;                                           "#docker"
+;;                                           "#docker-dev"
+;;                                           "#google-containers"
+;;                                           "#lisp"
+;;                                           "#emacs"))))))
+
+;; (use-package erc-track                  ; Track status of ERC in mode line
+;;     :config (setq erc-track-enable-keybindings t
+;;                 erc-track-exclude-server-buffer t
+;;                 erc-track-exclude '("*stickychan" "*status")
+;;                 erc-track-showcount t
+;;                 erc-track-shorten-start 1
+;;                 erc-track-switch-direction 'importance
+;;                 erc-track-visibility 'selected-visible))
+
+
+;; (use-package erc-log
+;;   :config (setq erc-log-channels-directory "~/.erc/logs/"))
 
 
 (use-package erc
-  :config (progn
-	    (setq erc-hide-list '("JOIN" "PART" "QUIT"))
-	    (setq erc-nick-uniquifier "$")
-	    (setq erc-autojoin-channels-alist '(("freenode.net"
-						 "#openstack-fr"
-						 "#cloudstack"
-						 "#lisp"
-						 "#emacs")))
-	    (setq erc-notifications-icon "~/.emacs.d/icons/irc.png")
-	    (setq erc-track-exclude-server-buffer t)
-	    (setq erc-track-exclude '("*stickychan" "*status"))
-	    (setq erc-track-showcount t)
-	    (setq erc-track-shorten-start 1)
-	    (setq erc-track-switch-direction 'importance)
-	    (setq erc-track-visibility 'selected-visible)
-	    (setq erc-header-line-format "%t: %o")
-	    (setq erc-join-buffer 'bury)
-	    (setq erc-warn-about-blank-lines nil)
-	    (setq erc-interpret-mirc-color t)
-	    (setq erc-server-reconnect-attempts t)
-	    (setq erc-server-reconnect-timeout 10)
-	    (setq erc-prompt (lambda ()
-			       (if erc-network
-				   (concat "[" (symbol-name erc-network) "]")
-				 (concat "[" (car erc-default-recipients) "]"))))
-	    (erc-timestamp-mode t)
-	    (setq erc-timestamp-format "[%R-%m/%d]")
-	    (erc-autojoin-mode 1)
-	    ;; logging:
-	    (setq erc-log-insert-log-on-open nil)
-	    (setq erc-log-channels nil)
-	    (setq erc-log-channels-directory "~/.irclogs/")
-	    (setq erc-save-buffer-on-part t)
-	    (setq erc-hide-timestamps nil)
-	    (add-to-list 'erc-modules 'smiley)
-	    (add-to-list 'erc-modules 'match)
-	    (add-to-list 'erc-modules 'scrolltobottom)))
-
+  :init (progn
+          (require 'erc-services)
+          (require 'erc-dcc)
+          (setq erc-modules
+                '(autojoin button completion fill irccontrols list match
+                           menu move-to-prompt netsplit networks noncommands
+                           notify readonly replace ring scrolltobottom services
+                           smiley stamp track))
+          (setq erc-prompt-for-nickserv-password nil
+                erc-format-query-as-channel-p t
+                erc-kill-buffer-on-part t
+                erc-kill-server-buffer-on-quit t
+                erc-max-buffer-size 20000
+                erc-server-coding-system '(utf-8 . utf-8)
+                erc-timestamp-only-if-changed-flag nil
+                erc-timestamp-format "%H:%M "
+                erc-fill-prefix "      "
+                erc-hide-list '("JOIN" "PART" "QUIT")
+                erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT" "MODE" "324" "329" "332" "333" "353" "477")
+                erc-prompt (lambda () (concat (buffer-name) ">"))
+                erc-insert-timestamp-function 'erc-insert-timestamp-left)
+          (erc-services-mode 1)))
 
 
 ;; Circe
@@ -115,5 +132,5 @@
 (use-package rcirc-notify)
 
 
-(provide '50_irc)
-;;; 50_irc.el ends here
+(provide '90_irc)
+;;; 90_irc.el ends here

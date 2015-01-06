@@ -1,6 +1,6 @@
-;;; scame-global-keys.el --- Unit tests for Scame global keybidings.
+;;; scame-ocaml-test.el --- Unit tests for Scame Common Lisp development.
 
-;; Copyright (C) 2014  Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -20,20 +20,11 @@
 ;;; Code:
 
 
-(require 'test-helper)
+(ert-deftest test-scame-ocaml ()
+  (with-test-sandbox
+   (with-current-file
+    "var/hello.ml"
+    (should (featurep 'tuareg)))))
 
-
-(ert-deftest test-scame-packages-keybindings ()
-  (with-temp-buffer
-    (scame-mode)
-    (should (eql 'package-list-packages
-		 (key-binding (kbd "C-c l"))))))
-
-
-(ert-deftest test-scame-web-keybindings ()
-  (with-temp-buffer
-    (scame-mode)
-    (should (eql 'browse-url-at-point
-		 (key-binding (kbd "C-c u"))))
-    (should (eql 'eww
-		 (key-binding (kbd "C-c w"))))))
+(provide 'scame-ocaml-test)
+;;; scame-ocaml-test.el ends here

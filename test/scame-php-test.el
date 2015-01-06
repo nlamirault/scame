@@ -1,6 +1,6 @@
-;;; 80_misc.el -- Misc components
+;;; scame-php-test.el --- Unit tests for Scame Common Lisp development.
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,17 +19,17 @@
 
 ;;; Code:
 
-(use-package guide-key
-  :init (progn
-         (setq guide-key/guide-key-sequence '("C-x" "C-c" "C-c s"))
-         (setq guide-key/idle-delay 0.5)
-         (setq guide-key/align-command-by-space-flag t)
-         (guide-key-mode 1)))
+(ert-deftest test-scame-php ()
+  (with-test-sandbox
+   (with-current-file
+    "var/hello.php"
+    (should (featurep 'php-mode))
+    (should (eql 'phpunit-current-test
+                 (key-binding (kbd "C-x p t"))))
+    (should (eql 'phpunit-current-class
+                 (key-binding (kbd "C-x p f"))))
+    (should (eql 'phpunit-current-project
+                 (key-binding (kbd "C-x p p")))))))
 
-
-(use-package discover-my-major
-  :bind ("C-h C-m" . discover-my-major))
-
-
-(provide '80_misc)
-;;; 80_misc.el ends here
+(provide 'scame-php-test)
+;;; scame-php-test.el ends here

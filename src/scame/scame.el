@@ -1,6 +1,6 @@
 ;; scame.el --- Scame Emacs initialization file
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -22,8 +22,10 @@
 ;;; Code:
 
 ;; Debug or not
-;;(setq debug-on-error t)
+(setq debug-on-error t)
 
+(when (version< emacs-version "24.3")
+  (error "Scame requires at least GNU Emacs 24.3"))
 
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
@@ -34,29 +36,31 @@
 ;; Don't initialize packages twice
 (setq package-enable-at-startup nil)
 
-(when (version< emacs-version "24.3")
-  (error "Scame requires at least GNU Emacs 24.3"))
-
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
 ;;(require 'pallet)
 
-;; Benchmark Emacs installation
+(require 'f)
+(require 's)
 (require 'benchmark-init)
 (require 'use-package)
-(use-package f)
-(use-package s)
-
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (setq-default show-trailing-whitespace t)
 
-(defconst user-home-directory (f-full (getenv "HOME")))
+(defconst user-home-directory
+  (f-full (getenv "HOME"))
+  "Path of the user home directory.")
 
-(defconst scame-user-directory (f-join user-home-directory ".emacs.d/scame")
+(defconst scame-user-directory
+  (f-join user-home-directory ".emacs.d/scame")
   "Scame user directory installation.")
+
+(defconst scame-vendoring-directory
+  (f-join user-emacs-directory "vendor")
+  "Vendoring directory for Scame.")
 
 (defconst scame-user-customization-file
   (f-join user-home-directory ".config/scame/scame-user.el")
@@ -74,6 +78,8 @@
 
 ;; FIX ?
 (remove-hook 'kill-emacs-hook 'w3m-cookie-shutdown)
+
+(add-to-list 'load-path scame-vendoring-directory)
 
 (provide 'scame)
 ;;; scame.el ends here

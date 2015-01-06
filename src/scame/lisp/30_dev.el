@@ -28,16 +28,19 @@
 (add-hook 'change-log-mode-hook
           (function (lambda () (setq indent-tabs-mode nil))))
 
-(use-package fill-column-indicator
-  :config (progn
-            (fci-mode 1)
-            (setq fci-rule-width 1)
-            ;; (setq fci-rule-color "darkcyan")
-            (setq fci-rule-column 80)
-            (define-globalized-minor-mode global-fci-mode fci-mode
-              (lambda ()
-                (fci-mode 1)))
-            (global-fci-mode 1)))
+(add-hook 'text-mode-hook #'bug-reference-mode)
+(add-hook 'prog-mode-hook #'bug-reference-prog-mode)
+
+;; (use-package fill-column-indicator
+;;   :config (progn
+;;             (fci-mode 1)
+;;             (setq fci-rule-width 1)
+;;             ;; (setq fci-rule-color "darkcyan")
+;;             (setq fci-rule-column 80)
+;;             (define-globalized-minor-mode global-fci-mode fci-mode
+;;               (lambda ()
+;;                 (fci-mode 1)))
+;;             (global-fci-mode 1)))
 
 (use-package projectile
   ;;:init (projectile-global-mode 1)
@@ -77,6 +80,8 @@
 (use-package ansi-color)
 
 (defun scame-colorize-compilation-buffer ()
+  "Taken from
+http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emacs-compilation-buffer/3072831#3072831"
   (toggle-read-only)
   (ansi-color-apply-on-region (point-min) (point-max))
   (toggle-read-only))

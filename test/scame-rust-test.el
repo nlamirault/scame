@@ -1,6 +1,6 @@
-;;; scame-cli-test.el --- Unit tests for Scame CLI.
+;;; scame-rust-test.el --- Unit tests for Scame Common Lisp development.
 
-;; Copyright (C) 2014  Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -20,17 +20,12 @@
 ;;; Code:
 
 
-(require 'test-helper)
-(require 'el-mock)
-
-;; FIXME
-;; (ert-deftest test-scame-cli-name ()
-;;    (with-mock
-;;     (mock (commander-print-usage))
-;;     (mock (kill-emacs 0))
-;;     (should (string-equal "Cleanup" (commander-usage-for 'scame-cli/cleanup)))))
+(ert-deftest test-scame-rust ()
+  (with-test-sandbox
+   (with-current-file
+    "var/hello.rs"
+    (should (featurep 'rust-mode)))))
 
 
-
-(provide 'scame-cli-test)
-;;; scame-cli-test.el ends here
+(provide 'scame-rust-test)
+;;; scame-rust-test.el ends here

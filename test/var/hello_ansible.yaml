@@ -1,0 +1,11 @@
+# ansible-playbook playbook.yml --connection=local
+# http://docs.ansible.com/playbooks_delegation.html#local-playbooks
+---
+- hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+  - name: hello world
+    shell: echo "Hello World!"
+  - name: other local hello world
+    local_action: shell echo "Hello World!"

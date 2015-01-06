@@ -1,6 +1,6 @@
 ;;; 39_elisp.el --- Emacs Lisp configuration
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -33,14 +33,6 @@
 ;;  '(eldoc-idle-delay 0.2))
 
 
-(defun ielm-other-window ()
-  "Run ielm on other window."
-  (interactive)
-  (switch-to-buffer-other-window
-   (get-buffer-create "*ielm*"))
-  (call-interactively 'ielm))
-
-
 (use-package emacs-lisp-mode
   :init (progn
 	  (use-package eldoc
@@ -59,6 +51,9 @@
 
 (use-package erefactor
   :config (define-key emacs-lisp-mode-map "\C-c\C-v" erefactor-map))
+
+(use-package overseer
+  :init (add-hook 'emacs-lisp-mode-hook 'overseer-mode-hook))
 
 (provide '39_elisp)
 ;;; 39_elisp.el ends here

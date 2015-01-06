@@ -38,8 +38,8 @@
 ;;   :init (setq gist-authenticate-function 'gist-oauth2-authentication)
 ;;   :bind (("C-c g g") . gist-region-or-buffer))
 
-(use-package git-gutter-fringe+
-  :config (git-gutter-fr+-minimal))
+;; (use-package git-gutter-fringe+
+;;   :config (git-gutter-fr+-minimal))
 
 (use-package git-gutter+
   :config (global-git-gutter+-mode 1)
@@ -53,9 +53,7 @@
          ("C-c g h i" . helm-open-github-from-issues)
          ("C-c g h p" . helm-open-github-from-pull-requests)))
 
-
 (use-package helm-gitlab)
-
 
 (use-package git-timemachine
   :bind (("C-c g t" . git-timemachine)))

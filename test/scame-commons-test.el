@@ -1,6 +1,6 @@
-;;; 80_misc.el -- Misc components
+;;; scame-commons-test.el --- Commons task in Scame.
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,17 +19,22 @@
 
 ;;; Code:
 
-(use-package guide-key
-  :init (progn
-         (setq guide-key/guide-key-sequence '("C-x" "C-c" "C-c s"))
-         (setq guide-key/idle-delay 0.5)
-         (setq guide-key/align-command-by-space-flag t)
-         (guide-key-mode 1)))
+
+;;(require 'test-helper)
 
 
-(use-package discover-my-major
-  :bind ("C-h C-m" . discover-my-major))
+(ert-deftest test-scame-version ()
+  (with-test-sandbox
+   (should (require '999_scame))
+   (should (string-equal "0.11.0" scame-package-version))))
 
 
-(provide '80_misc)
-;;; 80_misc.el ends here
+(ert-deftest test-scame-customization-file ()
+  (with-test-sandbox
+   (should (require '999_scame))
+   (should (string-equal
+            (f-join (getenv "HOME") ".config/scame/scame-user.el")
+            scame-user-customization-file))))
+
+(provide 'scame-commons-test)
+;;; scame-commons-test.el ends here
