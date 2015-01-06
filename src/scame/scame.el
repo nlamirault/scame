@@ -79,7 +79,10 @@
 ;; FIX ?
 (remove-hook 'kill-emacs-hook 'w3m-cookie-shutdown)
 
-(add-to-list 'load-path scame-vendoring-directory)
+;;(add-to-list 'load-path scame-vendoring-directory)
+(f-directories scame-vendoring-directory
+               (lambda (dir)
+                 (add-to-list 'load-path dir)))
 
 (provide 'scame)
 ;;; scame.el ends here
