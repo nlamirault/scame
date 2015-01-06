@@ -80,6 +80,8 @@
 (use-package ansi-color)
 
 (defun scame-colorize-compilation-buffer ()
+  "Taken from
+http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emacs-compilation-buffer/3072831#3072831"
   (toggle-read-only)
   (ansi-color-apply-on-region (point-min) (point-max))
   (toggle-read-only))
