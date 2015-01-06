@@ -200,6 +200,7 @@
 (depends-on "vagrant")
 (depends-on "puppet-mode")
 (depends-on "ansible")
+(depends-on "ansible-doc")
 
 ;; File handling
 (depends-on "launch")
