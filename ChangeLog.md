@@ -1,9 +1,13 @@
 # Scame ChangeLog
 
-## Version 0.11.0 (IN PROGRESS)
+## Version 0.11.0 (06/01/2015)
 
+- Init Scame archive for stable release
+- Split unit tests
+- `FIX` Common Lisp setup
+- `FIX` Cloud tools setup
 - `FIX` ERC setup
-- Refactoring unit tests for using Overseer
+- Refactoring unit tests for using `Overseer`
 - [GH-36] : Add vendoring directory
 - Add twitterring-mode
 - Setup `bug-reference-mode`
