@@ -41,10 +41,10 @@
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
 ;;(require 'pallet)
 
-(require 'benchmark-init)
-(require 'use-package)
 (require 'f)
 (require 's)
+(require 'benchmark-init)
+(require 'use-package)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 

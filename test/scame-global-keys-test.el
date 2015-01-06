@@ -1,6 +1,6 @@
 ;;; scame-global-keys.el --- Unit tests for Scame global keybidings.
 
-;; Copyright (C) 2014  Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -20,26 +20,29 @@
 ;;; Code:
 
 
-(require 'test-helper)
+;;(require 'test-helper)
 
 
 (defmacro with-scame-mode (&rest body)
   `(with-temp-buffer
      (scame-mode)
-     ,@body)))
+     ,@body))
 
 (ert-deftest test-scame-version-keybinding ()
-  (with-scame-mode
+  (with-test-sandbox
+   (with-scame-mode
     (should (eql 'scame-version
-		 (key-binding (kbd "C-c s v"))))))
+		 (key-binding (kbd "C-c s v")))))))
 
 (ert-deftest test-scame-customization-keybinding ()
-  (with-scame-mode
-    (should (eql 'scame-version
-		 (key-binding (kbd "C-c s z"))))))
+  (with-test-sandbox
+   (with-scame-mode
+    (should (eql 'scame-customization
+		 (key-binding (kbd "C-c s z")))))))
 
 (ert-deftest test-scame-searchs-keybindings ()
-  (with-scame-mode
+  (with-test-sandbox
+   (with-scame-mode
     (should (eql 'scame-search-google
 		 (key-binding (kbd "C-c s s g"))))
     (should (eql 'scame-search-github
@@ -47,38 +50,48 @@
     (should (eql 'scame-search-launchpad
 		 (key-binding (kbd "C-c s s l"))))
     (should (eql 'scame-search-arch-aur
-		 (key-binding (kbd "C-c s s a"))))))
+		 (key-binding (kbd "C-c s s a")))))))
 
 (ert-deftest test-scame-emails-keybindings ()
-  (with-scame-mode
+  (with-test-sandbox
+   (with-scame-mode
     (should (eql 'scame-mail-gmail
 		 (key-binding (kbd "C-c s m g"))))
     (should (eql 'scame-mail-exchange
 		 (key-binding (kbd "C-c s m e"))))
     (should (eql 'scame-mail-offlineimap
-		 (key-binding (kbd "C-c s m o"))))))
+		 (key-binding (kbd "C-c s m o")))))))
 
 (ert-deftest test-scame-paradox-list-packages-keybinding ()
-  (with-scame-mode
+  (with-test-sandbox
+   (with-scame-mode
     (should (eql 'paradox-list-packages
-                 (key-binding (kbd "C-c s l p"))))))
+                 (key-binding (kbd "C-c s l p")))))))
 
 (ert-deftest test-scame-proced-keybinding ()
-  (with-scame-mode
+  (with-test-sandbox
+   (with-scame-mode
     (should (eql 'proced
-                 (key-binding (kbd "C-c s l h"))))))
+                 (key-binding (kbd "C-c s l h")))))))
 
 (ert-deftest test-scame-multi-term-keybinding ()
-  (with-scame-mode
+  (with-test-sandbox
+   (with-scame-mode
     (scame-mode)
     (should (string-equal "/bin/bash" multi-term-program))
     (should (eql 'scame-launch-term
-                 (key-binding (kbd "C-c s l t"))))))
+                 (key-binding (kbd "C-c s l t")))))))
 
 
 (ert-deftest test-scame-web-keybindings ()
-  (with-scame-mode
+  (with-test-sandbox
+   (with-scame-mode
     (should (eql 'browse-url-at-point
 		 (key-binding (kbd "C-c u"))))
     (should (eql 'eww
-		 (key-binding (kbd "C-c w"))))))
+		 (key-binding (kbd "C-c w")))))))
+
+
+
+(provide 'scame-global-keys-test)
+;;; scame-global-keys-test.el ends here

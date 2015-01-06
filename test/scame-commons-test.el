@@ -1,6 +1,6 @@
-;;; scame-test.el --- Unit tests for Scame.
+;;; scame-commons-test.el --- Commons task in Scame.
 
-;; Copyright (C) 2014  Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -20,19 +20,21 @@
 ;;; Code:
 
 
-(require 'test-helper)
+;;(require 'test-helper)
 
 
 (ert-deftest test-scame-version ()
-  (should (require '999_scame))
-  (should (string-equal "0.11.0" scame-package-version)))
+  (with-test-sandbox
+   (should (require '999_scame))
+   (should (string-equal "0.11.0" scame-package-version))))
 
 
 (ert-deftest test-scame-customization-file ()
-  (should (require '999_scame))
-  (should (string-equal
-	   (f-join (getenv "HOME") ".config/scame/scame-user.el")
-	   scame-user-customization-file)))
+  (with-test-sandbox
+   (should (require '999_scame))
+   (should (string-equal
+            (f-join (getenv "HOME") ".config/scame/scame-user.el")
+            scame-user-customization-file))))
 
-(provide 'scame-test)
-;;; scame-test.el ends here
+(provide 'scame-commons-test)
+;;; scame-commons-test.el ends here

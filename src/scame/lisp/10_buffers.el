@@ -1,6 +1,6 @@
 ;;; 10_buffers.el --- Tools for buffers
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -48,8 +48,8 @@
 
 (use-package recentf
   :config (progn
-	    (setq recentf-exclude '("~/.emacs.d/.recentf"))
-	    (setq recentf-save-file (concat user-emacs-directory "/.recentf"))
+	    (setq recentf-exclude (list (f-join user-emacs-directory ".recentf")))
+	    (setq recentf-save-file (f-join user-emacs-directory ".recentf"))
 	    (setq recentf-max-saved-items 100)
 	    (setq recentf-auto-cleanup 'never)
 	    (setq recentf-auto-save-timer (run-with-idle-timer 600 t 'recentf-save-list))))

@@ -19,21 +19,22 @@ APP = scame
 SHELL = /bin/bash
 
 EMACS ?= emacs
-EMACSFLAGS = --debug-init -L .
-CASK = cask
-VAGRANT = vagrant
+CASK ?= cask
+VAGRANT ?= vagrant
 
-DOCKER = docker
+DOCKER ?= docker
 NAMESPACE = nlamirault
 IMAGE = scame
 
-ELS = $(wildcard *.el)
-OBJECTS = $(ELS:.el=.elc)
+# ELS = $(wildcard src/scame/*.el)
+# OBJECTS = $(ELS:.el=.elc)
 
 VERSION=$(shell \
         grep "defvar scame-version-number" src/scame/lisp/990_scame_version.el \
 	|awk -F'"' '{print $$2}')
 
+PACKAGE=$(APP)-$(VERSION)
+ARCHIVE=$(PACKAGE).tar
 
 NO_COLOR=\033[0m
 OK_COLOR=\033[32;01m
@@ -44,42 +45,27 @@ all: help
 
 help:
 	@echo -e "$(OK_COLOR)==== $(APP) [$(VERSION)] ====$(NO_COLOR)"
-	@echo -e "$(WARN_COLOR)- test$(NO_COLOR)               : launch unit tests$(NO_COLOR)"
-	@echo -e "$(WARN_COLOR)- local-test$(NO_COLOR)         : launch unit test using local configuration$(NO_COLOR)"
-	@echo -e "$(WARN_COLOR)- integration-test$(NO_COLOR)   : launch integration tests$(NO_COLOR)"
-	@echo -e "$(WARN_COLOR)- clean$(NO_COLOR)              : clean Scame installation$(NO_COLOR)"
-	@echo -e "$(WARN_COLOR)- reset$(NO_COLOR)              : remote Scame dependencies for development$(NO_COLOR)"
-	@echo -e "$(WARN_COLOR)- docker-build$(NO_COLOR)       : build the Docker image$(NO_COLOR)"
-	@echo -e "$(WARN_COLOR)- docker-clean$(NO_COLOR)       : remove the Docker image$(NO_COLOR)"
-	@echo -e "$(WARN_COLOR)- docker-run$(NO_COLOR)         : launch Emacs using Scame docker image$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)- test$(NO_COLOR)         : launch unit tests$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)- clean$(NO_COLOR)        : clean Scame installation$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)- reset$(NO_COLOR)        : remote Scame dependencies for development$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)- docker-build$(NO_COLOR) : build the Docker image$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)- docker-clean$(NO_COLOR) : remove the Docker image$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)- docker-run$(NO_COLOR)   : launch Emacs using Scame docker image$(NO_COLOR)"
 
-.PHONY: build
-build :
-	@echo -e "$(OK_COLOR)[$(APP)] Build $(NO_COLOR)"
+.PHONY: elpa
+elpa:
+	@echo -e "$(OK_COLOR)[$(APP)] Cask setup $(NO_COLOR)"
 	@$(CASK) install
 	@$(CASK) update
+	@touch .cask
 
-.PHONY: local-test
-test : build
-	@echo -e "$(OK_COLOR)[$(APP)] Launch unit tests$(NO_COLOR)"
-	@$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
-		$(EMACSFLAGS) \
-		-l test/run-tests
+# .PHONY: build
+# build: elpa $(OBJECTS)
 
 .PHONY: test
-local-test: build
-	@echo -e "$(OK_COLOR)[$(APP)] Launch unit tests using local installation$(NO_COLOR)"
-	@$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
-		$(EMACSFLAGS) \
-		-l test/run-local-tests
-
-.PHONY: integration-test
-integration-test: build
-	@echo -e "$(OK_COLOR)[$(APP)] Launch integration tests using fresh installation$(NO_COLOR)"
-	@$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
-		$(EMACSFLAGS) \
-		-l test/run-global-tests
-
+test: elpa
+	@echo -e "$(OK_COLOR)[$(APP)] Launch unit tests$(NO_COLOR)"
+	@$(CASK) exec $(EMACS) ert-runner -L test/sandbox
 
 .PHONY: virtual-test
 virtual-test:
@@ -87,26 +73,27 @@ virtual-test:
 	@$(VAGRANT) ssh -c "make -C /vagrant EMACS=$(EMACS) clean test"
 
 .PHONY: clean
-clean :
+clean:
 	@$(CASK) clean-elc
-	@rm -fr dist scame-*.tar.gz test/sandboxorg-clock-save.el
+	@rm -fr dist $(ARCHIVE).gz test/sandboxorg-clock-save.el
 
-reset : clean
-	@rm -rf .cask # Clean packages installed for development
+reset: clean
+	@rm -rf .cask
 	@rm -fr test/sandbox
 
-binaries:
-	@echo "$(OK_COLOR)[$(APP)] Make binaries $(VERSION) $(NO_COLOR)"
-	@rm -fr scame-$(VERSION) && mkdir scame-$(VERSION)
-	@cp -r src/* scame-$(VERSION)
-	@tar cf scame-$(VERSION).tar scame-$(VERSION)
-	@gzip scame-$(VERSION).tar
-	@rm -fr scame-$(VERSION)
+release:
+	@echo -e "$(OK_COLOR)[$(APP)] Make archive $(VERSION) $(NO_COLOR)"
+	@rm -fr $(PACKAGE) && mkdir $(PACKAGE)
+	@cp -r src/* $(PACKAGE)
+	@tar cf $(ARCHIVE) $(PACKAGE)
+	@gzip $(ARCHIVE)
+	@rm -fr $(PACKAGE)
+	@addons/github.sh $(VERSION)
 
-%.elc : %.el
-	@$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
-		$(EMACSFLAGS) \
-		-f batch-byte-compile $<
+# %.elc: %.el
+# 	@$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
+# 		$(EMACSFLAGS) \
+# 		-f batch-byte-compile $<
 
 .PHONY: docker-build
 docker-build:
@@ -133,8 +120,3 @@ docker-run:
 docker-debug:
 	@echo -e "$(OK_COLOR)[$(APP)] Run $(IMAGE):$(VERSION) $(NO_COLOR)"
 	@$(DOCKER) run -it --rm=true $(NAMESPACE)/$(IMAGE):$(VERSION) /bin/bash
-
-.PHONY: docker-test
-docker-test:
-	@echo -e "$(OK_COLOR)[$(APP)] Launch tests using Docker $(IMAGE):$(VERSION) $(NO_COLOR)"
-	@$(DOCKER) run --rm -t $(IMAGE):$(VERSION) /.emacs.d/test/run-docker-test

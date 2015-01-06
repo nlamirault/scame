@@ -2,6 +2,10 @@
 
 ## Version 0.11.0 (IN PROGRESS)
 
+- `FIX` ERC setup
+- Refactoring unit tests for using Overseer
+- [GH-36] : Add vendoring directory
+- Add twitterring-mode
 - Setup `bug-reference-mode`
 
 ## Version 0.10.0 (22/12/2014)
@@ -117,6 +121,7 @@
 [Gnus]: http://www.gnus.org/
 [BBDB]: https://github.com/emacsmirror/bbdb
 
+[GH-35]: https://github.com/nlamirault/scame/issues/36
 [GH-35]: https://github.com/nlamirault/scame/issues/35
 [GH-32]: https://github.com/nlamirault/scame/issues/32
 [GH-31]: https://github.com/nlamirault/scame/issues/31

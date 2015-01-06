@@ -1,6 +1,6 @@
 ;;; Scame Cask file
 
-;; Copyright (C) 2014  Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -24,13 +24,9 @@
  (depends-on "cask")
  (depends-on "ansi")
  (depends-on "s")
- (depends-on "request")
- (depends-on "pkg-info")
  (depends-on "f")
- (depends-on "commander")
- (depends-on "git")
- (depends-on "epc")
+ (depends-on "pkg-info")
  (depends-on "el-mock")
- (depends-on "undercover")
  (depends-on "ert")
- (depends-on "ert-runner"))
+ (depends-on "ert-runner")
+ (depends-on "undercover"))
