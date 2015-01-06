@@ -11,14 +11,15 @@ RUN apt-get update
 RUN apt-get install -y emacs-snapshot
 
 # Download Cask
-RUN curl -fsSkL https://raw.github.com/cask/cask/master/go -o /tmp/cask.py
-RUN python /tmp/cask.py
+RUN curl -fsSkL https://raw.github.com/cask/cask/master/go -o /tmp/cask.py && \
+    chmod +x /tmp/cask.py && \
+    /tmp/cask.py
 
 # Install Scame
-#RUN mkdir -p /.emacs.d
-#ADD ./src/ /.emacs.d/
-ADD ./toto /.emacs.d/
-RUN cd /.emacs.d && /.cask/bin/cask install --debug --verbose
+RUN mkdir -p /.emacs.d
+ADD ./src/ /.emacs.d/
+#ADD ./toto /.emacs.d/
+#RUN cd /.emacs.d && /.cask/bin/cask install --debug --verbose
 
 # RUN apt-get -y install make
 # ADD ./Makefile /.emacs.d/Makefile
@@ -28,8 +29,7 @@ RUN cd /.emacs.d && /.cask/bin/cask install --debug --verbose
 # ENV HOME /home/developer
 # CMD /usr/bin/emacs-snapshot
 
-# Set the default directory where CMD will execute
-# WORKDIR /.emacs.d
+RUN cd /.emacs.d && /.cask/bin/cask install --debug --verbose
 
 # Emacs
-# CMD ["/usr/bin/emacs-snapshot"]
+CMD ["/usr/bin/emacs-snapshot"]

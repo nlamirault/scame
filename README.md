@@ -20,9 +20,12 @@ The current version has been tested on Linux and Mac OS X.
 
 ### From release file
 
-* Download an archive :
+* Download archive :
 
         $ wget https://github.com/nlamirault/scame/releases/download/0.11.0/scame-0.11.0.tar.gz
+
+* Installation :
+
         $ tar zxvf scame-0.11.0.tar.gz
         $ cp -r scame-0.11.0/* ~/.emacs.d
 
@@ -34,7 +37,7 @@ The current version has been tested on Linux and Mac OS X.
         $ rm -r ~/.emacs.d && mkdir -p ~/.emacs.d/scame
         $ git clone https://github.com/nlamirault/scame
 
-* Install it :
+* Installation :
 
         $ cp -r scame/src/* ~/.emacs.d/
         $ cd ~/.emacs.d && cask install
