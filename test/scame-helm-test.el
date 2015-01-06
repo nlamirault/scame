@@ -37,19 +37,21 @@
                (key-binding (kbd "C-x h b"))))))
 
 ;; FIXME
-;; (ert-deftest test-scame-swoop ()
-;;   (require 'helm)
-;;   (require 'helm-swoop)
-;;   (should (featurep 'helm-swoop))
-;;   (should (eql 'helm-swoop (key-binding (kbd "C-x h w"))))
-;;   (should (eql 'helm-multi-swoop (key-binding (kbd "C-x h W")))))
+(ert-deftest test-scame-swoop ()
+  (with-test-sandbox
+   (require 'helm)
+   (require 'helm-swoop)
+   (should (featurep 'helm-swoop))
+   (should (eql 'helm-swoop (key-binding (kbd "C-x h w"))))
+   (should (eql 'helm-multi-swoop (key-binding (kbd "C-x h W"))))))
 
 ;; FIXME
-;; (ert-deftest test-scame-helm-imenu ()
-;;   (require 'helm-imenu)
-;;   (should (featurep 'helm-imenu))
-;;   (should (eql 'helm-imenu
-;; 	       (key-binding (kbd "C-x h i")))))
+(ert-deftest test-scame-helm-imenu ()
+  (with-test-sandbox
+   (require 'helm-imenu)
+   (should (featurep 'helm-imenu))
+   (should (eql 'helm-imenu
+                (key-binding (kbd "C-x h i"))))))
 
 (provide 'scame-helm-test)
 ;;; scame-helm-test.el ends here
