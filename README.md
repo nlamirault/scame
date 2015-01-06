@@ -18,40 +18,26 @@ The current version has been tested on Linux and Mac OS X.
 
 ## Installation
 
+### From release file
+
+* Download an archive :
+
+        $ wget https://github.com/nlamirault/scame/releases/download/0.11.0/scame-0.11.0.tar.gz
+        $ tar zxvf scame-0.11.0.tar.gz
+        $ cp -r scame-0.11.0/* ~/.emacs.d
+
+
 ### From source
 
 * Clone the repository :
 
         $ rm -r ~/.emacs.d && mkdir -p ~/.emacs.d/scame
         $ git clone https://github.com/nlamirault/scame
+
+* Install it :
+
         $ cp -r scame/src/* ~/.emacs.d/
         $ cd ~/.emacs.d && cask install
-
-### From CLI (not yet available)
-
-* Help
-
-		$ ./scame -h
-		usage: scame [options]
-
-		An Emacs installation tool.
-
-		optional arguments:
-			-h, --help     show this help message and exit
-			--init         Initialize Scame
-			--cmd CMD      Scame CLI commands
-			--emacs EMACS  Specify the version of Emacs to install
-
-* Initialize [Scame][] :
-
-        $ ./scame --init
-
-* Using [Scame][] :
-
-        $ ./scame --cmd=cleanup
-		$ ./scame --cmd=install
-		$ ./scame --cmd=update
-
 
 ### Using Docker
 
