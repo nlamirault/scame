@@ -27,11 +27,11 @@
 ;; (use-package slime-company
 ;;   :config (slime-setup '(slime-company)))
 
-(use-package sly-autoloads
+(use-package sly
   :config (setq inferior-lisp-program "/usr/bin/sbcl"))
 
-(use-package sly-company-mode
-  :config (add-hook 'sly-mode-hook 'sly-company-mode))
+(use-package sly-company
+  :init (add-hook 'sly-mode-hook 'sly-company-mode))
 
 ;; Use Quicklisp to install Slime
 ;; (let ((filename "~/Apps/quicklisp/slime-helper.el"))

@@ -77,6 +77,7 @@
 ;; (depends-on "slime")
 ;; (depends-on "slime-company")
 (depends-on "sly")
+(depends-on "sly-company")
 
 ;; Emacs Lisp
 (depends-on "elisp-slime-nav")

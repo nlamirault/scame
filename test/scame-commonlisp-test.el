@@ -19,9 +19,46 @@
 
 ;;; Code:
 
-(ert-deftest test-scame-commonslisp ()
+(defconst testsuite-commonlisp-filename
+  "var/hello.lisp"
+  "File name for testing Common Lisp setup.")
+
+(ert-deftest test-scame-commonslisp-implementation ()
   (with-test-sandbox
    (should (string-equal "/usr/bin/sbcl" inferior-lisp-program))))
+
+(ert-deftest test-scame-commonslisp-sly ()
+  (with-test-sandbox
+   (with-current-file
+    testsuite-commonlisp-filename
+    (message "%s" major-mode)
+    (message "Active modes are %s" minor-mode-list)
+    (should (featurep 'lisp-mode))
+    (should (eql 'describe-key
+                 (key-binding (kbd "C-h k"))))
+    (should (eql 'sly-eval-defun
+                 (key-binding (kbd "C-M-x"))))
+    (should (eql 'sly-compile-defun
+                 (key-binding (kbd "C-c C-c"))))
+    (should (eql 'sly-compile-and-load-file
+                 (key-binding (kbd "C-c C-k"))))
+    )))
+
+;; (ert-deftest test-scame-commonslisp-sly-company-mode ()
+;;   (with-test-sandbox
+;;    (with-current-file
+;;     testsuite-commonlisp-filename
+;;     (should (featurep 'sly-company-mode)))))
+
+    ;; (should (eql 'company-select-next
+    ;;              (key-binding (kbd "C-n"))))
+    ;; (should (eql 'company-select-previous
+    ;;              (key-binding (kbd "C-p"))))
+    ;; (should (eql 'company-show-doc-buffer
+    ;;              (key-binding (kbd "C-d"))))
+    ;; (should (eql 'company-show-location
+    ;;              (key-binding (kbd "M-.")))))))
+
 
 
 (provide 'scame-commonlisp-test)
