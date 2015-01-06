@@ -36,7 +36,11 @@
   (should (eql 'helm-buffers-list
                (key-binding (kbd "C-x h b"))))))
 
-;; FIXME
+(ert-deftest test-scame-occur ()
+  (with-test-sandbox
+   (require 'helm)
+   (should (eql 'helm-occur (key-binding (kbd "C-x h o"))))))
+
 (ert-deftest test-scame-swoop ()
   (with-test-sandbox
    (require 'helm)
@@ -45,7 +49,6 @@
    (should (eql 'helm-swoop (key-binding (kbd "C-x h w"))))
    (should (eql 'helm-multi-swoop (key-binding (kbd "C-x h W"))))))
 
-;; FIXME
 (ert-deftest test-scame-helm-imenu ()
   (with-test-sandbox
    (require 'helm-imenu)
