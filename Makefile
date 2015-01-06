@@ -65,7 +65,7 @@ elpa:
 .PHONY: test
 test: elpa
 	@echo -e "$(OK_COLOR)[$(APP)] Launch unit tests$(NO_COLOR)"
-	@$(CASK) exec $(EMACS) ert-runner -L test/sandbox
+	@$(CASK) exec ert-runner -L test/sandbox
 
 .PHONY: virtual-test
 virtual-test:
