@@ -184,7 +184,8 @@
 
 ;; set renderer for html mail to w3m in emacs
 ;; (setq mm-text-html-renderer 'w3m)
-(setq mm-text-html-renderer 'links)
+;; (setq mm-text-html-renderer 'links)
+(setq mm-text-html-renderer 'shr)
 (setq gnus-inhibit-images nil)
 
 ;; UI Organization
