@@ -183,8 +183,6 @@
 ;;(add-hook 'gnus-article-mode-hook 'turn-on-auto-fill)
 (add-hook 'message-mode-hook 'turn-on-auto-fill)
 
-;; set renderer for html mail to w3m in emacs
-(setq mm-text-html-renderer 'w3m)
 (setq gnus-inhibit-images nil)
 
 ;; UI Organization

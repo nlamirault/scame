@@ -1,6 +1,6 @@
 ;;; scame-gnus.el --- Gnus configuration
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -183,7 +183,8 @@
 (add-hook 'message-mode-hook 'turn-on-auto-fill)
 
 ;; set renderer for html mail to w3m in emacs
-(setq mm-text-html-renderer 'w3m)
+;; (setq mm-text-html-renderer 'w3m)
+(setq mm-text-html-renderer 'links)
 (setq gnus-inhibit-images nil)
 
 ;; UI Organization
