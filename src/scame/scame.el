@@ -76,22 +76,14 @@
 (scame--load-configuration "packages")
 (scame--load-configuration "core")
 
-;; (let ((scame-lisp (f-slash (f-join (f-parent (f-this-file)) "packages"))))
-;;   (message "Scame packages directory : %s" scame-lisp)
-;;   (use-package init-loader
-;;     :config (init-loader-load scame-lisp)))
-
-;; (let ((scame-lisp (f-slash (f-join (f-parent (f-this-file)) "core"))))
-;;   (message "Scame core directory : %s" scame-lisp)
-;;   (use-package init-loader
-;;     :config (init-loader-load scame-lisp)))
-
 (when (file-readable-p scame-user-customization-file)
   (load scame-user-customization-file))
 
-(f-directories scame-vendoring-directory
-               (lambda (dir)
-                 (add-to-list 'load-path dir)))
+(when (and (f-exists? scame-vendoring-directory)
+           (f-directory? scame-vendoring-directory))
+  (f-directories scame-vendoring-directory
+                 (lambda (dir)
+                   (add-to-list 'load-path dir))))
 
 (provide 'scame)
 ;;; scame.el ends here
