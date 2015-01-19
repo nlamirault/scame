@@ -1,6 +1,6 @@
-;; 990_scame_version.el --- Scame versioning
+;; 01_scame_version.el --- Scame versioning
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -21,14 +21,8 @@
 
 ;;; Code:
 
-(defvar scame-version-number "0.11.0"
+(defvar scame-version-number "0.12.0"
   "Release version of Scame.")
 
-(defun scame-version ()
-  "Return the Scame's version."
-  (interactive)
-  (message "Scame version: %s" scame-version-number))
-
-
-(provide '990_scame_version)
-;;; 990_scame_version.el ends here
+(provide '01_scame_version)
+;;; 01_scame_version.el ends here

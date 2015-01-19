@@ -25,42 +25,43 @@
 
 (defmacro with-scame-mode (&rest body)
   `(with-temp-buffer
-     (scame-mode)
+     (scame-global-mode)
      ,@body))
 
 (ert-deftest test-scame-version-keybinding ()
+  :tags '(current)
   (with-test-sandbox
    (with-scame-mode
     (should (eql 'scame-version
-		 (key-binding (kbd "C-c s v")))))))
+                 (key-binding (kbd "C-c s v")))))))
 
 (ert-deftest test-scame-customization-keybinding ()
   (with-test-sandbox
    (with-scame-mode
     (should (eql 'scame-customization
-		 (key-binding (kbd "C-c s z")))))))
+                 (key-binding (kbd "C-c s z")))))))
 
 (ert-deftest test-scame-searchs-keybindings ()
   (with-test-sandbox
    (with-scame-mode
     (should (eql 'scame-search-google
-		 (key-binding (kbd "C-c s s g"))))
+                 (key-binding (kbd "C-c s s g"))))
     (should (eql 'scame-search-github
-		 (key-binding (kbd "C-c s s h"))))
+                 (key-binding (kbd "C-c s s h"))))
     (should (eql 'scame-search-launchpad
-		 (key-binding (kbd "C-c s s l"))))
+                 (key-binding (kbd "C-c s s l"))))
     (should (eql 'scame-search-arch-aur
-		 (key-binding (kbd "C-c s s a")))))))
+                 (key-binding (kbd "C-c s s a")))))))
 
 (ert-deftest test-scame-emails-keybindings ()
   (with-test-sandbox
    (with-scame-mode
     (should (eql 'scame-mail-gmail
-		 (key-binding (kbd "C-c s m g"))))
+                 (key-binding (kbd "C-c s m g"))))
     (should (eql 'scame-mail-exchange
-		 (key-binding (kbd "C-c s m e"))))
+                 (key-binding (kbd "C-c s m e"))))
     (should (eql 'scame-mail-offlineimap
-		 (key-binding (kbd "C-c s m o")))))))
+                 (key-binding (kbd "C-c s m o")))))))
 
 (ert-deftest test-scame-paradox-list-packages-keybinding ()
   (with-test-sandbox
@@ -77,20 +78,17 @@
 (ert-deftest test-scame-multi-term-keybinding ()
   (with-test-sandbox
    (with-scame-mode
-    (scame-mode)
     (should (string-equal "/bin/bash" multi-term-program))
     (should (eql 'scame-launch-term
                  (key-binding (kbd "C-c s l t")))))))
-
 
 (ert-deftest test-scame-web-keybindings ()
   (with-test-sandbox
    (with-scame-mode
     (should (eql 'browse-url-at-point
-		 (key-binding (kbd "C-c u"))))
+                 (key-binding (kbd "C-c u"))))
     (should (eql 'eww
-		 (key-binding (kbd "C-c w")))))))
-
+                 (key-binding (kbd "C-c w")))))))
 
 
 (provide 'scame-global-keys-test)

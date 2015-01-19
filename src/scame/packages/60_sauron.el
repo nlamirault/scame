@@ -1,4 +1,4 @@
-;; init.el --- Emacs initialization file
+;;; 60_sauron.el --- Sauron for Emacs
 
 ;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -19,11 +19,16 @@
 
 ;;; Code:
 
-(mapc (lambda (path)
-        (add-to-list 'load-path (concat user-emacs-directory path)))
-      '("scame/" "scame/gnus"))
-(require 'scame)
-(scame-global-mode)
+(use-package sauron
+  :init (progn
+          (define-prefix-command 'scame-sauron-map)
+          (global-set-key (kbd "C-x s") 'scame-sauron-map))
+  :commands sauron-start-hidden
+  :config (setq sauron-dbus-cookie t
+                sauron-modules '(sauron-erc
+                                 sauron-notifications))
+  :bind (("C-x s s" . sauron-toggle-hide-show)
+         ("C-x s c" . sauron-clear)))
 
-(provide 'init)
-;;; init.el ends here
+(provide '60_sauron)
+;;; 60_sauron.el ends here

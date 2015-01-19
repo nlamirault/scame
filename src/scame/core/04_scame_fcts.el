@@ -1,6 +1,6 @@
-;; 98_fcts.el --- Some functions
+;; 04_scame_fcts.el --- Some functions
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,6 +19,7 @@
 
 ;;; Code:
 
+(require 's)
 
 (defun scame-kill-all-buffers ()
   "Delete all active buffers."
@@ -70,5 +71,5 @@
 
 
 
-(provide '98_fcts)
-;;; 98_fcts.el ends here
+(provide '04_scame_fcts)
+;;; 04_scame_fcts.el ends here

@@ -1,6 +1,6 @@
-;; init.el --- Emacs initialization file
+;;; 61_ci.el -- Continuous integration
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,11 +19,9 @@
 
 ;;; Code:
 
-(mapc (lambda (path)
-        (add-to-list 'load-path (concat user-emacs-directory path)))
-      '("scame/" "scame/gnus"))
-(require 'scame)
-(scame-global-mode)
 
-(provide 'init)
-;;; init.el ends here
+(use-package butler)
+
+
+(provide '61_ci)
+;;; 61_ci.el ends here

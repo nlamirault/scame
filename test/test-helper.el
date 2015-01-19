@@ -24,6 +24,7 @@
 (require 'cl) ;; http://emacs.stackexchange.com/questions/2864/symbols-function-definition-is-void-cl-macroexpand-all-when-trying-to-instal
 (require 'ert)
 (require 'f)
+(require 'shut-up)
 (require 'undercover)
 
 (setq debugger-batch-max-lines (+ 50 max-lisp-eval-depth)
@@ -52,11 +53,21 @@
 (defconst scame-cask-cli-file
   (f-join scame-test/root-path "scame-cli.el"))
 
+(defvar scame-debug-output t
+  "If T send output messages.")
+
 
 (defmacro with-current-file (filename &rest body)
   "Open the `FILENAME' in the current buffer and execute `BODY'."
   `(let ((file (f-join scame-test/test-path ,filename)))
      (with-current-buffer (find-file-noselect file)
+       ,@body)))
+
+
+(defmacro scame--with-output (&rest body)
+  `(if scame-debug-output
+       ,@body
+     (shut-up
        ,@body)))
 
 
@@ -86,24 +97,17 @@
 (defun install-scame ()
   "Copy source files to sandbox."
   (message (ansi-green "[Scame] Install Scame"))
-  ;; (when (f-dir? scame-test/sandbox-path)
-  ;;   (f-delete scame-test/sandbox-path))
   (unless (f-dir? scame-test/sandbox-path)
     (f-mkdir scame-test/sandbox-path))
   (mapc #'(lambda (elem)
             (let ((output (f-join scame-test/sandbox-path elem)))
-              (unless (f-exists? output)
-                (f-copy (f-join scame-test/root-path "src" elem)
-                        scame-test/sandbox-path))))
+              (when (f-exists? output)
+                (if (f-directory? output)
+                    (f-delete output t)
+                  (f-delete output)))
+              (f-copy (f-join scame-test/root-path "src" elem)
+                      scame-test/sandbox-path)))
         '("Cask" "scame"))
-  ;; (mapc #'(lambda (elem)
-  ;;           (let ((output (f-join scame-test/sandbox-path elem)))
-  ;;             (unless (f-exists? output)
-  ;;               (let ((path (f-join scame-test/sandbox-path
-  ;;               (f-copy (f-join scame-test/root-path "src/scame" elem)
-  ;;                       scame-test/sandbox-path))))
-  ;;       '("scame.el" "lisp"))
-  ;; (f-copy scame-install-cask-file scame-test/sandbox-path)
   (let ((output (f-join scame-test/sandbox-path "init.el")))
     (when (f-exists? output)
       (f-delete output 'force)))
@@ -132,20 +136,23 @@
   (let ((path (s-concat default-directory path)))
     (message (ansi-yellow "[Scame] Load library from %s" path))
     (undercover "*.el" (:exclude "*-test.el"))
-    (require 'scame path)))
+    (scame--with-output
+     (require 'scame path))))
+
 
 (defmacro with-test-sandbox (&rest body)
   "Evaluate BODY in an empty sandbox directory."
   `(unwind-protect
        (condition-case nil ;ex
-           (let (;(user-emacs-directory scame-test/sandbox-path)
-                 (default-directory scame-test/root-path))
+           (let ((default-directory scame-test/root-path))
              ;; (unless (f-dir? scame-test/sandbox-path)
              ;;   (f-mkdir scame-test/sandbox-path))
              (cleanup-load-path)
              (install-scame)
              (setup-scame scame-test/sandbox-path)
              (load-library "/src/scame/scame.el")
+             ;;(should (featurep 'scame-global-mode))
+             (message (ansi-yellow "[Scame] Execute body"))
              ,@body)
          ;; (f-delete scame-test/sandbox-path :force)))
          )))

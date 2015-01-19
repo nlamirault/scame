@@ -1,6 +1,6 @@
-;; 992_scame_email.el ---  Email setup in Scame
+;; 03_scame_email.el ---  Email setup in Scame
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -21,12 +21,14 @@
 
 ;;; Code:
 
+(require 'f)
+
+
 (defun scame--gnus-init-file (filename)
   (f-join user-emacs-directory filename))
 
 (defun scame--gnus-startup-file (filename)
   (f-join user-home-directory filename))
-
 
 
 (defun scame-mail-gmail ()
@@ -54,5 +56,5 @@
 ;;(global-set-key (kbd "C-c m o") 'scame-mail-offlineimap)
 
 
-(provide '992_scame_email)
-;;; 992_scame_email.el ends here
+(provide '03_scame_email)
+;;; 03_scame_email.el ends here

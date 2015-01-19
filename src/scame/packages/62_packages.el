@@ -1,4 +1,4 @@
-;; init.el --- Emacs initialization file
+;;; 62_packages.el --- Manage Emacs packages
 
 ;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -19,11 +19,8 @@
 
 ;;; Code:
 
-(mapc (lambda (path)
-        (add-to-list 'load-path (concat user-emacs-directory path)))
-      '("scame/" "scame/gnus"))
-(require 'scame)
-(scame-global-mode)
+(use-package paradox)
 
-(provide 'init)
-;;; init.el ends here
+
+(provide '62_packages)
+;;; 62_packages.el ends here
