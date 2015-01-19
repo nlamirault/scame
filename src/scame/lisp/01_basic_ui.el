@@ -21,6 +21,8 @@
 
 (setq-default fill-column 120)
 
+(setq visible-bell t)
+
 (global-linum-mode 1)
 ;;(setq column-number-mode t)
 
