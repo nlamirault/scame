@@ -317,6 +317,7 @@
 
 ;; Gnus
 (depends-on "gnus-x-gm-raw")
+(depends-on "gnus-summary-ext")
 ;;(depends-on "google-contacts")
 (depends-on "bbdb")
 (depends-on "bbdb-")
