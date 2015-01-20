@@ -1,6 +1,6 @@
 ;; init.el --- Emacs initialization file
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@
 ;;; Code:
 
 (require 'scame)
+(scame-global-mode)
 
 (provide 'init)
 ;;; init.el ends here

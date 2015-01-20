@@ -1,6 +1,6 @@
-;; 990_scame_version.el --- Scame versioning
+;;; 60_sauron.el --- Sauron for Emacs
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -17,18 +17,18 @@
 
 ;;; Commentary:
 
-;; Scame is a configuration for Emacs.
-
 ;;; Code:
 
-(defvar scame-version-number "0.11.0"
-  "Release version of Scame.")
+(use-package sauron
+  :init (progn
+          (define-prefix-command 'scame-sauron-map)
+          (global-set-key (kbd "C-x s") 'scame-sauron-map))
+  :commands sauron-start-hidden
+  :config (setq sauron-dbus-cookie t
+                sauron-modules '(sauron-erc
+                                 sauron-notifications))
+  :bind (("C-x s s" . sauron-toggle-hide-show)
+         ("C-x s c" . sauron-clear)))
 
-(defun scame-version ()
-  "Return the Scame's version."
-  (interactive)
-  (message "Scame version: %s" scame-version-number))
-
-
-(provide '990_scame_version)
-;;; 990_scame_version.el ends here
+(provide '60_sauron)
+;;; 60_sauron.el ends here

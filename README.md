@@ -5,7 +5,7 @@
 [![drone][badge-drone]][drone]
 [![Coverage Status](https://coveralls.io/repos/nlamirault/scame/badge.png)](https://coveralls.io/r/nlamirault/scame)
 
-[Scame][] is a 'Starter Kit' for [GNU Emacs][] 24 (>= 24.3). It will not work
+[Scame][] is a 'Starter Kit' for [GNU Emacs][] 24 (>= 24.4). It will not work
 with [GNU Emacs][] 23 and below, or with other flavors of Emacs (e.g. XEmacs).
 
 These tools are used to perform the [Scame][] installation :
@@ -18,40 +18,37 @@ The current version has been tested on Linux and Mac OS X.
 
 ## Installation
 
+### From release file
+
+* Download archive :
+
+        $ wget https://github.com/nlamirault/scame/releases/download/0.12.0/scame-0.12.0.tar.gz
+
+* Installation :
+
+        $ tar zxvf scame-0.12.0.tar.gz
+        $ cp -r scame-0.12.0/* ~/.emacs.d
+
+
+### From Docker
+
+* Run using Docker :
+
+        $ docker pull nlamirault/scame:0.12.0
+        $ docker run -it --rm=true nlamirault/scame:0.12.0 -e DISPLAY=$(DISPLAY) -v /tmp/.X11-unix:/tmp/.X11-unix emacs-snapshot
+
+
 ### From source
 
 * Clone the repository :
 
         $ rm -r ~/.emacs.d && mkdir -p ~/.emacs.d/scame
         $ git clone https://github.com/nlamirault/scame
+
+* Installation :
+
         $ cp -r scame/src/* ~/.emacs.d/
         $ cd ~/.emacs.d && cask install
-
-### From CLI (not yet available)
-
-* Help
-
-		$ ./scame -h
-		usage: scame [options]
-
-		An Emacs installation tool.
-
-		optional arguments:
-			-h, --help     show this help message and exit
-			--init         Initialize Scame
-			--cmd CMD      Scame CLI commands
-			--emacs EMACS  Specify the version of Emacs to install
-
-* Initialize [Scame][] :
-
-        $ ./scame --init
-
-* Using [Scame][] :
-
-        $ ./scame --cmd=cleanup
-		$ ./scame --cmd=install
-		$ ./scame --cmd=update
-
 
 ### Using Docker
 
@@ -383,10 +380,20 @@ Keybinding           | Description
 
 ### Scame mode
 
-Keybinding           | Description
----------------------|------------------------------------------------------------
-<kbd>C-c s v</kbd>   | Display Scame version
-<kbd>C-c s z</kbd>   | Open the Scame user customization file
+Keybinding            | Description
+----------------------|------------------------------------------------------------
+<kbd>C-c s v</kbd>    | Display Scame version
+<kbd>C-c s z</kbd>    | Open the Scame user customization file
+<kbd>C-c s s g</kbd>  | Search on Google
+<kbd>C-c s s h</kbd>  | Search on Github
+<kbd>C-c s s t</kbd>  | Search on Twitter
+<kbd>C-c s s a</kbd>  | Search on Arch AUR
+<kbd>C-c s l c</kbd>  | Launch calc
+<kbd>C-c s l t</kbd>  | Launch terminal
+<kbd>C-c s l h</kbd>  | Launch proced (htop)
+<kbd>C-c s l p</kbd>  | Launch list MELPA packages using Paradox
+<kbd>C-c s l m</kbd>  | Launch man page
+
 
 
 If you ever forget any of Scame's keybindings just do a:
@@ -439,6 +446,12 @@ Example of customization :
                         :width normal)))))
 
 ```
+
+## Vendoring
+
+If directory `$HOME/.emacs.d/vendor` exists, [Scame][] will add to load-path
+each directory in this directory.
+
 
 ## Debug
 

@@ -1,6 +1,6 @@
 ;;; 15_helm.el --- HELM configuration
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -39,6 +39,9 @@
          ("C-x h y" . helm-show-kill-ring)
          ("C-x h l" . helm-bookmarks)
 	 ("C-x h b" . helm-buffers-list)))
+
+(use-package helm-occur
+  :bind (("C-x h o" . helm-occur)))
 
 (use-package helm-imenu
   :bind (("C-x h i" . helm-imenu)))

@@ -1,6 +1,6 @@
-;; 991_scame_utils.el --- Scame utilities
+;; 02_scame_utils.el --- Scame utilities
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -21,13 +21,13 @@
 
 ;;; Code:
 
-(defvar scame-package-version "0.11.0"
-  "Release version of Scame.")
+(require 'f)
+(require 's)
 
 (defun scame-version ()
   "Return the Scame's version."
   (interactive)
-  (message "Scame version: %s" scame-package-version))
+  (message "Scame version: %s" scame-version-number))
 
 (defun scame-changelog ()
   "Display the ChangeLog."
@@ -77,5 +77,5 @@
   (interactive)
   (browse-url "https://github.com/nlamirault/scame/issues/new"))
 
-(provide '991_scame_utils)
-;;; 991_scame_utils.el ends here
+(provide '02_scame_utils)
+;;; 02_scame_utils.el ends here

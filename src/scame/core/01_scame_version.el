@@ -1,4 +1,4 @@
-;; init.el --- Emacs initialization file
+;; 01_scame_version.el --- Scame versioning
 
 ;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -17,13 +17,12 @@
 
 ;;; Commentary:
 
+;; Scame is a configuration for Emacs.
+
 ;;; Code:
 
-(mapc (lambda (path)
-        (add-to-list 'load-path (concat user-emacs-directory path)))
-      '("scame/" "scame/gnus"))
-(require 'scame)
-(scame-global-mode)
+(defvar scame-version-number "0.12.0"
+  "Release version of Scame.")
 
-(provide 'init)
-;;; init.el ends here
+(provide '01_scame_version)
+;;; 01_scame_version.el ends here

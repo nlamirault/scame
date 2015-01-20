@@ -30,7 +30,7 @@ IMAGE = scame
 # OBJECTS = $(ELS:.el=.elc)
 
 VERSION=$(shell \
-        grep "defvar scame-version-number" src/scame/lisp/990_scame_version.el \
+        grep "defvar scame-version-number" src/scame/core/01_scame_version.el \
 	|awk -F'"' '{print $$2}')
 
 PACKAGE=$(APP)-$(VERSION)
@@ -46,6 +46,7 @@ all: help
 help:
 	@echo -e "$(OK_COLOR)==== $(APP) [$(VERSION)] ====$(NO_COLOR)"
 	@echo -e "$(WARN_COLOR)- test$(NO_COLOR)         : launch unit tests$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)- release$(NO_COLOR)      : make a new release$(NO_COLOR)"
 	@echo -e "$(WARN_COLOR)- clean$(NO_COLOR)        : clean Scame installation$(NO_COLOR)"
 	@echo -e "$(WARN_COLOR)- reset$(NO_COLOR)        : remote Scame dependencies for development$(NO_COLOR)"
 	@echo -e "$(WARN_COLOR)- docker-build$(NO_COLOR) : build the Docker image$(NO_COLOR)"
@@ -114,7 +115,7 @@ docker-clean:
 .PHONY: docker-run
 docker-run:
 	@echo -e "$(OK_COLOR)[$(APP)] Run $(IMAGE):$(VERSION) $(NO_COLOR)"
-	@$(DOCKER) run -it --rm=true $(NAMESPACE)/$(IMAGE):$(VERSION) -e DISPLAY=$(DISPLAY) -v /tmp/.X11-unix:/tmp/.X11-unix emacs-snapshot
+	@$(DOCKER) run -it --rm=true $(NAMESPACE)/$(IMAGE):$(VERSION) -e DISPLAY=${DISPLAY} -v /tmp/.X11-unix:/tmp/.X11-unix emacs-snapshot
 
 .PHONY: docker-debug
 docker-debug:

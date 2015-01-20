@@ -29,4 +29,5 @@
  (depends-on "el-mock")
  (depends-on "ert")
  (depends-on "ert-runner")
+ (depends-on "shut-up")
  (depends-on "undercover"))

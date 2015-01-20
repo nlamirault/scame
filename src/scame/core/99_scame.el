@@ -1,6 +1,6 @@
-;; 999_scame.el --- Scame for Emacs
+;; 99_scame.el --- Scame for Emacs
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -93,14 +93,26 @@
   "Remove `same-mode' menu entry."
   (easy-menu-remove-item nil '("Tools") "Scame"))
 
+;;;###autoload
+(defun scame-on ()
+  "Turn on `scame-mode'."
+  ;;(interactive)
+  (scame-mode 1))
+
+;;;###autoload
+(defun scame-off ()
+  "Turn off `scame-mode'."
+  ;;(interactive)
+  (scame-mode -1))
 
 ;; Scame mode
 
 ;;;###autoload
 (defconst scame-mode-line-lighter
-  (s-concat " {SCAME-" scame-package-version "}")
+  (s-concat " {SCAME-"  scame-version-number "}")
   "The default lighter for `scame-mode'.")
 
+;;;###autoload
 (define-minor-mode scame-mode
   "Scame minor mode.
 
@@ -116,17 +128,8 @@
     (scame-mode-remove-menu)))
 
 ;;;###autoload
-(define-globalized-minor-mode scame-global-mode scame-mode scame-on)
+(define-globalized-minor-mode scame-global-mode scame-mode scame-mode)
 
-(defun scame-on ()
-  "Turn on `scame-mode'."
-  (interactive)
-  (scame-mode 1))
 
-(defun scame-off ()
-  "Turn off `scame-mode'."
-  (interactive)
-  (scame-mode -1))
-
-(provide '999_scame)
-;;; 999_scame.el ends here
+(provide '99_scame)
+;;; 99_scame.el ends here

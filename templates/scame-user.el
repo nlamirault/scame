@@ -1,6 +1,6 @@
 ;; scame-user.el --- Scame customization file
 
-;; Copyright (c) Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -21,12 +21,9 @@
 
 ;;; Code:
 
-(setq user-full-name "Nicolas Lamirault")
-(setq user-mail-address "nicolas.lamirault@gmail.com")
+(setq user-full-name "Emacs Scame")
+(setq user-mail-address "emacs.scame@gmail.com")
 (load-theme 'monokai t)
-(setq weather-metno-location-name "Bordeaux, France"
-      weather-metno-location-latitude 44.83
-      weather-metno-location-longitude -0.57)
 
 (provide 'scame-user)
 ;;; scame-user.el ends here

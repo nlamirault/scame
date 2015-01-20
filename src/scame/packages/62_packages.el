@@ -1,6 +1,6 @@
-;;; 100_ci.el -- Continuous integration
+;;; 62_packages.el --- Manage Emacs packages
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,9 +19,8 @@
 
 ;;; Code:
 
+(use-package paradox)
 
-(use-package butler)
 
-
-(provide '100_ci)
-;;; 100_ci.el ends here
+(provide '62_packages)
+;;; 62_packages.el ends here

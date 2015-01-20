@@ -66,20 +66,24 @@
   (f-join user-home-directory ".config/scame/scame-user.el")
   "File used to store user customization.")
 
-(let ((scame-lisp (f-slash (f-join (f-parent (f-this-file)) "lisp"))))
-  (message "Scame lisp directory : %s" scame-lisp)
-  (use-package init-loader
-    :config (init-loader-load scame-lisp)))
+(defun scame--load-configuration (directory)
+  "Setup `DIRECTORY' as a source directory, and load files."
+  (let ((dir (f-slash (f-join (f-parent (f-this-file)) directory))))
+    (message "[scame] packages directory : %s" dir)
+    (use-package init-loader
+      :config (init-loader-load dir))))
+
+(scame--load-configuration "packages")
+(scame--load-configuration "core")
 
 (when (file-readable-p scame-user-customization-file)
   (load scame-user-customization-file))
 
-(scame-global-mode 1)
-
-;; FIX ?
-(remove-hook 'kill-emacs-hook 'w3m-cookie-shutdown)
-
-(add-to-list 'load-path scame-vendoring-directory)
+(when (and (f-exists? scame-vendoring-directory)
+           (f-directory? scame-vendoring-directory))
+  (f-directories scame-vendoring-directory
+                 (lambda (dir)
+                   (add-to-list 'load-path dir))))
 
 (provide 'scame)
 ;;; scame.el ends here

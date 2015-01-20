@@ -1,6 +1,6 @@
-;;; 100_packages.el --- Manage Emacs packages
+;;; 06_keys.el -- keys tools
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,8 +19,17 @@
 
 ;;; Code:
 
-(use-package paradox)
+(use-package guide-key
+  :init (progn
+         (setq guide-key/guide-key-sequence '("C-x" "C-c" "C-c s"))
+         (setq guide-key/idle-delay 0.5)
+         (setq guide-key/align-command-by-space-flag t)
+         (guide-key-mode 1)))
 
 
-(provide '100_packages)
-;;; 100_packages.el ends here
+(use-package discover-my-major
+  :bind ("C-h C-m" . discover-my-major))
+
+
+(provide '06_keys)
+;;; 06_keys.el ends here
