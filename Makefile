@@ -46,6 +46,7 @@ all: help
 help:
 	@echo -e "$(OK_COLOR)==== $(APP) [$(VERSION)] ====$(NO_COLOR)"
 	@echo -e "$(WARN_COLOR)- test$(NO_COLOR)         : launch unit tests$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)- release$(NO_COLOR)      : make a new release$(NO_COLOR)"
 	@echo -e "$(WARN_COLOR)- clean$(NO_COLOR)        : clean Scame installation$(NO_COLOR)"
 	@echo -e "$(WARN_COLOR)- reset$(NO_COLOR)        : remote Scame dependencies for development$(NO_COLOR)"
 	@echo -e "$(WARN_COLOR)- docker-build$(NO_COLOR) : build the Docker image$(NO_COLOR)"
