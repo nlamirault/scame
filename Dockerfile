@@ -29,7 +29,8 @@ ADD ./src/ /.emacs.d/
 # ENV HOME /home/developer
 # CMD /usr/bin/emacs-snapshot
 
-RUN cd /.emacs.d && /.cask/bin/cask install --debug --verbose
+RUN cd /.emacs.d && /.cask/bin/cask install
 
 # Emacs
-CMD ["/usr/bin/emacs-snapshot"]
+# CMD ["/usr/bin/emacs-snapshot"]
+ENTRYPOINT /usr/bin/emacs-snapshot
