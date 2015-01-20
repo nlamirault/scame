@@ -372,10 +372,20 @@ Keybinding           | Description
 
 ### Scame mode
 
-Keybinding           | Description
----------------------|------------------------------------------------------------
-<kbd>C-c s v</kbd>   | Display Scame version
-<kbd>C-c s z</kbd>   | Open the Scame user customization file
+Keybinding            | Description
+----------------------|------------------------------------------------------------
+<kbd>C-c s v</kbd>    | Display Scame version
+<kbd>C-c s z</kbd>    | Open the Scame user customization file
+<kbd>C-c s s g</kbd>  | Search on Google
+<kbd>C-c s s h</kbd>  | Search on Github
+<kbd>C-c s s t</kbd>  | Search on Twitter
+<kbd>C-c s s a</kbd>  | Search on Arch AUR
+<kbd>C-c s l c</kbd>  | Launch calc
+<kbd>C-c s l t</kbd>  | Launch terminal
+<kbd>C-c s l h</kbd>  | Launch proced (htop)
+<kbd>C-c s l p</kbd>  | Launch list MELPA packages using Paradox
+<kbd>C-c s l m</kbd>  | Launch man page
+
 
 
 If you ever forget any of Scame's keybindings just do a:
