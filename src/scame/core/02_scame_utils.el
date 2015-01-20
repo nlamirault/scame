@@ -21,9 +21,6 @@
 
 ;;; Code:
 
-;;(defvar scame-package-version "0.11.0"
-;;  "Release version of Scame.")
-
 (require 'f)
 (require 's)
 
