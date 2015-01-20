@@ -1,5 +1,14 @@
 # Scame ChangeLog
 
+## Version 0.12.0 (20/01/2015)
+
+- Setup visible bell
+- `FIX` Docker image creation
+- Replace w3m rendering by shr in Gnus
+- [GH-30]: Remove w3m (due to [Cask-270][])
+- Remove Emacs 24.3 support
+- Add helm-occur
+
 ## Version 0.11.0 (06/01/2015)
 
 - Init Scame archive for stable release
@@ -7,8 +16,8 @@
 - `FIX` Common Lisp setup
 - `FIX` Cloud tools setup
 - `FIX` ERC setup
-- Refactoring unit tests for using `Overseer`
-- [GH-36] : Add vendoring directory
+- [GH-19]: Refactoring unit tests for using `Overseer`
+- [GH-36]: Add vendoring directory
 - Add twitterring-mode
 - Setup `bug-reference-mode`
 
@@ -125,12 +134,14 @@
 [Gnus]: http://www.gnus.org/
 [BBDB]: https://github.com/emacsmirror/bbdb
 
-[GH-35]: https://github.com/nlamirault/scame/issues/36
+[GH-36]: https://github.com/nlamirault/scame/issues/36
 [GH-35]: https://github.com/nlamirault/scame/issues/35
 [GH-32]: https://github.com/nlamirault/scame/issues/32
 [GH-31]: https://github.com/nlamirault/scame/issues/31
+[GH-30]: https://github.com/nlamirault/scame/issues/30
 [GH-24]: https://github.com/nlamirault/scame/issues/24
 [GH-22]: https://github.com/nlamirault/scame/issues/22
+[GH-19]: https://github.com/nlamirault/scame/issues/19
 [GH-18]: https://github.com/nlamirault/scame/issues/18
 [GH-16]: https://github.com/nlamirault/scame/issues/16
 [GH-14]: https://github.com/nlamirault/scame/issues/14
@@ -144,3 +155,6 @@
 [GH-4]: https://github.com/nlamirault/scame/issues/4
 [GH-3]: https://github.com/nlamirault/scame/issues/3
 [GH-2]: https://github.com/nlamirault/scame/issues/2
+
+
+[Cask-270]: https://github.com/cask/cask/issues/270

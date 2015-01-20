@@ -22,12 +22,20 @@ The current version has been tested on Linux and Mac OS X.
 
 * Download archive :
 
-        $ wget https://github.com/nlamirault/scame/releases/download/0.11.0/scame-0.11.0.tar.gz
+        $ wget https://github.com/nlamirault/scame/releases/download/0.12.0/scame-0.12.0.tar.gz
 
 * Installation :
 
-        $ tar zxvf scame-0.11.0.tar.gz
-        $ cp -r scame-0.11.0/* ~/.emacs.d
+        $ tar zxvf scame-0.12.0.tar.gz
+        $ cp -r scame-0.12.0/* ~/.emacs.d
+
+
+### From Docker
+
+* Run using Docker :
+
+        $ docker pull nlamirault/scame:0.12.0
+        $ docker run -it --rm=true nlamirault/scame:0.12.0 -e DISPLAY=$(DISPLAY) -v /tmp/.X11-unix:/tmp/.X11-unix emacs-snapshot
 
 
 ### From source
@@ -438,6 +446,12 @@ Example of customization :
                         :width normal)))))
 
 ```
+
+## Vendoring
+
+If directory `$HOME/.emacs.d/vendor` exists, [Scame][] will add to load-path
+each directory in this directory.
+
 
 ## Debug
 

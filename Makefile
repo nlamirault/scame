@@ -30,7 +30,7 @@ IMAGE = scame
 # OBJECTS = $(ELS:.el=.elc)
 
 VERSION=$(shell \
-        grep "defvar scame-version-number" src/scame/lisp/990_scame_version.el \
+        grep "defvar scame-version-number" src/scame/core/01_scame_version.el \
 	|awk -F'"' '{print $$2}')
 
 PACKAGE=$(APP)-$(VERSION)
@@ -114,7 +114,7 @@ docker-clean:
 .PHONY: docker-run
 docker-run:
 	@echo -e "$(OK_COLOR)[$(APP)] Run $(IMAGE):$(VERSION) $(NO_COLOR)"
-	@$(DOCKER) run -it --rm=true $(NAMESPACE)/$(IMAGE):$(VERSION) -e DISPLAY=$(DISPLAY) -v /tmp/.X11-unix:/tmp/.X11-unix emacs-snapshot
+	@$(DOCKER) run -it --rm=true $(NAMESPACE)/$(IMAGE):$(VERSION) -e DISPLAY=${DISPLAY} -v /tmp/.X11-unix:/tmp/.X11-unix emacs-snapshot
 
 .PHONY: docker-debug
 docker-debug:

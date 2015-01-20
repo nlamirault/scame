@@ -18,17 +18,8 @@ RUN curl -fsSkL https://raw.github.com/cask/cask/master/go -o /tmp/cask.py && \
 # Install Scame
 RUN mkdir -p /.emacs.d
 ADD ./src/ /.emacs.d/
-#ADD ./toto /.emacs.d/
-#RUN cd /.emacs.d && /.cask/bin/cask install --debug --verbose
-
-# RUN apt-get -y install make
-# ADD ./Makefile /.emacs.d/Makefile
-# ADD ./test /.emacs.d/test
-
-# USER developer
-# ENV HOME /home/developer
-# CMD /usr/bin/emacs-snapshot
-
+RUN mkdir -p /.config/scame/
+ADD ./templates/scame-user.el /.config/scame/
 RUN cd /.emacs.d && /.cask/bin/cask install
 
 # Emacs
