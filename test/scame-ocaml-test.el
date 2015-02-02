@@ -1,4 +1,4 @@
-;;; scame-ocaml-test.el --- Unit tests for Scame Common Lisp development.
+;;; scame-ocaml-test.el --- Unit tests for Scame OCaml development.
 
 ;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -22,9 +22,15 @@
 
 (ert-deftest test-scame-ocaml ()
   (with-test-sandbox
-   (with-current-file
-    "var/hello.ml"
-    (should (featurep 'tuareg)))))
+   (let ((opam (executable-find "opam")))
+     (if opam
+         (let ((opam-dir (s-concat user-home-directory ".opam")))
+           (f-mkdir opam-dir)
+           (with-current-file
+            "var/hello.ml"
+            (should (featurep 'tuareg)))
+           (f-delete opam-dir))
+       (message (ansi-yellow "[Scame] OCaml: OPAM not installed. No unit tests"))))))
 
 (provide 'scame-ocaml-test)
 ;;; scame-ocaml-test.el ends here
