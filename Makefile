@@ -46,6 +46,7 @@ all: help
 help:
 	@echo -e "$(OK_COLOR)==== $(APP) [$(VERSION)] ====$(NO_COLOR)"
 	@echo -e "$(WARN_COLOR)- test$(NO_COLOR)         : launch unit tests$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)- deps$(NO_COLOR)         : check dependencies$(NO_COLOR)"
 	@echo -e "$(WARN_COLOR)- release$(NO_COLOR)      : make a new release$(NO_COLOR)"
 	@echo -e "$(WARN_COLOR)- clean$(NO_COLOR)        : clean Scame installation$(NO_COLOR)"
 	@echo -e "$(WARN_COLOR)- reset$(NO_COLOR)        : remote Scame dependencies for development$(NO_COLOR)"
@@ -59,6 +60,11 @@ elpa:
 	@$(CASK) install
 	@$(CASK) update
 	@touch .cask
+
+.PHONY: deps
+deps:
+	@echo -e "$(OK_COLOR)[$(APP)] Outdated dependencies $(NO_COLOR)"
+	@$(CASK) --path src outdated
 
 # .PHONY: build
 # build: elpa $(OBJECTS)

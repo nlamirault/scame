@@ -30,141 +30,142 @@
 
 
 ;; Common libraries
-(depends-on "s")
-(depends-on "f")
-(depends-on "epl")
-(depends-on "dash")
-(depends-on "helm")
+(depends-on "s" "1.9.0")
+(depends-on "f" "0.17.2")
+(depends-on "epl" "0.7")
+(depends-on "dash" "2.10.0")
+(depends-on "helm" "1.6.6")
 
 ;; Scame tools
-(depends-on "cask")
-(depends-on "pallet")
-(depends-on "use-package")
-(depends-on "paradox")
+(depends-on "cask" "0.7.2")
+(depends-on "pallet" "0.9.0")
+(depends-on "use-package" "20140601")
+(depends-on "paradox" "1.5")
 
 ;; Profiling
 (depends-on "benchmark-init")
 
 ;; Completion
-(depends-on "company")
+(depends-on "company" "0.8.9")
 (depends-on "helm-company")
-(depends-on "auto-complete")
+(depends-on "auto-complete" "1.4.0")
 
 ;; Project
-(depends-on "projectile")
-(depends-on "helm-projectile")
-(depends-on "persp-projectile")
-(depends-on "find-file-in-project")
-(depends-on "sr-speedbar")
-(depends-on "nav")
-(depends-on "neotree")
+(depends-on "projectile" "0.11.0")
+(depends-on "helm-projectile" "0.11.0")
+(depends-on "persp-projectile" "0.11.0")
+(depends-on "find-file-in-project" "3.3")
+;;(depends-on "sr-speedbar")
+;;(depends-on "nav")
+(depends-on "neotree" "0.2.1")
 (depends-on "pt")
-(depends-on "fill-column-indicator")
+;;(depends-on "fill-column-indicator")
 
 (depends-on "imenu-anywhere")
-(depends-on "dired-imenu")
+(depends-on "dired-imenu" "0.5.0")
 
-(depends-on "flycheck")
-(depends-on "flycheck-cask")
-(depends-on "flycheck-color-mode-line")
+(depends-on "flycheck" "0.22")
+(depends-on "flycheck-cask" "0.2.1")
+(depends-on "flycheck-color-mode-line" "0.3")
+(depends-on "flycheck-package" "0.6")
 (depends-on "helm-flycheck")
 ;;(depends-on "flycheck-google-cpplint")
 
 ; Continuous integration
-(depends-on "butler")
+(depends-on "butler" "0.2.3")
 
 ;; Common Lisp
 ;; (depends-on "slime")
 ;; (depends-on "slime-company")
-(depends-on "sly")
-(depends-on "sly-company")
+(depends-on "sly" "2.9")
+(depends-on "sly-company" "0.8")
 
 ;; Emacs Lisp
-(depends-on "elisp-slime-nav")
-(depends-on "erefactor")
-(depends-on "overseer")
+(depends-on "elisp-slime-nav" "0.8")
+(depends-on "erefactor" "0.6.13")
+(depends-on "overseer" "0.1.0")
 
 ;; Go lang
-(depends-on "go-mode")
+(depends-on "go-mode" "1.0.0")
 (depends-on "go-play")
 ;;(depends-on "go-autocomplete")
 (depends-on "company-go")
-(depends-on "go-eldoc")
+(depends-on "go-eldoc" "0.21")
 (depends-on "helm-go-package")
 ;;(depends-on "helm-godoc")
 ;;(depends-on "flymake-go")
-(depends-on "gotest")
-(depends-on "go-direx")
+(depends-on "gotest" "0.3.0")
+(depends-on "go-direx" "0.3")
 (depends-on "go-projectile")
-(depends-on "go-errcheck")
+(depends-on "go-errcheck" "1.0.0")
 (depends-on "golint")
 
 ;; Python
 ;;(depends-on "python-mode")
-(depends-on "jedi")
-(depends-on "elpy")
+(depends-on "jedi" "0.1.2")
+(depends-on "elpy" "1.6.0")
 (depends-on "tox")
 (depends-on "virtualenvwrapper")
-(depends-on "pyvenv")
+(depends-on "pyvenv" "1.5")
 ;;(depends-on "flymake-python-pyflakes")
-(depends-on "anaconda-mode")
+(depends-on "anaconda-mode" "0.1.0")
 (depends-on "company-anaconda")
 ;;(depends-on "company-inf-python")
 (depends-on "jedi-direx")
 (depends-on "sphinx-doc")
-(depends-on "helm-pydoc")
-(depends-on "pip-requirements")
+(depends-on "helm-pydoc" "0.6")
+(depends-on "pip-requirements" "0.4")
 
 ;; Ruby
 
 (depends-on "ruby-mode")
-(depends-on "rvm")
+(depends-on "rvm" "1.3.0")
 (depends-on "rhtml-mode")
-(depends-on "ruby-tools")
-(depends-on "inf-ruby")
+(depends-on "ruby-tools" "0.1.2")
+(depends-on "inf-ruby" "2.4.0")
 (depends-on "company-inf-ruby")
-(depends-on "ruby-test-mode")
+(depends-on "ruby-test-mode" "1.0")
 
 ;; Erlang
 (depends-on "erlang")
 
 ;; Scheme
-(depends-on "geiser")
+(depends-on "geiser" "0.6")
 
 ;; Clojure
-(depends-on "cider")
-(depends-on "clj-refactor")
+(depends-on "cider" "0.8.2")
+(depends-on "clj-refactor" "0.13.0")
 
 ;; Haskell
-(depends-on "haskell-mode")
-(depends-on "flycheck-haskell")
+(depends-on "haskell-mode" "13.10")
+(depends-on "flycheck-haskell" "0.5.1")
 (depends-on "ghci-completion")
 
 ;; OCaml
-(depends-on "tuareg")
-(depends-on "merlin")
+(depends-on "tuareg" "2.0.8")
+(depends-on "merlin" "2.1.1")
 
 ;; Web
-(depends-on "web-mode")
+(depends-on "web-mode" "10.3")
 
 ;; Php
-(depends-on "php-mode")
+(depends-on "php-mode" "1.15.3")
 (depends-on "emacsagist")
-(depends-on "phpunit")
+(depends-on "phpunit" "0.3.0")
 ;;(depends-on "flymake-php")
 
 ;; Perl
-(depends-on "cperl-mode")
+(depends-on "cperl-mode" "6.2")
 ;;(depends-on "plsense-direx")
-(depends-on "helm-perldoc")
+(depends-on "helm-perldoc" "0.7")
 
 ;; Javascript
-(depends-on "js3-mode")
-(depends-on "tern")
-(depends-on "company-tern")
+(depends-on "js3-mode" "1.1.0")
+(depends-on "tern" "0.8.0")
+(depends-on "company-tern" "0.2.0")
 
 ;; NodeJS
-(depends-on "jade-mode")
+(depends-on "jade-mode" "1.0.0.-3")
 
 ;; C/C++
 (depends-on "google-c-style")
@@ -176,82 +177,82 @@
 (depends-on "rust-mode")
 
 ;; Elixir
-(depends-on "elixir-mode")
-(depends-on "alchemist")
+(depends-on "elixir-mode" "2.2.0")
+(depends-on "alchemist" "0.13.1")
 
 ;; Java
-(depends-on "malabar-mode")
+(depends-on "malabar-mode" "2.1.0")
 
 ;; Markup languages
-(depends-on "markdown-mode")
-(depends-on "yaml-mode")
-(depends-on "fountain-mode")
+(depends-on "markdown-mode" "2.0")
+(depends-on "yaml-mode" "0.0.11")
+(depends-on "fountain-mode" "1.4.5")
 (depends-on "toml-mode")
 
 ;; Other development mode
 
-(depends-on "fixmee")
+(depends-on "fixmee" "0.8.4")
 
 ;; TDD
-(depends-on "cerbere")
+;;(depends-on "cerbere")
 
 ;; Cloud
-(depends-on "dockerfile-mode")
-(depends-on "vagrant")
-(depends-on "puppet-mode")
-(depends-on "ansible")
-(depends-on "ansible-doc")
+(depends-on "dockerfile-mode" "1.0")
+(depends-on "vagrant" "0.5.2")
+(depends-on "puppet-mode" "0.3")
+(depends-on "ansible" "0.0.3")
+(depends-on "ansible-doc" "0.3")
 
 ;; File handling
 (depends-on "launch")
 
 ;; Git and friends
-(depends-on "magit")
+(depends-on "magit" "90150116")
 (depends-on "magit-gerrit")
-(depends-on "git-commit-mode")
-(depends-on "gitconfig-mode")
-(depends-on "gitignore-mode")
-(depends-on "gitattributes-mode")
-(depends-on "git-rebase-mode")
-(depends-on "gist")
-(depends-on "git-gutter+")
-(depends-on "git-timemachine")
-(depends-on "helm-open-github")
-(depends-on "gitlab")
-(depends-on "helm-gitlab")
+(depends-on "git-commit-mode" "0.15.0")
+(depends-on "gitconfig-mode" "0.15.0")
+(depends-on "gitignore-mode" "0.15.0")
+(depends-on "gitattributes-mode" "0.15.0")
+(depends-on "git-rebase-mode" "0.15.0")
+(depends-on "gist" "1.2.1")
+(depends-on "git-gutter+" "0.2")
+(depends-on "git-timemachine" "1.9")
+(depends-on "helm-open-github" "0.12.0")
+(depends-on "gitlab" "0.2.0")
+(depends-on "helm-gitlab" "0.2.0")
 
 ;; Utilities
-(depends-on "pkg-info")
-(depends-on "perspective")
+(depends-on "pkg-info" "0.5")
+(depends-on "perspective" "1.10")
 (depends-on "project-persist")
 (depends-on "helm-project-persist")
 (depends-on "multi-term")
 ;;(depends-on "project-explorer")
 (depends-on "lice")
-(depends-on "commander")
-(depends-on "smex")
-(depends-on "emamux")
-(depends-on "init-loader")
-(depends-on "fabric")
-(depends-on "prodigy")
+;;(depends-on "commander" "0.7.0")
+(depends-on "smex" "3.0")
+(depends-on "emamux" "0.13")
+(depends-on "init-loader" "0.2")
+(depends-on "fabric" "0.2.0")
+(depends-on "prodigy" "0.6.0")
 (depends-on "helm-mode-manager")
-(depends-on "ag")
-(depends-on "json-reformat")
+(depends-on "ag" "0.45")
+(depends-on "json-reformat" "0.0.2")
 ;;(depends-on "sos")
-(depends-on "ace-jump-mode")
-(depends-on "helm-proc")
-(depends-on "helm-descbinds")
+(depends-on "ace-jump-mode" "2.0")
+(depends-on "helm-proc" "0.0.4")
+(depends-on "helm-descbinds" "1.7.1")
 ;;(depends-on "helm-delicious")
 (depends-on "discover-my-major")
-(depends-on "sauron")
-(depends-on "wsd-mode")
+(depends-on "sauron" "0.10")
+(depends-on "wsd-mode" "0.3.0")
 
 ;; Search
-(depends-on "helm-ack")
-(depends-on "helm-ag")
+(depends-on "helm-ack" "0.13")
+(depends-on "helm-ag" "0.33")
 (depends-on "swoop")
 (depends-on "helm-swoop")
-(depends-on "helm-dash")
+(depends-on "helm-dash" "1.1.0")
 
 ;; Mail
 ;;(depends-on "mu4e")
@@ -259,31 +260,29 @@
 (depends-on "offlineimap")
 
 ;; IM
-(depends-on "jabber")
+(depends-on "jabber" "0.8.92")
 
 ;; IRC
-(depends-on "circe")
+(depends-on "circe" "1.5")
 (depends-on "rcirc-groups")
 (depends-on "rcirc-alertify")
 (depends-on "rcirc-notify")
 
 ;; Twitter
-(depends-on "twittering-mode")
+(depends-on "twittering-mode" "2.0.0")
 
 ;; Organisation
-(depends-on "org")
-(depends-on "org-agenda-property")
+(depends-on "org" "8.2.10")
+(depends-on "org-agenda-property" "1.3.1")
 (depends-on "org-caldav")
-(depends-on "org-journal")
-(depends-on "orgbox")
-;;(depends-on "google-weather")
-(depends-on "weather-metno")
+(depends-on "org-journal" "1.6.4")
+(depends-on "orgbox" "0.5.0")
 ;;(depends-on "org-jira")
 ;;(depends-on "org-ehtml")
-(depends-on "calfw")
+(depends-on "calfw" "1.3")
 ;;(depends-on "orgbox")
 
-(depends-on "htmlize")
+;; (depends-on "htmlize")
 ;;(depends-on "web-server")
 
 ;; Security
@@ -291,13 +290,13 @@
 ;;(depends-on "password-store")
 
 ;; Specs
-(depends-on "know-your-http-well")
+(depends-on "know-your-http-well" "0.2.0")
 
 ;; UI
-(depends-on "smart-mode-line")
-(depends-on "diminish")
-(depends-on "powerline")
-(depends-on "popwin")
+(depends-on "smart-mode-line" "2.8")
+(depends-on "diminish" "0.44")
+(depends-on "powerline" "2.2")
+(depends-on "popwin" "0.6.2")
 ;;(depends-on "golden-ratio")
 
 ;; Dired and friends
@@ -320,13 +319,17 @@
 (depends-on "gnus-summary-ext")
 ;;(depends-on "google-contacts")
 (depends-on "bbdb")
-(depends-on "bbdb-")
+(depends-on "bbdb-" "0.0.2")
 (depends-on "bbdb-ext")
 (depends-on "bbdb-csv-import")
 
+;; Keys
+(depends-on "guide-key" "1.2.5")
+(depends-on "hydra" "0.5.0")
+
 ;; Misc
-(depends-on "guide-key")
-(depends-on "hydra")
+;;(depends-on "google-weather")
+(depends-on "weather-metno")
 
 ;; Themes
 (depends-on "moe-theme")
