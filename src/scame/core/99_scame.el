@@ -40,35 +40,70 @@
 (defvar scame-mode-map
   (let ((map (make-sparse-keymap)))
     (let ((prefix-map (make-sparse-keymap)))
-      (define-key prefix-map (kbd "v") 'scame-version)
-      ;;(define-key prefix-map (kbd "u") 'scame-last-release)
-      ;;(define-key prefix-map (kbd "c") 'scame-changelog)
-      (define-key prefix-map (kbd "z") 'scame-customization)
-      ;; Search
-      (define-key prefix-map (kbd "s g") 'scame-search-google)
-      (define-key prefix-map (kbd "s h") 'scame-search-github)
-      (define-key prefix-map (kbd "s t") 'scame-search-twitter)
-      (define-key prefix-map (kbd "s l") 'scame-search-launchpad)
-      (define-key prefix-map (kbd "s a") 'scame-search-arch-aur)
-      ;; Mail
-      (define-key prefix-map (kbd "m g") 'scame-mail-gmail)
-      (define-key prefix-map (kbd "m e") 'scame-mail-exchange)
-      (define-key prefix-map (kbd "m o") 'scame-mail-offlineimap)
-      ;; Toggle map
-      (define-key prefix-map (kbd "t c") 'column-number-mode)
-      (define-key prefix-map (kbd "t d") 'toggle-debug-on-error)
-      (define-key prefix-map (kbd "t f") 'auto-fill-mode)
-      (define-key prefix-map (kbd "t q") 'toggle-debug-on-quit)
-      (define-key prefix-map (kbd "t w") 'whitespace-mode)
-      ;; Launcher map
-      (define-key prefix-map (kbd "l c") 'calc)
-      (define-key prefix-map (kbd "l m") 'man)
-      (define-key prefix-map (kbd "l p") 'paradox-list-packages)
-      (define-key prefix-map (kbd "l h") 'proced) ;; htop :)
-      (define-key prefix-map (kbd "l t") 'scame-launch-term)
+      ;; (define-key prefix-map (kbd "v") 'scame-version)
+      ;; ;;(define-key prefix-map (kbd "u") 'scame-last-release)
+      ;; ;;(define-key prefix-map (kbd "c") 'scame-changelog)
+      ;; (define-key prefix-map (kbd "z") 'scame-customization)
+      ;; ;; Search
+      ;; (define-key prefix-map (kbd "s g") 'scame-search-google)
+      ;; (define-key prefix-map (kbd "s h") 'scame-search-github)
+      ;; (define-key prefix-map (kbd "s t") 'scame-search-twitter)
+      ;; (define-key prefix-map (kbd "s l") 'scame-search-launchpad)
+      ;; (define-key prefix-map (kbd "s a") 'scame-search-arch-aur)
+      ;; ;; Mail
+      ;; (define-key prefix-map (kbd "m g") 'scame-mail-gmail)
+      ;; (define-key prefix-map (kbd "m e") 'scame-mail-exchange)
+      ;; (define-key prefix-map (kbd "m o") 'scame-mail-offlineimap)
+      ;; ;; Toggle map
+      ;; (define-key prefix-map (kbd "t c") 'column-number-mode)
+      ;; (define-key prefix-map (kbd "t d") 'toggle-debug-on-error)
+      ;; (define-key prefix-map (kbd "t f") 'auto-fill-mode)
+      ;; (define-key prefix-map (kbd "t q") 'toggle-debug-on-quit)
+      ;; (define-key prefix-map (kbd "t w") 'whitespace-mode)
+      ;; ;; Launcher map
+      ;; (define-key prefix-map (kbd "l c") 'calc)
+      ;; (define-key prefix-map (kbd "l m") 'man)
+      ;; (define-key prefix-map (kbd "l p") 'paradox-list-packages)
+      ;; (define-key prefix-map (kbd "l h") 'proced) ;; htop :)
+      ;; (define-key prefix-map (kbd "l t") 'scame-launch-term)
       (define-key map scame-keymap-prefix prefix-map))
     map)
   "Keymap used by `scame-mode'.")
+
+(defhydra scame (scame-mode-map "C-c s")
+  "scame"
+  ("v" scame-version)
+  ("z" scame-customization))
+
+(defhydra scame-search (scame-mode-map "C-c s s")
+  "Scame search"
+  ("g" scame-search-google)
+  ("h" scame-search-github)
+  ("t" scame-search-twitter)
+  ("l" scame-search-launchpad)
+  ("a" scame-search-arch-aur))
+
+(defhydra scame-email (scame-mode-map "C-c s m")
+  "Scame email"
+  ("g" scame-mail-gmail)
+  ("e" scame-mail-exchange)
+  ("o" scame-mail-offlineimap))
+
+(defhydra scame-toggle (scame-mode-map "C-c s t")
+  "Scame toggle"
+  ("c" column-number-mode)
+  ("d" toggle-debug-on-error)
+  ("q" toggle-debug-on-quit)
+  ("f" auto-fill-mode)
+  ("w" whitespace-mode))
+
+(defhydra scame-launcher (scame-mode-map "C-c s l")
+  "Scame launcher"
+  ("c" calc)
+  ("m" man)
+  ("p" paradox-list-packages)
+  ("h" proced)
+  ("t" scame-launch-term))
 
 
 ;; Scame main menu

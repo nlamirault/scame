@@ -1,6 +1,6 @@
 ;;; 99_global_keys.el --- Global key settings
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -20,19 +20,6 @@
 ;;; Code:
 
 
-;; General
-;; ------------
-
-(global-set-key "\C-cl" ;;'package-list-packages-no-fetch)
-                'package-list-packages)
-
-(global-set-key "\C-cq"
-                (defun scame-quit-emacs ()
-                  (interactive)
-                  (if (yes-or-no-p "Quit emacs? ")
-                      (save-buffers-kill-emacs))))
-
-
 ;; Navigation
 ;; -----------
 
@@ -45,21 +32,6 @@
                 (function (lambda ()
                             (interactive)
                             (scroll-down 1))))
-
-
-;; Web
-;; ----
-
-(global-set-key "\C-cu" 'browse-url-at-point)
-
-(global-set-key "\C-cw" 'eww)
-
-;; Editing
-;; --------
-
-;;(bind-key "M-g" 'goto-line)
-;;(bind-key "M-}" 'next-buffer)
-;;(bind-key "M-{" 'previous-buffer)
 
 
 
