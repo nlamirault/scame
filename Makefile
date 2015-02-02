@@ -102,7 +102,7 @@ docker-build:
 	@$(DOCKER) build -t $(NAMESPACE)/$(IMAGE):$(VERSION) .
 
 .PHONY: docker-publish
-docker-publish: build
+docker-publish: docker-build
 	@echo -e "$(OK_COLOR)[$(APP)] Publish $(IMAGE):$(VERSION) $(NO_COLOR)"
 	@$(DOCKER) tag $(NAMESPACE)/$(IMAGE):$(VERSION) $(NAMESPACE)/$(IMAGE):$(VERSION)
 	@$(DOCKER) push $(NAMESPACE)/$(IMAGE):$(VERSION)
