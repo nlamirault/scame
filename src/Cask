@@ -83,7 +83,7 @@
 ;; Emacs Lisp
 (depends-on "elisp-slime-nav" "0.8")
 (depends-on "erefactor" "0.6.13")
-(depends-on "overseer" "0.1.0")
+(depends-on "overseer" "0.2.0")
 
 ;; Go lang
 (depends-on "go-mode" "1.0.0")
