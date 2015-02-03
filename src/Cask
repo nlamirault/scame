@@ -330,7 +330,6 @@
 ;; Misc
 ;;(depends-on "google-weather")
 (depends-on "weather-metno")
-(depends-on "sunshine")
 
 ;; Themes
 (depends-on "moe-theme")

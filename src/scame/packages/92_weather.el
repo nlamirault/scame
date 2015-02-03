@@ -24,7 +24,5 @@
 
 (use-package org-weather-metno)
 
-(use-package sunshine)
-
 (provide '52_weather)
 ;;; 52_weather.el ends here
