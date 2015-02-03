@@ -1,6 +1,7 @@
 # Scame
 
 [![License GPL 3][badge-license]][COPYING]
+![Version][badge-release]
 [![travis][badge-travis]][travis]
 [![drone][badge-drone]][drone]
 [![Coverage Status](https://coveralls.io/repos/nlamirault/scame/badge.png)](https://coveralls.io/r/nlamirault/scame)
@@ -539,11 +540,13 @@ Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 [Scame]: https://github.com/nlamirault/scame
 [badge-license]: https://img.shields.io/badge/license-GPL_3-green.svg?style=flat
-[COPYING]: https://github.com/nlamirault/scame/blob/master/COPYING
+[badge-release]: https://img.shields.io/github/release/nlamirault/vision.svg
 [travis]: https://travis-ci.org/nlamirault/scame
 [badge-travis]: http://img.shields.io/travis/nlamirault/scame.svg?style=flat
 [badge-drone]: https://drone.io/github.com/nlamirault/scame/status.png
 [drone]: https://drone.io/github.com/nlamirault/scame/latest
+
+[COPYING]: https://github.com/nlamirault/scame/blob/master/COPYING
 [GNU Emacs]: https://www.gnu.org/software/emacs/
 [MELPA]: http://melpa.milkbox.net/
 [Cask]: http://cask.github.io/
