@@ -2,6 +2,7 @@
 
 ## Version 0.13.0 (IN PROGRESS)
 
+- Init specify packages version in Cask file
 - Add *hydra* to manage key bindings
 
 ## Version 0.12.0 (20/01/2015)
