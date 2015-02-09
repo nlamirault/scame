@@ -58,7 +58,7 @@
 ;;(depends-on "sr-speedbar")
 ;;(depends-on "nav")
 (depends-on "neotree" "0.2.1")
-(depends-on "pt")
+(depends-on "pt" "0.0.3")
 ;;(depends-on "fill-column-indicator")
 
 (depends-on "imenu-anywhere")
