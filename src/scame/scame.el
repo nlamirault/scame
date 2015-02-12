@@ -77,14 +77,16 @@
 (scame--load-configuration "packages")
 (scame--load-configuration "core")
 
-(when (file-readable-p scame-user-customization-file)
-  (load scame-user-customization-file))
-
 (when (and (f-exists? scame-vendoring-directory)
            (f-directory? scame-vendoring-directory))
-  (f-directories scame-vendoring-directory
-                 (lambda (dir)
-                   (add-to-list 'load-path dir))))
+  (f-entries scame-vendoring-directory
+             (lambda (dir)
+               (when (or (f-directory? dir)
+                         (f-symlink? dir))
+                 (add-to-list 'load-path dir)))))
+
+(when (file-readable-p scame-user-customization-file)
+  (load scame-user-customization-file))
 
 (provide 'scame)
 ;;; scame.el ends here

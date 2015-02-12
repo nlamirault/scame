@@ -394,7 +394,10 @@ Keybinding            | Description
 <kbd>C-c s l h</kbd>  | Launch proced (htop)
 <kbd>C-c s l p</kbd>  | Launch list MELPA packages using Paradox
 <kbd>C-c s l m</kbd>  | Launch man page
-
+<kbd>C-c s c g</kbd>  | Display Google calendar
+<kbd>C-c s c w</kbd>  | Display work calendar
+<kbd>C-c s c d</kbd>  | Display diary calendar
+<kbd>C-c s c o</kbd>  | Display Org calendar
 
 
 If you ever forget any of Scame's keybindings just do a:
@@ -424,6 +427,12 @@ Using <kbd>C-c m o</kbd>, Gnus is starting using your `offlineimap` and `msmtp`
 configuration.
 
 
+## Calendars
+
+To setup a Google calendar set the `google-ical-calendar` variable using
+private ics URI.
+
+
 ## Customization
 
 If file `$HOME/.config/scame/scame-user.el` exists, [Scame][] load it.
@@ -433,6 +442,9 @@ Example of customization :
 ;; User
 (setq user-full-name "Nicolas Lamirault")
 (setq user-mail-address "nicolas.lamirault@gmail.com")
+
+;; Calendars
+(setq google-ical-calendar "https://www.google.com/calendar/ical/........")
 
 ;; UI
 (load-theme 'monokai t)

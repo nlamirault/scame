@@ -83,6 +83,12 @@
   ("h" proced "proced")
   ("t" scame-launch-term "term"))
 
+(defhydra scame-calendar (scame-mode-map "C-c s c")
+  "Scame calendars"
+  ("g" scame-google-calendar "scame-google-calendar")
+  ("w" scame-work-calendar "scame-work-calendar")
+  ("d" scame-diary-calendar "scame-diary-calendar")
+  ("o" scame-org-calendar "scame-org-calendar"))
 
 ;; Scame main menu
 

@@ -71,6 +71,19 @@
     (should (eql 'scame-launcher/paradox-list-packages
                  (key-binding (kbd "C-c s l p")))))))
 
+(ert-deftest test-scame-calendars-keybindings ()
+  :tags '(current)
+  (with-test-sandbox
+   (with-scame-mode
+    (should (eql 'scame-calendar/scame-google-calendar
+                 (key-binding (kbd "C-c s c g"))))
+    (should (eql 'scame-calendar/scame-work-calendar
+                 (key-binding (kbd "C-c s c w"))))
+    (should (eql 'scame-calendar/scame-diary-calendar
+                 (key-binding (kbd "C-c s c d"))))
+    (should (eql 'scame-calendar/scame-org-calendar
+                 (key-binding (kbd "C-c s c o")))))))
+
 
 ;; (ert-deftest test-scame-web-keybindings ()
 ;;   (with-test-sandbox

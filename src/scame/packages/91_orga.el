@@ -1,4 +1,4 @@
-;;; 51_orga.el --- Organisation
+;;; 91_orga.el --- Organisation
 
 ;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -24,6 +24,14 @@
 
 ;;(require 'org-contacts)
 ;;(require 'org-jira)
+
+
+;; Diary
+
+(require 'f)
+
+(setq diary-file
+      (f-join user-home-directory ".diary"))
 
 
 ;; Calendar
@@ -177,10 +185,13 @@
 ;; (use-package google-weather)
 ;; (use-package org-google-weather)
 
-;; (use-package calfw)
-;; (use-package calfw-org)
-;; (use-package calfw-org)
-;; (use-package calfw-ical)
+(use-package calfw)
+(use-package calfw-org)
+(use-package calfw-ical)
+(use-package calfw-cal)
+
+(setq google-ical-calendar nil)
+
 
 (use-package org-crypt
   :config (progn
@@ -191,5 +202,5 @@
             (setq org-crypt-key nil)))
 
 
-(provide '51_orga)
-;;; 51_orga.el ends here
+(provide '91_orga)
+;;; 91_orga.el ends here
