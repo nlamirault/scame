@@ -161,7 +161,7 @@
     lbl))
 (defalias 'gnus-user-format-function-r 'rs-gnus-get-label)
 (setq gnus-summary-line-format
-      "%1{%U%R%z: %}%2{%d%}%5{ %[%4i%] %}%4{%-24,24n%}%6{%-4,4ur%}%5{| %}%(%1{%B%}%s%)\n")
+      "%1{%U%R%z: %}%2{%D%}%5{ %[%4i%] %}%4{%-24,24n%}%6{%-4,4ur%}%5{| %}%(%1{%B%}%s%)\n")
 (setq nnmail-extra-headers '(To X-GM-LABELS Newsgroups Content-Type))
 
 (copy-face 'default 'myface)
@@ -192,18 +192,18 @@
 ;; ----------------
 
 (gnus-add-configuration
- '(article
-   (horizontal 1.0
-               (vertical 30 (group 1.0))
-               (vertical 1.0
-    (summary 0.20 point)
-    (article 1.0)))))
-
-(gnus-add-configuration
  '(summary
    (horizontal 1.0
                (vertical 30 (group 1.0))
                (vertical 1.0 (summary 1.0 point)))))
+
+(gnus-add-configuration
+ '(article
+   (horizontal 1.0
+               ;;(vertical 30 (group 1.0))
+               (vertical 1.0
+                         (summary 0.20 point)
+                         (article 1.0)))))
 
 ;; (loop for type in '(reply forward message post mail-bound)
 ;;       do (gnus-add-configuration
