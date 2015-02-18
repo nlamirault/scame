@@ -72,14 +72,21 @@
 ;; Calendars
 ;; ----------
 
-(defvar google-ical-calendar nil
-      "The Google calendar private URL.")
+(defvar google-ical-calendars nil
+      "The Google calendar private URLs.")
 
 (defun scame-google-calendar ()
   "Open the google calendar defined."
   (interactive)
-  (when google-ical-calendar
-    (cfw:open-ical-calendar google-ical-calendar)))
+  (when google-ical-calendars
+    (cfw:open-calendar-buffer
+     :contents-sources (mapcar (lambda (cal)
+                          (cfw:ical-create-source "gcal"
+                                                  (car cal)
+                                                  (cdr cal)))
+                               google-ical-calendars))))
+            ;;(cfw:open-ical-calendar google-ical-calendar)))
+
 
 (defun scame-org-calendar ()
   "Open the org calendar."
