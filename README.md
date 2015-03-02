@@ -429,7 +429,7 @@ configuration.
 
 ## Calendars
 
-To setup a Google calendar set the `google-ical-calendar` variable using
+To setup a Google calendars set the `google-ical-calendars` variable using
 private ics URI.
 
 
@@ -444,7 +444,11 @@ Example of customization :
 (setq user-mail-address "nicolas.lamirault@gmail.com")
 
 ;; Calendars
-(setq google-ical-calendar "https://www.google.com/calendar/ical/........")
+(setq google-ical-calendar
+      (setq google-ical-calendars
+      '(("https://www.google.com/calendar/ical/.../basic.ics" "Mine" "LightBlue")
+        ("https://www.google.com/calendar/ical/.../basic.ics" "Family" "Yellow")
+        ("https://www.google.com/calendar/ical/.../basic.ics" "Work" "Green")))
 
 ;; UI
 (load-theme 'monokai t)

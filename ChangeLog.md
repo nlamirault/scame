@@ -2,6 +2,9 @@
 
 ## Version 0.13.0 (IN PROGRESS)
 
+- Setup *helm-mt* to manage multi terminals
+- Setup calendars using *calfw* (ics, Org, ...)
+- Add week numbers in calendar
 - Init specify packages version in Cask file
 - Add *hydra* to manage key bindings
 
