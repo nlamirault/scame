@@ -1,6 +1,6 @@
 ;;; 16_shell.el --- Terminal configuration
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -28,12 +28,14 @@
 	    (setq multi-term-program "/bin/bash")))
 
 
-(defun scame-launch-term ()
-  "Launch a new terminal."
-  (interactive)
-  (unless (multi-term-dedicated-exist-p)
-    (multi-term-dedicated-open))
-  (multi-term-dedicated-select))
+(use-package helm-mt)
+
+;; (defun scame-launch-term ()
+;;   "Launch a new terminal."
+;;   (interactive)
+;;   (unless (multi-term-dedicated-exist-p)
+;;     (multi-term-dedicated-open))
+;;   (multi-term-dedicated-select))
 
 (provide '16_shell)
 ;;; 16_shell.el ends here

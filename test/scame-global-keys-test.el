@@ -66,7 +66,7 @@
                  (key-binding (kbd "C-c s l m"))))
     (should (eql 'scame-launcher/proced
                  (key-binding (kbd "C-c s l h"))))
-    (should (eql 'scame-launcher/scame-launch-term
+    (should (eql 'scame-launcher/helm-mt
                  (key-binding (kbd "C-c s l t"))))
     (should (eql 'scame-launcher/paradox-list-packages
                  (key-binding (kbd "C-c s l p")))))))
