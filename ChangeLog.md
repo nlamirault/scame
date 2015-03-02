@@ -1,6 +1,6 @@
 # Scame ChangeLog
 
-## Version 0.13.0 (IN PROGRESS)
+## Version 0.13.0 (03/02/2015)
 
 - Setup *helm-mt* to manage multi terminals
 - Setup calendars using *calfw* (ics, Org, ...)
@@ -8,7 +8,7 @@
 - Init specify packages version in Cask file
 - Add *hydra* to manage key bindings
 
-## Version 0.12.0 (20/01/2015)
+## Version 0.12.0 (01/20/2015)
 
 - Setup visible bell
 - `FIX` Docker image creation
@@ -17,7 +17,7 @@
 - Remove Emacs 24.3 support
 - Add *helm-occur*
 
-## Version 0.11.0 (06/01/2015)
+## Version 0.11.0 (01/06/2015)
 
 - Init Scame archive for stable release
 - Split unit tests
@@ -29,7 +29,7 @@
 - Add *twitterring-mode*
 - Setup *bug-reference-mode*
 
-## Version 0.10.0 (22/12/2014)
+## Version 0.10.0 (12/22/2014)
 
 - [GH-35]: Warning after installation with invalid 'load-path'
 - Update TravisCI configuration
