@@ -1,6 +1,6 @@
-;;; 51_orga.el --- Organisation
+;;; 91_orga.el --- Organisation
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -26,6 +26,14 @@
 ;;(require 'org-jira)
 
 
+;; Diary
+
+(require 'f)
+
+(setq diary-file
+      (f-join user-home-directory ".diary"))
+
+
 ;; Calendar
 ;; ----------
 
@@ -47,10 +55,22 @@
     (holiday-float 6 0 3 "Fête des Pères")
     ))
 
-(setq calendar-date-style 'european
-      calendar-holidays french-holiday
-      calendar-mark-holidays-flag t
-      calendar-week-start-day 1)	; Weeks start on monday
+
+(use-package calendar
+  :config (setq calendar-date-style 'european
+                calendar-holidays french-holiday
+                calendar-mark-holidays-flag t
+                calendar-week-start-day 1 ;; week starts on monday
+                calendar-set-date-style 'iso
+                calendar-intermonth-text '(propertize
+                                           (format "%2d"
+                                                   (car
+                                                    (calendar-iso-from-absolute
+                                                     (calendar-absolute-from-gregorian
+                                                      (list month day year)))))
+                                           'font-lock-face 'font-lock-warning-face)
+                calendar-intermonth-header (propertize "Wk"
+                                                       'font-lock-face 'font-lock-keyword-face)))
 
 (use-package org
   :config (progn
@@ -165,10 +185,13 @@
 ;; (use-package google-weather)
 ;; (use-package org-google-weather)
 
-;; (use-package calfw)
-;; (use-package calfw-org)
-;; (use-package calfw-org)
-;; (use-package calfw-ical)
+(use-package calfw)
+(use-package calfw-org)
+(use-package calfw-ical)
+(use-package calfw-cal)
+
+(setq google-ical-calendar nil)
+
 
 (use-package org-crypt
   :config (progn
@@ -179,5 +202,5 @@
             (setq org-crypt-key nil)))
 
 
-(provide '51_orga)
-;;; 51_orga.el ends here
+(provide '91_orga)
+;;; 91_orga.el ends here

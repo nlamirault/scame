@@ -1,6 +1,7 @@
 # Scame
 
 [![License GPL 3][badge-license]][COPYING]
+![Version][badge-release]
 [![travis][badge-travis]][travis]
 [![drone][badge-drone]][drone]
 [![Coverage Status](https://coveralls.io/repos/nlamirault/scame/badge.png)](https://coveralls.io/r/nlamirault/scame)
@@ -393,7 +394,10 @@ Keybinding            | Description
 <kbd>C-c s l h</kbd>  | Launch proced (htop)
 <kbd>C-c s l p</kbd>  | Launch list MELPA packages using Paradox
 <kbd>C-c s l m</kbd>  | Launch man page
-
+<kbd>C-c s c g</kbd>  | Display Google calendar
+<kbd>C-c s c w</kbd>  | Display work calendar
+<kbd>C-c s c d</kbd>  | Display diary calendar
+<kbd>C-c s c o</kbd>  | Display Org calendar
 
 
 If you ever forget any of Scame's keybindings just do a:
@@ -423,6 +427,12 @@ Using <kbd>C-c m o</kbd>, Gnus is starting using your `offlineimap` and `msmtp`
 configuration.
 
 
+## Calendars
+
+To setup a Google calendars set the `google-ical-calendars` variable using
+private ics URI.
+
+
 ## Customization
 
 If file `$HOME/.config/scame/scame-user.el` exists, [Scame][] load it.
@@ -432,6 +442,13 @@ Example of customization :
 ;; User
 (setq user-full-name "Nicolas Lamirault")
 (setq user-mail-address "nicolas.lamirault@gmail.com")
+
+;; Calendars
+(setq google-ical-calendar
+      (setq google-ical-calendars
+      '(("https://www.google.com/calendar/ical/.../basic.ics" "Mine" "LightBlue")
+        ("https://www.google.com/calendar/ical/.../basic.ics" "Family" "Yellow")
+        ("https://www.google.com/calendar/ical/.../basic.ics" "Work" "Green")))
 
 ;; UI
 (load-theme 'monokai t)
@@ -539,11 +556,13 @@ Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 [Scame]: https://github.com/nlamirault/scame
 [badge-license]: https://img.shields.io/badge/license-GPL_3-green.svg?style=flat
-[COPYING]: https://github.com/nlamirault/scame/blob/master/COPYING
+[badge-release]: https://img.shields.io/github/release/nlamirault/scame.svg
 [travis]: https://travis-ci.org/nlamirault/scame
 [badge-travis]: http://img.shields.io/travis/nlamirault/scame.svg?style=flat
 [badge-drone]: https://drone.io/github.com/nlamirault/scame/status.png
 [drone]: https://drone.io/github.com/nlamirault/scame/latest
+
+[COPYING]: https://github.com/nlamirault/scame/blob/master/COPYING
 [GNU Emacs]: https://www.gnu.org/software/emacs/
 [MELPA]: http://melpa.milkbox.net/
 [Cask]: http://cask.github.io/

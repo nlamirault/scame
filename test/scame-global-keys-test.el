@@ -1,4 +1,4 @@
-;;; scame-global-keys.el --- Unit tests for Scame global keybidings.
+;;; scame-global-keys-test.el --- Unit tests for Scame global keybidings.
 
 ;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -23,72 +23,75 @@
 ;;(require 'test-helper)
 
 
-(defmacro with-scame-mode (&rest body)
-  `(with-temp-buffer
-     (scame-global-mode)
-     ,@body))
-
 (ert-deftest test-scame-version-keybinding ()
-  :tags '(current)
   (with-test-sandbox
    (with-scame-mode
-    (should (eql 'scame-version
+    (should (eql 'scame/scame-version
                  (key-binding (kbd "C-c s v")))))))
 
 (ert-deftest test-scame-customization-keybinding ()
   (with-test-sandbox
    (with-scame-mode
-    (should (eql 'scame-customization
+    (should (eql 'scame/scame-customization
                  (key-binding (kbd "C-c s z")))))))
 
-(ert-deftest test-scame-searchs-keybindings ()
+(ert-deftest test-scame-searches-keybindings ()
   (with-test-sandbox
    (with-scame-mode
-    (should (eql 'scame-search-google
+    (should (eql 'scame-search/scame-search-google
                  (key-binding (kbd "C-c s s g"))))
-    (should (eql 'scame-search-github
+    (should (eql 'scame-search/scame-search-github
                  (key-binding (kbd "C-c s s h"))))
-    (should (eql 'scame-search-launchpad
+    (should (eql 'scame-search/scame-search-launchpad
                  (key-binding (kbd "C-c s s l"))))
-    (should (eql 'scame-search-arch-aur
+    (should (eql 'scame-search/scame-search-arch-aur
                  (key-binding (kbd "C-c s s a")))))))
 
 (ert-deftest test-scame-emails-keybindings ()
   (with-test-sandbox
    (with-scame-mode
-    (should (eql 'scame-mail-gmail
+    (should (eql 'scame-email/scame-mail-gmail
                  (key-binding (kbd "C-c s m g"))))
-    (should (eql 'scame-mail-exchange
+    (should (eql 'scame-email/scame-mail-exchange
                  (key-binding (kbd "C-c s m e"))))
-    (should (eql 'scame-mail-offlineimap
+    (should (eql 'scame-email/scame-mail-offlineimap
                  (key-binding (kbd "C-c s m o")))))))
 
-(ert-deftest test-scame-paradox-list-packages-keybinding ()
+(ert-deftest test-scame-launcher-keybindings ()
   (with-test-sandbox
    (with-scame-mode
-    (should (eql 'paradox-list-packages
+    (should (eql 'scame-launcher/calc
+                 (key-binding (kbd "C-c s l c"))))
+    (should (eql 'scame-launcher/man
+                 (key-binding (kbd "C-c s l m"))))
+    (should (eql 'scame-launcher/proced
+                 (key-binding (kbd "C-c s l h"))))
+    (should (eql 'scame-launcher/helm-mt
+                 (key-binding (kbd "C-c s l t"))))
+    (should (eql 'scame-launcher/paradox-list-packages
                  (key-binding (kbd "C-c s l p")))))))
 
-(ert-deftest test-scame-proced-keybinding ()
+(ert-deftest test-scame-calendars-keybindings ()
+  :tags '(current)
   (with-test-sandbox
    (with-scame-mode
-    (should (eql 'proced
-                 (key-binding (kbd "C-c s l h")))))))
+    (should (eql 'scame-calendar/scame-google-calendar
+                 (key-binding (kbd "C-c s c g"))))
+    (should (eql 'scame-calendar/scame-work-calendar
+                 (key-binding (kbd "C-c s c w"))))
+    (should (eql 'scame-calendar/scame-diary-calendar
+                 (key-binding (kbd "C-c s c d"))))
+    (should (eql 'scame-calendar/scame-org-calendar
+                 (key-binding (kbd "C-c s c o")))))))
 
-(ert-deftest test-scame-multi-term-keybinding ()
-  (with-test-sandbox
-   (with-scame-mode
-    (should (string-equal "/bin/bash" multi-term-program))
-    (should (eql 'scame-launch-term
-                 (key-binding (kbd "C-c s l t")))))))
 
-(ert-deftest test-scame-web-keybindings ()
-  (with-test-sandbox
-   (with-scame-mode
-    (should (eql 'browse-url-at-point
-                 (key-binding (kbd "C-c u"))))
-    (should (eql 'eww
-                 (key-binding (kbd "C-c w")))))))
+;; (ert-deftest test-scame-web-keybindings ()
+;;   (with-test-sandbox
+;;    (with-scame-mode
+;;     (should (eql 'browse-url-at-point
+;;                  (key-binding (kbd "C-c u"))))
+;;     (should (eql 'eww
+;;                  (key-binding (kbd "C-c w")))))))
 
 
 (provide 'scame-global-keys-test)

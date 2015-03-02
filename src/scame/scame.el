@@ -31,6 +31,7 @@
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
                          ("org" . "http://orgmode.org/elpa/")
+                         ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
 ;;(package-initialize)
 ;; Don't initialize packages twice
@@ -76,14 +77,16 @@
 (scame--load-configuration "packages")
 (scame--load-configuration "core")
 
-(when (file-readable-p scame-user-customization-file)
-  (load scame-user-customization-file))
-
 (when (and (f-exists? scame-vendoring-directory)
            (f-directory? scame-vendoring-directory))
-  (f-directories scame-vendoring-directory
-                 (lambda (dir)
-                   (add-to-list 'load-path dir))))
+  (f-entries scame-vendoring-directory
+             (lambda (dir)
+               (when (or (f-directory? dir)
+                         (f-symlink? dir))
+                 (add-to-list 'load-path dir)))))
+
+(when (file-readable-p scame-user-customization-file)
+  (load scame-user-customization-file))
 
 (provide 'scame)
 ;;; scame.el ends here

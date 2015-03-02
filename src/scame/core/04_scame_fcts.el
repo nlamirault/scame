@@ -63,12 +63,44 @@
 ;; Path
 ;; -------
 
-
 (defun scame-show-complete-filename ()
   "Show the complete path of the file associated with the current buffer."
   (interactive)
   (message (file-truename buffer-file-name)))
 
+
+;; Calendars
+;; ----------
+
+(defvar google-ical-calendars nil
+      "The Google calendar private URLs.")
+
+(defun scame-google-calendar ()
+  "Open the google calendar defined."
+  (interactive)
+  (when google-ical-calendars
+    (cfw:open-calendar-buffer
+     :contents-sources (mapcar (lambda (cal)
+                          (cfw:ical-create-source "gcal"
+                                                  (car cal)
+                                                  (cdr cal)))
+                               google-ical-calendars))))
+            ;;(cfw:open-ical-calendar google-ical-calendar)))
+
+
+(defun scame-org-calendar ()
+  "Open the org calendar."
+  (interactive)
+  (cfw:open-org-calendar))
+
+(defun scame-diary-calendar ()
+  "Open the diary."
+  (interactive)
+  (cfw:open-diary-calendar))
+
+(defun scame-work-calendar ()
+  "Open the work calendar."
+  (interactive))
 
 
 (provide '04_scame_fcts)

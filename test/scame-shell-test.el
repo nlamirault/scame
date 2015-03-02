@@ -1,6 +1,6 @@
-;;; 99_global_keys.el --- Global key settings
+;;; scame-shell-test.el --- Unit tests for Scame shell setup
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,21 +19,11 @@
 
 ;;; Code:
 
-
-;; Navigation
-;; -----------
-
-(global-set-key (kbd "C-<down>")
-                (function (lambda ()
-                            (interactive)
-                            (scroll-up 1))))
-
-(global-set-key (kbd "C-<up>")
-                (function (lambda ()
-                            (interactive)
-                            (scroll-down 1))))
+(ert-deftest test-scame-multi-term ()
+  (with-test-sandbox
+   (with-scame-mode
+    (should (string-equal "/bin/bash" multi-term-program)))))
 
 
-
-(provide '99_global_keys)
-;;; 99_global_keys.el ends here
+(provide 'scame-shell-test)
+;;; scame-shell-test.el ends here

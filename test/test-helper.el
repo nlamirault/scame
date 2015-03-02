@@ -63,6 +63,10 @@
      (with-current-buffer (find-file-noselect file)
        ,@body)))
 
+(defmacro with-scame-mode (&rest body)
+  `(with-temp-buffer
+     (scame-global-mode)
+     ,@body))
 
 (defmacro scame--with-output (&rest body)
   `(if scame-debug-output
