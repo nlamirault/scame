@@ -21,7 +21,7 @@
 
 ;;; Code:
 
-(defvar scame-version-number "0.13.0"
+(defvar scame-version-number "0.14.0"
   "Release version of Scame.")
 
 (provide '01_scame_version)
