@@ -24,8 +24,8 @@
 ;; Debug or not
 (setq debug-on-error t)
 
-(when (version< emacs-version "24.3")
-  (error "Scame requires at least GNU Emacs 24.3"))
+(when (version< emacs-version "24.4")
+  (error "Scame requires at least GNU Emacs 24.4"))
 
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
