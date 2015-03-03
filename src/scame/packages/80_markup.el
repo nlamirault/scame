@@ -25,8 +25,9 @@
 (use-package fountain-mode
   :mode ("\\.fountain$" . fountain-mode))
 
-(use-package toml-mode
-  :mode ("\\.toml$" . toml-mode))
+;; FIX: https://github.com/dryman/toml-mode.el/issues/2
+;; (use-package toml-mode
+;;   :mode ("\\.toml$" . toml-mode))
 
 (provide '80_markup)
 ;;; 80_markup.el ends here

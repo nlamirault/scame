@@ -1,6 +1,6 @@
 ;;; 49_nodejs.el -- NodeJS development
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -21,9 +21,10 @@
 
 (use-package sws-mode)
 
-(use-package jade-mode
-  :mode (("\\.jade\\'" . jade-mode)
-         ("\\.styl\\'" . jade-mode)))
+;; FIX: https://github.com/brianc/jade-mode/issues/29
+;; (use-package jade-mode
+;;   :mode (("\\.jade\\'" . jade-mode)
+;;          ("\\.styl\\'" . jade-mode)))
 
 (provide '49_nodejs)
 ;;; 49_nodejs.el ends here

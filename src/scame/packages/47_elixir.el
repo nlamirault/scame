@@ -1,6 +1,6 @@
 ;; 47_elixir.el --- Elixir configuration
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -22,7 +22,15 @@
 (use-package elixir-mode)
 
 (use-package alchemist
-  :init (alchemist-mode 1))
+  :init (alchemist-mode 1)
+  :config (progn
+            (add-hook 'elixir-mode-hook
+                      (lambda ()
+                        (alchemist-mode t)))
+            (setq alchemist-help-docs-ansi-color-enabled t
+                  alchemist-project-codebase-complete-and-docs-enabled nil)))
+
+
 
 (provide '47_elixir)
 ;;; 47_elixir.el ends here

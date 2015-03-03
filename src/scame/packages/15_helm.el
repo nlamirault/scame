@@ -52,17 +52,21 @@
 
 ;;(use-package helm-delicious)
 
-(use-package helm-swoop
-  :config (progn
-            (setq helm-multi-swoop-edit-save t)
-            (setq helm-swoop-split-direction 'split-window-vertically))
-  :bind (("C-x h w" . helm-swoop)
-         ("C-x h W" . helm-multi-swoop)))
+;; FIX: https://github.com/ShingoFukuyama/helm-swoop/issues/52
+;; (use-package helm-swoop
+;;   :config (progn
+;;             (setq helm-multi-swoop-edit-save t)
+;;             (setq helm-swoop-split-direction 'split-window-vertically))
+;;   :bind (("C-x h w" . helm-swoop)
+;;          ("C-x h W" . helm-multi-swoop)))
 
 (use-package helm-dash
   :config (progn
             (setq helm-dash-min-length 1)
             (setq helm-dash-browser-func 'eww)))
+
+;; FIX: https://github.com/istib/helm-mode-manager/issues/2
+;;(use-package helm-mode-manager)
 
 (provide '15_helm)
 ;;; 15_helm.el ends here

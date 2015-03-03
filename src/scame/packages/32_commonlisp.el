@@ -1,6 +1,6 @@
 ;;; 32_commonlisp.el --- Slime configuration
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -30,8 +30,9 @@
 (use-package sly
   :config (setq inferior-lisp-program "/usr/bin/sbcl"))
 
-(use-package sly-company
-  :init (add-hook 'sly-mode-hook 'sly-company-mode))
+;; FIX: https://github.com/milkypostman/melpa/pull/2175
+;; (use-package sly-company
+;;   :init (add-hook 'sly-mode-hook 'sly-company-mode))
 
 ;; Use Quicklisp to install Slime
 ;; (let ((filename "~/Apps/quicklisp/slime-helper.el"))

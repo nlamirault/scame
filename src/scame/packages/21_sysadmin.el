@@ -1,6 +1,6 @@
 ;;; 21_sysadmin.el --- Tools for sysadmin
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,13 +19,21 @@
 
 ;;; Code:
 
+;; No stable release
 
-(use-package apache-mode
-  :mode (("\\.htaccess\\'" . apache-mode)
-         ("httpd\\.conf\\'"  . apache-mode)
-         ("srm\\.conf\\'"    . apache-mode)
-         ("access\\.conf\\'" . apache-mode)
-         ("sites-\\(available\\|enabled\\)/" . apache-mode)))
+;; (use-package apache-mode
+;;   :mode (("\\.htaccess\\'" . apache-mode)
+;;          ("httpd\\.conf\\'"  . apache-mode)
+;;          ("srm\\.conf\\'"    . apache-mode)
+;;          ("access\\.conf\\'" . apache-mode)
+;;          ("sites-\\(available\\|enabled\\)/" . apache-mode)))
+
+;; FIX: https://github.com/ajc/nginx-mode/issues/12
+;; (use-package nginx-mode)
+
+;; FIX: https://github.com/vapniks/syslog-mode/issues/12
+;; (use-package syslog-mode)
+
 
 
 (provide '21_sysadmin)

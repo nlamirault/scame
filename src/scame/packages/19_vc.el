@@ -1,6 +1,6 @@
 ;;; 19_vc.el --- Version control
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -27,7 +27,8 @@
 	 ("C-c g l" . magit-log)
 	 ("C-c g b" . magit-branch-manager)))
 
-(use-package magit-gerrit)
+;; FIX: https://github.com/terranpro/magit-gerrit/issues/16
+;; (use-package magit-gerrit)
 
 (use-package gitconfig-mode)
 

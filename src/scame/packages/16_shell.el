@@ -19,23 +19,12 @@
 
 ;;; Code:
 
-;; Terminal
-;; ---------
+;; FIX: multi-term is on wiki and not on a Git repository.
+;; (use-package multi-term
+;;   :config (progn
+;; 	    (setq multi-term-program "/bin/bash")))
 
-
-(use-package multi-term
-  :config (progn
-	    (setq multi-term-program "/bin/bash")))
-
-
-(use-package helm-mt)
-
-;; (defun scame-launch-term ()
-;;   "Launch a new terminal."
-;;   (interactive)
-;;   (unless (multi-term-dedicated-exist-p)
-;;     (multi-term-dedicated-open))
-;;   (multi-term-dedicated-select))
+;; (use-package helm-mt)
 
 (provide '16_shell)
 ;;; 16_shell.el ends here

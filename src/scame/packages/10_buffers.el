@@ -31,19 +31,21 @@
   :config (setq ag-highlight-search t))
 
 
-(use-package swoop
-  :config (setq swoop-font-size-change: nil)
-  :bind (("C-o" . swoop)
-	 ("C-M-o" . swoop-multi)
-	 ("M-o" . swoop-pcre-regexp)
-	 ("C-S-o" . swoop-back-to-last-position)))
+;; FIX: https://github.com/ShingoFukuyama/emacs-swoop/issues/9
+;; (use-package swoop
+;;   :config (setq swoop-font-size-change: nil)
+;;   :bind (("C-o" . swoop)
+;; 	 ("C-M-o" . swoop-multi)
+;; 	 ("M-o" . swoop-pcre-regexp)
+;; 	 ("C-S-o" . swoop-back-to-last-position)))
 
 (use-package ace-jump-mode
   :bind (("C-c SPC" . ace-jump-mode)))
 
 
-(use-package imenu-anywhere
-  :bind (("C-." . imenu-anywhere)))
+;; FIX:https://github.com/vspinu/imenu-anywhere/issues/12
+;; (use-package imenu-anywhere
+;;   :bind (("C-." . imenu-anywhere)))
 
 
 (use-package recentf

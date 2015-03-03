@@ -26,8 +26,9 @@
 (use-package flycheck
   :config (add-hook 'after-init-hook #'global-flycheck-mode))
 
-(use-package helm-flycheck
-  :bind (("C-c ! h" . helm-flycheck)))
+;; FIX: https://github.com/yasuyk/helm-flycheck/issues/7
+;; (use-package helm-flycheck
+;;   :bind (("C-c ! h" . helm-flycheck)))
 
 (use-package flycheck-color-mode-line
   :config (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))

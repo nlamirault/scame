@@ -19,7 +19,8 @@
 
 ;;; Code:
 
-(use-package gnus-summary-ext)
+;; FIX: https://github.com/vapniks/gnus-summary-ext/issues/3
+;;(use-package gnus-summary-ext)
 
 
 (provide 'scame-gnus-tools)

@@ -20,7 +20,8 @@
 ;;; Code:
 
 
-(use-package butler)
+;; FIX: https://github.com/AshtonKem/Butler/issues/15
+;; (use-package butler)
 
 
 (provide '61_ci)

@@ -19,9 +19,11 @@
 
 ;;; Code:
 
-(use-package weather-metno)
+;; FIX : https://github.com/ruediger/weather-metno-el/issues/11
 
-(use-package org-weather-metno)
+;; (use-package weather-metno)
+
+;; (use-package org-weather-metno)
 
 (provide '92_weather)
 ;;; 92_weather.el ends here

@@ -1,6 +1,6 @@
 ;;; 42_ruby.el --- Ruby mode configuration
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -40,9 +40,10 @@
 	     :init (rvm-use-default)
 	     :config (setq rvm-verbose nil))
 
-(use-package rhtml-mode
-	     :mode (("\\.rhtml$" . rhtml-mode)
-		    ("\\.html\\.erb$" . rhtml-mode)))
+;; FIX: https://github.com/eschulte/rhtml/issues/13
+;; (use-package rhtml-mode
+;; 	     :mode (("\\.rhtml$" . rhtml-mode)
+;; 		    ("\\.html\\.erb$" . rhtml-mode)))
 
 ;; (use-package inf-ruby
 ;;   :init (add-hook 'after-init-hook 'inf-ruby-switch-setup)

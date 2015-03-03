@@ -1,6 +1,6 @@
 ;;; 31_python.el --- Python configuration
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -27,21 +27,21 @@
             ;;(setq python-indent-guess-indent-offset 4)
 	    (setq python-indent-offset 4)))
 
-(use-package virtualenvwrapper
-  :commands venv-workon
-  :config (progn
-	    (setq venv-location "~/.virtualenvs/")
-	    (venv-initialize-interactive-shells)
-	    (venv-initialize-eshell)
-	    (setq-default mode-line-format
-			  (cons '(:exec venv-current-name)
-				mode-line-format))
-	    (add-hook 'python-mode-hook
-		      (lambda ()
-			(hack-local-variables)
-			(setq python-shell-virtualenv-path
-			      (f-join venv-location project-venv-name))
-			(venv-workon project-venv-name)))))
+;; (use-package virtualenvwrapper
+;;   :commands venv-workon
+;;   :config (progn
+;; 	    (setq venv-location "~/.virtualenvs/")
+;; 	    (venv-initialize-interactive-shells)
+;; 	    (venv-initialize-eshell)
+;; 	    (setq-default mode-line-format
+;; 			  (cons '(:exec venv-current-name)
+;; 				mode-line-format))
+;; 	    (add-hook 'python-mode-hook
+;; 		      (lambda ()
+;; 			(hack-local-variables)
+;; 			(setq python-shell-virtualenv-path
+;; 			      (f-join venv-location project-venv-name))
+;; 			(venv-workon project-venv-name)))))
 
 
 ;; FIXME
@@ -60,14 +60,11 @@
 	    (add-hook 'python-mode-hook 'anaconda-mode)
 	    (add-hook 'python-mode-hook 'eldoc-mode)))
 
-(use-package company-anaconda
-  :config (add-to-list 'company-backends 'company-anaconda))
+;; FIX: https://github.com/proofit404/company-anaconda/issues/3
+;; (use-package company-anaconda
+;;   :config (add-to-list 'company-backends 'company-anaconda))
 
-;; Seems dead : https://github.com/proofit404/company-inf-python/
-;; (use-package company-inf-python
-;;   :config (add-to-list 'company-backends 'company-inf-python))
-
-
+;; FIX: https://github.com/jorgenschaefer/elpy/issues/511
 ;; (use-package elpy
 ;;   :config (progn
 ;; 	    (elpy-enable)
@@ -81,26 +78,28 @@
 ;; ((python-mode . ((pyvenv-workon . "xxxxx")))
 
 
-;; FIXME: See Cerbere or not ?
 (use-package tox
   :config (add-hook 'python-mode-hook
 		    (lambda ()
 		      (local-set-key (kbd "C-x y t") 'tox-current-test)
 		      (local-set-key (kbd "C-x y f") 'tox-current-class))))
 
-(use-package jedi-direx
-  :config (progn
-	    (add-hook 'jedi-mode-hook 'jedi-direx:setup)
-	    (add-hook 'jedi-mode-hook
-		      (lambda ()
-			(local-set-key (kbd "C-x y x")
-				       'jedi-direx:pop-to-buffer)))))
+;; FIX: https://github.com/tkf/emacs-jedi-direx/issues/17
+;; (use-package jedi-direx
+;;   :config (progn
+;; 	    (add-hook 'jedi-mode-hook 'jedi-direx:setup)
+;; 	    (add-hook 'jedi-mode-hook
+;; 		      (lambda ()
+;; 			(local-set-key (kbd "C-x y x")
+;; 				       'jedi-direx:pop-to-buffer)))))
 
-(use-package sphinx-doc
-  :config (add-hook 'python-mode-hook
-                    (lambda ()
-                      (require 'sphinx-doc)
-                      (sphinx-doc-mode t))))
+
+;; FIX: https://github.com/naiquevin/sphinx-doc.el/issues/10
+;; (use-package sphinx-doc
+;;   :config (add-hook 'python-mode-hook
+;;                     (lambda ()
+;;                       (require 'sphinx-doc)
+;;                       (sphinx-doc-mode t))))
 
 (use-package helm-pydoc
   :config (add-hook 'python-mode-hook

@@ -40,25 +40,27 @@
 ;;                   dired-hide-details-mode nil
 ;;                   global-dired-hide-details-mode -1)))
 
-(use-package direx
-  :bind ("C-x d j" . direx:jump-to-directory))
+;; FIX: https://github.com/m2ym/direx-el/issues/42
+;; (use-package direx
+;;   :bind ("C-x d j" . direx:jump-to-directory))
+;; (use-package direx-project)
 
-(use-package direx-project)
+;; FIX: https://github.com/Fuco1/dired-hacks/issues/33
 
-(use-package dired-k
-  :init (add-hook 'dired-initial-position-hook 'dired-k)
-  :config (progn
-            (define-key dired-mode-map (kbd "K") 'dired-k)
-            (define-key dired-mode-map (kbd "g") 'dired-k)
-            (add-hook 'dired-initial-position-hook 'dired-k)))
+;; (use-package dired-k
+;;   :init (add-hook 'dired-initial-position-hook 'dired-k)
+;;   :config (progn
+;;             (define-key dired-mode-map (kbd "K") 'dired-k)
+;;             (define-key dired-mode-map (kbd "g") 'dired-k)
+;;             (add-hook 'dired-initial-position-hook 'dired-k)))
 
-(use-package dired-filter)
+;; (use-package dired-filter)
 
-(use-package dired-open)
+;; (use-package dired-open)
 
-(use-package dired-rainbow)
+;; (use-package dired-rainbow)
 
-(use-package dired-subtree)
+;; (use-package dired-subtree)
 
 
 (provide '12_directories)

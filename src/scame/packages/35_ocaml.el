@@ -21,11 +21,14 @@
 
 ;;(require 'tuareg)
 
-(use-package tuareg
-  :mode (("\\.ml\\w?" . tuareg-mode)
-         ("\\.topml\\'" . taureg-mode)
-         ("\\.fs[ix]?" . tuareg-mode)))
+;; (use-package tuareg
+;;   :mode (("\\.ml\\w?" . tuareg-mode)
+;;          ("\\.topml\\'" . taureg-mode)
+;;          ("\\.fs[ix]?" . tuareg-mode)))
 
+(use-package merlin)
+
+(use-package flycheck-ocaml)
 
 
 

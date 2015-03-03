@@ -19,44 +19,6 @@
 
 ;;; Code:
 
-;; (use-package erc
-;;   :bind (("C-c i e" . erc))
-;;   :config (progn
-;;             ;; Default server and nick
-;;             (setq erc-hide-list '("JOIN" "PART" "QUIT")
-;;                   erc-nick-uniquifier "$"
-;;                   erc-nick "l_a_m"
-;;                   erc-nick-uniquifier "_")
-;;             (add-to-list 'erc-modules 'smiley)
-;; 	    (add-to-list 'erc-modules 'match)
-;; 	    (add-to-list 'erc-modules 'scrolltobottom)
-;;             (erc-update-modules)))
-
-;; (use-package erc-join                   ; Automatically join channels with ERC
-;;   :config (progn
-;;             (setq erc-join-buffer 'bury)
-;;             (setq erc-autojoin-channels-alist
-;;                 '(("\\.freenode\\.net" . ("#openstack-fr"
-;;                                           "#docker"
-;;                                           "#docker-dev"
-;;                                           "#google-containers"
-;;                                           "#lisp"
-;;                                           "#emacs"))))))
-
-;; (use-package erc-track                  ; Track status of ERC in mode line
-;;     :config (setq erc-track-enable-keybindings t
-;;                 erc-track-exclude-server-buffer t
-;;                 erc-track-exclude '("*stickychan" "*status")
-;;                 erc-track-showcount t
-;;                 erc-track-shorten-start 1
-;;                 erc-track-switch-direction 'importance
-;;                 erc-track-visibility 'selected-visible))
-
-
-;; (use-package erc-log
-;;   :config (setq erc-log-channels-directory "~/.erc/logs/"))
-
-
 (use-package erc
   :init (progn
           (require 'erc-services)
@@ -76,7 +38,9 @@
                 erc-timestamp-format "%H:%M "
                 erc-fill-prefix "      "
                 erc-hide-list '("JOIN" "PART" "QUIT")
-                erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT" "MODE" "324" "329" "332" "333" "353" "477")
+                erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT"
+                                          "MODE" "324" "329" "332"
+                                          "333" "353" "477")
                 erc-prompt (lambda () (concat (buffer-name) ">"))
                 erc-insert-timestamp-function 'erc-insert-timestamp-left)
           (erc-services-mode 1)))
@@ -117,19 +81,19 @@
 ;; Rcirc
 ;; ------
 
-(use-package rcirc
-  :config (add-hook 'rcirc-mode-hook
-                    (lambda ()
-                      (rcirc-track-minor-mode 1)))
-  :bind (("C-c i c" . rcirc)))
+;; (use-package rcirc
+;;   :config (add-hook 'rcirc-mode-hook
+;;                     (lambda ()
+;;                       (rcirc-track-minor-mode 1)))
+;;   :bind (("C-c i c" . rcirc)))
 
-(use-package rcirc-groups
-  :bind (("C-c i g" . rcirc-groups:switch-to-groups-buffer)))
+;; (use-package rcirc-groups
+;;   :bind (("C-c i g" . rcirc-groups:switch-to-groups-buffer)))
 
-(use-package rcirc-alertify
-  :config (rcirc-alertify-enable))
+;; (use-package rcirc-alertify
+;;   :config (rcirc-alertify-enable))
 
-(use-package rcirc-notify)
+;; (use-package rcirc-notify)
 
 
 (provide '90_irc)

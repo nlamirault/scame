@@ -1,6 +1,6 @@
 ;;; 34_go-lang.el -- Configuration for the GO language
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -46,7 +46,8 @@
 ;; 		    (lambda ()
 ;; 		      (local-set-key (kbd "C-x g d") 'helm-godoc))))
 
-(use-package helm-go-package)
+;; FIX: https://github.com/yasuyk/helm-go-package/issues/2
+;;(use-package helm-go-package)
 
 
 ;; FIXMEE. See Cerbere or not ?
@@ -64,27 +65,31 @@
                       (lambda ()
                         (local-set-key (kbd "C-x g e") 'go-errcheck)))))
 
+;; FIX: https://github.com/golang/lint/issues/111
+;; (use-package golint
+;;   :config (progn
+;;             (add-hook 'go-mode-hook
+;;                       (lambda ()
+;;                         (local-set-key (kbd "C-x g l") 'golint)))))
 
-(use-package golint
-  :config (progn
-            (add-hook 'go-mode-hook
-                      (lambda ()
-                        (local-set-key (kbd "C-x g l") 'golint)))))
+;; FIX: https://github.com/syohex/emacs-go-direx/issues/4
+;; (use-package go-direx
+;;   :config (progn
+;; 	    (add-hook 'go-mode-hook
+;; 		      (lambda ()
+;; 			(local-set-key (kbd "C-x g x")
+;; 				       'go-direx-pop-to-buffer)))))
 
-(use-package go-direx
-  :config (progn
-	    (add-hook 'go-mode-hook
-		      (lambda ()
-			(local-set-key (kbd "C-x g x")
-				       'go-direx-pop-to-buffer)))))
+;; FIX:https://github.com/dougm/go-projectile/issues/2
+;; (use-package go-projectile)
 
-(use-package go-projectile)
 
-(use-package company-go
-  :config (add-hook 'go-mode-hook
-                    (lambda ()
-                      (set (make-local-variable 'company-backends) '(company-go))
-                      (company-mode))))
+;; FIX: https://github.com/nsf/gocode/issues/274
+;; (use-package company-go
+;;   :config (add-hook 'go-mode-hook
+;;                     (lambda ()
+;;                       (set (make-local-variable 'company-backends) '(company-go))
+;;                       (company-mode))))
 
 
 (provide '34_go-lang)

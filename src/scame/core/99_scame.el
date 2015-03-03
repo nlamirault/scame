@@ -81,8 +81,8 @@
   ("m" man "man")
   ("p" paradox-list-packages "list-packages")
   ("h" proced "proced")
-  ;;("t" scame-launch-term "term"))
-  ("t" helm-mt "term"))
+  ;;("t" helm-mt "term"))
+  )
 
 (defhydra scame-calendar (scame-mode-map "C-c s c")
   "Scame calendars"

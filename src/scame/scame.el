@@ -44,7 +44,7 @@
 
 (require 'f)
 (require 's)
-(require 'benchmark-init)
+;;(require 'benchmark-init)
 (require 'use-package)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -81,6 +81,7 @@
                           :subdirectories '("packages" "core")
                           :wrappers '(el-init-require/benchmark
                                       el-init-require/record-error
+                                      el-init-require/record-eval-after-load-error
                                       el-init-require/system-case))))
 
 (when (and (f-exists? scame-vendoring-directory)

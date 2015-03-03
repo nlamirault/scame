@@ -26,9 +26,9 @@
          (setq guide-key/align-command-by-space-flag t)
          (guide-key-mode 1)))
 
-
-(use-package discover-my-major
-  :bind ("C-h C-m" . discover-my-major))
+;; FIX: https://github.com/steckerhalter/discover-my-major/issues/5
+;; (use-package discover-my-major
+;;   :bind ("C-h C-m" . discover-my-major))
 
 
 (provide '06_keys)

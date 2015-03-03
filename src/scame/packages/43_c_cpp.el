@@ -64,19 +64,22 @@
                                          (define-key irony-mode-map [remap complete-symbol]
                                            'irony-completion-at-point-async)))))
 
-(use-package company-irony
-  :config (progn
-            (add-to-list 'company-backends 'company-irony)
-            (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
-            (add-hook 'irony-mode-hook 'company-mode)))
+;; FIX: https://github.com/Sarcasm/company-irony/issues/5
+;; (use-package company-irony
+;;   :config (progn
+;;             (add-to-list 'company-backends 'company-irony)
+;;             (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+;;             (add-hook 'irony-mode-hook 'company-mode)))
 
-(use-package flycheck-irony
-  :config (progn
-            (add-to-list 'flycheck-checkers 'irony)
-            (add-hook 'irony-mode-hook 'flycheck-mode)))
+;; FIX: https://github.com/Sarcasm/flycheck-irony/issues/4
+;; (use-package flycheck-irony
+;;   :config (progn
+;;             (add-to-list 'flycheck-checkers 'irony)
+;;             (add-hook 'irony-mode-hook 'flycheck-mode)))
 
-(use-package irony-eldoc
-  :config (add-hook 'irony-mode-hook 'irony-eldoc))
+;; FIX: https://github.com/ikirill/irony-eldoc/issues/3
+;; (use-package irony-eldoc
+;;   :config (add-hook 'irony-mode-hook 'irony-eldoc))
 
 
 (provide '43_c_cpp)
