@@ -1,6 +1,6 @@
 ;;; 12_directories.el --- Dired and friends configurations
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -61,5 +61,5 @@
 (use-package dired-subtree)
 
 
-(provide '12_direx)
+(provide '12_directories)
 ;;; 12_directories.el ends here

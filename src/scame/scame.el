@@ -67,15 +67,21 @@
   (f-join user-home-directory ".config/scame/scame-user.el")
   "File used to store user customization.")
 
-(defun scame--load-configuration (directory)
-  "Setup `DIRECTORY' as a source directory, and load files."
-  (let ((dir (f-slash (f-join (f-parent (f-this-file)) directory))))
-    (message "[scame] packages directory : %s" dir)
-    (use-package init-loader
-      :config (init-loader-load dir))))
-
-(scame--load-configuration "packages")
-(scame--load-configuration "core")
+(use-package el-init
+  :config (progn
+            (setq el-init-meadow-regexp       "\\`meadow-"
+                  el-init-carbon-emacs-regexp "\\`carbon-emacs-"
+                  el-init-cocoa-emacs-regexp  "\\`cocoa-emacs-"
+                  el-init-nw-regexp           "\\`nw-"
+                  el-init-mac-regexp          "\\`mac-"
+                  el-init-windows-regexp      "\\`windows-"
+                  el-init-linux-regexp        "\\`linux-"
+                  el-init-freebsd-regexp      "\\`freebsd-")
+            (el-init-load (f-parent (f-this-file))
+                          :subdirectories '("packages" "core")
+                          :wrappers '(el-init-require/benchmark
+                                      el-init-require/record-error
+                                      el-init-require/system-case))))
 
 (when (and (f-exists? scame-vendoring-directory)
            (f-directory? scame-vendoring-directory))

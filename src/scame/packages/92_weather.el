@@ -1,4 +1,4 @@
-;;; 52_weather.el --- Weather informations
+;;; 92_weather.el --- Weather informations
 
 ;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -19,10 +19,9 @@
 
 ;;; Code:
 
-
 (use-package weather-metno)
 
 (use-package org-weather-metno)
 
-(provide '52_weather)
-;;; 52_weather.el ends here
+(provide '92_weather)
+;;; 92_weather.el ends here

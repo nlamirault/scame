@@ -42,6 +42,11 @@
 (depends-on "use-package" "20140601")
 (depends-on "paradox" "1.5")
 
+;; Init
+;;(depends-on "init-loader" "0.2")
+(depends-on "el-init" "0.1.4")
+(depends-on "el-init-viewer" "0.1.0")
+
 ;; Profiling
 (depends-on "benchmark-init")
 
@@ -233,7 +238,6 @@
 ;;(depends-on "commander" "0.7.0")
 (depends-on "smex" "3.0")
 (depends-on "emamux" "0.13")
-(depends-on "init-loader" "0.2")
 (depends-on "fabric" "0.2.0")
 (depends-on "prodigy" "0.6.0")
 (depends-on "helm-mode-manager")
