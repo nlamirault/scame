@@ -1,4 +1,4 @@
-;;; scame-c-cpp-test.el --- Unit tests for Scame Common Lisp development.
+;;; scame-c-cpp-test.el --- Unit tests for Scame C/C++/ObjectiveC development.
 
 ;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -20,26 +20,28 @@
 ;;; Code:
 
 (ert-deftest test-scame-c ()
+  :tags '(scame-c-cpp)
   (with-test-sandbox
    (with-current-file
     "var/hello.c"
-    ;;(should (featurep 'google-c-style))
-    (should (featurep 'company-c-headers))
-    (should (featurep 'c-eldoc))
+    (should (featurep 'irony))
+    (should (featurep 'company-irony))
+    (should (featurep 'irony-eldoc))
     (should (= 2 c-basic-offset))
-    (should (string-equal "gnu" c-indentation-style))
-    (should (= 30 c-eldoc-buffer-regenerate-time)))))
+    (should (string-equal "gnu" c-indentation-style)))))
+    ;;(should (= 30 c-eldoc-buffer-regenerate-time)))))
 
 (ert-deftest test-scame-cpp ()
+  :tags '(scame-c-cpp)
   (with-test-sandbox
    (with-current-file
     "var/hello.cpp"
-    ;;(should (featurep 'google-c-style))
-    (should (featurep 'company-c-headers))
-    (should (featurep 'c-eldoc))
+    (should (featurep 'irony))
+    (should (featurep 'company-irony))
+    (should (featurep 'irony-eldoc))
     (should (= 2 c-basic-offset))
-    (should (string-equal "gnu" c-indentation-style))
-    (should (= 30 c-eldoc-buffer-regenerate-time)))))
+    (should (string-equal "gnu" c-indentation-style)))))
+    ;;(should (= 30 c-eldoc-buffer-regenerate-time)))))
 
 (provide 'scame-c-cpp-test)
 ;;; scame-c-cpp-test.el ends here

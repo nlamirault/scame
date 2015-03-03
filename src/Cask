@@ -172,11 +172,15 @@
 ;; NodeJS
 (depends-on "jade-mode" "1.0.0.-3")
 
-;; C/C++
-(depends-on "google-c-style")
-(depends-on "c-eldoc")
+;; C/C++/ObjectiveC
+;; (depends-on "google-c-style")
+;; (depends-on "c-eldoc")
 ;; (depends-on "auto-complete-c-headers")
-(depends-on "company-c-headers")
+;; (depends-on "company-c-headers")
+(depends-on "irony" "0.1.2")
+(depends-on "company-irony")
+(depends-on "flycheck-irony")
+(depends-on "irony-eldoc")
 
 ;; Rust
 (depends-on "rust-mode")
