@@ -17,26 +17,37 @@ These tools are used to perform the [Scame][] installation :
 The current version has been tested on Linux and Mac OS X.
 
 
+- [Installation](#installation)
+  - [Release file](#from-release-file)
+  - [Source](#from-source)
+  - [Docker](#from-docker)
+- [Packages](#packages)
+- [Keymap](#keymap)
+- [Mail](#mail)
+- [Calendars](#calendars)
+- [Customization](#customization)
+- [Vendoring](#vendoring)
+- [Debug](#debug)
+- [Support](#support)
+- [Contribute](#contribute)
+- [Development](#development)
+- [License](#license)
+- [ChangeLog](#changelog)
+- [Contact](#contact)
+
+
 ## Installation
 
 ### From release file
 
 * Download archive :
 
-        $ wget https://github.com/nlamirault/scame/releases/download/0.12.0/scame-0.12.0.tar.gz
+        $ wget https://github.com/nlamirault/scame/releases/download/0.13.0/scame-0.13.0.tar.gz
 
 * Installation :
 
-        $ tar zxvf scame-0.12.0.tar.gz
-        $ cp -r scame-0.12.0/* ~/.emacs.d
-
-
-### From Docker
-
-* Run using Docker :
-
-        $ docker pull nlamirault/scame:0.12.0
-        $ docker run -it --rm=true nlamirault/scame:0.12.0 -e DISPLAY=$(DISPLAY) -v /tmp/.X11-unix:/tmp/.X11-unix emacs-snapshot
+        $ tar zxvf scame-0.13.0.tar.gz
+        $ cp -r scame-0.13.0/* ~/.emacs.d
 
 
 ### From source
@@ -51,7 +62,7 @@ The current version has been tested on Linux and Mac OS X.
         $ cp -r scame/src/* ~/.emacs.d/
         $ cd ~/.emacs.d && cask install
 
-### Using Docker
+### From Docker
 
 * Search from registry the Scame image :
 
@@ -59,11 +70,11 @@ The current version has been tested on Linux and Mac OS X.
 
 * Download the Scame image :
 
-        $ docker pull nlamirault/scame
+        $ docker pull nlamirault/scame:0.13.0
 
 * Launch Scame image :
 
-        $ docker run -i -t nlamirault/scame
+        $ docker run -it --rm=true nlamirault/scame:0.13.0 -e DISPLAY=$(DISPLAY) -v /tmp/.X11-unix:/tmp/.X11-unix emacs-snapshot
 
 
 ## Packages
