@@ -443,6 +443,19 @@ configuration.
 To setup a Google calendars set the `google-ical-calendars` variable using
 private ics URI.
 
+```el
+(setq google-ical-calendars
+      '(("https://www.google.com/calendar/ical/xxxxxxxxx/basic.ics"
+         "Mine"
+         "LightBlue")
+        ("https://www.google.com/calendar/ical/xxxxxxxxxx/basic.ics"
+         "Family"
+         "Yellow")
+        ("https://www.google.com/calendar/ical/xxxxxxxxx/basic.ics"
+         "Work"
+         "White")))
+`̀`
+
 
 ## Customization
 
