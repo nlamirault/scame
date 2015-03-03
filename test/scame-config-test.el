@@ -30,7 +30,7 @@
   (with-test-sandbox
    (mapc (lambda (mode)
            (should (featurep mode)))
-         '(init-loader cask use-package))))
+         '(el-init cask use-package))))
 
 (ert-deftest test-scame-global-mode-is-loaded ()
   (with-test-sandbox
