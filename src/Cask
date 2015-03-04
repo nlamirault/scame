@@ -251,7 +251,7 @@
 (depends-on "ace-jump-mode" "2.0")
 (depends-on "helm-proc" "0.0.4")
 (depends-on "helm-descbinds" "1.7.1")
-;; (depends-on "discover-my-major")
+(depends-on "discover-my-major" "1.0")
 (depends-on "sauron" "0.10")
 (depends-on "wsd-mode" "0.3.0")
 
