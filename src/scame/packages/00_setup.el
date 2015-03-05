@@ -1,6 +1,6 @@
 ;;; 00_setup.el --- Setup Emacs configuration
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -32,6 +32,7 @@
 ;; See https://github.com/sfllaw/emacs-launch
 (use-package launch
   :config (global-launch-mode +1))
+
 
 (provide '00_setup)
 ;;; 00_setup.el ends here

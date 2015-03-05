@@ -24,6 +24,9 @@
 (require 'f)
 (require 's)
 
+
+;; Scame project
+
 (defun scame-version ()
   "Return the Scame's version."
   (interactive)
@@ -49,6 +52,23 @@
   "Open in a browser the project's website."
   (interactive)
   (browse-url "https://github.com/nlamirault/scame"))
+
+
+;; Editing
+
+(dolist (hook '(special-mode-hook
+                Info-mode-hook
+                eww-mode-hook
+                term-mode-hook
+                comint-mode-hook
+                compilation-mode-hook
+                twittering-mode-hook
+                minibuffer-setup-hook))
+  (add-hook hook (lambda ()
+                   (setq show-trailing-whitespace nil))))
+
+
+;; Tools
 
 (defun perform-rest-request (url)
   "Perform an HTTP request using URL and return the response."
@@ -76,6 +96,7 @@
   "File a bug report about the `scame' project."
   (interactive)
   (browse-url "https://github.com/nlamirault/scame/issues/new"))
+
 
 (provide '02_scame_utils)
 ;;; 02_scame_utils.el ends here
