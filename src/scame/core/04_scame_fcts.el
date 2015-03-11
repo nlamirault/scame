@@ -36,28 +36,28 @@
 ;; Search engines
 ;; ----------------
 
-(defun scame-perform-search (url prompt)
-  (let ((query (if mark-active
-		   (buffer-substring (region-beginning) (region-end))
-		 (read-string prompt))))
-    (browse-url
-     (concat url (url-hexify-string query)))))
+;; (defun scame-perform-search (url prompt)
+;;   (let ((query (if mark-active
+;; 		   (buffer-substring (region-beginning) (region-end))
+;; 		 (read-string prompt))))
+;;     (browse-url
+;;      (concat url (url-hexify-string query)))))
 
-(defmacro def-search-engine (name url)
-  "Perform a request to a search engine.
+;; (defmacro def-search-engine (name url)
+;;   "Perform a request to a search engine.
 
-`NAME` is the search engine identifier.
-`URL` is the URI request
-`PROMPT` is a prompt for the user."
-  `(defun ,(intern (format "scame-search-%s" name)) ()
-     (interactive)
-     (let ((prompt (s-concat (upcase-initials ,name) ": ")))
-       (scame-perform-search ,url prompt))))
+;; `NAME` is the search engine identifier.
+;; `URL` is the URI request
+;; `PROMPT` is a prompt for the user."
+;;   `(defun ,(intern (format "scame-search-%s" name)) ()
+;;      (interactive)
+;;      (let ((prompt (s-concat (upcase-initials ,name) ": ")))
+;;        (scame-perform-search ,url prompt))))
 
-(def-search-engine "google" "http://www.google.com/search?q=")
-(def-search-engine "github" "https://github.com/search?q=")
-(def-search-engine "twitter" "https://twitter.com/search?src=typd&q=")
-(def-search-engine "launchpad" "https://launchpad.net/+search?field.text=")
+;; (def-search-engine "google" "http://www.google.com/search?q=")
+;; (def-search-engine "github" "https://github.com/search?q=")
+;; (def-search-engine "twitter" "https://twitter.com/search?src=typd&q=")
+;; (def-search-engine "launchpad" "https://launchpad.net/+search?field.text=")
 
 
 ;; Path
@@ -81,9 +81,9 @@
   (when google-ical-calendars
     (cfw:open-calendar-buffer
      :contents-sources (mapcar (lambda (cal)
-                          (cfw:ical-create-source "gcal"
-                                                  (car cal)
-                                                  (cdr cal)))
+                          (cfw:ical-create-source (second cal)
+                                                  (first cal)
+                                                  (third cal)))
                                google-ical-calendars))))
             ;;(cfw:open-ical-calendar google-ical-calendar)))
 

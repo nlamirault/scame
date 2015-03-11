@@ -37,7 +37,9 @@
 ;; Calendar
 ;; ----------
 
-(defvar french-holiday
+;; From Emacs Jd setup
+
+(defvar calendar-legal-holidays
   '((holiday-fixed 1 1 "Jour de l'an")
     (holiday-fixed 5 1 "Fête du travail")
     (holiday-fixed 5 8 "Victoire 45")
@@ -48,17 +50,28 @@
     (holiday-fixed 12 25 "Noël")
     (holiday-easter-etc 1 "Lundi de Pâques")
     (holiday-easter-etc 39 "Ascension")
-    (holiday-easter-etc 50 "Lundi de Pentecôte")
-    ;; Misc
-    (holiday-fixed 3 17 "St. Patrick's Day")
-    (holiday-float 5 0 -1 "Fête des Mères")
-    (holiday-float 6 0 3 "Fête des Pères")
-    ))
+    (holiday-easter-etc 50 "Lundi de Pentecôte")))
 
+(setq calendar-celebration-holidays
+      '((holiday-fixed 2 2 "Chandeleur")
+        (holiday-fixed 2 14 "Saint Valentin")
+        (holiday-float 3 0 1 "Fête des grands-mères")
+        (holiday-fixed 3 17 "St. Patrick's Day")
+        (holiday-fixed 4 1 "April Fools' Day")
+        (holiday-float 5 0 -1 "Fête des Mères")
+        (holiday-float 6 0 3 "Fête des Pères")
+        (holiday-fixed 6 21 "Fête de la musique")
+        (holiday-fixed 10 31 "Halloween")
+        (holiday-easter-etc -47 "Mardi Gras")))
+
+(setq calendar-holidays
+      `(,@holiday-solar-holidays
+        ,@calendar-legal-holidays
+        ,@calendar-celebration-holidays))
 
 (use-package calendar
   :config (setq calendar-date-style 'european
-                calendar-holidays french-holiday
+                calendar-holidays calendar-legal-holidays
                 calendar-mark-holidays-flag t
                 calendar-week-start-day 1 ;; week starts on monday
                 calendar-set-date-style 'iso
@@ -74,9 +87,8 @@
 
 (use-package org
   :config (progn
-	    (setq org-directory (concat user-home-directory "Org"))
+	    (setq org-directory (f-join user-home-directory "Org"))
 	    (setq org-agenda-files (list org-directory))
-
 
 	    ;; Links
 	    ;; ------
@@ -88,7 +100,7 @@
 	    ;; Tasks
 	    ;; ------
 
-	    (setq org-default-notes-file "~/Org/diary.org")
+	    (setq org-default-notes-file (concat org-directory "/diary.org"))
 	    (setq org-todo-keywords
 		  (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
 			  (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|"

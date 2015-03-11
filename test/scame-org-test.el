@@ -21,18 +21,21 @@
 
 
 (ert-deftest test-scame-org ()
+  :tags '(org)
   (with-test-sandbox
-   (should (require 'org))
-   (should (string-equal (f-join user-home-directory "Org")
-                         org-directory))
-   (should (eql 'org-store-link
-                (key-binding (kbd "C-c o l"))))
-   (should (eql 'org-agenda
-                (key-binding (kbd "C-c o a"))))
-   (should (eql 'org-iswitchb
-                (key-binding (kbd "C-c o b"))))
-   (should (eql 'org-capture
-                (key-binding (kbd "C-c o c"))))))
+   (with-current-file
+    "var/hello.org"
+    (message "Org: %s" org-directory)
+    (should (string-equal (f-join user-home-directory "Org")
+                          org-directory))
+    (should (eql 'org-store-link
+                 (key-binding (kbd "C-c o l"))))
+    (should (eql 'org-agenda
+                 (key-binding (kbd "C-c o a"))))
+    (should (eql 'org-iswitchb
+                 (key-binding (kbd "C-c o b"))))
+    (should (eql 'org-capture
+                 (key-binding (kbd "C-c o c")))))))
 
 
 (provide 'scame-org-test)
