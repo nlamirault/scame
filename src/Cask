@@ -63,7 +63,6 @@
 ;;(depends-on "sr-speedbar")
 ;;(depends-on "nav")
 (depends-on "neotree" "0.2.1")
-(depends-on "pt" "0.0.3")
 ;;(depends-on "fill-column-indicator")
 
 (depends-on "imenu-anywhere")
@@ -178,7 +177,7 @@
 ;; (depends-on "auto-complete-c-headers")
 ;; (depends-on "company-c-headers")
 (depends-on "irony" "0.1.2")
-(depends-on "company-irony")
+(depends-on "company-irony" "0.1.0")
 (depends-on "flycheck-irony")
 (depends-on "irony-eldoc")
 
@@ -191,6 +190,9 @@
 
 ;; Java
 (depends-on "malabar-mode" "2.1.0")
+
+;; Lua
+(depends-on "lua-mode")
 
 ;; Markup languages
 (depends-on "markdown-mode" "2.0")
@@ -226,7 +228,7 @@
 (depends-on "gist" "1.2.1")
 (depends-on "git-gutter+" "0.2")
 (depends-on "git-timemachine" "1.9")
-(depends-on "helm-open-github" "0.12.0")
+(depends-on "helm-open-github" "0.13.0")
 (depends-on "gitlab" "0.2.0")
 (depends-on "helm-gitlab" "0.2.0")
 
@@ -236,32 +238,37 @@
 (depends-on "project-persist")
 (depends-on "helm-project-persist")
 (depends-on "multi-term")
-(depends-on "helm-mt" "0.3")
+(depends-on "helm-mt" "0.4")
 ;;(depends-on "project-explorer")
-(depends-on "lice")
+(depends-on "lice" "v0.2")
 ;;(depends-on "commander" "0.7.0")
 (depends-on "smex" "3.0")
 (depends-on "emamux" "0.13")
 (depends-on "fabric" "0.2.0")
 (depends-on "prodigy" "0.6.0")
-(depends-on "helm-mode-manager")
-(depends-on "ag" "0.45")
+(depends-on "helm-mode-manager" "1.0.0")
 (depends-on "json-reformat" "0.0.2")
 ;;(depends-on "sos")
 (depends-on "ace-jump-mode" "2.0")
 (depends-on "helm-proc" "0.0.4")
 (depends-on "helm-descbinds" "1.7.1")
 ;;(depends-on "helm-delicious")
-(depends-on "discover-my-major")
-(depends-on "sauron" "0.10")
+(depends-on "discover-my-major" "1.0")
 (depends-on "wsd-mode" "0.3.0")
 (depends-on "engine-mode")
 
+;; Notifications
+(depends-on "alert")
+(depends-on "sauron" "0.10")
+
 ;; Search
 (depends-on "helm-ack" "0.13")
-(depends-on "helm-ag" "0.33")
+(depends-on "ag" "0.45")
+(depends-on "pt" "0.0.3")
+(depends-on "helm-ag" "0.35")
+(depends-on "helm-pt")
 (depends-on "swoop")
-(depends-on "helm-swoop")
+(depends-on "helm-swoop" "1.5.0")
 (depends-on "helm-dash" "1.1.0")
 
 ;; Mail
@@ -280,6 +287,9 @@
 
 ;; Twitter
 (depends-on "twittering-mode" "2.0.0")
+
+;; StackExchange
+(depends-on "sx" "0.2")
 
 ;; Organisation
 (depends-on "org" "8.2.10")
@@ -333,6 +343,8 @@
 (depends-on "bbdb-" "0.0.2")
 (depends-on "bbdb-ext")
 (depends-on "bbdb-csv-import")
+(depends-on "notmuch")
+(depends-on "notmuch-labeler")
 
 ;; Keys
 (depends-on "guide-key" "1.2.5")
