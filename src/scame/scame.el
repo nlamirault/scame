@@ -17,9 +17,49 @@
 
 ;;; Commentary:
 
-;; Scame is a configuration for Emacs.
-
 ;;; Code:
+
+(defgroup scame nil
+  "Emacs starter kit."
+  :group 'tools)
+
+(defcustom user-home-directory (concat (getenv "HOME") "/")
+  "Path of the user home directory."
+  :group 'scame
+  :type 'string)
+
+(defcustom scame-cask-file "~/.cask/cask.el"
+  "Scame Cask file."
+  :group 'scame
+  :type 'string)
+
+(defcustom scame-keymap-prefix (kbd "C-c s")
+  "Scame keymap prefix."
+  :group 'scame
+  :type 'string)
+
+(defcustom scame-user-directory
+  (concat user-home-directory ".emacs.d/scame")
+  "Scame user directory installation."
+  :group 'scame
+  :type 'string)
+
+(defcustom scame-vendoring-directory
+  (concat user-emacs-directory "vendor")
+  "Vendoring directory for Scame."
+  :group 'scame
+  :type 'string)
+
+(defcustom scame-user-customization-file
+  (concat user-home-directory ".config/scame/scame-user.el")
+  "File used to store user customization."
+  :group 'scame
+  :type 'string)
+
+(defcustom scame-use-vendoring t
+  "Set if you want to use vendoring utility."
+  :group 'scame
+  :type 'boolean)
 
 ;; Debug or not
 (setq debug-on-error t)
@@ -37,7 +77,7 @@
 ;; Don't initialize packages twice
 (setq package-enable-at-startup nil)
 
-(require 'cask "~/.cask/cask.el")
+(require 'cask scame-cask-file)
 (cask-initialize)
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
 ;;(require 'pallet)
@@ -50,22 +90,6 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (setq-default show-trailing-whitespace t)
-
-(defconst user-home-directory
-  (f-full (getenv "HOME"))
-  "Path of the user home directory.")
-
-(defconst scame-user-directory
-  (f-join user-home-directory ".emacs.d/scame")
-  "Scame user directory installation.")
-
-(defconst scame-vendoring-directory
-  (f-join user-emacs-directory "vendor")
-  "Vendoring directory for Scame.")
-
-(defconst scame-user-customization-file
-  (f-join user-home-directory ".config/scame/scame-user.el")
-  "File used to store user customization.")
 
 (use-package el-init
   :config (progn
@@ -84,7 +108,8 @@
                                       el-init-require/system-case))))
 
 
-(when (and (f-exists? scame-vendoring-directory)
+(when (and scame-use-vendoring
+           (f-exists? scame-vendoring-directory)
            (f-directory? scame-vendoring-directory))
   (f-entries scame-vendoring-directory
              (lambda (elem)
