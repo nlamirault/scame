@@ -31,13 +31,23 @@
   (f-join user-home-directory filename))
 
 
+(defvar scame--gmail-backend nil
+  "The GMail backend used.")
+
+(defun scame-mail-local ()
+  "Launch Gnus using localhost IMAP server."
+  (interactive)
+  (setq gnus-init-file (scame--gnus-init-file "scame/gnus/gnus-local.el")
+        gnus-startup-file (scame--gnus-startup-file ".localhost-newsrc"))
+  (gnus))
+
 (defun scame-mail-gmail ()
   "Launch Gnus using GMail configuration."
   (interactive)
   (setq gnus-init-file (scame--gnus-init-file "scame/gnus/gnus-gmail.el")
-        gnus-startup-file (scame--gnus-startup-file ".gmail-newsrc"))
+        gnus-startup-file (scame--gnus-startup-file ".gmail-newsrc")
+        scame--gmail-backend 'imap)
   (gnus))
-;;(global-set-key (kbd "C-c m g") 'scame-mail-gmail)
 
 (defun scame-mail-exchange ()
   "Launch Gnus using Exchange configuration."
@@ -45,15 +55,6 @@
   (setq gnus-init-file (scame--gnus-init-file "scame/gnus/gnus-exchange.el")
         gnus-startup-file (scame--gnus-startup-file ".exchange-newsrc"))
   (gnus))
-;;(global-set-key (kbd "C-c m e") 'scame-mail-exchange)
-
-(defun scame-mail-offlineimap ()
-  "Launch Gnus using Offlineimap configuration."
-  (interactive)
-  (setq gnus-init-file (scame--gnus-init-file "scame/gnus/gnus-offlineimap.el")
-        gnus-startup-file (scame--gnus-startup-file ".offlineimap-newsrc"))
-  (gnus))
-;;(global-set-key (kbd "C-c m o") 'scame-mail-offlineimap)
 
 
 (provide '03_scame_email)

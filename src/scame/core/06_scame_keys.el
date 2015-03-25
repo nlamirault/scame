@@ -45,7 +45,7 @@
               "Scame email"
               ("g" scame-mail-gmail "gmail")
               ("e" scame-mail-exchange "exchange")
-              ("o" scame-mail-offlineimap "offllineimap"))
+              ("l" scame-mail-local "local"))
 
             (defhydra scame-toggle (scame-mode-map "C-c s t")
               "Scame toggle"
