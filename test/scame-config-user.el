@@ -1,6 +1,6 @@
-;;; scame-commons-test.el --- Commons task in Scame.
+;; scame-config-user.el --- Scame customization for unit tests
 
-;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -17,16 +17,17 @@
 
 ;;; Commentary:
 
+;; Scame user customization file for unit tests
+
 ;;; Code:
 
+;; Debug or not
+;;(setq debug-on-error t)
 
-;;(require 'test-helper)
+;; User
 
+(setq user-full-name "Scame Test")
+(setq user-mail-address "scame.test@gmail.com")
 
-(ert-deftest test-scame-version ()
-  (with-test-sandbox
-   (should (string-equal "0.14.0" scame-version-number))))
-
-
-(provide 'scame-commons-test)
-;;; scame-commons-test.el ends here
+(provide 'scame-config-user)
+;;; scame-config-user.el ends here

@@ -38,7 +38,7 @@
                  (key-binding (kbd "C-c s z")))))))
 
 (ert-deftest test-scame-searches-keybindings ()
-  :tags '(scame-keys current)
+  :tags '(scame-keys)
   (with-test-sandbox
    (with-scame-mode
     (should (eql 'scame-search/engine/search-google
@@ -63,8 +63,8 @@
                  (key-binding (kbd "C-c s m g"))))
     (should (eql 'scame-email/scame-mail-exchange
                  (key-binding (kbd "C-c s m e"))))
-    (should (eql 'scame-email/scame-mail-offlineimap
-                 (key-binding (kbd "C-c s m o")))))))
+    (should (eql 'scame-email/scame-mail-local
+                 (key-binding (kbd "C-c s m l")))))))
 
 (ert-deftest test-scame-launcher-keybindings ()
   :tags '(scame-keys)

@@ -27,8 +27,6 @@
 (require 'shut-up)
 (require 'undercover)
 
-(setq debugger-batch-max-lines (+ 50 max-lisp-eval-depth)
-      debug-on-error t)
 
 (defvar username (getenv "HOME"))
 
@@ -57,6 +55,14 @@
   "If T send output messages.")
 
 
+(defun setup-scame-test ()
+  (setq scame-use-vendoring nil)
+  (setq scame-user-customization-file
+        (f-join scame-test/sandbox-path "scame-config-user.el"))
+  (setq debugger-batch-max-lines (+ 50 max-lisp-eval-depth)
+        debug-on-error t))
+
+
 (defmacro with-current-file (filename &rest body)
   "Open the `FILENAME' in the current buffer and execute `BODY'."
   `(let ((file (f-join scame-test/test-path ,filename)))
@@ -64,16 +70,17 @@
        ,@body)))
 
 (defmacro with-scame-mode (&rest body)
+  "Create a temporary buffer, activate `scame-mode' and evaluate `BODY'."
   `(with-temp-buffer
      (scame-global-mode)
      ,@body))
 
 (defmacro scame--with-output (&rest body)
+  "Execute `BODY' using `scame-debug-output' for output."
   `(if scame-debug-output
        ,@body
      (shut-up
        ,@body)))
-
 
 (defun print-load-path (path)
   "Output the 'load-path using PATH for Cask bundle."
@@ -121,7 +128,7 @@
 
 (defun setup-scame (path)
   "Initialize Cask dependencies to PATH and generate 'load-path."
-  (message (ansi-green "[Scame] Setup Scame"))
+  (message (ansi-green "[Scame] Setup Scame using %s" path))
   (let ((bundle (cask-initialize path)))
     (cask-update bundle)
     (cask-install bundle)
@@ -130,7 +137,7 @@
       (add-to-list 'load-path dir))
     (add-to-list 'load-path (f-join path ".cask"))
     (add-to-list 'load-path (f-slash path))
-    ;;(print (cask-load-path bundle))))
+    ;;(print (cask-load-path bundle))
     ))
 
 
@@ -148,13 +155,15 @@
   "Evaluate BODY in an empty sandbox directory."
   `(unwind-protect
        (condition-case nil ;ex
-           (let ((default-directory scame-test/root-path))
+           ;;(let ((default-directory scame-test/root-path))
+           (let ((default-directory scame-test/sandbox-path))
              ;; (unless (f-dir? scame-test/sandbox-path)
              ;;   (f-mkdir scame-test/sandbox-path))
              (cleanup-load-path)
              (install-scame)
              (setup-scame scame-test/sandbox-path)
-             (load-library "/src/scame/scame.el")
+             (setup-scame-test)
+             (load-library "/scame/scame.el")
              ;;(should (featurep 'scame-global-mode))
              (message (ansi-yellow "[Scame] Execute body"))
              ,@body)

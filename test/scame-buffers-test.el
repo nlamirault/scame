@@ -20,22 +20,26 @@
 ;;; Code:
 
 (ert-deftest test-scame-uniquify ()
+  :tags '(buffers)
   (with-test-sandbox
    (require 'uniquify)
    (should (featurep 'uniquify))))
 
 (ert-deftest test-scame-ag ()
+  :tags '(buffers)
   (with-test-sandbox
    (require 'ag)
    (should (featurep 'ag))))
 
 (ert-deftest test-scame-ace-jump-mode ()
+  :tags '(buffers)
   (with-test-sandbox
    (require 'ace-jump-mode)
    (should (featurep 'ace-jump-mode))
    (should (eql 'ace-jump-mode (key-binding (kbd "C-c SPC"))))))
 
 (ert-deftest test-scame-recentf ()
+  :tags '(buffers)
   (with-test-sandbox
    (should (featurep 'recentf))
    (should (string-equal (f-join user-emacs-directory ".recentf")
