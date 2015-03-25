@@ -83,13 +83,18 @@
                                       el-init-require/record-error
                                       el-init-require/system-case))))
 
+
 (when (and (f-exists? scame-vendoring-directory)
            (f-directory? scame-vendoring-directory))
   (f-entries scame-vendoring-directory
-             (lambda (dir)
-               (when (or (f-directory? dir)
-                         (f-symlink? dir))
-                 (add-to-list 'load-path dir)))))
+             (lambda (elem)
+               (message "elem: %s" elem)
+               (cond ((or (f-directory? elem)
+                          (f-symlink? elem))
+                      (add-to-list 'load-path elem))
+                     ((f-file? elem)
+                      (when (string= (f-ext elem) "el")
+                        (load-file elem)))))))
 
 (when (file-readable-p scame-user-customization-file)
   (load scame-user-customization-file))
