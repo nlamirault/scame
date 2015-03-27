@@ -56,7 +56,7 @@
   "Scame minor mode.
 
 \\{scame-mode-map}"
-  :lighter scame-mode-line-lighter
+  ;:lighter scame-mode-line-lighter
   :keymap scame-mode-map
   :group 'scame
   :require 'scame
