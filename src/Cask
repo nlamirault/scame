@@ -312,9 +312,10 @@
 (depends-on "know-your-http-well" "0.2.0")
 
 ;; UI
-(depends-on "smart-mode-line" "2.8")
 (depends-on "diminish" "0.44")
 (depends-on "powerline" "2.2")
+(depends-on "smart-mode-line" "2.8")
+(depends-on "smart-mode-line-powerline-theme" "2.8")
 (depends-on "popwin" "0.6.2")
 ;;(depends-on "golden-ratio")
 ;;(depends-on "font-awesome")
