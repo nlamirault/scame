@@ -19,6 +19,29 @@
 
 ;;; Code:
 
+
+(use-package rich-minority
+  :config (progn
+            ;; (setq rm-blacklist
+            ;;       (format "^ \\(%s\\)$"
+            ;;               (mapconcat #'identity
+            ;;                          '("FlyC.*"
+            ;;                            "overseer"
+            ;;                            "company"
+            ;;                            "SliNav"
+            ;;                            "MRev"
+            ;;                            "Guide"
+            ;;                            "Undo-Tree")
+            ;;                          "\\|")))
+            (setq rm-blacklist '("company"
+                                 "overseer"
+                                 "SliNav"
+                                 "MRev"
+                                 "Guide"
+                                 ))
+            (rich-minority-mode 1)))
+
+
 (use-package smart-mode-line
   :init (progn
           (setq sml/theme 'respectful
@@ -27,13 +50,22 @@
                 sml/shorten-modes t
                 sml/use-projectile-p 'before-prefixes
                 sml/projectile-replacement-format "%s/"
-                sml/no-confirm-load-theme t)
+                sml/no-confirm-load-theme t
+                sml/replacer-regexp-list '(("^/ssh:.*:" ":SSH:")
+                                           ("^/sudo:.*:" ":SU:")
+                                           ("^~/.config/" ":C:")
+                                           ("^~/Dropbox/" ":DB:")
+                                           ("^~/findspire/findspire-front/" ":FS:")
+                                           ("^:FS:findspire/" ":FSf:")
+                                           ))
           (sml/setup)))
+
 
 (use-package powerline
   :config (progn
 	    (powerline-default-theme)
 	    (setq powerline-default-separator 'arrow-fade)))
+
 
 
 
