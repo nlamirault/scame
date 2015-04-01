@@ -10,24 +10,6 @@ These tools are used to perform the [Scame][] installation :
 
 The current version has been tested on Linux and Mac OS X.
 
-- [Installation](#installation)
-  - [Release file](#from-release-file)
-  - [Source](#from-source)
-  - [Docker](#from-docker)
-- [Packages](#packages)
-- [Keymap](#keymap)
-- [Mail](#mail)
-- [Calendars](#calendars)
-- [Customization](#customization)
-- [Vendoring](#vendoring)
-- [Debug](#debug)
-- [Support](#support)
-- [Contribute](#contribute)
-- [Development](#development)
-- [License](#license)
-- [ChangeLog](#changelog)
-- [Contact](#contact)
-
 
 ## Installation
 
