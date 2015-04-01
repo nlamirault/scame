@@ -55,7 +55,7 @@
 
 (use-package ace-window
   :config (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
-  :bind ("M-p" . ace-window))
+  :bind ("C-x o" . ace-window))
 
 (provide '01_basic_ui)
 ;;; 01_basic_ui.el ends here
