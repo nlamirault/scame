@@ -1,6 +1,6 @@
 ;;; 30_dev.el -- Commons configurations for development
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -57,7 +57,7 @@
 			 ".DS_Store")))
 
 (use-package helm-projectile
-  ;;:init (helm-projectile-on)
+  :init (helm-projectile-on)
   :config (setq projectile-completion-system 'helm)
   :bind (("C-c p h" . helm-projectile)))
 
