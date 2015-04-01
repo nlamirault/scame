@@ -256,6 +256,7 @@
 (depends-on "discover-my-major" "1.0")
 (depends-on "wsd-mode" "0.3.0")
 (depends-on "engine-mode")
+(depends-on "ace-window" "0.7.1")
 
 ;; Notifications
 (depends-on "alert")
