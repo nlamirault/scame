@@ -49,7 +49,7 @@
   (with-test-sandbox
    (should (require 'projectile))
    (should (eql 'projectile-find-file
-                helm-projectile-find-file))
+                'helm-projectile-find-file))
    (should (eql 'helm-projectile
                 (key-binding (kbd "C-c p h"))))))
 
