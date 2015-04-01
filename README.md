@@ -354,9 +354,6 @@ Keybinding           | Description
 
 Keybinding           | Description
 ---------------------|------------------------------------------------------------
-<kbd>C-c m g</kbd>   | Launch Gnus using GMail setup
-<kbd>C-c m e</kbd>   | Launch Gnus using Exchange setup
-<kbd>C-c m o</kbd>   | Launch Gnus using offlineimap
 <kbd>C-c d s</kbd>   | bbdb
 <kbd>C-c d n</kbd>   | bbdb-search-name
 <kbd>C-c d m</kbd>   | bbdb-search-mail
@@ -399,7 +396,13 @@ Keybinding            | Description
 <kbd>C-c s s g</kbd>  | Search on Google
 <kbd>C-c s s h</kbd>  | Search on Github
 <kbd>C-c s s t</kbd>  | Search on Twitter
-<kbd>C-c s s a</kbd>  | Search on Arch AUR
+<kbd>C-c s s s</kbd>  | Search on Stackoverflow
+<kbd>C-c s s w</kbd>  | Search on Wikipedia
+<kbd>C-c s s r</kbd>  | Search on RFCs
+<kbd>C-c s m g</kbd>  | Mail (Gnus) using GMail setup
+<kbd>C-c s m e</kbd>  | Mail (Gnus) using Exchange setup
+<kbd>C-c s m o</kbd>  | Mail (Gnus) using offlineimap
+<kbd>C-c s m m</kbd>  | Mail (Gnus) using offlineimap for GMail
 <kbd>C-c s l c</kbd>  | Launch calc
 <kbd>C-c s l t</kbd>  | Launch terminal
 <kbd>C-c s l h</kbd>  | Launch proced (htop)
@@ -422,21 +425,24 @@ You can change the default keymap prefix C-c p like this:
 
 ## Mail
 
+See [doc/Mail.md][].
+
 ### GMail: Imap
 
-Using <kbd>C-c m g</kbd>, Gnus is starting using a GMail configuration
+Using <kbd>C-c s m g</kbd>, Gnus is starting using a GMail configuration
 (IMAP)
 
 ### Exchange
 
-Using <kbd>C-c m e</kbd>, Gnus is starting using for a Microsoft Exchange
+Using <kbd>C-c s m e</kbd>, Gnus is starting using for a Microsoft Exchange
 mail account.
 
 ### Offlineimap / MSMTP
 
-Using <kbd>C-c m o</kbd>, Gnus is starting using your `offlineimap` and `msmtp`
+Using <kbd>C-c s m o</kbd>, Gnus is starting using your `offlineimap` and `msmtp`
 configuration.
 
+You
 
 ## Calendars
 
