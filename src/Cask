@@ -270,6 +270,8 @@
 (depends-on "swoop")
 (depends-on "helm-swoop" "1.5.0")
 (depends-on "helm-dash" "1.1.0")
+(depends-on "swiper" "0.2.0")
+(depends-on "swiper-helm")
 
 ;; Mail
 ;;(depends-on "mu4e")
@@ -312,7 +314,8 @@
 (depends-on "know-your-http-well" "0.2.0")
 
 ;; UI
-(depends-on "diminish" "0.44")
+;; (depends-on "diminish" "0.44")
+(depends-on "rich-minority" "0.1.1")
 (depends-on "powerline" "2.2")
 (depends-on "smart-mode-line" "2.8")
 (depends-on "smart-mode-line-powerline-theme" "2.8")
