@@ -19,8 +19,10 @@
 
 ;;; Code:
 
+;; FIX: can't load it ?
+
 (use-package engine-mode
-  :init (engine-mode t)
+  ;;:init (engine-mode t)
   :config (progn
             (defengine google
               "http://www.google.com/search?ie=utf-8&oe=utf-8&q=%s"
