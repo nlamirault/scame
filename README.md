@@ -46,8 +46,8 @@ The current version has been tested on Linux and Mac OS X.
 
 * Installation :
 
-        $ tar zxvf scame-0.13.0.tar.gz
-        $ cp -r scame-0.13.0/* ~/.emacs.d
+        $ tar zxvf scame-1.0.0.tar.gz
+        $ cp -r scame-1.0.0/* ~/.emacs.d
 
 
 ### From source
@@ -70,148 +70,12 @@ The current version has been tested on Linux and Mac OS X.
 
 * Download the Scame image :
 
-        $ docker pull nlamirault/scame:0.13.0
+        $ docker pull nlamirault/scame:1.0.0
 
 * Launch Scame image :
 
-        $ docker run -it --rm=true nlamirault/scame:0.13.0 -e DISPLAY=$(DISPLAY) -v /tmp/.X11-unix:/tmp/.X11-unix emacs-snapshot
+        $ docker run -it --rm=true nlamirault/scame:1.0.0 -e DISPLAY=$(DISPLAY) -v /tmp/.X11-unix:/tmp/.X11-unix emacs-snapshot
 
-
-## Packages
-
-Collections of packages installed:
-
-- [cask](https://github.com/cask/cask)
-- [use-package](https://github.com/jwiegley/use-package)
-- [init-loader](https://github.com/emacs-jp/init-loader)
-- [paradox](https://github.com/Bruce-Connor/paradox)
-
-Interface Enhancement:
-- [helm](https://github.com/emacs-helm/helm)
-- [smex](https://github.com/nonsequitur/smex)
-- [guide-key](https://github.com/kai2nenobu/guide-key)
-
-File manager:
-- [direx.el](https://github.com/m2ym/direx-el)
-- [dired-imenu](https://github.com/DamienCassou/dired-imenu)
-- [dired-filter](https://github.com/Fuco1/dired-hacks)
-- [dired-open](https://github.com/Fuco1/dired-hacks)
-- [dired-subtree](https://github.com/Fuco1/dired-hacks)
-- [sr-speedbar](http://www.emacswiki.org/emacs/SrSpeedbar)
-- [neotree](http://www.emacswiki.org/emacs/NeoTree)
-
-Navigation:
-- [imenu-anywhere](https://github.com/vitoshka/imenu-anywhere)
-- [helm-swoop](https://github.com/ShingoFukuyama/helm-swoop)
-
-Project managment :
-- [projectile][]
-- [persp-projectile](https://github.com/bbatsov/projectile)
-- [project-explorer](https://github.com/sabof/project-explorer)
-- [nav](https://code.google.com/p/emacs-nav/)
-- [lice.el](https://github.com/buzztaiki/lice-el)
-- [perspective][]
-- [prodigy.el](https://github.com/rejeep/prodigy.el)
-
-Python :
-- [jedi](https://github.com/tkf/emacs-jedi)
-- [jedi-direx](https://github.com/tkf/emacs-jedi-direx)
-- [elpy](https://github.com/jorgenschaefer/elpy)
-- [virtualenvwrapper](https://github.com/porterjamesj/virtualenvwrapper.el)
-- [anaconda-mode](https://github.com/proofit404/anaconda-mode)
-- [sphinx-doc](https://github.com/naiquevin/sphinx-doc.el)
-- [tox.el](https://github.com/chmouel/tox.el)
-
-Common Lisp:
-- [sly](https://github.com/capitaomorte/sly)
-
-Go:
-- [go-mode](http://melpa.milkbox.net/#/go-mode)
-- [go-play](https://github.com/dominikh/go-play.el)
-- [go-autocomplete](https://github.com/nsf/gocode)
-- [go-eldoc](https://github.com/syohex/emacs-go-eldoc)
-- [go-direx](https://github.com/syohex/emacs-go-direx)
-- [go-test.el](https://github.com/nlamirault/gotest.el)
-- [go-projectile](https://github.com/dougm/go-projectile)
-- [company-go](https://github.com/nsf/gocode/tree/master/emacs-company)
-
-Emacs lisp:
-- [elisp-slime-nav](https://github.com/purcell/elisp-slime-nav)
-- [erefactor](https://github.com/mhayashi1120/Emacs-erefactor)
-
-Ruby:
-- [ruby-mode](http://www.emacswiki.org/emacs/RubyMode)
-- [rvm](https://github.com/senny/rvm.el)
-- [rhtml-mode](https://github.com/eschulte/rhtml)
-- [ruby-tools](https://github.com/rejeep/ruby-tools.el)
-- [inf-ruby](https://github.com/nonsequitur/inf-ruby)
-- [company-inf-ruby](https://github.com/company-mode/company-inf-ruby)
-
-Php:
-- [web-mode](http://www.web-mode.org)
-- [emacsagist](https://github.com/echosa/emacsagist)
-- [phpunit.el](https://github.com/nlamirault/phpunit.el)
-
-Clojure:
-- [cider](http://melpa.milkbox.net/#/cider)
-
-Scheme:
-- [Geiser](https://github.com/jaor/geiser)
-
-Erlang:
-- [Erlang](https://github.com/erlang/otp)
-
-Haskell:
-- [Haskell-mode](https://github.com/haskell/haskell-mode)
-- [flycheck-haskell](https://github.com/flycheck/flycheck-haskell)
-
-Perl:
-- [plsense-direx](https://github.com/aki2o/plsense-direx)
-
-Cloud:
-- [puppet-mode](https://github.com/lunaryorn/puppet-mode)
-- [dockerfile-mode](https://github.com/spotify/dockerfile-mode)
-- [vagrant](https://github.com/ottbot/vagrant.el)
-
-Error checking:
-- [flycheck](https://github.com/flycheck/flycheck)
-
-Productivity:
-- [Org](http://orgmode.org)
-- [calfw](https://github.com/kiwanami/emacs-calfw)
-
-Completion:
-- [auto-complete](http://cx4a.org/software/auto-complete/)
-- [company-mode](http://company-mode.github.io/)
-- [helm-company](https://github.com/yasuyk/helm-company)
-
-Version Control:
-- [magit](https://github.com/magit/magit)
-
-Search:
-- [helm-ack](https://github.com/syohex/emacs-helm-ack)
-- [helm-ag](https://github.com/syohex/emacs-helm-ag)
-
-Appearence:
-- [powerline](https://github.com/milkypostman/powerline)
-
-Console:
-- [multi-term](http://www.emacswiki.org/emacs/multi-term.el)
-
-Mail
-- [gnus](http://www.gnus.org/)
-- [bbdb](https://github.com/emacsmirror/bbdb)
-- [google-contacts](https://julien.danjou.info/projects/emacs-packages#google-contacts)
-
-Theme:
-- [moe-theme](https://github.com/kuanyui/moe-theme.el)
-- [zenburn-theme](https://github.com/bbatsov/zenburn-emacs)
-- [color-theme-sanityinc-tomorrow]()
-- [noctilux-theme](https://github.com/stafu/noctilux-theme)
-- [afternoon-theme](https://github.com/osener/emacs-afternoon-theme)
-- [ample-theme](https://github.com/jordonbiondo/ample-theme)
-- [subatomic-theme](https://github.com/cryon/subatomic)
-- [monokai-theme](https://github.com/oneKelvinSmith/monokai-emacs)
 
 ## Keymap
 
