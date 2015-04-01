@@ -64,5 +64,13 @@
             (setq helm-dash-min-length 1)
             (setq helm-dash-browser-func 'eww)))
 
+
+(use-package swiper
+  :bind (("C-s" . swiper)
+         ("C-r" . swiper)))
+
+(use-package swiper-helm)
+
+
 (provide '15_helm)
 ;;; 15_helm.el ends here
