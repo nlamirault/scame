@@ -1,7 +1,7 @@
 # Scame
 
 [![License GPL 3][badge-license]][COPYING]
-![Version][badge-release]
+[![Version][badge-release]]
 [![travis][badge-travis]][travis]
 [![drone][badge-drone]][drone]
 [![Coverage Status](https://coveralls.io/repos/nlamirault/scame/badge.png)](https://coveralls.io/r/nlamirault/scame)
