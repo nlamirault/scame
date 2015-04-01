@@ -147,21 +147,18 @@
 ;;(setq gnus-summary-line-format "%U%R%z %o %I%(%[%-25,25n%]%) %s\n")
 (setq gnus-summary-mode-line-format "Gnus: %G %Z")
 
-; from jd
-;; (setq gnus-summary-line-format
-;;       (concat "%z%U%R %~(max-right 17)~(pad-right 17)&user-date;  "
-;;               "%~(max-right 20)~(pad-right 20)f %B%s\n"))
-;;(setq gnus-summary-line-format "%U%R%z %(%&user-date;  %-15,35f  %B%s%)\n")
-;;(setq gnus-summary-line-format "%U%R%z%I%(%[%4L: %-23,23f%]%) %s\n")
-
-
 (defun rs-gnus-get-label (header)
-  "Returns label from X-Label header"
+  "Return label from X-Label HEADER."
   (let ((lbl (or (cdr (assq 'X-GM-LABELS (mail-header-extra header))) "")))
     lbl))
 (defalias 'gnus-user-format-function-r 'rs-gnus-get-label)
-(setq gnus-summary-line-format
-      "%1{%U%R%z: %}%2{%D%}%5{ %[%4i%] %}%4{%-24,24n%}%6{%-4,4ur%}%5{| %}%(%1{%B%}%s%)\n")
+
+;; (setq gnus-summary-line-format
+;;       "%1{%U%R%z: %}%2{%o%}%5{ %[%4i%] %}%4{%-24,24n%}%6{%-4,4ur%}%5{| %}%(%1{%B%}%s%)\n")
+
+(setq-default gnus-summary-line-format "%1{%U%R%z: %}%2{%&user-date;%}%5{ %[%4i%] %}%4{%-24,24n%}%6{%-4,4ur%}%5{| %}%(%1{%B%}%s%)\n"
+              gnus-user-date-format-alist '((t . "%Y-%m-%d %H:%M")))
+
 (setq nnmail-extra-headers '(To X-GM-LABELS Newsgroups Content-Type))
 
 (copy-face 'default 'myface)

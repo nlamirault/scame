@@ -17,26 +17,37 @@ These tools are used to perform the [Scame][] installation :
 The current version has been tested on Linux and Mac OS X.
 
 
+- [Installation](#installation)
+  - [Release file](#from-release-file)
+  - [Source](#from-source)
+  - [Docker](#from-docker)
+- [Packages](#packages)
+- [Keymap](#keymap)
+- [Mail](#mail)
+- [Calendars](#calendars)
+- [Customization](#customization)
+- [Vendoring](#vendoring)
+- [Debug](#debug)
+- [Support](#support)
+- [Contribute](#contribute)
+- [Development](#development)
+- [License](#license)
+- [ChangeLog](#changelog)
+- [Contact](#contact)
+
+
 ## Installation
 
 ### From release file
 
 * Download archive :
 
-        $ wget https://github.com/nlamirault/scame/releases/download/0.12.0/scame-0.12.0.tar.gz
+        $ wget https://github.com/nlamirault/scame/releases/download/0.13.0/scame-0.13.0.tar.gz
 
 * Installation :
 
-        $ tar zxvf scame-0.12.0.tar.gz
-        $ cp -r scame-0.12.0/* ~/.emacs.d
-
-
-### From Docker
-
-* Run using Docker :
-
-        $ docker pull nlamirault/scame:0.12.0
-        $ docker run -it --rm=true nlamirault/scame:0.12.0 -e DISPLAY=$(DISPLAY) -v /tmp/.X11-unix:/tmp/.X11-unix emacs-snapshot
+        $ tar zxvf scame-0.13.0.tar.gz
+        $ cp -r scame-0.13.0/* ~/.emacs.d
 
 
 ### From source
@@ -51,7 +62,7 @@ The current version has been tested on Linux and Mac OS X.
         $ cp -r scame/src/* ~/.emacs.d/
         $ cd ~/.emacs.d && cask install
 
-### Using Docker
+### From Docker
 
 * Search from registry the Scame image :
 
@@ -59,11 +70,11 @@ The current version has been tested on Linux and Mac OS X.
 
 * Download the Scame image :
 
-        $ docker pull nlamirault/scame
+        $ docker pull nlamirault/scame:0.13.0
 
 * Launch Scame image :
 
-        $ docker run -i -t nlamirault/scame
+        $ docker run -it --rm=true nlamirault/scame:0.13.0 -e DISPLAY=$(DISPLAY) -v /tmp/.X11-unix:/tmp/.X11-unix emacs-snapshot
 
 
 ## Packages
@@ -343,9 +354,6 @@ Keybinding           | Description
 
 Keybinding           | Description
 ---------------------|------------------------------------------------------------
-<kbd>C-c m g</kbd>   | Launch Gnus using GMail setup
-<kbd>C-c m e</kbd>   | Launch Gnus using Exchange setup
-<kbd>C-c m o</kbd>   | Launch Gnus using offlineimap
 <kbd>C-c d s</kbd>   | bbdb
 <kbd>C-c d n</kbd>   | bbdb-search-name
 <kbd>C-c d m</kbd>   | bbdb-search-mail
@@ -388,7 +396,13 @@ Keybinding            | Description
 <kbd>C-c s s g</kbd>  | Search on Google
 <kbd>C-c s s h</kbd>  | Search on Github
 <kbd>C-c s s t</kbd>  | Search on Twitter
-<kbd>C-c s s a</kbd>  | Search on Arch AUR
+<kbd>C-c s s s</kbd>  | Search on Stackoverflow
+<kbd>C-c s s w</kbd>  | Search on Wikipedia
+<kbd>C-c s s r</kbd>  | Search on RFCs
+<kbd>C-c s m g</kbd>  | Mail (Gnus) using GMail setup
+<kbd>C-c s m e</kbd>  | Mail (Gnus) using Exchange setup
+<kbd>C-c s m o</kbd>  | Mail (Gnus) using offlineimap
+<kbd>C-c s m m</kbd>  | Mail (Gnus) using offlineimap for GMail
 <kbd>C-c s l c</kbd>  | Launch calc
 <kbd>C-c s l t</kbd>  | Launch terminal
 <kbd>C-c s l h</kbd>  | Launch proced (htop)
@@ -411,26 +425,42 @@ You can change the default keymap prefix C-c p like this:
 
 ## Mail
 
+See [doc/Mail.md][].
+
 ### GMail: Imap
 
-Using <kbd>C-c m g</kbd>, Gnus is starting using a GMail configuration
+Using <kbd>C-c s m g</kbd>, Gnus is starting using a GMail configuration
 (IMAP)
 
 ### Exchange
 
-Using <kbd>C-c m e</kbd>, Gnus is starting using for a Microsoft Exchange
+Using <kbd>C-c s m e</kbd>, Gnus is starting using for a Microsoft Exchange
 mail account.
 
 ### Offlineimap / MSMTP
 
-Using <kbd>C-c m o</kbd>, Gnus is starting using your `offlineimap` and `msmtp`
+Using <kbd>C-c s m o</kbd>, Gnus is starting using your `offlineimap` and `msmtp`
 configuration.
 
+You
 
 ## Calendars
 
 To setup a Google calendars set the `google-ical-calendars` variable using
 private ics URI.
+
+```el
+(setq google-ical-calendars
+      '(("https://www.google.com/calendar/ical/xxxxxxxxx/basic.ics"
+         "Mine"
+         "LightBlue")
+        ("https://www.google.com/calendar/ical/xxxxxxxxxx/basic.ics"
+         "Family"
+         "Yellow")
+        ("https://www.google.com/calendar/ical/xxxxxxxxx/basic.ics"
+         "Work"
+         "White")))
+`̀`
 
 
 ## Customization

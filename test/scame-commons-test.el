@@ -25,14 +25,8 @@
 
 (ert-deftest test-scame-version ()
   (with-test-sandbox
-   (should (string-equal "0.13.0" scame-version-number))))
+   (should (string-equal "0.14.0" scame-version-number))))
 
-
-(ert-deftest test-scame-customization-file ()
-  (with-test-sandbox
-   (should (string-equal
-            (f-join (getenv "HOME") ".config/scame/scame-user.el")
-            scame-user-customization-file))))
 
 (provide 'scame-commons-test)
 ;;; scame-commons-test.el ends here

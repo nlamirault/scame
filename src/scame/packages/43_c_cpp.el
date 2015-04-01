@@ -1,6 +1,6 @@
 ;;; 43_c_cpp.el -- C/C++ configuration
 
-;; Copyright (C) 2014  Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -32,27 +32,11 @@
 ;; “user”: When you want to define your own style
 
 
-(use-package cc-mode
-  :config (progn
-            ;; broke php-mode ??
-            ;; (setq c-default-style "linux"
-            ;;       c-basic-offset 4)
-            (add-hook 'c-mode-hook
-                      (lambda ()
-                        (setq flycheck-clang-include-path
-                              (list "/usr/include/"))
-                        (setq flycheck-gcc-include-path
-                              (list "/usr/include/"))))))
-
-;; (use-package google-c-style
+;; (use-package cc-mode
 ;;   :config (progn
-;;             (add-hook 'c-mode-common-hook 'google-set-c-style)
-;;             (add-hook 'c-mode-common-hook 'google-make-newline-indent)
-;;             (add-hook 'c-mode-hook
-;;                       '(lambda ()
-;;                          (setq comment-style 'extra-line)
-;;                          (setq c-basic-offset 8)))
-;;             (add-hook 'c++-mode-common-hook 'google-set-c-style)
+;;             ;; broke php-mode ??
+;;             ;; (setq c-default-style "linux"
+;;             ;;       c-basic-offset 4)
 ;;             (add-hook 'c-mode-hook
 ;;                       (lambda ()
 ;;                         (setq flycheck-clang-include-path
@@ -60,26 +44,39 @@
 ;;                         (setq flycheck-gcc-include-path
 ;;                               (list "/usr/include/"))))))
 
+;; (use-package company-c-headers
+;;   :config (add-to-list 'company-backends 'company-c-headers))
 
-;; (use-package auto-complete-c-headers
+
+;; (use-package c-eldoc
 ;;   :config (progn
-;;             (add-to-list 'ac-sources 'ac-source-c-headers)
-;;             (add-hook 'c++-mode-hook
-;;                       '(lambda ()
-;;                          (add-to-list 'ac-sources 'ac-source-c-headers)))
-;;             (add-hook 'c-mode-hook
-;;                       '(lambda ()
-;;                          (add-to-list 'ac-sources 'ac-source-c-headers)))))
+;;             (add-hook 'c-mode-hook 'c-turn-on-eldoc-mode)
+;;             (add-hook 'c++-mode-hook 'c-turn-on-eldoc-mode)))
 
-
-(use-package company-c-headers
-  :config (add-to-list 'company-backends 'company-c-headers))
-
-
-(use-package c-eldoc
+(use-package irony
   :config (progn
-            (add-hook 'c-mode-hook 'c-turn-on-eldoc-mode)
-            (add-hook 'c++-mode-hook 'c-turn-on-eldoc-mode)))
+            (add-hook 'c++-mode-hook 'irony-mode)
+            (add-hook 'c-mode-hook 'irony-mode)
+            (add-hook 'objc-mode-hook 'irony-mode)
+            (add-hook 'irony-mode-hook (lambda ()
+                                         (define-key irony-mode-map [remap completion-at-point]
+                                           'irony-completion-at-point-async)
+                                         (define-key irony-mode-map [remap complete-symbol]
+                                           'irony-completion-at-point-async)))))
+
+(use-package company-irony
+  :config (progn
+            (add-to-list 'company-backends 'company-irony)
+            (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+            (add-hook 'irony-mode-hook 'company-mode)))
+
+(use-package flycheck-irony
+  :config (progn
+            (add-to-list 'flycheck-checkers 'irony)
+            (add-hook 'irony-mode-hook 'flycheck-mode)))
+
+(use-package irony-eldoc
+  :config (add-hook 'irony-mode-hook 'irony-eldoc))
 
 
 (provide '43_c_cpp)

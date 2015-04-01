@@ -121,6 +121,8 @@ install:
 
 
 before_script:
+  - mkdir $HOME/Org
+  - touch $HOME/Org/calendar.org
 #   - if [ "$EMACS" = 'emacs-snapshot' ]; then
 #         make downloads-latest;
 #     else

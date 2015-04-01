@@ -45,8 +45,9 @@
 
 
 
-
-
+(use-package eww
+  :config (progn
+            (setq shr-color-visible-luminance-min 70)))
 
 (provide '95_browser)
 ;;; 95_browser.el ends here

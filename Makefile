@@ -121,7 +121,7 @@ docker-clean:
 .PHONY: docker-run
 docker-run:
 	@echo -e "$(OK_COLOR)[$(APP)] Run $(IMAGE):$(VERSION) $(NO_COLOR)"
-	@$(DOCKER) run -it --rm=true $(NAMESPACE)/$(IMAGE):$(VERSION) -e DISPLAY=${DISPLAY} -v /tmp/.X11-unix:/tmp/.X11-unix emacs-snapshot
+	@$(DOCKER) run -it --rm=true -e DISPLAY=unix${DISPLAY} -v /tmp/.X11-unix:/tmp/.X11-unix emacs-snapshot --name scame $(NAMESPACE)/$(IMAGE):$(VERSION)
 
 .PHONY: docker-debug
 docker-debug:

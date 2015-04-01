@@ -1,6 +1,6 @@
-;;; 04_ido.el --- IDO configuration
+;; scame-config-user.el --- Scame customization for unit tests
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -17,22 +17,17 @@
 
 ;;; Commentary:
 
+;; Scame user customization file for unit tests
+
 ;;; Code:
 
+;; Debug or not
+;;(setq debug-on-error t)
 
-(use-package ido
-  :init (ido-mode 1)
-  :config
-  (progn
-    (setq ido-case-fold t)
-    (setq ido-everywhere t)
-    (setq ido-enable-prefix nil)
-    (setq ido-enable-flex-matching t)
-    (setq ido-create-new-buffer 'always)
-    (setq ido-max-prospects 10)
-    (add-to-list 'ido-ignore-files "\\.DS_Store")))
+;; User
 
+(setq user-full-name "Scame Test")
+(setq user-mail-address "scame.test@gmail.com")
 
-
-(provide '04_ido)
-;;; 04_ido.el ends here
+(provide 'scame-config-user)
+;;; scame-config-user.el ends here

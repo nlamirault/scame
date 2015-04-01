@@ -1,6 +1,6 @@
 ;;; 05_server.el --- Server configuration
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,9 +19,8 @@
 
 ;;; Code:
 
-(use-package server
-  :init (unless (server-running-p)
-	  (server-start)))
+(unless (server-running-p)
+  (server-start))
 
 (provide '05_server)
 ;;; 05_server.el ends here

@@ -24,40 +24,50 @@
 
 
 (ert-deftest test-scame-version-keybinding ()
+  :tags '(scame-keys)
   (with-test-sandbox
    (with-scame-mode
     (should (eql 'scame/scame-version
                  (key-binding (kbd "C-c s v")))))))
 
 (ert-deftest test-scame-customization-keybinding ()
+  :tags '(scame-keys)
   (with-test-sandbox
    (with-scame-mode
     (should (eql 'scame/scame-customization
                  (key-binding (kbd "C-c s z")))))))
 
 (ert-deftest test-scame-searches-keybindings ()
+  :tags '(scame-keys)
   (with-test-sandbox
    (with-scame-mode
-    (should (eql 'scame-search/scame-search-google
+    (should (eql 'scame-search/engine/search-google
                  (key-binding (kbd "C-c s s g"))))
-    (should (eql 'scame-search/scame-search-github
+    (should (eql 'scame-search/engine/search-github
                  (key-binding (kbd "C-c s s h"))))
-    (should (eql 'scame-search/scame-search-launchpad
-                 (key-binding (kbd "C-c s s l"))))
-    (should (eql 'scame-search/scame-search-arch-aur
-                 (key-binding (kbd "C-c s s a")))))))
+    (should (eql 'scame-search/engine/search-twitter
+                 (key-binding (kbd "C-c s s t"))))
+    (should (eql 'scame-search/engine/search-stackoverflow
+                 (key-binding (kbd "C-c s s s"))))
+    (should (eql 'scame-search/engine/search-wikipedia
+                 (key-binding (kbd "C-c s s w"))))
+    ;; (should (eql 'scame-search/engine/search-arch
+    ;;              (key-binding (kbd "C-c s s a")))))))
+    )))
 
 (ert-deftest test-scame-emails-keybindings ()
+  :tags '(scame-keys)
   (with-test-sandbox
    (with-scame-mode
     (should (eql 'scame-email/scame-mail-gmail
                  (key-binding (kbd "C-c s m g"))))
     (should (eql 'scame-email/scame-mail-exchange
                  (key-binding (kbd "C-c s m e"))))
-    (should (eql 'scame-email/scame-mail-offlineimap
-                 (key-binding (kbd "C-c s m o")))))))
+    (should (eql 'scame-email/scame-mail-local
+                 (key-binding (kbd "C-c s m l")))))))
 
 (ert-deftest test-scame-launcher-keybindings ()
+  :tags '(scame-keys)
   (with-test-sandbox
    (with-scame-mode
     (should (eql 'scame-launcher/calc
@@ -72,7 +82,7 @@
                  (key-binding (kbd "C-c s l p")))))))
 
 (ert-deftest test-scame-calendars-keybindings ()
-  :tags '(current)
+  :tags '(scame-keys)
   (with-test-sandbox
    (with-scame-mode
     (should (eql 'scame-calendar/scame-google-calendar

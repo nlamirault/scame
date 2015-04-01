@@ -1,6 +1,6 @@
 ;;; 17_flycheck.el --- Settings for flycheck
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@
 (use-package flycheck-color-mode-line
   :config (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
 
-(use-package flycheck-cack
+(use-package flycheck-cask
   :config (add-hook 'flycheck-mode-hook #'flycheck-cask-setup))
 
 

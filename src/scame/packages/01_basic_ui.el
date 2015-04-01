@@ -29,6 +29,7 @@
 (require 'tool-bar)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
+
 (use-package tool-bar
   :config (tool-bar-mode -1))
 
@@ -52,7 +53,9 @@
 (global-set-key (kbd "M-<left>") 'enlarge-window-horizontally)
 (global-set-key (kbd "M-<right>") 'shrink-window-horizontally)
 
-;;(use-package golden-ratio)
+(use-package ace-window
+  :config (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  :bind ("C-x o" . ace-window))
 
 (provide '01_basic_ui)
 ;;; 01_basic_ui.el ends here

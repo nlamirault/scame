@@ -24,6 +24,9 @@
 (require 'f)
 (require 's)
 
+
+;; Scame project
+
 (defun scame-version ()
   "Return the Scame's version."
   (interactive)
@@ -49,6 +52,23 @@
   "Open in a browser the project's website."
   (interactive)
   (browse-url "https://github.com/nlamirault/scame"))
+
+
+;; Editing
+
+(dolist (hook '(special-mode-hook
+                Info-mode-hook
+                eww-mode-hook
+                term-mode-hook
+                comint-mode-hook
+                compilation-mode-hook
+                twittering-mode-hook
+                minibuffer-setup-hook))
+  (add-hook hook (lambda ()
+                   (setq show-trailing-whitespace nil))))
+
+
+;; Tools
 
 (defun perform-rest-request (url)
   "Perform an HTTP request using URL and return the response."
@@ -76,6 +96,33 @@
   "File a bug report about the `scame' project."
   (interactive)
   (browse-url "https://github.com/nlamirault/scame/issues/new"))
+
+
+;; See: http://oremacs.com/2015/03/05/testing-init-sanity/
+;;;###autoload
+(defun scame-test-emacs ()
+  "Run a batch Emacs with current config to see if it errors out or not."
+  (interactive)
+  (require 'async)
+  (async-start
+   (lambda () (shell-command-to-string
+          "emacs --batch --eval \"
+(condition-case e
+    (progn
+      (load \\\"~/.emacs.d/init.el\\\")
+      (message \\\"-OK-\\\"))
+  (error
+   (message \\\"ERROR!\\\")
+   (signal (car e) (cdr e))))\""))
+   `(lambda (output)
+      (if (string-match "-OK-" output)
+          (when ,(called-interactively-p 'any)
+            (message "All is well"))
+        (switch-to-buffer-other-window "*startup error*")
+        (delete-region (point-min) (point-max))
+        (insert output)
+        (search-backward "ERROR!")))))
+
 
 (provide '02_scame_utils)
 ;;; 02_scame_utils.el ends here

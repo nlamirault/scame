@@ -30,19 +30,12 @@
   (with-test-sandbox
    (mapc (lambda (mode)
            (should (featurep mode)))
-         '(init-loader cask use-package))))
+         '(el-init cask use-package))))
 
 (ert-deftest test-scame-global-mode-is-loaded ()
   (with-test-sandbox
    (should (scame-mode))))
 
-;; UI tests
-
-(ert-deftest test-scame-ui-minor-mode ()
-  (with-test-sandbox
-   (mapc (lambda (mode)
-           (should mode))
-         '(column-number-mode global-linum-mode line-number-mode))))
 
 ;; Disable
 ;; (ert-deftest test-scame-golden-radio ()
@@ -59,15 +52,15 @@
 
 ;; Ido
 
-(ert-deftest test-scame-ido ()
-  (with-test-sandbox
-   (should (featurep 'ido))))
+;; (ert-deftest test-scame-ido ()
+;;   (with-test-sandbox
+;;    (should (featurep 'ido))))
 
 ;; Powerline
 
-(ert-deftest test-scame-powerline ()
-  (with-test-sandbox
-   (should (featurep 'powerline))))
+;; (ert-deftest test-scame-powerline ()
+;;   (with-test-sandbox
+;;    (should (featurep 'powerline))))
 
 (ert-deftest test-scame-imenu-anywhere ()
   (with-test-sandbox

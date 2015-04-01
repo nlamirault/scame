@@ -42,6 +42,11 @@
 (depends-on "use-package" "20140601")
 (depends-on "paradox" "1.5")
 
+;; Init
+;;(depends-on "init-loader" "0.2")
+(depends-on "el-init" "0.1.4")
+(depends-on "el-init-viewer" "0.1.0")
+
 ;; Profiling
 (depends-on "benchmark-init")
 
@@ -58,7 +63,6 @@
 ;;(depends-on "sr-speedbar")
 ;;(depends-on "nav")
 (depends-on "neotree" "0.2.1")
-(depends-on "pt" "0.0.3")
 ;;(depends-on "fill-column-indicator")
 
 (depends-on "imenu-anywhere")
@@ -72,7 +76,7 @@
 ;;(depends-on "flycheck-google-cpplint")
 
 ; Continuous integration
-(depends-on "butler" "0.2.3")
+(depends-on "butler" "0.2.4")
 
 ;; Common Lisp
 ;; (depends-on "slime")
@@ -167,11 +171,15 @@
 ;; NodeJS
 (depends-on "jade-mode" "1.0.0.-3")
 
-;; C/C++
-(depends-on "google-c-style")
-(depends-on "c-eldoc")
+;; C/C++/ObjectiveC
+;; (depends-on "google-c-style")
+;; (depends-on "c-eldoc")
 ;; (depends-on "auto-complete-c-headers")
-(depends-on "company-c-headers")
+;; (depends-on "company-c-headers")
+(depends-on "irony" "0.1.2")
+(depends-on "company-irony" "0.1.0")
+(depends-on "flycheck-irony")
+(depends-on "irony-eldoc")
 
 ;; Rust
 (depends-on "rust-mode")
@@ -182,6 +190,9 @@
 
 ;; Java
 (depends-on "malabar-mode" "2.1.0")
+
+;; Lua
+(depends-on "lua-mode")
 
 ;; Markup languages
 (depends-on "markdown-mode" "2.0")
@@ -208,7 +219,7 @@
 
 ;; Git and friends
 (depends-on "magit" "90150116")
-(depends-on "magit-gerrit")
+(depends-on "magit-gerrit" "0.1")
 (depends-on "git-commit-mode" "0.15.0")
 (depends-on "gitconfig-mode" "0.15.0")
 (depends-on "gitignore-mode" "0.15.0")
@@ -217,7 +228,7 @@
 (depends-on "gist" "1.2.1")
 (depends-on "git-gutter+" "0.2")
 (depends-on "git-timemachine" "1.9")
-(depends-on "helm-open-github" "0.12.0")
+(depends-on "helm-open-github" "0.13.0")
 (depends-on "gitlab" "0.2.0")
 (depends-on "helm-gitlab" "0.2.0")
 
@@ -227,38 +238,45 @@
 (depends-on "project-persist")
 (depends-on "helm-project-persist")
 (depends-on "multi-term")
-(depends-on "helm-mt" "0.3")
+(depends-on "helm-mt" "0.4")
 ;;(depends-on "project-explorer")
-(depends-on "lice")
+(depends-on "lice" "v0.2")
 ;;(depends-on "commander" "0.7.0")
 (depends-on "smex" "3.0")
 (depends-on "emamux" "0.13")
-(depends-on "init-loader" "0.2")
 (depends-on "fabric" "0.2.0")
 (depends-on "prodigy" "0.6.0")
-(depends-on "helm-mode-manager")
-(depends-on "ag" "0.45")
+(depends-on "helm-mode-manager" "1.0.0")
 (depends-on "json-reformat" "0.0.2")
 ;;(depends-on "sos")
 (depends-on "ace-jump-mode" "2.0")
 (depends-on "helm-proc" "0.0.4")
 (depends-on "helm-descbinds" "1.7.1")
 ;;(depends-on "helm-delicious")
-(depends-on "discover-my-major")
-(depends-on "sauron" "0.10")
+(depends-on "discover-my-major" "1.0")
 (depends-on "wsd-mode" "0.3.0")
+(depends-on "engine-mode")
+(depends-on "ace-window" "0.7.1")
+
+;; Notifications
+(depends-on "alert")
+(depends-on "sauron" "0.10")
 
 ;; Search
 (depends-on "helm-ack" "0.13")
-(depends-on "helm-ag" "0.33")
+(depends-on "ag" "0.45")
+(depends-on "pt" "0.0.3")
+(depends-on "helm-ag" "0.35")
+(depends-on "helm-pt")
 (depends-on "swoop")
-(depends-on "helm-swoop")
+(depends-on "helm-swoop" "1.5.0")
 (depends-on "helm-dash" "1.1.0")
+(depends-on "swiper" "0.2.0")
+(depends-on "swiper-helm")
 
 ;; Mail
 ;;(depends-on "mu4e")
 ;; (depends-on "w3m")
-(depends-on "offlineimap")
 
 ;; IM
 (depends-on "jabber" "0.8.92")
@@ -271,6 +289,9 @@
 
 ;; Twitter
 (depends-on "twittering-mode" "2.0.0")
+
+;; StackExchange
+(depends-on "sx" "0.2")
 
 ;; Organisation
 (depends-on "org" "8.2.10")
@@ -294,11 +315,14 @@
 (depends-on "know-your-http-well" "0.2.0")
 
 ;; UI
-(depends-on "smart-mode-line" "2.8")
-(depends-on "diminish" "0.44")
+;; (depends-on "diminish" "0.44")
+(depends-on "rich-minority" "0.1.1")
 (depends-on "powerline" "2.2")
+(depends-on "smart-mode-line" "2.8")
+(depends-on "smart-mode-line-powerline-theme" "2.8")
 (depends-on "popwin" "0.6.2")
 ;;(depends-on "golden-ratio")
+;;(depends-on "font-awesome")
 
 ;; Dired and friends
 ;; (depends-on "dired+")
@@ -323,6 +347,8 @@
 (depends-on "bbdb-" "0.0.2")
 (depends-on "bbdb-ext")
 (depends-on "bbdb-csv-import")
+(depends-on "notmuch")
+(depends-on "notmuch-labeler")
 
 ;; Keys
 (depends-on "guide-key" "1.2.5")
@@ -344,7 +370,7 @@
 
 ;; Multimedia
 (depends-on "emms")
-(depends-on "bongo")
+(depends-on "bongo" "1.0")
 
 ;; Development
 (development

@@ -17,15 +17,55 @@
 
 ;;; Commentary:
 
-;; Scame is a configuration for Emacs.
-
 ;;; Code:
+
+(defgroup scame nil
+  "Emacs starter kit."
+  :group 'tools)
+
+(defcustom user-home-directory (concat (getenv "HOME") "/")
+  "Path of the user home directory."
+  :group 'scame
+  :type 'string)
+
+(defcustom scame-cask-file "~/.cask/cask.el"
+  "Scame Cask file."
+  :group 'scame
+  :type 'string)
+
+(defcustom scame-keymap-prefix (kbd "C-c s")
+  "Scame keymap prefix."
+  :group 'scame
+  :type 'string)
+
+(defcustom scame-user-directory
+  (concat user-home-directory ".emacs.d/scame")
+  "Scame user directory installation."
+  :group 'scame
+  :type 'string)
+
+(defcustom scame-vendoring-directory
+  (concat user-emacs-directory "vendor")
+  "Vendoring directory for Scame."
+  :group 'scame
+  :type 'string)
+
+(defcustom scame-user-customization-file
+  (concat user-home-directory ".config/scame/scame-user.el")
+  "File used to store user customization."
+  :group 'scame
+  :type 'string)
+
+(defcustom scame-use-vendoring t
+  "Set if you want to use vendoring utility."
+  :group 'scame
+  :type 'boolean)
 
 ;; Debug or not
 (setq debug-on-error t)
 
-(when (version< emacs-version "24.3")
-  (error "Scame requires at least GNU Emacs 24.3"))
+(when (version< emacs-version "24.4")
+  (error "Scame requires at least GNU Emacs 24.4"))
 
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
@@ -37,7 +77,7 @@
 ;; Don't initialize packages twice
 (setq package-enable-at-startup nil)
 
-(require 'cask "~/.cask/cask.el")
+(require 'cask scame-cask-file)
 (cask-initialize)
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
 ;;(require 'pallet)
@@ -51,39 +91,35 @@
 
 (setq-default show-trailing-whitespace t)
 
-(defconst user-home-directory
-  (f-full (getenv "HOME"))
-  "Path of the user home directory.")
+(use-package el-init
+  :config (progn
+            (setq el-init-meadow-regexp       "\\`meadow-"
+                  el-init-carbon-emacs-regexp "\\`carbon-emacs-"
+                  el-init-cocoa-emacs-regexp  "\\`cocoa-emacs-"
+                  el-init-nw-regexp           "\\`nw-"
+                  el-init-mac-regexp          "\\`mac-"
+                  el-init-windows-regexp      "\\`windows-"
+                  el-init-linux-regexp        "\\`linux-"
+                  el-init-freebsd-regexp      "\\`freebsd-")
+            (el-init-load (f-parent (f-this-file))
+                          :subdirectories '("packages" "core")
+                          :wrappers '(el-init-require/benchmark
+                                      el-init-require/record-error
+                                      el-init-require/system-case))))
 
-(defconst scame-user-directory
-  (f-join user-home-directory ".emacs.d/scame")
-  "Scame user directory installation.")
 
-(defconst scame-vendoring-directory
-  (f-join user-emacs-directory "vendor")
-  "Vendoring directory for Scame.")
-
-(defconst scame-user-customization-file
-  (f-join user-home-directory ".config/scame/scame-user.el")
-  "File used to store user customization.")
-
-(defun scame--load-configuration (directory)
-  "Setup `DIRECTORY' as a source directory, and load files."
-  (let ((dir (f-slash (f-join (f-parent (f-this-file)) directory))))
-    (message "[scame] packages directory : %s" dir)
-    (use-package init-loader
-      :config (init-loader-load dir))))
-
-(scame--load-configuration "packages")
-(scame--load-configuration "core")
-
-(when (and (f-exists? scame-vendoring-directory)
+(when (and scame-use-vendoring
+           (f-exists? scame-vendoring-directory)
            (f-directory? scame-vendoring-directory))
   (f-entries scame-vendoring-directory
-             (lambda (dir)
-               (when (or (f-directory? dir)
-                         (f-symlink? dir))
-                 (add-to-list 'load-path dir)))))
+             (lambda (elem)
+               (message "elem: %s" elem)
+               (cond ((or (f-directory? elem)
+                          (f-symlink? elem))
+                      (add-to-list 'load-path elem))
+                     ((f-file? elem)
+                      (when (string= (f-ext elem) "el")
+                        (load-file elem)))))))
 
 (when (file-readable-p scame-user-customization-file)
   (load scame-user-customization-file))

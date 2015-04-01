@@ -1,6 +1,6 @@
-;;; 60_sauron.el --- Sauron for Emacs
+;; 50_lua.el --- Lua configuration
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,16 +19,8 @@
 
 ;;; Code:
 
-(use-package sauron
-  :init (progn
-          (define-prefix-command 'scame-sauron-map)
-          (global-set-key (kbd "C-x s") 'scame-sauron-map))
-  :commands sauron-start-hidden
-  :config (setq sauron-dbus-cookie t
-                sauron-modules '(sauron-erc
-                                 sauron-notifications))
-  :bind (("C-x s s" . sauron-toggle-hide-show)
-         ("C-x s c" . sauron-clear)))
+(use-package lua-mode
+  :mode (("\\.lua\\'" . lua-mode)))
 
-(provide '60_sauron)
-;;; 60_sauron.el ends here
+(provide '50_lua)
+;;; 50_lua.el ends here

@@ -1,4 +1,4 @@
-;;; scame-clojure-test.el --- Unit tests for Scame Common Lisp development.
+;;; scame-clojure-test.el --- Unit tests for Clojure development.
 
 ;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 

@@ -1,5 +1,20 @@
 # Scame ChangeLog
 
+## Version 1.0.0 (01/04/2015)
+
+- Update *org-mode* and setup *appointment*
+- Add *ace-window*
+- Add *swiper*
+- Remove *ido* and reconfigure *helm*
+- Update *smart-mode-line*
+- Update notifications system (*sauron*)
+- Refactoring *gnus* and IMAP on localhost
+- ``FIX`` Load libraries from vendoring directory
+- Add Lua support
+- Add *engine-mode* for search providers
+- Setup *irony* for c, c++ and objective-c
+- [GH-41]: Change init-loader to el-init
+
 ## Version 0.13.0 (03/02/2015)
 
 - Setup *helm-mt* to manage multi terminals
@@ -132,6 +147,7 @@
 [Cask]: https://github.com/cask/cask
 [EVM]: https://github.com/rejeep/evm
 
+[GH-41]: https://github.com/nlamirault/scame/issues/41
 [GH-36]: https://github.com/nlamirault/scame/issues/36
 [GH-35]: https://github.com/nlamirault/scame/issues/35
 [GH-32]: https://github.com/nlamirault/scame/issues/32

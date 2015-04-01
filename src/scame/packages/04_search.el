@@ -1,6 +1,6 @@
-;;; 15_helm.el --- HELM configuration
+;;; 04_search.el --- Emacs search frameworks configuration
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,9 +19,24 @@
 
 ;;; Code:
 
+
+;; (use-package ido
+;;   :init (ido-mode 1)
+;;   :config
+;;   (progn
+;;     (setq ido-case-fold t)
+;;     (setq ido-everywhere t)
+;;     (setq ido-enable-prefix nil)
+;;     (setq ido-enable-flex-matching t)
+;;     (setq ido-create-new-buffer 'always)
+;;     (setq ido-max-prospects 10)
+;;     (add-to-list 'ido-ignore-files "\\.DS_Store")))
+
+
 (global-unset-key (kbd "C-x h"))
 (define-prefix-command 'scame-helm-map)
 (global-set-key (kbd "C-x h") 'scame-helm-map)
+
 
 (use-package helm
   :init (progn
@@ -38,7 +53,13 @@
          ("C-x h x" . helm-M-x)
          ("C-x h y" . helm-show-kill-ring)
          ("C-x h l" . helm-bookmarks)
+         ("C-x h a" . helm-apropos)
+         ("C-x h i" . helm-info-emacs)
 	 ("C-x h b" . helm-buffers-list)))
+
+;; (global-set-key (kbd "C-h a") 'helm-apropos)
+;; (global-set-key (kbd "C-h i") 'helm-info-emacs)
+;; (global-set-key (kbd "C-h b") 'helm-descbinds)
 
 (use-package helm-occur
   :bind (("C-x h o" . helm-occur)))
@@ -48,7 +69,8 @@
 
 (use-package helm-proc)
 
-(use-package helm-descbinds)
+(use-package helm-descbinds
+  :bind ("C-x h h" . helm-descbinds))
 
 ;;(use-package helm-delicious)
 
@@ -64,5 +86,12 @@
             (setq helm-dash-min-length 1)
             (setq helm-dash-browser-func 'eww)))
 
-(provide '15_helm)
-;;; 15_helm.el ends here
+(use-package swiper
+  :bind (("C-s" . swiper)
+         ("C-r" . swiper)))
+
+(use-package swiper-helm)
+
+
+(provide '04_search)
+;;; 04_search.el ends here

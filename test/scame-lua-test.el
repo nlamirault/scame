@@ -1,6 +1,6 @@
-;;; 13_powerline.el --- Powerline configuration
+;;; scame-lua-test.el --- Unit tests for Lua development.
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,12 +19,11 @@
 
 ;;; Code:
 
+(ert-deftest test-scame-lua-mode ()
+  (with-test-sandbox
+   (with-current-file
+    "var/hello.lua"
+    (should (featurep 'lua-mode)))))
 
-;;(require 'powerline)
-(use-package powerline
-  :config (progn
-	    (powerline-default-theme)
-	    (setq powerline-default-separator 'arrow-fade)))
-
-(provide '13_powerline)
-;;; 13_powerline.el ends here
+(provide 'scame-lua-test)
+;;; scame-lua-test.el ends here

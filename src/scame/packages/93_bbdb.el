@@ -1,6 +1,6 @@
-;;; 53_bbdb.el --- BBDB configuration
+;;; 93_bbdb.el --- BBDB configuration
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -28,5 +28,5 @@
 (use-package helm-bbdb
   :bind (("C-c d h" . helm-bbdb)))
 
-(provide '53_bbdb)
-;;; 53_bbdb.el ends here
+(provide '93_bbdb)
+;;; 93_bbdb.el ends here

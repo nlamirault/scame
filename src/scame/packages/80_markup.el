@@ -1,6 +1,6 @@
-;;; 60_markup.el --- Markup language
+;;; 80_markup.el --- Markup language
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -28,5 +28,5 @@
 (use-package toml-mode
   :mode ("\\.toml$" . toml-mode))
 
-(provide '60_markup)
-;;; 60_markup.el ends here
+(provide '80_markup)
+;;; 80_markup.el ends here
