@@ -1,22 +1,5 @@
 # Scame
 
-[![License GPL 3][badge-license]][COPYING]
-![Version][badge-release]
-[![travis][badge-travis]][travis]
-[![drone][badge-drone]][drone]
-[![Coverage Status](https://coveralls.io/repos/nlamirault/scame/badge.png)](https://coveralls.io/r/nlamirault/scame)
-
-[Scame][] is a 'Starter Kit' for [GNU Emacs][] 24 (>= 24.4). It will not work
-with [GNU Emacs][] 23 and below, or with other flavors of Emacs (e.g. XEmacs).
-
-These tools are used to perform the [Scame][] installation :
-
-- [Cask][] (>= 0.6.0)
-- [EVM][]
-
-The current version has been tested on Linux and Mac OS X.
-
-
 - [Installation](#installation)
   - [Release file](#from-release-file)
   - [Source](#from-source)
@@ -446,23 +429,3 @@ A changelog is available [here](ChangeLog.md).
 ## Contact
 
 Nicolas Lamirault <nicolas.lamirault@gmail.com>
-
-
-[Scame]: https://github.com/nlamirault/scame
-[badge-license]: https://img.shields.io/badge/license-GPL_3-green.svg?style=flat
-[badge-release]: https://img.shields.io/github/release/nlamirault/scame.svg
-[travis]: https://travis-ci.org/nlamirault/scame
-[badge-travis]: http://img.shields.io/travis/nlamirault/scame.svg?style=flat
-[badge-drone]: https://drone.io/github.com/nlamirault/scame/status.png
-[drone]: https://drone.io/github.com/nlamirault/scame/latest
-
-[COPYING]: https://github.com/nlamirault/scame/blob/master/COPYING
-[GNU Emacs]: https://www.gnu.org/software/emacs/
-[MELPA]: http://melpa.milkbox.net/
-[Cask]: http://cask.github.io/
-[Evm]: https://github.com/rejeep/evm
-[Issue tracker]: https://github.com/nlamirault/scame/issues
-
-[projectile]: https://github.com/bbatsov/projectile
-[perspective]: https://github.com/nex3/perspective-el
-[Docker]: http://www.docker.com
