@@ -33,15 +33,23 @@
      (change-log-mode)
      (should (eql nil indent-tabs-mode)))))
 
+;; (ert-deftest test-scame-projectile ()
+;;   (with-test-sandbox
+;;    (should (require 'projectile))
+;;    (should (eql 'projectile-find-file
+;;                 projectile-switch-project-action))))
+
+;; (ert-deftest test-scame-helm-projectile ()
+;;   (with-test-sandbox
+;;    (should (require 'helm-projectile))
+;;    (should (eql 'helm-projectile
+;;                 (key-binding (kbd "C-c p h"))))))
+
 (ert-deftest test-scame-projectile ()
   (with-test-sandbox
    (should (require 'projectile))
    (should (eql 'projectile-find-file
-                projectile-switch-project-action))))
-
-(ert-deftest test-scame-helm-projectile ()
-  (with-test-sandbox
-   (should (require 'helm-projectile))
+                helm-projectile-find-file))
    (should (eql 'helm-projectile
                 (key-binding (kbd "C-c p h"))))))
 
