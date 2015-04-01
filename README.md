@@ -2,8 +2,6 @@
 
 [![travis][badge-travis]][travis]
 [![drone][badge-drone]][drone]
-[![Melpa Status](http://melpa.milkbox.net/packages/scame-badge.svg)](http://melpa.milkbox.net/#/scame)
-[![MELPA Stable](http://stable.melpa.org/packages/scame-badge.svg)](http://stable.melpa.org/#/scame)
 [![Coverage Status](https://coveralls.io/repos/nlamirault/scame/badge.png)](https://coveralls.io/r/nlamirault/scame)
 
 The current version has been tested on Linux and Mac OS X.
