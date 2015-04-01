@@ -1,14 +1,30 @@
 # Scame
 
-[Scame][] is a 'Starter Kit' for [GNU Emacs][] 24 (>= 24.4). It will not work
-with [GNU Emacs][] 23 and below, or with other flavors of Emacs (e.g. XEmacs).
-
-These tools are used to perform the [Scame][] installation :
-
-- [Cask][] (>= 0.6.0)
-- [EVM][]
+[![travis][badge-travis]][travis]
+[![drone][badge-drone]][drone]
+[![Melpa Status](http://melpa.milkbox.net/packages/scame-badge.svg)](http://melpa.milkbox.net/#/scame)
+[![MELPA Stable](http://stable.melpa.org/packages/scame-badge.svg)](http://stable.melpa.org/#/scame)
+[![Coverage Status](https://coveralls.io/repos/nlamirault/scame/badge.png)](https://coveralls.io/r/nlamirault/scame)
 
 The current version has been tested on Linux and Mac OS X.
+
+- [Installation](#installation)
+  - [Release file](#from-release-file)
+  - [Source](#from-source)
+  - [Docker](#from-docker)
+- [Packages](#packages)
+- [Keymap](#keymap)
+- [Mail](#mail)
+- [Calendars](#calendars)
+- [Customization](#customization)
+- [Vendoring](#vendoring)
+- [Debug](#debug)
+- [Support](#support)
+- [Contribute](#contribute)
+- [Development](#development)
+- [License](#license)
+- [ChangeLog](#changelog)
+- [Contact](#contact)
 
 
 ## Installation
