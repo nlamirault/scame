@@ -85,6 +85,31 @@
                 calendar-intermonth-header (propertize "Wk"
                                                        'font-lock-face 'font-lock-keyword-face)))
 
+;; Appointment
+;; ------------
+
+(defun scame--appt-disp-window (min-to-app new-time msg)
+  "Wrapper for appt popup display."
+  (notifications-notify :title (format "Appt in %s minute(s)" min-to-app)
+                        :body msg
+                        :app-name "Emacs: Org"))
+
+
+(use-package appt
+  :config (progn
+            (setq appt-audible nil
+                  appt-display-diary nil
+                  appt-display-mode-line t     ;; show in the modeline
+                  appt-message-warning-time 60 ;; warn 60 min in advance
+                  appt-display-interval 5
+                  appt-display-duration 30
+                  appt-display-format 'window
+                  appt-disp-window-function (function scame--appt-disp-window))
+            (when (require 'sauron nil t)
+              (add-to-list 'sauron-modules 'sauron-org)))
+  :init (appt-activate))
+
+
 (use-package org
   :config (progn
 	    (setq org-directory (f-join user-home-directory "Org"))
@@ -137,7 +162,10 @@
 			   "* PHONE %? :PHONE:\n%U" :clock-in t :clock-resume t)
 			  )))
 
-	    (setq org-clock-persist 'history)
+	    (setq org-log-done t
+                  org-clock-persist t
+                  org-clock-out-when-done nil)
+
 	    (org-clock-persistence-insinuate)
 
 	    (setq org-use-fast-todo-selection t)
@@ -145,13 +173,21 @@
 
 	    ;; Agenda views
 	    ;; -------------
-
 	    ;; Do not dim blocked tasks
 	    (setq org-agenda-dim-blocked-tasks nil)
-
 	    ;; Compact the block agenda view
 	    (setq org-agenda-compact-blocks t)
+            (setq org-agenda-clockreport-parameter-plist
+                  '(:link nil :maxlevel 4 :emphasize t))
 
+            ;; Appointment
+            ;; ------------
+            (org-agenda-to-appt)
+            (add-hook 'org-finalize-agenda-hook 'org-agenda-to-appt)
+            (add-hook 'org-remember-after-finalize-hook 'org-agenda-to-appt)
+            (add-hook 'org-mode-hook (lambda()
+                                       (add-hook 'before-save-hook
+                                                 'org-agenda-to-appt t)))
 
 	    ;; Clock Setup
 	    ;; ------------
@@ -183,8 +219,9 @@
 	 ("C-c o a" . org-agenda)
 	 ("C-c o b" . org-iswitchb)))
 
-	    ;; Exporting
-	    ;; -----------
+
+;; Exporting
+;; -----------
 
 
 ;; Explicitly load required exporters
