@@ -1,6 +1,6 @@
 ;;; 19_vc.el --- Version control
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -21,6 +21,8 @@
 
 
 (use-package magit
+  :config (setq magit-auto-revert-mode nil
+                magit-last-seen-setup-instructions "1.4.0")
   :bind (("C-c g s" . magit-status)
 	 ("C-c g d" . magit-pull)
 	 ("C-c g p" . magit-push)
