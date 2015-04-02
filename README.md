@@ -20,7 +20,6 @@ The current version has been tested on Linux and Mac OS X.
   - [Release file](#from-release-file)
   - [Source](#from-source)
   - [Docker](#from-docker)
-- [Packages](#packages)
 - [Keymap](#keymap)
 - [Mail](#mail)
 - [Calendars](#calendars)
@@ -285,6 +284,11 @@ You can change the default keymap prefix C-c p like this:
 (setq scame-keymap-prefix (kbd "C-c C-s"))
 ```
 
+## Mail
+
+[Scame][] provides a Gmail configuration for IMAP access.
+
+
 ## Calendars
 
 To setup a Google calendars set the `google-ical-calendars` variable using
@@ -354,21 +358,9 @@ See [here](CONTRIBUTING.md)
 
 ## Development
 
-The `local-test` command use your Scame installation and current dependencies t
-
-    $ make local-test
-
-The `test` command download dependencies using [Cask][] and use your personal Emacs configuration :
+The `test` command download dependencies using [Cask][] and launch unit tests:
 
     $ make test
-
-The integration tests make an Emacs sandbox, install all dependencies using [Cask][], and launch tests :
-
-    $ make integration-test
-
-A [Docker][] container could be used to launch unit tests:
-
-    $ make docker-build docker-test
 
 
 ## License
