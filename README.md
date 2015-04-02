@@ -301,7 +301,7 @@ private ics URI.
         ("https://www.google.com/calendar/ical/xxxxxxxxx/basic.ics"
          "Work"
          "White")))
-`̀`
+`̀``
 
 
 ## Customization
