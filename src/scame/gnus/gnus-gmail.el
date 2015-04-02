@@ -34,25 +34,25 @@
 ;; and make sure that no-one else can read it with
 ;; chmod 600 ~/.authinfo
 
-(defun scame--gmail-imap ()
-  "Setup gnus-select-method with IMAP GMail server."
-  (setq gnus-select-method
-        '(nnimap "gmail"
-                 (nnimap-address "imap.gmail.com")
-                 (nnimap-server-port 993)
-                 (nnimap-stream ssl)
-                 ;; press 'E' to expire email
-                 (nnmail-expiry-target "nnimap+gmail:[Gmail]/Trash")))
-  (define-key gnus-summary-mode-map
-    (kbd "B d")
-    (lambda ()
-      (interactive)
-      (gnus-summary-move-article nil "nnimap+gmail:[Gmail]/Trash")))
-  (define-key gnus-summary-mode-map
-    (kbd "B s")
-    (lambda ()
-      (interactive)
-      (gnus-summary-move-article nil "nnimap+gmail:[Gmail]/Spam"))))
+(setq gnus-select-method
+      '(nnimap "gmail"
+               (nnimap-address "imap.gmail.com")
+               (nnimap-server-port 993)
+               (nnimap-stream ssl)
+               ;; press 'E' to expire email
+               (nnmail-expiry-target "nnimap+gmail:[Gmail]/Trash")))
+
+(define-key gnus-summary-mode-map
+  (kbd "B d")
+  (lambda ()
+    (interactive)
+    (gnus-summary-move-article nil "nnimap+gmail:[Gmail]/Trash")))
+
+(define-key gnus-summary-mode-map
+  (kbd "B s")
+  (lambda ()
+    (interactive)
+    (gnus-summary-move-article nil "nnimap+gmail:[Gmail]/Spam")))
 
 ;; GMail SMTP configuration
 
