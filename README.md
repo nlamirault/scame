@@ -130,16 +130,20 @@ See [LICENSE](LICENSE).
 
 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
-[gotest]: https://github.com/nlamirault/gotest.el
+[scame]: https://github.com/nlamirault/scame
+
 [badge-license]: https://img.shields.io/badge/license-GPL_2-green.svg?style=flat
-[LICENSE]: https://github.com/nlamirault/gotest.el/blob/master/LICENSE
-[travis]: https://travis-ci.org/nlamirault/gotest.el
-[badge-travis]: http://img.shields.io/travis/nlamirault/gotest.el.svg?style=flat
-[badge-drone]: https://drone.io/github.com/nlamirault/gotest.el/status.png
-[drone]: https://drone.io/github.com/nlamirault/gotest.el/latest
+[LICENSE]: https://github.com/nlamirault/scame/blob/master/LICENSE
+[travis]: https://travis-ci.org/nlamirault/scame
+[badge-travis]: http://img.shields.io/travis/nlamirault/scame.svg?style=flat
+[badge-drone]: https://drone.io/github.com/nlamirault/scame/status.png
+[drone]: https://drone.io/github.com/nlamirault/scame/latest
+
+[COPYING]: https://github.com/nlamirault/scame/blob/master/COPYING
 [GNU Emacs]: https://www.gnu.org/software/emacs/
 [MELPA]: http://melpa.milkbox.net/
-[Cask]: http://cask.github.io/
-[Issue tracker]: https://github.com/nlamirault/gotest.el/issues
+[Issue tracker]: https://github.com/nlamirault/scame/issues
 
+[Cask]: http://cask.github.io/
+[Evm]: https://github.com/rejeep/evm
 [overseer]: https://github.com/tonini/overseer.el
