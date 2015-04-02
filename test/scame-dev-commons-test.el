@@ -33,15 +33,23 @@
      (change-log-mode)
      (should (eql nil indent-tabs-mode)))))
 
+;; (ert-deftest test-scame-projectile ()
+;;   (with-test-sandbox
+;;    (should (require 'projectile))
+;;    (should (eql 'projectile-find-file
+;;                 projectile-switch-project-action))))
+
+;; (ert-deftest test-scame-helm-projectile ()
+;;   (with-test-sandbox
+;;    (should (require 'helm-projectile))
+;;    (should (eql 'helm-projectile
+;;                 (key-binding (kbd "C-c p h"))))))
+
 (ert-deftest test-scame-projectile ()
   (with-test-sandbox
    (should (require 'projectile))
-   (should (eql 'projectile-find-file
-                projectile-switch-project-action))))
-
-(ert-deftest test-scame-helm-projectile ()
-  (with-test-sandbox
-   (should (require 'helm-projectile))
+   ;; (should (eql projectile-find-file
+   ;;              helm-projectile-find-file))
    (should (eql 'helm-projectile
                 (key-binding (kbd "C-c p h"))))))
 
@@ -56,7 +64,7 @@
     "var/hello.php"
     (persp-mode)
     (should (require 'persp-projectile))
-    (should (eql 'projectile-find-file  (key-binding (kbd "C-c p f"))))
+    (should (eql 'helm-projectile-find-file  (key-binding (kbd "C-c p f"))))
     (should (eql 'persp-switch (key-binding (kbd "C-x x s"))))
     (should (eql 'persp-remove-buffer (key-binding (kbd "C-x x k"))))
     (should (eql 'persp-kill (key-binding (kbd "C-x x c"))))

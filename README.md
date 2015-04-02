@@ -1,10 +1,9 @@
 # Scame
 
-[![License GPL 3][badge-license]][COPYING]
-[![Version][badge-release]]
+[![License GPL 3][badge-license]][LICENSE]
 [![travis][badge-travis]][travis]
 [![drone][badge-drone]][drone]
-[![Coverage Status](https://coveralls.io/repos/nlamirault/scame/badge.png)](https://coveralls.io/r/nlamirault/scame)
+[![Coverage Status](https://coveralls.io/repos/nlamirault/scame.el/badge.png?branch=master)](https://coveralls.io/r/nlamirault/scame.el?branch=master)
 
 [Scame][] is a 'Starter Kit' for [GNU Emacs][] 24 (>= 24.4). It will not work
 with [GNU Emacs][] 23 and below, or with other flavors of Emacs (e.g. XEmacs).
@@ -21,7 +20,6 @@ The current version has been tested on Linux and Mac OS X.
   - [Release file](#from-release-file)
   - [Source](#from-source)
   - [Docker](#from-docker)
-- [Packages](#packages)
 - [Keymap](#keymap)
 - [Mail](#mail)
 - [Calendars](#calendars)
@@ -35,19 +33,18 @@ The current version has been tested on Linux and Mac OS X.
 - [ChangeLog](#changelog)
 - [Contact](#contact)
 
-
 ## Installation
 
 ### From release file
 
 * Download archive :
 
-        $ wget https://github.com/nlamirault/scame/releases/download/0.13.0/scame-0.13.0.tar.gz
+        $ wget https://github.com/nlamirault/scame/releases/download/1.0.0/scame-1.0.0.tar.gz
 
 * Installation :
 
-        $ tar zxvf scame-0.13.0.tar.gz
-        $ cp -r scame-0.13.0/* ~/.emacs.d
+        $ tar zxvf scame-1.0.0.tar.gz
+        $ cp -r scame-1.0.0/* ~/.emacs.d
 
 
 ### From source
@@ -70,148 +67,12 @@ The current version has been tested on Linux and Mac OS X.
 
 * Download the Scame image :
 
-        $ docker pull nlamirault/scame:0.13.0
+        $ docker pull nlamirault/scame:1.0.0
 
 * Launch Scame image :
 
-        $ docker run -it --rm=true nlamirault/scame:0.13.0 -e DISPLAY=$(DISPLAY) -v /tmp/.X11-unix:/tmp/.X11-unix emacs-snapshot
+        $ docker run -it --rm=true nlamirault/scame:1.0.0 -e DISPLAY=$(DISPLAY) -v /tmp/.X11-unix:/tmp/.X11-unix emacs-snapshot
 
-
-## Packages
-
-Collections of packages installed:
-
-- [cask](https://github.com/cask/cask)
-- [use-package](https://github.com/jwiegley/use-package)
-- [init-loader](https://github.com/emacs-jp/init-loader)
-- [paradox](https://github.com/Bruce-Connor/paradox)
-
-Interface Enhancement:
-- [helm](https://github.com/emacs-helm/helm)
-- [smex](https://github.com/nonsequitur/smex)
-- [guide-key](https://github.com/kai2nenobu/guide-key)
-
-File manager:
-- [direx.el](https://github.com/m2ym/direx-el)
-- [dired-imenu](https://github.com/DamienCassou/dired-imenu)
-- [dired-filter](https://github.com/Fuco1/dired-hacks)
-- [dired-open](https://github.com/Fuco1/dired-hacks)
-- [dired-subtree](https://github.com/Fuco1/dired-hacks)
-- [sr-speedbar](http://www.emacswiki.org/emacs/SrSpeedbar)
-- [neotree](http://www.emacswiki.org/emacs/NeoTree)
-
-Navigation:
-- [imenu-anywhere](https://github.com/vitoshka/imenu-anywhere)
-- [helm-swoop](https://github.com/ShingoFukuyama/helm-swoop)
-
-Project managment :
-- [projectile][]
-- [persp-projectile](https://github.com/bbatsov/projectile)
-- [project-explorer](https://github.com/sabof/project-explorer)
-- [nav](https://code.google.com/p/emacs-nav/)
-- [lice.el](https://github.com/buzztaiki/lice-el)
-- [perspective][]
-- [prodigy.el](https://github.com/rejeep/prodigy.el)
-
-Python :
-- [jedi](https://github.com/tkf/emacs-jedi)
-- [jedi-direx](https://github.com/tkf/emacs-jedi-direx)
-- [elpy](https://github.com/jorgenschaefer/elpy)
-- [virtualenvwrapper](https://github.com/porterjamesj/virtualenvwrapper.el)
-- [anaconda-mode](https://github.com/proofit404/anaconda-mode)
-- [sphinx-doc](https://github.com/naiquevin/sphinx-doc.el)
-- [tox.el](https://github.com/chmouel/tox.el)
-
-Common Lisp:
-- [sly](https://github.com/capitaomorte/sly)
-
-Go:
-- [go-mode](http://melpa.milkbox.net/#/go-mode)
-- [go-play](https://github.com/dominikh/go-play.el)
-- [go-autocomplete](https://github.com/nsf/gocode)
-- [go-eldoc](https://github.com/syohex/emacs-go-eldoc)
-- [go-direx](https://github.com/syohex/emacs-go-direx)
-- [go-test.el](https://github.com/nlamirault/gotest.el)
-- [go-projectile](https://github.com/dougm/go-projectile)
-- [company-go](https://github.com/nsf/gocode/tree/master/emacs-company)
-
-Emacs lisp:
-- [elisp-slime-nav](https://github.com/purcell/elisp-slime-nav)
-- [erefactor](https://github.com/mhayashi1120/Emacs-erefactor)
-
-Ruby:
-- [ruby-mode](http://www.emacswiki.org/emacs/RubyMode)
-- [rvm](https://github.com/senny/rvm.el)
-- [rhtml-mode](https://github.com/eschulte/rhtml)
-- [ruby-tools](https://github.com/rejeep/ruby-tools.el)
-- [inf-ruby](https://github.com/nonsequitur/inf-ruby)
-- [company-inf-ruby](https://github.com/company-mode/company-inf-ruby)
-
-Php:
-- [web-mode](http://www.web-mode.org)
-- [emacsagist](https://github.com/echosa/emacsagist)
-- [phpunit.el](https://github.com/nlamirault/phpunit.el)
-
-Clojure:
-- [cider](http://melpa.milkbox.net/#/cider)
-
-Scheme:
-- [Geiser](https://github.com/jaor/geiser)
-
-Erlang:
-- [Erlang](https://github.com/erlang/otp)
-
-Haskell:
-- [Haskell-mode](https://github.com/haskell/haskell-mode)
-- [flycheck-haskell](https://github.com/flycheck/flycheck-haskell)
-
-Perl:
-- [plsense-direx](https://github.com/aki2o/plsense-direx)
-
-Cloud:
-- [puppet-mode](https://github.com/lunaryorn/puppet-mode)
-- [dockerfile-mode](https://github.com/spotify/dockerfile-mode)
-- [vagrant](https://github.com/ottbot/vagrant.el)
-
-Error checking:
-- [flycheck](https://github.com/flycheck/flycheck)
-
-Productivity:
-- [Org](http://orgmode.org)
-- [calfw](https://github.com/kiwanami/emacs-calfw)
-
-Completion:
-- [auto-complete](http://cx4a.org/software/auto-complete/)
-- [company-mode](http://company-mode.github.io/)
-- [helm-company](https://github.com/yasuyk/helm-company)
-
-Version Control:
-- [magit](https://github.com/magit/magit)
-
-Search:
-- [helm-ack](https://github.com/syohex/emacs-helm-ack)
-- [helm-ag](https://github.com/syohex/emacs-helm-ag)
-
-Appearence:
-- [powerline](https://github.com/milkypostman/powerline)
-
-Console:
-- [multi-term](http://www.emacswiki.org/emacs/multi-term.el)
-
-Mail
-- [gnus](http://www.gnus.org/)
-- [bbdb](https://github.com/emacsmirror/bbdb)
-- [google-contacts](https://julien.danjou.info/projects/emacs-packages#google-contacts)
-
-Theme:
-- [moe-theme](https://github.com/kuanyui/moe-theme.el)
-- [zenburn-theme](https://github.com/bbatsov/zenburn-emacs)
-- [color-theme-sanityinc-tomorrow]()
-- [noctilux-theme](https://github.com/stafu/noctilux-theme)
-- [afternoon-theme](https://github.com/osener/emacs-afternoon-theme)
-- [ample-theme](https://github.com/jordonbiondo/ample-theme)
-- [subatomic-theme](https://github.com/cryon/subatomic)
-- [monokai-theme](https://github.com/oneKelvinSmith/monokai-emacs)
 
 ## Keymap
 
@@ -425,24 +286,8 @@ You can change the default keymap prefix C-c p like this:
 
 ## Mail
 
-See [doc/Mail.md][].
+[Scame][] provides a Gmail configuration for IMAP access.
 
-### GMail: Imap
-
-Using <kbd>C-c s m g</kbd>, Gnus is starting using a GMail configuration
-(IMAP)
-
-### Exchange
-
-Using <kbd>C-c s m e</kbd>, Gnus is starting using for a Microsoft Exchange
-mail account.
-
-### Offlineimap / MSMTP
-
-Using <kbd>C-c s m o</kbd>, Gnus is starting using your `offlineimap` and `msmtp`
-configuration.
-
-You
 
 ## Calendars
 
@@ -460,7 +305,7 @@ private ics URI.
         ("https://www.google.com/calendar/ical/xxxxxxxxx/basic.ics"
          "Work"
          "White")))
-`̀`
+```
 
 
 ## Customization
@@ -500,36 +345,6 @@ If directory `$HOME/.emacs.d/vendor` exists, [Scame][] will add to load-path
 each directory in this directory.
 
 
-## Debug
-
-You could keep track of where time is being spent during Emacs startup in
-order to optimize startup times with [benchmark-init](https://github.com/dholm/benchmark-init-el).
-
-```el
-M-x benchmark-init/show-durations-tree
-```
-
-And results :
-
-```el
-Benchmark results
-
-╼►[benchmark-init/root nil 0ms]
-  ├─[vc-git load 20ms]
-  ├─[company-dabbrev require 6ms]
-  ├─[company-capf require 5ms]
-  ├─[company-cmake require 5ms]
-  ├─[company-ropemacs require 5ms]
-  ├─[company-clang require 6ms]
-  ├─[company-eclim require 5ms]
-  │ ╰─[company-template require 5ms]
-  ├─[default load 11ms]
-  ├─[~/.config/scame/scame-user.el load 491ms]
-  ├─[linux-config load 1ms]
-  ├─[99_global_keys load 1ms]
-  ...
-```
-
 
 ## Support
 
@@ -543,35 +358,14 @@ See [here](CONTRIBUTING.md)
 
 ## Development
 
-The `local-test` command use your Scame installation and current dependencies t
-
-    $ make local-test
-
-The `test` command download dependencies using [Cask][] and use your personal Emacs configuration :
+The `test` command download dependencies using [Cask][] and launch unit tests:
 
     $ make test
-
-The integration tests make an Emacs sandbox, install all dependencies using [Cask][], and launch tests :
-
-    $ make integration-test
-
-A [Docker][] container could be used to launch unit tests:
-
-    $ make docker-build docker-test
 
 
 ## License
 
-Scame is free software: you can redistribute it and/or modify it under the
-terms of the GNU General Public License as published by the Free Software
-Foundation, either version 3 of the License, or (at your option) any later
-version.
-
-Scame is distributed in the hope that it will be useful, but WITHOUT ANY
-WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
-PARTICULAR PURPOSE.  See the GNU General Public License for more details.
-
-See [COPYING][] for the complete license.
+See [LICENSE][] for the complete license.
 
 
 ## Changelog
@@ -584,9 +378,13 @@ A changelog is available [here](ChangeLog.md).
 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 
-[Scame]: https://github.com/nlamirault/scame
-[badge-license]: https://img.shields.io/badge/license-GPL_3-green.svg?style=flat
-[badge-release]: https://img.shields.io/github/release/nlamirault/scame.svg
+
+
+
+[scame]: https://github.com/nlamirault/scame
+
+[badge-license]: https://img.shields.io/badge/license-GPL_2-green.svg?style=flat
+[LICENSE]: https://github.com/nlamirault/scame/blob/master/LICENSE
 [travis]: https://travis-ci.org/nlamirault/scame
 [badge-travis]: http://img.shields.io/travis/nlamirault/scame.svg?style=flat
 [badge-drone]: https://drone.io/github.com/nlamirault/scame/status.png
@@ -595,10 +393,8 @@ Nicolas Lamirault <nicolas.lamirault@gmail.com>
 [COPYING]: https://github.com/nlamirault/scame/blob/master/COPYING
 [GNU Emacs]: https://www.gnu.org/software/emacs/
 [MELPA]: http://melpa.milkbox.net/
-[Cask]: http://cask.github.io/
-[Evm]: https://github.com/rejeep/evm
 [Issue tracker]: https://github.com/nlamirault/scame/issues
 
-[projectile]: https://github.com/bbatsov/projectile
-[perspective]: https://github.com/nex3/perspective-el
-[Docker]: http://www.docker.com
+[Cask]: http://cask.github.io/
+[Evm]: https://github.com/rejeep/evm
+[overseer]: https://github.com/tonini/overseer.el
