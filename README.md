@@ -3,21 +3,19 @@
 [![License GPL 3][badge-license]][LICENSE]
 [![travis][badge-travis]][travis]
 [![drone][badge-drone]][drone]
-[![Melpa Status](http://melpa.milkbox.net/packages/gotest-badge.svg)](http://melpa.milkbox.net/#/gotest)
-[![MELPA Stable](http://stable.melpa.org/packages/gotest-badge.svg)](http://stable.melpa.org/#/gotest)
-[![Coverage Status](https://coveralls.io/repos/nlamirault/gotest.el/badge.png?branch=master)](https://coveralls.io/r/nlamirault/gotest.el?branch=master)
+[![Melpa Status](http://melpa.milkbox.net/packages/scame-badge.svg)](http://melpa.milkbox.net/#/scame)
+[![MELPA Stable](http://stable.melpa.org/packages/scame-badge.svg)](http://stable.melpa.org/#/scame)
+[![Coverage Status](https://coveralls.io/repos/nlamirault/scame.el/badge.png?branch=master)](https://coveralls.io/r/nlamirault/scame.el?branch=master)
 
-Run [Go](http://golang.org) tests and programs from Emacs (>= 24.3)
+[Scame][] is a 'Starter Kit' for [GNU Emacs][] 24 (>= 24.4). It will not work
+with [GNU Emacs][] 23 and below, or with other flavors of Emacs (e.g. XEmacs).
 
-## Installation
+These tools are used to perform the [Scame][] installation :
 
-The recommended way to install ``gotest.el`` is via [MELPA][]:
+- [Cask][] (>= 0.6.0)
+- [EVM][]
 
-    M-x package-install gotest.el
-
-or [Cask][]:
-
-	(depends-on "gotest.el")
+The current version has been tested on Linux and Mac OS X.
 
 
 ## Usage
