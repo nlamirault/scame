@@ -64,7 +64,7 @@
     "var/hello.php"
     (persp-mode)
     (should (require 'persp-projectile))
-    (should (eql 'projectile-find-file  (key-binding (kbd "C-c p f"))))
+    (should (eql 'helm-projectile-find-file  (key-binding (kbd "C-c p f"))))
     (should (eql 'persp-switch (key-binding (kbd "C-x x s"))))
     (should (eql 'persp-remove-buffer (key-binding (kbd "C-x x k"))))
     (should (eql 'persp-kill (key-binding (kbd "C-x x c"))))
