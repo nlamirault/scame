@@ -3,8 +3,6 @@
 [![License GPL 3][badge-license]][LICENSE]
 [![travis][badge-travis]][travis]
 [![drone][badge-drone]][drone]
-[![Melpa Status](http://melpa.milkbox.net/packages/scame-badge.svg)](http://melpa.milkbox.net/#/scame)
-[![MELPA Stable](http://stable.melpa.org/packages/scame-badge.svg)](http://stable.melpa.org/#/scame)
 [![Coverage Status](https://coveralls.io/repos/nlamirault/scame.el/badge.png?branch=master)](https://coveralls.io/r/nlamirault/scame.el?branch=master)
 
 [Scame][] is a 'Starter Kit' for [GNU Emacs][] 24 (>= 24.4). It will not work
@@ -18,60 +16,68 @@ These tools are used to perform the [Scame][] installation :
 The current version has been tested on Linux and Mac OS X.
 
 
-## Usage
+- [Installation](#installation)
+  - [Release file](#from-release-file)
+  - [Source](#from-source)
+  - [Docker](#from-docker)
+- [Packages](#packages)
+- [Keymap](#keymap)
+- [Mail](#mail)
+- [Calendars](#calendars)
+- [Customization](#customization)
+- [Vendoring](#vendoring)
+- [Debug](#debug)
+- [Support](#support)
+- [Contribute](#contribute)
+- [Development](#development)
+- [License](#license)
+- [ChangeLog](#changelog)
+- [Contact](#contact)
 
-The following interactive commands can be run via <kbd>M-x</kbd> or
-bound to a key of your choice.
+## Installation
 
-All `go-test-*` functions can optionally configure the buffer-local
-`go-test-args` variable to pass additional arguments.  Or, by using
-a prefix command, you will be prompted for arguments.  For example:
-<kbd>C-u M-x go-test-current-test</kbd>.
+### From release file
 
-When using the `'_` prefix arg with any of the `go-test-*` or `go-run`
-functions, the most recent arguments from history will be used without
-prompting.  For example: <kbd>M-- M-x go-run</kbd>.
+* Download archive :
 
-### go-test-current-test
+        $ wget https://github.com/nlamirault/scame/releases/download/1.0.0/scame-1.0.0.tar.gz
 
-Launch unit tests for the current test.
+* Installation :
 
-### go-test-current-file
+        $ tar zxvf scame-1.0.0.tar.gz
+        $ cp -r scame-1.0.0/* ~/.emacs.d
 
-Launch unit tests for the current file.
 
-### go-test-current-project
+### From source
 
-Launch unit tests for the current project.
+* Clone the repository :
 
-### go-test-current-coverage
+        $ rm -r ~/.emacs.d && mkdir -p ~/.emacs.d/scame
+        $ git clone https://github.com/nlamirault/scame
 
-Launch unit tests coverage for the current project.
+* Installation :
 
-### go-run
+        $ cp -r scame/src/* ~/.emacs.d/
+        $ cd ~/.emacs.d && cask install
 
-Launch program via `go run`.  Optionally configure the buffer-local
-`go-test-args` variable to pass additional arguments.  Or, by using
-a prefix command, you will be prompted for arguments.  For example:
-<kbd>C-u M-x go-run</kbd>.
+### From Docker
 
-Be sure to make use of minibuffer history (<kbd>C-r</kbd>) to recall
-recent arguments to `go run`.  And remember that the <kbd>M--</kbd>
-prefix can be used in combination with your `go run` key binding to
-use the most recent arguments without prompting.  The go file is
-included in history, so you can `go-run` from history regardless of
-which buffer you are currently visiting.
+* Search from registry the Scame image :
 
-## Example key bindings
+        $ docker search scame
 
-You can create some key bindings with these commands:
+* Download the Scame image :
 
-```lisp
-(define-key go-mode-map (kbd "C-x f") 'go-test-current-file)
-(define-key go-mode-map (kbd "C-x t") 'go-test-current-test)
-(define-key go-mode-map (kbd "C-x p") 'go-test-current-project)
-(define-key go-mode-map (kbd "C-x x") 'go-run)
-```
+        $ docker pull nlamirault/scame:1.0.0
+
+* Launch Scame image :
+
+        $ docker run -it --rm=true nlamirault/scame:1.0.0 -e DISPLAY=$(DISPLAY) -v /tmp/.X11-unix:/tmp/.X11-unix emacs-snapshot
+
+
+
+
+
 
 ## Development
 
