@@ -285,49 +285,95 @@ You can change the default keymap prefix C-c p like this:
 (setq scame-keymap-prefix (kbd "C-c C-s"))
 ```
 
+## Calendars
+
+To setup a Google calendars set the `google-ical-calendars` variable using
+private ics URI.
+
+```el
+(setq google-ical-calendars
+      '(("https://www.google.com/calendar/ical/xxxxxxxxx/basic.ics"
+         "Mine"
+         "LightBlue")
+        ("https://www.google.com/calendar/ical/xxxxxxxxxx/basic.ics"
+         "Family"
+         "Yellow")
+        ("https://www.google.com/calendar/ical/xxxxxxxxx/basic.ics"
+         "Work"
+         "White")))
+`̀`
+
+
+## Customization
+
+If file `$HOME/.config/scame/scame-user.el` exists, [Scame][] load it.
+Example of customization :
+
+```el
+;; User
+(setq user-full-name "Nicolas Lamirault")
+(setq user-mail-address "nicolas.lamirault@gmail.com")
+
+;; Calendars
+(setq google-ical-calendar
+      (setq google-ical-calendars
+      '(("https://www.google.com/calendar/ical/.../basic.ics" "Mine" "LightBlue")
+        ("https://www.google.com/calendar/ical/.../basic.ics" "Family" "Yellow")
+        ("https://www.google.com/calendar/ical/.../basic.ics" "Work" "Green")))
+
+;; UI
+(load-theme 'monokai t)
+
+;; Fonts
+(custom-set-faces
+ '(default ((t (:family "Bitstream Vera Sans Mono"
+                        :foundry "bitstream"
+                        :slant normal
+                        :weight normal
+                        :height 81
+                        :width normal)))))
+
+```
+
+## Vendoring
+
+If directory `$HOME/.emacs.d/vendor` exists, [Scame][] will add to load-path
+each directory in this directory.
+
+
+
+## Support
+
+Feel free to ask question or make suggestions in our [Issue Tracker][].
+
+
+## Contribute
+
+See [here](CONTRIBUTING.md)
 
 
 ## Development
 
-### Cask
+The `local-test` command use your Scame installation and current dependencies t
 
-``gotest.el`` use [Cask][] for dependencies management. Install it and
-retrieve dependencies :
+    $ make local-test
 
-    $ curl -fsSkL https://raw.github.com/cask/cask/master/go | python
-    $ export PATH="$HOME/.cask/bin:$PATH"
-    $ cask
+The `test` command download dependencies using [Cask][] and use your personal Emacs configuration :
 
+    $ make test
 
-### Testing
+The integration tests make an Emacs sandbox, install all dependencies using [Cask][], and launch tests :
 
-* Launch unit tests from shell
+    $ make integration-test
 
-    $ make clean test
+A [Docker][] container could be used to launch unit tests:
 
-* Using [overseer][] :
-
-Keybinding           | Description
----------------------|------------------------------------------------------------
-<kbd>C-c , t</kbd>   | launch unit tests from buffer
-<kbd>C-c , b</kbd>   | launch unit tests
-<kbd>C-c , g</kbd>   | launch unit tests with tag (find, regexp, ...)
-
-* Tips:
-
-If you want to launch a single unit test, add a specify tag :
-
-```lisp
-(ert-deftest test-foobar ()
-  :tags '(current)
-  ```
-
-And launch it using : <kbd>C-c , g</kbd> and specify tag : *current*
+    $ make docker-build docker-test
 
 
-## Support / Contribute
+## License
 
-See [here](CONTRIBUTING.md)
+See [LICENSE][] for the complete license.
 
 
 ## Changelog
@@ -335,14 +381,13 @@ See [here](CONTRIBUTING.md)
 A changelog is available [here](ChangeLog.md).
 
 
-## License
-
-See [LICENSE](LICENSE).
-
-
 ## Contact
 
 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+
+
+
 
 [scame]: https://github.com/nlamirault/scame
 
