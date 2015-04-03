@@ -1,6 +1,6 @@
 # Scame ChangeLog
 
-## Version 1.0.0 (02/04/2015)
+## Version 1.0.0 (04/03/2015)
 
 - Update *org-mode* and setup *appointment*
 - Add *ace-window*
