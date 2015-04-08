@@ -59,6 +59,7 @@
 (depends-on "projectile" "0.11.0")
 (depends-on "helm-projectile" "0.11.0")
 (depends-on "persp-projectile" "0.11.0")
+(depends-on "ibuffer-projectile" "0.2")
 (depends-on "find-file-in-project" "3.3")
 ;;(depends-on "sr-speedbar")
 ;;(depends-on "nav")
@@ -371,6 +372,7 @@
 ;; Multimedia
 (depends-on "emms")
 (depends-on "bongo" "1.0")
+(depends-on "libmpdee")
 
 ;; Development
 (development

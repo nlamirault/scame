@@ -64,6 +64,16 @@
 (use-package persp-projectile
   :bind (("C-c p s w" . projectile-persp-switch-project)))
 
+(use-package ibuffer-projectile
+  :config (progn
+            (add-hook 'ibuffer-hook
+                      (lambda ()
+                        (ibuffer-projectile-set-filter-groups)
+                        (unless (eq ibuffer-sorting-mode 'alphabetic)
+                          (ibuffer-do-sort-by-alphabetic) ; first do alphabetic sort
+                          (ibuffer-do-sort-by-major-mode))))))
+
+
 (condition-case e
     (require 'es-windows)
    (error (message "%s" e)))
