@@ -161,6 +161,9 @@
 
 (setq nnmail-extra-headers '(To X-GM-LABELS Newsgroups Content-Type))
 
+;; TO TEST
+;; (setq gnus-extra-headers '(To Newsgroups X-GM-LABELS))
+
 (copy-face 'default 'myface)
 (set-face-foreground 'myface "chocolate")
 (setq gnus-face-5 'myface)
