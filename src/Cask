@@ -368,6 +368,7 @@
 (depends-on "ample-theme")
 (depends-on "subatomic-theme")
 (depends-on "monokai-theme")
+(depends-on "material-theme")
 
 ;; Multimedia
 (depends-on "emms")
