@@ -50,12 +50,17 @@
 	    (add-to-list 'helm-boring-buffer-regexp-list "\\.pyc$"))
   :bind (("C-x h F" . helm-find-files)
          ("C-x h f" . helm-for-files)
+         ("C-x h r" . helm-recentf)
          ("C-x h x" . helm-M-x)
          ("C-x h y" . helm-show-kill-ring)
          ("C-x h l" . helm-bookmarks)
          ("C-x h a" . helm-apropos)
          ("C-x h i" . helm-info-emacs)
-	 ("C-x h b" . helm-buffers-list)))
+	 ("C-x h b" . helm-buffers-list)
+         ;; Replace IDO
+         ("C-x C-f" . helm-find-files)
+         ("C-x b" . helm-mini)))
+
 
 ;; (global-set-key (kbd "C-h a") 'helm-apropos)
 ;; (global-set-key (kbd "C-h i") 'helm-info-emacs)
