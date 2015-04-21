@@ -21,11 +21,14 @@
 
 (use-package guide-key
   :init (progn
-         (setq guide-key/guide-key-sequence '("C-x" "C-c" "C-c s"))
+         (setq guide-key/guide-key-sequence '("C-x" "C-c"))
          (setq guide-key/idle-delay 0.5)
          (setq guide-key/align-command-by-space-flag t)
          (guide-key-mode 1)))
 
+(use-package hydra
+  :config (progn
+            (setq hydra-is-helpful t)))
 
 (use-package discover-my-major
   :bind ("C-h C-m" . discover-my-major))

@@ -21,55 +21,84 @@
 
 ;;; Code:
 
+(defhydra hydra-scame (:color teal)
+        "
+   ^Calendars^          ^Search^               ^Launcher^        ^Email^            ^Help^
+  ╭────────────────────────────────────────────────────────────────────────────────────────────────────
+   _g_: google          _G_: Google            _a_: calc         _O_: local         _v_: version
+   _w_: work            _H_: Github            _m_: man          _M_: Gmail         _z_: customization
+   _d_: diary           _T_: Twitter           _p_: packages     _E_: Exchange      ^ ^
+   _o_: org             _L_: Launchpad         _h_: proced       ^ ^                ^ ^
+   ^ ^                  _S_: Stackoverflow     _t_: term         ^ ^                ^ ^
+   ^ ^                  _W_: Wikipedia         ^ ^               ^ ^                ^ ^
+   ^ ^                  _R_: RFC               ^ ^               ^ ^                ^ ^
+  ---------------------------------------------------------------------------------------------------------------
+        "
+        ("q" nil "quit")
 
-(use-package hydra
-  :config (progn
-            (setq hydra-is-helpful t)
-            (defhydra scame (scame-mode-map "C-c s")
-              "scame"
-              ("v" scame-version "version")
-              ("z" scame-customization "customization"))
+        ("g" scame-google-calendar nil)
+        ("w" scame-work-calendar nil)
+        ("d" scame-diary-calendar nil)
+        ("o" scame-org-calendar nil)
 
-            (defhydra scame-search (scame-mode-map "C-c s s")
-              "Scame search"
-              ("g" engine/search-google) ;scame-search-google "google")
-              ("h" engine/search-github) ;scame-search-github "github")
-              ("t" engine/search-twitter) ;scame-search-twitter "twitter")
-              ("l" engine/search-launchpad) ;scame-search-launchpad "launchpad")
-              ;("a" engine/search-arch) ;scame-search-arch-aur "arch aur"))
-              ("s" engine/search-stackoverflow)
-              ("w" engine/search-wikipedia)
-              ("r" engine/search-rfcs))
+        ("G" engine/search-google nil)
+        ("H" engine/search-github nil)
+        ("T" engine/search-twitter nil)
+        ("L" engine/search-launchpad nil)
+        ("S" engine/search-stackoverflow nil)
+        ("W" engine/search-wikipedia nil)
+        ("R" engine/search-rfcs nil)
 
-            (defhydra scame-email (scame-mode-map "C-c s m")
-              "Scame email"
-              ("g" scame-mail-gmail "gmail")
-              ("e" scame-mail-exchange "exchange")
-              ("l" scame-mail-local "local"))
+        ("a" calc nil)
+        ("m" man nil)
+        ("p" paradox-list-packages nil)
+        ("h" proced nil)
+        ("t" helm-mt nil)
 
-            (defhydra scame-toggle (scame-mode-map "C-c s t")
-              "Scame toggle"
-              ("c" column-number-mode "column-number")
-              ("d" toggle-debug-on-error "debug-on-error")
-              ("q" toggle-debug-on-quit "debug-on-quit")
-              ("f" auto-fill-mode "auto-fill")
-              ("w" whitespace-mode "whitespace"))
+        ("O" scame-mail-local nil)
+        ("M" scame-mail-gmail nil)
+        ("E" scame-mail-exchange nil)
 
-            (defhydra scame-launcher (scame-mode-map "C-c s l")
-              "Scame launcher"
-              ("c" calc "calc")
-              ("m" man "man")
-              ("p" paradox-list-packages "list-packages")
-              ("h" proced "proced")
-              ;;("t" scame-launch-term "term"))
-              ("t" helm-mt "term"))
+        ("v" scame-version nil)
+        ("z" scame-customization nil)
 
-            (defhydra scame-calendar (scame-mode-map "C-c s c")
-              "Scame calendars"
-              ("g" scame-google-calendar "scame-google-calendar")
-              ("w" scame-work-calendar "scame-work-calendar")
-              ("d" scame-diary-calendar "scame-diary-calendar")
-              ("o" scame-org-calendar "scame-org-calendar"))))
+        )
+
+(defhydra hydra-scame-projectile (:color teal)
+      "
+Find File          Search/Tags       Buffers                  Cache
+------------------------------------------------------------------------------------------
+^^_f_: file dwim       _a_: ag             ^^_i_: Ibuffer               _c_: cache clear
+^^_r_: recent file     _g_: update gtags   ^^_K_: Kill all buffers      _x_: remove known project
+^^_d_: dir             _o_: multi-occur    ^^_X_: cleanup non-existing  _z_: cache current
+Operate On
+---------------------
+^^_D_: Dired
+^^_m_: Magit
+^^_e_: Eshell
+"
+      ("a"   projectile-ag                      nil)
+      ("c"   projectile-invalidate-cache        nil)
+      ("d"   projectile-find-dir                nil)
+      ("e"   (eshell '(4))                      nil)
+      ("D"   projectile-dired                   nil)
+      ("f"   projectile-find-file-dwim          nil)
+      ("g"   projectile-regenerate-tags         nil)
+      ("i"   projectile-ibuffer                 nil)
+      ("K"   projectile-kill-buffers            nil)
+      ("m"   (magit-status (projectile-project-root)) nil)
+      ("o"   projectile-multi-occur             nil)
+      ("p"   projectile-switch-project          nil)
+      ("r"   projectile-recentf                 nil)
+      ("x"   projectile-remove-known-project    nil)
+      ("X"   projectile-cleanup-known-projects  nil)
+      ("z"   projectile-cache-current-file      nil)
+      ("q"   nil                                "cancel" :color blue)
+      )
+
+
+(global-set-key (kbd "C-c s SPC") 'hydra-scame/body)
+(global-set-key (kbd "C-c s P") 'hydra-scame-projectile/body)
 
 
 (provide '06_scame_keys)

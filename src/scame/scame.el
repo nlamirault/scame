@@ -89,7 +89,7 @@
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-(setq-default show-trailing-whitespace t)
+(setq-default show-trailing-whitespace nil)
 
 (use-package el-init
   :config (progn
@@ -113,7 +113,7 @@
            (f-directory? scame-vendoring-directory))
   (f-entries scame-vendoring-directory
              (lambda (elem)
-               (message "elem: %s" elem)
+               ;;(message "elem: %s" elem)
                (cond ((or (f-directory? elem)
                           (f-symlink? elem))
                       (add-to-list 'load-path elem))

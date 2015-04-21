@@ -101,11 +101,6 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
 
 (use-package know-your-http-well)
 
-;; FIXME: doens't work. Package broken ?
-;; (use-package fixmee
-;;   :config (global-fixmee-mode 1)
-;;   :bind (("C-x v f" . fixmee-view-listing)))
-
 (use-package find-file-in-project)
 
 (use-package neotree
