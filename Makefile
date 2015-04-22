@@ -57,7 +57,7 @@ help:
 .PHONY: elpa
 elpa:
 	@echo -e "$(OK_COLOR)[$(APP)] Cask setup $(NO_COLOR)"
-	@$(CASK) install
+	@$(CASK) install --verbose
 	@$(CASK) update
 	@touch .cask
 
