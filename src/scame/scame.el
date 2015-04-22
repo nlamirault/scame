@@ -61,6 +61,13 @@
   :group 'scame
   :type 'boolean)
 
+(defcustom scame-completion-method 'ido
+  "Method to select a candidate from a list of strings."
+  :type '(choice
+          (const :tag "Ido" ido)
+          (const :tag "Helm" helm)
+          (const :tag "Ivy" ivy)))
+
 ;; Debug or not
 (setq debug-on-error t)
 
@@ -77,7 +84,7 @@
 ;; Don't initialize packages twice
 (setq package-enable-at-startup nil)
 
-(require 'cask) ;; scame-cask-file)
+(require 'cask scame-cask-file)
 (cask-initialize)
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
 ;;(require 'pallet)

@@ -20,17 +20,16 @@
 ;;; Code:
 
 
-;; (use-package ido
-;;   :init (ido-mode 1)
-;;   :config
-;;   (progn
-;;     (setq ido-case-fold t)
-;;     (setq ido-everywhere t)
-;;     (setq ido-enable-prefix nil)
-;;     (setq ido-enable-flex-matching t)
-;;     (setq ido-create-new-buffer 'always)
-;;     (setq ido-max-prospects 10)
-;;     (add-to-list 'ido-ignore-files "\\.DS_Store")))
+(use-package ido
+  ;;:init (ido-mode 1)
+  :config (progn
+            (setq ido-case-fold t)
+            (setq ido-everywhere t)
+            (setq ido-enable-prefix nil)
+            (setq ido-enable-flex-matching t)
+            (setq ido-create-new-buffer 'always)
+            (setq ido-max-prospects 10)
+            (add-to-list 'ido-ignore-files "\\.DS_Store")))
 
 
 (global-unset-key (kbd "C-x h"))
@@ -39,15 +38,15 @@
 
 
 (use-package helm
-  :init (progn
-          (helm-mode 1))
-  :config (progn
-	    (setq helm-ff-tramp-not-fancy nil)
-	    (setq helm-ff-skip-boring-files t)
-	    (add-to-list 'helm-boring-buffer-regexp-list "\\*tramp")
-	    (add-to-list 'helm-boring-buffer-regexp-list "\\*epc")
-	    (add-to-list 'helm-boring-buffer-regexp-list "\\.elc$")
-	    (add-to-list 'helm-boring-buffer-regexp-list "\\.pyc$"))
+  ;; :init (progn
+  ;;         (helm-mode 1))
+  ;; :config (progn
+  ;;           (setq helm-ff-tramp-not-fancy nil)
+  ;;           (setq helm-ff-skip-boring-files t)
+  ;;           (add-to-list 'helm-boring-buffer-regexp-list "\\*tramp")
+  ;;           (add-to-list 'helm-boring-buffer-regexp-list "\\*epc")
+  ;;           (add-to-list 'helm-boring-buffer-regexp-list "\\.elc$")
+  ;;           (add-to-list 'helm-boring-buffer-regexp-list "\\.pyc$"))
   :bind (("C-x h F" . helm-find-files)
          ("C-x h f" . helm-for-files)
          ("C-x h r" . helm-recentf)
@@ -56,15 +55,7 @@
          ("C-x h l" . helm-bookmarks)
          ("C-x h a" . helm-apropos)
          ("C-x h i" . helm-info-emacs)
-	 ("C-x h b" . helm-buffers-list)
-         ;; Replace IDO
-         ("C-x C-f" . helm-find-files)
-         ("C-x b" . helm-mini)))
-
-
-;; (global-set-key (kbd "C-h a") 'helm-apropos)
-;; (global-set-key (kbd "C-h i") 'helm-info-emacs)
-;; (global-set-key (kbd "C-h b") 'helm-descbinds)
+	 ("C-x h b" . helm-buffers-list)))
 
 (use-package helm-occur
   :bind (("C-x h o" . helm-occur)))
@@ -76,8 +67,6 @@
 
 (use-package helm-descbinds
   :bind ("C-x h h" . helm-descbinds))
-
-;;(use-package helm-delicious)
 
 (use-package helm-swoop
   :config (progn
@@ -92,10 +81,23 @@
             (setq helm-dash-browser-func 'eww)))
 
 (use-package swiper
+  ;; :init (progn
+  ;;         (ivy-mode t))
   :bind (("C-s" . swiper)
          ("C-r" . swiper)))
+(autoload 'ivy-read "ivy")
 
-(use-package swiper-helm)
+;; (use-package swiper-helm)
+
+
+(cond ((eql 'ido scame-completion-method)
+       (ido-mode 1))
+      ((eql 'helm scame-completion-method)
+       (helm-mode 1))
+      ((eql 'ivy scame-completion-method)
+       (ivy-mode t))
+      (t (ido-mode 1)))
+
 
 
 (provide '04_search)
