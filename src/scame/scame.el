@@ -77,7 +77,7 @@
 ;; Don't initialize packages twice
 (setq package-enable-at-startup nil)
 
-(require 'cask scame-cask-file)
+(require 'cask) ;; scame-cask-file)
 (cask-initialize)
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
 ;;(require 'pallet)
