@@ -74,9 +74,9 @@
                           (ibuffer-do-sort-by-major-mode))))))
 
 
-(condition-case e
-    (require 'es-windows)
-   (error (message "%s" e)))
+;; (condition-case e
+;;     (require 'es-windows)
+;;    (error (message "%s" e)))
 
 ;;(use-package project-explorer)
 
