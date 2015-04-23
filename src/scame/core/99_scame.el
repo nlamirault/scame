@@ -21,6 +21,10 @@
 
 ;;; Code:
 
+
+
+
+
 ;;;###autoload
 (defun scame-on ()
   "Turn on `scame-mode'."
