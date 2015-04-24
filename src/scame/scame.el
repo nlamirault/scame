@@ -68,68 +68,81 @@
           (const :tag "Helm" helm)
           (const :tag "Ivy" ivy)))
 
-;; Debug or not
+
+;; Default
+
+(setq inhibit-startup-screen t)
 (setq debug-on-error t)
+(defalias 'yes-or-no-p 'y-or-n-p)
+(setq-default show-trailing-whitespace nil)
+
+
+;; Scame requires Emacs 24.xxxx
 
 (when (version< emacs-version "24.4")
   (error "Scame requires at least GNU Emacs 24.4"))
 
-(require 'package)
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("org" . "http://orgmode.org/elpa/")
-                         ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
-;;(package-initialize)
-;; Don't initialize packages twice
-(setq package-enable-at-startup nil)
+(add-to-list 'load-path
+             (concat scame-user-directory "/setup/"))
+(require 'scame-banner)
 
-(require 'cask scame-cask-file)
-(cask-initialize)
-(add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
-;;(require 'pallet)
-
-(require 'f)
-(require 's)
-(require 'benchmark-init)
-(require 'use-package)
-
-(defalias 'yes-or-no-p 'y-or-n-p)
-
-(setq-default show-trailing-whitespace nil)
-
-(use-package el-init
-  :config (progn
-            (setq el-init-meadow-regexp       "\\`meadow-"
-                  el-init-carbon-emacs-regexp "\\`carbon-emacs-"
-                  el-init-cocoa-emacs-regexp  "\\`cocoa-emacs-"
-                  el-init-nw-regexp           "\\`nw-"
-                  el-init-mac-regexp          "\\`mac-"
-                  el-init-windows-regexp      "\\`windows-"
-                  el-init-linux-regexp        "\\`linux-"
-                  el-init-freebsd-regexp      "\\`freebsd-")
-            (el-init-load (f-parent (f-this-file))
-                          :subdirectories '("packages" "core")
-                          :wrappers '(el-init-require/benchmark
-                                      el-init-require/record-error
-                                      el-init-require/system-case))))
+(require 'scame-packages)
 
 
-(when (and scame-use-vendoring
-           (f-exists? scame-vendoring-directory)
-           (f-directory? scame-vendoring-directory))
-  (f-entries scame-vendoring-directory
-             (lambda (elem)
-               ;;(message "elem: %s" elem)
-               (cond ((or (f-directory? elem)
-                          (f-symlink? elem))
-                      (add-to-list 'load-path elem))
-                     ((f-file? elem)
-                      (when (string= (f-ext elem) "el")
-                        (load-file elem)))))))
 
-(when (file-readable-p scame-user-customization-file)
-  (load scame-user-customization-file))
+;; (require 'package)
+;; (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+;;                          ("marmalade" . "http://marmalade-repo.org/packages/")
+;;                          ("org" . "http://orgmode.org/elpa/")
+;;                          ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
+;;                          ("melpa" . "http://melpa.milkbox.net/packages/")))
+;; ;;(package-initialize)
+;; ;; Don't initialize packages twice
+;; (setq package-enable-at-startup nil)
+
+;; (require 'cask scame-cask-file)
+;; (cask-initialize)
+;; (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
+;; ;;(require 'pallet)
+
+;; (require 'f)
+;; (require 's)
+;; ;; (require 'benchmark-init)
+;; (require 'use-package)
+
+
+;; (use-package el-init
+;;   :config (progn
+;;             (setq el-init-meadow-regexp       "\\`meadow-"
+;;                   el-init-carbon-emacs-regexp "\\`carbon-emacs-"
+;;                   el-init-cocoa-emacs-regexp  "\\`cocoa-emacs-"
+;;                   el-init-nw-regexp           "\\`nw-"
+;;                   el-init-mac-regexp          "\\`mac-"
+;;                   el-init-windows-regexp      "\\`windows-"
+;;                   el-init-linux-regexp        "\\`linux-"
+;;                   el-init-freebsd-regexp      "\\`freebsd-")
+;;             (el-init-load (f-parent (f-this-file))
+;;                           :subdirectories '("packages" "core")
+;;                           :wrappers '(el-init-require/benchmark
+;;                                       el-init-require/record-error
+;;                                       el-init-require/system-case))))
+
+
+;; (when (and scame-use-vendoring
+;;            (f-exists? scame-vendoring-directory)
+;;            (f-directory? scame-vendoring-directory))
+;;   (f-entries scame-vendoring-directory
+;;              (lambda (elem)
+;;                ;;(message "elem: %s" elem)
+;;                (cond ((or (f-directory? elem)
+;;                           (f-symlink? elem))
+;;                       (add-to-list 'load-path elem))
+;;                      ((f-file? elem)
+;;                       (when (string= (f-ext elem) "el")
+;;                         (load-file elem)))))))
+
+;; (when (file-readable-p scame-user-customization-file)
+;;   (load scame-user-customization-file))
 
 (provide 'scame)
 ;;; scame.el ends here
