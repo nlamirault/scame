@@ -61,6 +61,10 @@
 ;; Posting
 ;; --------------
 
+(setq message-citation-line-function 'message-insert-formatted-citation-line
+      message-cite-reply-position 'above)
+(add-hook 'message-mode-hook 'footnote-mode)
+
 (setq gnus-posting-styles
       '(
         (".*"
@@ -271,41 +275,41 @@
 ;; -------
 
 
-(setq gnus-face-1 'font-lock-string-face)
-(setq gnus-face-2 'font-lock-comment-face)
-(setq gnus-face-3 'font-lock-variable-name-face)
+;; (setq gnus-face-1 'font-lock-string-face)
+;; (setq gnus-face-2 'font-lock-comment-face)
+;; (setq gnus-face-3 'font-lock-variable-name-face)
 
-(set-face-foreground 'gnus-summary-normal-ancient-face "white")
-(set-face-foreground 'gnus-summary-normal-read-face "green")
-(set-face-foreground 'gnus-summary-normal-ticked-face "cyan")
-(set-face-foreground 'gnus-summary-normal-unread-face "SkyBlue")
-(set-face-foreground 'gnus-summary-high-ancient-face "red")
-(set-face-foreground 'gnus-summary-high-read-face "white")
-(set-face-foreground 'gnus-summary-high-ticked-face "cyan")
-(set-face-foreground 'gnus-summary-high-unread-face "SkyBlue")
-(set-face-foreground 'gnus-summary-low-ancient-face "red")
-(set-face-foreground 'gnus-summary-low-read-face "white")
-(set-face-foreground 'gnus-summary-low-ticked-face "cyan")
-(set-face-foreground 'gnus-summary-low-read-face "SkyBlue")
+;; (set-face-foreground 'gnus-summary-normal-ancient-face "white")
+;; (set-face-foreground 'gnus-summary-normal-read-face "green")
+;; (set-face-foreground 'gnus-summary-normal-ticked-face "cyan")
+;; (set-face-foreground 'gnus-summary-normal-unread-face "SkyBlue")
+;; (set-face-foreground 'gnus-summary-high-ancient-face "red")
+;; (set-face-foreground 'gnus-summary-high-read-face "white")
+;; (set-face-foreground 'gnus-summary-high-ticked-face "cyan")
+;; (set-face-foreground 'gnus-summary-high-unread-face "SkyBlue")
+;; (set-face-foreground 'gnus-summary-low-ancient-face "red")
+;; (set-face-foreground 'gnus-summary-low-read-face "white")
+;; (set-face-foreground 'gnus-summary-low-ticked-face "cyan")
+;; (set-face-foreground 'gnus-summary-low-read-face "SkyBlue")
 
-(set-face-foreground 'gnus-header-content-face "green")
-(set-face-foreground 'gnus-header-from-face "orange")
-(set-face-foreground 'gnus-header-name-face "cyan")
-(set-face-foreground 'gnus-header-newsgroups-face "white")
-(set-face-foreground 'gnus-header-subject-face "white")
+;; (set-face-foreground 'gnus-header-content-face "green")
+;; (set-face-foreground 'gnus-header-from-face "orange")
+;; (set-face-foreground 'gnus-header-name-face "cyan")
+;; (set-face-foreground 'gnus-header-newsgroups-face "white")
+;; (set-face-foreground 'gnus-header-subject-face "white")
 
-(set-face-foreground 'gnus-signature-face "white")
+;; (set-face-foreground 'gnus-signature-face "white")
 
-(set-face-foreground 'message-cited-text "cyan")
-(set-face-foreground 'message-header-cc "white")
-(set-face-foreground 'message-header-name "white")
-(set-face-foreground 'message-header-newsgroups "white")
-(set-face-foreground 'message-header-subject "cyan")
-(set-face-foreground 'message-header-other "red")
-(set-face-foreground 'message-header-to "green")
-(set-face-foreground 'message-header-xheader "blue")
-(set-face-foreground 'message-separator "orange")
-(set-face-foreground 'message-mml "beige")
+;; (set-face-foreground 'message-cited-text "cyan")
+;; (set-face-foreground 'message-header-cc "white")
+;; (set-face-foreground 'message-header-name "white")
+;; (set-face-foreground 'message-header-newsgroups "white")
+;; (set-face-foreground 'message-header-subject "cyan")
+;; (set-face-foreground 'message-header-other "red")
+;; (set-face-foreground 'message-header-to "green")
+;; (set-face-foreground 'message-header-xheader "blue")
+;; (set-face-foreground 'message-separator "orange")
+;; (set-face-foreground 'message-mml "beige")
 
 (provide 'scame-gnus)
 ;;; scame-gnus.el ends here
