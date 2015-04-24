@@ -21,13 +21,14 @@
 
 
 (use-package magit
-  :config (setq magit-auto-revert-mode nil
-                magit-last-seen-setup-instructions "1.4.0")
   :bind (("C-c g s" . magit-status)
 	 ("C-c g d" . magit-pull)
 	 ("C-c g p" . magit-push)
 	 ("C-c g l" . magit-log)
 	 ("C-c g b" . magit-branch-manager)))
+
+(setq magit-auto-revert-mode nil
+      magit-last-seen-setup-instructions "1.4.0")
 
 (use-package magit-gerrit)
 
