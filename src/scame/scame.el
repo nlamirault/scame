@@ -63,16 +63,37 @@
 
 (defcustom scame-completion-method 'ido
   "Method to select a candidate from a list of strings."
+  :group 'scame
   :type '(choice
           (const :tag "Ido" ido)
           (const :tag "Helm" helm)
           (const :tag "Ivy" ivy)))
 
+(defcustom scame-gnus-version 'gnus
+  "Method to select a candidate version of Gnus."
+  :group 'scame
+  :type '(choice
+          (const :tag "Gnus" gnus)
+          (const :tag "Gnus-Dev" 'gnus-dev)))
+
+(defcustom scame-gnus-dev-directory
+  (concat user-home-directory "Apps/gnus")
+  "Directory of Gnus source code."
+  :group 'scame
+  :type 'string)
+
 ;; Debug or not
 (setq debug-on-error t)
 
+
 (when (version< emacs-version "24.4")
   (error "Scame requires at least GNU Emacs 24.4"))
+
+;; Load Gnus from Emacs or Gnus development version
+(when (eql 'gnus-dev scame-gnus-version)
+  (push (concat scame-gnus-dev-directory "/lisp") load-path)
+  (message "Load Gnus development version")
+  (require 'gnus-load))
 
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
