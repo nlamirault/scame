@@ -94,6 +94,9 @@
                         :body msg
                         :app-name "Emacs: Org"))
 
+(defun scame--appt-delete-window ()
+  )
+
 
 (use-package appt
   :config (progn
@@ -104,7 +107,8 @@
                   appt-display-interval 5
                   appt-display-duration 30
                   appt-display-format 'window
-                  appt-disp-window-function (function scame--appt-disp-window))
+                  appt-disp-window-function (function scame--appt-disp-window)
+                  appt-delete-window-function (function scame--appt-delete-window))
             (when (require 'sauron nil t)
               (add-to-list 'sauron-modules 'sauron-org)))
   :init (appt-activate))
