@@ -200,6 +200,7 @@
 (depends-on "yaml-mode" "0.0.11")
 (depends-on "fountain-mode" "1.4.5")
 (depends-on "toml-mode")
+(depends-on "adoc-mode" "0.6.2")
 
 ;; Other development mode
 
