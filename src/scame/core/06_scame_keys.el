@@ -65,37 +65,6 @@
         )
 
 (defhydra hydra-scame-projectile (:color teal)
-      ;; "
-;; Find File          Search/Tags       Buffers                  Cache
-;; ------------------------------------------------------------------------------------------
-;; ^^_f_: file dwim       _a_: ag             ^^_i_: Ibuffer               _c_: cache clear
-;; ^^_r_: recent file     _g_: update gtags   ^^_K_: Kill all buffers      _x_: remove known project
-;; ^^_d_: dir             _o_: multi-occur    ^^_X_: cleanup non-existing  _z_: cache current
-;; Operate On
-;; ---------------------
-;; ^^_D_: Dired
-;; ^^_m_: Magit
-;; ^^_e_: Eshell
-;; "
-;;       ("a"   projectile-ag                      nil)
-;;       ("A"   projectile-grep                    nil)
-;;       ("c"   projectile-invalidate-cache        nil)
-;;       ("d"   projectile-find-dir                nil)
-;;       ("e"   (eshell '(4))                      nil)
-;;       ("D"   projectile-dired                   nil)
-;;       ("f"   projectile-find-file-dwim          nil)
-;;       ("g"   projectile-regenerate-tags         nil)
-;;       ("i"   projectile-ibuffer                 nil)
-;;       ("K"   projectile-kill-buffers            nil)
-;;       ("m"   (magit-status (projectile-project-root)) nil)
-;;       ("o"   projectile-multi-occur             nil)
-;;       ("p"   projectile-switch-project          nil)
-;;       ("r"   projectile-recentf                 nil)
-;;       ("x"   projectile-remove-known-project    nil)
-;;       ("X"   projectile-cleanup-known-projects  nil)
-;;       ("z"   projectile-cache-current-file      nil)
-;;       ("q"   nil                                "cancel" :color blue)
-  ;;       )
   "
 
     Files             Search          Buffer             Do
@@ -156,8 +125,38 @@
         ("x"   fixmee-view-listing))
 
 
+
+(defhydra hydra-scame-org (:color teal)
+  "
+
+    Timer           Clock               Capture
+  ╭──────────────────────────────────────────────────────────────────────────
+    [_s_] start     [_i_] clock in      [_c_] capture
+    [_S_] stop      [_o_] clock out     [_l_] last capture
+    [_r_] reset     [_g_] clock goto
+    [_p_] print
+
+  --------------------------------------------------------------------------------
+        "
+  ("s" org-timer-start)
+  ("S" org-timer-stop)
+  ;; Need to be at timer
+  ("r" org-timer-set-timer)
+  ;; Print timer value to buffer
+  ("p" org-timer)
+  ("i" (org-clock-in '(4)))
+  ("o" org-clock-out)
+  ;; Visit the clocked task from any buffer
+  ("g" org-clock-goto)
+  ("c" org-capture)
+  ("l" org-capture-goto-last-stored))
+
+
+
+
 (global-set-key (kbd "C-c s SPC") 'hydra-scame/body)
 (global-set-key (kbd "C-c s P") 'hydra-scame-projectile/body)
+(global-set-key (kbd "C-c s o") 'hydra-scame-org/body)
 
 
 (provide '06_scame_keys)
