@@ -245,27 +245,6 @@ Keybinding            | Description
 <kbd>C-c s SPC</kbd>  | Hydra Scame keybindings
 <kbd>C-c s P</kbd>    | Hydra projectile
                       |
-<kbd>C-c s v</kbd>    | Display Scame version
-<kbd>C-c s z</kbd>    | Open the Scame user customization file
-<kbd>C-c s G</kbd>    | Search on Google
-<kbd>C-c s H</kbd>    | Search on Github
-<kbd>C-c s T</kbd>    | Search on Twitter
-<kbd>C-c s S</kbd>    | Search on Stackoverflow
-<kbd>C-c s W</kbd>    | Search on Wikipedia
-<kbd>C-c s R</kbd>    | Search on RFCs
-<kbd>C-c s M</kbd>    | Mail (Gnus) using GMail setup
-<kbd>C-c s E</kbd>    | Mail (Gnus) using Exchange setup
-<kbd>C-c s L</kbd>    | Mail (Gnus) using local IMAP server
-<kbd>C-c s a</kbd>    | Launch calc
-<kbd>C-c s t</kbd>    | Launch terminal
-<kbd>C-c s h</kbd>    | Launch proced (htop)
-<kbd>C-c s p</kbd>    | Launch list MELPA packages using Paradox
-<kbd>C-c s m</kbd>    | Launch man page
-<kbd>C-c s g</kbd>    | Display Google calendar
-<kbd>C-c s w</kbd>    | Display work calendar
-<kbd>C-c s d</kbd>    | Display diary calendar
-<kbd>C-c s o</kbd>    | Display Org calendar
-
 
 If you ever forget any of Scame's keybindings just do a:
 <kbd>C-c s C-h</kbd>

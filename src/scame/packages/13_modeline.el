@@ -75,7 +75,8 @@
 (use-package powerline
   :config (progn
 	    (powerline-default-theme)
-	    (setq powerline-default-separator 'slant))) ;;'arrow-fade)))
+	    (setq ;powerline-height 25
+                  powerline-default-separator 'slant))) ;;'arrow-fade)))
 
 
 ;;; Greek letters - C-u C-\ greek ;; C-\ to revert to default
@@ -83,19 +84,19 @@
 
 
 (defvar mode-line-cleaner-alist
-  `((auto-complete-mode . " α")
-    (company-mode . " α")
-    (ivy-mode . " ι")
+  `((auto-complete-mode . "") ;" ⓐ")
+    (company-mode . "") ;" ⓒ")
+    (ivy-mode . "") ;" ⓘ")
     (yas/minor-mode . "")
     (paredit-mode . "")
     (eldoc-mode . "")
     (abbrev-mode . "")
     (guide-key-mode . "")
-    (projectile-mode . " ")
+    (projectile-mode . "") ;" ⓟ")
     (overseer-mode . "")
     (elisp-slime-nav-mode . "")
-    (flycheck-mode . " ς")
-    (lisp-interaction-mode . " λ")
+    (flycheck-mode . "") ;" ⓕ")
+    (lisp-interaction-mode . "") ;" λ")
     (hi-lock-mode . "")
     (sphinx-doc-mode . "")
     (anaconda-mode . "")
