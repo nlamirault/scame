@@ -52,8 +52,8 @@
 (use-package erefactor
   :config (define-key emacs-lisp-mode-map "\C-c\C-v" erefactor-map))
 
-(use-package overseer
-  :init (add-hook 'emacs-lisp-mode-hook 'overseer-mode-hook))
+;; (use-package overseer
+;;   :init (add-hook 'emacs-lisp-mode-hook 'overseer-mode-hook))
 
 (provide '39_elisp)
 ;;; 39_elisp.el ends here
