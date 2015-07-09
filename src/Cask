@@ -138,8 +138,8 @@
 (depends-on "geiser" "0.6")
 
 ;; Clojure
-(depends-on "cider" "0.8.2")
-(depends-on "clj-refactor" "0.13.0")
+;; (depends-on "cider" "0.9.1")
+;; (depends-on "clj-refactor" "0.13.0")
 
 ;; Haskell
 (depends-on "haskell-mode" "13.10")
