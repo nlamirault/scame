@@ -120,6 +120,7 @@
 (depends-on "sphinx-doc")
 (depends-on "helm-pydoc" "0.6")
 (depends-on "pip-requirements" "0.4")
+(depends-on "py-yapf" "0.2")
 
 ;; Ruby
 

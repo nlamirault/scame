@@ -1,6 +1,6 @@
 ;;; 31_python.el --- Python configuration
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -112,6 +112,10 @@
          ("\\requirements-doc.txt\\'" . pip-requirements-mode)
          ("\\requirements-style.txt\\'" . pip-requirements-mode)
          ("\\requirements-test.txt\\'" . pip-requirements-mode)))
+
+(use-package py-yapf
+  :config (add-hook 'python-mode-hook 'py-yapf-enable-on-save))
+
 
 (provide '31_python)
 ;;; 31_python.el ends here
