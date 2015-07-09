@@ -154,29 +154,3 @@
 
 [Cask]: https://github.com/cask/cask
 [EVM]: https://github.com/rejeep/evm
-
-[GH-41]: https://github.com/nlamirault/scame/issues/41
-[GH-36]: https://github.com/nlamirault/scame/issues/36
-[GH-35]: https://github.com/nlamirault/scame/issues/35
-[GH-32]: https://github.com/nlamirault/scame/issues/32
-[GH-31]: https://github.com/nlamirault/scame/issues/31
-[GH-30]: https://github.com/nlamirault/scame/issues/30
-[GH-24]: https://github.com/nlamirault/scame/issues/24
-[GH-22]: https://github.com/nlamirault/scame/issues/22
-[GH-19]: https://github.com/nlamirault/scame/issues/19
-[GH-18]: https://github.com/nlamirault/scame/issues/18
-[GH-16]: https://github.com/nlamirault/scame/issues/16
-[GH-14]: https://github.com/nlamirault/scame/issues/14
-[GH-13]: https://github.com/nlamirault/scame/issues/13
-[GH-12]: https://github.com/nlamirault/scame/issues/12
-[GH-11]: https://github.com/nlamirault/scame/issues/11
-[GH-9]: https://github.com/nlamirault/scame/issues/9
-[GH-8]: https://github.com/nlamirault/scame/issues/8
-[GH-7]: https://github.com/nlamirault/scame/issues/7
-[GH-6]: https://github.com/nlamirault/scame/issues/6
-[GH-4]: https://github.com/nlamirault/scame/issues/4
-[GH-3]: https://github.com/nlamirault/scame/issues/3
-[GH-2]: https://github.com/nlamirault/scame/issues/2
-
-
-[Cask-270]: https://github.com/cask/cask/issues/270
