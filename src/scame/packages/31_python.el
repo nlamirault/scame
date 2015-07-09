@@ -81,7 +81,6 @@
 ;; ((python-mode . ((pyvenv-workon . "xxxxx")))
 
 
-;; FIXME: See Cerbere or not ?
 (use-package tox
   :config (add-hook 'python-mode-hook
 		    (lambda ()

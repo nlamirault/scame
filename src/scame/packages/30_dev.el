@@ -56,16 +56,28 @@
 	    (add-to-list 'projectile-globally-ignored-files
 			 ".DS_Store")))
 
-(use-package helm-projectile
-  :init (helm-projectile-on)
-  :config (setq projectile-completion-system 'helm)
-  :bind (("C-c p h" . helm-projectile)))
+;; FIX: https://github.com/nlamirault/scame/issues/50
+;; (use-package helm-projectile
+;;   :init (helm-projectile-on)
+;;   :config (setq projectile-completion-system 'helm)
+;;   :bind (("C-c p h" . helm-projectile)))
 
-(use-package persp-projectile)
+(use-package persp-projectile
+  :bind (("C-c p s w" . projectile-persp-switch-project)))
 
-(condition-case e
-    (require 'es-windows)
-   (error (message "%s" e)))
+(use-package ibuffer-projectile
+  :config (progn
+            (add-hook 'ibuffer-hook
+                      (lambda ()
+                        (ibuffer-projectile-set-filter-groups)
+                        (unless (eq ibuffer-sorting-mode 'alphabetic)
+                          (ibuffer-do-sort-by-alphabetic) ; first do alphabetic sort
+                          (ibuffer-do-sort-by-major-mode))))))
+
+
+;; (condition-case e
+;;     (require 'es-windows)
+;;    (error (message "%s" e)))
 
 ;;(use-package project-explorer)
 
@@ -89,11 +101,6 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
 
 
 (use-package know-your-http-well)
-
-;; FIXME: doens't work. Package broken ?
-;; (use-package fixmee
-;;   :config (global-fixmee-mode 1)
-;;   :bind (("C-x v f" . fixmee-view-listing)))
 
 (use-package find-file-in-project)
 

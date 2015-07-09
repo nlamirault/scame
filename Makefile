@@ -57,7 +57,7 @@ help:
 .PHONY: elpa
 elpa:
 	@echo -e "$(OK_COLOR)[$(APP)] Cask setup $(NO_COLOR)"
-	@$(CASK) install
+	@$(CASK) install --verbose --debug
 	@$(CASK) update
 	@touch .cask
 
@@ -70,7 +70,7 @@ deps:
 # build: elpa $(OBJECTS)
 
 .PHONY: test
-test: elpa
+test: reset elpa
 	@echo -e "$(OK_COLOR)[$(APP)] Launch unit tests$(NO_COLOR)"
 	@$(CASK) exec ert-runner -L test/sandbox
 
@@ -85,7 +85,6 @@ clean:
 	@rm -fr dist $(ARCHIVE).gz test/sandboxorg-clock-save.el
 
 reset: clean
-	@rm -rf .cask
 	@rm -fr test/sandbox
 
 release:

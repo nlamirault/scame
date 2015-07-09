@@ -55,9 +55,13 @@
 
 (use-package irony
   :config (progn
-            (add-hook 'c++-mode-hook 'irony-mode)
-            (add-hook 'c-mode-hook 'irony-mode)
-            (add-hook 'objc-mode-hook 'irony-mode)
+            (defun scame--irony-mode ()
+              ;; Avoid enabling irony-mode in modes that inherits c-mode, e.g: php-mode
+              (when (member major-mode irony-supported-major-modes)
+                (irony-mode 1)))
+            (add-hook 'c++-mode-hook 'scame--irony-mode)
+            (add-hook 'c-mode-hook 'scame--irony-mode)
+            (add-hook 'objc-mode-hook 'scame--irony-mode)
             (add-hook 'irony-mode-hook (lambda ()
                                          (define-key irony-mode-map [remap completion-at-point]
                                            'irony-completion-at-point-async)

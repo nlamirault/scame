@@ -28,5 +28,9 @@
 (use-package toml-mode
   :mode ("\\.toml$" . toml-mode))
 
+(use-package adoc-mode
+  :mode (("\\.adoc$" . adoc-mode)
+         ("\\.asciidoc$" . adoc-mode)))
+
 (provide '80_markup)
 ;;; 80_markup.el ends here

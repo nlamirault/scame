@@ -20,88 +20,94 @@
 ;;; Code:
 
 
-;;(require 'test-helper)
 
-
-(ert-deftest test-scame-version-keybinding ()
+(ert-deftest test-scame-keybindings ()
   :tags '(scame-keys)
   (with-test-sandbox
    (with-scame-mode
-    (should (eql 'scame/scame-version
-                 (key-binding (kbd "C-c s v")))))))
+    (should (eql 'hydra-scame/body
+                 (key-binding (kbd "C-c s SPC")))))))
 
-(ert-deftest test-scame-customization-keybinding ()
+
+(ert-deftest test-scame-projectile-keybindings ()
   :tags '(scame-keys)
   (with-test-sandbox
    (with-scame-mode
-    (should (eql 'scame/scame-customization
-                 (key-binding (kbd "C-c s z")))))))
-
-(ert-deftest test-scame-searches-keybindings ()
-  :tags '(scame-keys)
-  (with-test-sandbox
-   (with-scame-mode
-    (should (eql 'scame-search/engine/search-google
-                 (key-binding (kbd "C-c s s g"))))
-    (should (eql 'scame-search/engine/search-github
-                 (key-binding (kbd "C-c s s h"))))
-    (should (eql 'scame-search/engine/search-twitter
-                 (key-binding (kbd "C-c s s t"))))
-    (should (eql 'scame-search/engine/search-stackoverflow
-                 (key-binding (kbd "C-c s s s"))))
-    (should (eql 'scame-search/engine/search-wikipedia
-                 (key-binding (kbd "C-c s s w"))))
-    ;; (should (eql 'scame-search/engine/search-arch
-    ;;              (key-binding (kbd "C-c s s a")))))))
-    )))
-
-(ert-deftest test-scame-emails-keybindings ()
-  :tags '(scame-keys)
-  (with-test-sandbox
-   (with-scame-mode
-    (should (eql 'scame-email/scame-mail-gmail
-                 (key-binding (kbd "C-c s m g"))))
-    (should (eql 'scame-email/scame-mail-exchange
-                 (key-binding (kbd "C-c s m e"))))
-    (should (eql 'scame-email/scame-mail-local
-                 (key-binding (kbd "C-c s m l")))))))
-
-(ert-deftest test-scame-launcher-keybindings ()
-  :tags '(scame-keys)
-  (with-test-sandbox
-   (with-scame-mode
-    (should (eql 'scame-launcher/calc
-                 (key-binding (kbd "C-c s l c"))))
-    (should (eql 'scame-launcher/man
-                 (key-binding (kbd "C-c s l m"))))
-    (should (eql 'scame-launcher/proced
-                 (key-binding (kbd "C-c s l h"))))
-    (should (eql 'scame-launcher/helm-mt
-                 (key-binding (kbd "C-c s l t"))))
-    (should (eql 'scame-launcher/paradox-list-packages
-                 (key-binding (kbd "C-c s l p")))))))
-
-(ert-deftest test-scame-calendars-keybindings ()
-  :tags '(scame-keys)
-  (with-test-sandbox
-   (with-scame-mode
-    (should (eql 'scame-calendar/scame-google-calendar
-                 (key-binding (kbd "C-c s c g"))))
-    (should (eql 'scame-calendar/scame-work-calendar
-                 (key-binding (kbd "C-c s c w"))))
-    (should (eql 'scame-calendar/scame-diary-calendar
-                 (key-binding (kbd "C-c s c d"))))
-    (should (eql 'scame-calendar/scame-org-calendar
-                 (key-binding (kbd "C-c s c o")))))))
+    (should (eql 'hydra-scame-projectile/body
+                 (key-binding (kbd "C-c s P")))))))
 
 
-;; (ert-deftest test-scame-web-keybindings ()
+;; (ert-deftest test-scame-version-keybinding ()
+;;   :tags '(scame-keys)
 ;;   (with-test-sandbox
 ;;    (with-scame-mode
-;;     (should (eql 'browse-url-at-point
-;;                  (key-binding (kbd "C-c u"))))
-;;     (should (eql 'eww
-;;                  (key-binding (kbd "C-c w")))))))
+;;     (should (eql 'scame/scame-version
+;;                  (key-binding (kbd "C-c s v")))))))
+
+;; (ert-deftest test-scame-customization-keybinding ()
+;;   :tags '(scame-keys)
+;;   (with-test-sandbox
+;;    (with-scame-mode
+;;     (should (eql 'scame/scame-customization
+;;                  (key-binding (kbd "C-c s z")))))))
+
+;; (ert-deftest test-scame-searches-keybindings ()
+;;   :tags '(scame-keys)
+;;   (with-test-sandbox
+;;    (with-scame-mode
+;;     (should (eql 'scame-search/engine/search-google
+;;                  (key-binding (kbd "C-c s G"))))
+;;     (should (eql 'scame-search/engine/search-github
+;;                  (key-binding (kbd "C-c s H"))))
+;;     (should (eql 'scame-search/engine/search-twitter
+;;                  (key-binding (kbd "C-c s T"))))
+;;     (should (eql 'scame-search/engine/search-stackoverflow
+;;                  (key-binding (kbd "C-c s S"))))
+;;     (should (eql 'scame-search/engine/search-wikipedia
+;;                  (key-binding (kbd "C-c s W"))))
+;;     ;; (should (eql 'scame-search/engine/search-arch
+;;     ;;              (key-binding (kbd "C-c s s a")))))))
+;;     )))
+
+;; (ert-deftest test-scame-emails-keybindings ()
+;;   :tags '(scame-keys)
+;;   (with-test-sandbox
+;;    (with-scame-mode
+;;     (should (eql 'scame-email/scame-mail-gmail
+;;                  (key-binding (kbd "C-c s M"))))
+;;     (should (eql 'scame-email/scame-mail-exchange
+;;                  (key-binding (kbd "C-c s E"))))
+;;     (should (eql 'scame-email/scame-mail-local
+;;                  (key-binding (kbd "C-c s L")))))))
+
+;; (ert-deftest test-scame-launcher-keybindings ()
+;;   :tags '(scame-keys)
+;;   (with-test-sandbox
+;;    (with-scame-mode
+;;     (should (eql 'scame-launcher/calc
+;;                  (key-binding (kbd "C-c s a"))))
+;;     (should (eql 'scame-launcher/man
+;;                  (key-binding (kbd "C-c s m"))))
+;;     (should (eql 'scame-launcher/proced
+;;                  (key-binding (kbd "C-c s h"))))
+;;     (should (eql 'scame-launcher/helm-mt
+;;                  (key-binding (kbd "C-c s t"))))
+;;     (should (eql 'scame-launcher/paradox-list-packages
+;;                  (key-binding (kbd "C-c s p")))))))
+
+;; (ert-deftest test-scame-calendars-keybindings ()
+;;   :tags '(scame-keys)
+;;   (with-test-sandbox
+;;    (with-scame-mode
+;;     (should (eql 'scame-calendar/scame-google-calendar
+;;                  (key-binding (kbd "C-c s g"))))
+;;     (should (eql 'scame-calendar/scame-work-calendar
+;;                  (key-binding (kbd "C-c s w"))))
+;;     (should (eql 'scame-calendar/scame-diary-calendar
+;;                  (key-binding (kbd "C-c s d"))))
+;;     (should (eql 'scame-calendar/scame-org-calendar
+;;                  (key-binding (kbd "C-c s o")))))))
+
 
 
 (provide 'scame-global-keys-test)

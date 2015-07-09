@@ -20,12 +20,12 @@
 ;;; Code:
 
 (ert-deftest test-scame-cider ()
+  :tags '(clojure)
   (with-test-sandbox
    (with-current-file
     "var/hello.clj"
     (should (featurep 'cider))
     ;;(should (featurep 'company-cider))
-    ;;(should (featurep 'clj-refactor)))))
     )))
 
 

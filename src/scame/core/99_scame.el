@@ -21,7 +21,9 @@
 
 ;;; Code:
 
-(use-package easymenu)
+
+
+
 
 ;;;###autoload
 (defun scame-on ()

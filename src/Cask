@@ -59,6 +59,7 @@
 (depends-on "projectile" "0.11.0")
 (depends-on "helm-projectile" "0.11.0")
 (depends-on "persp-projectile" "0.11.0")
+(depends-on "ibuffer-projectile" "0.2")
 (depends-on "find-file-in-project" "3.3")
 ;;(depends-on "sr-speedbar")
 ;;(depends-on "nav")
@@ -137,8 +138,8 @@
 (depends-on "geiser" "0.6")
 
 ;; Clojure
-(depends-on "cider" "0.8.2")
-(depends-on "clj-refactor" "0.13.0")
+(depends-on "cider" "0.9.1")
+;; (depends-on "clj-refactor" "0.13.0")
 
 ;; Haskell
 (depends-on "haskell-mode" "13.10")
@@ -199,6 +200,7 @@
 (depends-on "yaml-mode" "0.0.11")
 (depends-on "fountain-mode" "1.4.5")
 (depends-on "toml-mode")
+(depends-on "adoc-mode" "0.6.2")
 
 ;; Other development mode
 
@@ -218,13 +220,11 @@
 (depends-on "launch")
 
 ;; Git and friends
-(depends-on "magit" "90150116")
+(depends-on "magit" "2.1.0")
 (depends-on "magit-gerrit" "0.1")
-(depends-on "git-commit-mode" "0.15.0")
 (depends-on "gitconfig-mode" "0.15.0")
 (depends-on "gitignore-mode" "0.15.0")
 (depends-on "gitattributes-mode" "0.15.0")
-(depends-on "git-rebase-mode" "0.15.0")
 (depends-on "gist" "1.2.1")
 (depends-on "git-gutter+" "0.2")
 (depends-on "git-timemachine" "1.9")
@@ -323,6 +323,7 @@
 (depends-on "popwin" "0.6.2")
 ;;(depends-on "golden-ratio")
 ;;(depends-on "font-awesome")
+(depends-on "unicode-fonts" "0.4.4")
 
 ;; Dired and friends
 ;; (depends-on "dired+")
@@ -367,10 +368,12 @@
 (depends-on "ample-theme")
 (depends-on "subatomic-theme")
 (depends-on "monokai-theme")
+(depends-on "material-theme")
 
 ;; Multimedia
 (depends-on "emms")
 (depends-on "bongo" "1.0")
+(depends-on "libmpdee")
 
 ;; Development
 (development

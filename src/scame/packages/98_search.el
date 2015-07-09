@@ -19,27 +19,25 @@
 
 ;;; Code:
 
-;; FIX: can't load it ?
-
 (use-package engine-mode
   ;;:init (engine-mode t)
   :config (progn
             (defengine google
               "http://www.google.com/search?ie=utf-8&oe=utf-8&q=%s"
-              "g")
+              :keybinding "g")
             (defengine github
               "https://github.com/search?ref=simplesearch&q=%s"
-              "h")
+              :keybinding "h")
             (defengine twitter
               "https://twitter.com/search?src=typd&q="
-              "t")
+              :keybinding "t")
             (defengine rfcs
               "http://pretty-rfc.herokuapp.com/search?q=%s")
             (defengine stackoverflow
               "https://stackoverflow.com/search?q=%s")
             (defengine wikipedia
               "http://www.wikipedia.org/search-redirect.php?language=en&go=Go&search=%s"
-              "w")))
+              :keybinding "w")))
 
 (provide '98_search)
 ;;; 98_search.el ends here

@@ -76,27 +76,16 @@ The current version has been tested on Linux and Mac OS X.
 
 ## Keymap
 
-### Global
+### UI
 
 Keybinding             | Description
----------------------  |------------------------------------------------------------
-<kbd>C-c l</kbd>       | List packages from Melpa.
-<kbd>C-c w</kbd>       | Launch eww
-<kbd>C-c C-j</kbd>     | direx:jump-to-directory
-<kbd>C-.</kbd>         | imenu-anywhere
-<kbd>C-c t</kbd>       | launch terminal
-<kbd>C-x r</kbd>       | key bindings are automatically popped up after a short delay
+-----------------------|------------------------------------------------------------
+<kbd>C-down</kbd>      | Scroll line down
+<kbd>C-up </kbd>       | Scroll line up
 <kbd>C-c <left></kbd>  | Select the window to the left of the current one
 <kbd>C-c <right></kbd> | Select the window to the right of the current one
 <kbd>C-c <up></kbd>    | Select the window to the up of the current one
 <kbd>C-c <down></kbd>  | Select the window to the down of the current one
-
-### UI
-
-Keybinding           | Description
----------------------|------------------------------------------------------------
-<kbd>C-down</kbd>    | Scroll line down
-<kbd>C-up </kbd>     | Scroll line up
 
 
 ### Helm
@@ -133,6 +122,7 @@ See [projectile][] for default keybindings
 Keybinding           | Description
 ---------------------|------------------------------------------------------------
 <kbd>C-c p h</kbd>   | helm-projectile
+<kbd>C-c p s w</kbd> | projectile-persp-switch-project
 
 ### Python-mode
 
@@ -252,37 +242,19 @@ Keybinding           | Description
 
 Keybinding            | Description
 ----------------------|------------------------------------------------------------
-<kbd>C-c s v</kbd>    | Display Scame version
-<kbd>C-c s z</kbd>    | Open the Scame user customization file
-<kbd>C-c s s g</kbd>  | Search on Google
-<kbd>C-c s s h</kbd>  | Search on Github
-<kbd>C-c s s t</kbd>  | Search on Twitter
-<kbd>C-c s s s</kbd>  | Search on Stackoverflow
-<kbd>C-c s s w</kbd>  | Search on Wikipedia
-<kbd>C-c s s r</kbd>  | Search on RFCs
-<kbd>C-c s m g</kbd>  | Mail (Gnus) using GMail setup
-<kbd>C-c s m e</kbd>  | Mail (Gnus) using Exchange setup
-<kbd>C-c s m o</kbd>  | Mail (Gnus) using offlineimap
-<kbd>C-c s m m</kbd>  | Mail (Gnus) using offlineimap for GMail
-<kbd>C-c s l c</kbd>  | Launch calc
-<kbd>C-c s l t</kbd>  | Launch terminal
-<kbd>C-c s l h</kbd>  | Launch proced (htop)
-<kbd>C-c s l p</kbd>  | Launch list MELPA packages using Paradox
-<kbd>C-c s l m</kbd>  | Launch man page
-<kbd>C-c s c g</kbd>  | Display Google calendar
-<kbd>C-c s c w</kbd>  | Display work calendar
-<kbd>C-c s c d</kbd>  | Display diary calendar
-<kbd>C-c s c o</kbd>  | Display Org calendar
-
+<kbd>C-c s SPC</kbd>  | Hydra Scame keybindings
+<kbd>C-c s P</kbd>    | Hydra projectile
+                      |
 
 If you ever forget any of Scame's keybindings just do a:
 <kbd>C-c s C-h</kbd>
 
-You can change the default keymap prefix C-c p like this:
+You can change the default keymap prefix <kbd>C-c s</kbd> like this:
 
 ```el
 (setq scame-keymap-prefix (kbd "C-c C-s"))
 ```
+
 
 ## Mail
 
@@ -314,6 +286,7 @@ If file `$HOME/.config/scame/scame-user.el` exists, [Scame][] load it.
 Example of customization :
 
 ```el
+
 ;; User
 (setq user-full-name "Nicolas Lamirault")
 (setq user-mail-address "nicolas.lamirault@gmail.com")
@@ -336,6 +309,8 @@ Example of customization :
                         :weight normal
                         :height 81
                         :width normal)))))
+
+(provide 'scame-user)
 
 ```
 
