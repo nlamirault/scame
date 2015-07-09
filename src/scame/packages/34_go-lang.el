@@ -1,6 +1,6 @@
 ;;; 34_go-lang.el -- Configuration for the GO language
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -48,8 +48,6 @@
 
 (use-package helm-go-package)
 
-
-;; FIXMEE. See Cerbere or not ?
 (use-package gotest
   :config (add-hook 'go-mode-hook
                     (lambda ()

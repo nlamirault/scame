@@ -21,20 +21,21 @@
 
 ;; FIXME
 (ert-deftest test-scame-helm ()
+  :tags '(helm)
   (with-test-sandbox
    (require 'helm)
    (should (eql 'scame-helm-map
                 (key-binding (kbd "C-x h"))))
    (should (eql 'helm-find-files
                 (key-binding (kbd "C-x h F"))))
-  (should (eql 'helm-for-files
-               (key-binding (kbd "C-x h f"))))
-  (should (eql 'helm-M-x
-               (key-binding (kbd "C-x h x"))))
-  (should (eql 'helm-show-kill-ring
-               (key-binding (kbd "C-x h y"))))
-  (should (eql 'helm-buffers-list
-               (key-binding (kbd "C-x h b"))))))
+   (should (eql 'helm-for-files
+                (key-binding (kbd "C-x h f"))))
+   (should (eql 'helm-M-x
+                (key-binding (kbd "C-x h x"))))
+   (should (eql 'helm-show-kill-ring
+                (key-binding (kbd "C-x h y"))))
+   (should (eql 'helm-buffers-list
+                (key-binding (kbd "C-x h b"))))))
 
 (ert-deftest test-scame-occur ()
   (with-test-sandbox
