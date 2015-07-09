@@ -4,9 +4,9 @@
 
 - Add *fishshell* mode
 - Add *asciidoc* mode
-- #45: Error with appoitment
+- ``#45``: Error with appoitment
 - Update keybindings using Hydra
-- #47: Choice of completion backend
+- ``#47``: Choice of completion backend
 
 ## Version 1.0.0 (04/03/2015)
 
@@ -21,7 +21,7 @@
 - Add Lua support
 - Add *engine-mode* for search providers
 - Setup *irony* for c, c++ and objective-c
-- #41: Change init-loader to el-init
+- ``#41``: Change init-loader to el-init
 
 ## Version 0.13.0 (03/02/2015)
 
@@ -36,7 +36,7 @@
 - Setup visible bell
 - `FIX` Docker image creation
 - Replace *w3m* rendering by *shr* in *Gnus*
-- #30: Remove *w3m* (due to [Cask-270][])
+- ``#30``: Remove *w3m* (due to [Cask-270][])
 - Remove Emacs 24.3 support
 - Add *helm-occur*
 
@@ -47,14 +47,14 @@
 - `FIX` Common Lisp setup
 - `FIX` Cloud tools setup
 - `FIX` *ERC* setup
-- #19: Refactoring unit tests for using *Overseer*
-- #36: Add vendoring directory
+- ``#19``: Refactoring unit tests for using *Overseer*
+- ``#36``: Add vendoring directory
 - Add *twitterring-mode*
 - Setup *bug-reference-mode*
 
 ## Version 0.10.0 (12/22/2014)
 
-- #35: Warning after installation with invalid 'load-path'
+- ``#35``: Warning after installation with invalid 'load-path'
 - Update TravisCI configuration
 - Setup music and radio using *EMMS*
 - Init continuous integration watcher using *Butler* for Jenkins
@@ -65,13 +65,13 @@
 - Update Javascript configuration
 - Refactoring *php-mode* and *web-mode*
 - Init configuration for *elixir*
-- #22: Add *discover-my-major*
-- #32: Add *go-errcheck* package
-- #31: Add *golint* package
+- ``#22``: Add *discover-my-major*
+- ``#32``: Add *go-errcheck* package
+- ``#31``: Add *golint* package
 - Update GPG And Gnus setup
 - Update Linux configuration for offlineimap
 - Update IRC and IM configurations
-- #24: Add the platinum searcher
+- ``#24``: Add the platinum searcher
 - FIX *cider* setup
 - Add *pip-requirements* package
 
@@ -102,35 +102,35 @@
 - Update Common lisp and go setup
 - `FIX` Enable *global-linum-mode*
 - `FIX` UTF-8 encodings
-- #18: Add *go-projectile*
-- #13: Refactor unit test to creates sandbox to test Scame installation and not use local installation
+- ``#18``: Add *go-projectile*
+- ``#13``: Refactor unit test to creates sandbox to test Scame installation and not use local installation
 - Remove *cerbere*
 - Update Python and Go configuration to use *phpunit.el* and *go-test.el*
 
 ## Version 0.5.0 (04/28/2014)
 
 - Migrate from MIT to GPL-3
-- #16: Add C and C++ configuration
-- #14: Add *sphinx-doc*
+- ``#16``: Add C and C++ configuration
+- ``#14``: Add *sphinx-doc*
 - Add perspective for projectile
-- #12: FIX Key bindings not enabled by default
+- ``#12``: FIX Key bindings not enabled by default
 - Add *perspective.el*
 - Migrate to *cerbere*  mode (*gotest.el*, *phpunit.el*, *tox.el*)
-- #11: Add *plsense-direx*
-- #9: Add *jedi-direx*
-- #8: Add *go-direx*
-- #7: Change Scame initialisation filename
+- ``#11``: Add *plsense-direx*
+- ``#9``: Add *jedi-direx*
+- ``#8``: Add *go-direx*
+- ``#7``: Change Scame initialisation filename
 - Add unit tests for Scame configuration
 
 ## Version 0.4.0 (04/15/2014)
 
-- #6: Update command argument doens't perform a git pull on scame local installation
-- #4: Add *uniquify* configuration
+- ``#6``: Update command argument doens't perform a git pull on scame local installation
+- ``#4``: Add *uniquify* configuration
 - Add a command top open the Scame user customization file
 - Refactoring Scame installation directory
 - Migrating to a CLI in Emacs Lisp using [commander.el][]
-- #3: configure *helm-projectile* and key binding
-- #2: configure *helm-imenu* and key binding
+- ``#3``: configure *helm-projectile* and key binding
+- ``#2``: configure *helm-imenu* and key binding
 - Allow users to customize Scame default keymap prefix
 - Uniform keybindings
 - Migrate to *use-package* for packages configuration
