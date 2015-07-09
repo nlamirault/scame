@@ -1,5 +1,13 @@
 # Scame ChangeLog
 
+## Version 1.1.0 (IN PROGRESS)
+
+- Add *fishshell* mode
+- Add *asciidoc* mode
+- [GH-45]: Error with appoitment
+- Update keybindings using Hydra
+- [GH-47]: Choice of completion backend
+
 ## Version 1.0.0 (04/03/2015)
 
 - Update *org-mode* and setup *appointment*
