@@ -23,7 +23,7 @@
 
 (require 'pkg-info)
 
-(setq current-version "1.1.0")
+(setq current-version "1.2.0")
 
 
 (ert-deftest test-scame-version ()
