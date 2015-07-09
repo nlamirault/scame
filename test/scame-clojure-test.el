@@ -19,15 +19,14 @@
 
 ;;; Code:
 
-;; FIX: cider-util not found
-;; (ert-deftest test-scame-cider ()
-;;   :tags '(clojure)
-;;   (with-test-sandbox
-;;    (with-current-file
-;;     "var/hello.clj"
-;;     (should (featurep 'cider))
-;;     (should (featurep 'company-cider))
-;;     )))
+(ert-deftest test-scame-cider ()
+  :tags '(clojure)
+  (with-test-sandbox
+   (with-current-file
+    "var/hello.clj"
+    (should (featurep 'cider))
+    ;;(should (featurep 'company-cider))
+    )))
 
 
 (provide 'scame-clojure-test)
