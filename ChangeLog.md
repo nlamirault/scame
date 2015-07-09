@@ -1,6 +1,6 @@
 # Scame ChangeLog
 
-## Version 1.1.0 (IN PROGRESS)
+## Version 1.1.0 (07/09/2015)
 
 - Add *fishshell* mode
 - Add *asciidoc* mode
