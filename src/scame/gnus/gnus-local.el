@@ -34,13 +34,21 @@
 ;; ------------------------------------------
 
 
-;; IMAP Localhost
+;; IMAP Localhost offlineimap
 
+;; (setq gnus-select-method
+;;       '(nnimap "Exchange"
+;;                (nnimap-stream shell)
+;;                (nnimap-shell-program
+;;                	 "/usr/lib/dovecot/imap -o mail_location=maildir:/opt/Exchange:LAYOUT=fs:INBOX=/opt/Exchange/INBOX")))
+
+;; IMAP Localhost imapsync
 (setq gnus-select-method
       '(nnimap "Exchange"
                (nnimap-stream shell)
                (nnimap-shell-program
-                "/usr/lib/dovecot/imap -o mail_location=maildir:/opt/Exchange")))
+               	 "/usr/lib/dovecot/imap -o mail_location=maildir:/opt/OrangeExchange:LAYOUT=fs:INBOX=/opt/OrangeExchange/Inbox")))
+
 
 ;; (setq gnus-secondary-select-methods
 ;;       '((nnimap "Other"
