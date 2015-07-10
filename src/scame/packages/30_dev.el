@@ -56,11 +56,10 @@
 	    (add-to-list 'projectile-globally-ignored-files
 			 ".DS_Store")))
 
-;; FIX: https://github.com/nlamirault/scame/issues/50
-;; (use-package helm-projectile
-;;   :init (helm-projectile-on)
-;;   :config (setq projectile-completion-system 'helm)
-;;   :bind (("C-c p h" . helm-projectile)))
+(use-package helm-projectile
+  :init (helm-projectile-on)
+  :config (setq projectile-completion-system 'helm)
+  :bind (("C-c p h" . helm-projectile)))
 
 (use-package persp-projectile
   :bind (("C-c p s w" . projectile-persp-switch-project)))
