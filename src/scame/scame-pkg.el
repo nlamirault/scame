@@ -139,12 +139,15 @@
 
 (package-initialize)
 
-(mapcar (lambda (pkg)
-          (package-install pkg))
-        stable-packages)
-(mapcar (lambda (pkg)
-          (package-install pkg))
-        unstable-packages)
+(defun scame--install-packages (pkg-list)
+  (mapcar (lambda (pkg)
+            (unless (package-installed-p pkg)
+              (package-refresh-contents)
+              (package-install pkg)))
+          pkg-list))
+
+(scame--install-packages stable-packages)
+(scame--install-packages unstable-packages)
 
 
 (provide 'scame-pkg)
