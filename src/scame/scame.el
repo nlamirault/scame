@@ -28,10 +28,10 @@
   :group 'scame
   :type 'string)
 
-(defcustom scame-cask-file "~/.cask/cask.el"
-  "Scame Cask file."
-  :group 'scame
-  :type 'string)
+;; (defcustom scame-cask-file "~/.cask/cask.el"
+;;   "Scame Cask file."
+;;   :group 'scame
+;;   :type 'string)
 
 (defcustom scame-keymap-prefix (kbd "C-c s")
   "Scame keymap prefix."
@@ -95,20 +95,7 @@
   (message "Load Gnus development version")
   (require 'gnus-load))
 
-(require 'package)
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("org" . "http://orgmode.org/elpa/")
-                         ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
-;;(package-initialize)
-;; Don't initialize packages twice
-(setq package-enable-at-startup nil)
-
-(require 'cask scame-cask-file)
-(cask-initialize)
-(add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
-;;(require 'pallet)
+(require 'scame-pkg)
 
 (require 'f)
 (require 's)
