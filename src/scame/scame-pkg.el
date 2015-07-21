@@ -31,7 +31,6 @@
 (defvar stable-packages
   '(s f epl dash helm use-package paradox el-init el-init-viewer
       company auto-complete
-      projectile helm-projectile persp-projectile ibuffer-projectile
       find-file-in-project
       neotree
       imenu-anywhere
@@ -82,7 +81,7 @@
       gist git-gutter+ git-timemachine helm-open-github
       gitlab helm-gitlab
       ;; Utilities
-      pkg-info persp-projectile project-persist
+      pkg-info project-persist
       helm-mt
       lice
       ;; Notifications
@@ -125,6 +124,7 @@
     alert
     benchmark-init
     helm-flycheck
+    projectile helm-projectile persp-projectile ibuffer-projectile
     ;; https://github.com/dougm/go-projectile/issues/2
     go-projectile
     ;; https://github.com/golang/lint/issues/111
@@ -162,7 +162,7 @@
     ;; https://github.com/fgallina/rcirc-alertify/issues/1
     rcirc-alertify
     rcirc-notify
-    org org-agenda-property org-journal orgbox org-caldav
+    org org-gcal org-agenda-property org-journal orgbox org-caldav
     ;; https://github.com/Fuco1/dired-hacks/issues/33
     dired-filter dired-open dired-rainbow dired-subtree
     ;; https://github.com/vapniks/syslog-mode/issues/12
