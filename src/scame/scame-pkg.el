@@ -28,14 +28,6 @@
                          ("melpa" . "http://melpa.milkbox.net/packages/")
                          ))
 
-(defun scame--install-packages (pkg-list)
-  "Install each package of `PKG-LIST'."
-  (package-refresh-contents)
-  (mapcar (lambda (pkg)
-            (unless (package-installed-p pkg)
-              (package-install pkg)))
-          pkg-list))
-
 (defvar stable-packages
   '(s f epl dash helm use-package paradox el-init el-init-viewer
       company auto-complete
@@ -199,6 +191,16 @@
 (message "Pinned : %s" package-pinned-packages)
 
 (package-initialize)
+(package-refresh-contents)
+
+
+(defun scame--install-packages (pkg-list)
+  "Install each package of `PKG-LIST'."
+  (dolist (pkg pkg-list)
+    (unless (package-installed-p pkg)
+      (ignore-errors
+        (package-install pkg)))))
+
 
 (scame--install-packages stable-packages)
 (scame--install-packages unstable-packages)
