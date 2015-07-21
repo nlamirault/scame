@@ -20,11 +20,20 @@
 ;;; Code:
 
 
-(use-package powerline
+;; (use-package powerline
+;;   :config (progn
+;; 	    (powerline-default-theme)
+;; 	    (setq ;powerline-height 25
+;;                   powerline-default-separator 'slant))) ;;'arrow-fade)))
+
+
+(use-package smart-mode-line
+  :init (setq sml/no-confirm-load-theme t)
   :config (progn
-	    (powerline-default-theme)
-	    (setq ;powerline-height 25
-                  powerline-default-separator 'slant))) ;;'arrow-fade)))
+            (sml/setup)
+            (sml/apply-theme 'smart-mode-line-dark)))
+;;(setq sml/theme 'respectful)))
+
 
 
 (provide '13_modeline)
