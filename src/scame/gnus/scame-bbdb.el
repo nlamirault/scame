@@ -32,13 +32,8 @@
                          (local-set-key "<TAB>" 'bbdb-complete-name)))
             ))
 
-;; (use-package bbdb-com
-;;   :bind (("C-c d s" . bbdb)
-;;          ("C-c d n" . bbdb-search-name)
-;;          ("C-c d m" . bbdb-search-mail)))
-
-(use-package bbdb-
-  :init (bbdb-:setup))
+;;(use-package bbdb-
+;;  :init (bbdb-:setup))
 
 (use-package bbdb-ext)
 

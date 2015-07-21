@@ -27,24 +27,21 @@
 ;; Init file
 
 (ert-deftest test-scame-init-file ()
+  :tags '(config)
   (with-test-sandbox
    (mapc (lambda (mode)
            (should (featurep mode)))
-         '(el-init cask use-package))))
+         '(el-init use-package))))
 
 (ert-deftest test-scame-global-mode-is-loaded ()
+  :tags '(config)
   (with-test-sandbox
    (should (scame-mode))))
-
-
-;; Disable
-;; (ert-deftest test-scame-golden-radio ()
-;;   (should (golden-radio-mode)))
-
 
 ;; Check encodings
 
 (ert-deftest test-scame-encodings ()
+  :tags '(config)
   (with-test-sandbox
    (should (eql 'utf-8 default-terminal-coding-system))
    (should (eql 'utf-8-unix keyboard-coding-system))
@@ -63,6 +60,7 @@
 ;;    (should (featurep 'powerline))))
 
 (ert-deftest test-scame-imenu-anywhere ()
+  :tags '(config)
   (with-test-sandbox
    (require 'imenu-anywhere)
    (should (featurep 'imenu-anywhere))
@@ -84,6 +82,7 @@
 ;; Packages
 
 (ert-deftest test-scame-packages ()
+  :tags '(config)
   (with-test-sandbox
    (should (require 'paradox))))
 

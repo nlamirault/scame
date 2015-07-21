@@ -1,4 +1,4 @@
-;;; scame-golang-test.el --- Unit tests for Scame Common Lisp development.
+;;; scame-golang-test.el --- Unit tests for Scame Golang development.
 
 ;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -23,7 +23,8 @@
   "var/hello.go"
   "File name for testing Golang setup.")
 
-(ert-deftest test-scame-golang ()
+(ert-deftest test-scame-go-mode ()
+  :tags '(golang)
   (with-test-sandbox
    (with-current-file
     testsuite-go-filename
@@ -35,7 +36,13 @@
     (should (eql 'godef-jump
         	 (key-binding (kbd "C-x g j"))))
     (should (eql 'godoc
-                 (key-binding (kbd "C-x g d"))))
+                 (key-binding (kbd "C-x g d")))))))
+
+(ert-deftest test-scame-gotest ()
+  :tags '(golang)
+  (with-test-sandbox
+   (with-current-file
+    testsuite-go-filename
     (should (eql 'go-test-current-test
                  (key-binding (kbd "C-x g t"))))
     (should (eql 'go-test-current-file
@@ -43,16 +50,29 @@
     (should (eql 'go-test-current-project
                  (key-binding (kbd "C-x g p")))))))
 
-;; (ert-deftest test-scame-go-direx ()
-;;   (with-current-file testsuite-go-filename
-;;     (should (eql 'go-direx-pop-to-buffer
-;; 		 (key-binding (kbd "C-x g x"))))))
+(ert-deftest test-scame-go-errcheck ()
+  :tags '(golang)
+  (with-test-sandbox
+   (with-current-file
+    testsuite-go-filename
+    (should (eql 'go-errcheck
+                 (key-binding (kbd "C-x g e")))))))
 
-;; (ert-deftest test-scame-go-projectile ()
-;;   (with-current-file testsuite-go-filename
-;;     (projectile-mode)
-;;     (should (eql 'go-projectile-get
-;; 		 (key-binding (kbd "C-c p N"))))))
+(ert-deftest test-scame-go-lint ()
+  :tags '(golang)
+  (with-test-sandbox
+   (with-current-file
+    testsuite-go-filename
+    (should (eql 'golint
+                 (key-binding (kbd "C-x g l")))))))
+
+(ert-deftest test-scame-go-direx ()
+  :tags '(golang)
+  (with-test-sandbox
+   (with-current-file
+    testsuite-go-filename
+    (should (eql 'go-direx-pop-to-buffer
+                 (key-binding (kbd "C-x g x")))))))
 
 (provide 'scame-golang-test)
 ;;; scame-golang-test.el ends here

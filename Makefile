@@ -70,9 +70,15 @@ deps:
 # build: elpa $(OBJECTS)
 
 .PHONY: test
-test: reset elpa
+test: elpa
 	@echo -e "$(OK_COLOR)[$(APP)] Launch unit tests$(NO_COLOR)"
 	@$(CASK) exec ert-runner -L test/sandbox
+
+.PHONY: test-tag
+test-tag: elpa
+	@echo -e "$(OK_COLOR)[$(APP)] Launch unit tests$(NO_COLOR)"
+	@$(CASK) exec ert-runner -L test/sandbox --verbose --debug -t $(tag)
+
 
 .PHONY: virtual-test
 virtual-test:

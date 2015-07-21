@@ -28,123 +28,177 @@
                          ("melpa" . "http://melpa.milkbox.net/packages/")
                          ))
 
+(defun scame--install-packages (pkg-list)
+  "Install each package of `PKG-LIST'."
+  (package-refresh-contents)
+  (mapcar (lambda (pkg)
+            (unless (package-installed-p pkg)
+              (package-install pkg)))
+          pkg-list))
+
 (defvar stable-packages
-      '(s f epl dash helm use-package paradox el-init el-init-viewer benchmark-init
-          company helm-company auto-complete
-          projectile helm-projectile persp-projectile ibuffer-projectile
-          find-file-in-project
-          neotree
-          imenu-anywhere
-          dired-imenu
-          flycheck flycheck-cask flycheck-color-mode-line flycheck-package helm-flycheck
-          butler
-          ;; Common Lisp
-          sly sly-company
-          ;; Elisp
-          elisp-slime-nav erefactor overseer
-          ;; Golang
-          go-mode go-play company-go go-eldoc helm-go-package gotest go-direx go-projectile go-errcheck golint
-          ;; Python
-          jedi elpy tox pyvenv anaconda-mode company-anaconda jedi-direx sphinx-doc helm-pydoc pip-requirements
-          ;; Ruby
-          ruby rvm rhtml-mode ruby-tools inf-ruby company-inf-ruby ruby-test-mode
-          ;; Erlang
-          erlang
-          ;; Scheme
-          geister
-          ;; Clojure
-          cider
-          ;; Haskell
-          haskell-mode flycheck-haskell ghci-completion
-          ;; OCaml
-          tuareg merlin
-          ;; Web
-          web-mode
-          ;; Php
-          php-mode emacsagist phpunit
-          ;; Perl
-          cperl-mode helm-perldoc
-          ;; Javascript
-          js3-mode tern company-tern
-          ;; NodeJS
-          jade-mode
-          ;; C/C++/ObjectiveC
-          irony company-irony flycheck-irony irony-eldoc
-          ;; Rust
-          rust-mode
-          ;; Elixir
-          elixir-mode alchemist
-          ;; Lua
-          lua-mode
-          ;; Markup languages
-          markdown-mode yaml-mode toml-mode adoc-mode
-          ;; Cloud
-          dockerfile-mode vagrant puppet-mode ansible ansible-doc
-          ;; Git and friends
-          magit magit-gerrit
-          gitconfig-mode gitignore-mode gitattributes-mode
-          gist git-gutter+ git-timemachine helm-open-github
-          gitlab helm-gitlab
-          ;; Utilities
-          pkg-info persp-projectile project-persist helm-project-persist
-          multi-term helm-mt
-          lice
-          ;; Notifications
-          alert sauron
-          ;; Search
-          engine-mode
-          helm-ack ag helm-ag pt helm-pt swoop helm-swoop
-          swiper swiper-helm
-          ;; Social
-          jabber
-          circe
-          rcirc-groups rcirc-alertify rcirc-notify
-          twittering-mode
-          sx
-          ;; Org
-          org org-agenda-property org-caldav org-journal orgbox
-          ;; Calendar
-          calfw
-          ;; UI
-          rich-minority powerline smart-mode-line smart-mode-line-powerline-theme
-          popwin
-          ;; Dired and friends
-          direx dired-k dired-filter dired-open dired-rainbow dired-subtree
-          ;; Sysadmin
-          nginx-mode syslog-mode apache-mode
-          ;; Gnus and friends
-          gnus-summary-ext gnus-x-gm-raw
-          bbdb bdbd- bbdb-ext bbdb-csv-import
-          notmuch notmuch-labeler
-          ;; Keys
-          hydra which-key
-          ;; Misc
-          weather-metno
-          ;; Multimedia
-          emms bongo libmpdee
-          ))
+  '(s f epl dash helm use-package paradox el-init el-init-viewer
+      company auto-complete
+      projectile helm-projectile persp-projectile ibuffer-projectile
+      find-file-in-project
+      neotree
+      imenu-anywhere
+      dired-imenu
+      flycheck flycheck-cask flycheck-color-mode-line flycheck-package
+      butler
+      ;; Common Lisp
+      sly sly-company
+      ;; Elisp
+      elisp-slime-nav erefactor overseer
+      ;; Golang
+      go-mode company-go go-eldoc gotest go-direx go-errcheck
+      ;; Python
+      jedi elpy tox pyvenv sphinx-doc helm-pydoc pip-requirements
+      ;; Ruby
+      rvm ruby-tools inf-ruby ruby-test-mode
+      ;; Scheme
+      geiser
+      ;; Clojure
+      cider
+      ;; Haskell
+      haskell-mode flycheck-haskell
+      ;; OCaml
+      tuareg merlin
+      ;; Web
+      web-mode
+      ;; Php
+      php-mode emacsagist phpunit
+      ;; Perl
+      cperl-mode helm-perldoc
+      ;; Javascript
+      js3-mode tern company-tern
+      ;; NodeJS
+      jade-mode
+      ;; C/C++/ObjectiveC
+      company-irony
+      ;; Elixir
+      elixir-mode alchemist
+      ;; Lua
+      lua-mode
+      ;; Markup languages
+      markdown-mode yaml-mode adoc-mode
+      ;; Cloud
+      dockerfile-mode vagrant puppet-mode ansible ansible-doc
+      ;; Git and friends
+      magit magit-gerrit
+      gitconfig-mode gitignore-mode gitattributes-mode
+      gist git-gutter+ git-timemachine helm-open-github
+      gitlab helm-gitlab
+      ;; Utilities
+      pkg-info persp-projectile project-persist
+      helm-mt
+      lice
+      ;; Notifications
+      sauron
+      ;; Search
+      helm-ack ag helm-ag pt helm-swoop
+      swiper swiper-helm
+      ;; Social
+      jabber
+      twittering-mode
+      sx
+      ;; Calendar
+      calfw
+      ;; UI
+      rich-minority powerline smart-mode-line smart-mode-line-powerline-theme
+      popwin ace-window
+      ;; Dired and friends
+      direx dired-k
+      ;; Sysadmin
+      nginx-mode
+      ;; Gnus and friends
+      gnus-x-gm-raw
+      bbdb-
+      notmuch
+      ;; Keys
+      hydra which-key
+      ;; Multimedia
+      bongo
+      ))
 
 
 (defvar unstable-packages
-      '(
-        ;; Themes
-        material-theme monokai-theme zenburn-theme
-        ))
+  '(
+    ;; Themes
+    material-theme
+    monokai-theme
+    zenburn-theme
+    ;; Packages without tags
+    ;; See: https://github.com/fgallina/rcirc-alertify/issues/1
+    alert
+    benchmark-init
+    helm-flycheck
+    ;; https://github.com/dougm/go-projectile/issues/2
+    go-projectile
+    ;; https://github.com/golang/lint/issues/111
+    golint
+    ;; https://github.com/proofit404/anaconda-mode/issues/98
+    anaconda-mode
+    ;;https://github.com/proofit404/company-anaconda/issues/3
+    company-anaconda
+    ;; https://github.com/tkf/emacs-jedi-direx/issues/17
+    jedi-direx
+    rhtml-mode company-inf-ruby
+    erlang
+    ghci-completion
+    ;; https://github.com/Sarcasm/flycheck-irony/issues/4
+    irony
+    flycheck-irony
+    ;; https://github.com/ikirill/irony-eldoc/issues/3
+    irony-eldoc
+    ;; https://github.com/rust-lang/rust-mode/issues/87
+    rust-mode
+    ;; https://github.com/dryman/toml-mode.el/issues/2
+    toml-mode
+    ;; https://github.com/Sliim/helm-project-persist/issues/2
+    helm-project-persist
+    multi-term
+    ;; https://github.com/hrs/engine-mode/issues/22
+    engine-mode
+    ;; https://github.com/ralesi/helm-pt/issues/2
+    helm-pt
+    ;; https://github.com/ShingoFukuyama/emacs-swoop/issues/9
+    swoop
+    ;; https://github.com/jorgenschaefer/circe/issues/202
+    circe
+    rcirc-groups
+    ;; https://github.com/fgallina/rcirc-alertify/issues/1
+    rcirc-alertify
+    rcirc-notify
+    org org-agenda-property org-journal orgbox org-caldav
+    ;; https://github.com/Fuco1/dired-hacks/issues/33
+    dired-filter dired-open dired-rainbow dired-subtree
+    ;; https://github.com/vapniks/syslog-mode/issues/12
+    syslog-mode
+    apache-mode
+    ;; https://github.com/vapniks/gnus-summary-ext/issues/3
+    gnus-summary-ext
+    bbdb
+    ;; https://github.com/vapniks/bbdb-ext/issues/1
+    bbdb-ext
+    ;; https://gitlab.com/iankelling/bbdb-csv-import/issues/2
+    bbdb-csv-import
+    ;; https://github.com/DamienCassou/notmuch-labeler/issues/2
+    notmuch-labeler
+    ;; https://github.com/ruediger/weather-metno-el/issues/11
+    weather-metno
+    emms
+    libmpdee
+    ))
+
 
 (dolist (pkg stable-packages)
   (message "Package: %s" pkg)
   (add-to-list 'package-pinned-packages
                (cons pkg "melpa-stable")))
-(message "Pinned : %s" package-pinned-packages))
+(message "Pinned : %s" package-pinned-packages)
 
 (package-initialize)
-
-(defun scame--install-packages (pkg-list)
-  (mapcar (lambda (pkg)
-            (unless (package-installed-p pkg)
-              (package-refresh-contents)
-              (package-install pkg)))
-          pkg-list))
 
 (scame--install-packages stable-packages)
 (scame--install-packages unstable-packages)

@@ -22,24 +22,29 @@
 ;; Directories
 
 (ert-deftest test-scame-direx ()
+  :tags '(fs)
   (with-test-sandbox
    (should (featurep 'direx))
    (should (eql 'direx:jump-to-directory
                 (key-binding (kbd "C-x d j"))))))
 
 (ert-deftest test-scame-dired-filter ()
+  :tags '(fs)
   (with-test-sandbox
    (should (featurep 'dired-filter))))
 
 (ert-deftest test-scame-dired-filter ()
+  :tags '(fs)
   (with-test-sandbox
    (should (featurep 'dired-open))))
 
 (ert-deftest test-scame-dired-filter ()
+  :tags '(fs)
   (with-test-sandbox
    (should (featurep 'dired-rainbow))))
 
 (ert-deftest test-scame-dired-filter ()
+  :tags '(fs)
   (with-test-sandbox
    (should (featurep 'dired-subtree))))
 

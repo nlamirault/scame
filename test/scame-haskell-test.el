@@ -1,4 +1,4 @@
-;;; scame-haskell-test.el --- Unit tests for Scame Common Lisp development.
+;;; scame-haskell-test.el --- Unit tests for Scame Haskell development.
 
 ;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -19,11 +19,17 @@
 
 ;;; Code:
 
+(defconst testsuite-haskell-filename
+  "var/hello.hs"
+  "File name for testing Haskell setup.")
 
 ;; FIX: Why failed
-;; (ert-deftest test-scame-haskell ()
-;;   (with-current-file "var/hello.hs"
-;;       (should (featurep 'haskell-mode))))
+(ert-deftest test-scame-haskell ()
+  :tags '(haskell)
+  (with-test-sandbox
+   (with-current-file
+    testsuite-haskell-filename
+    (should (featurep 'haskell-mode)))))
 
 
 (provide 'scame-haskell-test)

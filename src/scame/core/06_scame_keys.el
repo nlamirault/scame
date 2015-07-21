@@ -64,6 +64,29 @@
 
         )
 
+;; (defhydra hydra-scame-ng (:color blue :columns 4)
+;;   "Scame hydra."
+
+;;   ("g" scame-google-calendar nil)
+;;   ("w" scame-work-calendar nil)
+;;   ("d" scame-diary-calendar nil)
+;;   ("o" scame-org-calendar nil)
+
+;;   ("a" calc nil)
+;;   ("m" man nil)
+;;   ("p" paradox-list-packages nil)
+;;   ("h" proced nil)
+;;   ("t" helm-mt nil)
+
+;;   ("O" scame-mail-local nil)
+;;   ("M" scame-mail-gmail nil)
+;;   ("E" scame-mail-exchange nil)
+
+;;   ("v" scame-version nil)
+;;   ("z" scame-customization nil)
+;;   ("q" nil "cancel"))
+
+
 (defhydra hydra-scame-projectile (:color teal)
   "
 
@@ -152,11 +175,17 @@
   ("l" org-capture-goto-last-stored))
 
 
+(defhydra hydra-scame-zoom (:color teal)
+  "zoom"
+  ("g" text-scale-increase "in")
+  ("l" text-scale-decrease "out"))
 
 
 (global-set-key (kbd "C-c s SPC") 'hydra-scame/body)
+;;(global-set-key (kbd "C-c s i") 'hydra-scame-ng/body)
 (global-set-key (kbd "C-c s P") 'hydra-scame-projectile/body)
 (global-set-key (kbd "C-c s o") 'hydra-scame-org/body)
+(global-set-key (kbd "C-c s z") 'hydra-scame-zoom/body)
 
 
 (provide '06_scame_keys)

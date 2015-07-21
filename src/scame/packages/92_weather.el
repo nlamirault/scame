@@ -23,5 +23,11 @@
 
 (use-package org-weather-metno)
 
+(use-package sunshine
+  :config (progn
+            (setq sunshine-show-icons t)
+            (setq sunshine-units 'metric)))
+
+
 (provide '92_weather)
 ;;; 92_weather.el ends here

@@ -24,6 +24,7 @@
   "File name for testing python setup.")
 
 (ert-deftest test-scame-python ()
+  :tags '(python)
   (with-test-sandbox
    (with-current-file
     testsuite-python-filename
@@ -31,15 +32,17 @@
     (should (eql nil indent-tabs-mode)))))
 
 (ert-deftest test-scame-anaconda ()
+  :tags '(python)
   (with-test-sandbox
    (with-current-file
     testsuite-python-filename
     (should (featurep 'anaconda-mode))
-    ;; FIXME
-    ;;(should (featurep 'eldoc-mode))
+    ;; FIXME: why not present ?
+    ;; (should (featurep 'company-anaconda))))
     )))
 
 (ert-deftest test-scame-tox ()
+  :tags '(python)
   (with-test-sandbox
    (with-current-file
     testsuite-python-filename
@@ -48,8 +51,7 @@
     (should (eql 'tox-current-class
                  (key-binding (kbd "C-x y f")))))))
 
-;; FIXME: why not present ?
-;; (should (featurep 'company-anaconda))))
+
 
 ;; FIXME: jedi ??
 ;; (ert-deftest test-scame-jedi-direx ()
@@ -58,17 +60,18 @@
 ;; 		 (key-binding (kbd "C-x y x"))))))
 
 (ert-deftest test-scame-sphinx-doc ()
+  :tags '(python)
   (with-test-sandbox
    (with-current-file
     testsuite-python-filename
     (should (eql 'sphinx-doc
                  (key-binding (kbd "C-c M-d")))))))
 
-;; FIXME: doesn't works on unit tests, works on Emacs instance
-;; (ert-deftest test-scame-helm-pydoc ()
-;;   (with-current-file testsuite-python-filename
-;;     (should (eql 'helm-pydoc
-;;                  (key-binding (kbd "C-x y d"))))))
+(ert-deftest test-scame-helm-pydoc ()
+  :tags '(python)
+  (with-current-file testsuite-python-filename
+    (should (eql 'helm-pydoc
+                 (key-binding (kbd "C-x y d"))))))
 
 
 

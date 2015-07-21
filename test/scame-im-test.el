@@ -1,4 +1,4 @@
-;;; scame-im-test.el --- Unit tests for Scame Common Lisp development.
+;;; scame-im-test.el --- Unit tests for Scame Instant Messaging configuration.
 
 ;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -22,16 +22,17 @@
 ;; IRC
 
 (ert-deftest test-scame-erc ()
+  :tags '(im)
   (with-test-sandbox
    (should (require 'erc))))
 
 ;; Twitter
 
 (ert-deftest test-scame-twitter ()
+  :tags '(im)
   (with-test-sandbox
    (should (eql 'twit
                 (key-binding (kbd "C-c t t"))))))
-
 
 
 (provide 'scame-im-test)

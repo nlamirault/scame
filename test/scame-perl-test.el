@@ -1,4 +1,4 @@
-;;; scame-perl-test.el --- Unit tests for Scame Common Lisp development.
+;;; scame-perl-test.el --- Unit tests for Scame Perl development.
 
 ;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -25,6 +25,7 @@
   "File name for testing Perl setup.")
 
 (ert-deftest test-scame-perl ()
+  :tags '(perl)
   (with-test-sandbox
    (with-current-file
     testsuite-perl-filename
@@ -36,6 +37,7 @@
 ;; 		 (key-binding (kbd "C-x j"))))))
 
 (ert-deftest test-scame-helm-perldoc ()
+  :tags '(perl)
   (with-test-sandbox
    (with-current-file
     testsuite-perl-filename

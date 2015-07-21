@@ -1,6 +1,6 @@
 ;;; 32_commonlisp.el --- Slime configuration
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,16 +19,17 @@
 
 ;;; Code:
 
+
+(setq inferior-lisp-program (executable-find "sbcl"))
+
 ;; (use-package slime-autoloads
 ;;   :config (progn
-;;             (setq inferior-lisp-program "/usr/bin/sbcl")
 ;;             (slime-setup '(slime-fancy))))
 
 ;; (use-package slime-company
 ;;   :config (slime-setup '(slime-company)))
 
-(use-package sly
-  :config (setq inferior-lisp-program "/usr/bin/sbcl"))
+(use-package sly)
 
 (use-package sly-company
   :init (add-hook 'sly-mode-hook 'sly-company-mode))

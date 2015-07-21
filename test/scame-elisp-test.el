@@ -1,4 +1,4 @@
-;;; scame-elisp-test.el --- Unit tests for Scame Common Lisp development.
+;;; scame-elisp-test.el --- Unit tests for Scame emacs lisp development.
 
 ;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -21,6 +21,7 @@
 
 
 (ert-deftest test-scame-elisp ()
+  :tags '(elisp)
   (with-test-sandbox
    (with-current-file
     "var/hello.el"

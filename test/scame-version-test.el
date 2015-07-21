@@ -27,6 +27,7 @@
 
 
 (ert-deftest test-scame-version ()
+  :tags '(scame-version)
   (with-test-sandbox
    (should (string= (format "Scame version: %s" current-version)
                     (scame-version)))))

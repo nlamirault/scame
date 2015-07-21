@@ -20,7 +20,7 @@
 ;;; Code:
 
 (ert-deftest test-scame-c ()
-  :tags '(scame-c-cpp)
+  :tags '(c-cpp)
   (with-test-sandbox
    (with-current-file
     "var/hello.c"
@@ -32,7 +32,7 @@
     ;;(should (= 30 c-eldoc-buffer-regenerate-time)))))
 
 (ert-deftest test-scame-cpp ()
-  :tags '(scame-c-cpp)
+  :tags '(c-cpp)
   (with-test-sandbox
    (with-current-file
     "var/hello.cpp"

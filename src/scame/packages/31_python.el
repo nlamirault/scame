@@ -27,21 +27,21 @@
             ;;(setq python-indent-guess-indent-offset 4)
 	    (setq python-indent-offset 4)))
 
-(use-package virtualenvwrapper
-  :commands venv-workon
-  :config (progn
-	    (setq venv-location "~/.virtualenvs/")
-	    (venv-initialize-interactive-shells)
-	    (venv-initialize-eshell)
-	    (setq-default mode-line-format
-			  (cons '(:exec venv-current-name)
-				mode-line-format))
-	    (add-hook 'python-mode-hook
-		      (lambda ()
-			(hack-local-variables)
-			(setq python-shell-virtualenv-path
-			      (f-join venv-location project-venv-name))
-			(venv-workon project-venv-name)))))
+;; (use-package virtualenvwrapper
+;;   :commands venv-workon
+;;   :config (progn
+;; 	    (setq venv-location "~/.virtualenvs/")
+;; 	    (venv-initialize-interactive-shells)
+;; 	    (venv-initialize-eshell)
+;; 	    (setq-default mode-line-format
+;; 			  (cons '(:exec venv-current-name)
+;; 				mode-line-format))
+;; 	    (add-hook 'python-mode-hook
+;; 		      (lambda ()
+;; 			(hack-local-variables)
+;; 			(setq python-shell-virtualenv-path
+;; 			      (f-join venv-location project-venv-name))
+;; 			(venv-workon project-venv-name)))))
 
 
 ;; FIXME

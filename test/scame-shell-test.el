@@ -20,6 +20,7 @@
 ;;; Code:
 
 (ert-deftest test-scame-multi-term ()
+  :tags '(shell)
   (with-test-sandbox
    (with-scame-mode
     (should (string-equal "/bin/bash" multi-term-program)))))

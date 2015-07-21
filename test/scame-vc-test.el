@@ -22,6 +22,7 @@
 ;; Git
 
 (ert-deftest test-scame-magit ()
+  :tags '(vc)
   (with-test-sandbox
    (require 'magit)
    (should (featurep 'magit))
