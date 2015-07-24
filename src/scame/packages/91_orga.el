@@ -64,10 +64,44 @@
         (holiday-fixed 10 31 "Halloween")
         (holiday-easter-etc -47 "Mardi Gras")))
 
+
+;; From: http://drieu.org/post/Calcul-des-jours-f%C3%A9ri%C3%A9s-et-vacances-avec-le-calendrier-d-Emacs
+
+(defun vacances-i (string s e)
+  "Holidays iterator"
+  (if (= s e)
+      nil
+    (cons (list (calendar-gregorian-from-absolute s) string)
+	  (vacances-i string (+ s 1) e))))
+
+
+(defun vacances (string sd sm sy ed em ey)
+  "Compute holiday lists"
+  ;(filter-visible-calendar-holidays
+  (holiday-filter-visible-calendar
+   (vacances-i string
+	       (calendar-absolute-from-gregorian (list sm sd sy))
+	       (calendar-absolute-from-gregorian (list em ed ey)))))
+
+;; 2015/2016
+;; http://www.education.gouv.fr/cid87910/calendrier-scolaire-pour-les-annees-2015-2016-2016-2017-2017-2018.html
+(setq calendar-school-vacation
+      '((vacances "Vacances de la Toussaint" 17 10 2015 1 11 2015)
+	(vacances "Vacances de Noël" 19 12 2015 3 1 2016)
+        (vacances "Vacances d'hiver A" 13 2 2016 28 2 2016)
+        ;; (vacances "Vacances d'hiver B" 6 2 2016 21 2 2016)
+        ;; (vacances "Vacances d'hiver C" 20 2 2016 6 3 2016)
+	(vacances "Vacances de printemps A" 9 4 2016 24 4 2016)
+        ;; (vacances "Vacances de printemps B" 2 4 2016 17 4 2016)
+        ;; (vacances "Vacances de printemps C" 16 4 2016 1 5 2016)
+	(vacances "Vacances d'été" 6 7 2016 5 9 2016)))
+
+;; Holidays
 (setq calendar-holidays
       `(,@holiday-solar-holidays
         ,@calendar-legal-holidays
-        ,@calendar-celebration-holidays))
+        ,@calendar-celebration-holidays
+        ,@calendar-school-vacation))
 
 (use-package calendar
   :config (setq calendar-date-style 'european
@@ -179,6 +213,7 @@
 	    ;; -------------
 	    ;; Do not dim blocked tasks
 	    (setq org-agenda-dim-blocked-tasks nil)
+            (setq org-agenda-include-diary t)
 	    ;; Compact the block agenda view
 	    (setq org-agenda-compact-blocks t)
             (setq org-agenda-clockreport-parameter-plist
