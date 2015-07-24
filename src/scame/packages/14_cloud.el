@@ -22,7 +22,7 @@
 ;; Puppet files
 
 (use-package puppet-mode
-  :mode (("\\.pp\\'" . puppet-mode))
+  :mode (("\\.pp\\" . puppet-mode))
   :config (add-hook 'puppet-mode-hook
 		    (lambda ()
 		      (make-local-variable 'indent-tabs-mode)
@@ -46,6 +46,10 @@
 ;; Docker files
 (use-package dockerfile-mode
   :mode (("Dockerfile" . dockerfile-mode)))
+
+;; Terraform
+(use-package terraform
+  :mode (("\\.tf\\" . terraform-mode)))
 
 
 (provide '14_cloud)
