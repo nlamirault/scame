@@ -74,7 +74,7 @@
       ;; Markup languages
       markdown-mode yaml-mode adoc-mode
       ;; Cloud
-      dockerfile-mode vagrant puppet-mode ansible ansible-doc
+      dockerfile-mode vagrant puppet-mode ansible ansible-doc terraform-mode
       ;; Git and friends
       magit magit-gerrit
       gitconfig-mode gitignore-mode gitattributes-mode
