@@ -19,42 +19,6 @@
 
 ;;; Code:
 
-;; (use-package erc
-;;   :bind (("C-c i e" . erc))
-;;   :config (progn
-;;             ;; Default server and nick
-;;             (setq erc-hide-list '("JOIN" "PART" "QUIT")
-;;                   erc-nick-uniquifier "$"
-;;                   erc-nick "l_a_m"
-;;                   erc-nick-uniquifier "_")
-;;             (add-to-list 'erc-modules 'smiley)
-;; 	    (add-to-list 'erc-modules 'match)
-;; 	    (add-to-list 'erc-modules 'scrolltobottom)
-;;             (erc-update-modules)))
-
-;; (use-package erc-join                   ; Automatically join channels with ERC
-;;   :config (progn
-;;             (setq erc-join-buffer 'bury)
-;;             (setq erc-autojoin-channels-alist
-;;                 '(("\\.freenode\\.net" . ("#openstack-fr"
-;;                                           "#docker"
-;;                                           "#docker-dev"
-;;                                           "#google-containers"
-;;                                           "#lisp"
-;;                                           "#emacs"))))))
-
-;; (use-package erc-track                  ; Track status of ERC in mode line
-;;     :config (setq erc-track-enable-keybindings t
-;;                 erc-track-exclude-server-buffer t
-;;                 erc-track-exclude '("*stickychan" "*status")
-;;                 erc-track-showcount t
-;;                 erc-track-shorten-start 1
-;;                 erc-track-switch-direction 'importance
-;;                 erc-track-visibility 'selected-visible))
-
-
-;; (use-package erc-log
-;;   :config (setq erc-log-channels-directory "~/.erc/logs/"))
 
 
 (use-package erc
