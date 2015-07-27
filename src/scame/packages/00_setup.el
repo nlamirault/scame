@@ -30,9 +30,8 @@
   "Are we in a console?")
 
 ;; See https://github.com/sfllaw/emacs-launch
-(use-package launch
-  :config (global-launch-mode +1))
-
+;; (use-package launch
+;;   :config (global-launch-mode +1))
 
 (provide '00_setup)
 ;;; 00_setup.el ends here

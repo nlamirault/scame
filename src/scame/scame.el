@@ -82,6 +82,10 @@
   :group 'scame
   :type 'string)
 
+(setq abbrev-file-name
+      (concat user-home-directory ".emacs.d/abbrev_defs"))
+(setq save-abbrevs t)
+
 ;; Debug or not
 (setq debug-on-error t)
 
@@ -93,7 +97,6 @@
   (push (concat scame-gnus-dev-directory "/lisp") load-path)
   (message "Load Gnus development version")
   (require 'gnus-load))
-
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
