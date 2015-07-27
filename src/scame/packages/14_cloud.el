@@ -1,6 +1,6 @@
 ;;; 14_cloud.el --- Cloud configuration
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@
 ;; Puppet files
 
 (use-package puppet-mode
-  :mode (("\\.pp\\" . puppet-mode))
+  :mode (("\\.pp\\'" . puppet-mode))
   :config (add-hook 'puppet-mode-hook
 		    (lambda ()
 		      (make-local-variable 'indent-tabs-mode)
@@ -48,9 +48,8 @@
   :mode (("Dockerfile" . dockerfile-mode)))
 
 ;; Terraform
-(use-package terraform
-  :mode (("\\.tf\\" . terraform-mode)))
-
+(use-package terraform-mode
+  :config (setq terraform-indent-level 2))
 
 (provide '14_cloud)
 ;;; 14_cloud.el ends here
