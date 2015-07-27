@@ -85,7 +85,6 @@
 ;; Debug or not
 (setq debug-on-error t)
 
-
 (when (version< emacs-version "24.4")
   (error "Scame requires at least GNU Emacs 24.4"))
 
@@ -95,6 +94,13 @@
   (message "Load Gnus development version")
   (require 'gnus-load))
 
+
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+(setq-default show-trailing-whitespace nil)
+
+(require 'scame-io)
+(require 'scame-theme)
 (require 'scame-pkg)
 
 (require 'f)
@@ -102,10 +108,9 @@
 (require 'benchmark-init)
 (require 'use-package)
 
-(defalias 'yes-or-no-p 'y-or-n-p)
-
-(setq-default show-trailing-whitespace nil)
-
+;; (with-current-buffer scame-buffer
+;;   (insert "[scame] --> Load scame modules\n")
+(scame--msg-buffer "[scame] --> Scame modules.\n")
 (use-package el-init
   :config (progn
             (setq el-init-meadow-regexp       "\\`meadow-"
@@ -122,7 +127,7 @@
                                       el-init-require/record-error
                                       el-init-require/system-case))))
 
-
+(scame--msg-buffer "[scame] --> Vendoring modules.\n")
 (when (and scame-use-vendoring
            (f-exists? scame-vendoring-directory)
            (f-directory? scame-vendoring-directory))
@@ -136,8 +141,11 @@
                       (when (string= (f-ext elem) "el")
                         (load-file elem)))))))
 
+(scame--msg-buffer "[scame] --> Customization file.\n")
 (when (file-readable-p scame-user-customization-file)
   (load scame-user-customization-file))
+
+(scame--msg-buffer (format "[scame] --> Version %s ready.\n" scame-version-number))
 
 (provide 'scame)
 ;;; scame.el ends here
