@@ -21,4 +21,4 @@ mkdir -p $EMACS_DIR
 cp -r src/* $EMACS_DIR
 cp addons/init.el $EMACS_DIR
 cd $EMACS_DIR
-emacs -Q -l $EMACS_DIR/init.el
+emacs -Q -l $EMACS_DIR/init.el --debug-init

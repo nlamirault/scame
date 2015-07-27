@@ -37,5 +37,8 @@
 (require 'scame)
 (scame-global-mode)
 
+(use-package material-theme
+  :config (load-theme 'material t))
+
 (provide 'init)
 ;;; init.el ends here
