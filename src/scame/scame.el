@@ -108,9 +108,10 @@
 (require 'benchmark-init)
 (require 'use-package)
 
-;; (with-current-buffer scame-buffer
-;;   (insert "[scame] --> Load scame modules\n")
-(scame--msg-buffer "[scame] --> Scame modules.\n")
+(scame--msg-buffer
+ (propertize (format "[scame] --> Scame modules ...\n")
+             'face
+             'font-lock-string-face))
 (use-package el-init
   :config (progn
             (setq el-init-meadow-regexp       "\\`meadow-"
@@ -127,7 +128,10 @@
                                       el-init-require/record-error
                                       el-init-require/system-case))))
 
-(scame--msg-buffer "[scame] --> Vendoring modules.\n")
+(scame--msg-buffer
+ (propertize (format "[scame] -->  Vendoring modules ...\n")
+             'face
+             'font-lock-string-face))
 (when (and scame-use-vendoring
            (f-exists? scame-vendoring-directory)
            (f-directory? scame-vendoring-directory))
@@ -141,11 +145,17 @@
                       (when (string= (f-ext elem) "el")
                         (load-file elem)))))))
 
-(scame--msg-buffer "[scame] --> Customization file.\n")
+(scame--msg-buffer
+ (propertize (format "[scame] --> Customization file ...\n")
+             'face
+             'font-lock-string-face))
 (when (file-readable-p scame-user-customization-file)
   (load scame-user-customization-file))
 
-(scame--msg-buffer (format "[scame] --> Version %s ready.\n" scame-version-number))
+(scame--msg-buffer
+ (propertize (format "[scame] -->  Version %s ready.\n" scame-version-number)
+             'face
+             'font-lock-string-face))
 
 (provide 'scame)
 ;;; scame.el ends here

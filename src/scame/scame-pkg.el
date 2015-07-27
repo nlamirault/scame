@@ -200,21 +200,31 @@
 (defun scame--install-packages (pkg-list)
   "Install each package of `PKG-LIST'."
   (dolist (pkg pkg-list)
-    (scame--msg-buffer (format "[scame] Package "))
-    (scame--msg-buffer (propertize (format "%s" pkg)
-                                   'face
-                                   'font-lock-variable-name-face))
+    (scame--msg-buffer
+     (propertize (format "[scame] Package %s" pkg)
+                 'face
+                 'font-lock-variable-name-face))
     (if (package-installed-p pkg)
-        (scame--msg-buffer " ... Already installed.\n")
+        (scame--msg-buffer
+         (propertize (format " ... Already installed.\n")
+                     'face
+                     'font-lock-variable-name-face))
       (progn
-        (scame--msg-buffer "... Installing ... \n")
+        (scame--msg-buffer
+         (propertize (format " ... Installing ....\n")
+                     'face
+                     'font-lock-variable-name-face))
         (package-install pkg)))
     (redisplay)))
 
-(scame--msg-buffer "[scame] --> Packages Installation ....\n")
+
+(scame--msg-buffer
+ (propertize (format "[scame] --> Packages Installation ...\n")
+             'face
+             'font-lock-string-face))
+
 (scame--install-packages stable-packages)
 (scame--install-packages unstable-packages)
-(scame--msg-buffer "[scame] Done\n")
 
 
 (provide 'scame-pkg)
