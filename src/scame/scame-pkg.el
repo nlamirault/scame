@@ -22,6 +22,9 @@
 
 (require 'package)
 
+(require 'scame-io)
+
+
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("org" . "http://orgmode.org/elpa/")
                          ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
@@ -197,13 +200,21 @@
 (defun scame--install-packages (pkg-list)
   "Install each package of `PKG-LIST'."
   (dolist (pkg pkg-list)
-    (unless (package-installed-p pkg)
-      (ignore-errors
-        (package-install pkg)))))
+    (scame--msg-buffer (format "[scame] Package "))
+    (scame--msg-buffer (propertize (format "%s" pkg)
+                                   'face
+                                   'font-lock-variable-name-face))
+    (if (package-installed-p pkg)
+        (scame--msg-buffer " ... Already installed.\n")
+      (progn
+        (scame--msg-buffer "... Installing ... \n")
+        (package-install pkg)))
+    (redisplay)))
 
-
+(scame--msg-buffer "[scame] --> Packages Installation ....\n")
 (scame--install-packages stable-packages)
 (scame--install-packages unstable-packages)
+(scame--msg-buffer "[scame] Done\n")
 
 
 (provide 'scame-pkg)
