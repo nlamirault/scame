@@ -24,7 +24,6 @@
 
 (require 'scame-io)
 
-(setq warning-minimum-level :error)
 
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("org" . "http://orgmode.org/elpa/")
@@ -60,7 +59,7 @@
       ;; Haskell
       haskell-mode flycheck-haskell
       ;; OCaml
-      tuareg merlin
+      tuareg ;merlin
       ;; Web
       web-mode
       ;; Php
@@ -192,15 +191,12 @@
 (defun scame--install-packages (pkg-list)
   "Install each package of `PKG-LIST'."
   (dolist (pkg pkg-list)
-    (scame--msg-buffer (format "[scame] - %25s" pkg)
+    (scame--msg-buffer (format "- %-25s" pkg)
                        'font-lock-variable-name-face)
     (redisplay)
     (scame--msg-buffer " [x]\n"
                        'font-lock-variable-name-face)
     (unless (package-installed-p pkg)
-      ;; (progn
-      ;;   (scame--msg-buffer " [x]\n"
-      ;;                      'font-lock-variable-name-face)
       (package-install pkg))
     (redisplay)))
 
@@ -222,7 +218,7 @@
 (setq split-height-threshold nil)
 (setq split-width-threshold 0)
 
-(scame--msg-buffer "[scame] --> Packages Installation ...\n"
+(scame--msg-buffer "--> Packages Installation ...\n"
                    'font-lock-string-face)
 
 (scame--install-packages stable-packages)

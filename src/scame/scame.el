@@ -84,7 +84,7 @@
 
 (setq abbrev-file-name
       (concat user-home-directory ".emacs.d/abbrev_defs"))
-(setq save-abbrevs t)
+(setq-default abbrev-mode t)
 
 ;; Debug or not
 (setq debug-on-error t)
@@ -113,7 +113,7 @@
 ;; (require 'benchmark-init)
 (require 'use-package)
 
-(scame--msg-buffer "[scame] --> Scame modules ...\n"
+(scame--msg-buffer "--> Scame modules ...\n"
                    'font-lock-string-face)
 (use-package el-init
   :config (progn
@@ -132,7 +132,7 @@
                                       el-init-require/system-case))))
 
 (scame--msg-buffer
- "[scame] --> Vendoring modules ...\n"
+ "--> Vendoring modules ...\n"
  'font-lock-string-face)
 (when (and scame-use-vendoring
            (f-exists? scame-vendoring-directory)
@@ -147,12 +147,12 @@
                       (when (string= (f-ext elem) "el")
                         (load-file elem)))))))
 
-(scame--msg-buffer "[scame] --> Customization file ...\n"
+(scame--msg-buffer "--> Customization file ...\n"
                    'font-lock-string-face)
 (when (file-readable-p scame-user-customization-file)
   (load scame-user-customization-file))
 
-(scame--msg-buffer (format "[scame] --> Version %s ready.\n"
+(scame--msg-buffer (format "--> Version %s ready.\n"
                            scame-version-number)
                    'font-lock-string-face)
 

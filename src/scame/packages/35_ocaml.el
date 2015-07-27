@@ -26,8 +26,5 @@
          ("\\.topml\\'" . taureg-mode)
          ("\\.fs[ix]?" . tuareg-mode)))
 
-
-
-
 (provide '35_ocaml)
 ;;; 35_ocaml.el ends here
