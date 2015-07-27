@@ -24,7 +24,7 @@
   :bind (("C-c g s" . magit-status)
 	 ("C-c g d" . magit-pull)
 	 ("C-c g p" . magit-push)
-	 ("C-c g l" . magit-log)
+	 ("C-c g l" . magit-log-all)
 	 ("C-c g b" . magit-branch-manager)))
 
 (setq magit-auto-revert-mode nil
