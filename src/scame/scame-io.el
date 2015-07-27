@@ -29,11 +29,12 @@
   (insert "-----------\n|  Scame  |\n-----------\n\n"))
 
 
-(defun scame--msg-buffer (msg)
-  "Write `MSG' to the scame buffer."
+(defun scame--msg-buffer (msg face-type)
+  "Write `MSG' to the scame buffer using `FACE-TYPE'."
   (with-current-buffer scame-buffer
     (goto-char (point-max))
-    (insert msg)))
+    ;;(insert msg)))
+    (insert (propertize msg 'face face-type))))
 
 
 (provide 'scame-io)

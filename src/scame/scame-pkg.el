@@ -24,6 +24,7 @@
 
 (require 'scame-io)
 
+(setq warning-minimum-level :error)
 
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("org" . "http://orgmode.org/elpa/")
@@ -31,8 +32,10 @@
                          ("melpa" . "http://melpa.milkbox.net/packages/")
                          ))
 
+(defvar scame-dependencies '(s f dash use-package popwin))
+
 (defvar stable-packages
-  '(s f epl dash helm use-package paradox el-init el-init-viewer
+  '(epl helm paradox el-init el-init-viewer
       company auto-complete
       find-file-in-project
       neotree
@@ -100,7 +103,7 @@
       calfw
       ;; UI
       rich-minority powerline smart-mode-line smart-mode-line-powerline-theme
-      popwin ace-window
+      ace-window
       ;; Dired and friends
       direx dired-k
       ;; Sysadmin
@@ -186,42 +189,41 @@
     libmpdee
     ))
 
+(defun scame--install-packages (pkg-list)
+  "Install each package of `PKG-LIST'."
+  (dolist (pkg pkg-list)
+    (scame--msg-buffer (format "[scame] - %25s" pkg)
+                       'font-lock-variable-name-face)
+    (redisplay)
+    (scame--msg-buffer " [x]\n"
+                       'font-lock-variable-name-face)
+    (unless (package-installed-p pkg)
+      ;; (progn
+      ;;   (scame--msg-buffer " [x]\n"
+      ;;                      'font-lock-variable-name-face)
+      (package-install pkg))
+    (redisplay)))
+
 
 (dolist (pkg stable-packages)
   (message "Package: %s" pkg)
   (add-to-list 'package-pinned-packages
                (cons pkg "melpa-stable")))
-(message "Pinned : %s" package-pinned-packages)
+;; (message "Pinned : %s" package-pinned-packages)
 
 (package-initialize)
 (package-refresh-contents)
 
+;; Install dependencies
+(dolist (pkg scame-dependencies)
+  (unless (package-installed-p pkg)
+    (package-install pkg)))
 
-(defun scame--install-packages (pkg-list)
-  "Install each package of `PKG-LIST'."
-  (dolist (pkg pkg-list)
-    (scame--msg-buffer
-     (propertize (format "[scame] Package %s" pkg)
-                 'face
-                 'font-lock-variable-name-face))
-    (if (package-installed-p pkg)
-        (scame--msg-buffer
-         (propertize (format " ... Already installed.\n")
-                     'face
-                     'font-lock-variable-name-face))
-      (progn
-        (scame--msg-buffer
-         (propertize (format " ... Installing ....\n")
-                     'face
-                     'font-lock-variable-name-face))
-        (package-install pkg)))
-    (redisplay)))
+(setq split-height-threshold nil)
+(setq split-width-threshold 0)
 
-
-(scame--msg-buffer
- (propertize (format "[scame] --> Packages Installation ...\n")
-             'face
-             'font-lock-string-face))
+(scame--msg-buffer "[scame] --> Packages Installation ...\n"
+                   'font-lock-string-face)
 
 (scame--install-packages stable-packages)
 (scame--install-packages unstable-packages)
