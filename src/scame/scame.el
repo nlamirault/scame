@@ -102,6 +102,8 @@
 
 (setq-default show-trailing-whitespace nil)
 
+(setq warning-minimum-level :error)
+
 (require 'scame-io)
 (require 'scame-theme)
 (require 'scame-pkg)
@@ -153,6 +155,8 @@
 (scame--msg-buffer (format "[scame] --> Version %s ready.\n"
                            scame-version-number)
                    'font-lock-string-face)
+
+(setq warning-minimum-level :warning)
 
 (provide 'scame)
 ;;; scame.el ends here
