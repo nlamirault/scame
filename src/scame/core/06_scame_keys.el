@@ -78,6 +78,7 @@
 ;;   ("p" paradox-list-packages nil)
 ;;   ("h" proced nil)
 ;;   ("t" helm-mt nil)
+;;   ("r" ranger nil)
 
 ;;   ("O" scame-mail-local nil)
 ;;   ("M" scame-mail-gmail nil)
@@ -183,7 +184,7 @@
 
 
 (global-set-key (kbd "C-c s SPC") 'hydra-scame/body)
-;;(global-set-key (kbd "C-c s i") 'hydra-scame-ng/body)
+;; (global-set-key (kbd "C-c s i") 'hydra-scame-ng/body)
 (global-set-key (kbd "C-c s P") 'hydra-scame-projectile/body)
 (global-set-key (kbd "C-c s o") 'hydra-scame-org/body)
 (global-set-key (kbd "C-c s z") 'hydra-scame-zoom/body)
