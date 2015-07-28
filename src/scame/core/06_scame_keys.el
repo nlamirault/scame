@@ -30,7 +30,7 @@
    _d_: diary           _T_: Twitter           _p_: packages     _E_: Exchange      ^ ^
    _o_: org             _L_: Launchpad         _h_: proced       ^ ^                ^ ^
    ^ ^                  _S_: Stackoverflow     _t_: term         ^ ^                ^ ^
-   ^ ^                  _W_: Wikipedia         ^ ^               ^ ^                ^ ^
+   ^ ^                  _W_: Wikipedia         _r_: ranger       ^ ^                ^ ^
    ^ ^                  _R_: RFC               ^ ^               ^ ^                ^ ^
   ---------------------------------------------------------------------------------------------------------------
         "
@@ -54,6 +54,7 @@
         ("p" paradox-list-packages nil)
         ("h" proced nil)
         ("t" helm-mt nil)
+        ("r" ranger nil)
 
         ("O" scame-mail-local nil)
         ("M" scame-mail-gmail nil)
