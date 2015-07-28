@@ -21,6 +21,9 @@
 
 
 (use-package magit
+  :config (progn
+            (when (eql 'ivy scame-completion-method)
+              (setq magit-completing-read-function 'ivy-completing-read)))
   :bind (("C-c g s" . magit-status)
 	 ("C-c g d" . magit-pull)
 	 ("C-c g p" . magit-push)
