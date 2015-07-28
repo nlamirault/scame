@@ -29,7 +29,7 @@
    (should (eql 'magit-status (key-binding (kbd "C-c g s"))))
    (should (eql 'magit-pull (key-binding (kbd "C-c g d"))))
    (should (eql 'magit-push (key-binding (kbd "C-c g p"))))
-   (should (eql 'magit-log (key-binding (kbd "C-c g l"))))
+   (should (eql 'magit-log-all (key-binding (kbd "C-c g l"))))
    (should (eql 'magit-branch-manager (key-binding (kbd "C-c g b"))))))
 
 
