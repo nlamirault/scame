@@ -1,6 +1,6 @@
 ;;; 44_rust.el -- Rust configuration
 
-;; Copyright (C) 2014  Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,11 +19,14 @@
 
 ;;; Code:
 
+(when scame-rust
 
-(use-package rust-mode
-  :mode (("\\.rs\\'" . rust-mode))
-  :init (add-hook 'rust-mode-hook 'flycheck-mode)
-  :config (setq tab-width 4))
+  (use-package rust-mode
+    :mode (("\\.rs\\'" . rust-mode))
+    :init (add-hook 'rust-mode-hook 'flycheck-mode)
+    :config (setq tab-width 4))
+
+  )
 
 (provide '44_rust)
 ;;; 44_rust.el ends here

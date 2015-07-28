@@ -1,6 +1,6 @@
 ;;; 37_scheme.el --- Scheme configuration
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,15 +19,19 @@
 
 ;;; Code:
 
-;;(require 'geiser-install)
+(when scame-scheme
 
-(use-package geiser
-  :config (progn
-	    (setq geiser-active-implementations
-		  '(guile racket chicken))))
-	    ;;(setq geiser-default-implementation 'guile)))
+  ;;(require 'geiser-install)
 
-;;(setq geiser-impl-installed-implementations '(guile))
+  (use-package geiser
+    :config (progn
+              (setq geiser-active-implementations
+                    '(guile racket chicken))))
+  ;;(setq geiser-default-implementation 'guile)))
+
+  ;;(setq geiser-impl-installed-implementations '(guile))
+
+  )
 
 
 (provide '37_scheme)

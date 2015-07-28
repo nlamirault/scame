@@ -19,82 +19,84 @@
 
 ;;; Code:
 
+(when scame-communication
+
+  (use-package erc
+    :init (progn
+            (require 'erc-services)
+            (require 'erc-dcc)
+            (setq erc-modules
+                  '(autojoin button completion fill irccontrols list match
+                             menu move-to-prompt netsplit networks noncommands
+                             notify readonly replace ring scrolltobottom services
+                             smiley stamp track))
+            (setq erc-prompt-for-nickserv-password nil
+                  erc-format-query-as-channel-p t
+                  erc-kill-buffer-on-part t
+                  erc-kill-server-buffer-on-quit t
+                  erc-max-buffer-size 20000
+                  erc-server-coding-system '(utf-8 . utf-8)
+                  erc-timestamp-only-if-changed-flag nil
+                  erc-timestamp-format "%H:%M "
+                  erc-fill-prefix "      "
+                  erc-hide-list '("JOIN" "PART" "QUIT")
+                  erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT" "MODE" "324" "329" "332" "333" "353" "477")
+                  erc-prompt (lambda () (concat (buffer-name) ">"))
+                  erc-insert-timestamp-function 'erc-insert-timestamp-left)
+            (erc-services-mode 1)))
 
 
-(use-package erc
-  :init (progn
-          (require 'erc-services)
-          (require 'erc-dcc)
-          (setq erc-modules
-                '(autojoin button completion fill irccontrols list match
-                           menu move-to-prompt netsplit networks noncommands
-                           notify readonly replace ring scrolltobottom services
-                           smiley stamp track))
-          (setq erc-prompt-for-nickserv-password nil
-                erc-format-query-as-channel-p t
-                erc-kill-buffer-on-part t
-                erc-kill-server-buffer-on-quit t
-                erc-max-buffer-size 20000
-                erc-server-coding-system '(utf-8 . utf-8)
-                erc-timestamp-only-if-changed-flag nil
-                erc-timestamp-format "%H:%M "
-                erc-fill-prefix "      "
-                erc-hide-list '("JOIN" "PART" "QUIT")
-                erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT" "MODE" "324" "329" "332" "333" "353" "477")
-                erc-prompt (lambda () (concat (buffer-name) ">"))
-                erc-insert-timestamp-function 'erc-insert-timestamp-left)
-          (erc-services-mode 1)))
+  ;; Circe
+  ;; ------
+
+  (defun my-circe-prompt ()
+    (lui-set-prompt
+     (concat (propertize (concat (buffer-name) ">")
+                         'face 'circe-prompt-face)
+             " ")))
+
+  (defun my-lui-setup ()
+    (setq fringes-outside-margins t
+          lui-time-stamp-position 'right-margin
+          lui-fill-type nil
+          lui-time-stamp-format "%H:%M"
+          right-margin-width 5
+          word-wrap t
+          wrap-prefix "    "))
+
+  (use-package circe
+    :config (progn
+              (setq circe-reduce-lurker-spam t)
+              (setq lui-time-stamp-position 'right-margin)
+              (add-hook 'circe-chat-mode-hook 'my-circe-prompt)
+              (add-hook 'lui-mode-hook 'my-lui-setup)))
+
+  (use-package circe-color-nicks
+    :config (enable-circe-color-nicks))
+
+  (use-package circe-highlight-all-nicks
+    :config (enable-circe-highlight-all-nicks))
 
 
-;; Circe
-;; ------
+  ;; Rcirc
+  ;; ------
 
-(defun my-circe-prompt ()
-  (lui-set-prompt
-   (concat (propertize (concat (buffer-name) ">")
-                       'face 'circe-prompt-face)
-           " ")))
+  (use-package rcirc
+    :config (add-hook 'rcirc-mode-hook
+                      (lambda ()
+                        (rcirc-track-minor-mode 1)))
+    :bind (("C-c i c" . rcirc)))
 
-(defun my-lui-setup ()
-  (setq fringes-outside-margins t
-        lui-time-stamp-position 'right-margin
-        lui-fill-type nil
-        lui-time-stamp-format "%H:%M"
-        right-margin-width 5
-        word-wrap t
-        wrap-prefix "    "))
+  (use-package rcirc-groups
+    :bind (("C-c i g" . rcirc-groups:switch-to-groups-buffer)))
 
-(use-package circe
-  :config (progn
-            (setq circe-reduce-lurker-spam t)
-            (setq lui-time-stamp-position 'right-margin)
-            (add-hook 'circe-chat-mode-hook 'my-circe-prompt)
-            (add-hook 'lui-mode-hook 'my-lui-setup)))
+  (use-package rcirc-alertify
+    :config (rcirc-alertify-enable))
 
-(use-package circe-color-nicks
-  :config (enable-circe-color-nicks))
-
-(use-package circe-highlight-all-nicks
-  :config (enable-circe-highlight-all-nicks))
+  (use-package rcirc-notify)
 
 
-;; Rcirc
-;; ------
-
-(use-package rcirc
-  :config (add-hook 'rcirc-mode-hook
-                    (lambda ()
-                      (rcirc-track-minor-mode 1)))
-  :bind (("C-c i c" . rcirc)))
-
-(use-package rcirc-groups
-  :bind (("C-c i g" . rcirc-groups:switch-to-groups-buffer)))
-
-(use-package rcirc-alertify
-  :config (rcirc-alertify-enable))
-
-(use-package rcirc-notify)
-
+  )
 
 (provide '90_irc)
 ;;; 90_irc.el ends here

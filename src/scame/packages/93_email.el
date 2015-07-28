@@ -1,6 +1,6 @@
-;;; 49_nodejs.el -- NodeJS development
+;;; 93_email.el --- Scame Email configuration
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,11 +19,21 @@
 
 ;;; Code:
 
-(use-package sws-mode)
+(when scame-email
 
-(use-package jade-mode
-  :mode (("\\.jade\\'" . jade-mode)
-         ("\\.styl\\'" . jade-mode)))
+  (use-package notmuch)
 
-(provide '49_nodejs)
-;;; 49_nodejs.el ends here
+  (use-package notmuch-labeler)
+
+  (use-package bbdb-com
+    :bind (("C-c d s" . bbdb)
+           ("C-c d n" . bbdb-search-name)
+           ("C-c d m" . bbdb-search-mail)))
+
+  (use-package helm-bbdb
+    :bind (("C-c d h" . helm-bbdb)))
+
+  )
+
+(provide '93_email)
+;;; 93_email.el ends here

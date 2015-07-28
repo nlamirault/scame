@@ -23,60 +23,61 @@
 
 ;;; Code:
 
-;;(load "$GOPATH/src/code.google.com/p/go.tools/cmd/oracle/oracle.el")
 
-(use-package go-mode
-  :mode (("\\.go$" . go-mode))
-  :config (progn
-            (subword-mode +1)
-	    (add-hook 'before-save-hook 'gofmt-before-save)
-            ;;(add-hook 'go-mode-hook 'go-oracle-mode)
-	    (add-hook 'go-mode-hook
-		      (lambda ()
-			(local-set-key (kbd "C-x g r") 'go-remove-unused-imports)
-			(local-set-key (kbd "C-x g i") 'go-goto-imports)
-                        (local-set-key (kbd "C-x g d") 'godoc)
-			(local-set-key (kbd "C-x g j") 'godef-jump)))))
+(when scame-golang
 
-(use-package go-eldoc
-  :config (add-hook 'go-mode-hook 'go-eldoc-setup))
+  (use-package go-mode
+    :mode (("\\.go$" . go-mode))
+    :config (progn
+              (subword-mode +1)
+              (add-hook 'before-save-hook 'gofmt-before-save)
+              ;;(add-hook 'go-mode-hook 'go-oracle-mode)
+              (add-hook 'go-mode-hook
+                        (lambda ()
+                          (local-set-key (kbd "C-x g r") 'go-remove-unused-imports)
+                          (local-set-key (kbd "C-x g i") 'go-goto-imports)
+                          (local-set-key (kbd "C-x g d") 'godoc)
+                          (local-set-key (kbd "C-x g j") 'godef-jump)))))
 
-(use-package gotest
-  :config (add-hook 'go-mode-hook
-                    (lambda ()
-                      (local-set-key (kbd "C-x g t") 'go-test-current-test)
-                      (local-set-key (kbd "C-x g f") 'go-test-current-file)
-                      (local-set-key (kbd "C-x g p") 'go-test-current-project))))
+  (use-package go-eldoc
+    :config (add-hook 'go-mode-hook 'go-eldoc-setup))
 
-
-(use-package go-errcheck
-  :config (progn
-            (add-hook 'go-mode-hook
+  (use-package gotest
+    :config (add-hook 'go-mode-hook
                       (lambda ()
-                        (local-set-key (kbd "C-x g e") 'go-errcheck)))))
+                        (local-set-key (kbd "C-x g t") 'go-test-current-test)
+                        (local-set-key (kbd "C-x g f") 'go-test-current-file)
+                        (local-set-key (kbd "C-x g p") 'go-test-current-project))))
+
+  (use-package go-errcheck
+    :config (progn
+              (add-hook 'go-mode-hook
+                        (lambda ()
+                          (local-set-key (kbd "C-x g e") 'go-errcheck)))))
 
 
-(use-package golint
-  :config (progn
-            (add-hook 'go-mode-hook
+  (use-package golint
+    :config (progn
+              (add-hook 'go-mode-hook
+                        (lambda ()
+                          (local-set-key (kbd "C-x g l") 'golint)))))
+
+  (use-package go-direx
+    :config (progn
+              (add-hook 'go-mode-hook
+                        (lambda ()
+                          (local-set-key (kbd "C-x g x")
+                                         'go-direx-pop-to-buffer)))))
+
+  (use-package go-projectile)
+
+  (use-package company-go
+    :config (add-hook 'go-mode-hook
                       (lambda ()
-                        (local-set-key (kbd "C-x g l") 'golint)))))
+                        (set (make-local-variable 'company-backends) '(company-go))
+                        (company-mode))))
 
-(use-package go-direx
-  :config (progn
-	    (add-hook 'go-mode-hook
-		      (lambda ()
-			(local-set-key (kbd "C-x g x")
-				       'go-direx-pop-to-buffer)))))
-
-(use-package go-projectile)
-
-(use-package company-go
-  :config (add-hook 'go-mode-hook
-                    (lambda ()
-                      (set (make-local-variable 'company-backends) '(company-go))
-                      (company-mode))))
-
+)
 
 (provide '34_go-lang)
 ;;; 34_go-lang.el ends here

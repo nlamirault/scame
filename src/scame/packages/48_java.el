@@ -1,6 +1,6 @@
 ;;; 48_java.el -- Java development
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,15 +19,15 @@
 
 ;;; Code:
 
-(use-package malabar-mode
-  :mode (("\\.java\\'" . malabar-mode))
-  :config (progn
-            (semantic-mode 1)
-            (add-hook 'malabar-mode-hook
-                      (lambda ()
-                        (add-hook 'after-save-hook
-                                  'malabar-compile-file-silently
-                                  nil t)))))
+;; (use-package malabar-mode
+;;   :mode (("\\.java\\'" . malabar-mode))
+;;   :config (progn
+;;             (semantic-mode 1)
+;;             (add-hook 'malabar-mode-hook
+;;                       (lambda ()
+;;                         (add-hook 'after-save-hook
+;;                                   'malabar-compile-file-silently
+;;                                   nil t)))))
 
 (provide '48_java)
 ;;; 48_java.el ends here

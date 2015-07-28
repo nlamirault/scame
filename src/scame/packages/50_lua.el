@@ -19,8 +19,12 @@
 
 ;;; Code:
 
-(use-package lua-mode
-  :mode (("\\.lua\\'" . lua-mode)))
+(when scame-lua
+
+  (use-package lua-mode
+    :mode (("\\.lua\\'" . lua-mode)))
+
+  )
 
 (provide '50_lua)
 ;;; 50_lua.el ends here

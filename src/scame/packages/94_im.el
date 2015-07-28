@@ -1,6 +1,6 @@
 ;;; 94_im.el --- Instant Messaging configuration
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -20,20 +20,24 @@
 ;;; Code:
 
 
-(use-package jabber
-  :bind (("C-c i i" . jabber-chat-with)
-         ("C-c i j" . jabber-connect-all)
-         ("C-c i d" . jabber-disconnect)
-         ("C-c i r" . jabber-display-roster))
-  :config (progn
-            (setq jabber-roster-line-format " %c %-25n %S"
-                  jabber-use-sasl nil
-                  jabber-history-enabled t
-                  jabber-use-global-history nil
-                  jabber-backlog-number 40
-                  jabber-backlog-days 30)
-            (add-hook 'jabber-chat-mode 'visual-line-mode)
-            (setq jabber-chat-buffer-format "Chat: %n")))
+(when scame-communication
+
+  (use-package jabber
+    :bind (("C-c i i" . jabber-chat-with)
+           ("C-c i j" . jabber-connect-all)
+           ("C-c i d" . jabber-disconnect)
+           ("C-c i r" . jabber-display-roster))
+    :config (progn
+              (setq jabber-roster-line-format " %c %-25n %S"
+                    jabber-use-sasl nil
+                    jabber-history-enabled t
+                    jabber-use-global-history nil
+                    jabber-backlog-number 40
+                    jabber-backlog-days 30)
+              (add-hook 'jabber-chat-mode 'visual-line-mode)
+              (setq jabber-chat-buffer-format "Chat: %n")))
+
+  )
 
 (provide '94_im)
 ;;; 94_im.el ends here

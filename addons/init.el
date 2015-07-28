@@ -21,11 +21,13 @@
 
 (custom-set-variables
  '(scame-user-customization-file "/tmp/scame/foo.el")
- '(scame-disable-profiles (quote
-                           (16_shell
-                            17_flycheck
-                            97_twitter
-                            99_global_keys)))
+ '(scame-golang t)
+ '(scame-ruby nil)
+ '(scame-clojure nil)
+ '(scame-commonlisp nil)
+ '(scame-python nil)
+ '(scame-erlang nil)
+ '(scame-elixir nil)
  )
 
 

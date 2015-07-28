@@ -19,25 +19,25 @@
 
 ;;; Code:
 
-;; (require 'haskell-mode)
-;; (require 'haskell-simple-indent)
-;; (require 'ghc)
+(when scame-haskell
 
-(use-package haskell-mode
-  :init (progn
-	  (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-	  (add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
-	  (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-	  (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-	  ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan))
-          )
-  ;; :bind (;;("C-," . haskell-move-nested-left)
-  ;;        ;;("C-." . haskell-move-nested-right)
-  ;;        ;; ("M-o" . editutil-edit-next-line-same-column)
-  ;;        ;;("TAB" . haskell-simple-indent)
-  ;;        ;;("<backtab>" . haskell-simple-indent-backtab)
-  ;;        ;;("C-<return>" . haskell-simple-indent-newline-indent)))
-  ;;        ))
+  (use-package haskell-mode
+    :init (progn
+            (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+            (add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
+            (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+            (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+            ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan))
+            )
+    ;; :bind (;;("C-," . haskell-move-nested-left)
+    ;;        ;;("C-." . haskell-move-nested-right)
+    ;;        ;; ("M-o" . editutil-edit-next-line-same-column)
+    ;;        ;;("TAB" . haskell-simple-indent)
+    ;;        ;;("<backtab>" . haskell-simple-indent-backtab)
+    ;;        ;;("C-<return>" . haskell-simple-indent-newline-indent)))
+    ;;        ))
+    )
+
   )
 
 (provide '40_haskell)

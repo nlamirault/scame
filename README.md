@@ -20,11 +20,12 @@ The current version has been tested on Linux and Mac OS X.
   - [Release file](#from-release-file)
   - [Source](#from-source)
   - [Docker](#from-docker)
+- [Customization](#customization)
+- [Vendoring](#vendoring)
+- [Personalisation](#Personalisation)
 - [Keymap](#keymap)
 - [Mail](#mail)
 - [Calendars](#calendars)
-- [Customization](#customization)
-- [Vendoring](#vendoring)
 - [Debug](#debug)
 - [Support](#support)
 - [Contribute](#contribute)
@@ -72,6 +73,56 @@ The current version has been tested on Linux and Mac OS X.
 * Launch Scame image :
 
         $ docker run -it --rm=true nlamirault/scame:1.0.0 -e DISPLAY=$(DISPLAY) -v /tmp/.X11-unix:/tmp/.X11-unix emacs-snapshot
+
+
+## Customization
+
+You could enable or not some modules using *init.el* file :
+
+```el
+(custom-set-variables
+  '(scame-golang t)
+  '(scame-ruby nil)
+  '(scame-clojure nil)
+  ...)
+```
+
+## Vendoring
+
+If directory `$HOME/.emacs.d/vendor` exists, [Scame][] will add to load-path
+each directory in this directory.
+
+## Personalisation
+
+If file `$HOME/.config/scame/scame-user.el` exists, [Scame][] load it.
+Example of customization :
+
+```el
+;; User
+(setq user-full-name "Nicolas Lamirault")
+(setq user-mail-address "nicolas.lamirault@gmail.com")
+
+;; Calendars
+(setq google-ical-calendar
+      (setq google-ical-calendars
+      '(("https://www.google.com/calendar/ical/.../basic.ics" "Mine" "LightBlue")
+        ("https://www.google.com/calendar/ical/.../basic.ics" "Family" "Yellow")
+        ("https://www.google.com/calendar/ical/.../basic.ics" "Work" "Green")))
+
+;; UI
+(load-theme 'monokai t)
+
+;; Fonts
+(custom-set-faces
+ '(default ((t (:family "Bitstream Vera Sans Mono"
+                        :foundry "bitstream"
+                        :slant normal
+                        :weight normal
+                        :height 81
+                        :width normal)))))
+
+(provide 'scame-user)
+```
 
 
 ## Keymap
@@ -278,46 +329,6 @@ private ics URI.
          "Work"
          "White")))
 ```
-
-
-## Customization
-
-If file `$HOME/.config/scame/scame-user.el` exists, [Scame][] load it.
-Example of customization :
-
-```el
-
-;; User
-(setq user-full-name "Nicolas Lamirault")
-(setq user-mail-address "nicolas.lamirault@gmail.com")
-
-;; Calendars
-(setq google-ical-calendar
-      (setq google-ical-calendars
-      '(("https://www.google.com/calendar/ical/.../basic.ics" "Mine" "LightBlue")
-        ("https://www.google.com/calendar/ical/.../basic.ics" "Family" "Yellow")
-        ("https://www.google.com/calendar/ical/.../basic.ics" "Work" "Green")))
-
-;; UI
-(load-theme 'monokai t)
-
-;; Fonts
-(custom-set-faces
- '(default ((t (:family "Bitstream Vera Sans Mono"
-                        :foundry "bitstream"
-                        :slant normal
-                        :weight normal
-                        :height 81
-                        :width normal)))))
-
-(provide 'scame-user)
-
-```
-
-## Vendoring
-
-If directory `$HOME/.emacs.d/vendor` exists, [Scame][] will add to load-path
-each directory in this directory.
 
 
 

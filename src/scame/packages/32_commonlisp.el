@@ -20,25 +20,29 @@
 ;;; Code:
 
 
-(setq inferior-lisp-program (executable-find "sbcl"))
+(when scame-commonlisp
 
-;; (use-package slime-autoloads
-;;   :config (progn
-;;             (slime-setup '(slime-fancy))))
+  (setq inferior-lisp-program (executable-find "sbcl"))
 
-;; (use-package slime-company
-;;   :config (slime-setup '(slime-company)))
+  ;; (use-package slime-autoloads
+  ;;   :config (progn
+  ;;             (slime-setup '(slime-fancy))))
 
-(use-package sly)
+  ;; (use-package slime-company
+  ;;   :config (slime-setup '(slime-company)))
 
-(use-package sly-company
-  :init (add-hook 'sly-mode-hook 'sly-company-mode))
+  (use-package sly)
 
-;; Use Quicklisp to install Slime
-;; (let ((filename "~/Apps/quicklisp/slime-helper.el"))
-;;   (when (file-exists-p filename)
-;;     (load (expand-file-name filename))))
-;; (setq inferior-lisp-program "/usr/bin/sbcl")
+  (use-package sly-company
+    :init (add-hook 'sly-mode-hook 'sly-company-mode))
+
+  ;; Use Quicklisp to install Slime
+  ;; (let ((filename "~/Apps/quicklisp/slime-helper.el"))
+  ;;   (when (file-exists-p filename)
+  ;;     (load (expand-file-name filename))))
+  ;; (setq inferior-lisp-program "/usr/bin/sbcl")
+
+  )
 
 (provide '32_commonlisp)
 ;;; 32_commonlisp.el ends here

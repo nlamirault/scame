@@ -19,12 +19,14 @@
 
 ;;; Code:
 
-;;(require 'tuareg)
+(when scame-ocaml
 
-(use-package tuareg
-  :mode (("\\.ml\\w?" . tuareg-mode)
-         ("\\.topml\\'" . taureg-mode)
-         ("\\.fs[ix]?" . tuareg-mode)))
+  (use-package tuareg
+    :mode (("\\.ml\\w?" . tuareg-mode)
+           ("\\.topml\\'" . taureg-mode)
+           ("\\.fs[ix]?" . tuareg-mode)))
+
+  )
 
 (provide '35_ocaml)
 ;;; 35_ocaml.el ends here

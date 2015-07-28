@@ -21,35 +21,38 @@
 
 ;; Puppet files
 
-(use-package puppet-mode
-  :mode (("\\.pp\\'" . puppet-mode))
-  :config (add-hook 'puppet-mode-hook
-		    (lambda ()
-		      (make-local-variable 'indent-tabs-mode)
-		      (setq indent-tabs-mode nil))))
+(when scame-cloud
 
+  (use-package puppet-mode
+    :mode (("\\.pp\\'" . puppet-mode))
+    :config (add-hook 'puppet-mode-hook
+                      (lambda ()
+                        (make-local-variable 'indent-tabs-mode)
+                        (setq indent-tabs-mode nil))))
 
-;; Ansible
+  ;; Ansible
 
-(use-package ansible
-  :config (add-hook 'yaml-mode-hook
-                    (lambda ()
-                      (ansible 1))))
+  (use-package ansible
+    :config (add-hook 'yaml-mode-hook
+                      (lambda ()
+                        (ansible 1))))
 
-(use-package ansible-doc
-  :config (add-hook 'yaml-mode-hook 'ansible-doc-mode))
+  (use-package ansible-doc
+    :config (add-hook 'yaml-mode-hook 'ansible-doc-mode))
 
-;; Vagrant files
-(use-package vagrant
-  :mode (("Vagrantfile" . ruby-mode)))
+  ;; Vagrant files
+  (use-package vagrant
+    :mode (("Vagrantfile" . ruby-mode)))
 
-;; Docker files
-(use-package dockerfile-mode
-  :mode (("Dockerfile" . dockerfile-mode)))
+  ;; Docker files
+  (use-package dockerfile-mode
+    :mode (("Dockerfile" . dockerfile-mode)))
 
-;; Terraform
-(use-package terraform-mode
-  :config (setq terraform-indent-level 2))
+  ;; Terraform
+  (use-package terraform-mode
+    :config (setq terraform-indent-level 2))
+
+  )
 
 (provide '14_cloud)
 ;;; 14_cloud.el ends here

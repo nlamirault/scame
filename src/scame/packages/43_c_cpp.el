@@ -32,55 +32,58 @@
 ;; “user”: When you want to define your own style
 
 
-;; (use-package cc-mode
-;;   :config (progn
-;;             ;; broke php-mode ??
-;;             ;; (setq c-default-style "linux"
-;;             ;;       c-basic-offset 4)
-;;             (add-hook 'c-mode-hook
-;;                       (lambda ()
-;;                         (setq flycheck-clang-include-path
-;;                               (list "/usr/include/"))
-;;                         (setq flycheck-gcc-include-path
-;;                               (list "/usr/include/"))))))
+(when scame-c-cpp-objc
 
-;; (use-package company-c-headers
-;;   :config (add-to-list 'company-backends 'company-c-headers))
+  ;; (use-package cc-mode
+  ;;   :config (progn
+  ;;             ;; broke php-mode ??
+  ;;             ;; (setq c-default-style "linux"
+  ;;             ;;       c-basic-offset 4)
+  ;;             (add-hook 'c-mode-hook
+  ;;                       (lambda ()
+  ;;                         (setq flycheck-clang-include-path
+  ;;                               (list "/usr/include/"))
+  ;;                         (setq flycheck-gcc-include-path
+  ;;                               (list "/usr/include/"))))))
 
+  ;; (use-package company-c-headers
+  ;;   :config (add-to-list 'company-backends 'company-c-headers))
 
-;; (use-package c-eldoc
-;;   :config (progn
-;;             (add-hook 'c-mode-hook 'c-turn-on-eldoc-mode)
-;;             (add-hook 'c++-mode-hook 'c-turn-on-eldoc-mode)))
+  ;; (use-package c-eldoc
+  ;;   :config (progn
+  ;;             (add-hook 'c-mode-hook 'c-turn-on-eldoc-mode)
+  ;;             (add-hook 'c++-mode-hook 'c-turn-on-eldoc-mode)))
 
-(use-package irony
-  :config (progn
-            (defun scame--irony-mode ()
-              ;; Avoid enabling irony-mode in modes that inherits c-mode, e.g: php-mode
-              (when (member major-mode irony-supported-major-modes)
-                (irony-mode 1)))
-            (add-hook 'c++-mode-hook 'scame--irony-mode)
-            (add-hook 'c-mode-hook 'scame--irony-mode)
-            (add-hook 'objc-mode-hook 'scame--irony-mode)
-            (add-hook 'irony-mode-hook (lambda ()
-                                         (define-key irony-mode-map [remap completion-at-point]
-                                           'irony-completion-at-point-async)
-                                         (define-key irony-mode-map [remap complete-symbol]
-                                           'irony-completion-at-point-async)))))
+  (use-package irony
+    :config (progn
+              (defun scame--irony-mode ()
+                ;; Avoid enabling irony-mode in modes that inherits c-mode, e.g: php-mode
+                (when (member major-mode irony-supported-major-modes)
+                  (irony-mode 1)))
+              (add-hook 'c++-mode-hook 'scame--irony-mode)
+              (add-hook 'c-mode-hook 'scame--irony-mode)
+              (add-hook 'objc-mode-hook 'scame--irony-mode)
+              (add-hook 'irony-mode-hook (lambda ()
+                                           (define-key irony-mode-map [remap completion-at-point]
+                                             'irony-completion-at-point-async)
+                                           (define-key irony-mode-map [remap complete-symbol]
+                                             'irony-completion-at-point-async)))))
 
-(use-package company-irony
-  :config (progn
-            (add-to-list 'company-backends 'company-irony)
-            (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
-            (add-hook 'irony-mode-hook 'company-mode)))
+  (use-package company-irony
+    :config (progn
+              (add-to-list 'company-backends 'company-irony)
+              (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+              (add-hook 'irony-mode-hook 'company-mode)))
 
-(use-package flycheck-irony
-  :config (progn
-            (add-to-list 'flycheck-checkers 'irony)
-            (add-hook 'irony-mode-hook 'flycheck-mode)))
+  (use-package flycheck-irony
+    :config (progn
+              (add-to-list 'flycheck-checkers 'irony)
+              (add-hook 'irony-mode-hook 'flycheck-mode)))
 
-(use-package irony-eldoc
-  :config (add-hook 'irony-mode-hook 'irony-eldoc))
+  (use-package irony-eldoc
+    :config (add-hook 'irony-mode-hook 'irony-eldoc))
+
+  )
 
 
 (provide '43_c_cpp)

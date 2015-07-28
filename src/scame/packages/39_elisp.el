@@ -19,41 +19,31 @@
 
 ;;; Code:
 
-;;(require 'ielm)
+(when scame-elisp
 
-;; (find-function-setup-keys)
+  (use-package emacs-lisp-mode
+    :init (progn
+            (use-package eldoc
+              :init (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)))
+    :mode (("\\.el$" . emacs-lisp-mode)
+           ("gnus" . emacs-lisp-mode)
+           ("Cask" . emacs-lisp-mode)))
 
-;; (dolist (hook '(emacs-lisp-mode-hook
-;;                 lisp-interaction-mode-hook
-;;                 ielm-mode-hook))
-;;   (add-hook hook 'turn-on-eldoc-mode))
+  (use-package ielm
+    :init (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode))
 
+  (use-package elisp-slime-nav
+    :init (progn
+            (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
+              (add-hook hook 'elisp-slime-nav-mode))))
 
-;; (custom-set-variables
-;;  '(eldoc-idle-delay 0.2))
+  (use-package erefactor
+    :config (define-key emacs-lisp-mode-map "\C-c\C-v" erefactor-map))
 
+  ;; (use-package overseer
+  ;;   :init (add-hook 'emacs-lisp-mode-hook 'overseer-mode-hook))
 
-(use-package emacs-lisp-mode
-  :init (progn
-	  (use-package eldoc
-	    :init (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)))
-  :mode (("\\.el$" . emacs-lisp-mode)
-	 ("gnus" . emacs-lisp-mode)
-	 ("Cask" . emacs-lisp-mode)))
-
-(use-package ielm
-  :init (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode))
-
-(use-package elisp-slime-nav
-  :init (progn
-	  (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
-	    (add-hook hook 'elisp-slime-nav-mode))))
-
-(use-package erefactor
-  :config (define-key emacs-lisp-mode-map "\C-c\C-v" erefactor-map))
-
-;; (use-package overseer
-;;   :init (add-hook 'emacs-lisp-mode-hook 'overseer-mode-hook))
+  )
 
 (provide '39_elisp)
 ;;; 39_elisp.el ends here

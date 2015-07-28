@@ -19,90 +19,28 @@
 
 ;;; Code:
 
-(defgroup scame nil
-  "Emacs starter kit."
-  :group 'tools)
-
-(defcustom user-home-directory (concat (getenv "HOME") "/")
-  "Path of the user home directory."
-  :group 'scame
-  :type 'string)
-
-;; (defcustom scame-cask-file "~/.cask/cask.el"
-;;   "Scame Cask file."
-;;   :group 'scame
-;;   :type 'string)
-
-(defcustom scame-keymap-prefix (kbd "C-c s")
-  "Scame keymap prefix."
-  :group 'scame
-  :type 'string)
-
-(defcustom scame-user-directory
-  (concat user-home-directory ".emacs.d/scame")
-  "Scame user directory installation."
-  :group 'scame
-  :type 'string)
-
-(defcustom scame-vendoring-directory
-  (concat user-emacs-directory "vendor")
-  "Vendoring directory for Scame."
-  :group 'scame
-  :type 'string)
-
-(defcustom scame-user-customization-file
-  (concat user-home-directory ".config/scame/scame-user.el")
-  "File used to store user customization."
-  :group 'scame
-  :type 'string)
-
-(defcustom scame-use-vendoring t
-  "Set if you want to use vendoring utility."
-  :group 'scame
-  :type 'boolean)
-
-(defcustom scame-completion-method 'ido
-  "Method to select a candidate from a list of strings."
-  :group 'scame
-  :type '(choice
-          (const :tag "Ido" ido)
-          (const :tag "Helm" helm)
-          (const :tag "Ivy" ivy)))
-
-(defcustom scame-gnus-version 'gnus
-  "Method to select a candidate version of Gnus."
-  :group 'scame
-  :type '(choice
-          (const :tag "Gnus" gnus)
-          (const :tag "Gnus-Dev" 'gnus-dev)))
-
-(defcustom scame-gnus-dev-directory
-  (concat user-home-directory "Apps/gnus")
-  "Directory of Gnus source code."
-  :group 'scame
-  :type 'string)
-
-(setq abbrev-file-name
-      (concat user-home-directory ".emacs.d/abbrev_defs"))
-(setq-default abbrev-mode t)
-
-;; Debug or not
-(setq debug-on-error t)
-
 (when (version< emacs-version "24.4")
   (error "Scame requires at least GNU Emacs 24.4"))
 
-;; Load Gnus from Emacs or Gnus development version
-(when (eql 'gnus-dev scame-gnus-version)
-  (push (concat scame-gnus-dev-directory "/lisp") load-path)
-  (message "Load Gnus development version")
-  (require 'gnus-load))
+;; Debug or not
+(setq debug-on-error t)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (setq-default show-trailing-whitespace nil)
 
 (setq warning-minimum-level :error)
+
+;; Scame
+;; -----------------
+
+(require 'scame-custom)
+
+;; Load Gnus from Emacs or Gnus development version
+(when (eql 'gnus-dev scame-gnus-version)
+  (push (concat scame-gnus-dev-directory "/lisp") load-path)
+  (message "Load Gnus development version")
+  (require 'gnus-load))
 
 (require 'scame-io)
 (require 'scame-theme)
@@ -131,9 +69,8 @@
                                       el-init-require/record-error
                                       el-init-require/system-case))))
 
-(scame--msg-buffer
- "--> Vendoring modules ...\n"
- 'font-lock-string-face)
+(scame--msg-buffer "--> Vendoring modules ...\n"
+                   'font-lock-string-face)
 (when (and scame-use-vendoring
            (f-exists? scame-vendoring-directory)
            (f-directory? scame-vendoring-directory))
@@ -151,6 +88,10 @@
                    'font-lock-string-face)
 (when (file-readable-p scame-user-customization-file)
   (load scame-user-customization-file))
+
+(scame--msg-buffer "--> Addons modules ...\n"
+                   'font-lock-string-face)
+(scame--install-packages scame-addons)
 
 (scame--msg-buffer (format "--> Version %s ready.\n"
                            scame-version-number)
