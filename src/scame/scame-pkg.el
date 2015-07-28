@@ -263,7 +263,7 @@
   ;; https://github.com/tkf/emacs-jedi-direx/issues/17
   (add-to-list 'unstable-packages 'jedi-direx t)
   (add-to-list 'stable-packages 'tox t)
-  (add-to-list 'unstable-packages py-yapf t)
+  (add-to-list 'unstable-packages 'py-yapf t)
   (add-to-list 'stable-packages 'elpy t)
   (add-to-list 'stable-packages 'pyvenv t)
   (add-to-list 'stable-packages 'sphinx-doc t)
