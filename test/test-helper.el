@@ -138,6 +138,8 @@
   `(unwind-protect
        (condition-case nil ;ex
            (let ((default-directory scame-test/sandbox-path)
+                 (scame-user-directory (concat scame-test/sandbox-path "/scame"))
+                 (user-emacs-directory scame-test/sandbox-path)
                  ;;(package-user-dir (f-join scame-test/sandbox-path "elpa")))
                  )
              ;; (unless (f-dir? scame-test/sandbox-path)
