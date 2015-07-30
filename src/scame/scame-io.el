@@ -26,7 +26,8 @@
   (setq inhibit-startup-screen t))
 (switch-to-buffer scame-buffer)
 (with-current-buffer scame-buffer
-  (insert "-----------\n|  Scame  |\n-----------\n\n"))
+  (insert "-----------\n|  Scame  |\n-----------\n\n")
+  (redisplay))
 
 
 (defun scame--msg-buffer (msg face-type)

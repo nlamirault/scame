@@ -28,11 +28,16 @@
 ;; Repositories
 
 
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("org" . "http://orgmode.org/elpa/")
-                         ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")
-                         ))
+(setq package-archives
+      '(("gnu" . "http://elpa.gnu.org/packages/")
+        ("org" . "http://orgmode.org/elpa/")
+        ("melpa-stable" . "http://stable.melpa.org/packages/")
+        ("melpa" . "http://melpa.org/packages/")
+        ;; ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
+        ;; ("melpa" . "http://melpa.milkbox.net/packages/")
+        ))
+
+(package-initialize)
 
 ;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
@@ -42,6 +47,7 @@
 ;; Install dependencies
 (scame--msg-buffer "--> Dependencies installation ...\n"
                    'font-lock-string-face)
+(redisplay)
 (defvar scame-dependencies '(s f dash popwin))
 (dolist (pkg scame-dependencies)
   (unless (package-installed-p pkg)
@@ -357,7 +363,9 @@
   (add-to-list 'unstable-packages 'rcirc-notify t))
 
 (when scame-org
-  (add-to-list 'unstable-packages 'org t)
+  ;; (add-to-list 'unstable-packages 'org t)
+  (add-to-list 'package-pinned-packages
+               (cons 'org "org"))
   (add-to-list 'stable-packages 'calfw t)
   (add-to-list 'unstable-packages 'org-gcal t)
   (add-to-list 'unstable-packages 'org-agenda-property t)
@@ -401,9 +409,15 @@
 
 
 (dolist (pkg stable-packages)
-  (message "Package: %s" pkg)
+ ;;  (message "Package: %s" pkg)
   (add-to-list 'package-pinned-packages
                (cons pkg "melpa-stable")))
+
+(dolist (pkg unstable-packages)
+  ;; (message "Package: %s" pkg)
+  (add-to-list 'package-pinned-packages
+               (cons pkg "melpa")))
+
 ;; (message "Pinned : %s" package-pinned-packages)
 
 
@@ -412,7 +426,7 @@
 
 (scame--msg-buffer "--> Packages installation ...\n"
                    'font-lock-string-face)
-
+(redisplay)
 (scame--install-packages stable-packages)
 (scame--install-packages unstable-packages)
 

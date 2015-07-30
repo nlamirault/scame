@@ -35,7 +35,7 @@
 ;; -----------------
 
 (require 'scame-custom)
-(message "Scame defer packages: %s" scame-defer-package)
+;; (message "Scame defer packages: %s" scame-defer-package)
 
 ;; Load Gnus from Emacs or Gnus development version
 (when (eql 'gnus-dev scame-gnus-version)
@@ -54,6 +54,7 @@
 
 (scame--msg-buffer "--> Scame modules ...\n"
                    'font-lock-string-face)
+(redisplay)
 (use-package el-init
   :config (progn
             (setq el-init-meadow-regexp       "\\`meadow-"
@@ -72,6 +73,7 @@
 
 (scame--msg-buffer "--> Vendoring modules ...\n"
                    'font-lock-string-face)
+(redisplay)
 (when (and scame-use-vendoring
            (f-exists? scame-vendoring-directory)
            (f-directory? scame-vendoring-directory))
@@ -87,16 +89,19 @@
 
 (scame--msg-buffer "--> Customization file ...\n"
                    'font-lock-string-face)
+(redisplay)
 (when (file-readable-p scame-user-customization-file)
   (load scame-user-customization-file))
 
 (scame--msg-buffer "--> Addons modules ...\n"
                    'font-lock-string-face)
+(redisplay)
 (scame--install-packages scame-addons)
 
 (scame--msg-buffer (format "--> Version %s ready.\n"
                            scame-version-number)
                    'font-lock-string-face)
+(redisplay)
 
 (setq warning-minimum-level :warning)
 
