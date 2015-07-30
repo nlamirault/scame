@@ -22,7 +22,7 @@
 
 (when scame-commonlisp
 
-  (setq inferior-lisp-program (executable-find "sbcl"))
+  (setq inferior-lisp-program "/usr/bin/sbcl") ;(executable-find "sbcl"))
 
   ;; (use-package slime-autoloads
   ;;   :config (progn
