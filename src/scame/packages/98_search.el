@@ -20,7 +20,7 @@
 ;;; Code:
 
 (use-package engine-mode
-  ;;:init (engine-mode t)
+  ;; :defer scame-defer-package
   :config (progn
             (defengine google
               "http://www.google.com/search?ie=utf-8&oe=utf-8&q=%s"

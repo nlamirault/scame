@@ -22,6 +22,7 @@
 (when scame-lua
 
   (use-package lua-mode
+    ;; :defer scame-defer-package
     :mode (("\\.lua\\'" . lua-mode)))
 
   )

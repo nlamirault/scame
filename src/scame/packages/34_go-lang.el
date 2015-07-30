@@ -27,6 +27,7 @@
 (when scame-golang
 
   (use-package go-mode
+    ;; :defer scame-defer-package
     :mode (("\\.go$" . go-mode))
     :config (progn
               (subword-mode +1)
@@ -40,9 +41,11 @@
                           (local-set-key (kbd "C-x g j") 'godef-jump)))))
 
   (use-package go-eldoc
+    ;; :defer scame-defer-package
     :config (add-hook 'go-mode-hook 'go-eldoc-setup))
 
   (use-package gotest
+    ;; :defer scame-defer-package
     :config (add-hook 'go-mode-hook
                       (lambda ()
                         (local-set-key (kbd "C-x g t") 'go-test-current-test)
@@ -50,6 +53,7 @@
                         (local-set-key (kbd "C-x g p") 'go-test-current-project))))
 
   (use-package go-errcheck
+    ;; :defer scame-defer-package
     :config (progn
               (add-hook 'go-mode-hook
                         (lambda ()
@@ -57,21 +61,26 @@
 
 
   (use-package golint
+    ;; :defer scame-defer-package
     :config (progn
               (add-hook 'go-mode-hook
                         (lambda ()
                           (local-set-key (kbd "C-x g l") 'golint)))))
 
   (use-package go-direx
+    ;; :defer scame-defer-package
     :config (progn
               (add-hook 'go-mode-hook
                         (lambda ()
                           (local-set-key (kbd "C-x g x")
                                          'go-direx-pop-to-buffer)))))
 
-  (use-package go-projectile)
+  (use-package go-projectile
+    ;; :defer scame-defer-package)
+    )
 
   (use-package company-go
+    ;; :defer scame-defer-package
     :config (add-hook 'go-mode-hook
                       (lambda ()
                         (set (make-local-variable 'company-backends) '(company-go))

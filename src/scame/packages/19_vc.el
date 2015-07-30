@@ -21,6 +21,7 @@
 
 
 (use-package magit
+  ;; :defer scame-defer-package
   :config (progn
             (when (eql 'ivy scame-completion-method)
               (setq magit-completing-read-function 'ivy-completing-read)))
@@ -33,11 +34,17 @@
 (setq magit-auto-revert-mode nil
       magit-last-seen-setup-instructions "1.4.0")
 
-(use-package magit-gerrit)
+(use-package magit-gerrit
+  ;; :defer scame-defer-package)
+  )
 
-(use-package gitconfig-mode)
+(use-package gitconfig-mode
+  ;; :defer scame-defer-package)
+  )
 
-(use-package gitignore-mode)
+(use-package gitignore-mode
+  ;; :defer scame-defer-package)
+  )
 
 ;; FIXME
 ;; (use-package gist
@@ -48,20 +55,21 @@
 ;;   :config (git-gutter-fr+-minimal))
 
 (use-package git-gutter+
+  ;; :defer scame-defer-package
   :config (global-git-gutter+-mode 1)
   :bind (("C-c g m" . global-git-gutter+-mode)
          ("C-c g >" . git-gutter+-next-hunk)
          ("C-c g <" . git-gutter+-previous-hunk)))
 
 (use-package helm-open-github
+  ;; :defer scame-defer-package
   :bind (("C-c g h f" . helm-open-github-from-file)
          ("C-c g h c" . helm-open-github-from-commit)
          ("C-c g h i" . helm-open-github-from-issues)
          ("C-c g h p" . helm-open-github-from-pull-requests)))
 
-(use-package helm-gitlab)
-
 (use-package git-timemachine
+  ;; :defer scame-defer-package
   :bind (("C-c g t" . git-timemachine)))
 
 

@@ -61,6 +61,11 @@
   :group 'scame
   :type 'boolean)
 
+(defcustom scame-defer-package t
+  "Set if you want defer loading packages."
+  :group 'scame
+  :type 'boolean)
+
 (defcustom scame-completion-method 'ido
   "Method to select a candidate from a list of strings."
   :group 'scame

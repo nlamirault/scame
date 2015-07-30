@@ -22,6 +22,7 @@
 (when scame-rust
 
   (use-package rust-mode
+    ;; :defer scame-defer-package
     :mode (("\\.rs\\'" . rust-mode))
     :init (add-hook 'rust-mode-hook 'flycheck-mode)
     :config (setq tab-width 4))

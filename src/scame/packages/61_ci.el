@@ -20,8 +20,9 @@
 ;;; Code:
 
 
-(use-package butler)
-
+(use-package butler
+  ;; :defer scame-defer-package)
+  )
 
 (provide '61_ci)
 ;;; 61_ci.el ends here

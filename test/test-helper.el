@@ -117,6 +117,7 @@
 
 (defun setup-scame-test ()
   (setq scame-use-vendoring nil)
+  (setq scame-defer-package nil)
   (setq scame-user-customization-file
         (f-join scame-test/sandbox-path "scame-config-user.el"))
   (setq debugger-batch-max-lines (+ 50 max-lisp-eval-depth)

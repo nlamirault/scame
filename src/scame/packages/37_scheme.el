@@ -24,6 +24,7 @@
   ;;(require 'geiser-install)
 
   (use-package geiser
+    ;; :defer scame-defer-package
     :config (progn
               (setq geiser-active-implementations
                     '(guile racket chicken))))

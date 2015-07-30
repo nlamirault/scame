@@ -22,6 +22,7 @@
 (when scame-web
 
   (use-package web-mode
+    ;; :defer scame-defer-package
     :config (setq web-mode-code-indent-offset 4)
     :mode (("\\.html\\'" . web-mode)
            ("\\.mustache\\'" . web-mode)

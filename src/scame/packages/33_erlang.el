@@ -31,6 +31,7 @@
   ;; (add-to-list 'auto-mode-alist '("\\.hrl?$" . erlang-mode))
 
   (use-package erlang
+    ;; :defer scame-defer-package
     :mode (("\\.erl?$" . erlang-mode)
            ("\\.hrl?$" . erlang-mode)
            ("\\.spec?$" . erlang-mode))

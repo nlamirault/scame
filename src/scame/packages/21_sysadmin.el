@@ -22,6 +22,7 @@
 (when scame-sysadmin
 
   (use-package apache-mode
+    ;; :defer scame-defer-package
     :mode (("\\.htaccess\\'" . apache-mode)
            ("httpd\\.conf\\'"  . apache-mode)
            ("srm\\.conf\\'"    . apache-mode)

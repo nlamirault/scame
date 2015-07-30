@@ -23,6 +23,7 @@
 (when scame-communication
 
   (use-package jabber
+    ;; :defer scame-defer-package
     :bind (("C-c i i" . jabber-chat-with)
            ("C-c i j" . jabber-connect-all)
            ("C-c i d" . jabber-disconnect)

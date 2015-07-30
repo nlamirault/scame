@@ -1,6 +1,6 @@
 ;;; 20_persp.el --- Perspective configuration
 
-;; Copyright (C) 2014  Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,8 +19,8 @@
 
 ;;; Code:
 
-
 (use-package perspective
+  ;; :defer scame-defer-package
   :init (add-hook 'after-init-hook 'persp-mode)
   :bind (("C-c C-z" . persp-switch)))
 

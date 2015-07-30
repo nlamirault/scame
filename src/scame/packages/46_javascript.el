@@ -22,6 +22,7 @@
 (when scame-javascript
 
   (use-package js3-mode
+    ;; :defer scame-defer-package
     :init (setq js3-indent-level 4
                 js3-mode-dev-mode-p t
                 js3-auto-indent-p t
@@ -33,17 +34,20 @@
     :mode (("\\.js\\'" . js3-mode)))
 
   (use-package tern
+    ;; :defer scame-defer-package
     :config (setq tern-command
                   (list (expand-file-name
                          (or (executable-find "tern") "tern")))))
 
   (use-package company-tern
+    ;; :defer scame-defer-package
     :init (add-to-list 'company-backends 'company-tern)
     :config (add-hook 'js3-mode-hook 'tern-mode))
 
   ;; (use-package sws-mode)
 
   (use-package jade-mode
+    ;; :defer scame-defer-package
     :mode (("\\.jade\\'" . jade-mode)
            ("\\.styl\\'" . jade-mode)))
 

@@ -23,6 +23,7 @@
 (when scame-perl
 
   (use-package helm-perldoc
+    ;; :defer scame-defer-package
     :config (add-hook 'perl-mode-hook
                       (lambda ()
                         (local-set-key (kbd "C-x e d") 'helm-perldoc))))

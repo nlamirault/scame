@@ -23,6 +23,7 @@
 (when scame-multimedia
 
   (use-package emms
+    ;; :defer scame-defer-package
     :init (progn
             (define-prefix-command 'scame-emms-map)
             (global-set-key (kbd "C-x e") 'scame-emms-map))
@@ -42,21 +43,33 @@
            ("C-x e n" . emms-next)
            ("C-x e p" . emms-previous)))
 
-  (use-package emms-info-libtag)
+  (use-package emms-info-libtag
+    ;; :defer scame-defer-package)
+    )
 
-  (use-package emms-browser)
+  (use-package emms-browser
+    ;; :defer scame-defer-package)
+    )
 
-  (use-package emms-cache)
+  (use-package emms-cache
+    ;; :defer scame-defer-package)
+    )
 
-  (use-package emms-info)
+  (use-package emms-info
+    ;; :defer scame-defer-package)
+    )
 
-  (use-package emms-tag-editor)
+  (use-package emms-tag-editor
+    ;; :defer scame-defer-package)
+    )
 
   (use-package emms-volume
+    ;; :defer scame-defer-package
     :bind (("C-x e ." . emms-volume-mode-plus)
            ("C-x e ," . emms-volume-mode-minus)))
 
   (use-package emms-player-vlc
+    ;; :defer scame-defer-package
     :config (define-emms-simple-player vlc '(file url)
               (concat "\\`\\(https?\\|mms\\)://\\|"
                       (emms-player-simple-regexp
@@ -69,22 +82,27 @@
   ;;   :config (add-to-list 'emms-player-list 'emms-player-mpd))
 
   (use-package emms-mode-line
+    ;; :defer scame-defer-package
     :config (emms-mode-line 1))
 
   (use-package emms-playing-time
+    ;; :defer scame-defer-package
     :config (emms-playing-time 1))
 
   (use-package emms-streams
+    ;; :defer scame-defer-package
     :config (setq emms-stream-list
                   '(("Nova" "http://broadcast.infomaniak.net/radionova-high.mp3" 1 url)
                     ("France Inter" "http://www.tv-radio.com/station/france_inter_mp3/france_inter_mp3-128k.m3u" 1 url)
                     ("France Info" "http://www.tv-radio.com/station/france_info/france_info.m3u" 1 url))))
 
   (use-package helm-emms
+    ;; :defer scame-defer-package
     :bind (("C-x e r" . helm-emms)))
 
-  (use-package bongo)
-
+  (use-package bongo
+    ;; :defer scame-defer-package)
+    )
 
   )
 

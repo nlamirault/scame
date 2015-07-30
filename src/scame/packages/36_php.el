@@ -22,6 +22,7 @@
 (when scame-php
 
   (use-package php-mode
+    ;; :defer scame-defer-package
     :config (progn
               (add-hook 'php-mode-hook
                         (lambda ()
@@ -37,6 +38,7 @@
     :mode (("\\.php\\'" . php-mode)))
 
   (use-package phpunit
+    ;; :defer scame-defer-package
     :config (add-hook 'php-mode-hook
                       (lambda ()
                         (local-set-key (kbd "C-x p t") 'phpunit-current-test)

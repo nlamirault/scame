@@ -31,9 +31,12 @@
   ;; (use-package slime-company
   ;;   :config (slime-setup '(slime-company)))
 
-  (use-package sly)
+  (use-package sly
+    ;; :defer scame-defer-package)
+    )
 
   (use-package sly-company
+    ;; :defer scame-defer-package
     :init (add-hook 'sly-mode-hook 'sly-company-mode))
 
   ;; Use Quicklisp to install Slime

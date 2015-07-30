@@ -24,6 +24,7 @@
 (when scame-cloud
 
   (use-package puppet-mode
+    ;; :defer scame-defer-package
     :mode (("\\.pp\\'" . puppet-mode))
     :config (add-hook 'puppet-mode-hook
                       (lambda ()
@@ -33,23 +34,28 @@
   ;; Ansible
 
   (use-package ansible
+    ;; :defer scame-defer-package
     :config (add-hook 'yaml-mode-hook
                       (lambda ()
                         (ansible 1))))
 
   (use-package ansible-doc
+    ;; :defer scame-defer-package
     :config (add-hook 'yaml-mode-hook 'ansible-doc-mode))
 
   ;; Vagrant files
   (use-package vagrant
+    ;; :defer scame-defer-package
     :mode (("Vagrantfile" . ruby-mode)))
 
   ;; Docker files
   (use-package dockerfile-mode
+    ;; :defer scame-defer-package
     :mode (("Dockerfile" . dockerfile-mode)))
 
   ;; Terraform
   (use-package terraform-mode
+    ;; :defer scame-defer-package
     :config (setq terraform-indent-level 2))
 
   )

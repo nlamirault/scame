@@ -35,6 +35,7 @@
 ;; -----------------
 
 (require 'scame-custom)
+(message "Scame defer packages: %s" scame-defer-package)
 
 ;; Load Gnus from Emacs or Gnus development version
 (when (eql 'gnus-dev scame-gnus-version)

@@ -21,9 +21,12 @@
 
 (when scame-elixir
 
-  (use-package elixir-mode)
+  (use-package elixir-mode
+    ;; :defer scame-defer-package)
+    )
 
   (use-package alchemist
+    ;; :defer scame-defer-package
     :init (alchemist-mode 1))
 
   )

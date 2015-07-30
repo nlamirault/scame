@@ -151,6 +151,7 @@
 
 
   (use-package org
+    ;; :defer scame-defer-package
     :config (progn
               (setq org-directory (f-join user-home-directory "Org"))
               (setq org-agenda-files (list org-directory))
@@ -266,24 +267,33 @@
 
 
   ;; Explicitly load required exporters
-  (use-package ox-html)
-  (use-package ox-latex)
-  (use-package ox-ascii)
+  ;; (use-package ox-html)
+  ;; (use-package ox-latex)
+  ;; (use-package ox-ascii)
 
   ;; FIXME: requires Emacs 24.4
 
   ;; (use-package google-weather)
   ;; (use-package org-google-weather)
 
-  (use-package calfw)
-  (use-package calfw-org)
-  (use-package calfw-ical)
-  (use-package calfw-cal)
+  (use-package calfw
+    ;; :defer scame-defer-package)
+    )
+  (use-package calfw-org
+    ;; :defer scame-defer-package)
+    )
+  (use-package calfw-ical
+    ;; :defer scame-defer-package)
+    )
+  (use-package calfw-cal
+    ;; :defer scame-defer-package)
+    )
 
   (setq google-ical-calendar nil)
 
 
   (use-package org-crypt
+    ;; :defer scame-defer-package
     :config (progn
               (org-crypt-use-before-save-magic)
               (setq org-tags-exclude-from-inheritance (quote ("crypt")))

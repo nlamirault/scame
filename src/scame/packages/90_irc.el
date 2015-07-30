@@ -22,6 +22,7 @@
 (when scame-communication
 
   (use-package erc
+    ;; :defer scame-defer-package
     :init (progn
             (require 'erc-services)
             (require 'erc-dcc)
@@ -65,6 +66,7 @@
           wrap-prefix "    "))
 
   (use-package circe
+    ;; :defer scame-defer-package
     :config (progn
               (setq circe-reduce-lurker-spam t)
               (setq lui-time-stamp-position 'right-margin)
@@ -72,9 +74,11 @@
               (add-hook 'lui-mode-hook 'my-lui-setup)))
 
   (use-package circe-color-nicks
+    ;; :defer scame-defer-package
     :config (enable-circe-color-nicks))
 
   (use-package circe-highlight-all-nicks
+    ;; :defer scame-defer-package
     :config (enable-circe-highlight-all-nicks))
 
 
@@ -82,18 +86,23 @@
   ;; ------
 
   (use-package rcirc
+    ;; :defer scame-defer-package
     :config (add-hook 'rcirc-mode-hook
                       (lambda ()
                         (rcirc-track-minor-mode 1)))
     :bind (("C-c i c" . rcirc)))
 
   (use-package rcirc-groups
+    ;; :defer scame-defer-package
     :bind (("C-c i g" . rcirc-groups:switch-to-groups-buffer)))
 
   (use-package rcirc-alertify
+    ;; :defer scame-defer-package
     :config (rcirc-alertify-enable))
 
-  (use-package rcirc-notify)
+  (use-package rcirc-notify
+    ;; :defer scame-defer-package)
+    )
 
 
   )

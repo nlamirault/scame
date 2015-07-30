@@ -22,6 +22,7 @@
 (when scame-social
 
   (use-package twittering-mode
+    ;; :defer scame-defer-package
     :init (progn
             (define-prefix-command 'scame-twitter-map)
             (global-set-key (kbd "C-c t") 'scame-twitter-map))

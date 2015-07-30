@@ -26,10 +26,6 @@
 		uniquify-after-kill-buffer-p t
 		uniquify-ignore-buffers-re "^\\*"))
 
-(use-package ag
-  :commands (ag ag-project)
-  :config (setq ag-highlight-search t))
-
 
 (use-package swoop
   :config (setq swoop-font-size-change: nil)
@@ -47,6 +43,7 @@
 
 
 (use-package recentf
+  ;; :defer scame-defer-package
   :config (progn
 	    (setq recentf-exclude (list (f-join user-emacs-directory ".recentf")))
 	    (setq recentf-save-file (f-join user-emacs-directory ".recentf"))

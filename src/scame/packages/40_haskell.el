@@ -22,6 +22,7 @@
 (when scame-haskell
 
   (use-package haskell-mode
+    ;; :defer scame-defer-package
     :init (progn
             (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
             (add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)

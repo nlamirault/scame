@@ -22,6 +22,7 @@
 (when scame-ocaml
 
   (use-package tuareg
+    ;; :defer scame-defer-package
     :mode (("\\.ml\\w?" . tuareg-mode)
            ("\\.topml\\'" . taureg-mode)
            ("\\.fs[ix]?" . tuareg-mode)))

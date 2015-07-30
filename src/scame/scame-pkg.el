@@ -27,16 +27,22 @@
 
 ;; Repositories
 
-(package-initialize)
+
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("org" . "http://orgmode.org/elpa/")
                          ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
                          ("melpa" . "http://melpa.milkbox.net/packages/")
                          ))
-(package-refresh-contents)
+
+;; Bootstrap `use-package'
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
 ;; Install dependencies
-(defvar scame-dependencies '(s f dash use-package popwin))
+(scame--msg-buffer "--> Dependencies installation ...\n"
+                   'font-lock-string-face)
+(defvar scame-dependencies '(s f dash popwin))
 (dolist (pkg scame-dependencies)
   (unless (package-installed-p pkg)
     (package-install pkg)))
@@ -49,7 +55,7 @@
   '(
     epl helm paradox el-init el-init-viewer
     company auto-complete
-    find-file-in-project
+    ;; find-file-in-project
     neotree
     imenu-anywhere
     dired-imenu
@@ -404,7 +410,7 @@
 (setq split-height-threshold nil)
 (setq split-width-threshold 0)
 
-(scame--msg-buffer "--> Packages Installation ...\n"
+(scame--msg-buffer "--> Packages installation ...\n"
                    'font-lock-string-face)
 
 (scame--install-packages stable-packages)

@@ -22,22 +22,29 @@
 (when scame-elisp
 
   (use-package emacs-lisp-mode
+    ;; :defer scame-defer-package
     :init (progn
             (use-package eldoc
-              :init (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)))
+              :init (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+              :diminish eldoc-mode))
     :mode (("\\.el$" . emacs-lisp-mode)
            ("gnus" . emacs-lisp-mode)
-           ("Cask" . emacs-lisp-mode)))
+           ("Cask" . emacs-lisp-mode))
+    :diminish emacs-lisp-mode)
 
   (use-package ielm
+    ;; :defer scame-defer-package
     :init (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode))
 
   (use-package elisp-slime-nav
+    ;; :defer scame-defer-package
     :init (progn
             (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
-              (add-hook hook 'elisp-slime-nav-mode))))
+              (add-hook hook 'elisp-slime-nav-mode)))
+    :diminish elisp-slime-nav-mode)
 
   (use-package erefactor
+    ;; :defer scame-defer-package
     :config (define-key emacs-lisp-mode-map "\C-c\C-v" erefactor-map))
 
   ;; (use-package overseer

@@ -23,6 +23,7 @@
 (when scame-ruby
 
   (use-package ruby-mode
+    ;; :defer scame-defer-package
     :config (progn
               (add-hook 'ruby-mode-hook 'rvm-activate-corresponding-ruby)
               (setq ruby-deep-indent-paren nil))
@@ -37,13 +38,17 @@
            ("Capfile$" . ruby-mode)
            ("Guardfile$" . ruby-mode)))
 
-  (use-package ruby-tools)
+  (use-package ruby-tools
+    ;; :defer scame-defer-package)
+    )
 
   (use-package rvm
+    ;; :defer scame-defer-package
     :init (rvm-use-default)
     :config (setq rvm-verbose nil))
 
   (use-package rhtml-mode
+    ;; :defer scame-defer-package
     :mode (("\\.rhtml$" . rhtml-mode)
            ("\\.html\\.erb$" . rhtml-mode)))
 
@@ -52,7 +57,9 @@
   ;;   :bind (("C-c r r" . inf-ruby)
   ;; 	 ("C-c r a" . rvm-activate-corresponding-ruby)))
 
-  (use-package company-inf-ruby)
+  (use-package company-inf-ruby
+    ;; :defer scame-defer-package)
+    )
 
   )
 
