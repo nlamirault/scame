@@ -1,4 +1,4 @@
-;;; scame-ruby-test.el --- Unit tests for Scame Common Lisp development.
+;;; scame-ruby-test.el --- Unit tests for Scame Ruby development.
 
 ;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -19,11 +19,15 @@
 
 ;;; Code:
 
+(defconst testsuite-ruby-filename
+  "var/hello.rb"
+  "File name for testing ruby setup.")
 
 (ert-deftest test-scame-ruby ()
+  :tags '(ruby)
   (with-test-sandbox
    (with-current-file
-    "var/hello.rb"
+    testsuite-ruby-filename
     (should (featurep 'rvm))
     (should (featurep 'ruby-tools))
     ;;(should (featurep 'inf-ruby))

@@ -42,17 +42,6 @@
                ;; press 'E' to expire email
                (nnmail-expiry-target "nnimap+gmail:[Gmail]/Trash")))
 
-(define-key gnus-summary-mode-map
-  (kbd "B d")
-  (lambda ()
-    (interactive)
-    (gnus-summary-move-article nil "nnimap+gmail:[Gmail]/Trash")))
-
-(define-key gnus-summary-mode-map
-  (kbd "B s")
-  (lambda ()
-    (interactive)
-    (gnus-summary-move-article nil "nnimap+gmail:[Gmail]/Spam")))
 
 ;; GMail SMTP configuration
 
@@ -70,7 +59,42 @@
 
 ;; Keybindings
 
+(defun gmail-delete ()
+  "Delete current mail."
+  (interactive)
+  (gnus-summary-move-article nil "nnimap+gmail:[Gmail]/Trash"))
 
+(defun gmail-archive ()
+  "Archive the current or marked mails.
+This moves them into the All Mail folder."
+  (interactive)
+  (gnus-summary-move-article nil "nnimap+imap.gmail.com:[Gmail]/All Mail"))
+
+(defun gmail-report-spam ()
+  "Report the current or marked mails as spam.
+This moves them into the Spam folder."
+  (interactive)
+  (gnus-summary-move-article nil "nnimap+imap.gmail.com:[Gmail]/Spam"))
+
+(defun gmail-summary-keys ()
+  "Some keybindings for Gmail."
+  (local-set-key "y" 'gmail-archive)
+  (local-set-key "x" 'gmail-delete)
+  (local-set-key "$" 'gmail-report-spam))
+
+(add-hook 'gnus-summary-mode-hook 'gmail-summary-keys)
+
+(define-key gnus-summary-mode-map
+  (kbd "B d")
+  (lambda ()
+    (interactive)
+    (gnus-summary-move-article nil "nnimap+gmail:[Gmail]/Trash")))
+
+(define-key gnus-summary-mode-map
+  (kbd "B s")
+  (lambda ()
+    (interactive)
+    (gnus-summary-move-article nil "nnimap+gmail:[Gmail]/Spam")))
 
 (provide 'gnus-gmail)
 ;;; gnus-gmail.el ends here

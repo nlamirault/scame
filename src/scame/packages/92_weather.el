@@ -19,9 +19,20 @@
 
 ;;; Code:
 
-(use-package weather-metno)
+(use-package weather-metno
+  ;; :defer scame-defer-package)
+  )
 
-(use-package org-weather-metno)
+(use-package org-weather-metno
+  ;; :defer scame-defer-package)
+  )
+
+(use-package sunshine
+  ;; :defer scame-defer-package
+  :config (progn
+            (setq sunshine-show-icons t)
+            (setq sunshine-units 'metric)))
+
 
 (provide '92_weather)
 ;;; 92_weather.el ends here

@@ -1,6 +1,6 @@
 ;;; 14_cloud.el --- Cloud configuration
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -21,32 +21,44 @@
 
 ;; Puppet files
 
-(use-package puppet-mode
-  :mode (("\\.pp\\'" . puppet-mode))
-  :config (add-hook 'puppet-mode-hook
-		    (lambda ()
-		      (make-local-variable 'indent-tabs-mode)
-		      (setq indent-tabs-mode nil))))
+(when scame-cloud
 
+  (use-package puppet-mode
+    ;; :defer scame-defer-package
+    :mode (("\\.pp\\'" . puppet-mode))
+    :config (add-hook 'puppet-mode-hook
+                      (lambda ()
+                        (make-local-variable 'indent-tabs-mode)
+                        (setq indent-tabs-mode nil))))
 
-;; Ansible
+  ;; Ansible
 
-(use-package ansible
-  :config (add-hook 'yaml-mode-hook
-                    (lambda ()
-                      (ansible 1))))
+  (use-package ansible
+    ;; :defer scame-defer-package
+    :config (add-hook 'yaml-mode-hook
+                      (lambda ()
+                        (ansible 1))))
 
-(use-package ansible-doc
-  :config (add-hook 'yaml-mode-hook 'ansible-doc-mode))
+  (use-package ansible-doc
+    ;; :defer scame-defer-package
+    :config (add-hook 'yaml-mode-hook 'ansible-doc-mode))
 
-;; Vagrant files
-(use-package vagrant
-  :mode (("Vagrantfile" . ruby-mode)))
+  ;; Vagrant files
+  (use-package vagrant
+    ;; :defer scame-defer-package
+    :mode (("Vagrantfile" . ruby-mode)))
 
-;; Docker files
-(use-package dockerfile-mode
-  :mode (("Dockerfile" . dockerfile-mode)))
+  ;; Docker files
+  (use-package dockerfile-mode
+    ;; :defer scame-defer-package
+    :mode (("Dockerfile" . dockerfile-mode)))
 
+  ;; Terraform
+  (use-package terraform-mode
+    ;; :defer scame-defer-package
+    :config (setq terraform-indent-level 2))
+
+  )
 
 (provide '14_cloud)
 ;;; 14_cloud.el ends here

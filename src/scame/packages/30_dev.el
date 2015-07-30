@@ -43,29 +43,38 @@
 ;;             (global-fci-mode 1)))
 
 (use-package projectile
+  ;; :defer scame-defer-package
   ;;:init (projectile-global-mode 1)
   :config (progn
             (projectile-global-mode t)
 	    (setq projectile-enable-caching t)
 	    (setq projectile-require-project-root nil)
-	    ;;(setq projectile-completion-system 'grizzl)
-	    (setq projectile-completion-system 'ido)
+            (cond ((eql 'ido scame-completion-method)
+                   (setq projectile-completion-system 'ido))
+                  ((eql 'helm scame-completion-method)
+                   (setq projectile-completion-system 'helm))
+                  ((eql 'ivy scame-completion-method)
+                   (setq projectile-completion-system 'ivy))
+                  (t (setq projectile-completion-system 'ido)))
 	    ;;(setq projectile-switch-project-action 'projectile-dired)
 	    ;;(setq projectile-switch-project-action 'projectile-find-dir)
 	    (setq projectile-switch-project-action 'projectile-find-file)
 	    (add-to-list 'projectile-globally-ignored-files
-			 ".DS_Store")))
+			 ".DS_Store"))
+  :diminish projectile-mode)
 
-;; FIX: https://github.com/nlamirault/scame/issues/50
-;; (use-package helm-projectile
-;;   :init (helm-projectile-on)
-;;   :config (setq projectile-completion-system 'helm)
-;;   :bind (("C-c p h" . helm-projectile)))
+(use-package helm-projectile
+  ;; :defer scame-defer-package
+  :init (helm-projectile-on)
+  :config (setq projectile-completion-system 'helm)
+  :bind (("C-c p h" . helm-projectile)))
 
 (use-package persp-projectile
+  ;; :defer scame-defer-package
   :bind (("C-c p s w" . projectile-persp-switch-project)))
 
 (use-package ibuffer-projectile
+  ;; :defer scame-defer-package
   :config (progn
             (add-hook 'ibuffer-hook
                       (lambda ()
@@ -100,11 +109,12 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
 (add-hook 'compilation-filter-hook 'scame-colorize-compilation-buffer)
 
 
-(use-package know-your-http-well)
+;; (use-package know-your-http-well)
 
-(use-package find-file-in-project)
+;; (use-package find-file-in-project)
 
 (use-package neotree
+  ;; :defer scame-defer-package
   :init (progn
           (defun neotree-project-dir ()
             "Open dirtree using the git root."
@@ -119,8 +129,13 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
   :bind (("C-x t t" . neotree-toggle)
          ("C-x t p" . neotree-project-dir)))
 
+(use-package ag
+  ;; :defer scame-defer-package
+  :commands (ag ag-project)
+  :config (setq ag-highlight-search t))
 
 (use-package pt
+  ;; :defer scame-defer-package
   :bind (("C-c p s p" . projectile-pt)))
 
 

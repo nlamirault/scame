@@ -19,7 +19,9 @@
 
 ;;; Code:
 
-(use-package paradox)
+(use-package paradox
+  ;; :defer scame-defer-package)
+  )
 
 
 (provide '62_packages)

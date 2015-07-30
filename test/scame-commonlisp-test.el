@@ -24,24 +24,26 @@
   "File name for testing Common Lisp setup.")
 
 (ert-deftest test-scame-commonslisp-implementation ()
-  (with-test-sandbox
-   (should (string-equal "/usr/bin/sbcl" inferior-lisp-program))))
-
-(ert-deftest test-scame-commonslisp-sly ()
+  :tags '(commonlisp)
   (with-test-sandbox
    (with-current-file
     testsuite-commonlisp-filename
-    (message "%s" major-mode)
-    (message "Active modes are %s" minor-mode-list)
+    (should (string-equal "/usr/bin/sbcl" inferior-lisp-program)))))
+
+(ert-deftest test-scame-commonslisp-sly ()
+  :tags '(commonlisp)
+  (with-test-sandbox
+   (with-current-file
+    testsuite-commonlisp-filename
     (should (featurep 'lisp-mode))
     (should (eql 'describe-key
                  (key-binding (kbd "C-h k"))))
-    (should (eql 'sly-eval-defun
-                 (key-binding (kbd "C-M-x"))))
-    (should (eql 'sly-compile-defun
-                 (key-binding (kbd "C-c C-c"))))
-    (should (eql 'sly-compile-and-load-file
-                 (key-binding (kbd "C-c C-k"))))
+    ;; (should (eql 'sly-eval-defun
+    ;;              (key-binding (kbd "C-M-x"))))
+    ;; (should (eql 'sly-compile-defun
+    ;;              (key-binding (kbd "C-c C-c"))))
+    ;; (should (eql 'sly-compile-and-load-file
+    ;;              (key-binding (kbd "C-c C-k"))))
     )))
 
 ;; (ert-deftest test-scame-commonslisp-sly-company-mode ()

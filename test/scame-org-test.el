@@ -1,4 +1,4 @@
-;;; scame-org-test.el --- Unit tests for Scame Common Lisp development.
+;;; scame-org-test.el --- Unit tests for Scame Org-mode configuration.
 
 ;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 

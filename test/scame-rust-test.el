@@ -1,4 +1,4 @@
-;;; scame-rust-test.el --- Unit tests for Scame Common Lisp development.
+;;; scame-rust-test.el --- Unit tests for Scame Rust development.
 
 ;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -21,6 +21,7 @@
 
 
 (ert-deftest test-scame-rust ()
+  :tags '(rust)
   (with-test-sandbox
    (with-current-file
     "var/hello.rs"

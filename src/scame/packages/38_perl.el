@@ -1,6 +1,6 @@
 ;;; 38_perl -- Perl configuration
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,45 +19,17 @@
 
 ;;; Code:
 
-;; (require 'cperl-mode)
 
-;; (defalias 'perl-mode 'cperl-mode)
-;; (add-to-list 'auto-mode-alist
-;; 	     '("\\.\\(pl\\|pm\\|cgi\\|t\\|psgi\\)\\'" . cperl-mode))
-;; (add-to-list 'auto-mode-alist '("cpanfile\\'" . cperl-mode))
-;; (add-to-list 'auto-mode-alist '("\\.pod\\'" . pod-mode))
+(when scame-perl
 
-;; (eval-after-load "cperl-mode"
-;;   '(progn
-;;      (cperl-set-style "PerlStyle")
-;;      (setq cperl-auto-newline nil)
-;;      (helm-perldoc:setup)))
+  (use-package helm-perldoc
+    ;; :defer scame-defer-package
+    :config (add-hook 'perl-mode-hook
+                      (lambda ()
+                        (local-set-key (kbd "C-x e d") 'helm-perldoc))))
 
 
-;; (use-package perl-mode
-;;   :init (defalias 'perl-mode 'cperl-mode)
-;;   :mode (("\\.\\(pl\\|pm\\|cgi\\|t\\|psgi\\)\\'" . perl-mode)
-;; 	 ("cpanfile\\'" . perl-mode))
-;;   :config (setq cperl-invalid-face nil
-;;                 cperl-close-paren-offset -4
-;;                 cperl-continued-statement-offset 0
-;;                 cperl-indent-level 4
-;;                 cperl-indent-parens-as-block t))
-
-;; (use-package plsense-direx
-;;   :config (progn
-;; 	    (plsense-direx:config-default)
-;; 	    (add-hook 'perl-mode-hook
-;; 		      (lambda ()
-;; 			(local-set-key (kbd "C-x e j")
-;; 				       'plsense-direx:open-explorer-key)))))
-
-
-(use-package helm-perldoc
-  :config (add-hook 'perl-mode-hook
-		    (lambda ()
-		      (local-set-key (kbd "C-x e d") 'helm-perldoc))))
-
+  )
 
 
 

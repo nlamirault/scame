@@ -21,12 +21,14 @@
 
 
 (ert-deftest test-scame-puppet ()
+  :tags '(cloud current)
   (with-test-sandbox
    (with-current-file
     "var/init.pp"
     (should (featurep 'puppet-mode)))))
 
 (ert-deftest test-scame-vagrant ()
+  :tags '(cloud)
   (with-test-sandbox
    (with-current-file
     "var/Vagrantfile"
@@ -35,18 +37,20 @@
    (should (featurep 'vagrant))))
 
 (ert-deftest test-scame-dockerfile-mode ()
+  :tags '(cloud)
   (with-test-sandbox
    (with-current-file
     "var/Dockerfile"
     (should (featurep 'dockerfile-mode)))))
 
-(ert-deftest test-scame-ansible-doc ()
-  (with-test-sandbox
-   (with-current-file
-    "var/hello_ansible.yaml"
-    (should (featurep 'ansible-doc))
-    (should (eql 'ansible-doc
-                 (key-binding (kbd "C-c ?")))))))
+;; (ert-deftest test-scame-ansible-doc ()
+;;   :tags '(cloud)
+;;   (with-test-sandbox
+;;    (with-current-file
+;;     "var/hello_ansible.yaml"
+;;     (should (featurep 'ansible-doc))
+;;     (should (eql 'ansible-doc
+;;                  (key-binding (kbd "C-c ?")))))))
 
 
 (provide 'scame-cloud-test)

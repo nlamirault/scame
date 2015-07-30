@@ -1,4 +1,4 @@
-;;; scame-scheme-test.el --- Unit tests for Scame Common Lisp development.
+;;; scame-scheme-test.el --- Unit tests for Scame Scheme development.
 
 ;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -21,6 +21,7 @@
 
 
 (ert-deftest test-scame-scheme ()
+  :tags '(scheme)
   (with-test-sandbox
    (with-current-file
     "var/hello.scm"

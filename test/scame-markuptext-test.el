@@ -1,4 +1,4 @@
-;;; scame-markuptext-test.el --- Unit tests for Scame Common Lisp development.
+;;; scame-markuptext-test.el --- Unit tests for markup text configuration.
 
 ;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -21,6 +21,7 @@
 
 
 (ert-deftest test-scame-markdown-mode ()
+  :tags '(markup)
   (with-test-sandbox
    (with-current-file
     "var/readme.md"
@@ -29,17 +30,26 @@
     "var/readme.markdown"
     (should (featurep 'markdown-mode)))))
 
-(ert-deftest test-scame-fountain-mode ()
-  (with-test-sandbox
-   (with-current-file
-    "var/scame.fountain"
-    (should (featurep 'fountain-mode)))))
+;; (ert-deftest test-scame-fountain-mode ()
+;;   :tags '(markup)
+;;   (with-test-sandbox
+;;    (with-current-file
+;;     "var/scame.fountain"
+;;     (should (featurep 'fountain-mode)))))
 
 (ert-deftest test-scame-toml-mode ()
+  :tags '(markup)
   (with-test-sandbox
    (with-current-file
     "var/scame.toml"
     (should (featurep 'toml-mode)))))
+
+(ert-deftest test-scame-asciidoc-mode ()
+  :tags '(markup)
+  (with-test-sandbox
+   (with-current-file
+    "var/readme.adoc"
+    (should (featurep 'adoc-mode)))))
 
 ;; FIXME: package broken ?
 ;; (ert-deftest test-fixmee-mode ()

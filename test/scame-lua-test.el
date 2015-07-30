@@ -20,6 +20,7 @@
 ;;; Code:
 
 (ert-deftest test-scame-lua-mode ()
+  :tags '(lua)
   (with-test-sandbox
    (with-current-file
     "var/hello.lua"

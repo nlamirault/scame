@@ -1,4 +1,4 @@
-;;; 61_ci.el -- Continuous integration
+;;; 93_email.el --- Scame Email configuration
 
 ;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -19,10 +19,27 @@
 
 ;;; Code:
 
+(when scame-email
 
-(use-package butler
-  ;; :defer scame-defer-package)
+  (use-package notmuch
+    ;; :defer scame-defer-package)
+    )
+
+  (use-package notmuch-labeler
+    ;; :defer scame-defer-package)
+    )
+
+  (use-package bbdb-com
+    ;; :defer scame-defer-package
+    :bind (("C-c d s" . bbdb)
+           ("C-c d n" . bbdb-search-name)
+           ("C-c d m" . bbdb-search-mail)))
+
+  (use-package helm-bbdb
+    ;; :defer scame-defer-package
+    :bind (("C-c d h" . helm-bbdb)))
+
   )
 
-(provide '61_ci)
-;;; 61_ci.el ends here
+(provide '93_email)
+;;; 93_email.el ends here

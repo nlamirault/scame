@@ -1,6 +1,6 @@
 ;;; 36_php.el --- PHP configuration
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,28 +19,33 @@
 
 ;;; Code:
 
-(use-package php-mode
-  :config (progn
-            (add-hook 'php-mode-hook
+(when scame-php
+
+  (use-package php-mode
+    ;; :defer scame-defer-package
+    :config (progn
+              (add-hook 'php-mode-hook
+                        (lambda ()
+                          (php-enable-psr2-coding-style)
+                          (setq flycheck-phpcs-standard "PSR2")
+                          (setq flycheck-phpmd-rulesets
+                                '("codesize"
+                                  "controversial"
+                                  "design"
+                                  "naming"
+                                  "unusedcode"))
+                          )))
+    :mode (("\\.php\\'" . php-mode)))
+
+  (use-package phpunit
+    ;; :defer scame-defer-package
+    :config (add-hook 'php-mode-hook
                       (lambda ()
-                        (php-enable-psr2-coding-style)
-                        (setq flycheck-phpcs-standard "PSR2")
-                        (setq flycheck-phpmd-rulesets
-                              '("codesize"
-                                "controversial"
-                                "design"
-                                "naming"
-                                "unusedcode"))
-                        )))
-  :mode (("\\.php\\'" . php-mode)))
+                        (local-set-key (kbd "C-x p t") 'phpunit-current-test)
+                        (local-set-key (kbd "C-x p f") 'phpunit-current-class)
+                        (local-set-key (kbd "C-x p p") 'phpunit-current-project))))
 
-(use-package phpunit
-  :config (add-hook 'php-mode-hook
- 		    (lambda ()
- 		      (local-set-key (kbd "C-x p t") 'phpunit-current-test)
- 		      (local-set-key (kbd "C-x p f") 'phpunit-current-class)
- 		      (local-set-key (kbd "C-x p p") 'phpunit-current-project))))
-
+  )
 
 (provide '36_php)
 ;;; 36_php.el ends here

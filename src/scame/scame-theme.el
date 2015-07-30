@@ -1,6 +1,6 @@
-;;; 93_bbdb.el --- BBDB configuration
+;; scame-theme.el --- Scame default theme
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,14 +19,10 @@
 
 ;;; Code:
 
+(add-to-list 'load-path
+             (concat scame-user-directory "/theme/"))
+(load-file (concat scame-user-directory "/theme/material-theme.el"))
+(load-theme 'material t)
 
-(use-package bbdb-com
-  :bind (("C-c d s" . bbdb)
-         ("C-c d n" . bbdb-search-name)
-         ("C-c d m" . bbdb-search-mail)))
-
-(use-package helm-bbdb
-  :bind (("C-c d h" . helm-bbdb)))
-
-(provide '93_bbdb)
-;;; 93_bbdb.el ends here
+(provide 'scame-theme)
+;;; scame-theme.el ends here

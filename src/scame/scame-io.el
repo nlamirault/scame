@@ -1,6 +1,6 @@
-;;; 61_ci.el -- Continuous integration
+;; scame-io.el --- Scame I/O tools
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,10 +19,24 @@
 
 ;;; Code:
 
+(defvar scame-buffer "*scame*")
 
-(use-package butler
-  ;; :defer scame-defer-package)
-  )
 
-(provide '61_ci)
-;;; 61_ci.el ends here
+(with-current-buffer (get-buffer-create scame-buffer)
+  (setq inhibit-startup-screen t))
+(switch-to-buffer scame-buffer)
+(with-current-buffer scame-buffer
+  (insert "-----------\n|  Scame  |\n-----------\n\n")
+  (redisplay))
+
+
+(defun scame--msg-buffer (msg face-type)
+  "Write `MSG' to the scame buffer using `FACE-TYPE'."
+  (with-current-buffer scame-buffer
+    (goto-char (point-max))
+    ;;(insert msg)))
+    (insert (propertize msg 'face face-type))))
+
+
+(provide 'scame-io)
+;;; scame-io.el ends here

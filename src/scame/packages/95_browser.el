@@ -46,6 +46,7 @@
 
 
 (use-package eww
+  ;; :defer scame-defer-package
   :config (progn
             (setq shr-color-visible-luminance-min 70)))
 

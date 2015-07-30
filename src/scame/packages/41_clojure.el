@@ -19,25 +19,26 @@
 
 ;;; Code:
 
-;;(require 'cider)
 
-;; Add to your $HOME/.lein/profiles.clj :
-;; {:user {:plugins [[cider/cider-nrepl "0.6.0"]]}}
+(when scame-clojure
 
-(use-package cider
-  :init (progn
-	  (add-hook 'cider-mode-hook 'eldoc-mode)
-          (add-hook 'cider-repl-mode-hook 'company-mode)
-          (add-hook 'cider-mode-hook 'company-mode))
-  :config (progn
-            (setq nrepl-log-messages t)
-            (setq nrepl-hide-special-buffers t)
-            (setq cider-stacktrace-fill-column 80)
-            (setq cider-test-show-report-on-success t)
-            (setq cider-repl-wrap-history t)
-            (setq cider-repl-history-size 1000)
-            ))
+  (use-package cider
+    ;; :defer scame-defer-package
+    :init (progn
+            (add-hook 'cider-mode-hook 'eldoc-mode)
+            (add-hook 'cider-repl-mode-hook 'company-mode)
+            (add-hook 'cider-mode-hook 'company-mode))
+    :config (progn
+              (setq nrepl-log-messages t)
+              (setq nrepl-hide-special-buffers t)
+              (setq cider-stacktrace-fill-column 80)
+              (setq cider-test-show-report-on-success t)
+              (setq cider-repl-wrap-history t)
+              (setq cider-repl-history-size 1000)
+              ))
 
+
+  )
 
 (provide '41_clojure)
 ;;; 41_clojure.el ends here

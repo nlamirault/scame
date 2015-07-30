@@ -25,6 +25,7 @@
 
 
 (use-package alert
+  ;; :defer scame-defer-package
   :config (cond
            (linux-p
             (setq alert-default-style 'libnotify))
@@ -35,6 +36,7 @@
 
 
 (use-package sauron
+  ;; :defer scame-defer-package
   :init (progn
           (define-prefix-command 'scame-sauron-map)
           (global-set-key (kbd "C-x s") 'scame-sauron-map)

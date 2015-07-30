@@ -19,12 +19,20 @@
 
 ;;; Code:
 
-(use-package guide-key
+;; (use-package guide-key
+;;   :init (progn
+;;          (setq guide-key/guide-key-sequence '("C-x" "C-c"))
+;;          (setq guide-key/idle-delay 0.5)
+;;          (setq guide-key/align-command-by-space-flag t)
+;;          (guide-key-mode 1)))
+
+(use-package which-key
   :init (progn
-         (setq guide-key/guide-key-sequence '("C-x" "C-c"))
-         (setq guide-key/idle-delay 0.5)
-         (setq guide-key/align-command-by-space-flag t)
-         (guide-key-mode 1)))
+          (which-key-mode)
+          ;; (setq which-key-popup-type 'minibuffer)
+          (setq which-key-popup-type 'side-window)
+          (setq which-key-side-window-max-width 0.33)
+          (setq which-key-side-window-max-height 0.25)))
 
 (use-package hydra
   :config (progn

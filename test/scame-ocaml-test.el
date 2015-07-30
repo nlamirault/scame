@@ -21,6 +21,7 @@
 
 
 (ert-deftest test-scame-ocaml ()
+  :tags '(ocaml)
   (with-test-sandbox
    (let ((opam (executable-find "opam")))
      (if opam

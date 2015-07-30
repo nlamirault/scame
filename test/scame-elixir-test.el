@@ -1,4 +1,4 @@
-;;; scame-elixir-test.el --- Unit tests for Scame Common Lisp development.
+;;; scame-elixir-test.el --- Unit tests for Scame Elixir development.
 
 ;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -20,6 +20,7 @@
 ;;; Code:
 
 (ert-deftest test-scame-elixir ()
+  :tags '(elixir)
   (with-test-sandbox
    (with-current-file
     "var/hello.ex"

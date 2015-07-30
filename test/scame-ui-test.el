@@ -41,6 +41,7 @@
          '(column-number-mode global-linum-mode line-number-mode))))
 
 
+;;
 (ert-deftest test-scame-ace-window ()
   :tags '(ui)
   (with-test-sandbox

@@ -192,6 +192,14 @@
 (setq mm-text-html-renderer 'shr)
 (setq gnus-inhibit-images nil)
 
+
+;; Gravatar
+;; ---------------
+
+(setq gnus-treat-from-gravatar 'head)
+(setq gnus-treat-mail-gravatar 'head)
+
+
 ;; UI Organization
 ;; ----------------
 
@@ -260,56 +268,6 @@
   (kbd "B u")
   'gnus-summary-put-mark-as-unread)
 
-
-;; See https://www.gnu.org/software/emacs/manual/html_node/gnus/Customizing-W3.html
-;; (eval-after-load "w3"
-;;   '(progn
-;;      (fset 'w3-fetch-orig (symbol-function 'w3-fetch))
-;;      (defun w3-fetch (&optional url target)
-;;        (interactive (list (w3-read-url-with-default)))
-;;        (if (eq major-mode 'gnus-article-mode)
-;;            (browse-url url)
-;;          (w3-fetch-orig url target)))))
-
-;; Colors
-;; -------
-
-
-;; (setq gnus-face-1 'font-lock-string-face)
-;; (setq gnus-face-2 'font-lock-comment-face)
-;; (setq gnus-face-3 'font-lock-variable-name-face)
-
-;; (set-face-foreground 'gnus-summary-normal-ancient-face "white")
-;; (set-face-foreground 'gnus-summary-normal-read-face "green")
-;; (set-face-foreground 'gnus-summary-normal-ticked-face "cyan")
-;; (set-face-foreground 'gnus-summary-normal-unread-face "SkyBlue")
-;; (set-face-foreground 'gnus-summary-high-ancient-face "red")
-;; (set-face-foreground 'gnus-summary-high-read-face "white")
-;; (set-face-foreground 'gnus-summary-high-ticked-face "cyan")
-;; (set-face-foreground 'gnus-summary-high-unread-face "SkyBlue")
-;; (set-face-foreground 'gnus-summary-low-ancient-face "red")
-;; (set-face-foreground 'gnus-summary-low-read-face "white")
-;; (set-face-foreground 'gnus-summary-low-ticked-face "cyan")
-;; (set-face-foreground 'gnus-summary-low-read-face "SkyBlue")
-
-;; (set-face-foreground 'gnus-header-content-face "green")
-;; (set-face-foreground 'gnus-header-from-face "orange")
-;; (set-face-foreground 'gnus-header-name-face "cyan")
-;; (set-face-foreground 'gnus-header-newsgroups-face "white")
-;; (set-face-foreground 'gnus-header-subject-face "white")
-
-;; (set-face-foreground 'gnus-signature-face "white")
-
-;; (set-face-foreground 'message-cited-text "cyan")
-;; (set-face-foreground 'message-header-cc "white")
-;; (set-face-foreground 'message-header-name "white")
-;; (set-face-foreground 'message-header-newsgroups "white")
-;; (set-face-foreground 'message-header-subject "cyan")
-;; (set-face-foreground 'message-header-other "red")
-;; (set-face-foreground 'message-header-to "green")
-;; (set-face-foreground 'message-header-xheader "blue")
-;; (set-face-foreground 'message-separator "orange")
-;; (set-face-foreground 'message-mml "beige")
 
 (provide 'scame-gnus)
 ;;; scame-gnus.el ends here

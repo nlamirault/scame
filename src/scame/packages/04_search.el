@@ -80,15 +80,15 @@
             (setq helm-dash-min-length 1)
             (setq helm-dash-browser-func 'eww)))
 
+(use-package ivy
+  :diminish ivy-mode)
+
 (use-package swiper
-  ;; :init (progn
-  ;;         (ivy-mode t))
   :bind (("C-s" . swiper)
          ("C-r" . swiper)))
 (autoload 'ivy-read "ivy")
 
 ;; (use-package swiper-helm)
-
 
 (cond ((eql 'ido scame-completion-method)
        (ido-mode 1))

@@ -1,6 +1,6 @@
 ;;; 18_smex.el --- Smex configuration
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -20,8 +20,8 @@
 ;;; Code:
 
 
-
 (use-package smex
+  ;; :defer scame-defer-package
   :config (progn
             (setq smex-save-file
                   (s-concat user-emacs-directory "/.smex-items"))

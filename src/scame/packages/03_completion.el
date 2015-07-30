@@ -1,6 +1,6 @@
 ;;; 03_completion.el --- Completion system
 
-;; Copyright (c) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -26,9 +26,9 @@
 ;;(add-to-list 'ac-modes 'php-mode)
 
 (use-package company
-  :init (add-hook 'after-init-hook 'global-company-mode))
-
-
+  ;; :defer scame-defer-package
+  :init (add-hook 'after-init-hook 'global-company-mode)
+  :diminish company-mode)
 
 
 (provide '03_completion)

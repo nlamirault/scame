@@ -31,12 +31,12 @@
    (require 'ag)
    (should (featurep 'ag))))
 
-(ert-deftest test-scame-ace-jump-mode ()
-  :tags '(buffers)
-  (with-test-sandbox
-   (require 'ace-jump-mode)
-   (should (featurep 'ace-jump-mode))
-   (should (eql 'ace-jump-mode (key-binding (kbd "C-c SPC"))))))
+;; (ert-deftest test-scame-ace-jump-mode ()
+;;   :tags '(buffers)
+;;   (with-test-sandbox
+;;    (require 'ace-jump-mode)
+;;    (should (featurep 'ace-jump-mode))
+;;    (should (eql 'ace-jump-mode (key-binding (kbd "C-c SPC"))))))
 
 (ert-deftest test-scame-recentf ()
   :tags '(buffers)

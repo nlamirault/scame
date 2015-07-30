@@ -20,15 +20,19 @@
 ;;; Code:
 
 (use-package markdown-mode
+  ;; :defer scame-defer-package
   :mode ("\\.\\(m\\(ark\\)?down\\|md\\)$" . markdown-mode))
 
 (use-package fountain-mode
+  ;; :defer scame-defer-package
   :mode ("\\.fountain$" . fountain-mode))
 
 (use-package toml-mode
+  ;; :defer scame-defer-package
   :mode ("\\.toml$" . toml-mode))
 
 (use-package adoc-mode
+  ;; :defer scame-defer-package
   :mode (("\\.adoc$" . adoc-mode)
          ("\\.asciidoc$" . adoc-mode)))
 

@@ -38,11 +38,13 @@
                 (key-binding (kbd "C-x h b"))))))
 
 (ert-deftest test-scame-occur ()
+  :tags '(helm)
   (with-test-sandbox
    (require 'helm)
    (should (eql 'helm-occur (key-binding (kbd "C-x h o"))))))
 
 (ert-deftest test-scame-swoop ()
+  :tags '(helm)
   (with-test-sandbox
    (require 'helm)
    (require 'helm-swoop)
@@ -51,6 +53,7 @@
    (should (eql 'helm-multi-swoop (key-binding (kbd "C-x h W"))))))
 
 (ert-deftest test-scame-helm-imenu ()
+  :tags '(helm)
   (with-test-sandbox
    (require 'helm-imenu)
    (should (featurep 'helm-imenu))

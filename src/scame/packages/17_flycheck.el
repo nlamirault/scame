@@ -24,15 +24,20 @@
 ;;(require 'flycheck-color-mode-line)
 
 (use-package flycheck
-  :config (add-hook 'after-init-hook #'global-flycheck-mode))
+  ;; :defer scame-defer-package
+  :config (add-hook 'after-init-hook #'global-flycheck-mode)
+  :diminish flycheck-mode)
 
 (use-package helm-flycheck
+  ;; :defer scame-defer-package
   :bind (("C-c ! h" . helm-flycheck)))
 
 (use-package flycheck-color-mode-line
+  ;; :defer scame-defer-package
   :config (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
 
 (use-package flycheck-cask
+  ;; :defer scame-defer-package
   :config (add-hook 'flycheck-mode-hook #'flycheck-cask-setup))
 
 

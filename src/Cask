@@ -352,8 +352,9 @@
 (depends-on "notmuch-labeler")
 
 ;; Keys
-(depends-on "guide-key" "1.2.5")
+;; (depends-on "guide-key" "1.2.5")
 (depends-on "hydra" "0.5.0")
+(depends-on "which-key" "0.2")
 
 ;; Misc
 ;;(depends-on "google-weather")

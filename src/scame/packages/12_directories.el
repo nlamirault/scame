@@ -60,6 +60,8 @@
 
 (use-package dired-subtree)
 
+(use-package ranger)
+
 
 (provide '12_directories)
 ;;; 12_directories.el ends here

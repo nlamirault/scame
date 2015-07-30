@@ -1,6 +1,6 @@
 ;;; 42_ruby.el --- Ruby mode configuration
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,40 +19,49 @@
 
 ;;; Code:
 
-(use-package ruby-mode
-  :config (progn
-	    (add-hook 'ruby-mode-hook 'rvm-activate-corresponding-ruby)
-	    (setq ruby-deep-indent-paren nil))
-  :bind (("C-M-h" . backward-kill-word)
-         ("C-M-n" . scroll-up-five)
-         ("C-M-p" . scroll-down-five))
-  :mode (("\\.rake$" . ruby-mode)
-         ("\\.gemspec$" . ruby-mode)
-         ("\\.ru$" . ruby-mode)
-         ("Rakefile$" . ruby-mode)
-         ("Gemfile$" . ruby-mode)
-         ("Capfile$" . ruby-mode)
-         ("Guardfile$" . ruby-mode)))
 
-(use-package ruby-tools)
+(when scame-ruby
 
-(use-package rvm
-	     :init (rvm-use-default)
-	     :config (setq rvm-verbose nil))
+  (use-package ruby-mode
+    ;; :defer scame-defer-package
+    :config (progn
+              (add-hook 'ruby-mode-hook 'rvm-activate-corresponding-ruby)
+              (setq ruby-deep-indent-paren nil))
+    :bind (("C-M-h" . backward-kill-word)
+           ("C-M-n" . scroll-up-five)
+           ("C-M-p" . scroll-down-five))
+    :mode (("\\.rake$" . ruby-mode)
+           ("\\.gemspec$" . ruby-mode)
+           ("\\.ru$" . ruby-mode)
+           ("Rakefile$" . ruby-mode)
+           ("Gemfile$" . ruby-mode)
+           ("Capfile$" . ruby-mode)
+           ("Guardfile$" . ruby-mode)))
 
-(use-package rhtml-mode
-	     :mode (("\\.rhtml$" . rhtml-mode)
-		    ("\\.html\\.erb$" . rhtml-mode)))
+  (use-package ruby-tools
+    ;; :defer scame-defer-package)
+    )
 
-;; (use-package inf-ruby
-;;   :init (add-hook 'after-init-hook 'inf-ruby-switch-setup)
-;;   :bind (("C-c r r" . inf-ruby)
-;; 	 ("C-c r a" . rvm-activate-corresponding-ruby)))
+  (use-package rvm
+    ;; :defer scame-defer-package
+    :init (rvm-use-default)
+    :config (setq rvm-verbose nil))
 
+  (use-package rhtml-mode
+    ;; :defer scame-defer-package
+    :mode (("\\.rhtml$" . rhtml-mode)
+           ("\\.html\\.erb$" . rhtml-mode)))
 
+  ;; (use-package inf-ruby
+  ;;   :init (add-hook 'after-init-hook 'inf-ruby-switch-setup)
+  ;;   :bind (("C-c r r" . inf-ruby)
+  ;; 	 ("C-c r a" . rvm-activate-corresponding-ruby)))
 
+  (use-package company-inf-ruby
+    ;; :defer scame-defer-package)
+    )
 
-(use-package company-inf-ruby)
+  )
 
 (provide '42_ruby)
 ;;; 42_ruby.el ends here

@@ -1,4 +1,4 @@
-;;; scame-php-test.el --- Unit tests for Scame Common Lisp development.
+;;; scame-php-test.el --- Unit tests for Scame PHP development.
 
 ;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -19,11 +19,23 @@
 
 ;;; Code:
 
+(defconst testsuite-php-filename
+  "var/hello.php"
+  "File name for testing PHP setup.")
+
+
 (ert-deftest test-scame-php ()
+  :tags '(php)
   (with-test-sandbox
    (with-current-file
-    "var/hello.php"
-    (should (featurep 'php-mode))
+    testsuite-php-filename
+    (should (featurep 'php-mode)))))
+
+(ert-deftest test-scame-php-unit ()
+  :tags '(php)
+  (with-test-sandbox
+   (with-current-file
+    testsuite-php-filename
     (should (eql 'phpunit-current-test
                  (key-binding (kbd "C-x p t"))))
     (should (eql 'phpunit-current-class
