@@ -1,5 +1,14 @@
 # Scame ChangeLog
 
+## Version 1.2.0 (30/07/2015)
+
+- Remove Cask dependency
+- ``#49``: Add a feature to load only some modules
+- Add *ranger*
+- Replace guide-key with which-key
+- ``#50`` : Error with helm-find-files
+- Add *py-yapf* for Python
+
 ## Version 1.1.0 (07/09/2015)
 
 - Add *fishshell* mode
