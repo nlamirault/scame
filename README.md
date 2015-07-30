@@ -84,6 +84,7 @@ You could enable or not some modules using *init.el* file :
   '(scame-golang t)
   '(scame-ruby nil)
   '(scame-clojure nil)
+  '(scame-addons (quote (libmpdee dionysos)))
   ...)
 ```
 
