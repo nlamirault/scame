@@ -59,7 +59,7 @@
 
 (defvar stable-packages
   '(
-    epl helm paradox el-init el-init-viewer
+    epl el-init el-init-viewer
     company auto-complete
     ;; find-file-in-project
     neotree
@@ -155,8 +155,10 @@
     monokai-theme
     zenburn-theme
 
+    paradox
     alert
     benchmark-init
+    helm
     helm-flycheck
 
     ;; Projects
@@ -326,7 +328,7 @@
 
 (when scame-c-cpp-objc
   (add-to-list 'unstable-packages 'irony t)
-  (add-to-list 'stable-packages 'company-irony t)
+  (add-to-list 'unstable-packages 'company-irony t)
   (add-to-list 'unstable-packages 'flycheck-irony t)
   ;; https://github.com/ikirill/irony-eldoc/issues/3
   (add-to-list 'unstable-packages 'irony-eldoc t))
