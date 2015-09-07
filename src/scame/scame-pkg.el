@@ -155,10 +155,11 @@
     monokai-theme
     zenburn-theme
 
+    helm
     paradox
+
     alert
     benchmark-init
-    helm
     helm-flycheck
 
     ;; Projects
@@ -342,10 +343,7 @@
 
 (when scame-rust
   ;; https://github.com/rust-lang/rust-mode/issues/87
-  (add-to-list 'unstable-packages 'rust-mode t)
-  (add-to-list 'unstable-packages 'racer t)
-  (add-to-list 'unstable-packages 'flycheck-rust t)
-  (add-to-list 'unstable-packages 'company-racer t))
+  (add-to-list 'unstable-packages 'rust-mode t))
 
 (when scame-cloud
   (add-to-list 'stable-packages 'dockerfile-mode t)
