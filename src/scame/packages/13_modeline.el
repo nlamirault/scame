@@ -28,12 +28,47 @@
 
 
 (use-package smart-mode-line
-  :init (setq sml/no-confirm-load-theme t)
-  :config (progn
-            (sml/setup)
-            (sml/apply-theme 'smart-mode-line-dark)))
-;;(setq sml/theme 'respectful)))
+ :init (setq sml/no-confirm-load-theme t)
+ :config (progn
+           (sml/setup)
+           (sml/apply-theme 'smart-mode-line-dark)))
+(setq sml/theme 'respectful)))
 
+
+;; (use-package spaceline-segments
+;;   :init (setq-default
+;; 	 powerline-default-separator 'wave
+;; 	 ;;spaceline-window-numbers-unicode t
+;; 	 powerline-height 18)
+;;   :config (require 'spaceline-segments))
+
+;; (spaceline-install
+;;  '(((workspace-number window-number)
+;;     :fallback evil-state
+;;     :separator "|"
+;;     :face highlight-face)
+;;    anzu
+;;    (buffer-modified buffer-size buffer-id remote-host)
+;;    major-mode
+;;    ((flycheck-error flycheck-warning flycheck-info)
+;;     :when active)
+;;    (((minor-modes :separator spaceline-minor-modes-separator)
+;;      process)
+;;     :when active)
+;;    (erc-track :when active)
+;;    (version-control :when active)
+;;    (org-pomodoro :when active)
+;;    (org-clock :when active)
+;;    nyan-cat)
+;;  `(;;(battery :when active)
+;;    selection-info
+;;    ((buffer-encoding-abbrev
+;;      point-position
+;;      line-column)
+;;     :separator " | ")
+;;    (global :when active)
+;;    buffer-position
+;;    hud))
 
 
 (provide '13_modeline)

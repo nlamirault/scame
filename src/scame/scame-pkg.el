@@ -126,7 +126,7 @@
     ;; calfw
 
     ;; UI
-    rich-minority powerline smart-mode-line smart-mode-line-powerline-theme
+    rich-minority powerline
     ace-window
 
     ;; Dired and friends
@@ -243,6 +243,11 @@
     ;; Multimedia
     ;; emms
     ;; libmpdee
+
+	;; UI
+    smart-mode-line smart-mode-line-powerline-theme
+    spaceline
+
     ))
 
 ;; Packages environments
