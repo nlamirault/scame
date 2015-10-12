@@ -9,13 +9,13 @@ machine:
 checkout:
   post:
     - mkdir ~/.emacs.d/
-    - cp -r /scame/src/* ~/.emacs.d/
+    - cp -r ~/scame/src/* ~/.emacs.d/
 
 dependencies:
   cache_directories:
     - /usr/local/evm
     - ~/.cask
-    - ~/emacs.d/.cask
+    - ~/.emacs.d/.cask
   pre:
     - echo $PATH
     - sudo mkdir /usr/local/evm && sudo chown ubuntu:ubuntu /usr/local/evm
