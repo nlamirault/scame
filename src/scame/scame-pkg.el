@@ -244,7 +244,7 @@
     ;; emms
     ;; libmpdee
 
-	;; UI
+    ;; UI
     smart-mode-line smart-mode-line-powerline-theme
     spaceline
 
@@ -349,6 +349,7 @@
 (when scame-rust
   ;; https://github.com/rust-lang/rust-mode/issues/87
   (add-to-list 'unstable-packages 'rust-mode t)
+  (add-to-list 'unstable-packages 'racer t)
   (add-to-list 'unstable-packages 'cargo t))
 
 (when scame-cloud
