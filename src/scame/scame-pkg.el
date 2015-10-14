@@ -57,96 +57,7 @@
 ;; Scame packages
 
 
-(defvar stable-packages
-  '(
-    epl el-init el-init-viewer
-    company auto-complete
-    ;; find-file-in-project
-    neotree
-    imenu-anywhere
-    dired-imenu
-    flycheck flycheck-cask flycheck-color-mode-line flycheck-package
-    butler
-    ;; ;; Common Lisp
-    ;; sly sly-company
-    ;; ;; Elisp
-    ;; elisp-slime-nav erefactor overseer
-    ;; ;; Golang
-    ;; ;; go-mode company-go go-eldoc gotest go-direx go-errcheck
-    ;; ;; Python
-    ;; jedi elpy tox pyvenv sphinx-doc helm-pydoc pip-requirements
-    ;; ;; Ruby
-    ;; rvm ruby-tools inf-ruby ruby-test-mode
-    ;; ;; Scheme
-    ;; geiser
-    ;; ;; Clojure
-    ;; cider
-    ;; ;; Haskell
-    ;; haskell-mode flycheck-haskell
-    ;; ;; OCaml
-    ;; tuareg ;merlin
-    ;; ;; Web
-    ;; web-mode
-    ;; ;; Php
-    ;; php-mode emacsagist phpunit
-    ;; ;; Perl
-    ;; cperl-mode helm-perldoc
-    ;; ;; Javascript
-    ;; js3-mode tern company-tern
-    ;; ;; NodeJS
-    ;; jade-mode
-    ;; ;; C/C++/ObjectiveC
-    ;; company-irony
-    ;; ;; Elixir
-    ;; elixir-mode alchemist
-    ;; ;; Lua
-    ;; lua-mode
-    ;; Markup languages
-    markdown-mode yaml-mode adoc-mode
-    ;; ;; Cloud
-    ;; dockerfile-mode vagrant puppet-mode ansible ansible-doc terraform-mode
-    ;; Git and friends
-    magit magit-gerrit
-    gitconfig-mode gitignore-mode gitattributes-mode
-    gist git-gutter+ git-timemachine helm-open-github
-    ;; Utilities
-    pkg-info project-persist
-    helm-mt
-    lice
-    ;; Notifications
-    sauron
-    ;; Search
-    helm-ack ag helm-ag pt helm-swoop
-    swiper swiper-helm
-    ;; ;; Social
-    ;; jabber
-    ;; twittering-mode
-    ;; sx
-    ;; Calendar
-    ;; calfw
-
-    ;; UI
-    rich-minority powerline
-    ace-window
-
-    ;; Dired and friends
-    ranger direx dired-k
-
-    ;; Sysadmin
-    ;; nginx-mode
-
-    ;; ;; Gnus and friends
-    ;; gnus-x-gm-raw
-    ;; bbdb-
-    ;; notmuch
-
-    ;; Keys
-    hydra which-key
-
-    ;; Multimedia
-    ;; bongo
-    ))
-
+(defvar stable-packages '())
 
 (defvar unstable-packages
   '(
@@ -155,12 +66,28 @@
     monokai-theme
     zenburn-theme
 
+    ;; Search
     helm
+    helm-ack
+    ag helm-ag
+    pt helm-pt
+    swoop helm-swoop
+    swiper swiper-helm
+
     paradox
 
     alert
     benchmark-init
+
+    flycheck
+    flycheck-cask
+    flycheck-color-mode-line
+    flycheck-package
     helm-flycheck
+
+    ;; Completion
+    company
+    auto-complete
 
     ;; Projects
     projectile helm-projectile persp-projectile ibuffer-projectile
@@ -232,21 +159,54 @@
     ;; Misc
     ;; https://github.com/ruediger/weather-metno-el/issues/11
     weather-metno
+    sunshine
+    ;; forecast
     ;; https://github.com/hrs/engine-mode/issues/22
     engine-mode
     multi-term
-    ;; https://github.com/ralesi/helm-pt/issues/2
-    helm-pt
-    ;; https://github.com/ShingoFukuyama/emacs-swoop/issues/9
-    swoop
 
     ;; Multimedia
     ;; emms
     ;; libmpdee
 
     ;; UI
+    rich-minority powerline
+    ace-window
     smart-mode-line smart-mode-line-powerline-theme
     spaceline
+
+    ;; Keys
+    hydra which-key
+
+    epl el-init el-init-viewer
+
+    neotree
+    imenu-anywhere
+    dired-imenu
+
+    butler
+
+    ;; Markup languages
+    markdown-mode yaml-mode adoc-mode
+
+    ;; Git and friends
+    magit magit-gerrit
+    gitconfig-mode gitignore-mode gitattributes-mode
+    gist git-gutter+ git-timemachine helm-open-github
+
+    ;; Utilities
+    pkg-info project-persist
+    helm-mt
+    lice
+
+    ;; Notifications
+    sauron
+
+    ;; Dired and friends
+    ranger direx dired-k
+
+    ;; Multimedia
+    ;; bongo
 
     ))
 
