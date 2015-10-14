@@ -213,84 +213,84 @@
 ;; Packages environments
 
 (when scame-golang
-  (add-to-list 'stable-packages 'go-mode t)
-  (add-to-list 'stable-packages 'go-mode t)
-  (add-to-list 'stable-packages 'company-go t)
-  (add-to-list 'stable-packages 'go-eldoc t)
-  (add-to-list 'stable-packages 'gotest t)
-  (add-to-list 'stable-packages 'go-direx t)
-  (add-to-list 'stable-packages 'go-errcheck t)
+  (add-to-list 'unstable-packages 'go-mode t)
+  (add-to-list 'unstable-packages 'go-mode t)
+  (add-to-list 'unstable-packages 'company-go t)
+  (add-to-list 'unstable-packages 'go-eldoc t)
+  (add-to-list 'unstable-packages 'gotest t)
+  (add-to-list 'unstable-packages 'go-direx t)
+  (add-to-list 'unstable-packages 'go-errcheck t)
   ;; https://github.com/dougm/go-projectile/issues/2
   (add-to-list 'unstable-packages 'go-projectile t)
   ;; https://github.com/golang/lint/issues/111
   (add-to-list 'unstable-packages 'golint t))
 
 (when scame-commonlisp
-  (add-to-list 'stable-packages 'sly t)
-  (add-to-list 'stable-packages 'sly-company t))
+  (add-to-list 'unstable-packages 'sly t)
+  (add-to-list 'unstable-packages 'sly-company t))
 
 (when scame-elisp
-  (add-to-list 'stable-packages 'elisp-slime-nav t)
-  (add-to-list 'stable-packages 'erefactor t)
-  (add-to-list 'stable-packages 'overseer t))
+  (add-to-list 'unstable-packages 'elisp-slime-nav t)
+  (add-to-list 'unstable-packages 'erefactor t)
+  (add-to-list 'unstable-packages 'overseer t))
 
 (when scame-python
   ;; https://github.com/proofit404/anaconda-mode/issues/98
   (add-to-list 'unstable-packages 'anaconda-mode t)
   ;;https://github.com/proofit404/company-anaconda/issues/3
   (add-to-list 'unstable-packages 'company-anaconda t)
-  (add-to-list 'stable-packages 'jedi t)
+  (add-to-list 'unstable-packages 'jedi t)
   ;; https://github.com/tkf/emacs-jedi-direx/issues/17
   (add-to-list 'unstable-packages 'jedi-direx t)
-  (add-to-list 'stable-packages 'tox t)
+  (add-to-list 'unstable-packages 'tox t)
   (add-to-list 'unstable-packages 'py-yapf t)
-  (add-to-list 'stable-packages 'elpy t)
-  (add-to-list 'stable-packages 'pyvenv t)
-  (add-to-list 'stable-packages 'sphinx-doc t)
-  (add-to-list 'stable-packages 'helm-pydoc t)
-  (add-to-list 'stable-packages 'pip-requirements t))
+  (add-to-list 'unstable-packages 'elpy t)
+  (add-to-list 'unstable-packages 'pyvenv t)
+  (add-to-list 'unstable-packages 'sphinx-doc t)
+  (add-to-list 'unstable-packages 'helm-pydoc t)
+  (add-to-list 'unstable-packages 'pip-requirements t))
 
 (when scame-ruby
-  (add-to-list 'stable-packages 'rvm t)
-  (add-to-list 'stable-packages 'ruby-tools t)
-  (add-to-list 'stable-packages 'inf-ruby t)
-  (add-to-list 'stable-packages 'ruby-test-mode t)
+  (add-to-list 'unstable-packages 'rvm t)
+  (add-to-list 'unstable-packages 'ruby-tools t)
+  (add-to-list 'unstable-packages 'inf-ruby t)
+  (add-to-list 'unstable-packages 'ruby-test-mode t)
   (add-to-list 'unstable-packages 'rhtml-mode t)
   (add-to-list 'unstable-packages 'company-inf-ruby t))
 
 (when scame-scheme
-  (add-to-list 'stable-packages 'geiser t) t)
+  (add-to-list 'unstable-packages 'geiser t) t)
 
 (when scame-clojure
-  (add-to-list 'stable-packages 'cider t))
+  (add-to-list 'unstable-packages 'cider t))
 
 (when scame-erlang
   (add-to-list 'unstable-packages 'erlang t))
 
 (when scame-haskell
-  (add-to-list 'stable-packages 'haskell-mode t)
-  (add-to-list 'stable-packages 'flycheck-haskell t)
+  (add-to-list 'unstable-packages 'haskell-mode t)
+  (add-to-list 'unstable-packages 'flycheck-haskell t)
   (add-to-list 'unstable-packages 'ghci-completion t))
 
 (when scame-ocaml
-  (add-to-list 'stable-packages 'tuareg t) t)
+  (add-to-list 'unstable-packages 'tuareg t) t)
 
 (when scame-php
-  (add-to-list 'stable-packages 'php-mode t)
-  (add-to-list 'stable-packages 'phpunit t))
+  (add-to-list 'unstable-packages 'php-mode t)
+  (add-to-list 'unstable-packages 'phpunit t))
 
 (when scame-web
-  (add-to-list 'stable-packages 'web-mode t))
+  (add-to-list 'unstable-packages 'web-mode t))
 
 (when scame-perl
-  (add-to-list 'stable-packages 'cperl-mode t)
-  (add-to-list 'stable-packages 'helm-perldoc t))
+  (add-to-list 'unstable-packages 'cperl-mode t)
+  (add-to-list 'unstable-packages 'helm-perldoc t))
 
 (when scame-javascript
-  (add-to-list 'stable-packages 'js3-mode t)
-  (add-to-list 'stable-packages 'tern t)
-  (add-to-list 'stable-packages 'company-tern t)
-  (add-to-list 'stable-packages 'jade-mode t))
+  (add-to-list 'unstable-packages 'js3-mode t)
+  (add-to-list 'unstable-packages 'tern t)
+  (add-to-list 'unstable-packages 'company-tern t)
+  (add-to-list 'unstable-packages 'jade-mode t))
 
 (when scame-c-cpp-objc
   (add-to-list 'unstable-packages 'irony t)
@@ -301,10 +301,10 @@
 
 (when scame-elixir
   (add-to-list 'unstable-packages 'elixir-mode t)
-  (add-to-list 'stable-packages 'alchemist t))
+  (add-to-list 'unstable-packages 'alchemist t))
 
 (when scame-lua
-  (add-to-list 'stable-packages 'lua-mode t))
+  (add-to-list 'unstable-packages 'lua-mode t))
 
 (when scame-rust
   ;; https://github.com/rust-lang/rust-mode/issues/87
@@ -315,16 +315,16 @@
   (add-to-list 'unstable-packages 'cargo t))
 
 (when scame-cloud
-  (add-to-list 'stable-packages 'dockerfile-mode t)
-  (add-to-list 'stable-packages 'vagrant t)
-  (add-to-list 'stable-packages 'puppet-mode t)
-  (add-to-list 'stable-packages 'ansible t)
-  (add-to-list 'stable-packages 'ansible-doc t)
-  (add-to-list 'stable-packages 'terraform-mode t))
+  (add-to-list 'unstable-packages 'dockerfile-mode t)
+  (add-to-list 'unstable-packages 'vagrant t)
+  (add-to-list 'unstable-packages 'puppet-mode t)
+  (add-to-list 'unstable-packages 'ansible t)
+  (add-to-list 'unstable-packages 'ansible-doc t)
+  (add-to-list 'unstable-packages 'terraform-mode t))
 
 (when scame-social
-  (add-to-list 'stable-packages 'twittering-mode t)
-  (add-to-list 'stable-packages 'sx t))
+  (add-to-list 'unstable-packages 'twittering-mode t)
+  (add-to-list 'unstable-packages 'sx t))
 
 (when scame-communication
   (add-to-list 'unstable-packages 'jabber t)
@@ -338,7 +338,7 @@
   ;; (add-to-list 'unstable-packages 'org t)
   (add-to-list 'package-pinned-packages
                (cons 'org "org"))
-  (add-to-list 'stable-packages 'calfw t)
+  (add-to-list 'unstable-packages 'calfw t)
   (add-to-list 'unstable-packages 'org-gcal t)
   (add-to-list 'unstable-packages 'org-agenda-property t)
   (add-to-list 'unstable-packages 'org-journal t)
@@ -346,7 +346,7 @@
   (add-to-list 'unstable-packages 'org-caldav t))
 
 (when scame-multimedia
-  (add-to-list 'stable-packages 'bongo t)
+  (add-to-list 'unstable-packages 'bongo t)
   (add-to-list 'unstable-packages 'emms t))
 
 (when scame-sysadmin
@@ -356,11 +356,11 @@
 
 (when scame-email
   (add-to-list 'unstable-packages 'bbdb t)
-  (add-to-list 'stable-packages 'gnus-x-gm-raw t)
+  (add-to-list 'unstable-packages 'gnus-x-gm-raw t)
   (add-to-list 'unstable-packages 'gnus-summary-ext t)
-  (add-to-list 'stable-packages 'bbdb- t)
+  (add-to-list 'unstable-packages 'bbdb- t)
   (add-to-list 'unstable-packages 'bbdb-csv-import t)
-  (add-to-list 'stable-packages 'notmuch t)
+  (add-to-list 'unstable-packages 'notmuch t)
   (add-to-list 'unstable-packages 'notmuch-labeler t))
 
 (defvar scame-addons nil)
