@@ -27,6 +27,9 @@
     :init (add-hook 'rust-mode-hook 'flycheck-mode)
     :config (setq tab-width 4))
 
+  ;; (use-package cargo
+  ;;   :config (add-hook 'rust-mode-hook 'cargo-minor-mode))
+
   (use-package racer
     :init (progn
             (setq racer-rust-src-path (getenv "RUST_HOME"))
@@ -43,6 +46,8 @@
 
   (use-package company-racer
     :init (set (make-local-variable 'company-backends) '(company-racer)))
+
+  )
 
 
 (provide '44_rust)

@@ -348,7 +348,8 @@
 
 (when scame-rust
   ;; https://github.com/rust-lang/rust-mode/issues/87
-  (add-to-list 'unstable-packages 'rust-mode t))
+  (add-to-list 'unstable-packages 'rust-mode t)
+  (add-to-list 'unstable-packages 'cargo t))
 
 (when scame-cloud
   (add-to-list 'stable-packages 'dockerfile-mode t)
