@@ -26,11 +26,13 @@
    (let ((opam (executable-find "opam")))
      (if opam
          (let ((opam-dir (s-concat user-home-directory ".opam")))
-           (f-mkdir opam-dir)
+           (unless (f-directory? opam-dir)
+             (f-mkdir opam-dir))
            (with-current-file
             "var/hello.ml"
             (should (featurep 'tuareg)))
-           (f-delete opam-dir))
+           ;;(f-delete opam-dir))
+           )
        (message (ansi-yellow "[Scame] OCaml: OPAM not installed. No unit tests"))))))
 
 (provide 'scame-ocaml-test)
