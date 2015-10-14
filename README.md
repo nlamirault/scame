@@ -1,9 +1,15 @@
 # Scame
 
 [![License GPL 3][badge-license]][LICENSE]
-[![travis][badge-travis]][travis]
-[![drone][badge-drone]][drone]
-[![Coverage Status](https://coveralls.io/repos/nlamirault/scame.el/badge.png?branch=master)](https://coveralls.io/r/nlamirault/scame.el?branch=master)
+
+Master :
+* [![MELPA Stable](http://stable.melpa.org/packages/scame-badge.svg)](http://stable.melpa.org/#/scame)
+* [![Circle CI](https://circleci.com/gh/nlamirault/scame/tree/master.svg?style=svg)](https://circleci.com/gh/nlamirault/scame/tree/master)
+
+Develop:
+* [![Melpa Status](http://melpa.milkbox.net/packages/scame-badge.svg)](http://melpa.milkbox.net/#/scame)
+* [![Circle CI](https://circleci.com/gh/nlamirault/scame/tree/develop.svg?style=svg)](https://circleci.com/gh/nlamirault/scame/tree/develop)
+
 
 [Scame][] is a 'Starter Kit' for [GNU Emacs][] 24 (>= 24.4). It will not work
 with [GNU Emacs][] 23 and below, or with other flavors of Emacs (e.g. XEmacs).
