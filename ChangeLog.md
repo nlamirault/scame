@@ -1,5 +1,12 @@
 # Scame ChangeLog
 
+## Version 1.3.0 (10/14/2015)
+
+- Setup CircleCI continuous integration
+- ``FIX`` OCaml configuration
+- Setup *rust* development environment
+- Update modeline
+
 ## Version 1.2.0 (30/07/2015)
 
 - Remove Cask dependency
