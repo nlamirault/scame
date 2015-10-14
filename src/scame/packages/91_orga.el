@@ -214,7 +214,7 @@
 
               ;; Agenda views
               ;; -------------
-              ;; Do not dim blocked tasks
+              (setq org-agenda-skip-unavailable-files t)
               (setq org-agenda-dim-blocked-tasks nil)
               (setq org-agenda-include-diary t)
               ;; Compact the block agenda view
