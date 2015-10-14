@@ -32,7 +32,7 @@
  :config (progn
            (sml/setup)
            (sml/apply-theme 'smart-mode-line-dark)))
-(setq sml/theme 'respectful)))
+(setq sml/theme 'respectful)
 
 
 ;; (use-package spaceline-segments
