@@ -19,14 +19,14 @@
 
 ;;; Code:
 
-(require 'f)
-
 ;;FIX: Create a theme or not ?
-;; (add-to-list 'load-path
-;;              (concat scame-user-directory "/theme/"))
-;; (let ((theme-file (concat scame-user-directory "/theme/scame-theme.el")))
-;;   (when (f-exists? theme-file)
-;;     (load-theme 'scame t)))
+
+(add-to-list 'load-path
+             (concat scame-user-directory "/theme/"))
+(let ((theme-file (concat scame-user-directory "theme/scame-theme.el")))
+  (message "Scame theme : %s" theme-file)
+  (when (file-exists-p theme-file)
+    (load-theme 'scame t)))
 
 (provide 'scame-ui)
 ;;; scame-ui.el ends here

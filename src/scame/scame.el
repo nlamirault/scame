@@ -43,13 +43,12 @@
   (message "Load Gnus development version")
   (require 'gnus-load))
 
-(require 'f)
-(require 's)
-
 (require 'scame-io)
 (require 'scame-ui)
 (require 'scame-pkg)
 
+(require 'f)
+(require 's)
 ;; (require 'benchmark-init)
 (require 'use-package)
 
