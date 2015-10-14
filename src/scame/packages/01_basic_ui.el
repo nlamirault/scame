@@ -25,20 +25,19 @@
 
 (global-linum-mode 1)
 ;;(setq column-number-mode t)
-
-(require 'tool-bar)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-
-(use-package tool-bar
-  :config (tool-bar-mode -1))
-
 ; show the current line and column numbers in the stats bar as well
 (line-number-mode t)
 (column-number-mode t)
 (blink-cursor-mode nil)
 
 (when (display-graphic-p)
+
+  (menu-bar-mode -1)
+  (scroll-bar-mode -1)
+
+  (use-package tool-bar
+    :config (tool-bar-mode -1))
+
   (setq x-select-enable-clipboard t))
 
 ;; Window moves
