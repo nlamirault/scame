@@ -27,7 +27,28 @@
     :init (add-hook 'rust-mode-hook 'flycheck-mode)
     :config (setq tab-width 4))
 
+  ;; (use-package cargo
+  ;;   :config (add-hook 'rust-mode-hook 'cargo-minor-mode))
+
+  (use-package racer
+    :init (progn
+            (setq racer-rust-src-path (getenv "RUST_HOME"))
+            (setq racer-cmd (executable-find "racer")))
+    :config (add-hook 'rust-mode-hook
+                      '(lambda ()
+                         (racer-activate)
+                         (racer-turn-on-eldoc)
+                         (local-set-key (kbd "M-.") #'racer-find-definition)
+                         (local-set-key (kbd "TAB") #'racer-complete-or-indent))))
+
+  (use-package flycheck-rust
+    :init (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+
+  (use-package company-racer
+    :init (set (make-local-variable 'company-backends) '(company-racer)))
+
   )
+
 
 (provide '44_rust)
 ;;; 44_rust.el ends here

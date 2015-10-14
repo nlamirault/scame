@@ -63,7 +63,7 @@
 (use-package helm-imenu
   :bind (("C-x h i" . helm-imenu)))
 
-(use-package helm-proc)
+;; (use-package helm-proc)
 
 (use-package helm-descbinds
   :bind ("C-x h h" . helm-descbinds))
@@ -75,10 +75,10 @@
   :bind (("C-x h w" . helm-swoop)
          ("C-x h W" . helm-multi-swoop)))
 
-(use-package helm-dash
-  :config (progn
-            (setq helm-dash-min-length 1)
-            (setq helm-dash-browser-func 'eww)))
+;; (use-package helm-dash
+;;   :config (progn
+;;             (setq helm-dash-min-length 1)
+;;             (setq helm-dash-browser-func 'eww)))
 
 (use-package ivy
   :diminish ivy-mode)

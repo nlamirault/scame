@@ -19,6 +19,9 @@
 
 ;;; Code:
 
+(setq warning-minimum-level :error
+      warning-minimum-log-level :error)
+
 (require 'ansi)
 (require 'cl) ;; http://emacs.stackexchange.com/questions/2864/symbols-function-definition-is-void-cl-macroexpand-all-when-trying-to-instal
 (require 'ert)
@@ -134,30 +137,46 @@
      (require 'scame path))))
 
 
+;; (defmacro with-test-sandbox (&rest body)
+;;   "Evaluate BODY in an empty sandbox directory."
+;;   `(unwind-protect
+;;        (condition-case nil ;ex
+;;            (let ((default-directory scame-test/sandbox-path)
+;;                  (scame-user-directory (concat scame-test/sandbox-path "/scame"))
+;;                  (user-emacs-directory scame-test/sandbox-path)
+;;                  ;;(package-user-dir (f-join scame-test/sandbox-path "elpa")))
+;;                  )
+;;              ;; (unless (f-dir? scame-test/sandbox-path)
+;;              ;;   (f-mkdir scame-test/sandbox-path))
+;;              (cleanup-load-path)
+;;              (install-scame)
+;;              (setup-scame scame-test/sandbox-path)
+;;              ;; (message "Load path : %s" load-path)
+;;              (setup-scame-test)
+;;              (load-library "scame/scame.el")
+;;              ;;(should (featurep 'scame-global-mode))
+;;              (message (ansi-yellow "[Scame] Execute body"))
+;;              ,@body)
+;;          ;; (f-delete scame-test/sandbox-path :force)))
+;;          )))
+;;          ;; (error
+;;          ;;  (message (ansi-red "[Scame] Error during unit tests : %s" ex))))))
+
 (defmacro with-test-sandbox (&rest body)
   "Evaluate BODY in an empty sandbox directory."
   `(unwind-protect
-       (condition-case nil ;ex
+       (condition-case nil
            (let ((default-directory scame-test/sandbox-path)
                  (scame-user-directory (concat scame-test/sandbox-path "/scame"))
                  (user-emacs-directory scame-test/sandbox-path)
-                 ;;(package-user-dir (f-join scame-test/sandbox-path "elpa")))
                  )
-             ;; (unless (f-dir? scame-test/sandbox-path)
-             ;;   (f-mkdir scame-test/sandbox-path))
-             (cleanup-load-path)
-             (install-scame)
              (setup-scame scame-test/sandbox-path)
-             ;; (message "Load path : %s" load-path)
              (setup-scame-test)
              (load-library "scame/scame.el")
-             ;;(should (featurep 'scame-global-mode))
              (message (ansi-yellow "[Scame] Execute body"))
              ,@body)
-         ;; (f-delete scame-test/sandbox-path :force)))
          )))
-         ;; (error
-         ;;  (message (ansi-red "[Scame] Error during unit tests : %s" ex))))))
+
 
 
 (provide 'test-helper)

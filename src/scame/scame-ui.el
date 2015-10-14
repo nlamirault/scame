@@ -19,10 +19,14 @@
 
 ;;; Code:
 
+;;FIX: Create a theme or not ?
+
 (add-to-list 'load-path
              (concat scame-user-directory "/theme/"))
-(load-file (concat scame-user-directory "/theme/material-theme.el"))
-(load-theme 'material t)
+(let ((theme-file (concat scame-user-directory "theme/scame-theme.el")))
+  (message "Scame theme : %s" theme-file)
+  (when (file-exists-p theme-file)
+    (load-theme 'scame t)))
 
-(provide 'scame-theme)
-;;; scame-theme.el ends here
+(provide 'scame-ui)
+;;; scame-ui.el ends here

@@ -45,19 +45,29 @@ all: help
 
 help:
 	@echo -e "$(OK_COLOR)==== $(APP) [$(VERSION)] ====$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)- clean$(NO_COLOR)        : clean Scame installation$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)- install$(NO_COLOR)      : Install Scame dependencies$(NO_COLOR)"
 	@echo -e "$(WARN_COLOR)- test$(NO_COLOR)         : launch unit tests$(NO_COLOR)"
 	@echo -e "$(WARN_COLOR)- deps$(NO_COLOR)         : check dependencies$(NO_COLOR)"
 	@echo -e "$(WARN_COLOR)- release$(NO_COLOR)      : make a new release$(NO_COLOR)"
-	@echo -e "$(WARN_COLOR)- clean$(NO_COLOR)        : clean Scame installation$(NO_COLOR)"
+
 	@echo -e "$(WARN_COLOR)- reset$(NO_COLOR)        : remote Scame dependencies for development$(NO_COLOR)"
 	@echo -e "$(WARN_COLOR)- docker-build$(NO_COLOR) : build the Docker image$(NO_COLOR)"
 	@echo -e "$(WARN_COLOR)- docker-clean$(NO_COLOR) : remove the Docker image$(NO_COLOR)"
 	@echo -e "$(WARN_COLOR)- docker-run$(NO_COLOR)   : launch Emacs using Scame docker image$(NO_COLOR)"
 
+.PHONY: clean
+clean:
+	@$(CASK) clean-elc
+	@rm -fr dist $(ARCHIVE).gz test/sandboxorg-clock-save.el test/sandbox
+
+reset: clean
+	@rm -fr .cask
+
 .PHONY: elpa
 elpa:
 	@echo -e "$(OK_COLOR)[$(APP)] Cask setup $(NO_COLOR)"
-	@$(CASK) install --verbose --debug
+	@$(CASK) install
 	@$(CASK) update
 	@touch .cask
 
@@ -66,8 +76,12 @@ deps:
 	@echo -e "$(OK_COLOR)[$(APP)] Outdated dependencies $(NO_COLOR)"
 	@$(CASK) --path src outdated
 
-# .PHONY: build
-# build: elpa $(OBJECTS)
+.PHONY: install
+install: clean
+	$(CASK) exec $(EMACS) -Q --batch -L . -L test \
+		--eval "(progn (require 'test-helper) (install-scame))"
+	$(CASK) exec $(EMACS) -Q --batch -L . -L test -L test/sandbox/scame \
+		--eval "(progn (require 'test-helper) (cleanup-load-path) (setup-scame-test) (require 'scame))"
 
 .PHONY: test
 test: elpa
@@ -85,14 +99,6 @@ virtual-test:
 	@$(VAGRANT) up
 	@$(VAGRANT) ssh -c "make -C /vagrant EMACS=$(EMACS) clean test"
 
-.PHONY: clean
-clean:
-	@$(CASK) clean-elc
-	@rm -fr dist $(ARCHIVE).gz test/sandboxorg-clock-save.el
-
-reset: clean
-	@rm -fr test/sandbox
-
 release:
 	@echo -e "$(OK_COLOR)[$(APP)] Make archive $(VERSION) $(NO_COLOR)"
 	@rm -fr $(PACKAGE) && mkdir $(PACKAGE)
@@ -102,10 +108,11 @@ release:
 	@rm -fr $(PACKAGE)
 	@addons/github.sh $(VERSION)
 
-# %.elc: %.el
-# 	@$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
-# 		$(EMACSFLAGS) \
-# 		-f batch-byte-compile $<
+
+#
+# Docker
+#
+
 
 .PHONY: docker-build
 docker-build:

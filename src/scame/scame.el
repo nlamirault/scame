@@ -44,7 +44,7 @@
   (require 'gnus-load))
 
 (require 'scame-io)
-(require 'scame-theme)
+(require 'scame-ui)
 (require 'scame-pkg)
 
 (require 'f)

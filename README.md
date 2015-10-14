@@ -1,20 +1,20 @@
 # Scame
 
 [![License GPL 3][badge-license]][LICENSE]
-[![travis][badge-travis]][travis]
-[![drone][badge-drone]][drone]
-[![Coverage Status](https://coveralls.io/repos/nlamirault/scame.el/badge.png?branch=master)](https://coveralls.io/r/nlamirault/scame.el?branch=master)
+[![GitHub version](https://badge.fury.io/gh/nlamirault%2Fscame.svg)](https://badge.fury.io/gh/nlamirault%2Fscame)
+
+
+Master :
+* [![Circle CI](https://circleci.com/gh/nlamirault/scame/tree/master.svg?style=svg)](https://circleci.com/gh/nlamirault/scame/tree/master)
+
+Develop:
+* [![Circle CI](https://circleci.com/gh/nlamirault/scame/tree/develop.svg?style=svg)](https://circleci.com/gh/nlamirault/scame/tree/develop)
+
 
 [Scame][] is a 'Starter Kit' for [GNU Emacs][] 24 (>= 24.4). It will not work
 with [GNU Emacs][] 23 and below, or with other flavors of Emacs (e.g. XEmacs).
 
-These tools are used to perform the [Scame][] installation :
-
-- [Cask][] (>= 0.6.0)
-- [EVM][]
-
 The current version has been tested on Linux and Mac OS X.
-
 
 - [Installation](#installation)
   - [Release file](#from-release-file)
@@ -349,6 +349,10 @@ The `test` command download dependencies using [Cask][] and launch unit tests:
 
     $ make test
 
+You could launch some unit tests using tags :
+
+    $ make test-tag tag=config
+
 
 ## License
 
@@ -369,19 +373,11 @@ Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 
 [scame]: https://github.com/nlamirault/scame
-
 [badge-license]: https://img.shields.io/badge/license-GPL_2-green.svg?style=flat
 [LICENSE]: https://github.com/nlamirault/scame/blob/master/LICENSE
-[travis]: https://travis-ci.org/nlamirault/scame
-[badge-travis]: http://img.shields.io/travis/nlamirault/scame.svg?style=flat
-[badge-drone]: https://drone.io/github.com/nlamirault/scame/status.png
-[drone]: https://drone.io/github.com/nlamirault/scame/latest
 
-[COPYING]: https://github.com/nlamirault/scame/blob/master/COPYING
 [GNU Emacs]: https://www.gnu.org/software/emacs/
 [MELPA]: http://melpa.milkbox.net/
 [Issue tracker]: https://github.com/nlamirault/scame/issues
 
-[Cask]: http://cask.github.io/
-[Evm]: https://github.com/rejeep/evm
 [overseer]: https://github.com/tonini/overseer.el
