@@ -19,10 +19,10 @@
 
 ;;; Code:
 
-(add-to-list 'load-path
-             (concat scame-user-directory "/theme/"))
-(load-file (concat scame-user-directory "/theme/material-theme.el"))
-(load-theme 'material t)
+;; (add-to-list 'load-path
+;;              (concat scame-user-directory "/theme/"))
+;; (load-file (concat scame-user-directory "/theme/material-theme.el"))
+;; (load-theme 'material t)
 
 (provide 'scame-theme)
 ;;; scame-theme.el ends here
