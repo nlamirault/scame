@@ -22,12 +22,13 @@
 (when scame-elixir
 
   (use-package elixir-mode
-    ;; :defer scame-defer-package)
-    )
+    :mode (("\\.ex\\'" . elixir-mode)
+           ("\\.exs\\'" . elixir-mode)
+           ("\\.elixir\\'" . elixir-mode)))
 
   (use-package alchemist
-    ;; :defer scame-defer-package
-    :init (alchemist-mode 1))
+    :commands (alchemist-mode)
+    :init (add-hook 'elixir-mode-hook 'alchemist-mode))
 
   )
 
