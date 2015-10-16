@@ -19,11 +19,6 @@
 
 ;;; Code:
 
-
-;; From : http://batsov.com/projectile/
-
-;;(require 'projectile)
-
 ;; change-log-mode is hard-coded to use TABs for indentation. Get around that with:
 (add-hook 'change-log-mode-hook
           (function (lambda () (setq indent-tabs-mode nil))))
@@ -49,23 +44,16 @@
             (projectile-global-mode t)
 	    (setq projectile-enable-caching t)
 	    (setq projectile-require-project-root nil)
-            (cond ((eql 'ido scame-completion-method)
-                   (setq projectile-completion-system 'ido))
-                  ((eql 'helm scame-completion-method)
-                   (setq projectile-completion-system 'helm))
-                  ((eql 'ivy scame-completion-method)
-                   (setq projectile-completion-system 'ivy))
-                  (t (setq projectile-completion-system 'ido)))
-	    ;;(setq projectile-switch-project-action 'projectile-dired)
+            ;;(setq projectile-switch-project-action 'projectile-dired)
 	    ;;(setq projectile-switch-project-action 'projectile-find-dir)
 	    (setq projectile-switch-project-action 'projectile-find-file)
 	    (add-to-list 'projectile-globally-ignored-files
 			 ".DS_Store"))
   :diminish projectile-mode)
 
+
 (use-package helm-projectile
-  ;; :defer scame-defer-package
-  :init (helm-projectile-on)
+  ;; :init (helm-projectile-on)
   :config (setq projectile-completion-system 'helm)
   :bind (("C-c p h" . helm-projectile)))
 
@@ -84,9 +72,15 @@
                           (ibuffer-do-sort-by-major-mode))))))
 
 
-;; (condition-case e
-;;     (require 'es-windows)
-;;    (error (message "%s" e)))
+(cond ((eql 'ido scame-completion-method)
+       (setq projectile-completion-system 'ido))
+      ((eql 'helm scame-completion-method)
+       (progn
+         (helm-projectile-on)
+         (setq projectile-completion-system 'helm)))
+      ((eql 'ivy scame-completion-method)
+       (setq projectile-completion-system 'ivy))
+      (t (setq projectile-completion-system 'ido)))
 
 ;;(use-package project-explorer)
 
