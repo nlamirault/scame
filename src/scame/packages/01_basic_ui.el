@@ -56,5 +56,18 @@
   :config (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   :bind ("C-x o" . ace-window))
 
+(use-package beacon
+  :diminish beacon-mode
+  :config (progn
+            (beacon-mode 1)
+            (setq beacon-blink-delay 0.2
+                  beacon-blink-duration 0.2
+                  beacon-blink-when-point-moves 7
+                  beacon-blink-when-window-changes t
+                  beacon-blink-when-window-scrolls t
+                  beacon-color "brown"
+                  beacon-push-mark 5
+                  beacon-size 25)))
+
 (provide '01_basic_ui)
 ;;; 01_basic_ui.el ends here
