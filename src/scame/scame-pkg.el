@@ -56,6 +56,10 @@
 
 ;; Scame packages
 
+(defvar gnu-packages
+  '(
+    seq
+    ))
 
 (defvar stable-packages '())
 
@@ -213,8 +217,8 @@
 
 ;; Packages environments
 
+
 (when scame-golang
-  (add-to-list 'unstable-packages 'go-mode t)
   (add-to-list 'unstable-packages 'go-mode t)
   (add-to-list 'unstable-packages 'company-go t)
   (add-to-list 'unstable-packages 'go-eldoc t)
@@ -224,6 +228,8 @@
   ;; https://github.com/dougm/go-projectile/issues/2
   (add-to-list 'unstable-packages 'go-projectile t)
   ;; https://github.com/golang/lint/issues/111
+  (add-to-list 'unstable-packages 'go-rename t)
+  (add-to-list 'unstable-packages 'go-dlv t)
   (add-to-list 'unstable-packages 'golint t))
 
 (when scame-commonlisp
@@ -380,6 +386,9 @@
       (package-install pkg))
     (redisplay)))
 
+(dolist (pkg gnu-packages)
+  (add-to-list 'package-pinned-packages
+               (cons pkg "gnu")))
 
 (dolist (pkg stable-packages)
  ;;  (message "Package: %s" pkg)
@@ -400,6 +409,7 @@
 (scame--msg-buffer "--> Packages installation ...\n"
                    'font-lock-string-face)
 (redisplay)
+(scame--install-packages gnu-packages)
 (scame--install-packages stable-packages)
 (scame--install-packages unstable-packages)
 
