@@ -91,10 +91,18 @@ This moves them into the Spam folder."
     (gnus-summary-move-article nil "nnimap+gmail:[Gmail]/Trash")))
 
 (define-key gnus-summary-mode-map
+  (kbd "B a")
+  (lambda ()
+    (interactive)
+    (gnus-summary-move-article nil "nnimap+imap.gmail.com:[Gmail]/All Mail")))
+
+(define-key gnus-summary-mode-map
   (kbd "B s")
   (lambda ()
     (interactive)
     (gnus-summary-move-article nil "nnimap+gmail:[Gmail]/Spam")))
+
+
 
 (provide 'gnus-gmail)
 ;;; gnus-gmail.el ends here
