@@ -105,6 +105,23 @@
     :config (add-hook 'python-mode-hook 'py-yapf-enable-on-save))
 
 
+  (define-key python-mode-map (kbd "C-x y h")
+    (defhydra hydra-python (:color blue)
+      "
+   ^Tox^                ^Misc^
+  ╭─────────────────────────────────
+   _t_: test            _d_: pydoc
+   _f_: file
+   _p_: project
+  ----------------------------------
+        "
+      ("q" nil "quit")
+      ("t" tox-current-test "test")
+      ("f" tox-current-file "file")
+      ("p" tox-current-project "project")
+      ("d" helm-pydoc "pydoc")
+      ))
+
   )
 
 

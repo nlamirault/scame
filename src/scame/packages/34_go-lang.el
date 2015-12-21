@@ -98,6 +98,25 @@
                         (set (make-local-variable 'company-backends) '(company-go))
                         (company-mode))))
 
+  (define-key go-mode-map (kbd "C-x g h")
+    (defhydra hydra-go (:color blue)
+      "
+   ^Test^                ^Tools^
+  ╭─────────────────────────────────
+   _t_: test            _d_: godoc
+   _f_: file            _e_: errcheck
+   _p_: project         _l_: golint
+  ----------------------------------
+        "
+      ("q" nil "quit")
+      ("t" go-test-current-test "test")
+      ("f" go-test-current-file "file")
+      ("p" go-test-current-project "project")
+      ("d" godoc "godoc")
+      ("e" go-errcheck "errcheck")
+      ("l" golint "golint")
+      ))
+
 )
 
 (provide '34_go-lang)
