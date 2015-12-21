@@ -98,7 +98,7 @@
 
 
 (use-package persp-projectile
-  :bind (("C-c p s w" . projectile-persp-switch-project)))
+  :bind (("C-c p p" . projectile-persp-switch-project)))
 
 
 (setq-default indent-tabs-mode nil)

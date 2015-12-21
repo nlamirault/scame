@@ -35,14 +35,6 @@
      (change-log-mode)
      (should (eql nil indent-tabs-mode)))))
 
-;; FIX: https://github.com/nlamirault/scame/issues/50
-;; (ert-deftest test-scame-projectile ()
-;;   :tags '(dev)
-;;   (with-test-sandbox
-;;    (should (require 'projectile))
-;;    (should (eql 'helm-projectile
-;;                 (key-binding (kbd "C-c p h"))))))
-
 (ert-deftest test-perspective ()
   :tags '(dev)
   (with-test-sandbox
@@ -60,6 +52,8 @@
     (should (eql 'persp-import (key-binding (kbd "C-x x i"))))
     (should (eql 'persp-next (key-binding (kbd "C-x x n"))))
     (should (eql 'persp-prev (key-binding (kbd "C-x x p")))))))
+
+
 
 
 (provide 'scame-dev-commons-test)
