@@ -178,7 +178,7 @@
     ace-window
     smart-mode-line smart-mode-line-powerline-theme
     spaceline
-    beacon
+    ;;beacon
 
     ;; Keys
     hydra which-key
