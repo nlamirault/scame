@@ -23,13 +23,20 @@
   "var/hello.hs"
   "File name for testing Haskell setup.")
 
-;; FIX: Why failed
 (ert-deftest test-scame-haskell ()
   :tags '(haskell)
   (with-test-sandbox
    (with-current-file
     testsuite-haskell-filename
-    (should (featurep 'haskell-mode)))))
+    (should (featurep 'haskell-mode))
+    (should (eql 'haskell-process-do-type
+        	 (key-binding (kbd "C-x h t"))))
+    (should (eql 'haskell-process-do-info
+        	 (key-binding (kbd "C-x h i"))))
+    (should (eql 'haskell-process-cabal
+        	 (key-binding (kbd "C-x h c"))))
+    (should (eql 'haskell-process-cabal-build
+        	 (key-binding (kbd "C-x h b")))))))
 
 
 (provide 'scame-haskell-test)
