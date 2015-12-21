@@ -139,17 +139,32 @@ Keybinding             | Description
 <kbd>C-c <up></kbd>    | Select the window to the up of the current one
 <kbd>C-c <down></kbd>  | Select the window to the down of the current one
 
+### Completion
 
-### Helm
+Set `scame-completion-method`.
+
+#### Helm
 
 Keybinding           | Description
 ---------------------|------------------------------------------------------------
-<kbd>C-x h F</kbd>   | helm-find-files
-<kbd>C-x h f</kbd>   | helm-for-files
-<kbd>C-x h b</kbd>   | helm-buffers-list
-<kbd>C-x h x</kbd>   | helm-M-x
-<kbd>C-x h y</kbd>   | helm-show-kill-ring
-<kbd>C-x h i</kbd>   | helm-imenu
+<kbd>C-x c F</kbd>   | helm-find-files
+<kbd>C-x c f</kbd>   | helm-for-files
+<kbd>C-x c b</kbd>   | helm-buffers-list
+<kbd>C-x c x</kbd>   | helm-M-x
+<kbd>C-x c y</kbd>   | helm-show-kill-ring
+<kbd>C-x c i</kbd>   | helm-imenu
+<kbd>C-x c r</kbd>   | helm-recentf
+
+#### Ivy
+
+Keybinding           | Description
+---------------------|------------------------------------------------------------
+<kbd>C-x c F</kbd>   | counsel-find-file
+<kbd>C-x c f</kbd>   | counsel-describe-function
+<kbd>C-x c b</kbd>   | ivy-switch-buffer
+<kbd>C-x c y</kbd>   | counsel-info-lookup-symbol
+<kbd>C-x c i</kbd>   | counsel-imenu
+<kbd>C-x c r</kbd>   | ivy-recentf
 
 ### Swoop
 
@@ -171,10 +186,10 @@ Keybinding           | Description
 
 See [projectile][] for default keybindings
 
-Keybinding           | Description
----------------------|------------------------------------------------------------
-<kbd>C-c p h</kbd>   | helm-projectile
-<kbd>C-c p s w</kbd> | projectile-persp-switch-project
+Keybinding              | Description
+------------------------|------------------------------------------------------------
+<kbd>C-c p SPC</kbd>    | ivy-switch-project or helm-projectile
+<kbd>C-c p s w</kbd>    | projectile-persp-switch-project
 
 ### Python-mode
 
