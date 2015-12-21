@@ -37,6 +37,7 @@
 ;;                 (fci-mode 1)))
 ;;             (global-fci-mode 1)))
 
+
 (use-package projectile
   ;; :defer scame-defer-package
   ;;:init (projectile-global-mode 1)
@@ -51,16 +52,6 @@
 			 ".DS_Store"))
   :diminish projectile-mode)
 
-
-(use-package helm-projectile
-  ;; :init (helm-projectile-on)
-  :config (setq projectile-completion-system 'helm)
-  :bind (("C-c p h" . helm-projectile)))
-
-(use-package persp-projectile
-  ;; :defer scame-defer-package
-  :bind (("C-c p s w" . projectile-persp-switch-project)))
-
 (use-package ibuffer-projectile
   ;; :defer scame-defer-package
   :config (progn
@@ -72,17 +63,41 @@
                           (ibuffer-do-sort-by-major-mode))))))
 
 
+(defun ivy-switch-project ()
+  (interactive)
+  (ivy-read
+   "Switch to project: "
+   (if (projectile-project-p)
+       (cons (abbreviate-file-name (projectile-project-root))
+             (projectile-relevant-known-projects))
+     projectile-known-projects)
+   :action #'projectile-switch-project-by-name))
+
+(message "Scame completion : %s" scame-completion-method)
+
 (cond ((eql 'ido scame-completion-method)
        (setq projectile-completion-system 'ido))
+
       ((eql 'helm scame-completion-method)
        (progn
+         (message "Projectile with Helm")
+         (use-package helm-projectile
+           :config (setq projectile-completion-system 'helm)
+           :bind (("C-c p SPC" . helm-projectile)))
+         (use-package persp-projectile
+           :bind (("C-c p s w" . projectile-persp-switch-project)))
          (helm-projectile-on)
          (setq projectile-completion-system 'helm)))
+
       ((eql 'ivy scame-completion-method)
-       (setq projectile-completion-system 'ivy))
+       (progn
+         (message "Projectile with Ivy")
+         (setq projectile-completion-system 'ivy)
+         (global-set-key (kbd "C-c p SPC") 'ivy-switch-project)))
+
+
       (t (setq projectile-completion-system 'ido)))
 
-;;(use-package project-explorer)
 
 (setq-default indent-tabs-mode nil)
 
@@ -103,12 +118,7 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
 (add-hook 'compilation-filter-hook 'scame-colorize-compilation-buffer)
 
 
-;; (use-package know-your-http-well)
-
-;; (use-package find-file-in-project)
-
 (use-package neotree
-  ;; :defer scame-defer-package
   :init (progn
           (defun neotree-project-dir ()
             "Open dirtree using the git root."
@@ -123,6 +133,9 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
   :bind (("C-x t t" . neotree-toggle)
          ("C-x t p" . neotree-project-dir)))
 
+
+;; Search
+
 (use-package ag
   ;; :defer scame-defer-package
   :commands (ag ag-project)
@@ -131,6 +144,7 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
 (use-package pt
   ;; :defer scame-defer-package
   :bind (("C-c p s p" . projectile-pt)))
+
 
 
 (provide '30_dev)
