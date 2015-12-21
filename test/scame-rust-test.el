@@ -25,7 +25,13 @@
   (with-test-sandbox
    (with-current-file
     "var/hello.rs"
-    (should (featurep 'rust-mode)))))
+    (should (featurep 'rust-mode))
+    (should (eql 'cargo-test-current-test
+                 (key-binding (kbd "C-x r t"))))
+    (should (eql 'cargo-test-current-file
+                 (key-binding (kbd "C-x r f"))))
+    (should (eql 'cargo-test-current-project
+                 (key-binding (kbd "C-x r p")))))))
 
 
 (provide 'scame-rust-test)

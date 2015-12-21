@@ -27,8 +27,15 @@
     :init (add-hook 'rust-mode-hook 'flycheck-mode)
     :config (setq tab-width 4))
 
-  ;; (use-package cargo
-  ;;   :config (add-hook 'rust-mode-hook 'cargo-minor-mode))
+  (use-package cargo
+    :config (progn
+              (add-hook 'rust-mode-hook 'cargo-minor-mode)
+              (add-hook 'rust-mode-hook
+                        (lambda ()
+                          (local-set-key (kbd "C-x r t") 'cargo-test-current-test)
+                          (local-set-key (kbd "C-x r f") 'cargo-test-current-file)
+                          (local-set-key (kbd "C-x r p") 'cargo-test-current-project)
+                          ))))
 
   (use-package racer
     :init (progn
