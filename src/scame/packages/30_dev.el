@@ -84,8 +84,6 @@
          (use-package helm-projectile
            :config (setq projectile-completion-system 'helm)
            :bind (("C-c p SPC" . helm-projectile)))
-         (use-package persp-projectile
-           :bind (("C-c p s w" . projectile-persp-switch-project)))
          (helm-projectile-on)
          (setq projectile-completion-system 'helm)))
 
@@ -97,6 +95,10 @@
 
 
       (t (setq projectile-completion-system 'ido)))
+
+
+(use-package persp-projectile
+  :bind (("C-c p s w" . projectile-persp-switch-project)))
 
 
 (setq-default indent-tabs-mode nil)
