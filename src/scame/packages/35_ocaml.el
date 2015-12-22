@@ -21,11 +21,37 @@
 
 (when scame-ocaml
 
+  (setq opam-share
+        (substring
+         (shell-command-to-string "opam config var share 2> /dev/null") 0 -1))
+  (add-to-list 'load-path (concat opam-share "/emacs/site-lisp"))
+
   (use-package tuareg
-    ;; :defer scame-defer-package
     :mode (("\\.ml\\w?" . tuareg-mode)
            ("\\.topml\\'" . taureg-mode)
            ("\\.fs[ix]?" . tuareg-mode)))
+
+  (use-package merlin
+    :config (progn
+              (add-hook 'tuareg-mode-hook 'merlin-mode t)
+              (add-hook 'caml-mode-hook 'merlin-mode t)
+              ;; (setq merlin-use-auto-complete-mode 'easy)
+              (with-eval-after-load 'company
+                (add-to-list 'company-backends 'merlin-company-backend))
+              (add-hook 'merlin-mode-hook 'company-mode)
+              ;; Use opam switch to lookup ocamlmerlin binary
+              (setq merlin-command 'opam)
+              ))
+
+  (use-package flycheck-ocaml
+    :init (with-eval-after-load 'merlin (flycheck-ocaml-setup)))
+
+  (use-package utop
+    :if (executable-find "utop"))
+
+  (use-package utop-minor-mode
+    :if (executable-find "utop")
+    :init (add-hook 'tuareg-mode-hook 'utop-minor-mode))
 
   )
 

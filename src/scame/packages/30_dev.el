@@ -139,13 +139,14 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
 ;; Search
 
 (use-package ag
-  ;; :defer scame-defer-package
   :commands (ag ag-project)
   :config (setq ag-highlight-search t))
 
 (use-package pt
-  ;; :defer scame-defer-package
   :bind (("C-c p s p" . projectile-pt)))
+
+;; (use-package sift)
+;;   :bind (("C-c p s t" . projectile-pt)))
 
 
 
