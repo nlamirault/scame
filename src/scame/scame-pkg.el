@@ -72,11 +72,18 @@
 
     ;; Search
     helm
+    swiper
+    swiper-helm
+
+    ack
     helm-ack
-    ag helm-ag
-    pt helm-pt
-    swoop helm-swoop
-    swiper swiper-helm
+    ag
+    helm-ag
+    pt
+    helm-pt
+    sift
+    swoop
+    helm-swoop
 
     paradox
 
@@ -280,7 +287,10 @@
   (add-to-list 'unstable-packages 'ghci-completion t))
 
 (when scame-ocaml
-  (add-to-list 'unstable-packages 'tuareg t) t)
+  (add-to-list 'unstable-packages 'tuareg t)
+  (add-to-list 'unstable-packages 'merlin t)
+  (add-to-list 'unstable-packages 'utop t)
+  (add-to-list 'unstable-packages 'flycheck-ocaml t))
 
 (when scame-php
   (add-to-list 'unstable-packages 'php-mode t)
