@@ -22,7 +22,6 @@
 (when scame-rust
 
   (use-package rust-mode
-    ;; :defer scame-defer-package
     :mode (("\\.rs\\'" . rust-mode))
     :init (add-hook 'rust-mode-hook 'flycheck-mode)
     :config (setq tab-width 4))
@@ -36,6 +35,9 @@
                           (local-set-key (kbd "C-x r f") 'cargo-test-current-file)
                           (local-set-key (kbd "C-x r p") 'cargo-test-current-project)
                           ))))
+
+  (use-package :rustfmt
+    :config (add-hook 'rust-mode-hook #'rustfmt-enable-on-save))
 
   (use-package racer
     :init (progn
@@ -53,6 +55,8 @@
 
   (use-package company-racer
     :init (set (make-local-variable 'company-backends) '(company-racer)))
+
+
 
   )
 
