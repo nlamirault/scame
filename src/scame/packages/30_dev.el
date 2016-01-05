@@ -1,6 +1,6 @@
 ;;; 30_dev.el -- Commons configurations for development
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -98,7 +98,7 @@
 
 
 (use-package persp-projectile
-  :bind (("C-c p w" . projectile-persp-switch-project)))
+  :bind (("C-c p n" . projectile-persp-switch-project)))
 
 
 (setq-default indent-tabs-mode nil)
