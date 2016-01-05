@@ -1,6 +1,6 @@
 ;;; 35_ocaml.el --- OCaml configuration
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -21,10 +21,12 @@
 
 (when scame-ocaml
 
-  (setq opam-share
-        (substring
-         (shell-command-to-string "opam config var share 2> /dev/null") 0 -1))
-  (add-to-list 'load-path (concat opam-share "/emacs/site-lisp"))
+  (let ((opam-configuration
+         (shell-command-to-string "opam config var share 2> /dev/null")))
+    (when (> (length opam-configuration) 0)
+      (setq opam-share
+            (substring opam-configuration 0 -1))
+      (add-to-list 'load-path (concat opam-share "/emacs/site-lisp"))))
 
   (use-package tuareg
     :mode (("\\.ml\\w?" . tuareg-mode)
