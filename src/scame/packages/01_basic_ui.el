@@ -1,6 +1,6 @@
 ;;; 01_basic_ui.el --- Emacs basic UI
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014-2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -38,7 +38,12 @@
   (use-package tool-bar
     :config (tool-bar-mode -1))
 
-  (setq x-select-enable-clipboard t))
+  (setq x-select-enable-clipboard t)
+
+  (use-package mode-icons
+    :config (mode-icons-mode))
+
+  )
 
 ;; Window moves
 (global-set-key (kbd "C-c <left>")  'windmove-left)

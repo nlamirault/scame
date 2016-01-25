@@ -1,6 +1,6 @@
 ;; scame-pkg.el --- Scame Packages installation
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -101,7 +101,10 @@
     auto-complete
 
     ;; Projects
-    projectile helm-projectile persp-projectile ibuffer-projectile
+    projectile
+    helm-projectile
+    persp-projectile
+    ibuffer-projectile
     helm-project-persist
 
     ;; ;; https://github.com/dougm/go-projectile/issues/2
@@ -181,10 +184,12 @@
     ;; libmpdee
 
     ;; UI
-    rich-minority powerline
+    rich-minority
+    powerline
     ace-window
     smart-mode-line smart-mode-line-powerline-theme
     spaceline
+    mode-icons
     ;;beacon
 
     ;; Keys
