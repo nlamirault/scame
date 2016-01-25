@@ -1,6 +1,6 @@
 ;;; 06_keys.el -- keys tools
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -32,7 +32,8 @@
           ;; (setq which-key-popup-type 'minibuffer)
           (setq which-key-popup-type 'side-window)
           (setq which-key-side-window-max-width 0.33)
-          (setq which-key-side-window-max-height 0.25)))
+          (setq which-key-side-window-max-height 0.25))
+  :diminish which-key-mode)
 
 (use-package hydra
   :config (progn

@@ -1,6 +1,6 @@
 ;;; 31_python.el --- Python configuration
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -46,7 +46,8 @@
     ;; :defer scame-defer-package
     :config (progn
               (add-hook 'python-mode-hook 'anaconda-mode)
-              (add-hook 'python-mode-hook 'eldoc-mode)))
+              (add-hook 'python-mode-hook 'eldoc-mode))
+    :diminish anaconda-mode)
 
   (use-package company-anaconda
     ;; :defer scame-defer-package
@@ -85,7 +86,8 @@
     :config (add-hook 'python-mode-hook
                       (lambda ()
                         (require 'sphinx-doc)
-                        (sphinx-doc-mode t))))
+                        (sphinx-doc-mode t)))
+    :diminish sphinx-doc-mode)
 
   (use-package helm-pydoc
     ;; :defer scame-defer-package
