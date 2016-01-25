@@ -1,6 +1,6 @@
 ;;; gnus-local.el --- Localhost IMAP configuration for Gnus
 
-;; Copyright (C) 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -81,7 +81,7 @@
 (defun lld-notmuch-file-to-group (file)
   "Calculate the Gnus group name from the given file name."
   (let ((group (file-name-directory (directory-file-name (file-name-directory file)))))
-    (setq group (replace-regexp-in-string ".*/opt/Exchange/" "" group))
+    (setq group (replace-regexp-in-string ".*/opt/OrangeExchange/" "" group))
     (setq group (replace-regexp-in-string "/$" "" group))
     (if (string-match ":$" group)
         (concat group "INBOX")

@@ -1,6 +1,6 @@
 ;;; gnus-gmail.el --- Gmail configuration for Gnus
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -59,28 +59,28 @@
 
 ;; Keybindings
 
-(defun gmail-delete ()
-  "Delete current mail."
-  (interactive)
-  (gnus-summary-move-article nil "nnimap+gmail:[Gmail]/Trash"))
+;; (defun gmail-delete ()
+;;   "Delete current mail."
+;;   (interactive)
+;;   (gnus-summary-move-article nil "nnimap+gmail:[Gmail]/Trash"))
 
-(defun gmail-archive ()
-  "Archive the current or marked mails.
-This moves them into the All Mail folder."
-  (interactive)
-  (gnus-summary-move-article nil "nnimap+imap.gmail.com:[Gmail]/All Mail"))
+;; (defun gmail-archive ()
+;;   "Archive the current or marked mails.
+;; This moves them into the All Mail folder."
+;;   (interactive)
+;;   (gnus-summary-move-article nil "nnimap+imap.gmail.com:[Gmail]/All Mail"))
 
-(defun gmail-report-spam ()
-  "Report the current or marked mails as spam.
-This moves them into the Spam folder."
-  (interactive)
-  (gnus-summary-move-article nil "nnimap+imap.gmail.com:[Gmail]/Spam"))
+;; (defun gmail-report-spam ()
+;;   "Report the current or marked mails as spam.
+;; This moves them into the Spam folder."
+;;   (interactive)
+;;   (gnus-summary-move-article nil "nnimap+imap.gmail.com:[Gmail]/Spam"))
 
-(defun gmail-summary-keys ()
-  "Some keybindings for Gmail."
-  (local-set-key "y" 'gmail-archive)
-  (local-set-key "x" 'gmail-delete)
-  (local-set-key "$" 'gmail-report-spam))
+;; (defun gmail-summary-keys ()
+;;   "Some keybindings for Gmail."
+;;   (local-set-key "y" 'gmail-archive)
+;;   (local-set-key "x" 'gmail-delete)
+;;   (local-set-key "$" 'gmail-report-spam))
 
 (add-hook 'gnus-summary-mode-hook 'gmail-summary-keys)
 
