@@ -1,6 +1,6 @@
 ;;; scame-gnus.el --- Gnus configuration
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -157,11 +157,11 @@
     lbl))
 (defalias 'gnus-user-format-function-r 'rs-gnus-get-label)
 
-;; (setq gnus-summary-line-format
-;;       "%1{%U%R%z: %}%2{%o%}%5{ %[%4i%] %}%4{%-24,24n%}%6{%-4,4ur%}%5{| %}%(%1{%B%}%s%)\n")
-
-(setq-default gnus-summary-line-format "%1{%U%R%z: %}%2{%&user-date;%}%5{ %[%4i%] %}%4{%-24,24n%}%6{%-4,4ur%}%5{| %}%(%1{%B%}%s%)\n"
+(setq-default ;; gnus-summary-line-format "%1{%U%R%z: %}%2{%&user-date;%} %5{ %[%4i%] %}%4{%-24,24n%}%6{%-4,4ur%}%5{| %}%(%1{%B%}%s%)\n"
+              gnus-summary-line-format "%1{%U%R%z: %}%[%2{%&user-date;%}%] %4{%-24,24n%} %5{| %}%(%1{%B%}%s%)\n"
               gnus-user-date-format-alist '((t . "%Y-%m-%d %H:%M")))
+
+
 
 (setq nnmail-extra-headers '(To X-GM-LABELS Newsgroups Content-Type))
 

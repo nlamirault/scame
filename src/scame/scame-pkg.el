@@ -101,7 +101,10 @@
     auto-complete
 
     ;; Projects
-    projectile helm-projectile persp-projectile ibuffer-projectile
+    projectile
+    helm-projectile
+    persp-projectile
+    ibuffer-projectile
     helm-project-persist
 
     ;; ;; https://github.com/dougm/go-projectile/issues/2
@@ -181,10 +184,12 @@
     ;; libmpdee
 
     ;; UI
-    rich-minority powerline
+    rich-minority
+    powerline
     ace-window
     smart-mode-line smart-mode-line-powerline-theme
     spaceline
+    mode-icons
     ;;beacon
 
     ;; Keys
