@@ -33,6 +33,9 @@
 ;; - msmtp to send emails
 ;; ------------------------------------------
 
+;; Customization :
+;; (setq scame-maildir-local "/opt/Exchange")
+
 
 ;; IMAP Localhost offlineimap
 
@@ -43,11 +46,19 @@
 ;;                	 "/usr/lib/dovecot/imap -o mail_location=maildir:/opt/Exchange:LAYOUT=fs:INBOX=/opt/Exchange/INBOX")))
 
 ;; IMAP Localhost imapsync
+;; (setq gnus-select-method
+;;       '(nnimap "Exchange"
+;;                (nnimap-stream shell)
+;;                (nnimap-shell-program
+;;                	 "/usr/lib/dovecot/imap -o mail_location=maildir:/opt/Exchange:LAYOUT=fs:INBOX=/opt/Exchange/Inbox")))
+
 (setq gnus-select-method
-      '(nnimap "Exchange"
+      `(nnimap "Exchange"
                (nnimap-stream shell)
                (nnimap-shell-program
-               	 "/usr/lib/dovecot/imap -o mail_location=maildir:/opt/OrangeExchange:LAYOUT=fs:INBOX=/opt/OrangeExchange/Inbox")))
+                (concat "/usr/lib/dovecot/imap -o mail_location=maildir:"
+                        ,local-maildir ":LAYOUT=fs:INBOX="
+                        ,local-maildir "/Inbox"))))
 
 
 ;; (setq gnus-secondary-select-methods
