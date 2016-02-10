@@ -41,7 +41,7 @@
 (package-refresh-contents)
 
 ;; Bootstrap `use-package'
-(unless (package-installed-p 'use-package) 
+(unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
 ;; Install dependencies
@@ -98,6 +98,7 @@
 
     ;; Completion
     company
+    company-shell
     auto-complete
 
     ;; Projects
