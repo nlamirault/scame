@@ -57,8 +57,8 @@
                (nnimap-stream shell)
                (nnimap-shell-program
                 (concat "/usr/lib/dovecot/imap -o mail_location=maildir:"
-                        ,local-maildir ":LAYOUT=fs:INBOX="
-                        ,local-maildir "/Inbox"))))
+                        ,scame-maildir-local ":LAYOUT=fs:INBOX="
+                        ,scame-maildir-local "/Inbox"))))
 
 
 ;; (setq gnus-secondary-select-methods
