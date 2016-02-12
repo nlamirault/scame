@@ -1,6 +1,6 @@
 ;;; 19_vc.el --- Version control
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -72,6 +72,8 @@
   ;; :defer scame-defer-package
   :bind (("C-c g t" . git-timemachine)))
 
+
+(setq git-commit-summary-max-length 80)
 
 (provide '19_vc)
 ;;; 19_vc.el ends here
