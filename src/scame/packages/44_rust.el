@@ -1,6 +1,6 @@
 ;;; 44_rust.el -- Rust configuration
 
-;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015, 2016  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -35,9 +35,6 @@
                           (local-set-key (kbd "C-x r f") 'cargo-test-current-file)
                           (local-set-key (kbd "C-x r p") 'cargo-test-current-project)
                           ))))
-
-  (use-package :rustfmt
-    :config (add-hook 'rust-mode-hook #'rustfmt-enable-on-save))
 
   (use-package racer
     :init (progn
