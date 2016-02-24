@@ -102,74 +102,19 @@
     auto-complete
 
     ;; Projects
+    editorconfig
     projectile
     helm-projectile
     persp-projectile
     ibuffer-projectile
     helm-project-persist
 
-    ;; ;; https://github.com/dougm/go-projectile/issues/2
-    ;; go-projectile
-    ;; ;; https://github.com/golang/lint/issues/111
-    ;; golint
-
-    ;; ;; https://github.com/proofit404/anaconda-mode/issues/98
-    ;; anaconda-mode
-    ;; ;;https://github.com/proofit404/company-anaconda/issues/3
-    ;; company-anaconda
-    ;; ;; https://github.com/tkf/emacs-jedi-direx/issues/17
-    ;; jedi-direx
-
-    ;; rhtml-mode company-inf-ruby
-
-    ;; erlang
-
-    ;; ghci-completion
-
-    ;; ;; https://github.com/Sarcasm/flycheck-irony/issues/4
-    ;; irony
-    ;; flycheck-irony
-    ;; ;; https://github.com/ikirill/irony-eldoc/issues/3
-    ;; irony-eldoc
-
-    ;; ;; https://github.com/rust-lang/rust-mode/issues/87
-    ;; rust-mode
-
-    ;; https://github.com/dryman/toml-mode.el/issues/2
     toml-mode
-    ;; https://github.com/Sliim/helm-project-persist/issues/2
-
-    ;; IRC
-    ;; https://github.com/jorgenschaefer/circe/issues/202
-    ;; circe
-    ;; rcirc-groups
-    ;; ;; https://github.com/fgallina/rcirc-alertify/issues/1
-    ;; rcirc-alertify
-    ;; rcirc-notify
-
-    ;; ;; Org
-    ;; org org-gcal org-agenda-property org-journal orgbox org-caldav
 
     ;; Dired
     ;; https://github.com/Fuco1/dired-hacks/issues/33
     dired-filter dired-open dired-rainbow dired-subtree
     ;; https://github.com/vapniks/syslog-mode/issues/12
-
-    ;; ;; Sysadmin
-    ;; nginx-mode
-    ;; syslog-mode
-    ;; apache-mode
-
-    ;; ;; Gnus
-    ;; ;; https://github.com/vapniks/gnus-summary-ext/issues/3
-    ;; gnus-summary-ext
-    ;; bbdb
-    ;; ;; https://github.com/vapniks/bbdb-ext/issues/1
-    ;; bbdb-ext
-    ;; ;; https://gitlab.com/iankelling/bbdb-csv-import/issues/2
-    ;; bbdb-csv-import
-    ;; ;; https://github.com/DamienCassou/notmuch-labeler/issues/2
-    ;; notmuch-labeler
 
     ;; Misc
     ;; https://github.com/ruediger/weather-metno-el/issues/11

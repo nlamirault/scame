@@ -38,6 +38,12 @@
 ;;             (global-fci-mode 1)))
 
 
+(use-package editorconfig
+  :init (progn
+          (add-to-list 'auto-mode-alist '("\\.editorconfig" . conf-unix-mode))
+          (editorconfig-mode 1)))
+
+
 (use-package projectile
   ;; :defer scame-defer-package
   ;;:init (projectile-global-mode 1)
