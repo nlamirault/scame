@@ -366,6 +366,7 @@
   (add-to-list 'unstable-packages 'org-gcal t)
   (add-to-list 'unstable-packages 'org-agenda-property t)
   (add-to-list 'unstable-packages 'org-journal t)
+  (add-to-list 'unstable-packages 'org-bullets t)
   (add-to-list 'unstable-packages 'orgbox t)
   (add-to-list 'unstable-packages 'org-caldav t))
 
