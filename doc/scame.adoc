@@ -1,0 +1,407 @@
+= Scame
+Nicolas Lamirault
+v0.1.0
+:revnumber: 1.4.0
+:revdate: 02/24/2016
+:description: Scame documentation
+:doctype: book
+// Settings:
+:compat-mode:
+:experimental:
+:icons: font
+:listing-caption: Listing
+:sectnums:
+:toc:
+:toclevels: 3
+ifdef::backend-pdf[]
+// :title-logo-image: image:chapters/images/sample-title-logo.jpg[pdfwidth=4.25in,align=center]
+:title-logo-image: image:chapters/images/cover.svg[scaledwidth=30%,align=center]
+:pygments-style: tango
+//:source-highlighter: pygments
+:source-highlighter: coderay
+endif::[]
+
+
+
+include::license.adoc[]
+
+include::description.adoc[]
+
+<<<
+== Installation
+
+=== Release
+
+Download the last version from Github and install it into the Emacs directory :
+
+[source,bash]
+----
+$ wget https://github.com/nlamirault/scame/releases/download/1.0.0/scame-1.0.0.tar.gz
+$ tar zxvf scame-1.0.0.tar.gz
+$ cp -r scame-1.0.0/* ~/.emacs.d
+----
+
+=== From source
+
+You could clone the repository into the Emacs directory:
+
+[source,bash]
+----
+$ rm -r ~/.emacs.d && mkdir -p ~/.emacs.d/scame
+$ git clone https://github.com/nlamirault/scame
+$ cp -r scame/src/* ~/.emacs.d/
+$ cd ~/.emacs.d && cask install
+----
+
+=== Configuration
+
+You could enable or not some modules using *init.el* file :
+
+[source,elisp]
+----
+(custom-set-variables
+  '(scame-golang t)
+  '(scame-ruby nil)
+  '(scame-clojure nil)
+  '(scame-addons (quote (libmpdee dionysos)))
+  ...)
+----
+
+.Customization
+NOTE: You could use Emacs customization features (scame group)
+
+
+=== Vendoring
+
+If directory `$HOME/.emacs.d/vendor` exists, Scame will add to load-path
+each directory in this directory.
+
+
+===  Personalisation
+
+If file `$HOME/.config/scame/scame-user.el` exists, Scame load it.
+
+.scame-user.el
+[source,elisp]
+----
+;; User
+(setq user-full-name "Nicolas Lamirault")
+(setq user-mail-address "nicolas.lamirault@gmail.com")
+
+;; Calendars
+(setq google-ical-calendar
+      (setq google-ical-calendars
+      '(("https://www.google.com/calendar/ical/.../basic.ics" "Mine" "LightBlue")
+        ("https://www.google.com/calendar/ical/.../basic.ics" "Family" "Yellow")
+        ("https://www.google.com/calendar/ical/.../basic.ics" "Work" "Green")))
+
+;; UI
+(load-theme 'monokai t)
+
+;; Fonts
+(custom-set-faces
+ '(default ((t (:family "Bitstream Vera Sans Mono"
+                        :foundry "bitstream"
+                        :slant normal
+                        :weight normal
+                        :height 81
+                        :width normal)))))
+
+(provide 'scame-user)
+----
+
+== Keymap
+
+.Launch menu
+NOTE: Scame provides a main menu : *C-c s SPC*
+
+=== UI
+
+[grid="rows",format="csv"]
+[options="header",cols="^,<"]
+|===================================
+Keybinding,Description
+C-down,Scroll line down
+C-up,Scroll line up
+C-c,Select the window to the left of the current one
+C-c,Select the window to the right of the current one
+C-c,Select the window to the up of the current one
+C-c,Select the window to the down of the current one
+|===================================
+
+=== Completion
+
+It depends on *scame-completion-method*.
+
+.Ivy
+[grid="rows",format="csv"]
+[options="header",cols="^,<"]
+|====================================
+Keybinding,Description
+C-x c F,counsel-find-file
+C-x c f,counsel-describe-function
+C-x c b,ivy-switch-buffer
+C-x c y,counsel-info-lookup-symbol
+C-x c i,counsel-imenu
+C-x c r,ivy-recentf
+|====================================
+
+.Helm
+[grid="rows",format="csv"]
+[options="header",cols="^,<"]
+|====================================
+Keybinding,Description
+C-x c F,helm-find-files
+C-x c f,helm-for-files
+C-x c b,helm-buffers-list
+C-x c x,helm-M-x
+C-x c y,helm-show-kill-ring
+C-x c i,helm-imenu
+C-x c r,helm-recentf
+|====================================
+
+
+=== Development
+
+See https://github.com/bbatsov/projectile[Projectile]
+
+.Projectile
+[grid="rows",format="csv"]
+[options="header",cols="^,<"]
+|====================================
+Keybinding,Description
+C-c s P,launch menu for projectile
+C-c p SPC,ivy-switch-project or helm-projectile
+C-c p s w,projectile-persp-switch-project
+|====================================
+
+.Go
+[grid="rows",format="csv"]
+[options="header",cols="^,<"]
+|====================================
+Keybinding,Description
+C-x g r,go-remove-unused-imports
+C-x g i,go-goto-imports
+C-x g j,godef-jump
+C-x g d,show the go documentation for a given package
+C-x g t,launch current unit test
+C-x g f,launch tests in current file
+C-x g p,launch tests in all project
+C-x g x,display source code in tree style viewer
+C-c C-a,prompt you for an import path
+|====================================
+
+.Python
+[grid="rows",format="csv"]
+[options="header",cols="^,<"]
+|====================================
+Keybinding,Description
+C-x y t,launch current unit test
+C-x y f,launch tests in current file
+C-c M-d,generate Sphinx documentation for current function
+C-c ! C-c,check syntax in the current buffer
+|====================================
+
+.Php
+[grid="rows",format="csv"]
+[options="header",cols="^,<"]
+|====================================
+Keybinding,Description
+C-x p t,launch current unit test
+C-x p f,launch tests in current file
+C-x p p,launch tests in all project
+|====================================
+
+.Git
+[grid="rows",format="csv"]
+[options="header",cols="^,<"]
+|====================================
+Keybinding,Description
+C-c g s,magit-status
+C-c g d,magit-pull
+C-c g p,magit-push
+C-c g l,magit-log
+C-c g b,magit-branch-manager
+C-c g m,Turn on/off git-gutter+-mode globally
+C-c g <,git-gutter+-previous-hunk
+C-c g >,git-gutter+-next-hunk
+|====================================
+
+
+See https://github.com/nex3/perspective-el[Perspective]
+
+.Perspective
+[grid="rows",format="csv"]
+[options="header",cols="^,<"]
+|====================================
+Keybinding,Description
+C-x x s,persp-switch
+C-x x n,persp-next
+C-x x p,persp-prev
+C-x x c,persp-kill
+C-x x k,persp-remove-buffer
+C-x x a,persp-add-buffer
+C-x x i,persp-import
+C-x x r,persp-rename
+|====================================
+
+=== Misc
+
+.BBDB
+[grid="rows",format="csv"]
+[options="header",cols="^,<"]
+|====================================
+Keybinding,Description
+C-c d s,bbdb
+C-c d n,bbdb-search-name
+C-c d m,bbdb-search-mail
+|====================================
+
+.Org
+[grid="rows",format="csv"]
+[options="header",cols="^,<"]
+|====================================
+Keybinding,Description
+C-c o a,org-agenda
+C-c o b,org-iswitchb
+C-c o l,org-store-link
+|====================================
+
+.GPG
+[grid="rows",format="csv"]
+[options="header",cols="^,<"]
+|====================================
+Keybinding,Description
+C-c c f,Encrypt file
+C-c c F,Decrypt file
+C-c c r,Encrypt region
+C-c c R,Decrypt region
+C-c c l,List keys
+|====================================
+
+If you ever forget any of Scame's keybindings just do a : *C-c s C-h*
+
+You can change the default keymap prefix *C-c s* like this:
+
+.scame-user.el
+[source,elisp]
+----
+(setq scame-keymap-prefix (kbd "C-c C-s"))
+----
+
+
+== Mail
+
+Scame provides some Gnus configuration :
+
+=== Gmail
+
+Configure IMAP and SMTP informations in ~/.authinfo :
+
+.~/.authinfo
+[source,bash]
+----
+machine imap.gmail.com login your-name@gmail.com password your-password port 993
+machine smtp.gmail.com login your-name@gmail.com password your-password port 465
+----
+and make sure that no-one else can read it with :
+
+.~/.authinfo
+[source,bash]
+----
+chmod 600 ~/.authinfo
+----
+
+Then launch Scame main menu (*C-c s SPC*), and choose GMail (with *M*)
+
+=== Local
+
+This configuration use :
+
+- http://isync.sourceforge.net/[mbsync] to sync IMAP in maildir format
+- http://www.dovecot.org/[dovecot] for local IMAP server
+- http://msmtp.sourceforge.net/[msmtp] to send emails
+
+A sample file for *mbsync* :
+
+.~/.config/isync/exchange.isyncrc
+[source,bash]
+----
+IMAPAccount exchange
+Host exchange.xxx.xxxx.xx
+User xxxxxxxxx
+Pass xxxxxxxxx
+UseIMAPS yes
+CertificateFile ~/.cert/exchange.pem
+
+IMAPStore exchange-remote
+Account exchange
+
+MaildirStore exchange-local
+# The trailing "/" is important
+Path /opt/Exchange/
+Inbox /opt/Exchange/Inbox
+Flatten .
+
+Channel exchange
+Master :exchange-remote:
+Slave :exchange-local:
+# Or include everything
+Patterns INBOX *
+# Automatically create missing mailboxes, both locally and on the server
+Create Both
+Expunge Both
+# Save the synchronization state files in the relevant directory
+SyncState *
+----
+
+A sample file for *msmtp* :
+
+.~/.config/msmtp/msmtprc
+[source,bash]
+----
+##################
+defaults
+#tls on
+#tls_starttls on
+#tls_trust_file /home/user/etc/exchange.pem
+
+account ft
+host xxxxxxxxxxxxxx
+domain xxxxxxxxxxxx
+auth login
+user xxxxxxxxxx
+from foo.bar@xxxxxxxxxx.com
+password xxxxxxxxxxxxx
+port 25
+logfile /tmp/.msmtplog.txt
+##################
+----
+
+
+
+
+== Calendars
+
+To setup a Google calendars set the `google-ical-calendars` variable using
+private ics URI.
+
+.scame-user.el
+[source,elisp]
+----
+(setq google-ical-calendars
+      '(("https://www.google.com/calendar/ical/xxxxxxxxx/basic.ics"
+         "Mine"
+         "LightBlue")
+        ("https://www.google.com/calendar/ical/xxxxxxxxxx/basic.ics"
+         "Family"
+         "Yellow")
+        ("https://www.google.com/calendar/ical/xxxxxxxxx/basic.ics"
+         "Work"
+         "White")))
+----
+
+Then launch Scame main menu (*C-c s SPC*), and choose Google (with *g*)
+
+
+include::changelog.adoc[]
