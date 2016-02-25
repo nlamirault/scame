@@ -1,6 +1,6 @@
 ;;; test-helper.el --- Scame: Test helper
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -144,6 +144,7 @@
                  (scame-user-directory (concat scame-test/sandbox-path "/scame"))
                  (user-emacs-directory scame-test/sandbox-path)
                  )
+             (install-scame)
              (setup-scame scame-test/sandbox-path)
              (setup-scame-test)
              (load-library "scame/scame.el")
