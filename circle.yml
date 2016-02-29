@@ -4,19 +4,16 @@ machine:
 
 dependencies:
   pre:
-    - sudo mkdir /usr/local/evm
-    - sudo chmod -R 777 /usr/local/evm
-    - curl -fsSkL https://raw.github.com/rejeep/evm/master/go | bash
-    - chmod +x ~/.evm/bin/evm
-    - ~/.evm/bin/evm install emacs-24.4-bin
-    - ~/.evm/bin/evm install emacs-24.5-bin
     - sudo rm /etc/apt/sources.list.d/google-chrome.list
     - sudo add-apt-repository -y ppa:cassou/emacs
     - sudo add-apt-repository -y ppa:ubuntu-elisp/ppa
     - sudo apt-get update -qq
     - sudo apt-get install -qq emacs24-nox emacs-snapshot
     #- sudo update-alternatives --set emacs /usr/bin/emacs24-nox
-    - ~/.evm/bin/evm use emacs-24.5-bin
+    - export PATH="$HOME/.cask/bin:$HOME/.evm/bin:$PATH"
+    - git clone https://github.com/rejeep/evm.git $HOME/.evm
+    - evm config path /tmp
+    - evm install emacs-24.5 --use --skip
     - curl -fsSkL "https://raw.github.com/cask/cask/master/go" | python
 test:
   override:
