@@ -82,7 +82,7 @@
 ;;   (local-set-key "x" 'gmail-delete)
 ;;   (local-set-key "$" 'gmail-report-spam))
 
-(add-hook 'gnus-summary-mode-hook 'gmail-summary-keys)
+;; (add-hook 'gnus-summary-mode-hook 'gmail-summary-keys)
 
 (define-key gnus-summary-mode-map
   (kbd "B d")
