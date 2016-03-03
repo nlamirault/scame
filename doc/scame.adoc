@@ -1,8 +1,8 @@
 = Scame
 Nicolas Lamirault
 v0.1.0
-:revnumber: 1.4.0
-:revdate: 02/24/2016
+:revnumber: 1.3.0
+:revdate: 03/03/2016
 :description: Scame documentation
 :doctype: book
 // Settings:
@@ -21,7 +21,7 @@ ifdef::backend-pdf[]
 :source-highlighter: coderay
 endif::[]
 
-
+:ScameVersion: 1.3.0
 
 include::license.adoc[]
 
@@ -36,9 +36,10 @@ Download the last version from Github and install it into the Emacs directory :
 
 [source,bash]
 ----
-$ wget https://github.com/nlamirault/scame/releases/download/1.0.0/scame-1.0.0.tar.gz
-$ tar zxvf scame-1.0.0.tar.gz
-$ cp -r scame-1.0.0/* ~/.emacs.d
+$ wget https://github.com/nlamirault/scame/releases/download/x.y.z/scame-x.y.z.tar.gz
+$ tar zxvf scame-x.y.z.tar.gz
+$ rm -r ~/.emacs.d && mkdir -p ~/.emacs.d/scame
+$ cp -r scame-x.y.z/* ~/.emacs.d
 ----
 
 === From source
@@ -50,7 +51,6 @@ You could clone the repository into the Emacs directory:
 $ rm -r ~/.emacs.d && mkdir -p ~/.emacs.d/scame
 $ git clone https://github.com/nlamirault/scame
 $ cp -r scame/src/* ~/.emacs.d/
-$ cd ~/.emacs.d && cask install
 ----
 
 === Configuration
@@ -123,10 +123,10 @@ NOTE: Scame provides a main menu : *C-c s SPC*
 Keybinding,Description
 C-down,Scroll line down
 C-up,Scroll line up
-C-c,Select the window to the left of the current one
-C-c,Select the window to the right of the current one
-C-c,Select the window to the up of the current one
-C-c,Select the window to the down of the current one
+C-c left,Select the window to the left of the current one
+C-c right,Select the window to the right of the current one
+C-c up,Select the window to the up of the current one
+C-c down,Select the window to the down of the current one
 |===================================
 
 === Completion
@@ -180,6 +180,7 @@ C-c p s w,projectile-persp-switch-project
 [options="header",cols="^,<"]
 |====================================
 Keybinding,Description
+C-x g h,launch menu for Go development
 C-x g r,go-remove-unused-imports
 C-x g i,go-goto-imports
 C-x g j,godef-jump
@@ -196,6 +197,7 @@ C-c C-a,prompt you for an import path
 [options="header",cols="^,<"]
 |====================================
 Keybinding,Description
+C-x y h,launch menu for Python development
 C-x y t,launch current unit test
 C-x y f,launch tests in current file
 C-c M-d,generate Sphinx documentation for current function
@@ -402,6 +404,3 @@ private ics URI.
 ----
 
 Then launch Scame main menu (*C-c s SPC*), and choose Google (with *g*)
-
-
-include::changelog.adoc[]
