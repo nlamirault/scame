@@ -1,6 +1,6 @@
 ;;; scame-gnus-tools.el --- Some tools for Gnus
 
-;; Copyright (C) 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -21,6 +21,11 @@
 
 (use-package gnus-summary-ext)
 
+(require 'gnus-icalendar)
+(gnus-icalendar-setup)
+(setq gnus-icalendar-org-capture-file "~/Org/calendar.org")
+(setq gnus-icalendar-org-capture-headline '("Calendar"))
+(gnus-icalendar-org-setup)
 
 (provide 'scame-gnus-tools)
 ;;; scame-gnus-tools.el ends here
