@@ -291,6 +291,10 @@
   (add-to-list 'unstable-packages 'ansible-doc t)
   (add-to-list 'unstable-packages 'terraform-mode t))
 
+(when scame-iot
+  (add-to-list 'unstable-packages 'arduino-mode t)
+  (add-to-list 'unstable-packages 'company-arduino t))
+
 (when scame-social
   (add-to-list 'unstable-packages 'twittering-mode t)
   (add-to-list 'unstable-packages 'sx t))

@@ -197,6 +197,12 @@ It means use tools like: Vagrant, Puppet, ansible, ..."
   :group 'scame-dev
   :type 'boolean)
 
+(defcustom scame-iot t
+  "Set if you want IOT tools.
+It means: Arduino, RaspberryPI, ..."
+  :group 'scame-iot
+  :type 'boolean)
+
 (defcustom scame-sysadmin t
   "Set if you want the sysadmin environment.
 It means use tools like: nginx, apache, syslog, ..."
