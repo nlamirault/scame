@@ -41,7 +41,6 @@ docker run --rm -e GITHUB_TOKEN scame/release \
     --tag $VERSION \
     --name $VERSION \
     --description ""
-    # --pre-release \
 
 echo -e "\033[32;01m[scame] Upload archive \033[0m"
 PKG="scame-$VERSION.tar.gz"

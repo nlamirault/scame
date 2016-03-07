@@ -1,6 +1,6 @@
 ;;; 30_dev.el -- Commons configurations for development
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -18,11 +18,6 @@
 ;;; Commentary:
 
 ;;; Code:
-
-
-;; From : http://batsov.com/projectile/
-
-;;(require 'projectile)
 
 ;; change-log-mode is hard-coded to use TABs for indentation. Get around that with:
 (add-hook 'change-log-mode-hook
@@ -42,6 +37,13 @@
 ;;                 (fci-mode 1)))
 ;;             (global-fci-mode 1)))
 
+
+(use-package editorconfig
+  :init (progn
+          (add-to-list 'auto-mode-alist '("\\.editorconfig" . conf-unix-mode))
+          (editorconfig-mode 1)))
+
+
 (use-package projectile
   ;; :defer scame-defer-package
   ;;:init (projectile-global-mode 1)
@@ -49,29 +51,12 @@
             (projectile-global-mode t)
 	    (setq projectile-enable-caching t)
 	    (setq projectile-require-project-root nil)
-            (cond ((eql 'ido scame-completion-method)
-                   (setq projectile-completion-system 'ido))
-                  ((eql 'helm scame-completion-method)
-                   (setq projectile-completion-system 'helm))
-                  ((eql 'ivy scame-completion-method)
-                   (setq projectile-completion-system 'ivy))
-                  (t (setq projectile-completion-system 'ido)))
-	    ;;(setq projectile-switch-project-action 'projectile-dired)
+            ;;(setq projectile-switch-project-action 'projectile-dired)
 	    ;;(setq projectile-switch-project-action 'projectile-find-dir)
 	    (setq projectile-switch-project-action 'projectile-find-file)
 	    (add-to-list 'projectile-globally-ignored-files
 			 ".DS_Store"))
   :diminish projectile-mode)
-
-(use-package helm-projectile
-  ;; :defer scame-defer-package
-  :init (helm-projectile-on)
-  :config (setq projectile-completion-system 'helm)
-  :bind (("C-c p h" . helm-projectile)))
-
-(use-package persp-projectile
-  ;; :defer scame-defer-package
-  :bind (("C-c p s w" . projectile-persp-switch-project)))
 
 (use-package ibuffer-projectile
   ;; :defer scame-defer-package
@@ -84,11 +69,43 @@
                           (ibuffer-do-sort-by-major-mode))))))
 
 
-;; (condition-case e
-;;     (require 'es-windows)
-;;    (error (message "%s" e)))
+(defun ivy-switch-project ()
+  (interactive)
+  (ivy-read
+   "Switch to project: "
+   (if (projectile-project-p)
+       (cons (abbreviate-file-name (projectile-project-root))
+             (projectile-relevant-known-projects))
+     projectile-known-projects)
+   :action #'projectile-switch-project-by-name))
 
-;;(use-package project-explorer)
+(message "Scame completion : %s" scame-completion-method)
+
+(cond ((eql 'ido scame-completion-method)
+       (setq projectile-completion-system 'ido))
+
+      ((eql 'helm scame-completion-method)
+       (progn
+         (message "Projectile with Helm")
+         (use-package helm-projectile
+           :config (setq projectile-completion-system 'helm)
+           :bind (("C-c p SPC" . helm-projectile)))
+         (helm-projectile-on)
+         (setq projectile-completion-system 'helm)))
+
+      ((eql 'ivy scame-completion-method)
+       (progn
+         (message "Projectile with Ivy")
+         (setq projectile-completion-system 'ivy)
+         (global-set-key (kbd "C-c p SPC") 'ivy-switch-project)))
+
+
+      (t (setq projectile-completion-system 'ido)))
+
+
+(use-package persp-projectile
+  :bind (("C-c p n" . projectile-persp-switch-project)))
+
 
 (setq-default indent-tabs-mode nil)
 
@@ -109,12 +126,7 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
 (add-hook 'compilation-filter-hook 'scame-colorize-compilation-buffer)
 
 
-;; (use-package know-your-http-well)
-
-;; (use-package find-file-in-project)
-
 (use-package neotree
-  ;; :defer scame-defer-package
   :init (progn
           (defun neotree-project-dir ()
             "Open dirtree using the git root."
@@ -129,14 +141,19 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
   :bind (("C-x t t" . neotree-toggle)
          ("C-x t p" . neotree-project-dir)))
 
+
+;; Search
+
 (use-package ag
-  ;; :defer scame-defer-package
   :commands (ag ag-project)
   :config (setq ag-highlight-search t))
 
 (use-package pt
-  ;; :defer scame-defer-package
   :bind (("C-c p s p" . projectile-pt)))
+
+;; (use-package sift)
+;;   :bind (("C-c p s t" . projectile-pt)))
+
 
 
 (provide '30_dev)

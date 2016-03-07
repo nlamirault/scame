@@ -1,5 +1,13 @@
+# Emacs
+*~
+
+# Emacslisp
 .cask
 elpa
 .projectile
 *.elc
 test/sandbox/
+
+doc/scame.html
+doc/scame.pdf
+doc/scame.epub

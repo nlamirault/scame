@@ -1,4 +1,4 @@
-# Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+# Copyright (C) 2014-2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -41,23 +41,17 @@ OK_COLOR=\033[32;01m
 ERROR_COLOR=\033[31;01m
 WARN_COLOR=\033[33;01m
 
-all: help
+MAKE_COLOR=\033[33;01m%-20s\033[0m
 
+.DEFAULT_GOAL := help
+
+.PHONY: help
 help:
 	@echo -e "$(OK_COLOR)==== $(APP) [$(VERSION)] ====$(NO_COLOR)"
-	@echo -e "$(WARN_COLOR)- clean$(NO_COLOR)        : clean Scame installation$(NO_COLOR)"
-	@echo -e "$(WARN_COLOR)- install$(NO_COLOR)      : Install Scame dependencies$(NO_COLOR)"
-	@echo -e "$(WARN_COLOR)- test$(NO_COLOR)         : launch unit tests$(NO_COLOR)"
-	@echo -e "$(WARN_COLOR)- deps$(NO_COLOR)         : check dependencies$(NO_COLOR)"
-	@echo -e "$(WARN_COLOR)- release$(NO_COLOR)      : make a new release$(NO_COLOR)"
-
-	@echo -e "$(WARN_COLOR)- reset$(NO_COLOR)        : remote Scame dependencies for development$(NO_COLOR)"
-	@echo -e "$(WARN_COLOR)- docker-build$(NO_COLOR) : build the Docker image$(NO_COLOR)"
-	@echo -e "$(WARN_COLOR)- docker-clean$(NO_COLOR) : remove the Docker image$(NO_COLOR)"
-	@echo -e "$(WARN_COLOR)- docker-run$(NO_COLOR)   : launch Emacs using Scame docker image$(NO_COLOR)"
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "$(MAKE_COLOR) : %s\n", $$1, $$2}'
 
 .PHONY: clean
-clean:
+clean: ## clean Scame installation
 	@$(CASK) clean-elc
 	@rm -fr dist $(ARCHIVE).gz test/sandboxorg-clock-save.el test/sandbox
 
@@ -77,14 +71,14 @@ deps:
 	@$(CASK) --path src outdated
 
 .PHONY: install
-install: clean
+install: clean ## Install Scame dependencies
 	$(CASK) exec $(EMACS) -Q --batch -L . -L test \
 		--eval "(progn (require 'test-helper) (install-scame))"
 	$(CASK) exec $(EMACS) -Q --batch -L . -L test -L test/sandbox/scame \
 		--eval "(progn (require 'test-helper) (cleanup-load-path) (setup-scame-test) (require 'scame))"
 
 .PHONY: test
-test: elpa
+test: elpa ## Launch unit tests
 	@echo -e "$(OK_COLOR)[$(APP)] Launch unit tests$(NO_COLOR)"
 	@$(CASK) exec ert-runner -L test/sandbox
 

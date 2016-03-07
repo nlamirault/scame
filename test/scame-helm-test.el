@@ -22,43 +22,52 @@
 ;; FIXME
 (ert-deftest test-scame-helm ()
   :tags '(helm)
-  (with-test-sandbox
-   (require 'helm)
-   (should (eql 'scame-helm-map
-                (key-binding (kbd "C-x h"))))
-   (should (eql 'helm-find-files
-                (key-binding (kbd "C-x h F"))))
-   (should (eql 'helm-for-files
-                (key-binding (kbd "C-x h f"))))
-   (should (eql 'helm-M-x
-                (key-binding (kbd "C-x h x"))))
-   (should (eql 'helm-show-kill-ring
-                (key-binding (kbd "C-x h y"))))
-   (should (eql 'helm-buffers-list
-                (key-binding (kbd "C-x h b"))))))
+  (let ((scame-completion-method 'helm))
+    (scame--setup-search-framework scame-completion-method)
+    (with-test-sandbox
+     (require 'helm)
+     (should (eql 'scame-completion-map
+                  (key-binding (kbd "C-x c"))))
+     (should (eql 'helm-find-files
+                  (key-binding (kbd "C-x c F"))))
+     (should (eql 'helm-for-files
+                  (key-binding (kbd "C-x c f"))))
+     (should (eql 'helm-M-x
+                  (key-binding (kbd "C-x c x"))))
+     (should (eql 'helm-show-kill-ring
+                  (key-binding (kbd "C-x c y"))))
+     (should (eql 'helm-buffers-list
+                  (key-binding (kbd "C-x c b")))))))
 
 (ert-deftest test-scame-occur ()
   :tags '(helm)
-  (with-test-sandbox
-   (require 'helm)
-   (should (eql 'helm-occur (key-binding (kbd "C-x h o"))))))
+  (let ((scame-completion-method 'helm))
+    (scame--setup-search-framework scame-completion-method)
+    (with-test-sandbox
+     (require 'helm)
+     (should (eql 'helm-occur (key-binding (kbd "C-x c o")))))))
 
 (ert-deftest test-scame-swoop ()
   :tags '(helm)
-  (with-test-sandbox
-   (require 'helm)
-   (require 'helm-swoop)
-   (should (featurep 'helm-swoop))
-   (should (eql 'helm-swoop (key-binding (kbd "C-x h w"))))
-   (should (eql 'helm-multi-swoop (key-binding (kbd "C-x h W"))))))
+  (let ((scame-completion-method 'helm))
+    (scame--setup-search-framework scame-completion-method)
+    (with-test-sandbox
+     (require 'helm)
+     (require 'helm-swoop)
+     (should (featurep 'helm-swoop))
+     (should (eql 'helm-swoop (key-binding (kbd "C-x c w"))))
+     (should (eql 'helm-multi-swoop (key-binding (kbd "C-x c W")))))))
 
 (ert-deftest test-scame-helm-imenu ()
   :tags '(helm)
-  (with-test-sandbox
-   (require 'helm-imenu)
-   (should (featurep 'helm-imenu))
-   (should (eql 'helm-imenu
-                (key-binding (kbd "C-x h i"))))))
+  (let ((scame-completion-method 'helm))
+    (scame--setup-search-framework scame-completion-method)
+    (with-test-sandbox
+     (require 'helm)
+     (require 'helm-imenu)
+     (should (featurep 'helm-imenu))
+     (should (eql 'helm-imenu
+                  (key-binding (kbd "C-x c i")))))))
 
 (provide 'scame-helm-test)
 ;;; scame-helm-test.el ends here

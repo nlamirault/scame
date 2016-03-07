@@ -1,6 +1,6 @@
 ;;; test-helper.el --- Scame: Test helper
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -136,32 +136,6 @@
     (scame--with-output
      (require 'scame path))))
 
-
-;; (defmacro with-test-sandbox (&rest body)
-;;   "Evaluate BODY in an empty sandbox directory."
-;;   `(unwind-protect
-;;        (condition-case nil ;ex
-;;            (let ((default-directory scame-test/sandbox-path)
-;;                  (scame-user-directory (concat scame-test/sandbox-path "/scame"))
-;;                  (user-emacs-directory scame-test/sandbox-path)
-;;                  ;;(package-user-dir (f-join scame-test/sandbox-path "elpa")))
-;;                  )
-;;              ;; (unless (f-dir? scame-test/sandbox-path)
-;;              ;;   (f-mkdir scame-test/sandbox-path))
-;;              (cleanup-load-path)
-;;              (install-scame)
-;;              (setup-scame scame-test/sandbox-path)
-;;              ;; (message "Load path : %s" load-path)
-;;              (setup-scame-test)
-;;              (load-library "scame/scame.el")
-;;              ;;(should (featurep 'scame-global-mode))
-;;              (message (ansi-yellow "[Scame] Execute body"))
-;;              ,@body)
-;;          ;; (f-delete scame-test/sandbox-path :force)))
-;;          )))
-;;          ;; (error
-;;          ;;  (message (ansi-red "[Scame] Error during unit tests : %s" ex))))))
-
 (defmacro with-test-sandbox (&rest body)
   "Evaluate BODY in an empty sandbox directory."
   `(unwind-protect
@@ -170,6 +144,7 @@
                  (scame-user-directory (concat scame-test/sandbox-path "/scame"))
                  (user-emacs-directory scame-test/sandbox-path)
                  )
+             (install-scame)
              (setup-scame scame-test/sandbox-path)
              (setup-scame-test)
              (load-library "scame/scame.el")

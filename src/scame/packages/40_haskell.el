@@ -19,25 +19,22 @@
 
 ;;; Code:
 
+;; (global-unset-key (kbd "C-x h"))
+;; (define-prefix-command 'scame-hashell-map)
+;; (global-set-key (kbd "C-x h") 'scame-haskell-map)
+
 (when scame-haskell
 
   (use-package haskell-mode
-    ;; :defer scame-defer-package
     :init (progn
             (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-            (add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
-            (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-            (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-            ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan))
-            )
-    ;; :bind (;;("C-," . haskell-move-nested-left)
-    ;;        ;;("C-." . haskell-move-nested-right)
-    ;;        ;; ("M-o" . editutil-edit-next-line-same-column)
-    ;;        ;;("TAB" . haskell-simple-indent)
-    ;;        ;;("<backtab>" . haskell-simple-indent-backtab)
-    ;;        ;;("C-<return>" . haskell-simple-indent-newline-indent)))
-    ;;        ))
-    )
+            (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode))
+    :config (add-hook 'haskell-mode-hook
+                      (lambda ()
+                        (local-set-key (kbd "C-x h t") 'haskell-process-do-type)
+                        (local-set-key (kbd "C-x h i") 'haskell-process-do-info)
+                        (local-set-key (kbd "C-x h c") 'haskell-process-cabal)
+                        (local-set-key (kbd "C-x h b") 'haskell-process-cabal-build))))
 
   )
 

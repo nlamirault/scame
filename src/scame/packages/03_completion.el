@@ -1,6 +1,6 @@
 ;;; 03_completion.el --- Completion system
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -29,6 +29,10 @@
   ;; :defer scame-defer-package
   :init (add-hook 'after-init-hook 'global-company-mode)
   :diminish company-mode)
+
+(use-package company-shell
+  :config (progn
+            (add-to-list 'company-backends 'company-shell)))
 
 
 (provide '03_completion)

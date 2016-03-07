@@ -1,6 +1,6 @@
-;;; scame-gnus-tools.el --- Some tools for Gnus
+;; 51_arduino.el --- Arduino configuration
 
-;; Copyright (C) 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,13 +19,15 @@
 
 ;;; Code:
 
-(use-package gnus-summary-ext)
+(when scame-iot
 
-(require 'gnus-icalendar)
-(gnus-icalendar-setup)
-(setq gnus-icalendar-org-capture-file "~/Org/calendar.org")
-(setq gnus-icalendar-org-capture-headline '("Calendar"))
-(gnus-icalendar-org-setup)
+  (use-package arduino-mode
+    :mode (("\\.ino\\'" . arduino-mode)))
 
-(provide 'scame-gnus-tools)
-;;; scame-gnus-tools.el ends here
+  ;; Test it
+  ;; (use-package company-arduino)
+
+  )
+
+(provide '51_arduino)
+;;; 51_arduino.el ends here

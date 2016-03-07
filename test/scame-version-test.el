@@ -1,6 +1,6 @@
 ;;; scame-version-test.el --- Tests for Scame version information
 
-;; Copyright (C) 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software; you can redistribute it and/or
 ;; modify it under the terms of the GNU General Public License
@@ -23,7 +23,7 @@
 
 (require 'pkg-info)
 
-(setq current-version "1.3.0")
+(setq current-version "1.4.0")
 
 
 (ert-deftest test-scame-version ()

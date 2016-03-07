@@ -1,6 +1,6 @@
 ;;; 91_orga.el --- Organisation
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -300,6 +300,49 @@
               ;; GPG key to use for encryption
               ;; Either the Key ID or set to nil to use symmetric encryption.
               (setq org-crypt-key nil)))
+
+
+
+  ;; --- org-bullets-bullet-list
+
+  ;; hexagrams
+  ;; “✡” “⎈” “✽” “✲” “✱” “✻” “✼” “✽” “✾” “✿” “❀” “❁” “❂” “❃” “❄” “❅” “❆” “❇”
+
+  ;; circles
+  ;; “○” “☉” “◎” “◉” “○” “◌” “◎” “●” “◦” “◯” “⚪” “⚫” “⚬” “❍” “￮” “⊙” “⊚” “⊛” “∙” “∘”
+
+  ;; special circles
+  ;; “◐” “◑” “◒” “◓” “◴” “◵” “◶” “◷” “⚆” “⚇” “⚈” “⚉” “♁” “⊖” “⊗” “⊘”
+
+  ;; crosses
+  ;; “✙” “♱” “♰” “☥” “✞” “✟” “✝” “†” “✠” “✚” “✜” “✛” “✢” “✣” “✤” “✥”
+
+  ;; poker sybmols
+  ;; “♠” “♣” “♥” “♦” “♤” “♧” “♡” “♢”
+
+  ;; yinyang
+  ;; “☯” “☰” “☱” “☲” “☳” “☴” “☵” “☶” “☷”
+
+  ;; special symbols
+  ;; “☀” “♼” “☼” “☾” “☽” “☣” “§” “¶” “‡” “※” “✕” “△” “◇” “▶” “◀” “◈”
+
+  ;; --- org-ellipsis
+
+  ;; “↝” “⇉” “⇝” “⇢” “⇨” “⇰” “➔” “➙” “➛” “➜” “➝” “➞”
+  ;; “➟” “➠” “➡” “➥” “➦” “➧” “➨”
+  ;; “➩” “➪” “➮” “➯” “➱” “➲”
+  ;; “➳” “➵” “➸” “➺” “➻” “➼” “➽”
+  ;; “➢” “➣” “➤” “≪”, “≫”, “«”, “»”
+  ;; “↞” “↠” “↟” “↡” “↺” “↻”
+  ;; “⚡”
+  ;; …, ▼, ↴, , ∞, ⬎, ⤷, ⤵
+
+
+  (use-package org-bullets
+    :init (progn
+            (setq org-ellipsis "⚡⚡⚡")
+            (setq org-bullets-bullet-list '("☀" "♼" "☼" "☾" "☽" "☣" "§" "¶" "‡" "※" "✕" "△" "◇" "▶" "◀" "◈"))
+            ))
 
   )
 

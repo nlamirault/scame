@@ -30,9 +30,10 @@
              (f-mkdir opam-dir))
            (with-current-file
             "var/hello.ml"
-            (should (featurep 'tuareg)))
-           ;;(f-delete opam-dir))
-           )
+            (should (featurep 'tuareg))
+            (should (featurep 'merlin))
+            (should (featurep 'flycheck-ocaml))
+           ))
        (message (ansi-yellow "[Scame] OCaml: OPAM not installed. No unit tests"))))))
 
 (provide 'scame-ocaml-test)

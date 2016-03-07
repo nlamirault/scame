@@ -1,6 +1,6 @@
 ;;; 35_ocaml.el --- OCaml configuration
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -21,11 +21,39 @@
 
 (when scame-ocaml
 
+  (let ((opam-configuration
+         (shell-command-to-string "opam config var share 2> /dev/null")))
+    (when (> (length opam-configuration) 0)
+      (setq opam-share
+            (substring opam-configuration 0 -1))
+      (add-to-list 'load-path (concat opam-share "/emacs/site-lisp"))))
+
   (use-package tuareg
-    ;; :defer scame-defer-package
     :mode (("\\.ml\\w?" . tuareg-mode)
            ("\\.topml\\'" . taureg-mode)
            ("\\.fs[ix]?" . tuareg-mode)))
+
+  (use-package merlin
+    :config (progn
+              (add-hook 'tuareg-mode-hook 'merlin-mode t)
+              (add-hook 'caml-mode-hook 'merlin-mode t)
+              ;; (setq merlin-use-auto-complete-mode 'easy)
+              (with-eval-after-load 'company
+                (add-to-list 'company-backends 'merlin-company-backend))
+              (add-hook 'merlin-mode-hook 'company-mode)
+              ;; Use opam switch to lookup ocamlmerlin binary
+              (setq merlin-command 'opam)
+              ))
+
+  (use-package flycheck-ocaml
+    :init (with-eval-after-load 'merlin (flycheck-ocaml-setup)))
+
+  (use-package utop
+    :if (executable-find "utop"))
+
+  (use-package utop-minor-mode
+    :if (executable-find "utop")
+    :init (add-hook 'tuareg-mode-hook 'utop-minor-mode))
 
   )
 

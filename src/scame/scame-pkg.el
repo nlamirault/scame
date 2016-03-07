@@ -1,6 +1,6 @@
 ;; scame-pkg.el --- Scame Packages installation
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -38,10 +38,10 @@
         ))
 
 (package-initialize)
+(package-refresh-contents)
 
 ;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
-  (package-refresh-contents)
   (package-install 'use-package))
 
 ;; Install dependencies
@@ -56,6 +56,10 @@
 
 ;; Scame packages
 
+(defvar gnu-packages
+  '(
+    seq
+    ))
 
 (defvar stable-packages '())
 
@@ -68,11 +72,18 @@
 
     ;; Search
     helm
+    counsel
+    swiper
+
+    ack
     helm-ack
-    ag helm-ag
-    pt helm-pt
-    swoop helm-swoop
-    swiper swiper-helm
+    ag
+    helm-ag
+    pt
+    helm-pt
+    sift
+    swoop
+    helm-swoop
 
     paradox
 
@@ -87,74 +98,23 @@
 
     ;; Completion
     company
+    company-shell
     auto-complete
 
     ;; Projects
-    projectile helm-projectile persp-projectile ibuffer-projectile
+    editorconfig
+    projectile
+    helm-projectile
+    persp-projectile
+    ibuffer-projectile
     helm-project-persist
 
-    ;; ;; https://github.com/dougm/go-projectile/issues/2
-    ;; go-projectile
-    ;; ;; https://github.com/golang/lint/issues/111
-    ;; golint
-
-    ;; ;; https://github.com/proofit404/anaconda-mode/issues/98
-    ;; anaconda-mode
-    ;; ;;https://github.com/proofit404/company-anaconda/issues/3
-    ;; company-anaconda
-    ;; ;; https://github.com/tkf/emacs-jedi-direx/issues/17
-    ;; jedi-direx
-
-    ;; rhtml-mode company-inf-ruby
-
-    ;; erlang
-
-    ;; ghci-completion
-
-    ;; ;; https://github.com/Sarcasm/flycheck-irony/issues/4
-    ;; irony
-    ;; flycheck-irony
-    ;; ;; https://github.com/ikirill/irony-eldoc/issues/3
-    ;; irony-eldoc
-
-    ;; ;; https://github.com/rust-lang/rust-mode/issues/87
-    ;; rust-mode
-
-    ;; https://github.com/dryman/toml-mode.el/issues/2
     toml-mode
-    ;; https://github.com/Sliim/helm-project-persist/issues/2
-
-    ;; IRC
-    ;; https://github.com/jorgenschaefer/circe/issues/202
-    ;; circe
-    ;; rcirc-groups
-    ;; ;; https://github.com/fgallina/rcirc-alertify/issues/1
-    ;; rcirc-alertify
-    ;; rcirc-notify
-
-    ;; ;; Org
-    ;; org org-gcal org-agenda-property org-journal orgbox org-caldav
 
     ;; Dired
     ;; https://github.com/Fuco1/dired-hacks/issues/33
     dired-filter dired-open dired-rainbow dired-subtree
     ;; https://github.com/vapniks/syslog-mode/issues/12
-
-    ;; ;; Sysadmin
-    ;; nginx-mode
-    ;; syslog-mode
-    ;; apache-mode
-
-    ;; ;; Gnus
-    ;; ;; https://github.com/vapniks/gnus-summary-ext/issues/3
-    ;; gnus-summary-ext
-    ;; bbdb
-    ;; ;; https://github.com/vapniks/bbdb-ext/issues/1
-    ;; bbdb-ext
-    ;; ;; https://gitlab.com/iankelling/bbdb-csv-import/issues/2
-    ;; bbdb-csv-import
-    ;; ;; https://github.com/DamienCassou/notmuch-labeler/issues/2
-    ;; notmuch-labeler
 
     ;; Misc
     ;; https://github.com/ruediger/weather-metno-el/issues/11
@@ -170,10 +130,13 @@
     ;; libmpdee
 
     ;; UI
-    rich-minority powerline
+    rich-minority
+    powerline
     ace-window
     smart-mode-line smart-mode-line-powerline-theme
     spaceline
+    mode-icons
+    ;;beacon
 
     ;; Keys
     hydra which-key
@@ -212,8 +175,8 @@
 
 ;; Packages environments
 
+
 (when scame-golang
-  (add-to-list 'unstable-packages 'go-mode t)
   (add-to-list 'unstable-packages 'go-mode t)
   (add-to-list 'unstable-packages 'company-go t)
   (add-to-list 'unstable-packages 'go-eldoc t)
@@ -223,6 +186,8 @@
   ;; https://github.com/dougm/go-projectile/issues/2
   (add-to-list 'unstable-packages 'go-projectile t)
   ;; https://github.com/golang/lint/issues/111
+  (add-to-list 'unstable-packages 'go-rename t)
+  (add-to-list 'unstable-packages 'go-dlv t)
   (add-to-list 'unstable-packages 'golint t))
 
 (when scame-commonlisp
@@ -273,7 +238,10 @@
   (add-to-list 'unstable-packages 'ghci-completion t))
 
 (when scame-ocaml
-  (add-to-list 'unstable-packages 'tuareg t) t)
+  (add-to-list 'unstable-packages 'tuareg t)
+  (add-to-list 'unstable-packages 'merlin t)
+  (add-to-list 'unstable-packages 'utop t)
+  (add-to-list 'unstable-packages 'flycheck-ocaml t))
 
 (when scame-php
   (add-to-list 'unstable-packages 'php-mode t)
@@ -310,6 +278,7 @@
   ;; https://github.com/rust-lang/rust-mode/issues/87
   (add-to-list 'unstable-packages 'rust-mode t)
   (add-to-list 'unstable-packages 'flycheck-rust t)
+  (add-to-list 'unstable-packages 'rustfmt t)
   (add-to-list 'unstable-packages 'racer t)
   (add-to-list 'unstable-packages 'company-racer t)
   (add-to-list 'unstable-packages 'cargo t))
@@ -321,6 +290,10 @@
   (add-to-list 'unstable-packages 'ansible t)
   (add-to-list 'unstable-packages 'ansible-doc t)
   (add-to-list 'unstable-packages 'terraform-mode t))
+
+(when scame-iot
+  (add-to-list 'unstable-packages 'arduino-mode t)
+  (add-to-list 'unstable-packages 'company-arduino t))
 
 (when scame-social
   (add-to-list 'unstable-packages 'twittering-mode t)
@@ -342,6 +315,7 @@
   (add-to-list 'unstable-packages 'org-gcal t)
   (add-to-list 'unstable-packages 'org-agenda-property t)
   (add-to-list 'unstable-packages 'org-journal t)
+  (add-to-list 'unstable-packages 'org-bullets t)
   (add-to-list 'unstable-packages 'orgbox t)
   (add-to-list 'unstable-packages 'org-caldav t))
 
@@ -379,6 +353,9 @@
       (package-install pkg))
     (redisplay)))
 
+(dolist (pkg gnu-packages)
+  (add-to-list 'package-pinned-packages
+               (cons pkg "gnu")))
 
 (dolist (pkg stable-packages)
  ;;  (message "Package: %s" pkg)
@@ -399,6 +376,7 @@
 (scame--msg-buffer "--> Packages installation ...\n"
                    'font-lock-string-face)
 (redisplay)
+(scame--install-packages gnu-packages)
 (scame--install-packages stable-packages)
 (scame--install-packages unstable-packages)
 

@@ -1,5 +1,19 @@
 # Scame ChangeLog
 
+## Version 1.4.0
+
+- Setup Arduino development
+- Update documentation
+- Remove *rustfmt* package (now in *rust-mode*)
+- Add *spaceline* for modeline
+- Improve UI using *mode-icons*
+- Update OCmaml configuration and dependencies
+- ``FIX`` CircleCI configuration
+- Update Gnus configuration for GMail
+- Add *hydra* for golang and python
+- ``FIX`` Haskell configuration
+- ``FIX`` projectile completion backends
+
 ## Version 1.3.0 (10/14/2015)
 
 - Setup CircleCI continuous integration

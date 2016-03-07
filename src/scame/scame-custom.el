@@ -1,6 +1,6 @@
 ;; scame-custom.el --- Scame customization
 
-;; Copyright (c) 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014-2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -195,6 +195,12 @@
   "Set if you want the Cloud environment.
 It means use tools like: Vagrant, Puppet, ansible, ..."
   :group 'scame-dev
+  :type 'boolean)
+
+(defcustom scame-iot t
+  "Set if you want IOT tools.
+It means: Arduino, RaspberryPI, ..."
+  :group 'scame-iot
   :type 'boolean)
 
 (defcustom scame-sysadmin t
