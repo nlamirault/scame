@@ -47,6 +47,7 @@ MAKE_COLOR=\033[33;01m%-20s\033[0m
 
 .PHONY: help
 help:
+	@echo -e "$(OK_COLOR)==== $(APP) [$(VERSION)] ====$(NO_COLOR)"
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "$(MAKE_COLOR) : %s\n", $$1, $$2}'
 
 .PHONY: clean
