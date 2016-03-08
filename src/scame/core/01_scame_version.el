@@ -1,6 +1,6 @@
 ;; 01_scame_version.el --- Scame versioning
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@
 
 ;;; Code:
 
-(defvar scame-version-number "1.4.0"
+(defvar scame-version-number "1.5.0"
   "Release version of Scame.")
 
 (provide '01_scame_version)
