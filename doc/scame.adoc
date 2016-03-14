@@ -15,7 +15,7 @@ v0.1.0
 :toclevels: 3
 ifdef::backend-pdf[]
 // :title-logo-image: image:chapters/images/sample-title-logo.jpg[pdfwidth=4.25in,align=center]
-:title-logo-image: image:chapters/images/cover.svg[scaledwidth=30%,align=center]
+:title-logo-image: image:scame.svg[scaledwidth=30%,align=center]
 :pygments-style: tango
 //:source-highlighter: pygments
 :source-highlighter: coderay
