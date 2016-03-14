@@ -27,6 +27,15 @@
   ;; Test it
   ;; (use-package company-arduino)
 
+  (use-package platformio-mode
+    :init (add-hook 'c++-mode-hook 'platformio-mode)
+    :mode (("\\.ino\\'" . arduino-mode))
+    :config (platformio-setup-compile-buffer))
+
+  (use-package company-arduino
+    :init (require #'company-arduino)
+    :config (add-to-list 'company-backends 'company-arduino))
+
   )
 
 (provide '51_arduino)

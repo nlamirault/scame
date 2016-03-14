@@ -214,6 +214,19 @@ C-x p f,launch tests in current file
 C-x p p,launch tests in all project
 |====================================
 
+.Arduino
+[grid="rows",format="csv"]
+[options="header",cols="^,<"]
+|====================================
+Keybinding,Description
+C-c i b,Build project without auto-uploading
+C-c i c,Clean compiled objects
+C-c i u,Build and upload (if no errors)
+C-c i p,Build and upload using external programmer
+C-c i s,Upload files to file system SPIFFS
+C-c i d,Update installed platforms and libraries
+|====================================
+
 .Git
 [grid="rows",format="csv"]
 [options="header",cols="^,<"]

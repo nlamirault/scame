@@ -292,7 +292,9 @@
   (add-to-list 'unstable-packages 'terraform-mode t))
 
 (when scame-iot
+  ;; Enable scrolling and colours in the compile buffer.
   (add-to-list 'unstable-packages 'arduino-mode t)
+  (add-to-list 'unstable-packages 'platformio-mode t)
   (add-to-list 'unstable-packages 'company-arduino t))
 
 (when scame-social
