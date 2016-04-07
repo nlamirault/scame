@@ -1,6 +1,6 @@
 ;;; 46_javascript.el --- javascript configuration
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -21,9 +21,11 @@
 
 (when scame-javascript
 
+  (setq js-indent-level 2)
+
   (use-package js3-mode
     ;; :defer scame-defer-package
-    :init (setq js3-indent-level 4
+    :init (setq js3-indent-level 2
                 js3-mode-dev-mode-p t
                 js3-auto-indent-p t
                 js3-enter-indents-newline t
