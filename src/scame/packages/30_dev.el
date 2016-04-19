@@ -97,8 +97,10 @@
        (progn
          (message "Projectile with Ivy")
          (setq projectile-completion-system 'ivy)
-         (global-set-key (kbd "C-c p SPC") 'ivy-switch-project)))
-
+         ;; (global-set-key (kbd "C-c p SPC") 'ivy-switch-project)))
+         (use-package counsel-projectile
+           :bind (:map projectile-command-map
+                       ("p" . counsel-projectile)))))
 
       (t (setq projectile-completion-system 'ido)))
 

@@ -1,5 +1,9 @@
 # Scame ChangeLog
 
+## Version 1.5.0
+
+- Add *counsel-projectile*
+
 ## Version 1.4.0
 
 - Setup Arduino development

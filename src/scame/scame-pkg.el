@@ -108,6 +108,7 @@
     persp-projectile
     ibuffer-projectile
     helm-project-persist
+    counsel-projectile
 
     toml-mode
 
