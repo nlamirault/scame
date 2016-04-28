@@ -73,7 +73,27 @@
   :bind (("C-c g t" . git-timemachine)))
 
 
-(setq git-commit-summary-max-length 80)
+;; http://www.lunaryorn.com/2016/04/28/fullscreen-magit-status.html
+
+(defun lunaryorn-display-buffer-fullframe (buffer alist)
+  "Display BUFFER in fullscreen.
+
+ALIST is a `display-buffer' ALIST.
+
+Return the new window for BUFFER."
+  (let ((window
+         (or (display-buffer-use-some-window buffer alist)
+             (display-buffer-pop-up-window buffer alist))))
+    (when window
+      (delete-other-windows window))
+    window))
+
+(add-to-list 'display-buffer-alist
+             `(,(rx "*magit: ")
+               (lunaryorn-display-buffer-fullframe)
+               (reusable-frames . nil)))
+
+
 
 (provide '19_vc)
 ;;; 19_vc.el ends here
