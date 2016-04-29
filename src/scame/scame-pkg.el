@@ -90,6 +90,8 @@
     alert
     benchmark-init
 
+    cask-mode
+
     flycheck
     flycheck-cask
     flycheck-color-mode-line
@@ -99,6 +101,7 @@
     ;; Completion
     company
     company-shell
+    company-emoji
     auto-complete
 
     ;; Projects

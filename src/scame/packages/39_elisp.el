@@ -1,6 +1,6 @@
 ;;; 39_elisp.el --- Emacs Lisp configuration
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -28,9 +28,11 @@
               :init (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
               :diminish eldoc-mode))
     :mode (("\\.el$" . emacs-lisp-mode)
-           ("gnus" . emacs-lisp-mode)
-           ("Cask" . emacs-lisp-mode))
+           ("gnus" . emacs-lisp-mode))
     :diminish emacs-lisp-mode)
+
+  (use-package scame-mode
+    :mode (("Cask" . emacs-lisp-mode)))
 
   (use-package ielm
     ;; :defer scame-defer-package
