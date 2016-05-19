@@ -1,6 +1,6 @@
 ;; 06_scame_keys.el --- Scame customization for Emacs
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@
         "
    ^Calendars^          ^Search^               ^Launcher^        ^Email^            ^Help^
   ╭────────────────────────────────────────────────────────────────────────────────────────────────────
-   _g_: google          _G_: Google            _a_: calc         _O_: local         _v_: version
+   _g_: google          _G_: Google            _a_: application  _O_: local         _v_: version
    _w_: work            _H_: Github            _m_: man          _M_: Gmail         _z_: customization
    _d_: diary           _T_: Twitter           _p_: packages     _E_: Exchange      ^ ^
    _o_: org             _L_: Launchpad         _h_: proced       ^ ^                ^ ^
@@ -49,7 +49,7 @@
         ("W" engine/search-wikipedia nil)
         ("R" engine/search-rfcs nil)
 
-        ("a" calc nil)
+        ("a" counsel-linux-app nil)
         ("m" man nil)
         ("p" paradox-list-packages nil)
         ("h" proced nil)
