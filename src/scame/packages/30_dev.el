@@ -157,6 +157,13 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
 ;;   :bind (("C-c p s t" . projectile-pt)))
 
 
+(use-package dumb-jump
+  :init (progn
+          (add-hook 'faust-mode-hook 'dumb-jump-mode))
+  :bind (("C-x j g" . dumb-jump-go)
+         ("C-x j p" . dumb-jump-back)
+         ("C-x j q" . dumb-jump-quick-look)))
+
 
 (provide '30_dev)
 ;;; 30_dev.el ends here

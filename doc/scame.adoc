@@ -21,7 +21,7 @@ ifdef::backend-pdf[]
 :source-highlighter: coderay
 endif::[]
 
-:ScameVersion: 1.3.0
+:ScameVersion: 1.4.0
 
 include::license.adoc[]
 
@@ -258,6 +258,16 @@ C-x x k,persp-remove-buffer
 C-x x a,persp-add-buffer
 C-x x i,persp-import
 C-x x r,persp-rename
+|====================================
+
+.Commons modes
+[grid="rows",format="csv"]
+[options="header",cols="^,<"]
+|====================================
+Keybinding,Description
+C-x j g,dumb-jump-go
+C-x j p,dumb-jump-back
+C-x j q,dumb-jump-quick-look
 |====================================
 
 === Misc
