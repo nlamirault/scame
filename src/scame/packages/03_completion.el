@@ -34,6 +34,8 @@
   :config (progn
             (add-to-list 'company-backends 'company-shell)))
 
+(use-package company-emoji
+  :config (add-to-list 'company-backends 'company-emoji))
 
 (provide '03_completion)
 ;;; 03_completion.el ends here
