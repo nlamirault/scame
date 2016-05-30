@@ -84,6 +84,7 @@
     sift
     swoop
     helm-swoop
+    dumb-jump
 
     paradox
 
