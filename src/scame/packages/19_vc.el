@@ -93,6 +93,10 @@ Return the new window for BUFFER."
                (lunaryorn-display-buffer-fullframe)
                (reusable-frames . nil)))
 
+(add-to-list 'display-buffer-alist
+             `(,(rx "*magit-log: ")
+               (lunaryorn-display-buffer-fullframe)
+               (reusable-frames . nil)))
 
 
 (provide '19_vc)
