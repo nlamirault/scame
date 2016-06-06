@@ -97,6 +97,7 @@
     flycheck-cask
     flycheck-color-mode-line
     flycheck-package
+    flyspell-correct
     helm-flycheck
 
     ;; Completion
