@@ -19,17 +19,6 @@
 
 ;;; Code:
 
-(setq-default fill-column 120)
-
-(setq visible-bell t)
-
-(global-linum-mode 1)
-;;(setq column-number-mode t)
-; show the current line and column numbers in the stats bar as well
-(line-number-mode t)
-(column-number-mode t)
-(blink-cursor-mode nil)
-
 (when (display-graphic-p)
 
   (menu-bar-mode -1)
@@ -44,18 +33,6 @@
     :config (mode-icons-mode))
 
   )
-
-;; Window moves
-(global-set-key (kbd "C-c <left>")  'windmove-left)
-(global-set-key (kbd "C-c <right>") 'windmove-right)
-(global-set-key (kbd "C-c <up>")    'windmove-up)
-(global-set-key (kbd "C-c <down>")  'windmove-down)
-
-;; Window resize
-(global-set-key (kbd "M-<down>") 'enlarge-window)
-(global-set-key (kbd "M-<up>") 'shrink-window)
-(global-set-key (kbd "M-<left>") 'enlarge-window-horizontally)
-(global-set-key (kbd "M-<right>") 'shrink-window-horizontally)
 
 (use-package ace-window
   :config (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
