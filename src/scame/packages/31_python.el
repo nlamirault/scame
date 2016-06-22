@@ -66,7 +66,6 @@
   ;; ((python-mode . ((pyvenv-workon . "xxxxx")))
 
   (use-package tox
-    ;; :defer scame-defer-package
     :config (add-hook 'python-mode-hook
                       (lambda ()
                         (local-set-key (kbd "C-x y t") 'tox-current-test)
