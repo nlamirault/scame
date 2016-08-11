@@ -161,7 +161,7 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
   :init (progn
           (add-hook 'faust-mode-hook 'dumb-jump-mode))
   :bind (("C-x j g" . dumb-jump-go)
-         ("C-x j p" . dumb-jump-back)
+         ("C-x j b" . dumb-jump-back)
          ("C-x j q" . dumb-jump-quick-look)))
 
 
