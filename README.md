@@ -16,7 +16,7 @@ with [GNU Emacs][] 23 and below, or with other flavors of Emacs (e.g. XEmacs).
 
 The current version has been tested on Linux and Mac OS X.
 
-You could find documentation [here](http://nlamirault.github.io/scame/scame.html)
+You could find documentation: [HTML](http://nlamirault.github.io/scame/scame.html), [PDF](http://nlamirault.github.io/scame/scame.pdf)
 
 
 ## Support
