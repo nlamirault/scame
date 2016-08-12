@@ -274,13 +274,14 @@ C-x j q,dumb-jump-quick-look
 .Origami
 [grid="rows",format="csv"]
 [options="header",cols="^,<"]
-|====================================
+|===================================================
 Keybinding,Descriptioni
 C-x o +,origami-open-node
 C-x o *,origami-open-all-nodes
 C-x o -,origami-close-node
 C-x o =,origami-close-all-nodes
 C-x o /,origami-recursively-toggle-node
+|===================================================
 
 === Misc
 
