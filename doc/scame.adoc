@@ -175,17 +175,6 @@ C-c p SPC,ivy-switch-project or helm-projectile
 C-c p s w,projectile-persp-switch-project
 |====================================
 
-.Origami
-[grid="rows",format="csv"]
-[options="header",cols="^,<"]
-|====================================
-Keybinding,Descriptioni
-C-x o +,origami-open-node
-C-x o *,origami-open-all-nodes
-C-x o -,origami-close-node
-C-x o =,origami-close-all-nodes
-C-x o /,origami-recursively-toggle-node
-
 .Go
 [grid="rows",format="csv"]
 [options="header",cols="^,<"]
@@ -271,15 +260,27 @@ C-x x i,persp-import
 C-x x r,persp-rename
 |====================================
 
-.Commons modes
+.Dumb-jump
 [grid="rows",format="csv"]
 [options="header",cols="^,<"]
 |====================================
 Keybinding,Description
 C-x j g,dumb-jump-go
-C-x j p,dumb-jump-back
+C-x j b,dumb-jump-back
 C-x j q,dumb-jump-quick-look
 |====================================
+
+
+.Origami
+[grid="rows",format="csv"]
+[options="header",cols="^,<"]
+|====================================
+Keybinding,Descriptioni
+C-x o +,origami-open-node
+C-x o *,origami-open-all-nodes
+C-x o -,origami-close-node
+C-x o =,origami-close-all-nodes
+C-x o /,origami-recursively-toggle-node
 
 === Misc
 
