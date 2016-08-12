@@ -164,6 +164,18 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
          ("C-x j b" . dumb-jump-back)
          ("C-x j q" . dumb-jump-quick-look)))
 
+(global-unset-key (kbd "C-x o"))
+(define-prefix-command 'scame-origami-map)
+(global-set-key (kbd "C-x o") 'scame-origami-map)
+
+(use-package origami
+  :init (global-origami-mode)
+  :bind (("C-x o +"  . origami-open-node)
+         ("C-x o *"  . origami-open-all-nodes)
+         ("C-x o -"  . origami-close-node)
+         ("C-x o ="  . origami-close-all-nodes)
+         ("C-x o /"  . origami-recursively-toggle-node)))
+
 
 (provide '30_dev)
 ;;; 30_dev.el ends here

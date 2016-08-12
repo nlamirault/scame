@@ -85,6 +85,7 @@
     swoop
     helm-swoop
     dumb-jump
+    origami
 
     paradox
 

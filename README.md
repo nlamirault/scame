@@ -35,7 +35,7 @@ The `test` command download dependencies using [Cask][] and launch unit tests:
 
     $ make test
 
-You could launch some unit tests using tags :
+You could lau some unit tests using tags :
 
     $ make test-tag tag=config
 
