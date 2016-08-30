@@ -59,9 +59,19 @@
    (with-current-file
     "var/hello.go"
     (should (eql 'dumb-jump-go (key-binding (kbd "C-x j g"))))
-    (should (eql 'dumb-jump-back (key-binding (kbd "C-x j p"))))
+    (should (eql 'dumb-jump-back (key-binding (kbd "C-x j b"))))
     (should (eql 'dumb-jump-quick-look (key-binding (kbd "C-x j q")))))))
 
+(ert-deftest test-origami ()
+  :tags '(dev)
+  (with-test-sandbox
+   (with-current-file
+    "var/hello.go"
+    (should (eql 'origami-open-node (key-binding (kbd "C-x C-o +"))))
+    (should (eql 'origami-open-all-nodes (key-binding (kbd "C-x C-o *"))))
+    (should (eql 'origami-close-node (key-binding (kbd "C-x C-o -"))))
+    (should (eql 'origami-close-all-nodes (key-binding (kbd "C-x C-o ="))))
+    (should (eql 'origami-recursively-toggle-node (key-binding (kbd "C-x C-o /")))))))
 
 
 (provide 'scame-dev-commons-test)
