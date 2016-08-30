@@ -1,6 +1,6 @@
 ;; 01_scame_version.el --- Scame versioning
 
-;; Copyright (c) 2014, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014-2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -22,7 +22,9 @@
 ;;; Code:
 
 (defvar scame-version-number "1.5.0"
-  "Release version of Scame.")
+  "Release version of Scame.
+
+This number adheres to Semantic Versioning (`http://semver.org/').")
 
 (provide '01_scame_version)
 ;;; 01_scame_version.el ends here
