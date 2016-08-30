@@ -1,6 +1,6 @@
 ;; scame.el --- Scame Emacs initialization file
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -46,13 +46,15 @@
 (require 'scame-io)
 (require 'scame-ui)
 (require 'scame-pkg)
+(require 'scame-splash)
 
 (require 'f)
 (require 's)
 ;; (require 'benchmark-init)
 (require 'use-package)
 
-(scame--msg-buffer "--> Scame modules ...\n"
+(scame--msg-buffer scame-buffer
+                   "--> Scame modules ...\n"
                    'font-lock-string-face)
 (redisplay)
 (use-package el-init
@@ -71,7 +73,8 @@
                                       el-init-require/record-error
                                       el-init-require/system-case))))
 
-(scame--msg-buffer "--> Vendoring modules ...\n"
+(scame--msg-buffer scame-buffer
+                   "--> Vendoring modules ...\n"
                    'font-lock-string-face)
 (redisplay)
 (when (and scame-use-vendoring
@@ -87,21 +90,28 @@
                       (when (string= (f-ext elem) "el")
                         (load-file elem)))))))
 
-(scame--msg-buffer "--> Customization file ...\n"
+(scame--msg-buffer scame-buffer
+                   "--> Customization file ...\n"
                    'font-lock-string-face)
 (redisplay)
 (when (file-readable-p scame-user-customization-file)
   (load scame-user-customization-file))
 
-(scame--msg-buffer "--> Addons modules ...\n"
+(scame--msg-buffer scame-buffer
+                   "--> Addons modules ...\n"
                    'font-lock-string-face)
 (redisplay)
 (scame--install-packages scame-addons)
 
-(scame--msg-buffer (format "--> Version %s ready.\n"
+(scame--msg-buffer scame-buffer
+                   (format "--> Version %s ready.\n"
                            scame-version-number)
                    'font-lock-string-face)
 (redisplay)
+
+(scame--setup-startup-hook)
+
+
 
 (setq warning-minimum-level :warning)
 

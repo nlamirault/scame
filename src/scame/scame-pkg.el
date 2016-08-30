@@ -45,7 +45,8 @@
   (package-install 'use-package))
 
 ;; Install dependencies
-(scame--msg-buffer "--> Dependencies installation ...\n"
+(scame--msg-buffer scame-buffer
+                   "--> Dependencies installation ...\n"
                    'font-lock-string-face)
 (redisplay)
 (defvar scame-dependencies '(s f dash popwin))
@@ -353,10 +354,12 @@
 (defun scame--install-packages (pkg-list)
   "Install each package of `PKG-LIST'."
   (dolist (pkg pkg-list)
-    (scame--msg-buffer (format "- %-25s" pkg)
+    (scame--msg-buffer scame-buffer
+                       (format "- %-25s" pkg)
                        'font-lock-variable-name-face)
     (redisplay)
-    (scame--msg-buffer " [x]\n"
+    (scame--msg-buffer scame-buffer
+                       " [x]\n"
                        'font-lock-variable-name-face)
     (unless (package-installed-p pkg)
       (package-install pkg))
@@ -382,7 +385,8 @@
 (setq split-height-threshold nil)
 (setq split-width-threshold 0)
 
-(scame--msg-buffer "--> Packages installation ...\n"
+(scame--msg-buffer scame-buffer
+                   "--> Packages installation ...\n"
                    'font-lock-string-face)
 (redisplay)
 (scame--install-packages gnu-packages)
