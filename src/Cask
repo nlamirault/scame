@@ -238,7 +238,7 @@
 (depends-on "project-persist")
 (depends-on "helm-project-persist")
 (depends-on "multi-term")
-(depends-on "helm-mt" "0.4")
+;; (depends-on "helm-mt" "0.4")
 ;;(depends-on "project-explorer")
 (depends-on "lice" "v0.2")
 ;;(depends-on "commander" "0.7.0")

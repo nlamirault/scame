@@ -167,7 +167,7 @@
 
     ;; Utilities
     pkg-info project-persist
-    helm-mt
+    ;; helm-mt
     lice
 
     ;; Notifications

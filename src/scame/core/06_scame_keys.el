@@ -53,7 +53,7 @@
         ("m" man nil)
         ("p" paradox-list-packages nil)
         ("h" proced nil)
-        ("t" helm-mt nil)
+        ("t" multi-term nil)
         ("r" ranger nil)
 
         ("O" scame-mail-local nil)

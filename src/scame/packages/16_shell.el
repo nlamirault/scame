@@ -33,9 +33,10 @@
 	    (setq multi-term-program "/bin/bash")))
 
 
-(use-package helm-mt
+;;(use-package helm-mt
   ;; :defer scame-defer-package)
-  )
+;;  )
+
 
 ;; (defun scame-launch-term ()
 ;;   "Launch a new terminal."
