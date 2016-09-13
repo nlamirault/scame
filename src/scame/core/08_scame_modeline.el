@@ -187,15 +187,45 @@
 
 (defun scame--modeline-version ()
   (format " %s "
-          (propertize (all-the-icons-octicon "question")
+          (propertize (all-the-icons-octicon "home")
                       'face `(:family ,(all-the-icons-octicon-family) :height 1.2)
                       'display '(raise 0)
                       'help-echo (format "Scame version: `%s`" scame-version-number))))
+
+(defvar scame--modeline-package-upgrades nil)
+
+(defun scame--modeline-package-count-upgrades ()
+  (let ((buf (current-buffer)))
+    (package-list-packages-no-fetch)
+    (with-current-buffer "*Packages*"
+      (setq scame--modeline-package-upgrades (length (package-menu--find-upgrades))))
+    (switch-to-buffer buf)))
+
+(advice-add 'package-menu-execute :after 'scame--modeline-package-count-upgrades)
+
+(defun scame--modeline-package-updates ()
+  (let ((num (or scame--modeline-package-upgrades
+                 (scame--modeline-package-count-upgrades))))
+    (when (> num 0)
+      (propertize
+       (concat
+        (propertize (all-the-icons-octicon "package")
+                    'face `(:family ,(all-the-icons-octicon-family) :height 1.2)
+                    'display '(raise 0))
+        (propertize (format " %d " num)
+                    'face `(:height 0.9)))
+       'help-echo "Open Packages Menu"
+       'mouse-face '(:box 1)
+       'local-map (make-mode-line-mouse-map
+                   'mouse-1 (lambda ()
+                              (interactive)
+                              (package-list-packages)))))))
 
 
 (defun scame--modeline ()
   '("%e" (:eval (concat
                  (scame--modeline-version)
+                 (scame--modeline-package-updates)
                  (scame--modeline-buffer-state)
                  (scame--modeline-buffer-informations)
                  (scame--modeline-vc-mode)
