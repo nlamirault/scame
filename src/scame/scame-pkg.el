@@ -90,6 +90,8 @@
 
     paradox
 
+    crux
+
     alert
     benchmark-init
 
@@ -144,6 +146,7 @@
     smart-mode-line smart-mode-line-powerline-theme
     spaceline
     mode-icons
+    all-the-icons
     ;;beacon
 
     ;; Keys
