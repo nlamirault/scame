@@ -27,74 +27,39 @@
 ;;                   powerline-default-separator 'slant))) ;;'arrow-fade)))
 
 
-(use-package smart-mode-line
- :init (setq sml/no-confirm-load-theme t)
- :config (progn
-           (sml/setup)
-           (sml/apply-theme 'smart-mode-line-dark)))
-(setq sml/theme 'respectful)
+;; (use-package smart-mode-line
+;;  :init (setq sml/no-confirm-load-theme t)
+;;  :config (progn
+;;            (sml/setup)
+;;            (sml/apply-theme 'smart-mode-line-dark)))
+;; (setq sml/theme 'respectful)
+
+;; (use-package spaceline
+;;   :config (use-package spaceline-config
+;;             :config
+;;             (setq powerline-default-separator 'wave)
+;;             (spaceline-define-segment line-column
+;;                                       "The current line and column numbers."
+;;                                       "l:%l c:%2c")
+;;             ;;(spaceline-helm-mode)
+;;             (spaceline-toggle-battery-on)
+;;             (spaceline-toggle-minor-modes-on)
+;;             (spaceline-toggle-flycheck-info-off)
+;;             (spaceline-toggle-buffer-encoding-off)
+;;             (spaceline-toggle-buffer-encoding-abbrev-off)
+;;             (spaceline-toggle-buffer-size-off)
+;;             (spaceline-toggle-persp-name-on)
+;;             ;; (spaceline-define-segment time
+;;             ;;                           "The current time."
+;;             ;;                           (format-time-string "%H:%M"))
+;;             ;; (spaceline-define-segment date
+;;             ;;                           "The current date."
+;;             ;;                           (format-time-string "%h %d"))
+;;             ;; (spaceline-toggle-time-on)
+;;             (spaceline-emacs-theme 'date 'time)))
 
 
-;; (use-package spaceline-segments
-;;   :init (setq-default
-;; 	 powerline-default-separator 'wave
-;; 	 ;;spaceline-window-numbers-unicode t
-;; 	 powerline-height 18)
-;;   :config (require 'spaceline-segments))
-
-;; (spaceline-install
-;;  '(((workspace-number window-number)
-;;     :fallback evil-state
-;;     :separator "|"
-;;     :face highlight-face)
-;;    anzu
-;;    (buffer-modified buffer-size buffer-id remote-host)
-;;    major-mode
-;;    ((flycheck-error flycheck-warning flycheck-info)
-;;     :when active)
-;;    (((minor-modes :separator spaceline-minor-modes-separator)
-;;      process)
-;;     :when active)
-;;    (erc-track :when active)
-;;    (version-control :when active)
-;;    (org-pomodoro :when active)
-;;    (org-clock :when active)
-;;    nyan-cat)
-;;  `(;;(battery :when active)
-;;    selection-info
-;;    ((buffer-encoding-abbrev
-;;      point-position
-;;      line-column)
-;;     :separator " | ")
-;;    (global :when active)
-;;    buffer-position
-;;    hud))
-
-(use-package spaceline
-  :config (use-package spaceline-config
-            :config
-            (setq powerline-default-separator 'wave)
-            (spaceline-define-segment line-column
-                                      "The current line and column numbers."
-                                      "l:%l c:%2c")
-            ;;(spaceline-helm-mode)
-            (spaceline-toggle-battery-on)
-            (spaceline-toggle-minor-modes-on)
-            (spaceline-toggle-flycheck-info-off)
-            (spaceline-toggle-buffer-encoding-off)
-            (spaceline-toggle-buffer-encoding-abbrev-off)
-            (spaceline-toggle-buffer-size-off)
-            (spaceline-toggle-persp-name-on)
-            ;; (spaceline-define-segment time
-            ;;                           "The current time."
-            ;;                           (format-time-string "%H:%M"))
-            ;; (spaceline-define-segment date
-            ;;                           "The current date."
-            ;;                           (format-time-string "%h %d"))
-            ;; (spaceline-toggle-time-on)
-            (spaceline-emacs-theme 'date 'time)))
-
-
+(use-package powerline)
 
 (provide '13_modeline)
 ;;; 13_modeline.el ends here

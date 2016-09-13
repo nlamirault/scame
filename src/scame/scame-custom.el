@@ -74,6 +74,11 @@
           (const :tag "Helm" helm)
           (const :tag "Ivy" ivy)))
 
+(defcustom scame-use-custom-modeline t
+  "Set if you want to use the Scame modline."
+  :group 'scame
+  :type 'boolean)
+
 ;; Mail
 ;; ------------------
 

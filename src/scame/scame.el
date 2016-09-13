@@ -111,7 +111,8 @@
 
 (scame--setup-startup-hook)
 
-
+(when scame-use-custom-modeline
+  (setq-default mode-line-format (scame--modeline)))
 
 (setq warning-minimum-level :warning)
 
