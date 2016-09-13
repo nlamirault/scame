@@ -128,8 +128,8 @@
                                  'scame--mode-line-flycheck-ok)))
               (`running     (cons (all-the-icons-octicon "dashboard")
                                   'scame--mode-line-flycheck-ok))
-              (`no-checker (cons (all-the-icons-octicon "info")
-                                 'scame--mode-line-flycheck-ok))
+              (`no-checker nil) ;(cons (all-the-icons-octicon "info")
+                                        ;'scame--mode-line-flycheck-ok))
               (`not-checked (cons (all-the-icons-octicon "no-newline")
                                   'scame--mode-line-flycheck-ok))
               (`errored     (cons (all-the-icons-octicon "alert")
@@ -138,15 +138,16 @@
                                   'scame--mode-line-flycheck-error))
               (`suspicious  (cons (all-the-icons-octicon "plug")
                                   'scame--mode-line-flycheck-error)))))
-      (propertize (car flycheck-data)
-                  'help-echo "Show Flycheck Errors"
-                  'display '(raise 0)
-                  'face (cdr flycheck-data)
-                  'mouse-face '(:box 1)
-                  'local-map (make-mode-line-mouse-map
-                              'mouse-1 (lambda ()
-                                         (interactive)
-                                         (flycheck-list-errors)))))))
+      (when flycheck-data
+        (propertize (car flycheck-data)
+                    'help-echo "Show Flycheck Errors"
+                    'display '(raise 0)
+                    'face (cdr flycheck-data)
+                    'mouse-face '(:box 1)
+                    'local-map (make-mode-line-mouse-map
+                                'mouse-1 (lambda ()
+                                           (interactive)
+                                           (flycheck-list-errors))))))))
 
 
 (defun scame--modeline-mode-icon ()
