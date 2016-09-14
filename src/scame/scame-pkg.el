@@ -69,7 +69,8 @@
     ;; Themes
     material-theme
     monokai-theme
-    zenburn-theme
+    zerodark-theme
+    doom-themes
 
     ;; Search
     helm
