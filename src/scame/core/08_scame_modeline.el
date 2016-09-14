@@ -34,19 +34,19 @@
 (defface scame--mode-line-2 '((t (:inherit warning)))
   "The alternate color for mode-line text.")
 
-(defface scame--mode-line-highlight nil
+(defface scame--mode-line-highlight '((t (:inherit highlight)))
   "Face for bright segments of the mode-line.")
 
 (defface scame--mode-line-count-face nil
   "Face for anzu/evil-substitute/evil-search number-of-matches display.")
 
 ;; Git/VCS segment faces
-(defface scame--mode-line-vcs-info '((t (:inherit warning)))
+(defface scame--mode-line-vcs-info '((t (:inherit tooltip)))
   "")
 (defface scame--mode-line-vcs-warning '((t (:inherit warning)))
   "")
 
-(defface scame--mode-line-flycheck-ok nil
+(defface scame--mode-line-flycheck-ok '((t (:inherit success)))
   "Face for flycheck correct feedback in the modeline.")
 
 (defface scame--mode-line-flycheck-error '((t (:inherit error)))
@@ -86,9 +86,6 @@
   (when vc-mode
     (let ((branch (mapconcat 'concat (cdr (split-string vc-mode "[:-]")) "-")))
       (concat
-       ;; (propertize (format " %s" (all-the-icons-alltheicon "git"))
-       ;;             'face `(:height 1.2) 'display '(raise -0.1))
-       ;; " · "
        (propertize (format " %s" (all-the-icons-octicon "git-branch"))
                    'face `(:height 1.3 :family ,(all-the-icons-octicon-family))
                    'display '(raise -0.1))
