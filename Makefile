@@ -82,6 +82,11 @@ test: elpa ## Launch unit tests
 	@echo -e "$(OK_COLOR)[$(APP)] Launch unit tests$(NO_COLOR)"
 	@$(CASK) exec ert-runner -L test/sandbox
 
+.PHONY: checkdoc
+checkdoc: ## Checks the EmacsLisp code
+	@echo -e "$(OK_COLOR)[$(APP)] Check EmacsLisp code$(NO_COLOR)"
+	$(CASK) exec $(EMACS) --batch -L . --eval="(checkdoc)" -Q src/scame/*.el
+
 .PHONY: test-tag
 test-tag: elpa
 	@echo -e "$(OK_COLOR)[$(APP)] Launch unit tests$(NO_COLOR)"
@@ -101,7 +106,6 @@ release:
 	@gzip $(ARCHIVE)
 	@rm -fr $(PACKAGE)
 	@addons/github.sh $(VERSION)
-
 
 #
 # Docker
