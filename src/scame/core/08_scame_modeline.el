@@ -94,7 +94,7 @@
 
 (defun scame--modeline-buffer-position ()
   (when buffer-file-name
-    (propertize " [l=%l, c=%c] " 'face 'scame--mode-line-2)))
+    (propertize " [%l:%c] " 'face 'scame--mode-line-2)))
 
 
 (defun scame--modeline-flycheck-status ()
