@@ -66,11 +66,7 @@
 
 (defvar unstable-packages
   '(
-    ;; Themes
-    material-theme
-    monokai-theme
-    zerodark-theme
-    doom-themes
+
 
     ;; Search
     helm
@@ -350,6 +346,14 @@
   (add-to-list 'unstable-packages 'bbdb-csv-import t)
   (add-to-list 'unstable-packages 'notmuch t)
   (add-to-list 'unstable-packages 'notmuch-labeler t))
+
+
+;; Themes
+(add-to-list 'unstable-packages 'material-theme t)
+(add-to-list 'unstable-packages 'monokai-theme t)
+(add-to-list 'unstable-packages 'zerodark-theme t)
+(add-to-list 'unstable-packages 'doom-themes t)
+
 
 (defvar scame-addons nil)
 
