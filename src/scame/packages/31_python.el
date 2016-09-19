@@ -102,8 +102,8 @@
            ("\\requirements-style.txt\\'" . pip-requirements-mode)
            ("\\requirements-test.txt\\'" . pip-requirements-mode)))
 
-  (use-package py-yapf
-    :config (add-hook 'python-mode-hook 'py-yapf-enable-on-save))
+;;  (use-package py-yapf
+;; :config (add-hook 'python-mode-hook 'py-yapf-enable-on-save))
 
 
   (define-key python-mode-map (kbd "C-x y h")
