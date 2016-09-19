@@ -50,6 +50,12 @@
   :group 'scame
   :type 'string)
 
+(defcustom scame-emacs-custom-file
+  (concat user-emacs-directory "custom.el")
+  "File used for storing customization information."
+  :group 'scame
+  :type 'string)
+
 (defcustom scame-user-customization-file
   (concat user-home-directory ".config/scame/scame-user.el")
   "File used to store user customization."
