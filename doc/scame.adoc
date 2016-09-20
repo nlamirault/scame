@@ -1,8 +1,8 @@
 = Scame
 Nicolas Lamirault
-v1.4.0
-:revnumber: 1.4.0
-:revdate: 08/12/2016
+v1.5.0
+:revnumber: 1.5.0
+:revdate: 09/20/2016
 :description: Scame documentation
 :doctype: book
 // Settings:
@@ -21,7 +21,7 @@ ifdef::backend-pdf[]
 :source-highlighter: coderay
 endif::[]
 
-:ScameVersion: 1.4.0
+:ScameVersion: 1.5.0
 
 include::license.adoc[]
 
@@ -55,7 +55,7 @@ $ cp -r scame/src/* ~/.emacs.d/
 
 === Configuration
 
-You could enable or not some modules using *init.el* file :
+You could enable or not some modules using *custom.el* file :
 
 [source,elisp]
 ----
@@ -68,7 +68,8 @@ You could enable or not some modules using *init.el* file :
 ----
 
 .Customization
-NOTE: You could use Emacs customization features (scame group)
+NOTE: You could use the customization features to specify which module is active or not
+NOTE: You could use the customization features to specify the custom file to used (variable *scame-emacs-custom-file*)
 
 
 === Vendoring
@@ -76,6 +77,7 @@ NOTE: You could use Emacs customization features (scame group)
 If directory `$HOME/.emacs.d/vendor` exists, Scame will add to load-path
 each directory in this directory.
 
+NOTE: You could use the customization features to specify the vendoring directory (variable *scame-vendoring-directory*
 
 ===  Personalisation
 
@@ -96,7 +98,7 @@ If file `$HOME/.config/scame/scame-user.el` exists, Scame load it.
         ("https://www.google.com/calendar/ical/.../basic.ics" "Work" "Green")))
 
 ;; UI
-(load-theme 'monokai t)
+(load-theme 'zerodark t)
 
 ;; Fonts
 (custom-set-faces
@@ -109,6 +111,10 @@ If file `$HOME/.config/scame/scame-user.el` exists, Scame load it.
 
 (provide 'scame-user)
 ----
+
+NOTE: You could use the customization features to specify the personalisation file (variable *scame-user-customization-file*)
+
+
 
 == Keymap
 
