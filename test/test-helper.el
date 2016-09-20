@@ -103,7 +103,7 @@
         (f-delete output)))
     (f-copy (f-join scame-test/root-path "src" "scame")
             scame-test/sandbox-path))
-  (let ((output (f-join scame-test/sandbox-path "init.el")))
+  (let ((output (f-join scame-test/sandbox-path "/init.el")))
     (when (f-exists? output)
       (f-delete output 'force))
     (f-copy (f-join scame-test/test-path "init.el")
@@ -122,7 +122,7 @@
   (setq scame-use-vendoring nil)
   (setq scame-defer-package nil)
   (setq scame-user-customization-file
-        (f-join scame-test/sandbox-path "scame-config-user.el"))
+        (f-join scame-test/sandbox-path "/scame-config-user.el"))
   (setq debugger-batch-max-lines (+ 50 max-lisp-eval-depth)
         debug-on-error t))
 
