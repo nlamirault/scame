@@ -39,7 +39,7 @@
 (condition-case err
     (load scame-emacs-custom-file)
   (file-error
-   (write-region "" "" custom-file)))
+   (write-region "" "" scame-emacs-custom-file)))
 
 ;; Load Gnus from Emacs or Gnus development version
 (when (eql 'gnus-dev scame-gnus-version)
