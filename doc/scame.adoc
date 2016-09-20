@@ -68,7 +68,9 @@ You could enable or not some modules using *custom.el* file :
 ----
 
 .Customization
+
 NOTE: You could use the customization features to specify which module is active or not
+
 NOTE: You could use the customization features to specify the custom file to used (variable *scame-emacs-custom-file*)
 
 
@@ -119,6 +121,7 @@ NOTE: You could use the customization features to specify the personalisation fi
 == Keymap
 
 .Launch menu
+
 NOTE: Scame provides a main menu : *C-c s SPC*
 
 === UI
