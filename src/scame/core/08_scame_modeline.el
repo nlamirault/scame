@@ -145,18 +145,22 @@
 
 (defun scame--modeline-mode-icon ()
   (when major-mode
-    (let* ((name (format "%s" major-mode))
+    (let* ((name (symbol-name major-mode))
            (data (assoc name scame--major-modes-icons-alist)))
-      (if data
-          (format " %s "
-                  (propertize (all-the-icons-octicon (cdr data))
-                              'display '(raise -0.1)
-                              'face `(:height 1.2 :family ,(all-the-icons-octicon-family))))
-        (format " %s "
-                (propertize (all-the-icons-icon-for-buffer)
-                            'help-echo (format "Major-mode: `%s`" major-mode)
-                            'display '(raise -0.1)
-                            'face `(:height 1.2 :family ,(all-the-icons-icon-family-for-buffer))))))))
+      (condition-case err
+          (if data
+              (format " %s "
+                      (propertize (all-the-icons-octicon (cdr data))
+                                  'display '(raise -0.1)
+                                  'face `(:height 1.2 :family ,(all-the-icons-octicon-family))))
+            (format " %s "
+                    (propertize (all-the-icons-icon-for-buffer)
+                                'help-echo (format "Major-mode: `%s`" name)
+                                'display '(raise -0.1)
+                                'face `(:height 1.2 :family ,(all-the-icons-icon-family-for-buffer)))))
+        (error
+         (message "Modeline error : %s" err)
+         name)))))
 
 
 (defun scame--modeline-datatime ()
