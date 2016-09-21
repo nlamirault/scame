@@ -159,7 +159,7 @@
                                 'display '(raise -0.1)
                                 'face `(:height 1.2 :family ,(all-the-icons-icon-family-for-buffer)))))
         (error
-         (message "Modeline error : %s" err)
+         ;;(message "Modeline error : %s" err)
          name)))))
 
 
