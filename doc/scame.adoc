@@ -38,7 +38,7 @@ Download the last version from Github and install it into the Emacs directory :
 ----
 $ wget https://github.com/nlamirault/scame/releases/download/x.y.z/scame-x.y.z.tar.gz
 $ tar zxvf scame-x.y.z.tar.gz
-$ rm -r ~/.emacs.d && mkdir -p ~/.emacs.d/scame
+$ rm -r ~/.emacs.d && mkdir -p ~/.emacs.d/
 $ cp -r scame-x.y.z/* ~/.emacs.d
 ----
 
@@ -51,6 +51,7 @@ You could clone the repository into the Emacs directory:
 $ rm -r ~/.emacs.d && mkdir -p ~/.emacs.d/scame
 $ git clone https://github.com/nlamirault/scame
 $ cp -r scame/src/* ~/.emacs.d/
+$ cp fonts/* ~/.local/share/fonts/
 ----
 
 === Configuration
