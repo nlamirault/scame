@@ -9,7 +9,7 @@ try to follow these guidelines when you do so.
 
 * Check that the issue has not already been reported.
 * Check that the issue has not already been fixed in the latest code
-  (a.k.a. `master`).
+  (a.k.a. `develop`).
 * Be clear, concise and precise in your description of the problem.
 * Open an issue with a descriptive title and a summary in grammatically correct,
   complete sentences.
@@ -23,7 +23,8 @@ try to follow these guidelines when you do so.
 * Use the same coding conventions as the rest of the project.
 * Verify your Emacs Lisp code with `checkdoc`.
 * Open a [pull request][4] that relates to *only* one subject with a clear title
-  and description in grammatically correct, complete sentences.
+  and description in grammatically correct, complete sentences. (Target branch
+  must be *develop* branch).
 
 
 [1]: https://github.com/nlamirault/scame/issues
