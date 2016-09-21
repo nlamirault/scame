@@ -101,6 +101,7 @@ release:
 	@echo -e "$(OK_COLOR)[$(APP)] Make archive $(VERSION) $(NO_COLOR)"
 	@rm -fr $(PACKAGE) && mkdir $(PACKAGE)
 	@cp -r src/* $(PACKAGE)
+	@cp -r fonts $(PACKAGE)
 	@tar cf $(ARCHIVE) $(PACKAGE)
 	@gzip $(ARCHIVE)
 	@rm -fr $(PACKAGE)
