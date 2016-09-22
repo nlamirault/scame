@@ -27,8 +27,8 @@ dependencies:
     - tar xf /tmp/emacs-25.1.tar.xz -C /tmp
     - mv /tmp/emacs-25.1 /tmp/emacs
     - cd '/tmp/emacs' && ./configure --quiet --enable-silent-rules --prefix="$(HOME)" --with-x-toolkit=no --without-x --without-all --with-xml2 CFLAGS='-O2 -march=native' CXXFLAGS='-O2 -march=native'
-    - make -j2 -C '/tmp/emacs' V=0 install
-    - cp /tmp/emacs/src/emacs /usr/bin/emacs
+    - sudo make -j2 -C '/tmp/emacs' V=0 install
+    - sudo cp /tmp/emacs/src/emacs /usr/bin/emacs
     - curl -fsSkL "https://raw.github.com/cask/cask/master/go" | python
 
 test:
