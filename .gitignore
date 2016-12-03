@@ -11,3 +11,5 @@ test/sandbox/
 doc/scame.html
 doc/scame.pdf
 doc/scame.epub
+
+.vagrant

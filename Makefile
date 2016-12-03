@@ -26,7 +26,7 @@ DOCKER ?= docker
 NAMESPACE = nlamirault
 IMAGE = scame
 
-# ELS = $(wildcard src/scame/*.el)
+ELS = `find src -name "*.el"`
 # OBJECTS = $(ELS:.el=.elc)
 
 VERSION=$(shell \
@@ -90,7 +90,9 @@ test-tag: elpa
 .PHONY: checkdoc
 checkdoc: ## Checks the EmacsLisp code
 	@echo -e "$(OK_COLOR)[$(APP)] Check EmacsLisp code$(NO_COLOR)"
-	$(CASK) exec $(EMACS) --batch -L . --eval="(checkdoc)" -Q src/scame/*.el
+	for i in $(ELS); do \
+		echo $$i && $(CASK) exec $(EMACS) --batch -L . --eval="(checkdoc)" -Q $$i; \
+	done
 
 .PHONY: virtual-test
 virtual-test:
