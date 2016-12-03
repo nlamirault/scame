@@ -26,6 +26,8 @@
 (require '01_scame_version)
 
 
+(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+
 ;; Custom faces
 
 (defface scame--mode-line-is-modified '((t (:inherit warning)))
@@ -184,7 +186,7 @@
   (let ((buf (current-buffer)))
     (package-list-packages-no-fetch)
     (with-current-buffer "*Packages*"
-      (setq scame--modeline-package-upgrades (length (package-menu--find-upgrades))))
+      (validate-setq scame--modeline-package-upgrades (length (package-menu--find-upgrades))))
     (switch-to-buffer buf)))
 
 (advice-add 'package-menu-execute :after 'scame--modeline-package-count-upgrades)

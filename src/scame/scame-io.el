@@ -19,6 +19,8 @@
 
 ;;; Code:
 
+(require 's)
+
 (defvar scame-buffer "*scame-startup*")
 
 
@@ -32,7 +34,7 @@
 
 
 (defun scame--msg-buffer (buffer msg face-type)
-  "Write `MSG' to the scame buffer using `FACE-TYPE'."
+  "Write into `BUFFER' a `MSG' using `FACE-TYPE'."
   (with-current-buffer (get-buffer-create buffer)
     (goto-char (point-max))
     ;(insert msg)))
@@ -40,10 +42,12 @@
 
 
 (defun scame--insert-message (msg face-type)
+  "Insert the message `MSG' at point using `FACE-TYPE'."
   (insert (propertize msg 'face face-type)))
 
 
 (defun scame--find-project-path ()
+  "Search for project path from the `LOAD-PATH'."
   (let ((dir))
      (mapc (lambda (path)
                  (when (s-contains-p "scame" path)

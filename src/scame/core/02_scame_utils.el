@@ -1,6 +1,6 @@
 ;; 02_scame_utils.el --- Scame utilities
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -65,7 +65,7 @@
                 twittering-mode-hook
                 minibuffer-setup-hook))
   (add-hook hook (lambda ()
-                   (setq show-trailing-whitespace nil))))
+                   (validate-setq show-trailing-whitespace nil))))
 
 
 ;; Tools
@@ -77,7 +77,7 @@
       (set-buffer buffer)
       (goto-char (point-min))
       (re-search-forward "^$" nil 'move)
-      (setq response (buffer-substring-no-properties (point) (point-max)))
+      (validate-setq response (buffer-substring-no-properties (point) (point-max)))
       (kill-buffer (current-buffer)))
     response))
 

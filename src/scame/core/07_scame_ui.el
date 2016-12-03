@@ -22,7 +22,7 @@
 
 (setq-default fill-column 120)
 
-(setq visible-bell t)
+(validate-setq visible-bell t)
 
 (global-linum-mode 1)
 (line-number-mode t)
@@ -90,7 +90,7 @@ Return the new window for BUFFER."
               (define-key xwidget-webkit-mode-map (kbd "C-c") 'xwidget-webkit-copy-selection-as-kill)
 
               ;; make xwidget default browser (not for now... maybe in the future!)
-              ;; (setq browse-url-browser-function (lambda (url session)
+              ;; (validate-setq browse-url-browser-function (lambda (url session)
               ;;                                     (other-window 1)
               ;;                                     (xwidget-browse-url-no-reuse url)))
 

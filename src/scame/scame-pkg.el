@@ -37,12 +37,13 @@
         ;; ("melpa" . "http://melpa.milkbox.net/packages/")
         ))
 
-(package-initialize)
 (package-refresh-contents)
 
 ;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
+
+(use-package validate :ensure t)
 
 ;; Install dependencies
 (scame--msg-buffer scame-buffer
@@ -53,6 +54,7 @@
 (dolist (pkg scame-dependencies)
   (unless (package-installed-p pkg)
     (package-install pkg)))
+
 (require 'dash)
 
 ;; Scame packages
@@ -390,8 +392,8 @@
 ;; (message "Pinned : %s" package-pinned-packages)
 
 
-(setq split-height-threshold nil)
-(setq split-width-threshold 0)
+(validate-setq split-height-threshold nil)
+(validate-setq split-width-threshold 0)
 
 (scame--msg-buffer scame-buffer
                    "--> Packages installation ...\n"

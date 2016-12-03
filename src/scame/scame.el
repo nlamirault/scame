@@ -63,14 +63,14 @@
 (redisplay)
 (use-package el-init
   :config (progn
-            (setq el-init-meadow-regexp       "\\`meadow-"
-                  el-init-carbon-emacs-regexp "\\`carbon-emacs-"
-                  el-init-cocoa-emacs-regexp  "\\`cocoa-emacs-"
-                  el-init-nw-regexp           "\\`nw-"
-                  el-init-mac-regexp          "\\`mac-"
-                  el-init-windows-regexp      "\\`windows-"
-                  el-init-linux-regexp        "\\`linux-"
-                  el-init-freebsd-regexp      "\\`freebsd-")
+            (validate-setq el-init-meadow-regexp       "\\`meadow-"
+                           el-init-carbon-emacs-regexp "\\`carbon-emacs-"
+                           el-init-cocoa-emacs-regexp  "\\`cocoa-emacs-"
+                           el-init-nw-regexp           "\\`nw-"
+                           el-init-mac-regexp          "\\`mac-"
+                           el-init-windows-regexp      "\\`windows-"
+                           el-init-linux-regexp        "\\`linux-"
+                           el-init-freebsd-regexp      "\\`freebsd-")
             (el-init-load (f-parent (f-this-file))
                           :subdirectories '("packages" "core")
                           :wrappers '(el-init-require/benchmark
@@ -118,7 +118,7 @@
 (when scame-use-custom-modeline
   (setq-default mode-line-format (scame--modeline)))
 
-(setq warning-minimum-level :warning)
+(validate-setq warning-minimum-level :warning)
 
 (provide 'scame)
 ;;; scame.el ends here
