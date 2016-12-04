@@ -1,6 +1,6 @@
 ;;; 80_markup.el --- Markup language
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,20 +19,16 @@
 
 ;;; Code:
 
-(use-package markdown-mode
-  ;; :defer scame-defer-package
+(use-package markdown-mode :quelpa
   :mode ("\\.\\(m\\(ark\\)?down\\|md\\)$" . markdown-mode))
 
-(use-package fountain-mode
-  ;; :defer scame-defer-package
+(use-package fountain-mode :quelpa
   :mode ("\\.fountain$" . fountain-mode))
 
-(use-package toml-mode
-  ;; :defer scame-defer-package
+(use-package toml-mode :quelpa
   :mode ("\\.toml$" . toml-mode))
 
-(use-package adoc-mode
-  ;; :defer scame-defer-package
+(use-package adoc-mode :quelpa
   :mode (("\\.adoc$" . adoc-mode)
          ("\\.asciidoc$" . adoc-mode)))
 

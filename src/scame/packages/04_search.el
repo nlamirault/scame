@@ -1,6 +1,6 @@
 ;;; 04_search.el --- Emacs search frameworks configuration
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@
 
 (defun scame--setup-ido ()
   "Setup Scame with IDO backend."
-  (use-package ido
+  (use-package ido :quelpa
     ;;:init (ido-mode 1)
     :config (progn
               (setq ido-case-fold t)
@@ -41,8 +41,7 @@
 
 (defun scame--setup-helm ()
   "Setup Scame with HELM backend."
-
-  (use-package helm
+  (use-package helm :quelpa
     :bind (("C-x c F" . helm-find-files)
            ("C-x c f" . helm-for-files)
            ("C-x c r" . helm-recentf)
@@ -53,16 +52,16 @@
            ("C-x c i" . helm-info-emacs)
            ("C-x c b" . helm-buffers-list)))
 
-  (use-package helm-occur
+  (use-package helm-occur :quelpa
     :bind (("C-x c o" . helm-occur)))
 
-  (use-package helm-imenu
+  (use-package helm-imenu :quelpa
     :bind (("C-x c i" . helm-imenu)))
 
-  (use-package helm-descbinds
+  (use-package helm-descbinds :quelpa
     :bind ("C-x c h" . helm-descbinds))
 
-  (use-package helm-swoop
+  (use-package helm-swoop :quelpa
     :config (progn
               (setq helm-multi-swoop-edit-save t)
               (setq helm-swoop-split-direction 'split-window-vertically))
@@ -73,19 +72,19 @@
 
 (defun scame--setup-ivy ()
     "Setup Scame using IVY backend."
-  (use-package counsel
+  (use-package counsel :quelpa
     :bind (("C-x c F" . counsel-find-file)
            ("C-x c v" . counsel-describe-variable)
            ("C-x c f" . counsel-describe-function)
            ("C-x c y" . counsel-info-lookup-symbol)
            ("C-x c i" . counsel-imenu)))
 
-  (use-package ivy
+  (use-package ivy :quelpa
     :diminish ivy-mode
     :bind (("C-x c r" . ivy-recentf)
            ("C-x c b" . ivy-switch-buffer)))
 
-  (use-package swiper
+  (use-package swiper :quelpa
     :bind (("C-s" . swiper)
            ("C-r" . swiper)))
   (autoload 'ivy-read "ivy"))
@@ -111,7 +110,6 @@
 
 
 (scame--setup-search-framework scame-completion-method)
-
 
 
 

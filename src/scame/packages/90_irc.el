@@ -1,6 +1,6 @@
 ;;; 90_irc.el --- IRC configuration
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -21,8 +21,7 @@
 
 (when scame-communication
 
-  (use-package erc
-    ;; :defer scame-defer-package
+  (use-package erc :quelpa
     :init (progn
             (require 'erc-services)
             (require 'erc-dcc)
@@ -65,44 +64,36 @@
           word-wrap t
           wrap-prefix "    "))
 
-  (use-package circe
-    ;; :defer scame-defer-package
+  (use-package circe :quelpa
     :config (progn
               (setq circe-reduce-lurker-spam t)
               (setq lui-time-stamp-position 'right-margin)
               (add-hook 'circe-chat-mode-hook 'my-circe-prompt)
               (add-hook 'lui-mode-hook 'my-lui-setup)))
 
-  (use-package circe-color-nicks
-    ;; :defer scame-defer-package
+  (use-package circe-color-nicks :quelpa
     :config (enable-circe-color-nicks))
 
-  (use-package circe-highlight-all-nicks
-    ;; :defer scame-defer-package
+  (use-package circe-highlight-all-nicks :quelpa
     :config (enable-circe-highlight-all-nicks))
 
 
   ;; Rcirc
   ;; ------
 
-  (use-package rcirc
-    ;; :defer scame-defer-package
+  (use-package rcirc :quelpa
     :config (add-hook 'rcirc-mode-hook
                       (lambda ()
                         (rcirc-track-minor-mode 1)))
     :bind (("C-c i c" . rcirc)))
 
-  (use-package rcirc-groups
-    ;; :defer scame-defer-package
+  (use-package rcirc-groups :quelpa
     :bind (("C-c i g" . rcirc-groups:switch-to-groups-buffer)))
 
-  (use-package rcirc-alertify
-    ;; :defer scame-defer-package
+  (use-package rcirc-alertify :quelpa
     :config (rcirc-alertify-enable))
 
-  (use-package rcirc-notify
-    ;; :defer scame-defer-package)
-    )
+  (use-package rcirc-notify :quelpa)
 
 
   )

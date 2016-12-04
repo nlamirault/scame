@@ -1,6 +1,6 @@
 ;;; 03_completion.el --- Completion system
 
-;; Copyright (c) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -25,16 +25,15 @@
 ;;(add-to-list 'ac-modes 'web-mode)
 ;;(add-to-list 'ac-modes 'php-mode)
 
-(use-package company
-  ;; :defer scame-defer-package
+(use-package company :quelpa
   :init (add-hook 'after-init-hook 'global-company-mode)
   :diminish company-mode)
 
-(use-package company-shell
+(use-package company-shell :quelpa
   :config (progn
             (add-to-list 'company-backends 'company-shell)))
 
-(use-package company-emoji
+(use-package company-emoji :quelpa
   :config (add-to-list 'company-backends 'company-emoji))
 
 

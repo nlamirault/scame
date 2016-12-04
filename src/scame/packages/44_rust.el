@@ -1,6 +1,6 @@
 ;;; 44_rust.el -- Rust configuration
 
-;; Copyright (C) 2014, 2015, 2016  Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2016  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -21,12 +21,12 @@
 
 (when scame-rust
 
-  (use-package rust-mode
+  (use-package rust-mode :quelpa
     :mode (("\\.rs\\'" . rust-mode))
     :init (add-hook 'rust-mode-hook 'flycheck-mode)
     :config (setq tab-width 4))
 
-  (use-package cargo
+  (use-package cargo :quelpa
     :config (progn
               (add-hook 'rust-mode-hook 'cargo-minor-mode)
               (add-hook 'rust-mode-hook
@@ -36,7 +36,7 @@
                           (local-set-key (kbd "C-x r p") 'cargo-test-current-project)
                           ))))
 
-  (use-package racer
+  (use-package racer :quelpa
     :init (progn
             (setq racer-rust-src-path (getenv "RUST_HOME"))
             (setq racer-cmd (executable-find "racer")))
@@ -47,13 +47,11 @@
                          (local-set-key (kbd "M-.") #'racer-find-definition)
                          (local-set-key (kbd "TAB") #'racer-complete-or-indent))))
 
-  (use-package flycheck-rust
+  (use-package flycheck-rust :quelpa
     :init (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
-  (use-package company-racer
+  (use-package company-racer :quelpa
     :init (set (make-local-variable 'company-backends) '(company-racer)))
-
-
 
   )
 

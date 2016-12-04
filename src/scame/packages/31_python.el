@@ -22,7 +22,7 @@
 
 (when scame-python
 
-  (use-package python
+  (use-package python :quelpa
     ;; :defer scame-defer-package
     :mode (("\\.py\\'" . python-mode))
     :config (progn
@@ -42,14 +42,14 @@
   ;; 					  (setq fill-column 79)))))
 
 
-  (use-package anaconda-mode
+  (use-package anaconda-mode :quelpa
     ;; :defer scame-defer-package
     :config (progn
               (add-hook 'python-mode-hook 'anaconda-mode)
               (add-hook 'python-mode-hook 'eldoc-mode))
     :diminish anaconda-mode)
 
-  (use-package company-anaconda
+  (use-package company-anaconda :quelpa
     ;; :defer scame-defer-package
     :config (add-to-list 'company-backends 'company-anaconda))
 
@@ -65,13 +65,13 @@
   ;; Set in python project directory a file *.dir-locals.el* :
   ;; ((python-mode . ((pyvenv-workon . "xxxxx")))
 
-  (use-package tox
+  (use-package tox :quelpa
     :config (add-hook 'python-mode-hook
                       (lambda ()
                         (local-set-key (kbd "C-x y t") 'tox-current-test)
                         (local-set-key (kbd "C-x y f") 'tox-current-class))))
 
-  (use-package jedi-direx
+  (use-package jedi-direx :quelpa
     ;; :defer scame-defer-package
     :config (progn
               (add-hook 'jedi-mode-hook 'jedi-direx:setup)
@@ -80,7 +80,7 @@
                           (local-set-key (kbd "C-x y x")
                                          'jedi-direx:pop-to-buffer)))))
 
-  (use-package sphinx-doc
+  (use-package sphinx-doc :quelpa
     ;; :defer scame-defer-package
     :config (add-hook 'python-mode-hook
                       (lambda ()
@@ -88,13 +88,13 @@
                         (sphinx-doc-mode t)))
     :diminish sphinx-doc-mode)
 
-  (use-package helm-pydoc
-    ;; :defer scame-defer-package
-    :config (add-hook 'python-mode-hook
-                      (lambda ()
-                        (local-set-key (kbd "C-x y d") 'helm-pydoc))))
+  ;; (use-package helm-pydoc :quelpa
+  ;;   ;; :defer scame-defer-package
+  ;;   :config (add-hook 'python-mode-hook
+  ;;                     (lambda ()
+  ;;                       (local-set-key (kbd "C-x y d") 'helm-pydoc))))
 
-  (use-package pip-requirements
+  (use-package pip-requirements :quelpa
     ;; :defer scame-defer-package
     :mode (("\\requirements.txt\\'" . pip-requirements-mode)
            ("\\requirements-dev.txt\\'" . pip-requirements-mode)

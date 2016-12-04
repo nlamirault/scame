@@ -28,12 +28,12 @@
             (substring opam-configuration 0 -1))
       (add-to-list 'load-path (concat opam-share "/emacs/site-lisp"))))
 
-  (use-package tuareg
+  (use-package tuareg :quelpa
     :mode (("\\.ml\\w?" . tuareg-mode)
            ("\\.topml\\'" . taureg-mode)
            ("\\.fs[ix]?" . tuareg-mode)))
 
-  (use-package merlin
+  (use-package merlin :quelpa
     :config (progn
               (add-hook 'tuareg-mode-hook 'merlin-mode t)
               (add-hook 'caml-mode-hook 'merlin-mode t)
@@ -45,13 +45,13 @@
               (setq merlin-command 'opam)
               ))
 
-  (use-package flycheck-ocaml
+  (use-package flycheck-ocaml :quelpa
     :init (with-eval-after-load 'merlin (flycheck-ocaml-setup)))
 
-  (use-package utop
+  (use-package utop :quelpa
     :if (executable-find "utop"))
 
-  (use-package utop-minor-mode
+  (use-package utop-minor-mode :quelpa
     :if (executable-find "utop")
     :init (add-hook 'tuareg-mode-hook 'utop-minor-mode))
 

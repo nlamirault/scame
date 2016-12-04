@@ -1,6 +1,6 @@
 ;;; 30_dev.el -- Commons configurations for development
 
-;; Copyright (C) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -38,13 +38,13 @@
 ;;             (global-fci-mode 1)))
 
 
-(use-package editorconfig
+(use-package editorconfig :quelpa
   :init (progn
           (add-to-list 'auto-mode-alist '("\\.editorconfig" . conf-unix-mode))
           (editorconfig-mode 1)))
 
 
-(use-package projectile
+(use-package projectile :quelpa
   ;; :defer scame-defer-package
   ;;:init (projectile-global-mode 1)
   :config (progn
@@ -58,7 +58,7 @@
 			 ".DS_Store"))
   :diminish projectile-mode)
 
-(use-package ibuffer-projectile
+(use-package ibuffer-projectile :quelpa
   ;; :defer scame-defer-package
   :config (progn
             (add-hook 'ibuffer-hook
@@ -87,7 +87,7 @@
       ((eql 'helm scame-completion-method)
        (progn
          (message "Projectile with Helm")
-         (use-package helm-projectile
+         (use-package helm-projectile :quelpa
            :config (setq projectile-completion-system 'helm)
            :bind (("C-c p SPC" . helm-projectile)))
          (helm-projectile-on)
@@ -98,14 +98,14 @@
          (message "Projectile with Ivy")
          (setq projectile-completion-system 'ivy)
          ;; (global-set-key (kbd "C-c p SPC") 'ivy-switch-project)))
-         (use-package counsel-projectile
+         (use-package counsel-projectile :quelpa
            :bind (:map projectile-command-map
                        ("p" . counsel-projectile)))))
 
       (t (setq projectile-completion-system 'ido)))
 
 
-(use-package persp-projectile
+(use-package persp-projectile :quelpa
   :bind (("C-c p n" . projectile-persp-switch-project)))
 
 
@@ -117,7 +117,7 @@
 
 (which-function-mode)
 
-(use-package ansi-color)
+(use-package ansi-color :quelpa)
 
 (defun scame-colorize-compilation-buffer ()
   "Taken from
@@ -128,7 +128,7 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
 (add-hook 'compilation-filter-hook 'scame-colorize-compilation-buffer)
 
 
-(use-package neotree
+(use-package neotree :quelpa
   :init (progn
           (defun neotree-project-dir ()
             "Open dirtree using the git root."
@@ -146,18 +146,17 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
 
 ;; Search
 
-(use-package ag
+(use-package ag :quelpa
   :commands (ag ag-project)
   :config (setq ag-highlight-search t))
 
-(use-package pt
+(use-package pt :quelpa
   :bind (("C-c p s p" . projectile-pt)))
 
-;; (use-package sift)
-;;   :bind (("C-c p s t" . projectile-pt)))
+(use-package sift :quelpa
+   :bind (("C-c p s t" . projectile-pt)))
 
-
-(use-package dumb-jump
+(use-package dumb-jump :quelpa
   :init (progn
           (add-hook 'faust-mode-hook 'dumb-jump-mode))
   :bind (("C-x j g" . dumb-jump-go)
@@ -168,13 +167,14 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
 (define-prefix-command 'scame-origami-map)
 (global-set-key (kbd "C-x C-o") 'scame-origami-map)
 
-(use-package origami
-  :init (global-origami-mode)
-  :bind (("C-x C-o +"  . origami-open-node)
-         ("C-x C-o *"  . origami-open-all-nodes)
-         ("C-x C-o -"  . origami-close-node)
-         ("C-x C-o ="  . origami-close-all-nodes)
-         ("C-x C-o /"  . origami-recursively-toggle-node)))
+;; https://github.com/gregsexton/origami.el/issues/48
+;; (use-package origami :quelpa
+;;   :init (global-origami-mode)
+;;   :bind (("C-x C-o +"  . origami-open-node)
+;;          ("C-x C-o *"  . origami-open-all-nodes)
+;;          ("C-x C-o -"  . origami-close-node)
+;;          ("C-x C-o ="  . origami-close-all-nodes)
+;;          ("C-x C-o /"  . origami-recursively-toggle-node)))
 
 
 (provide '30_dev)

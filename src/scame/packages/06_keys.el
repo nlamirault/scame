@@ -1,6 +1,6 @@
 ;;; 06_keys.el -- keys tools
 
-;; Copyright (C) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@
 ;;          (setq guide-key/align-command-by-space-flag t)
 ;;          (guide-key-mode 1)))
 
-(use-package which-key
+(use-package which-key :quelpa
   :init (progn
           (which-key-mode)
           ;; (setq which-key-popup-type 'minibuffer)
@@ -35,14 +35,14 @@
           (setq which-key-side-window-max-height 0.25))
   :diminish which-key-mode)
 
-(use-package hydra
+(use-package hydra :quelpa
   :config (progn
             (setq hydra-is-helpful t)))
 
-(use-package discover-my-major
+(use-package discover-my-major :quelpa
   :bind ("C-h C-m" . discover-my-major))
 
-(use-package crux
+(use-package crux :quelpa
   :bind (("C-c O" . crux-open-with)
          ("M-o" . crux-smart-open-line)
          ("C-c n" . crux-cleanup-buffer-or-region)

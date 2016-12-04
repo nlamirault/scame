@@ -23,7 +23,6 @@
 ;;; Code:
 
 (require 'scame-io)
-(require 'scame-pkg)
 
 (defvar scame--splash-buffer "*scame*")
 
@@ -187,9 +186,10 @@
                                                 "--> Update Packages ...\n"
                                                 'font-lock-string-face)
                              (switch-to-buffer scame-buffer)
-                             (scame--install-packages gnu-packages)
-                             (scame--install-packages stable-packages)
-                             (scame--install-packages unstable-packages)))
+                             ;; (scame--install-packages gnu-packages)
+                             ;; (scame--install-packages stable-packages)
+                             ;; (scame--install-packages unstable-packages)))
+                             ))
                  :mouse-face 'highlight
                  :follow-link "\C-m"
                  (propertize "Update Packages" 'face 'font-lock-keyword-face))
@@ -215,7 +215,7 @@
         (when scame-logo
           (insert-image scame-logo "[Scame]")
           (scame--msg-buffer scame--splash-buffer "\n" nil)))
-      (insert (format "Scame v%s" scame-version-number))
+      ;; (insert (format "Scame v%s" scame-version-number))
       (scame--startup-insert-page-break)
       ;; (scame--startup-insert-release scame-version-number)
       (scame--startup-insert-project)

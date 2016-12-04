@@ -1,6 +1,6 @@
 ;;; 98_search.el --- Search tools for Emacs
 
-;; Copyright (C) 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,8 +19,7 @@
 
 ;;; Code:
 
-(use-package engine-mode
-  ;; :defer scame-defer-package
+(use-package engine-mode :quelpa
   :config (progn
             (defengine google
               "http://www.google.com/search?ie=utf-8&oe=utf-8&q=%s"

@@ -1,6 +1,6 @@
 ;;; 42_ruby.el --- Ruby mode configuration
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -22,8 +22,7 @@
 
 (when scame-ruby
 
-  (use-package ruby-mode
-    ;; :defer scame-defer-package
+  (use-package ruby-mode :quelpa
     :config (progn
               (add-hook 'ruby-mode-hook 'rvm-activate-corresponding-ruby)
               (setq ruby-deep-indent-paren nil))
@@ -38,17 +37,13 @@
            ("Capfile$" . ruby-mode)
            ("Guardfile$" . ruby-mode)))
 
-  (use-package ruby-tools
-    ;; :defer scame-defer-package)
-    )
+  (use-package ruby-tools :quelpa)
 
-  (use-package rvm
-    ;; :defer scame-defer-package
+  (use-package rvm :quelpa
     :init (rvm-use-default)
     :config (setq rvm-verbose nil))
 
-  (use-package rhtml-mode
-    ;; :defer scame-defer-package
+  (use-package rhtml-mode :quelpa
     :mode (("\\.rhtml$" . rhtml-mode)
            ("\\.html\\.erb$" . rhtml-mode)))
 
@@ -57,9 +52,7 @@
   ;;   :bind (("C-c r r" . inf-ruby)
   ;; 	 ("C-c r a" . rvm-activate-corresponding-ruby)))
 
-  (use-package company-inf-ruby
-    ;; :defer scame-defer-package)
-    )
+  (use-package company-inf-ruby :quelpa)
 
   )
 

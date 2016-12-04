@@ -1,6 +1,6 @@
 ;;; 37_scheme.el --- Scheme configuration
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -23,8 +23,7 @@
 
   ;;(require 'geiser-install)
 
-  (use-package geiser
-    ;; :defer scame-defer-package
+  (use-package geiser :quelpa
     :config (progn
               (setq geiser-active-implementations
                     '(guile racket chicken))))

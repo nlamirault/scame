@@ -1,6 +1,6 @@
 ;;; 14_cloud.el --- Cloud configuration
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -23,8 +23,8 @@
 
 (when scame-cloud
 
-  (use-package puppet-mode
-    ;; :defer scame-defer-package
+  ;; Puppet
+  (use-package puppet-mode :quelpa
     :mode (("\\.pp\\'" . puppet-mode))
     :config (add-hook 'puppet-mode-hook
                       (lambda ()
@@ -32,30 +32,23 @@
                         (setq indent-tabs-mode nil))))
 
   ;; Ansible
-
-  (use-package ansible
-    ;; :defer scame-defer-package
+  (use-package ansible :quelpa
     :config (add-hook 'yaml-mode-hook
                       (lambda ()
                         (ansible 1))))
-
-  (use-package ansible-doc
-    ;; :defer scame-defer-package
+  (use-package ansible-doc :quelpa
     :config (add-hook 'yaml-mode-hook 'ansible-doc-mode))
 
   ;; Vagrant files
-  (use-package vagrant
-    ;; :defer scame-defer-package
+  (use-package vagrant :quelpa
     :mode (("Vagrantfile" . ruby-mode)))
 
   ;; Docker files
-  (use-package dockerfile-mode
-    ;; :defer scame-defer-package
+  (use-package dockerfile-mode :quelpa
     :mode (("Dockerfile" . dockerfile-mode)))
 
   ;; Terraform
-  (use-package terraform-mode
-    ;; :defer scame-defer-package
+  (use-package terraform-mode :quelpa
     :config (setq terraform-indent-level 2))
 
   )

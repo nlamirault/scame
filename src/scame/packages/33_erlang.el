@@ -28,8 +28,7 @@
            "/usr/local/lib/erlang")
           (t nil)))
 
-  (use-package erlang
-    ;; :defer scame-defer-package
+  (use-package erlang :quelpa
     :mode (("\\.erl?$" . erlang-mode)
            ("\\.hrl?$" . erlang-mode)
            ("\\.spec?$" . erlang-mode))

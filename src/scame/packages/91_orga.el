@@ -105,7 +105,7 @@
           ,@calendar-celebration-holidays
           ,@calendar-school-vacation))
 
-  (use-package calendar
+  (use-package calendar :quelpa
     :config (setq calendar-date-style 'european
                   calendar-holidays calendar-legal-holidays
                   calendar-mark-holidays-flag t
@@ -134,7 +134,7 @@
     )
 
 
-  (use-package appt
+  (use-package appt :quelpa
     :config (progn
               (setq appt-audible nil
                     appt-display-diary nil
@@ -150,8 +150,7 @@
     :init (appt-activate))
 
 
-  (use-package org
-    ;; :defer scame-defer-package
+  (use-package org :quelpa
     :config (progn
               (setq org-directory (f-join user-home-directory "Org"))
               (setq org-agenda-files (list org-directory))
@@ -276,24 +275,14 @@
   ;; (use-package google-weather)
   ;; (use-package org-google-weather)
 
-  (use-package calfw
-    ;; :defer scame-defer-package)
-    )
-  (use-package calfw-org
-    ;; :defer scame-defer-package)
-    )
-  (use-package calfw-ical
-    ;; :defer scame-defer-package)
-    )
-  (use-package calfw-cal
-    ;; :defer scame-defer-package)
-    )
+  (use-package calfw :quelpa)
+  (use-package calfw-org :quelpa)
+  (use-package calfw-ical :quelpa)
+  (use-package calfw-cal :quelpa)
 
   (setq google-ical-calendar nil)
 
-
-  (use-package org-crypt
-    ;; :defer scame-defer-package
+  (use-package org-crypt :quelpa
     :config (progn
               (org-crypt-use-before-save-magic)
               (setq org-tags-exclude-from-inheritance (quote ("crypt")))
@@ -338,7 +327,7 @@
   ;; …, ▼, ↴, , ∞, ⬎, ⤷, ⤵
 
 
-  (use-package org-bullets
+  (use-package org-bullets :quelpa
     :init (progn
             (setq org-ellipsis "⚡⚡⚡")
             (setq org-bullets-bullet-list '("☀" "♼" "☼" "☾" "☽" "☣" "§" "¶" "‡" "※" "✕" "△" "◇" "▶" "◀" "◈"))

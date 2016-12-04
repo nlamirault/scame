@@ -1,6 +1,6 @@
 ;;; 61_ci.el -- Continuous integration
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -20,9 +20,8 @@
 ;;; Code:
 
 
-(use-package butler
-  ;; :defer scame-defer-package)
-  )
+(use-package butler :quelpa)
+
 
 (provide '61_ci)
 ;;; 61_ci.el ends here

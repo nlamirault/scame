@@ -1,6 +1,6 @@
 ;;; 16_shell.el --- Terminal configuration
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 
 ;;; Code:
 
-(use-package fish-mode
+(use-package fish-mode :quelpa
   ;; :defer scame-defer-package
   :mode (("\\.fish$" . fish-mode)))
 
@@ -27,7 +27,7 @@
 ;; ---------
 
 
-(use-package multi-term
+(use-package multi-term :quelpa
   ;; :defer scame-defer-package
   :config (progn
 	    (setq multi-term-program "/bin/bash")))

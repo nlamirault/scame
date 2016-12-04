@@ -59,7 +59,7 @@
 ;;             (spaceline-emacs-theme 'date 'time)))
 
 
-(use-package powerline)
+(use-package powerline :quelpa)
 
 (provide '13_modeline)
 ;;; 13_modeline.el ends here

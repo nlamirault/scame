@@ -1,6 +1,6 @@
 ;;; 96_music.el --- Music player
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -22,8 +22,7 @@
 
 (when scame-multimedia
 
-  (use-package emms
-    ;; :defer scame-defer-package
+  (use-package emms :quelpa
     :init (progn
             (define-prefix-command 'scame-emms-map)
             (global-set-key (kbd "C-x e") 'scame-emms-map))
@@ -43,33 +42,21 @@
            ("C-x e n" . emms-next)
            ("C-x e p" . emms-previous)))
 
-  (use-package emms-info-libtag
-    ;; :defer scame-defer-package)
-    )
+  (use-package emms-info-libtag :quelpa)
 
-  (use-package emms-browser
-    ;; :defer scame-defer-package)
-    )
+  (use-package emms-browser :quelpa)
 
-  (use-package emms-cache
-    ;; :defer scame-defer-package)
-    )
+  (use-package emms-cache :quelpa)
 
-  (use-package emms-info
-    ;; :defer scame-defer-package)
-    )
+  (use-package emms-info :quelpa)
 
-  (use-package emms-tag-editor
-    ;; :defer scame-defer-package)
-    )
+  (use-package emms-tag-editor :quelpa)
 
-  (use-package emms-volume
-    ;; :defer scame-defer-package
+  (use-package emms-volume :quelpa
     :bind (("C-x e ." . emms-volume-mode-plus)
            ("C-x e ," . emms-volume-mode-minus)))
 
-  (use-package emms-player-vlc
-    ;; :defer scame-defer-package
+  (use-package emms-player-vlc :quelpa
     :config (define-emms-simple-player vlc '(file url)
               (concat "\\`\\(https?\\|mms\\)://\\|"
                       (emms-player-simple-regexp
@@ -81,28 +68,22 @@
   ;; (use-package emms-player-mpd
   ;;   :config (add-to-list 'emms-player-list 'emms-player-mpd))
 
-  (use-package emms-mode-line
-    ;; :defer scame-defer-package
+  (use-package emms-mode-line :quelpa
     :config (emms-mode-line 1))
 
-  (use-package emms-playing-time
-    ;; :defer scame-defer-package
+  (use-package emms-playing-time :quelpa
     :config (emms-playing-time 1))
 
-  (use-package emms-streams
-    ;; :defer scame-defer-package
+  (use-package emms-streams :quelpa
     :config (setq emms-stream-list
                   '(("Nova" "http://broadcast.infomaniak.net/radionova-high.mp3" 1 url)
                     ("France Inter" "http://www.tv-radio.com/station/france_inter_mp3/france_inter_mp3-128k.m3u" 1 url)
                     ("France Info" "http://www.tv-radio.com/station/france_info/france_info.m3u" 1 url))))
 
-  (use-package helm-emms
-    ;; :defer scame-defer-package
-    :bind (("C-x e r" . helm-emms)))
+ ;; (use-package helm-emms
+ ;;    :bind (("C-x e r" . helm-emms)))
 
-  (use-package bongo
-    ;; :defer scame-defer-package)
-    )
+  (use-package bongo :quelpa)
 
   )
 

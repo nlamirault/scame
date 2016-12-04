@@ -1,6 +1,6 @@
 ;;; 81_lang.el --- Languages utilities
 
-;; Copyright (c) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -36,7 +36,7 @@
             (flyspell-buffer)))
 
 
-(use-package flyspell-correct
+(use-package flyspell-correct :quelpa
   :after flyspell
   :bind (:map flyspell-mode-map
               ("C-c $" . flyspell-correct-word-generic))

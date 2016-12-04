@@ -1,6 +1,6 @@
 ;;; 34_go-lang.el -- Configuration for the GO language
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -26,8 +26,7 @@
 
 (when scame-golang
 
-  (use-package go-mode
-    ;; :defer scame-defer-package
+  (use-package go-mode :quelpa
     :mode (("\\.go$" . go-mode))
     :config (progn
               (subword-mode +1)
@@ -40,59 +39,51 @@
                           (local-set-key (kbd "C-x g d") 'godoc)
                           (local-set-key (kbd "C-x g j") 'godef-jump)))))
 
-  (use-package go-eldoc
-    ;; :defer scame-defer-package
+  (use-package go-eldoc :quelpa
     :config (add-hook 'go-mode-hook 'go-eldoc-setup))
 
-  (use-package gotest
-    ;; :defer scame-defer-package
+  (use-package gotest :quelpa
     :config (add-hook 'go-mode-hook
                       (lambda ()
                         (local-set-key (kbd "C-x g t") 'go-test-current-test)
                         (local-set-key (kbd "C-x g f") 'go-test-current-file)
                         (local-set-key (kbd "C-x g p") 'go-test-current-project))))
 
-  (use-package go-errcheck
-    ;; :defer scame-defer-package
+  (use-package go-errcheck :quelpa
     :config (progn
               (add-hook 'go-mode-hook
                         (lambda ()
                           (local-set-key (kbd "C-x g e") 'go-errcheck)))))
 
 
-  (use-package golint
-    ;; :defer scame-defer-package
+  (use-package golint :quelpa
     :config (progn
               (add-hook 'go-mode-hook
                         (lambda ()
                           (local-set-key (kbd "C-x g l") 'golint)))))
 
-  (use-package go-rename
+  (use-package go-rename :quelpa
     :config (progn
               (add-hook 'go-mode-hook
                         (lambda ()
                           (local-set-key (kbd "C-x g R") 'go-rename)))))
 
-  (use-package go-dlv
+  (use-package go-dlv :quelpa
     :config (progn
               (add-hook 'go-mode-hook
                         (lambda ()
                           (local-set-key (kbd "C-x g d") 'dlv-current-func)))))
 
-  (use-package go-direx
-    ;; :defer scame-defer-package
+  (use-package go-direx :quelpa
     :config (progn
               (add-hook 'go-mode-hook
                         (lambda ()
                           (local-set-key (kbd "C-x g x")
                                          'go-direx-pop-to-buffer)))))
 
-  (use-package go-projectile
-    ;; :defer scame-defer-package)
-    )
+  (use-package go-projectile :quelpa)
 
-  (use-package company-go
-    ;; :defer scame-defer-package
+  (use-package company-go :quelpa
     :config (add-hook 'go-mode-hook
                       (lambda ()
                         (set (make-local-variable 'company-backends) '(company-go))

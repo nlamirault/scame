@@ -1,6 +1,6 @@
 ;;; 62_packages.el --- Manage Emacs packages
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,9 +19,7 @@
 
 ;;; Code:
 
-(use-package paradox
-  ;; :defer scame-defer-package)
-  )
+(use-package paradox :quelpa)
 
 
 (provide '62_packages)

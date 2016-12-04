@@ -1,6 +1,6 @@
 ;;; 40_haskell.el --- Haskell configuration
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@
 
 (when scame-haskell
 
-  (use-package haskell-mode
+  (use-package haskell-mode :quelpa
     :init (progn
             (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
             (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode))

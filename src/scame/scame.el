@@ -52,30 +52,11 @@
 (require 'scame-pkg)
 (require 'scame-splash)
 
-(require 'f)
-(require 's)
-;; (require 'benchmark-init)
-(require 'use-package)
-
 (scame--msg-buffer scame-buffer
                    "--> Scame modules ...\n"
                    'font-lock-string-face)
 (redisplay)
-(use-package el-init
-  :config (progn
-            (validate-setq el-init-meadow-regexp       "\\`meadow-"
-                           el-init-carbon-emacs-regexp "\\`carbon-emacs-"
-                           el-init-cocoa-emacs-regexp  "\\`cocoa-emacs-"
-                           el-init-nw-regexp           "\\`nw-"
-                           el-init-mac-regexp          "\\`mac-"
-                           el-init-windows-regexp      "\\`windows-"
-                           el-init-linux-regexp        "\\`linux-"
-                           el-init-freebsd-regexp      "\\`freebsd-")
-            (el-init-load (f-parent (f-this-file))
-                          :subdirectories '("packages" "core")
-                          :wrappers '(el-init-require/benchmark
-                                      el-init-require/record-error
-                                      el-init-require/system-case))))
+(scame--install-dependencies)
 
 (scame--msg-buffer scame-buffer
                    "--> Vendoring modules ...\n"
@@ -86,7 +67,6 @@
            (f-directory? scame-vendoring-directory))
   (f-entries scame-vendoring-directory
              (lambda (elem)
-               ;;(message "elem: %s" elem)
                (cond ((or (f-directory? elem)
                           (f-symlink? elem))
                       (add-to-list 'load-path elem))
@@ -105,20 +85,20 @@
                    "--> Addons modules ...\n"
                    'font-lock-string-face)
 (redisplay)
-(scame--install-packages scame-addons)
+;; (scame--install-packages scame-addons)
 
-(scame--msg-buffer scame-buffer
-                   (format "--> Version %s ready.\n"
-                           scame-version-number)
-                   'font-lock-string-face)
-(redisplay)
+;; (scame--msg-buffer scame-buffer
+;;                    (format "--> Version %s ready.\n"
+;;                            scame-version-number)
+;;                    'font-lock-string-face)
+;; (redisplay)
 
 (scame--setup-startup-hook)
 
 (when scame-use-custom-modeline
   (setq-default mode-line-format (scame--modeline)))
 
-(validate-setq warning-minimum-level :warning)
+(setq warning-minimum-level :warning)
 
 (provide 'scame)
 ;;; scame.el ends here

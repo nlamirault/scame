@@ -1,6 +1,6 @@
 ;;; 17_flycheck.el --- Settings for flycheck
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,24 +19,20 @@
 
 ;;; Code:
 
-
-
-;;(require 'flycheck-color-mode-line)
-
-(use-package flycheck
+(use-package flycheck :quelpa
   ;; :defer scame-defer-package
   :config (add-hook 'after-init-hook #'global-flycheck-mode)
   :diminish flycheck-mode)
 
-(use-package helm-flycheck
+(use-package helm-flycheck :quelpa
   ;; :defer scame-defer-package
   :bind (("C-c ! h" . helm-flycheck)))
 
-(use-package flycheck-color-mode-line
+(use-package flycheck-color-mode-line :quelpa
   ;; :defer scame-defer-package
   :config (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
 
-(use-package flycheck-cask
+(use-package flycheck-cask :quelpa
   ;; :defer scame-defer-package
   :config (add-hook 'flycheck-mode-hook #'flycheck-cask-setup))
 

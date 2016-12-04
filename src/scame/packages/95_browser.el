@@ -1,6 +1,6 @@
 ;;; 95_browser.el --- Browser configuration
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,34 +19,7 @@
 
 ;;; Code:
 
-;; FIX:
-;;
-;; Debugger entered--Lisp error: (file-error "Cannot open load file" "w3m-cookie")
-;;   w3m-cookie-shutdown()
-;;   kill-emacs(t)
-;;   command-line()
-;;   normal-top-level()
-;; Use:
-;; (remove-hook 'kill-emacs-hook 'w3m-cookie-shutdown)
-
-;; (use-package w3m
-;;   :commands w3m
-;;   ;;:init (remove-hook 'kill-emacs-hook 'w3m-cookie-shutdown)
-;;   :config (progn
-;;             (setq w3m-coding-system 'utf-8)
-;;             (setq w3m-file-coding-system 'utf-8)
-;;             (setq w3m-file-name-coding-system 'utf-8)
-;;             (setq w3m-input-coding-system 'utf-8)
-;;             (setq w3m-output-coding-system 'utf-8)
-;;             (setq w3m-terminal-coding-system 'utf-8)))
-
-;; (use-package w3m-cookie
-;;   :config (setq w3m-use-cookies t))
-
-
-
-(use-package eww
-  ;; :defer scame-defer-package
+(use-package eww :quelpa
   :config (progn
             (setq shr-color-visible-luminance-min 70)))
 

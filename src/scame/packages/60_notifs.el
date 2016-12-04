@@ -1,6 +1,6 @@
 ;;; 60_notifs.el --- Notifications for Emacs
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -24,8 +24,7 @@
    (notifications-notify :title title :body message))
 
 
-(use-package alert
-  ;; :defer scame-defer-package
+(use-package alert :quelpa
   :config (cond
            (linux-p
             (setq alert-default-style 'libnotify))
@@ -35,8 +34,7 @@
             (setq alert-default-style 'message))))
 
 
-(use-package sauron
-  ;; :defer scame-defer-package
+(use-package sauron :quelpa
   :init (progn
           (define-prefix-command 'scame-sauron-map)
           (global-set-key (kbd "C-x s") 'scame-sauron-map)

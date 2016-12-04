@@ -1,6 +1,6 @@
 ;;; 94_im.el --- Instant Messaging configuration
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -22,8 +22,7 @@
 
 (when scame-communication
 
-  (use-package jabber
-    ;; :defer scame-defer-package
+  (use-package jabber :quelpa
     :bind (("C-c i i" . jabber-chat-with)
            ("C-c i j" . jabber-connect-all)
            ("C-c i d" . jabber-disconnect)

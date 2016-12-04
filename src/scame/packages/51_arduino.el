@@ -21,18 +21,18 @@
 
 (when scame-iot
 
-  (use-package arduino-mode
+  (use-package arduino-mode :quelpa
     :mode (("\\.ino\\'" . arduino-mode)))
 
   ;; Test it
   ;; (use-package company-arduino)
 
-  (use-package platformio-mode
+  (use-package platformio-mode :quelpa
     :init (add-hook 'c++-mode-hook 'platformio-mode)
     :mode (("\\.ino\\'" . arduino-mode))
     :config (platformio-setup-compile-buffer))
 
-  (use-package company-arduino
+  (use-package company-arduino :quelpa
     :init (require #'company-arduino)
     :config (add-to-list 'company-backends 'company-arduino))
 

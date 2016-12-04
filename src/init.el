@@ -25,6 +25,31 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
+;; Bootstrap quelpa
+(if (require 'quelpa nil t)
+    (quelpa-self-upgrade)
+  (with-temp-buffer
+    (url-insert-file-contents
+     "https://raw.github.com/quelpa/quelpa/master/bootstrap.el")
+    (eval-buffer)))
+
+;; Make Quelpa prefer MELPA-stable over melpa.
+(setq quelpa-stable-p t)
+
+;; Install quelpa-use-package, which will install use-package as well
+(quelpa
+ '(quelpa-use-package
+   :fetcher github
+   :repo "quelpa/quelpa-use-package"
+   :stable nil))
+
+(require 'quelpa-use-package)
+
+;; Install requirements
+(use-package f :quelpa)
+(use-package s :quelpa)
+
+;; Scame installation
 (mapc (lambda (path)
         (add-to-list 'load-path (concat user-emacs-directory path)))
       '("scame/" "scame/gnus"))

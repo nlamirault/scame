@@ -1,6 +1,6 @@
 ;;; 92_weather.el --- Weather informations
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,16 +19,11 @@
 
 ;;; Code:
 
-(use-package weather-metno
-  ;; :defer scame-defer-package)
-  )
+(use-package weather-metno :quelpa)
 
-(use-package org-weather-metno
-  ;; :defer scame-defer-package)
-  )
+(use-package org-weather-metno :quelpa)
 
-(use-package sunshine
-  ;; :defer scame-defer-package
+(use-package sunshine :quelpa
   :config (progn
             (setq sunshine-show-icons t)
             (setq sunshine-units 'metric)))

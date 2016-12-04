@@ -1,6 +1,6 @@
 ;;; 21_sysadmin.el --- Tools for sysadmin
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -21,8 +21,7 @@
 
 (when scame-sysadmin
 
-  (use-package apache-mode
-    ;; :defer scame-defer-package
+  (use-package apache-mode :quelpa
     :mode (("\\.htaccess\\'" . apache-mode)
            ("httpd\\.conf\\'"  . apache-mode)
            ("srm\\.conf\\'"    . apache-mode)
