@@ -1,6 +1,6 @@
 ;;; 44_rust.el -- Rust configuration
 
-;; Copyright (C) 2014, 2015, 2016  Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015, 2016, 2017  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,7 +19,10 @@
 
 ;;; Code:
 
+
 (when scame-rust
+
+  (require 'f)
 
   (use-package rust-mode
     :mode (("\\.rs\\'" . rust-mode))
@@ -39,13 +42,13 @@
   (use-package racer
     :init (progn
             (setq racer-rust-src-path (getenv "RUST_HOME"))
-            (setq racer-cmd (executable-find "racer")))
+            (setq racer-cmd (f-expand "~/.cargo/bin/racer"))
     :config (add-hook 'rust-mode-hook
                       '(lambda ()
                          (racer-activate)
                          (racer-turn-on-eldoc)
                          (local-set-key (kbd "M-.") #'racer-find-definition)
-                         (local-set-key (kbd "TAB") #'racer-complete-or-indent))))
+                         (local-set-key (kbd "TAB") #'racer-complete-or-indent)))))
 
   (use-package flycheck-rust
     :init (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
@@ -54,8 +57,7 @@
     :init (set (make-local-variable 'company-backends) '(company-racer)))
 
 
-
-  )
+)
 
 
 (provide '44_rust)
