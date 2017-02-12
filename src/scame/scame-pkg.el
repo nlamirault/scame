@@ -1,6 +1,6 @@
 ;; scame-pkg.el --- Scame Packages installation
 
-;; Copyright (c) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015, 2016 2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -25,26 +25,6 @@
 (require 'scame-io)
 
 
-;; Repositories
-
-
-(setq package-archives
-      '(("gnu" . "http://elpa.gnu.org/packages/")
-        ("org" . "http://orgmode.org/elpa/")
-        ("melpa-stable" . "http://stable.melpa.org/packages/")
-        ("melpa" . "http://melpa.org/packages/")
-        ;; ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
-        ;; ("melpa" . "http://melpa.milkbox.net/packages/")
-        ))
-
-(package-refresh-contents)
-
-;; Bootstrap `use-package'
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-
-(use-package validate :ensure t)
-
 ;; Install dependencies
 (scame--msg-buffer scame-buffer
                    "--> Dependencies installation ...\n"
@@ -54,7 +34,6 @@
 (dolist (pkg scame-dependencies)
   (unless (package-installed-p pkg)
     (package-install pkg)))
-
 (require 'dash)
 
 ;; Scame packages
@@ -87,6 +66,7 @@
     dumb-jump
     origami
 
+    spinner
     paradox
 
     crux
@@ -146,6 +126,7 @@
     spaceline
     mode-icons
     all-the-icons
+    all-the-icons-dired
     ;;beacon
 
     ;; Keys
@@ -299,7 +280,8 @@
   (add-to-list 'unstable-packages 'puppet-mode t)
   (add-to-list 'unstable-packages 'ansible t)
   (add-to-list 'unstable-packages 'ansible-doc t)
-  (add-to-list 'unstable-packages 'terraform-mode t))
+  ;;(add-to-list 'unstable-packages 'terraform-mode t))
+  )
 
 (when scame-iot
   ;; Enable scrolling and colours in the compile buffer.
@@ -324,12 +306,13 @@
   (add-to-list 'package-pinned-packages
                (cons 'org "org"))
   (add-to-list 'unstable-packages 'calfw t)
-  (add-to-list 'unstable-packages 'org-gcal t)
-  (add-to-list 'unstable-packages 'org-agenda-property t)
-  (add-to-list 'unstable-packages 'org-journal t)
-  (add-to-list 'unstable-packages 'org-bullets t)
-  (add-to-list 'unstable-packages 'orgbox t)
-  (add-to-list 'unstable-packages 'org-caldav t))
+  ;;(add-to-list 'unstable-packages 'org-gcal t)
+  ;;(add-to-list 'unstable-packages 'org-agenda-property t)
+  ;; (add-to-list 'unstable-packages 'org-journal t)
+  ;; (add-to-list 'unstable-packages 'org-bullets t)
+  ;; (add-to-list 'unstable-packages 'orgbox t)
+  ;; (add-to-list 'unstable-packages 'org-caldav t))
+  )
 
 (when scame-multimedia
   (add-to-list 'unstable-packages 'bongo t)
@@ -392,8 +375,8 @@
 ;; (message "Pinned : %s" package-pinned-packages)
 
 
-(validate-setq split-height-threshold nil)
-(validate-setq split-width-threshold 0)
+(setq split-height-threshold nil)
+(setq split-width-threshold 0)
 
 (scame--msg-buffer scame-buffer
                    "--> Packages installation ...\n"

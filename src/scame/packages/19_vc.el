@@ -1,6 +1,6 @@
 ;;; 19_vc.el --- Version control
 
-;; Copyright (C) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015, 2016, 2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -21,7 +21,6 @@
 
 
 (use-package magit
-  ;; :defer scame-defer-package
   :config (progn
             (when (eql 'ivy scame-completion-method)
               (setq magit-completing-read-function 'ivy-completing-read)))
@@ -30,6 +29,10 @@
 	 ("C-c g p" . magit-push)
 	 ("C-c g l" . magit-log-all)
 	 ("C-c g b" . magit-branch-manager)))
+
+(use-package magithub
+  :after magit
+  :config (magithub-feature-autoinject t))
 
 (setq magit-auto-revert-mode nil
       magit-last-seen-setup-instructions "1.4.0")

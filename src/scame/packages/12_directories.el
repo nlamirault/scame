@@ -1,6 +1,6 @@
 ;;; 12_directories.el --- Dired and friends configurations
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015, 2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -30,6 +30,10 @@
 	  (setq dired-recursive-deletes 'always)
 	  (setq dired-recursive-copies 'always))
   :bind (("C-x d d" . dired)))
+
+(use-package all-the-icons-dired
+  :commands (all-the-icons-dired-mode)
+  :init (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
 
 ;; (use-package dired+
 ;;   :config (setq diredp-hide-details-initially-flag nil))
