@@ -92,13 +92,14 @@
     ;; Projects
     editorconfig
     projectile
-    helm-projectile
-    persp-projectile
+    ;; helm-projectile
+    ;; persp-projectile
     ibuffer-projectile
     helm-project-persist
     counsel-projectile
-
-    toml-mode
+    ;; perspeen
+    persp-mode
+    persp-mode-projectile-bridge
 
     ;; Dired
     ;; https://github.com/Fuco1/dired-hacks/issues/33
@@ -141,12 +142,22 @@
     butler
 
     ;; Markup languages
-    markdown-mode yaml-mode adoc-mode
+    markdown-mode
+    yaml-mode
+    adoc-mode
+    toml-mode
 
     ;; Git and friends
-    magit magit-gerrit
-    gitconfig-mode gitignore-mode gitattributes-mode
-    gist git-gutter+ git-timemachine helm-open-github
+    magit
+    magit-gerrit
+    magithub
+    gitconfig-mode
+    gitignore-mode
+    gitattributes-mode
+    gist
+    git-gutter+
+    git-timemachine
+    helm-open-github
 
     ;; Utilities
     pkg-info project-persist

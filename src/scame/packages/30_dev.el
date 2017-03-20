@@ -1,6 +1,6 @@
 ;;; 30_dev.el -- Commons configurations for development
 
-;; Copyright (C) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015, 2016, 2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -79,7 +79,7 @@
      projectile-known-projects)
    :action #'projectile-switch-project-by-name))
 
-(message "Scame completion : %s" scame-completion-method)
+(message "Scame completion backend: %s" scame-completion-method)
 
 (cond ((eql 'ido scame-completion-method)
        (setq projectile-completion-system 'ido))
@@ -105,8 +105,53 @@
       (t (setq projectile-completion-system 'ido)))
 
 
-(use-package persp-projectile
-  :bind (("C-c p n" . projectile-persp-switch-project)))
+;; (use-package persp-projectile
+;;   :config (persp-mode)
+;;   :bind (("C-c p n" . projectile-persp-switch-project)))
+
+;; (use-package perspeen
+;;   :init (setq perspeen-use-tab t)
+;;   :config (perspeen-mode))
+
+
+(use-package persp-mode
+  :commands
+  (persp-mode
+   persp-switch persp-prev persp-next)
+  :bind (("C-c RET" . persp-switch)
+         ("M-["     . persp-prev)
+         ("M-]"     . persp-next))
+  :init (progn
+          (custom-set-variables
+           '(persp-keymap-prefix (kbd "C-x x")))
+          (setq persp-save-dir (concat scame-cache-directory "persp-confs/"))
+          (persp-mode 1))
+  :config (progn
+            ;; Kill buffers not belonging to any perspective.
+            (setq persp-autokill-buffer-on-remove 'kill-weak)
+            (set-face-background 'persp-face-lighter-buffer-not-in-persp
+                                 (face-attribute 'isearch-fail :background))
+            (set-face-foreground 'persp-face-lighter-buffer-not-in-persp
+                                 (face-attribute 'isearch-fail :foreground))))
+
+(use-package persp-mode-projectile-bridge
+  :commands (persp-mode-projectile-bridge-mode)
+  :functions (persp-mode-projectile-bridge-find-perspectives-for-all-buffers
+              persp-mode-projectile-bridge-kill-perspectives)
+  :preface (progn
+             (autoload 'persp-mode-projectile-bridge-mode "persp-mode-projectile-bridge")
+             (defun enable-persp-mode-projectile-bridge-mode ()
+               "Enable persp-mode-projectile-bridge mode."
+               (persp-mode-projectile-bridge-mode t)))
+  :init
+  (progn
+    (add-hook 'persp-mode-projectile-bridge-mode-hook
+              #'(lambda ()
+                  (if persp-mode-projectile-bridge-mode
+                      (persp-mode-projectile-bridge-find-perspectives-for-all-buffers)
+                    (persp-mode-projectile-bridge-kill-perspectives))))
+    (add-hook 'after-change-major-mode-hook #'enable-persp-mode-projectile-bridge-mode)))
+
 
 
 (setq-default indent-tabs-mode nil)

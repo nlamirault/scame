@@ -1,6 +1,6 @@
 ;; scame.el --- Scame Emacs initialization file
 
-;; Copyright (c) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015, 2016, 2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -31,15 +31,33 @@
 
 (setq warning-minimum-level :error)
 
+
+;; Bootstrap
+;; ------------------------
+
+(setq package-archives
+      '(("gnu" . "http://elpa.gnu.org/packages/")
+        ("org" . "http://orgmode.org/elpa/")
+        ("melpa-stable" . "https://stable.melpa.org/packages/")
+        ("melpa" . "https://melpa.org/packages/")
+        ;; ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
+        ;; ("melpa" . "http://melpa.milkbox.net/packages/")
+        ))
+
+(package-refresh-contents)
+
+;; Bootstrap `use-package'
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+
+
 ;; Scame
 ;; -----------------
 
+
 (require 'scame-custom)
 ;; (message "Scame defer packages: %s" scame-defer-package)
-(condition-case err
-    (load scame-emacs-custom-file)
-  (file-error
-   (write-region "" "" scame-emacs-custom-file)))
+(load scame-emacs-custom-file)
 
 ;; Load Gnus from Emacs or Gnus development version
 (when (eql 'gnus-dev scame-gnus-version)
@@ -54,7 +72,7 @@
 
 (require 'f)
 (require 's)
-;; (require 'benchmark-init)
+
 (require 'use-package)
 
 (scame--msg-buffer scame-buffer
@@ -63,14 +81,14 @@
 (redisplay)
 (use-package el-init
   :config (progn
-            (validate-setq el-init-meadow-regexp       "\\`meadow-"
-                           el-init-carbon-emacs-regexp "\\`carbon-emacs-"
-                           el-init-cocoa-emacs-regexp  "\\`cocoa-emacs-"
-                           el-init-nw-regexp           "\\`nw-"
-                           el-init-mac-regexp          "\\`mac-"
-                           el-init-windows-regexp      "\\`windows-"
-                           el-init-linux-regexp        "\\`linux-"
-                           el-init-freebsd-regexp      "\\`freebsd-")
+            (setq el-init-meadow-regexp       "\\`meadow-"
+                  el-init-carbon-emacs-regexp "\\`carbon-emacs-"
+                  el-init-cocoa-emacs-regexp  "\\`cocoa-emacs-"
+                  el-init-nw-regexp           "\\`nw-"
+                  el-init-mac-regexp          "\\`mac-"
+                  el-init-windows-regexp      "\\`windows-"
+                  el-init-linux-regexp        "\\`linux-"
+                  el-init-freebsd-regexp      "\\`freebsd-")
             (el-init-load (f-parent (f-this-file))
                           :subdirectories '("packages" "core")
                           :wrappers '(el-init-require/benchmark
@@ -118,7 +136,7 @@
 (when scame-use-custom-modeline
   (setq-default mode-line-format (scame--modeline)))
 
-(validate-setq warning-minimum-level :warning)
+(setq warning-minimum-level :warning)
 
 (provide 'scame)
 ;;; scame.el ends here
