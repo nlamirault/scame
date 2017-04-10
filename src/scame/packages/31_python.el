@@ -76,15 +76,10 @@
                         (local-set-key (kbd "C-x y t") 'tox-current-test)
                         (local-set-key (kbd "C-x y f") 'tox-current-class))))
 
-  (use-package jedi-direx
+  (use-package pyvenv
     :ensure t
     :pin melpa
-    :config (progn
-              (add-hook 'jedi-mode-hook 'jedi-direx:setup)
-              (add-hook 'jedi-mode-hook
-                        (lambda ()
-                          (local-set-key (kbd "C-x y x")
-                                         'jedi-direx:pop-to-buffer)))))
+    :config (add-hook 'python-mode-hook 'pyvenv-mode))
 
   (use-package sphinx-doc
     :ensure t
