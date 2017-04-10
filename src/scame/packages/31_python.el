@@ -1,6 +1,6 @@
 ;;; 31_python.el --- Python configuration
 
-;; Copyright (c) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -23,7 +23,8 @@
 (when scame-python
 
   (use-package python
-    ;; :defer scame-defer-package
+    :ensure t
+    :pin melpa
     :mode (("\\.py\\'" . python-mode))
     :config (progn
               (define-key python-mode-map (kbd "RET") 'newline-and-indent)
@@ -43,14 +44,16 @@
 
 
   (use-package anaconda-mode
-    ;; :defer scame-defer-package
+    :ensure t
+    :pin melpa
     :config (progn
               (add-hook 'python-mode-hook 'anaconda-mode)
               (add-hook 'python-mode-hook 'eldoc-mode))
     :diminish anaconda-mode)
 
   (use-package company-anaconda
-    ;; :defer scame-defer-package
+    :ensure t
+    :pin melpa
     :config (add-to-list 'company-backends 'company-anaconda))
 
   ;; (use-package elpy
@@ -66,13 +69,16 @@
   ;; ((python-mode . ((pyvenv-workon . "xxxxx")))
 
   (use-package tox
+    :ensure t
+    :pin melpa
     :config (add-hook 'python-mode-hook
                       (lambda ()
                         (local-set-key (kbd "C-x y t") 'tox-current-test)
                         (local-set-key (kbd "C-x y f") 'tox-current-class))))
 
   (use-package jedi-direx
-    ;; :defer scame-defer-package
+    :ensure t
+    :pin melpa
     :config (progn
               (add-hook 'jedi-mode-hook 'jedi-direx:setup)
               (add-hook 'jedi-mode-hook
@@ -81,29 +87,22 @@
                                          'jedi-direx:pop-to-buffer)))))
 
   (use-package sphinx-doc
-    ;; :defer scame-defer-package
+    :ensure t
+    :pin melpa
     :config (add-hook 'python-mode-hook
                       (lambda ()
                         (require 'sphinx-doc)
                         (sphinx-doc-mode t)))
     :diminish sphinx-doc-mode)
 
-  (use-package helm-pydoc
-    ;; :defer scame-defer-package
-    :config (add-hook 'python-mode-hook
-                      (lambda ()
-                        (local-set-key (kbd "C-x y d") 'helm-pydoc))))
-
   (use-package pip-requirements
-    ;; :defer scame-defer-package
+    :ensure t
+    :pin melpa
     :mode (("\\requirements.txt\\'" . pip-requirements-mode)
            ("\\requirements-dev.txt\\'" . pip-requirements-mode)
            ("\\requirements-doc.txt\\'" . pip-requirements-mode)
            ("\\requirements-style.txt\\'" . pip-requirements-mode)
            ("\\requirements-test.txt\\'" . pip-requirements-mode)))
-
-;;  (use-package py-yapf
-;; :config (add-hook 'python-mode-hook 'py-yapf-enable-on-save))
 
 
   (define-key python-mode-map (kbd "C-x y h")

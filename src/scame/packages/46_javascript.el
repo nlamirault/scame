@@ -1,6 +1,6 @@
 ;;; 46_javascript.el --- javascript configuration
 
-;; Copyright (C) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -24,7 +24,8 @@
   (setq js-indent-level 2)
 
   (use-package js3-mode
-    ;; :defer scame-defer-package
+    :ensure t
+    :pin melpa
     :init (setq js3-indent-level 2
                 js3-mode-dev-mode-p t
                 js3-auto-indent-p t
@@ -36,20 +37,23 @@
     :mode (("\\.js\\'" . js3-mode)))
 
   (use-package tern
-    ;; :defer scame-defer-package
+    :ensure t
+    :pin melpa
     :config (setq tern-command
                   (list (expand-file-name
                          (or (executable-find "tern") "tern")))))
 
   (use-package company-tern
-    ;; :defer scame-defer-package
+    :ensure t
+    :pin melpa
     :init (add-to-list 'company-backends 'company-tern)
     :config (add-hook 'js3-mode-hook 'tern-mode))
 
   ;; (use-package sws-mode)
 
   (use-package jade-mode
-    ;; :defer scame-defer-package
+    :ensure t
+    :pin melpa
     :mode (("\\.jade\\'" . jade-mode)
            ("\\.styl\\'" . jade-mode)))
 

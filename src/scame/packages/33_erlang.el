@@ -1,6 +1,6 @@
 ;;; 33_erlang.el -- Erlang configuration
 
-;; Copyright (C) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -29,7 +29,8 @@
           (t nil)))
 
   (use-package erlang
-    ;; :defer scame-defer-package
+    :ensure t
+    :pin melpa
     :mode (("\\.erl?$" . erlang-mode)
            ("\\.hrl?$" . erlang-mode)
            ("\\.spec?$" . erlang-mode))

@@ -1,6 +1,6 @@
 ;; 47_elixir.el --- Elixir configuration
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -22,11 +22,15 @@
 (when scame-elixir
 
   (use-package elixir-mode
+    :ensure t
+    :pin melpa
     :mode (("\\.ex\\'" . elixir-mode)
            ("\\.exs\\'" . elixir-mode)
            ("\\.elixir\\'" . elixir-mode)))
 
   (use-package alchemist
+    :ensure t
+    :pin melpa
     :commands (alchemist-mode)
     :init (add-hook 'elixir-mode-hook 'alchemist-mode))
 

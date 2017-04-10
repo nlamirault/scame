@@ -1,6 +1,6 @@
 ;;; 38_perl -- Perl configuration
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -21,13 +21,6 @@
 
 
 (when scame-perl
-
-  (use-package helm-perldoc
-    ;; :defer scame-defer-package
-    :config (add-hook 'perl-mode-hook
-                      (lambda ()
-                        (local-set-key (kbd "C-x e d") 'helm-perldoc))))
-
 
   )
 

@@ -1,6 +1,6 @@
 ;;; 36_php.el --- PHP configuration
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -22,7 +22,8 @@
 (when scame-php
 
   (use-package php-mode
-    ;; :defer scame-defer-package
+    :ensure t
+    :pin melpa
     :config (progn
               (add-hook 'php-mode-hook
                         (lambda ()
@@ -38,7 +39,8 @@
     :mode (("\\.php\\'" . php-mode)))
 
   (use-package phpunit
-    ;; :defer scame-defer-package
+    :ensure t
+    :pin melpa
     :config (add-hook 'php-mode-hook
                       (lambda ()
                         (local-set-key (kbd "C-x p t") 'phpunit-current-test)

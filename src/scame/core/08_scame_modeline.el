@@ -1,6 +1,6 @@
 ;; 08_scame_modeline.el --- Scame modeline
 
-;; Copyright (c) 2014-2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -186,7 +186,7 @@
   (let ((buf (current-buffer)))
     (package-list-packages-no-fetch)
     (with-current-buffer "*Packages*"
-      (validate-setq scame--modeline-package-upgrades (length (package-menu--find-upgrades))))
+      (setq scame--modeline-package-upgrades (length (package-menu--find-upgrades))))
     (switch-to-buffer buf)))
 
 (advice-add 'package-menu-execute :after 'scame--modeline-package-count-upgrades)

@@ -68,23 +68,16 @@
   :group 'scame
   :type 'string)
 
+(defcustom scame-abrev-filename
+  (concat user-emacs-directory "abbrev_defs")
+  "Tell emacs where to read abbrev definitions."
+  :group 'scame
+  :type 'string)
+
 (defcustom scame-use-vendoring t
   "Set if you want to use vendoring utility."
   :group 'scame
   :type 'boolean)
-
-(defcustom scame-defer-package t
-  "Set if you want defer loading packages."
-  :group 'scame
-  :type 'boolean)
-
-(defcustom scame-completion-method 'ido
-  "Method to select a candidate from a list of strings."
-  :group 'scame
-  :type '(choice
-          (const :tag "Ido" ido)
-          (const :tag "Helm" helm)
-          (const :tag "Ivy" ivy)))
 
 (defcustom scame-use-custom-modeline t
   "Set if you want to use the Scame modline."

@@ -1,6 +1,6 @@
 ;;; 01_basic_ui.el --- Emacs basic UI
 
-;; Copyright (c) 2014-2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,37 +19,44 @@
 
 ;;; Code:
 
-(when (display-graphic-p)
+(use-package tool-bar
+  :config (progn
+            (menu-bar-mode -1)
+            (scroll-bar-mode -1)
+            (tool-bar-mode -1)))
 
-  (menu-bar-mode -1)
-  (scroll-bar-mode -1)
+(setq x-select-enable-clipboard t)
 
-  (use-package tool-bar
-    :config (tool-bar-mode -1))
+(use-package all-the-icons
+  :ensure t
+  :pin melpa)
 
-  (setq x-select-enable-clipboard t)
-
-  (use-package mode-icons
-    :config (mode-icons-mode))
-
-  )
+(use-package mode-icons
+  :ensure t
+  :pin melpa
+  :config (mode-icons-mode))
 
 (use-package ace-window
+  :ensure t
+  :pin melpa
   :config (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
-  :bind ("C-x o" . ace-window))
+  :bind (("C-x o" . ace-window)))
 
-;; (use-package beacon
-;;   :diminish beacon-mode
-;;   :config (progn
-;;             (beacon-mode 1)
-;;             (setq beacon-blink-delay 0.2
-;;                   beacon-blink-duration 0.2
-;;                   beacon-blink-when-point-moves 7
-;;                   beacon-blink-when-window-changes t
-;;                   beacon-blink-when-window-scrolls t
-;;                   beacon-color "brown"
-;;                   beacon-push-mark 5
-;;                   beacon-size 25)))
+(use-package page-break-lines
+  :ensure t
+  :pin melpa)
+
+(use-package dashboard
+  :ensure t
+  :pin melpa
+  :config (progn
+            (setq dashboard-items '((agenda . 5)
+                                    (recents  . 5)
+                                    (projects . 5)
+                                    (bookmarks . 5)))
+            (setq dashboard-banner-logo-title "Welcome to Scame")
+            (setq dashboard-startup-banner 'official)
+            (dashboard-setup-startup-hook)))
 
 (provide '01_basic_ui)
 ;;; 01_basic_ui.el ends here

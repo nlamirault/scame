@@ -1,6 +1,6 @@
 ;; scame.el --- Scame Emacs initialization file
 
-;; Copyright (c) 2014, 2015, 2016, 2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -31,55 +31,20 @@
 
 (setq warning-minimum-level :error)
 
-
-;; Bootstrap
-;; ------------------------
-
-(setq package-archives
-      '(("gnu" . "http://elpa.gnu.org/packages/")
-        ("org" . "http://orgmode.org/elpa/")
-        ("melpa-stable" . "https://stable.melpa.org/packages/")
-        ("melpa" . "https://melpa.org/packages/")
-        ;; ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
-        ;; ("melpa" . "http://melpa.milkbox.net/packages/")
-        ))
-
-(package-refresh-contents)
-
-;; Bootstrap `use-package'
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-
-
 ;; Scame
 ;; -----------------
 
-
 (require 'scame-custom)
-;; (message "Scame defer packages: %s" scame-defer-package)
-(load scame-emacs-custom-file)
+(when (file-exists-p scame-emacs-custom-file)
+  (load scame-emacs-custom-file))
 
-;; Load Gnus from Emacs or Gnus development version
-(when (eql 'gnus-dev scame-gnus-version)
-  (push (concat scame-gnus-dev-directory "/lisp") load-path)
-  (message "Load Gnus development version")
-  (require 'gnus-load))
-
+(require 'scame-pkg)
 (require 'scame-io)
 (require 'scame-ui)
-(require 'scame-pkg)
-(require 'scame-splash)
 
-(require 'f)
-(require 's)
-
-(require 'use-package)
-
-(scame--msg-buffer scame-buffer
-                   "--> Scame modules ...\n"
-                   'font-lock-string-face)
-(redisplay)
 (use-package el-init
+  :ensure t
+  :pin melpa
   :config (progn
             (setq el-init-meadow-regexp       "\\`meadow-"
                   el-init-carbon-emacs-regexp "\\`carbon-emacs-"
@@ -95,10 +60,6 @@
                                       el-init-require/record-error
                                       el-init-require/system-case))))
 
-(scame--msg-buffer scame-buffer
-                   "--> Vendoring modules ...\n"
-                   'font-lock-string-face)
-(redisplay)
 (when (and scame-use-vendoring
            (f-exists? scame-vendoring-directory)
            (f-directory? scame-vendoring-directory))
@@ -112,26 +73,8 @@
                       (when (string= (f-ext elem) "el")
                         (load-file elem)))))))
 
-(scame--msg-buffer scame-buffer
-                   "--> Customization file ...\n"
-                   'font-lock-string-face)
-(redisplay)
 (when (file-readable-p scame-user-customization-file)
   (load scame-user-customization-file))
-
-(scame--msg-buffer scame-buffer
-                   "--> Addons modules ...\n"
-                   'font-lock-string-face)
-(redisplay)
-(scame--install-packages scame-addons)
-
-(scame--msg-buffer scame-buffer
-                   (format "--> Version %s ready.\n"
-                           scame-version-number)
-                   'font-lock-string-face)
-(redisplay)
-
-(scame--setup-startup-hook)
 
 (when scame-use-custom-modeline
   (setq-default mode-line-format (scame--modeline)))

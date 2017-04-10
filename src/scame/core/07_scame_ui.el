@@ -1,6 +1,6 @@
 ;;; 07_scame_ui.el --- Scame UI configuration
 
-;; Copyright (c) 2014-2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@
 
 (setq-default fill-column 120)
 
-(validate-setq visible-bell t)
+(setq visible-bell t)
 
 (global-linum-mode 1)
 (line-number-mode t)
@@ -90,7 +90,7 @@ Return the new window for BUFFER."
               (define-key xwidget-webkit-mode-map (kbd "C-c") 'xwidget-webkit-copy-selection-as-kill)
 
               ;; make xwidget default browser (not for now... maybe in the future!)
-              ;; (validate-setq browse-url-browser-function (lambda (url session)
+              ;; (setq browse-url-browser-function (lambda (url session)
               ;;                                     (other-window 1)
               ;;                                     (xwidget-browse-url-no-reuse url)))
 

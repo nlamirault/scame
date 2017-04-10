@@ -1,6 +1,6 @@
 ;; 04_scame_fcts.el --- Some functions
 
-;; Copyright (C) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -28,8 +28,8 @@
          (buffer (car liste)))
     (while (cdr liste)
       (progn (kill-buffer buffer)
-	     (validate-setq liste (cdr liste))
-	     (validate-setq buffer (car liste))))
+	     (setq liste (cdr liste))
+	     (setq buffer (car liste))))
     (kill-buffer (car liste))))
 
 

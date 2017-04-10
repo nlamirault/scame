@@ -1,6 +1,6 @@
 ;;; 12_directories.el --- Dired and friends configurations
 
-;; Copyright (c) 2014, 2015, 2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -32,40 +32,15 @@
   :bind (("C-x d d" . dired)))
 
 (use-package all-the-icons-dired
+  :ensure t
+  :pin melpa
   :commands (all-the-icons-dired-mode)
   :init (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
 
-;; (use-package dired+
-;;   :config (setq diredp-hide-details-initially-flag nil))
-
-;; (use-package dired-details+
-;;   :config (progn
-;;             (setq dired-details-hide-link-targets nil
-;;                   dired-hide-details-mode nil
-;;                   global-dired-hide-details-mode -1)))
-
 (use-package direx
+  :ensure t
+  :pin melpa
   :bind ("C-x d j" . direx:jump-to-directory))
-
-(use-package direx-project)
-
-(use-package dired-k
-  :init (add-hook 'dired-initial-position-hook 'dired-k)
-  :config (progn
-            (define-key dired-mode-map (kbd "K") 'dired-k)
-            (define-key dired-mode-map (kbd "g") 'dired-k)
-            (add-hook 'dired-initial-position-hook 'dired-k)))
-
-(use-package dired-filter)
-
-(use-package dired-open)
-
-(use-package dired-rainbow)
-
-(use-package dired-subtree)
-
-(use-package ranger)
-
 
 (provide '12_directories)
 ;;; 12_directories.el ends here

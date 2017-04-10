@@ -26,47 +26,13 @@
 (add-hook 'text-mode-hook #'bug-reference-mode)
 (add-hook 'prog-mode-hook #'bug-reference-prog-mode)
 
-;; (use-package fill-column-indicator
-;;   :config (progn
-;;             (fci-mode 1)
-;;             (setq fci-rule-width 1)
-;;             ;; (setq fci-rule-color "darkcyan")
-;;             (setq fci-rule-column 80)
-;;             (define-globalized-minor-mode global-fci-mode fci-mode
-;;               (lambda ()
-;;                 (fci-mode 1)))
-;;             (global-fci-mode 1)))
-
-
 (use-package editorconfig
+  :ensure t
+  :pin melpa
   :init (progn
           (add-to-list 'auto-mode-alist '("\\.editorconfig" . conf-unix-mode))
           (editorconfig-mode 1)))
 
-
-(use-package projectile
-  ;; :defer scame-defer-package
-  ;;:init (projectile-global-mode 1)
-  :config (progn
-            (projectile-global-mode t)
-	    (setq projectile-enable-caching t)
-	    (setq projectile-require-project-root nil)
-            ;;(setq projectile-switch-project-action 'projectile-dired)
-	    ;;(setq projectile-switch-project-action 'projectile-find-dir)
-	    (setq projectile-switch-project-action 'projectile-find-file)
-	    (add-to-list 'projectile-globally-ignored-files
-			 ".DS_Store"))
-  :diminish projectile-mode)
-
-(use-package ibuffer-projectile
-  ;; :defer scame-defer-package
-  :config (progn
-            (add-hook 'ibuffer-hook
-                      (lambda ()
-                        (ibuffer-projectile-set-filter-groups)
-                        (unless (eq ibuffer-sorting-mode 'alphabetic)
-                          (ibuffer-do-sort-by-alphabetic) ; first do alphabetic sort
-                          (ibuffer-do-sort-by-major-mode))))))
 
 
 (defun ivy-switch-project ()
@@ -79,79 +45,80 @@
      projectile-known-projects)
    :action #'projectile-switch-project-by-name))
 
-(message "Scame completion backend: %s" scame-completion-method)
 
-(cond ((eql 'ido scame-completion-method)
-       (setq projectile-completion-system 'ido))
-
-      ((eql 'helm scame-completion-method)
-       (progn
-         (message "Projectile with Helm")
-         (use-package helm-projectile
-           :config (setq projectile-completion-system 'helm)
-           :bind (("C-c p SPC" . helm-projectile)))
-         (helm-projectile-on)
-         (setq projectile-completion-system 'helm)))
-
-      ((eql 'ivy scame-completion-method)
-       (progn
-         (message "Projectile with Ivy")
-         (setq projectile-completion-system 'ivy)
-         ;; (global-set-key (kbd "C-c p SPC") 'ivy-switch-project)))
-         (use-package counsel-projectile
-           :bind (:map projectile-command-map
-                       ("p" . counsel-projectile)))))
-
-      (t (setq projectile-completion-system 'ido)))
-
-
-;; (use-package persp-projectile
-;;   :config (persp-mode)
-;;   :bind (("C-c p n" . projectile-persp-switch-project)))
-
-;; (use-package perspeen
-;;   :init (setq perspeen-use-tab t)
-;;   :config (perspeen-mode))
-
-
-(use-package persp-mode
-  :commands
-  (persp-mode
-   persp-switch persp-prev persp-next)
-  :bind (("C-c RET" . persp-switch)
-         ("M-["     . persp-prev)
-         ("M-]"     . persp-next))
-  :init (progn
-          (custom-set-variables
-           '(persp-keymap-prefix (kbd "C-x x")))
-          (setq persp-save-dir (concat scame-cache-directory "persp-confs/"))
-          (persp-mode 1))
+(use-package projectile
+  :ensure t
+  :pin melpa
   :config (progn
-            ;; Kill buffers not belonging to any perspective.
-            (setq persp-autokill-buffer-on-remove 'kill-weak)
-            (set-face-background 'persp-face-lighter-buffer-not-in-persp
-                                 (face-attribute 'isearch-fail :background))
-            (set-face-foreground 'persp-face-lighter-buffer-not-in-persp
-                                 (face-attribute 'isearch-fail :foreground))))
+            (projectile-global-mode t)
+            (setq projectile-completion-system 'ivy)
+	    (setq projectile-enable-caching t)
+	    (setq projectile-require-project-root nil)
+            ;;(setq projectile-switch-project-action 'projectile-dired)
+	    ;;(setq projectile-switch-project-action 'projectile-find-dir)
+	    (setq projectile-switch-project-action 'projectile-find-file)
+	    (add-to-list 'projectile-globally-ignored-files
+			 ".DS_Store"))
+  :bind (("C-c p SPC" . ivy-switch-project))
+  :diminish projectile-mode)
 
-(use-package persp-mode-projectile-bridge
-  :commands (persp-mode-projectile-bridge-mode)
-  :functions (persp-mode-projectile-bridge-find-perspectives-for-all-buffers
-              persp-mode-projectile-bridge-kill-perspectives)
-  :preface (progn
-             (autoload 'persp-mode-projectile-bridge-mode "persp-mode-projectile-bridge")
-             (defun enable-persp-mode-projectile-bridge-mode ()
-               "Enable persp-mode-projectile-bridge mode."
-               (persp-mode-projectile-bridge-mode t)))
-  :init
-  (progn
-    (add-hook 'persp-mode-projectile-bridge-mode-hook
-              #'(lambda ()
-                  (if persp-mode-projectile-bridge-mode
-                      (persp-mode-projectile-bridge-find-perspectives-for-all-buffers)
-                    (persp-mode-projectile-bridge-kill-perspectives))))
-    (add-hook 'after-change-major-mode-hook #'enable-persp-mode-projectile-bridge-mode)))
+(use-package ibuffer-projectile
+  :ensure t
+  :pin melpa
+  :config (progn
+            (add-hook 'ibuffer-hook
+                      (lambda ()
+                        (ibuffer-projectile-set-filter-groups)
+                        (unless (eq ibuffer-sorting-mode 'alphabetic)
+                          (ibuffer-do-sort-by-alphabetic) ; first do alphabetic sort
+                          (ibuffer-do-sort-by-major-mode))))))
 
+;; (use-package persp-mode
+;;   :ensure t
+;;   :pin melpa
+;;   :commands (persp-mode
+;;              persp-switch persp-prev persp-next)
+;;   :bind (("C-c RET" . persp-switch)
+;;          ("M-["     . persp-prev)
+;;          ("M-]"     . persp-next))
+;;   :init (progn
+;;           (custom-set-variables
+;;            '(persp-keymap-prefix (kbd "C-x x")))
+;;           (setq persp-save-dir (concat scame-cache-directory "persp-confs/"))
+;;           (persp-mode 1))
+;;   :config (progn
+;;             (setq wg-morph-on nil) ;; switch off animation
+;;             (setq persp-autokill-buffer-on-remove 'kill) ; 'kill-weak)
+;;             ;; Kill buffers not belonging to any perspective.
+;;             (set-face-background 'persp-face-lighter-buffer-not-in-persp
+;;                                  (face-attribute 'isearch-fail :background))
+;;             (set-face-foreground 'persp-face-lighter-buffer-not-in-persp
+;;                                  (face-attribute 'isearch-fail :foreground))))
+
+;; (use-package persp-mode-projectile-bridge
+;;   :ensure t
+;;   :pin melpa
+;;   :commands (persp-mode-projectile-bridge-mode)
+;;   :functions (persp-mode-projectile-bridge-find-perspectives-for-all-buffers
+;;               persp-mode-projectile-bridge-kill-perspectives)
+;;   :preface (progn
+;;              (autoload 'persp-mode-projectile-bridge-mode "persp-mode-projectile-bridge")
+;;              (defun enable-persp-mode-projectile-bridge-mode ()
+;;                "Enable persp-mode-projectile-bridge mode."
+;;                (persp-mode-projectile-bridge-mode t)))
+;;   :init (progn
+;;           (add-hook 'persp-mode-projectile-bridge-mode-hook
+;;                     #'(lambda ()
+;;                         (if persp-mode-projectile-bridge-mode
+;;                             (persp-mode-projectile-bridge-find-perspectives-for-all-buffers)
+;;                           (persp-mode-projectile-bridge-kill-perspectives))))
+;;           (add-hook 'after-change-major-mode-hook #'enable-persp-mode-projectile-bridge-mode)))
+
+
+(use-package counsel-projectile
+  :ensure t
+  :pin melpa
+  :config (counsel-projectile-on))
 
 
 (setq-default indent-tabs-mode nil)
@@ -162,7 +129,9 @@
 
 (which-function-mode)
 
-(use-package ansi-color)
+(use-package ansi-color
+  :ensure t
+  :pin melpa)
 
 (defun scame-colorize-compilation-buffer ()
   "Taken from
@@ -174,6 +143,8 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
 
 
 (use-package neotree
+  :ensure t
+  :pin melpa
   :init (progn
           (defun neotree-project-dir ()
             "Open dirtree using the git root."
@@ -191,18 +162,23 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
 
 ;; Search
 
-(use-package ag
-  :commands (ag ag-project)
-  :config (setq ag-highlight-search t))
+;; See counsel.
 
-(use-package pt
-  :bind (("C-c p s p" . projectile-pt)))
+;; (use-package ag
+
+;;   :commands (ag ag-project)
+;;   :config (setq ag-highlight-search t))
+
+;; (use-package pt
+;;   :bind (("C-c p s p" . projectile-pt)))
 
 ;; (use-package sift)
 ;;   :bind (("C-c p s t" . projectile-pt)))
 
 
 (use-package dumb-jump
+  :ensure t
+  :pin melpa
   :init (progn
           (add-hook 'faust-mode-hook 'dumb-jump-mode))
   :bind (("C-x j g" . dumb-jump-go)
@@ -214,6 +190,8 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
 (global-set-key (kbd "C-x C-o") 'scame-origami-map)
 
 (use-package origami
+  :ensure t
+  :pin melpa
   :init (global-origami-mode)
   :bind (("C-x C-o +"  . origami-open-node)
          ("C-x C-o *"  . origami-open-all-nodes)

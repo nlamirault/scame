@@ -1,6 +1,6 @@
 ;;; 91_orga.el --- Organisation
 
-;; Copyright (C) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -151,7 +151,8 @@
 
 
   (use-package org
-    ;; :defer scame-defer-package
+    :ensure t
+    :pin org
     :config (progn
               (setq org-directory (f-join user-home-directory "Org"))
               (setq org-agenda-files (list org-directory))
@@ -277,72 +278,22 @@
   ;; (use-package org-google-weather)
 
   (use-package calfw
-    ;; :defer scame-defer-package)
+    :ensure t
+    :pin melpa
     )
-  (use-package calfw-org
-    ;; :defer scame-defer-package)
-    )
-  (use-package calfw-ical
-    ;; :defer scame-defer-package)
-    )
-  (use-package calfw-cal
-    ;; :defer scame-defer-package)
-    )
+  (use-package calfw-org)
+  (use-package calfw-ical)
+  (use-package calfw-cal)
 
   (setq google-ical-calendar nil)
 
-
   (use-package org-crypt
-    ;; :defer scame-defer-package
     :config (progn
               (org-crypt-use-before-save-magic)
               (setq org-tags-exclude-from-inheritance (quote ("crypt")))
               ;; GPG key to use for encryption
               ;; Either the Key ID or set to nil to use symmetric encryption.
               (setq org-crypt-key nil)))
-
-
-
-  ;; --- org-bullets-bullet-list
-
-  ;; hexagrams
-  ;; “✡” “⎈” “✽” “✲” “✱” “✻” “✼” “✽” “✾” “✿” “❀” “❁” “❂” “❃” “❄” “❅” “❆” “❇”
-
-  ;; circles
-  ;; “○” “☉” “◎” “◉” “○” “◌” “◎” “●” “◦” “◯” “⚪” “⚫” “⚬” “❍” “￮” “⊙” “⊚” “⊛” “∙” “∘”
-
-  ;; special circles
-  ;; “◐” “◑” “◒” “◓” “◴” “◵” “◶” “◷” “⚆” “⚇” “⚈” “⚉” “♁” “⊖” “⊗” “⊘”
-
-  ;; crosses
-  ;; “✙” “♱” “♰” “☥” “✞” “✟” “✝” “†” “✠” “✚” “✜” “✛” “✢” “✣” “✤” “✥”
-
-  ;; poker sybmols
-  ;; “♠” “♣” “♥” “♦” “♤” “♧” “♡” “♢”
-
-  ;; yinyang
-  ;; “☯” “☰” “☱” “☲” “☳” “☴” “☵” “☶” “☷”
-
-  ;; special symbols
-  ;; “☀” “♼” “☼” “☾” “☽” “☣” “§” “¶” “‡” “※” “✕” “△” “◇” “▶” “◀” “◈”
-
-  ;; --- org-ellipsis
-
-  ;; “↝” “⇉” “⇝” “⇢” “⇨” “⇰” “➔” “➙” “➛” “➜” “➝” “➞”
-  ;; “➟” “➠” “➡” “➥” “➦” “➧” “➨”
-  ;; “➩” “➪” “➮” “➯” “➱” “➲”
-  ;; “➳” “➵” “➸” “➺” “➻” “➼” “➽”
-  ;; “➢” “➣” “➤” “≪”, “≫”, “«”, “»”
-  ;; “↞” “↠” “↟” “↡” “↺” “↻”
-  ;; “⚡”
-  ;; …, ▼, ↴, , ∞, ⬎, ⤷, ⤵
-
-
-  (use-package org-bullets
-    :init (progn
-            (setq org-ellipsis "⚡⚡⚡")
-            (setq org-bullets-bullet-list '("☀" "♼" "☼" "☾" "☽" "☣" "§" "¶" "‡" "※" "✕" "△" "◇" "▶" "◀" "◈"))
-            ))
 
   )
 

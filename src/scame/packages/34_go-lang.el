@@ -1,6 +1,6 @@
 ;;; 34_go-lang.el -- Configuration for the GO language
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -27,7 +27,8 @@
 (when scame-golang
 
   (use-package go-mode
-    ;; :defer scame-defer-package
+    :ensure t
+    :pin melpa
     :mode (("\\.go$" . go-mode))
     :config (progn
               (subword-mode +1)
@@ -41,11 +42,13 @@
                           (local-set-key (kbd "C-x g j") 'godef-jump)))))
 
   (use-package go-eldoc
-    ;; :defer scame-defer-package
+    :ensure t
+    :pin melpa
     :config (add-hook 'go-mode-hook 'go-eldoc-setup))
 
   (use-package gotest
-    ;; :defer scame-defer-package
+    :ensure t
+    :pin melpa
     :config (add-hook 'go-mode-hook
                       (lambda ()
                         (local-set-key (kbd "C-x g t") 'go-test-current-test)
@@ -53,7 +56,8 @@
                         (local-set-key (kbd "C-x g p") 'go-test-current-project))))
 
   (use-package go-errcheck
-    ;; :defer scame-defer-package
+    :ensure t
+    :pin melpa
     :config (progn
               (add-hook 'go-mode-hook
                         (lambda ()
@@ -61,26 +65,32 @@
 
 
   (use-package golint
-    ;; :defer scame-defer-package
+    :ensure t
+    :pin melpa
     :config (progn
               (add-hook 'go-mode-hook
                         (lambda ()
                           (local-set-key (kbd "C-x g l") 'golint)))))
 
   (use-package go-rename
+    :ensure t
+    :pin melpa
     :config (progn
               (add-hook 'go-mode-hook
                         (lambda ()
                           (local-set-key (kbd "C-x g R") 'go-rename)))))
 
   (use-package go-dlv
+    :ensure t
+    :pin melpa
     :config (progn
               (add-hook 'go-mode-hook
                         (lambda ()
                           (local-set-key (kbd "C-x g d") 'dlv-current-func)))))
 
   (use-package go-direx
-    ;; :defer scame-defer-package
+    :ensure t
+    :pin melpa
     :config (progn
               (add-hook 'go-mode-hook
                         (lambda ()
@@ -88,15 +98,18 @@
                                          'go-direx-pop-to-buffer)))))
 
   (use-package go-projectile
-    ;; :defer scame-defer-package)
+    :ensure t
+    :pin melpa
     )
 
   (use-package company-go
-    ;; :defer scame-defer-package
+    :ensure t
+    :pin melpa
     :config (add-hook 'go-mode-hook
                       (lambda ()
                         (set (make-local-variable 'company-backends) '(company-go))
                         (company-mode))))
+
 
   (define-key go-mode-map (kbd "C-x g h")
     (defhydra hydra-go (:color blue)

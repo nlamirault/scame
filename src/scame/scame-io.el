@@ -1,6 +1,6 @@
 ;; scame-io.el --- Scame I/O tools
 
-;; Copyright (c) 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -24,13 +24,13 @@
 (defvar scame-buffer "*scame-startup*")
 
 
-(with-current-buffer (get-buffer-create scame-buffer)
-  (setq inhibit-startup-screen t))
+;; (with-current-buffer (get-buffer-create scame-buffer)
+;;   (setq inhibit-startup-screen t))
 
-(switch-to-buffer scame-buffer)
-(with-current-buffer scame-buffer
-  (insert "-----------\n|  Scame  |\n-----------\n\n")
-  (redisplay))
+;; (switch-to-buffer scame-buffer)
+;; (with-current-buffer scame-buffer
+;;   (insert "-----------\n|  Scame  |\n-----------\n\n")
+;;   (redisplay))
 
 
 (defun scame--msg-buffer (buffer msg face-type)

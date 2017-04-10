@@ -1,6 +1,6 @@
 ;; 41_clojure.el --- Clojure configuration
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -23,7 +23,8 @@
 (when scame-clojure
 
   (use-package cider
-    ;; :defer scame-defer-package
+    :ensure t
+    :pin melpa
     :init (progn
             (add-hook 'cider-mode-hook 'eldoc-mode)
             (add-hook 'cider-repl-mode-hook 'company-mode)

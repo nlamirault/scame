@@ -1,6 +1,6 @@
 ;; 50_lua.el --- Lua configuration
 
-;; Copyright (C) 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -22,7 +22,8 @@
 (when scame-lua
 
   (use-package lua-mode
-    ;; :defer scame-defer-package
+    :ensure t
+    :pin melpa
     :mode (("\\.lua\\'" . lua-mode)))
 
   )
