@@ -1,6 +1,6 @@
 ;;; scame-gnus.el --- Gnus configuration
 
-;; Copyright (C) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015, 2016, 2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -62,7 +62,8 @@
 ;; --------------
 
 (setq message-citation-line-function 'message-insert-formatted-citation-line
-      message-cite-reply-position 'above)
+      message-cite-reply-position 'above
+      message-cite-function message-cite-original)
 (add-hook 'message-mode-hook 'footnote-mode)
 
 (setq gnus-posting-styles
