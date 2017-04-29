@@ -63,7 +63,7 @@
 
 (setq message-citation-line-function 'message-insert-formatted-citation-line
       message-cite-reply-position 'above
-      message-cite-function message-cite-original)
+      message-cite-function 'message-cite-original)
 (add-hook 'message-mode-hook 'footnote-mode)
 
 (setq gnus-posting-styles

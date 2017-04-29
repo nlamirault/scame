@@ -38,7 +38,7 @@
 (defconst console-p (eq (symbol-value 'window-system) nil)
   "Are we in a console?")
 
-(setq abbrev-file-name scame-abrev-filename)
+(setq-default abbrev-file-name scame-abrev-filename)
 
 (provide '00_setup)
 ;;; 00_setup.el ends here
