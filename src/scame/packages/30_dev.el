@@ -183,7 +183,9 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
           (add-hook 'faust-mode-hook 'dumb-jump-mode))
   :bind (("C-x j g" . dumb-jump-go)
          ("C-x j b" . dumb-jump-back)
-         ("C-x j q" . dumb-jump-quick-look)))
+         ("C-x j o" . dumb-jump-go-other-window)
+         ("C-x j q" . dumb-jump-quick-look))
+  :config (setq dumb-jump-selector 'ivy))
 
 (global-unset-key (kbd "C-x C-o"))
 (define-prefix-command 'scame-origami-map)
