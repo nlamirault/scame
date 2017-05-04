@@ -23,7 +23,7 @@
 (use-package yaml-mode
   :ensure t
   :pin melpa
-  :mode (("\\.yml$" . yaml-mode)))
+  :mode (("\\.ya?ml$" . yaml-mode)))
 
 (use-package markdown-mode
   :ensure t
