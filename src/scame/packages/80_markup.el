@@ -19,6 +19,12 @@
 
 ;;; Code:
 
+
+(use-package yaml-mode
+  :ensure t
+  :pin melpa
+  :mode (("\\.yml$" . yaml-mode)))
+
 (use-package markdown-mode
   :ensure t
   :pin melpa
