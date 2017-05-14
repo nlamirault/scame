@@ -50,7 +50,7 @@
   :ensure t
   :pin melpa
   :config (progn
-            (setq dashboard-items '((agenda . 5)
+            (setq dashboard-items '(;(agenda . 5)
                                     (recents  . 5)
                                     (projects . 5)
                                     (bookmarks . 5)))

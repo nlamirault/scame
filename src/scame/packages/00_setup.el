@@ -38,7 +38,10 @@
 (defconst console-p (eq (symbol-value 'window-system) nil)
   "Are we in a console?")
 
-(setq-default abbrev-file-name scame-abrev-filename)
+(use-package abbrev
+  :commands abbrev-mode
+  :init (setq abbrev-file-name
+              (concat user-emacs-directory "abbrev_defs")))
 
 (provide '00_setup)
 ;;; 00_setup.el ends here

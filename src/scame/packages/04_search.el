@@ -36,6 +36,11 @@
          ("C-x c p" . counsel-package)
          ("C-x c i" . counsel-imenu)))
 
+(use-package counsel-projectile
+  :ensure t
+  :pin melpa
+  :config (counsel-projectile-on))
+
 (use-package ivy
   :ensure t
   :pin melpa
@@ -56,10 +61,23 @@
   :ensure t
   :pin melpa)
 
-(use-package counsel-projectile
+(use-package ivy-rich
   :ensure t
   :pin melpa
-  :config (counsel-projectile-on))
+  :after swiper
+  :config (progn
+            (use-package cl)
+            (ivy-set-display-transformer 'ivy-switch-buffer
+                                         'ivy-rich-switch-buffer-transformer)
+            (setq ivy-virtual-abbreviate 'full
+                  ivy-rich-abbreviate-paths t
+                  ivy-rich-switch-buffer-align-virtual-buffer t)
+            (with-eval-after-load 'counsel-projectile
+              (ivy-set-display-transformer 'counsel-projectile
+                                           'ivy-rich-switch-buffer-transformer)
+              (ivy-set-display-transformer 'counsel-projectile-switch-to-buffer
+                                           'ivy-rich-switch-buffer-transformer))))
+
 
 (provide '04_search)
 ;;; 04_search.el ends here
