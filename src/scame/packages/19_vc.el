@@ -33,6 +33,10 @@
 (setq magit-auto-revert-mode nil
       magit-last-seen-setup-instructions "1.4.0")
 
+(use-package magithub
+  :after magit
+  :config (magithub-feature-autoinject t))
+
 (use-package gitconfig-mode
   :ensure t
   :pin melpa
