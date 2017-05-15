@@ -141,21 +141,32 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
   (toggle-read-only))
 (add-hook 'compilation-filter-hook 'scame-colorize-compilation-buffer)
 
+(use-package eyebrowse
+  :ensure t
+  :pin melpa
+  :config (progn
+            (eyebrowse-mode t)
+            (setq eyebrowse-new-workspace t)
+            (eyebrowse-setup-opinionated-keys)))
 
 (use-package neotree
   :ensure t
   :pin melpa
   :init (progn
           (defun neotree-project-dir ()
-            "Open dirtree using the git root."
+            "Open NeoTree using the git root."
             (interactive)
-            (let ((project-dir (ffip-project-root))
+            (let ((project-dir (projectile-project-root))
                   (file-name (buffer-file-name)))
+              (neotree-toggle)
               (if project-dir
-                  (progn
-                    (neotree-dir project-dir)
-                    (neotree-find file-name))
+                  (if (neo-global--window-exists-p)
+                      (progn
+                        (neotree-dir project-dir)
+                        (neotree-find file-name)))
                 (message "Could not find git project root.")))))
+  :config (progn
+            (setq projectile-switch-project-action 'neotree-projectile-action))
   :bind (("C-x t t" . neotree-toggle)
          ("C-x t p" . neotree-project-dir)))
 
@@ -184,6 +195,7 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
   :bind (("C-x j g" . dumb-jump-go)
          ("C-x j b" . dumb-jump-back)
          ("C-x j o" . dumb-jump-go-other-window)
+         ("C-x j x" . dumb-jump-go-prefer-external)
          ("C-x j q" . dumb-jump-quick-look))
   :config (setq dumb-jump-selector 'ivy))
 
