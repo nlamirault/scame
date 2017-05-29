@@ -102,14 +102,16 @@
     :pin melpa
     )
 
-  (use-package company-go
-    :ensure t
-    :pin melpa
-    :config (add-hook 'go-mode-hook
-                      (lambda ()
-                        (set (make-local-variable 'company-backends) '(company-go))
-                        (company-mode))))
+  ;; (use-package company-go
+  ;;   :ensure t
+  ;;   :pin melpa
+  ;;   :config (progn
+  ;;             (setq company-go-show-annotation t)
+  ;;             (add-to-list 'company-backends 'company-go)))
 
+  (use-package go-autocomplete
+    :ensure t
+    :pin melpa)
 
   (define-key go-mode-map (kbd "C-x g h")
     (defhydra hydra-go (:color blue)
