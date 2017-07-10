@@ -25,6 +25,20 @@
 
 (require '01_scame_version)
 
+;; (use-package spaceline-all-the-icons
+;;   :ensure t
+;;   :after spaceline
+;;   :config (progn
+;;             (spaceline-all-the-icons-theme)
+;;             (spaceline-all-the-icons--setup-anzu)            ;; Enable anzu searching
+;;             (spaceline-all-the-icons--setup-package-updates) ;; Enable package update indicator
+;;             (spaceline-all-the-icons--setup-paradox)         ;; Enable Paradox mode line
+;;             (spaceline-all-the-icons--setup-neotree)         ;; Enable Neotree mode line
+;;             (setq spaceline-all-the-icons-icon-set-modified 'toggle)
+;;             (setq spaceline-all-the-icons-separator-type 'none)
+;;             (setq spaceline-all-the-icons-icon-set-bookmark 'heart)
+;;             (setq spaceline-all-the-icons-icon-set-flycheck-slim 'quote)
+;;             (setq spaceline-all-the-icons-icon-set-sun-time 'sun/moon)))
 
 (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 

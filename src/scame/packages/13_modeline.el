@@ -23,5 +23,9 @@
   :ensure t
   :pin melpa)
 
+(use-package spaceline
+  :ensure t
+  :pin melpa)
+
 (provide '13_modeline)
 ;;; 13_modeline.el ends here
