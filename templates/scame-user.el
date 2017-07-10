@@ -21,9 +21,19 @@
 
 ;;; Code:
 
+;; User
 (setq user-full-name "Emacs Scame")
 (setq user-mail-address "emacs.scame@gmail.com")
+
+;; Theme
 (load-theme 'monokai t)
+
+;; GPG
+(setq user-fingerprint "xxx")
+(setq epg-user-id "xxxx")
+
+
+
 
 (provide 'scame-user)
 ;;; scame-user.el ends here
