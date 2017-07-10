@@ -27,6 +27,8 @@
 
 (require 'gnus-gpg)
 
+(require 'all-the-icons)
+
 
 ;; SMTP
 ;; ----
@@ -41,8 +43,8 @@
 ;; Newsgroup
 ;; -----------
 
-(add-to-list 'gnus-secondary-select-methods
-      '(nntp "news.gmane.org"))
+;; (add-to-list 'gnus-secondary-select-methods
+;;       '(nntp "news.gmane.org"))
 
 
 ;; PGP
@@ -158,24 +160,23 @@
     lbl))
 (defalias 'gnus-user-format-function-r 'rs-gnus-get-label)
 
-(setq-default ;; gnus-summary-line-format "%1{%U%R%z: %}%2{%&user-date;%} %5{ %[%4i%] %}%4{%-24,24n%}%6{%-4,4ur%}%5{| %}%(%1{%B%}%s%)\n"
-              gnus-summary-line-format "%1{%U%R%z: %}%[%2{%&user-date;%}%] %4{%-24,24n%} %5{| %}%(%1{%B%}%s%)\n"
-              gnus-user-date-format-alist '((t . "%Y-%m-%d %H:%M")))
-
-
+(setq-default
+ ;; gnus-summary-line-format "%1{%U%R%z: %}%2{%&user-date;%} %5{ %[%4i%] %}%4{%-24,24n%}%6{%-4,4ur%}%5{| %}%(%1{%B%}%s%)\n"
+ gnus-summary-line-format "%1{%U%R%z: %}%[%2{%&user-date;%}%] %4{%-24,24n%} %3{| %}%(%1{%B%}%s%)\n"
+ gnus-user-date-format-alist '((t . "%Y-%m-%d %H:%M")))
 
 (setq nnmail-extra-headers '(To X-GM-LABELS Newsgroups Content-Type))
 
 ;; TO TEST
 ;; (setq gnus-extra-headers '(To Newsgroups X-GM-LABELS))
 
-(copy-face 'default 'myface)
-(set-face-foreground 'myface "chocolate")
-(setq gnus-face-5 'myface)
+;; (copy-face 'default 'myface)
+;; (set-face-foreground 'myface "chocolate")
+;; (setq gnus-face-5 'myface)
 
-(copy-face 'default 'face-label)
-(set-face-foreground 'face-label "red")
-(setq gnus-face-6 'face-label)
+;; (copy-face 'default 'face-label)
+;; (set-face-foreground 'face-label "red")
+;; (setq gnus-face-6 'face-label)
 
 ;;(setq gnus-group-line-format "%p%M%B%S%P%(%G: %N%)\n")
 (setq gnus-group-line-format "%1M%1S%5y: %(%-50,50G%)\n")
@@ -236,6 +237,15 @@
 ;; 		     (article 1.0))))
 
 
+
+;; Keybindings
+;; ----------------
+
+(define-key gnus-summary-mode-map
+  (kbd "B u")
+  'gnus-summary-put-mark-as-unread)
+
+
 ;; Sorting
 ;; ---------
 
@@ -255,20 +265,30 @@
 ;;       gnus-sum-thread-tree-root ""
 ;;       gnus-sum-thread-tree-single-leaf "╰► "
 ;;       gnus-sum-thread-tree-vertical "│")
-(setq
-    gnus-sum-thread-tree-root "● "
-    gnus-sum-thread-tree-false-root "▷ "
-    gnus-sum-thread-tree-single-indent ""
-    gnus-sum-thread-tree-leaf-with-other "├─►"
-    gnus-sum-thread-tree-vertical "│ "
-    gnus-sum-thread-tree-single-leaf "└─►")
 
-;; Keybindings
+;; (setq
+;;     gnus-sum-thread-tree-root "● "
+;;     gnus-sum-thread-tree-false-root "▷ "
+;;     gnus-sum-thread-tree-single-indent ""
+;;     gnus-sum-thread-tree-leaf-with-other "├─►"
+;;     gnus-sum-thread-tree-vertical "│ "
+;;     gnus-sum-thread-tree-single-leaf "└─►")
 
-(define-key gnus-summary-mode-map
-  (kbd "B u")
-  'gnus-summary-put-mark-as-unread)
+;; All-the-icons customizations
 
+(setq gnus-topic-line-format "%i[  %(%{%n -- %A%}%) ]%v\n"
+
+      gnus-group-line-format "%1M%1S%5y  : %(%-50,50G%)\n"
+
+      gnus-summary-line-format "%1{%U%R%z: %}%[%2{%&user-date;%}%]  %4{%-34,34n%} %3{ %}%(%1{%B%}%s%)\n"
+      gnus-user-date-format-alist '((t . " %Y-%m-%d %H:%M"))
+
+      gnus-sum-thread-tree-root " "
+      gnus-sum-thread-tree-false-root " "
+      gnus-sum-thread-tree-single-indent " "
+      gnus-sum-thread-tree-leaf-with-other " "
+      gnus-sum-thread-tree-vertical " "
+      gnus-sum-thread-tree-single-leaf " ")
 
 (provide 'scame-gnus)
 ;;; scame-gnus.el ends here
