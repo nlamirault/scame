@@ -46,6 +46,12 @@
   :ensure t
   :pin melpa)
 
+(use-package nlinum-hl
+  :ensure t
+  :pin melpa
+  :after nlinum
+  :config (add-hook 'nlinum-mode-hook #'nlinum-hl-mode))
+
 (use-package dashboard
   :ensure t
   :pin melpa
