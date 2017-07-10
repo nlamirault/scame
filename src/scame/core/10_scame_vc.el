@@ -19,8 +19,6 @@
 
 ;;; Code:
 
-
-
 (require 'dash)
 (require 'magit)
 
@@ -82,7 +80,7 @@
     ;;               :buffer "*magit cmt prompt*"))
     ;; I haven't tested this but should be simple to get the same behaior
     (add-magit-faces)
-    (evil-insert 1)  ; If you use evil
+    ;; (evil-insert 1)  ; If you use evil
     ))
 
 (remove-hook 'git-commit-setup-hook 'with-editor-usage-message)
