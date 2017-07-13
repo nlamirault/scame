@@ -107,7 +107,7 @@
 
 
 (setq gnus-visible-headers
-      (quote ("^From:" "^To:" "Cc:" "^Reply-To:" "^Subject:" "^Organization:"
+      (quote ("^From:" "^To:" "^Cc:" "^Reply-To:" "^Subject:" "^Organization:"
               "^Newsgroups:" "^X-Mailer:" "^X-Newsreader:" "^User-Agent:"
               "^X-Posting-Agent:" "^Folloup-To:" "^Date:" "Lines:"
               "X-PGP-Fingerprint:" "Content-Type:")))
@@ -276,19 +276,11 @@
 
 ;; All-the-icons customizations
 
-(setq gnus-topic-line-format "%i[  %(%{%n -- %A%}%) ]%v\n"
+(use-package all-the-icons-gnus
+  :ensure t
+  :pin melpa)
 
-      gnus-group-line-format "%1M%1S%5y  : %(%-50,50G%)\n"
-
-      gnus-summary-line-format "%1{%U%R%z: %}%[%2{%&user-date;%}%]  %4{%-34,34n%} %3{ %}%(%1{%B%}%s%)\n"
-      gnus-user-date-format-alist '((t . " %Y-%m-%d %H:%M"))
-
-      gnus-sum-thread-tree-root " "
-      gnus-sum-thread-tree-false-root " "
-      gnus-sum-thread-tree-single-indent " "
-      gnus-sum-thread-tree-leaf-with-other " "
-      gnus-sum-thread-tree-vertical " "
-      gnus-sum-thread-tree-single-leaf " ")
+(all-the-icons-gnus-setup)
 
 (provide 'scame-gnus)
 ;;; scame-gnus.el ends here
