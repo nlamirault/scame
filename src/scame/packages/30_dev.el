@@ -153,6 +153,8 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
   :ensure t
   :pin melpa
   :init (progn
+           (setq neo-theme 'icons
+                 neo-smart-open t)
           (defun neotree-project-dir ()
             "Open NeoTree using the git root."
             (interactive)
