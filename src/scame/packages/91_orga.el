@@ -279,11 +279,19 @@
 
   (use-package calfw
     :ensure t
-    :pin melpa
-    )
-  (use-package calfw-org)
-  (use-package calfw-ical)
-  (use-package calfw-cal)
+    :pin melpa)
+
+  (use-package calfw-org
+    :ensure t
+    :pin melpa)
+
+  (use-package calfw-ical
+    :ensure t
+    :pin melpa)
+
+  (use-package calfw-cal
+    :ensure t
+    :pin melpa)
 
   (setq google-ical-calendar nil)
 
