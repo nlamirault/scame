@@ -35,6 +35,9 @@
   (package-install 'use-package))
 
 (require 'use-package)
+(setq use-package-verbose t
+      use-package-enable-imenu-support t
+      use-package-minimum-reported-time 0.03)
 
 (use-package f
   :ensure t
