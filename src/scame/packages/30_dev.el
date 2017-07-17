@@ -172,6 +172,17 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
   :bind (("C-x t t" . neotree-toggle)
          ("C-x t p" . neotree-project-dir)))
 
+(use-package treemacs
+  :ensure t
+  :pin melpa
+  :bind (("C-x T t" . treemacs-toggle)
+         ("C-x T p" . treemacs-projectile))
+  :config (progn
+           (setq treemacs-width 25)
+           (setq treemacs-git-integration t)
+           (setq treemacs--persist-file (locate-user-emacs-file "cache/treemacs-persist"))
+           (treemacs-follow-mode)
+           (treemacs-filewatch-mode)))
 
 ;; Search
 
