@@ -31,7 +31,6 @@
                             (interactive)
                             (scroll-down 1))))
 
-
 (defhydra hydra-scame (:color teal)
         "
    ^ Calendars^       ^ Search^            ^ Launcher^          ^ Email^            ^ Help^
@@ -39,10 +38,10 @@
    _g_:  google       _G_:  Google          _a_:  application   _O_:  local         _v_:  version
    _w_:  work         _H_:  Github          _m_:  man           _M_:  Gmail         _z_:  customization
    _d_:  diary        _T_:  Twitter         _p_:  packages      _E_:  Exchange      ^ ^
-   _o_:  org          _L_: Launchpad         _h_:  proced         ^ ^                   ^ ^
+   _o_:  org          _L_: Launchpad         _h_:  proced         ^ ^                  ^ ^
    ^ ^                  _S_:  Stackoverflow  _t_:  term           ^ ^                   ^ ^
    ^ ^                  _W_:  Wikipedia      _r_:  ranger        ^ ^                   ^ ^
-   ^ ^                  _R_: RFC              ^ ^                     ^ ^                   ^ ^
+   ^ ^                  _R_: RFC              ^ ^                     ^ ^                  ^ ^
   ---------------------------------------------------------------------------------------------------------------
         "
         ("q" nil " quit")
@@ -194,12 +193,31 @@
   ("l" text-scale-decrease "out"))
 
 
+
+(defhydra hydra-scame-toggle (:color pink :hint nil)
+  "
+_a_ abbrev-mode:       %`abbrev-mode
+_d_ debug-on-error:    %`debug-on-error
+_f_ auto-fill-mode:    %`auto-fill-function
+_h_ highlight          %`highlight-nonselected-windows
+_t_ truncate-lines:    %`truncate-lines
+_w_ whitespace-mode:   %`whitespace-mode
+_l_ org link display:  %`org-descriptive-links
+"
+  ("a" abbrev-mode)
+  ("d" toggle-debug-on-error)
+  ("f" auto-fill-mode)
+  ("h" (setq highlight-nonselected-windows (not highlight-nonselected-windows)))
+  ("t" toggle-truncate-lines)
+  ("w" whitespace-mode)
+  ("l" org-toggle-link-display)
+  ("q" nil "quit"))
+
 (global-set-key (kbd "C-c s SPC") 'hydra-scame/body)
-;; (global-set-key (kbd "C-c s i") 'hydra-scame-ng/body)
 (global-set-key (kbd "C-c s P") 'hydra-scame-projectile/body)
 (global-set-key (kbd "C-c s o") 'hydra-scame-org/body)
 (global-set-key (kbd "C-c s z") 'hydra-scame-zoom/body)
-
+(global-set-key (kbd "C-c s t") 'hydra-scame-toggle/body)
 
 
 (provide '06_scame_keys)
