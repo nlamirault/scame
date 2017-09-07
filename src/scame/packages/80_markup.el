@@ -45,5 +45,11 @@
   :pin melpa
   :mode (("\\.adoc$" . adoc-mode)))
 
+
+(use-package nov
+  :ensure t
+  :pin melpa
+  :mode (("\\.epub$" . nov-mode)))
+
 (provide '80_markup)
 ;;; 80_markup.el ends here
