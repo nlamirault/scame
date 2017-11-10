@@ -186,7 +186,8 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
 (use-package treemacs-projectile
   :ensure t
   :pin melpa
-  :bind (("C-x T p" . treemacs-projectile)))
+  :bind (("C-x T p" . treemacs-projectile))
+  :config (setq treemacs-header-function #'treemacs-projectile-create-header))
 
 
 ;; Search
