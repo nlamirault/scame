@@ -175,14 +175,19 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
 (use-package treemacs
   :ensure t
   :pin melpa
-  :bind (("C-x T t" . treemacs-toggle)
-         ("C-x T p" . treemacs-projectile))
+  :bind (("C-x T t" . treemacs-toggle))
   :config (progn
            (setq treemacs-width 25)
            (setq treemacs-git-integration t)
            (setq treemacs--persist-file (locate-user-emacs-file "cache/treemacs-persist"))
            (treemacs-follow-mode)
            (treemacs-filewatch-mode)))
+
+(use-package treemacs-projectile
+  :ensure t
+  :pin melpa
+  :bind (("C-x T p" . treemacs-projectile)))
+
 
 ;; Search
 
