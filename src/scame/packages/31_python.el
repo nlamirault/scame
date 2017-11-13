@@ -25,12 +25,16 @@
   (use-package python
     :ensure t
     :pin melpa
-    :mode (("\\.py\\'" . python-mode))
+    :mode (("\\.py\\'" . python-mode)
+           ("/BUILD\\'" . python-mode)
+           ("/WORKSPACE\\'" . python-mode)
+           ("\\.bzl\\'" . python-mode))
     :config (progn
               (define-key python-mode-map (kbd "RET") 'newline-and-indent)
               (setq tab-width 4)
               ;;(setq python-indent-guess-indent-offset 4)
               (setq python-indent-offset 4)))
+
 
   ;; FIXME
   ;; (use-package jedi
