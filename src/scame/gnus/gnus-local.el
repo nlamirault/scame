@@ -1,6 +1,6 @@
 ;;; gnus-local.el --- Localhost IMAP configuration for Gnus
 
-;; Copyright (C) 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2015, 2016, 2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -24,7 +24,6 @@
 
 (require 'scame-gnus)
 (require 'scame-gnus-tools)
-
 
 ;; ------------------------------------------
 ;; Setup:
@@ -52,14 +51,13 @@
 ;;                (nnimap-shell-program
 ;;                	 "/usr/lib/dovecot/imap -o mail_location=maildir:/opt/Exchange:LAYOUT=fs:INBOX=/opt/Exchange/Inbox")))
 
-(setq gnus-select-method
-      `(nnimap "Exchange"
-               (nnimap-stream shell)
-               (nnimap-shell-program
-                (concat "/usr/lib/dovecot/imap -o mail_location=maildir:"
-                        ,scame-maildir-local ":LAYOUT=fs:INBOX="
-                        ,scame-maildir-local "/Inbox"))))
-
+;; (setq gnus-select-method
+;;       `(nnimap "Exchange"
+;;                (nnimap-stream shell)
+;;                (nnimap-shell-program
+;;                 (concat "/usr/lib/dovecot/imap -o mail_location=maildir:"
+;;                         ,scame-maildir-local ":LAYOUT=fs:INBOX="
+;;                         ,scame-maildir-local "/Inbox"))))
 
 ;; (setq gnus-secondary-select-methods
 ;;       '((nnimap "Other"
@@ -79,11 +77,17 @@
 ;; Notmuch
 ;; --------
 
-(use-package notmuch)
+(use-package notmuch
+  :ensure t
+  :pin melpa)
 
-(use-package notmuch-labeler)
+(use-package notmuch-labeler
+  :ensure t
+  :pin melpa)
 
-(use-package org-gnus)
+;; (use-package org-gnus
+;;   :ensure t
+;;   :pin melpa)
 
 (defun lld-notmuch-shortcut ()
   (define-key gnus-group-mode-map "GG" 'notmuch-search)
@@ -92,7 +96,7 @@
 (defun lld-notmuch-file-to-group (file)
   "Calculate the Gnus group name from the given file name."
   (let ((group (file-name-directory (directory-file-name (file-name-directory file)))))
-    (setq group (replace-regexp-in-string ".*/opt/OrangeExchange/" "" group))
+    (setq group (replace-regexp-in-string ".*/opt/notmuch/" "" group))
     (setq group (replace-regexp-in-string "/$" "" group))
     (if (string-match ":$" group)
         (concat group "INBOX")
