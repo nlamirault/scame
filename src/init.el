@@ -31,7 +31,7 @@
       '("scame/" "scame/gnus"))
 
 (require 'scame)
-(scame-global-mode))
+(scame-global-mode)
 
 (provide 'init)
 ;;; init.el ends here
