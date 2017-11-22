@@ -1,3 +1,4 @@
+
 ;; 08_scame_modeline.el --- Scame modeline
 
 ;; Copyright (c) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
@@ -38,6 +39,8 @@
   :config
   (require 'spaceline-config)
   (spaceline-emacs-theme)
+  (spaceline-toggle-buffer-position-off)
+  (spaceline-toggle-hud-off)
   (spaceline-toggle-projectile-root-on)
   (spaceline-toggle-flycheck-error-on)
   (spaceline-toggle-flycheck-warning-on)
