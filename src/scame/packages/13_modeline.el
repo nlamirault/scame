@@ -29,20 +29,25 @@
 ;; (setq powerline-default-separator 'wave)
 
 
-(use-package spaceline
-  :init
+(use-package spaceline :ensure t
   :config
-  (require 'spaceline-config)
-  (spaceline-emacs-theme)
+  (setq-default mode-line-format '("%e" (:eval (spaceline-ml-main)))))
+
+(use-package spaceline-config :ensure spaceline
+  :config
   (spaceline-toggle-buffer-position-off)
   (spaceline-toggle-hud-off)
   (spaceline-toggle-projectile-root-on)
+  (spaceline-toggle-minor-modes-off)
   (spaceline-toggle-flycheck-error-on)
   (spaceline-toggle-flycheck-warning-on)
   (spaceline-toggle-flycheck-info-on)
-  (spaceline-toggle-which-function-on)
-  )
+  (spaceline-toggle-which-function-on))
 
+(setq-default
+ powerline-height 20
+ spaceline-separator-dir-left '(right . right)
+ spaceline-separator-dir-right '(left . left))
 
 ;; (use-package spaceline-all-the-icons
 ;;   :ensure t

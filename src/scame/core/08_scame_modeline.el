@@ -220,7 +220,19 @@
 ;;                  ))))
 
 
+(defun scame-spaceline-scame-theme (&rest additional-segments)
+  "Install a modeline for Scame."
+  (apply 'spaceline--theme
+         '(((((persp-name :fallback workspace-number)
+              window-number) :separator "|")
+            buffer-modified)
+           :face highlight-face
+           :priority 0)
+         '((buffer-id remote-host)
+           :priority 5)
+         additional-segments))
 
+(scame-spaceline-scame-theme)
 
 
 (provide '08_scame_modeline)
