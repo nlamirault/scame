@@ -19,13 +19,54 @@
 
 ;;; Code:
 
-(use-package powerline
-  :ensure t
-  :pin melpa)
+
+;; (use-package powerline
+;;   :ensure t
+;;   :pin melpa
+;;   :config
+;;   (powerline-center-theme))
+
+;; (setq powerline-default-separator 'wave)
+
 
 (use-package spaceline
-  :ensure t
-  :pin melpa)
+  :init
+  :config
+  (require 'spaceline-config)
+  (spaceline-emacs-theme)
+  (spaceline-toggle-buffer-position-off)
+  (spaceline-toggle-hud-off)
+  (spaceline-toggle-projectile-root-on)
+  (spaceline-toggle-flycheck-error-on)
+  (spaceline-toggle-flycheck-warning-on)
+  (spaceline-toggle-flycheck-info-on)
+  (spaceline-toggle-which-function-on)
+  )
+
+
+;; (use-package spaceline-all-the-icons
+;;   :ensure t
+;;   :after spaceline
+;;   :config
+;;   (spaceline-all-the-icons-theme)
+;;   (spaceline-all-the-icons--setup-neotree)
+;;   (setq spaceline-all-the-icons-clock-always-visible nil)
+;;   (setq spaceline-all-the-icons-flycheck-alternate 1)
+;;   ;; (setq spaceline-all-the-icons-slim-render 1)
+;;   (setq spaceline-all-the-icons-separator-type 'none)
+;;   ;; (setq spaceline-all-the-icons-icon-set-flycheck-slim 'outline)
+;;   (spaceline-toggle-all-the-icons-time-off)
+;;   (spaceline-toggle-all-the-icons-buffer-path-off)
+;;   (spaceline-toggle-all-the-icons-eyebrowse-workspace-on)
+;;   (spaceline-toggle-all-the-icons-projectile-on)
+;;   (spaceline-toggle-all-the-icons-hud-off)
+;;   (spaceline-toggle-all-the-icons-modified-on)
+;;   (spaceline-toggle-all-the-icons-process-on)
+;;   ;; (setq spaceline-separator-dir-left '(left . left))
+;;   ;; (setq spaceline-separator-dir-right '(right . right))
+;;   )
+
+
 
 (provide '13_modeline)
 ;;; 13_modeline.el ends here
