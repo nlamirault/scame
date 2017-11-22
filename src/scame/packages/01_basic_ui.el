@@ -64,5 +64,12 @@
             (setq dashboard-startup-banner 'official)
             (dashboard-setup-startup-hook)))
 
+(use-package emojify
+  :ensure
+  :init (global-emojify-mode))
+
+(use-package emojify-logos :ensure
+  :after emojify)
+
 (provide '01_basic_ui)
 ;;; 01_basic_ui.el ends here
