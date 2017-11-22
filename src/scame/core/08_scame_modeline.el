@@ -1,4 +1,5 @@
 
+
 ;; 08_scame_modeline.el --- Scame modeline
 
 ;; Copyright (c) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
@@ -169,12 +170,12 @@
 ;;    (format-time-string " %Y-%m-%d %H:%M:%S")))
 
 
-;; (defun scame--modeline-version ()
-;;   (format " %s "
-;;           (propertize (all-the-icons-octicon "home")
-;;                       'face `(:family ,(all-the-icons-octicon-family) :height 1.2)
-;;                       'display '(raise 0)
-;;                       'help-echo (format "Scame version: `%s`" scame-version-number))))
+(defun scame--modeline-version ()
+  (format " %s "
+          (propertize (all-the-icons-octicon "home")
+                      'face `(:family ,(all-the-icons-octicon-family) :height 1.2)
+                      'display '(raise 0)
+                      'help-echo (format "Scame version: `%s`" scame-version-number))))
 
 ;; (defvar scame--modeline-package-upgrades nil)
 
@@ -220,17 +221,45 @@
 ;;                  ))))
 
 
-(defun scame-spaceline-scame-theme (&rest additional-segments)
-  "Install a modeline for Scame."
-  (apply 'spaceline--theme
-         '(((((persp-name :fallback workspace-number)
-              window-number) :separator "|")
-            buffer-modified)
-           :face highlight-face
-           :priority 0)
-         '((buffer-id remote-host)
-           :priority 5)
-         additional-segments))
+;; (defun scame-spaceline-scame-theme (&rest additional-segments)
+;;   "Install a modeline for Scame."
+;;   (apply 'spaceline--theme
+;;          '(((((persp-name :fallback workspace-number)
+;;               window-number) :separator "|")
+;;             buffer-modified)
+;;            :face highlight-face
+;;            :priority 0)
+;;          '((buffer-id remote-host)
+;;            :priority 5)
+;;          additional-segments))
+
+(defun scame-spaceline-scame-theme ()
+  (spaceline-compile
+    `(major-mode
+      (process :when active)
+      buffer-modified
+      ((flycheck-error flycheck-warning flycheck-info)
+       :when active
+       :priority 3)
+      '((buffer-id remote-host)
+        :priority 5)
+      (version-control :when active :priority 7)
+      )
+    `(which-function
+      (python-pyvenv :fallback python-pyenv)
+      purpose
+      (selection-info :priority 2)
+      input-method
+      ((buffer-encoding-abbrev
+        point-position
+        line-column)
+       :separator " | "
+       :priority 3)
+      (global :when active)
+      ))
+
+  (setq-default mode-line-format '("%e" (:eval (spaceline-ml-main)))))
+
 
 (scame-spaceline-scame-theme)
 
