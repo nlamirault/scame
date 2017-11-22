@@ -26,9 +26,6 @@
     :pin melpa
     :mode (("\\.ino\\'" . arduino-mode)))
 
-  ;; Test it
-  ;; (use-package company-arduino)
-
   (use-package platformio-mode
     :ensure t
     :pin melpa
@@ -36,11 +33,12 @@
     :mode (("\\.ino\\'" . arduino-mode))
     :config (platformio-setup-compile-buffer))
 
-  (use-package company-arduino
-    :ensure t
-    :pin melpa
-    :init (require #'company-arduino)
-    :config (add-to-list 'company-backends 'company-arduino))
+  ;; Not really active
+  ;; (use-package company-arduino
+  ;;   :ensure t
+  ;;   :pin melpa
+  ;;   :init (require #'company-arduino)
+  ;;   :config (add-to-list 'company-backends 'company-arduino))
 
   )
 
