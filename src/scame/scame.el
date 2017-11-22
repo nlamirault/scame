@@ -76,8 +76,9 @@
 (when (file-readable-p scame-user-customization-file)
   (load scame-user-customization-file))
 
-(when scame-use-custom-modeline
-  (setq-default mode-line-format (scame--modeline)))
+;; Enable mine ?
+;; (when scame-use-custom-modeline
+;;   (setq-default mode-line-format (scame--modeline)))
 
 (setq warning-minimum-level :warning)
 

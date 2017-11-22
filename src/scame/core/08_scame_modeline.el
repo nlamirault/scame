@@ -25,20 +25,48 @@
 
 (require '01_scame_version)
 
+;; (use-package powerline
+;;   :ensure t
+;;   :pin melpa
+;;   :config
+;;   (powerline-center-theme))
+
+;; (setq powerline-default-separator 'wave)
+
+(use-package spaceline
+  :init
+  :config
+  (require 'spaceline-config)
+  (spaceline-emacs-theme)
+  (spaceline-toggle-projectile-root-on)
+  (spaceline-toggle-flycheck-error-on)
+  (spaceline-toggle-flycheck-warning-on)
+  (spaceline-toggle-flycheck-info-on)
+  (spaceline-toggle-which-function-on)
+  )
+
+
 ;; (use-package spaceline-all-the-icons
 ;;   :ensure t
 ;;   :after spaceline
-;;   :config (progn
-;;             (spaceline-all-the-icons-theme)
-;;             (spaceline-all-the-icons--setup-anzu)            ;; Enable anzu searching
-;;             (spaceline-all-the-icons--setup-package-updates) ;; Enable package update indicator
-;;             (spaceline-all-the-icons--setup-paradox)         ;; Enable Paradox mode line
-;;             (spaceline-all-the-icons--setup-neotree)         ;; Enable Neotree mode line
-;;             (setq spaceline-all-the-icons-icon-set-modified 'toggle)
-;;             (setq spaceline-all-the-icons-separator-type 'none)
-;;             (setq spaceline-all-the-icons-icon-set-bookmark 'heart)
-;;             (setq spaceline-all-the-icons-icon-set-flycheck-slim 'quote)
-;;             (setq spaceline-all-the-icons-icon-set-sun-time 'sun/moon)))
+;;   :config
+;;   (spaceline-all-the-icons-theme)
+;;   (spaceline-all-the-icons--setup-neotree)
+;;   (setq spaceline-all-the-icons-clock-always-visible nil)
+;;   (setq spaceline-all-the-icons-flycheck-alternate 1)
+;;   ;; (setq spaceline-all-the-icons-slim-render 1)
+;;   (setq spaceline-all-the-icons-separator-type 'none)
+;;   ;; (setq spaceline-all-the-icons-icon-set-flycheck-slim 'outline)
+;;   (spaceline-toggle-all-the-icons-time-off)
+;;   (spaceline-toggle-all-the-icons-buffer-path-off)
+;;   (spaceline-toggle-all-the-icons-eyebrowse-workspace-on)
+;;   (spaceline-toggle-all-the-icons-projectile-on)
+;;   (spaceline-toggle-all-the-icons-hud-off)
+;;   (spaceline-toggle-all-the-icons-modified-on)
+;;   (spaceline-toggle-all-the-icons-process-on)
+;;   ;; (setq spaceline-separator-dir-left '(left . left))
+;;   ;; (setq spaceline-separator-dir-right '(right . right))
+;;   )
 
 (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 
