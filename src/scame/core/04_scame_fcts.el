@@ -33,6 +33,18 @@
     (kill-buffer (car liste))))
 
 
+(defun scame-insert-timestamp ()
+   (interactive)
+   (insert (format-time-string "%H:%M:%S %d-%m-%YT")))
+
+(defun scame-insert-copyright ()
+  (interactive)
+  (insert (format "Copyright (c) %s %s <%s>"
+                  (format-time-string "%Y")
+                  user-full-name
+                  user-mail-address)))
+
+
 ;; Search engines
 ;; ----------------
 

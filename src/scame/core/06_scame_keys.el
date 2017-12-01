@@ -21,6 +21,7 @@
 
 ;;; Code:
 
+
 (global-set-key (kbd "C-<down>")
                 (function (lambda ()
                             (interactive)
@@ -31,11 +32,11 @@
                             (interactive)
                             (scroll-down 1))))
 
-(defhydra hydra-scame (:color teal)
+(defhydra scame-hydra (:color teal)
         "
    ^ Calendars^       ^ Search^            ^ Launcher^          ^ Email^            ^ Help^
   ╭────────────────────────────────────────────────────────────────────────────────────────────────────
-   _g_:  google       _G_:  Google          _a_:  application   _O_:  local         _v_:  version
+   _g_:  google       _G_:  Google          _a_:  application   _O_:  local         _v_:  version
    _w_:  work         _H_:  Github          _m_:  man           _M_:  Gmail         _z_:  customization
    _d_:  diary        _T_:  Twitter         _p_:  packages      _E_:  Exchange      ^ ^
    _o_:  org          _L_: Launchpad         _h_:  proced         ^ ^                  ^ ^
@@ -75,31 +76,8 @@
 
         )
 
-;; (defhydra hydra-scame-ng (:color blue :columns 4)
-;;   "Scame hydra."
 
-;;   ("g" scame-google-calendar nil)
-;;   ("w" scame-work-calendar nil)
-;;   ("d" scame-diary-calendar nil)
-;;   ("o" scame-org-calendar nil)
-
-;;   ("a" calc nil)
-;;   ("m" man nil)
-;;   ("p" paradox-list-packages nil)
-;;   ("h" proced nil)
-;;   ("t" helm-mt nil)
-;;   ("r" ranger nil)
-
-;;   ("O" scame-mail-local nil)
-;;   ("M" scame-mail-gmail nil)
-;;   ("E" scame-mail-exchange nil)
-
-;;   ("v" scame-version nil)
-;;   ("z" scame-customization nil)
-;;   ("q" nil "cancel"))
-
-
-(defhydra hydra-scame-projectile (:color teal)
+(defhydra scame-hydra-projectile (:color teal)
   "
 
     Files             Search          Buffer             Do
@@ -160,8 +138,7 @@
         ("x"   fixmee-view-listing))
 
 
-
-(defhydra hydra-scame-org (:color teal)
+(defhydra scame-hydra-org (:color teal)
   "
 
     Timer           Clock               Capture
@@ -187,14 +164,14 @@
   ("l" org-capture-goto-last-stored))
 
 
-(defhydra hydra-scame-zoom (:color teal)
+(defhydra scame-hydra-zoom (:color teal)
   "zoom"
   ("g" text-scale-increase "in")
   ("l" text-scale-decrease "out"))
 
 
 
-(defhydra hydra-scame-toggle (:color pink :hint nil)
+(defhydra scame-hydra-toggle (:color pink :hint nil)
   "
 _a_ abbrev-mode:       %`abbrev-mode
 _d_ debug-on-error:    %`debug-on-error
@@ -213,11 +190,25 @@ _l_ org link display:  %`org-descriptive-links
   ("l" org-toggle-link-display)
   ("q" nil "quit"))
 
-(global-set-key (kbd "C-c s SPC") 'hydra-scame/body)
-(global-set-key (kbd "C-c s P") 'hydra-scame-projectile/body)
-(global-set-key (kbd "C-c s o") 'hydra-scame-org/body)
-(global-set-key (kbd "C-c s z") 'hydra-scame-zoom/body)
-(global-set-key (kbd "C-c s t") 'hydra-scame-toggle/body)
+
+(defhydra scame-hydra-insert (:color red :hint nil)
+  "
+_e_ insert emoji
+_d_ insert current timestamp
+_c_ insert copyright
+"
+  ("e" emojify-insert-emoji)
+  ("d" scame-insert-timestamp)
+  ("c" scame-insert-copyright)
+  ("q" nil "quit"))
+
+
+(global-set-key (kbd "C-c s SPC") 'scame-hydra/body)
+(global-set-key (kbd "C-c s P") 'scame-hydra-projectile/body)
+(global-set-key (kbd "C-c s o") 'scame-hydra-org/body)
+(global-set-key (kbd "C-c s z") 'scame-hydra-zoom/body)
+(global-set-key (kbd "C-c s t") 'scame-hydra-toggle/body)
+(global-set-key (kbd "C-c s i") 'scame-hydra-insert/body)
 
 
 (provide '06_scame_keys)
