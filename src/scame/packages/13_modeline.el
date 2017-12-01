@@ -46,6 +46,8 @@
 
 (setq-default
  powerline-height 20
+ spaceline-workspace-numbers-unicode 't
+ spaceline-window-numbers-unicode 't
  spaceline-separator-dir-left '(right . right)
  spaceline-separator-dir-right '(left . left))
 
