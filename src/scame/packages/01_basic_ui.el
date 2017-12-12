@@ -61,7 +61,7 @@
                                     (projects . 5)
                                     (bookmarks . 5)))
             (setq dashboard-banner-logo-title "Welcome to Scame")
-            (setq dashboard-startup-banner 'official)
+            (setq dashboard-startup-banner "~/.emacs.d/scame.png")
             (dashboard-setup-startup-hook)))
 
 (use-package emojify
