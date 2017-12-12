@@ -194,10 +194,24 @@ _l_ org link display:  %`org-descriptive-links
 (defhydra scame-hydra-insert (:color red :hint nil)
   "
 _e_ insert emoji
+_a_ insert all the icon
+_f_ insert FontAwesome icon
+_m_ insert Material icon
+_i_ insert Atom File icon
+_o_ insert Github Octicon
+_w_ insert weather icon
 _d_ insert current timestamp
 _c_ insert copyright
 "
   ("e" emojify-insert-emoji)
+  ;; Icons
+  ("a" all-the-icons-insert-alltheicon)
+  ("f" all-the-icons-insert-faicon)
+  ("m" all-the-icons-insert-material)
+  ("i" all-the-icons-insert-fileicon)
+  ("o" all-the-icons-insert-octicon)
+  ("w" all-the-icons-insert-wicon)
+  ;; Misc
   ("d" scame-insert-timestamp)
   ("c" scame-insert-copyright)
   ("q" nil "quit"))
