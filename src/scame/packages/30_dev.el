@@ -1,3 +1,4 @@
+
 ;;; 30_dev.el -- Commons configurations for development
 
 ;; Copyright (C) 2014, 2015, 2016, 2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
@@ -172,22 +173,47 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
   :bind (("C-x t t" . neotree-toggle)
          ("C-x t p" . neotree-project-dir)))
 
-(use-package treemacs
-  :ensure t
-  :pin melpa
-  :bind (("C-x T t" . treemacs-toggle))
-  :config (progn
-           (setq treemacs-width 25)
-           (setq treemacs-git-integration t)
-           (setq treemacs--persist-file (locate-user-emacs-file "cache/treemacs-persist"))
-           (treemacs-follow-mode)
-           (treemacs-filewatch-mode)))
+;; (use-package treemacs
+;;   :ensure t
+;;   :pin melpa
+;;   :bind (("C-x T t" . treemacs-toggle))
+;;   :config (progn
+;;            (setq treemacs-width 25)
+;;            (setq treemacs-git-integration t)
+;;            (setq treemacs--persist-file (locate-user-emacs-file "cache/treemacs-persist"))
+;;            (treemacs-follow-mode)
+;;            (treemacs-filewatch-mode)))
 
-(use-package treemacs-projectile
+;; (use-package treemacs-projectile
+;;   :ensure t
+;;   :pin melpa
+;;   :bind (("C-x T p" . treemacs-projectile))
+;;   :config (setq treemacs-header-function #'treemacs-projectile-create-header))
+
+
+(use-package dired-sidebar
   :ensure t
   :pin melpa
-  :bind (("C-x T p" . treemacs-projectile))
-  :config (setq treemacs-header-function #'treemacs-projectile-create-header))
+  :commands (dired-sidebar-toggle-sidebar)
+  :bind (("C-x T t" . dired-sidebar-toggle-sidebar))
+  :config (progn
+            (cond
+             ((eq system-type 'gnu/linux)
+              (if (display-graphic-p)
+                  (setq dired-sidebar-theme 'icons)))
+             ((eq system-type 'darwin)
+                 (if (display-graphic-p)
+                  (setq dired-sidebar-theme 'icons)
+                (setq dired-sidebar-theme 'nerd))
+              (setq dired-sidebar-face '(:family "Helvetica" :height 80)))
+             ((eq system-type 'windows-nt)
+              (setq dired-sidebar-theme 'nerd)
+              (setq dired-sidebar-face '(:family "Lucida Sans Unicode" :height 110)))
+             (:default
+              (setq dired-sidebar-theme 'nerd)
+              (setq dired-sidebar-face '(:family "Arial" :height 120))))
+            (setq dired-sidebar-use-term-integration t)
+            (setq dired-sidebar-use-custom-font t)))
 
 
 ;; Search
