@@ -217,12 +217,39 @@ _c_ insert copyright
   ("q" nil "quit"))
 
 
+
+(defhydra scame-hydra-counsel (:color yellow)
+  "
+    Describe           Search          Jump
+  ╭──────────────────────────────────────────────────────────────────────────
+    [_v_] variable     [_A_] Ag        [_b_] Bookmark
+    [_f_] function     [_F_] Fzf       [_d_] Dired
+    [_l_] library      [_P_] Pt        [_r_] Recentf
+    [_y_] symbol       [_R_] Rg
+  --------------------------------------------------------------------------------
+"
+
+
+  ("v" counsel-describe-variable)
+  ("f" counsel-describe-function)
+  ("l" counsel-describe-library)
+  ("y" counsel-info-lookup-symbol)
+  ("A" counsel-ag)
+  ("F" counsel-fzf)
+  ("P" counsel-pt)
+  ("R" counsel-rg)
+  ("b" counsel-bookmark)
+  ("d" counsel-dired-jump)
+  ("r" counsel-recentf))
+
+
 (global-set-key (kbd "C-c s SPC") 'scame-hydra/body)
 (global-set-key (kbd "C-c s P") 'scame-hydra-projectile/body)
 (global-set-key (kbd "C-c s o") 'scame-hydra-org/body)
 (global-set-key (kbd "C-c s z") 'scame-hydra-zoom/body)
 (global-set-key (kbd "C-c s t") 'scame-hydra-toggle/body)
 (global-set-key (kbd "C-c s i") 'scame-hydra-insert/body)
+(global-set-key (kbd "C-c s c") 'scame-hydra-counsel/body)
 
 
 (provide '06_scame_keys)

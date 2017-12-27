@@ -32,8 +32,16 @@
          ("C-x c f" . counsel-describe-function)
          ("C-x c l" . counsel-describe-library)
          ("C-x c y" . counsel-info-lookup-symbol)
+
          ("C-x c o" . counsel-bookmark)
          ("C-x c p" . counsel-package)
+
+         ;; Search
+         ;; ("C-x s a" . counsel-ag)
+         ;; ("C-x s f" . counsel-fzf)
+         ;; ("C-x s p" . counsel-pt)
+         ;; ("C-x s r" . counsel-rg)
+
          ("C-x c i" . counsel-imenu)))
 
 (use-package counsel-projectile
