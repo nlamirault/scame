@@ -65,7 +65,7 @@
 
 (defcustom scame-abrev-filename
   (concat user-emacs-directory "abbrev_defs")
-  "Tell emacs where to read abbrev definitions."
+  "Tell Emacs where to read abbrev definitions."
   :group 'scame
   :type 'string)
 
@@ -78,6 +78,23 @@
   "Set if you want to use the Scame modline."
   :group 'scame
   :type 'boolean)
+
+
+;; Networking
+;; ------------------
+
+(defcustom scame-proxy-url ""
+  "Set network proxy."
+  :type 'string)
+
+
+(defcustom scame-proxy-username ""
+  "Proxy username."
+  :type 'string)
+
+(defcustom scame-proxy-password ""
+  "Proxy password."
+  :type 'string)
 
 
 ;; Mail
