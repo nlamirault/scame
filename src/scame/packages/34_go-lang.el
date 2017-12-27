@@ -17,9 +17,25 @@
 
 ;;; Commentary:
 
-;; Go dependencies :
-;; - code.google.com/p/rog-go/exp/cmd/godef
+;; Go dependencies (go get -u ....):
+;;
 ;; - https://github.com/nsf/gocode
+;; - code.google.com/p/rog-go/exp/cmd/godef
+;; - golang.org/x/tools/cmd/godoc
+;; - github.com/golang/lint/golint
+;; - golang.org/x/tools/cmd/guru
+;; - github.com/kisielk/errcheck
+;; - github.com/fatih/gomodifytags
+;; - github.com/derekparker/delve/cmd/dlv
+;; -
+;; -
+;; -
+;; -
+;; -
+;; -
+;; -
+;; -
+;; -
 
 ;;; Code:
 
@@ -116,12 +132,12 @@
   (define-key go-mode-map (kbd "C-x g h")
     (defhydra hydra-go (:color blue)
       "
-   ^Test^                ^Tools^
-  ╭─────────────────────────────────
-   _t_: test            _d_: godoc
-   _f_: file            _e_: errcheck
-   _p_: project         _l_: golint
-  ----------------------------------
+   ^Test^            ^Tools^           ^Navigate^
+  ╭─────────────────────────────────────────────────────
+   _t_: test         _d_: godoc        _D_: definition
+   _f_: file         _e_: errcheck     _R_: referrers
+   _p_: project      _l_: golint
+  ------------------------------------------------------------
         "
       ("q" nil "quit")
       ("t" go-test-current-test "test")
@@ -130,6 +146,8 @@
       ("d" godoc "godoc")
       ("e" go-errcheck "errcheck")
       ("l" golint "golint")
+      ("D" go-guru-definition "go-guru")
+      ("R" go-guru-referrers "go-guru")
       ))
 
 )
