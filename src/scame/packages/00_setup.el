@@ -38,10 +38,22 @@
 (defconst console-p (eq (symbol-value 'window-system) nil)
   "Are we in a console?")
 
+
 (use-package abbrev
   :commands abbrev-mode
   :init (setq abbrev-file-name
               (concat user-emacs-directory "abbrev_defs")))
+
+
+(use-package exec-path-from-shell
+  :ensure t
+  :pin melpa
+  :init
+  (setq exec-path-from-shell-check-startup-files nil)
+  (setq exec-path-from-shell-variables '("PATH" "MANPATH" "PYTHONPATH" "GOPATH"))
+  (setq exec-path-from-shell-arguments '("-l"))
+  (exec-path-from-shell-initialize))
+
 
 (provide '00_setup)
 ;;; 00_setup.el ends here
