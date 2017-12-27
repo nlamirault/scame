@@ -41,7 +41,7 @@
   (require 'use-package))
 
 (setq use-package-verbose t
-      use-package-always-defer t
+      ;; use-package-always-defer t
       use-package-enable-imenu-support t
       use-package-minimum-reported-time 0.03)
 
