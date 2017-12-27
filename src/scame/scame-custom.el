@@ -28,11 +28,6 @@
   :group 'scame
   :type 'string)
 
-;; (defcustom scame-cask-file "~/.cask/cask.el"
-;;   "Scame Cask file."
-;;   :group 'scame
-;;   :type 'string)
-
 (defcustom scame-keymap-prefix (kbd "C-c s")
   "Scame keymap prefix."
   :group 'scame
@@ -83,6 +78,7 @@
   "Set if you want to use the Scame modline."
   :group 'scame
   :type 'boolean)
+
 
 ;; Mail
 ;; ------------------
