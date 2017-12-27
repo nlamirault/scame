@@ -44,6 +44,12 @@
   :init (setq abbrev-file-name
               (concat user-emacs-directory "abbrev_defs")))
 
+(use-package saveplace
+  :init
+  (if (fboundp 'save-place-mode)
+      (add-hook 'after-init-hook #'save-place-mode)
+    (setq save-place t)))
+
 
 (use-package exec-path-from-shell
   :ensure t
