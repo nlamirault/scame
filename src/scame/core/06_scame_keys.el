@@ -1,6 +1,6 @@
 ;; 06_scame_keys.el --- Scame customization for Emacs
 
-;; Copyright (c) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014-2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -34,15 +34,16 @@
 
 (defhydra scame-hydra (:color teal)
         "
-   ^ Calendars^       ^ Search^            ^ Launcher^          ^ Email^            ^ Help^
+   ^ Calendars^       ^ Search^            ^ Launcher^          ^  Email^            ^ Help^
   ╭────────────────────────────────────────────────────────────────────────────────────────────────────
-   _g_:  google       _G_:  Google          _a_:  application   _O_:  local         _v_:  version
-   _w_:  work         _H_:  Github          _m_:  man           _M_:  Gmail         _z_:  customization
-   _d_:  diary        _T_:  Twitter         _p_:  packages      _E_:  Exchange      ^ ^
-   _o_:  org          _L_: Launchpad         _h_:  proced         ^ ^                  ^ ^
-   ^ ^                  _S_:  Stackoverflow  _t_:  term           ^ ^                   ^ ^
-   ^ ^                  _W_:  Wikipedia      _r_:  ranger        ^ ^                   ^ ^
-   ^ ^                  _R_: RFC              ^ ^                     ^ ^                  ^ ^
+   _g_:  google       _G_: Google
+         _a_:  application   _O_:  local         _v_:  version
+   _w_:  work         _H_: Github            _m_:  man           _M_:  Gmail         _z_:  customization
+   _d_:  diary        _T_: Twitter           _p_:  packages      _E_:  Exchange      ^ ^
+   _o_:  org          _L_: Launchpad         _h_:  proced        ^ ^                   ^ ^
+   ^ ^                  _S_: Stackoverflow     _t_:  term          ^ ^                   ^ ^
+   ^ ^                  _W_: Wikipedia         _r_:  ranger        ^ ^                   ^ ^
+   ^ ^                  _R_: RFC               ^ ^                   ^ ^                   ^ ^
   ---------------------------------------------------------------------------------------------------------------
         "
         ("q" nil " quit")
