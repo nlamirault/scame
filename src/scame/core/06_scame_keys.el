@@ -36,8 +36,7 @@
         "
    ^ Calendars^       ^ Search^            ^ Launcher^          ^  Email^            ^ Help^
   ╭────────────────────────────────────────────────────────────────────────────────────────────────────
-   _g_:  google       _G_: Google
-         _a_:  application   _O_:  local         _v_:  version
+   _g_:  google       _G_: Google            _a_:  application   _O_:  local         _v_:  version
    _w_:  work         _H_: Github            _m_:  man           _M_:  Gmail         _z_:  customization
    _d_:  diary        _T_: Twitter           _p_:  packages      _E_:  Exchange      ^ ^
    _o_:  org          _L_: Launchpad         _h_:  proced        ^ ^                   ^ ^

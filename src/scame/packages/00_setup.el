@@ -54,14 +54,14 @@
           (list (list scame-proxy-url
                       (cons proxy-username
                             (base64-encode-string credentials))))))
-  (message "Proxy is enable: \"%s\"" scame-proxy-url)
+  (message "Proxy is enable: \"%s\"" scame-proxy-url))
 
 
 (defun scame-disable-proxy ()
   "Disable the HTTP(S) proxy."
   (interactive)
   (setq url-proxy-services nil)
-  (message "Proxy is disable")
+  (message "Proxy is disable"))
 
 
 (use-package abbrev
@@ -69,7 +69,7 @@
   :init (setq abbrev-file-name
               (concat user-emacs-directory "abbrev_defs")))
 
-q(use-package saveplace
+(use-package saveplace
   :init
   (if (fboundp 'save-place-mode)
       (add-hook 'after-init-hook #'save-place-mode)
