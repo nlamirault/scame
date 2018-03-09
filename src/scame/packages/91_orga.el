@@ -1,6 +1,6 @@
 ;;; 91_orga.el --- Organisation
 
-;; Copyright (C) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014-2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -256,7 +256,31 @@
               (setq org-clock-auto-clock-resolution (quote when-no-clock-is-running))
               ;; Include current clocking task in clock reports
               (setq org-clock-report-include-clocking-task t)
-              (setq org-alphabetical-lists t))
+              (setq org-alphabetical-lists t)
+
+              (setq org-agenda-category-icon-alist
+                    `(
+                      ("Diary" ,(list (all-the-icons-material "date_range")) nil nil :ascent center)
+                      ("calendar" ,(list (all-the-icons-material "date_range")) nil nil :ascent center)
+                      ("Todo" ,(list (all-the-icons-material "check_box" :height 1.2)) nil nil :ascent center)
+                      ("Org" ,(list (all-the-icons-fileicon "org")) nil nil :ascent center)
+
+                      ("Person" ,(list (all-the-icons-material "perm_identity")) nil nil :ascent center)
+
+                      ;; <Work>
+                      ("Work" ,(list (all-the-icons-material "work")) nil nil :ascent center)
+                      ("Code" ,(list (all-the-icons-material "code")) nil nil :ascent center) ; "file-code-o"
+                      ("Programming" ,(list (all-the-icons-material "code")) nil nil :ascent center)
+                      ("Code" ,(list (all-the-icons-material "bug_report")) nil nil :ascent center)
+                      ("Feature" ,(list (all-the-icons-material "check_box" :height 1.2)) nil nil :ascent center)
+                      ("Email" ,(list (all-the-icons-material "email")) nil nil :ascent center)
+                      ("Security" ,(list (all-the-icons-material "security")) nil nil :ascent center)
+
+                      (".*" ,(list (all-the-icons-faicon "question-circle-o")) nil nil :ascent center)
+                      ))
+
+                      )
+
     :bind (("C-c o l" . org-store-link)
            ("C-c o c" . org-capture)
            ("C-c o a" . org-agenda)
