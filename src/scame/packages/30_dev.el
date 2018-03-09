@@ -1,7 +1,7 @@
 
 ;;; 30_dev.el -- Commons configurations for development
 
-;; Copyright (C) 2014, 2015, 2016, 2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015, 2016, 2017, 2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -119,7 +119,7 @@
 (use-package counsel-projectile
   :ensure t
   :pin melpa
-  :config (counsel-projectile-on))
+  :config (counsel-projectile-mode 1))
 
 
 (setq-default indent-tabs-mode nil)

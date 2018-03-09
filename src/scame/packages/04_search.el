@@ -1,6 +1,6 @@
 ;;; 04_search.el --- Emacs search frameworks configuration
 
-;; Copyright (c) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014-2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -43,11 +43,6 @@
          ;; ("C-x s r" . counsel-rg)
 
          ("C-x c i" . counsel-imenu)))
-
-(use-package counsel-projectile
-  :ensure t
-  :pin melpa
-  :config (counsel-projectile-on))
 
 (use-package ivy
   :ensure t
