@@ -1,6 +1,6 @@
 ;;; 35_ocaml.el --- OCaml configuration
 
-;; Copyright (c) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -29,11 +29,15 @@
       (add-to-list 'load-path (concat opam-share "/emacs/site-lisp"))))
 
   (use-package tuareg
+    :ensure t
+    :pin melpa
     :mode (("\\.ml\\w?" . tuareg-mode)
            ("\\.topml\\'" . taureg-mode)
            ("\\.fs[ix]?" . tuareg-mode)))
 
   (use-package merlin
+    :ensure t
+    :pin melpa
     :config (progn
               (add-hook 'tuareg-mode-hook 'merlin-mode t)
               (add-hook 'caml-mode-hook 'merlin-mode t)
@@ -46,14 +50,20 @@
               ))
 
   (use-package flycheck-ocaml
+    :ensure t
+    :pin melpa
     :init (with-eval-after-load 'merlin (flycheck-ocaml-setup)))
 
-  (use-package utop
-    :if (executable-find "utop"))
+  ;; (use-package utop
+  ;;   :ensure t
+  ;;   :pin melpa
+  ;;   :if (executable-find "utop"))
 
-  (use-package utop-minor-mode
-    :if (executable-find "utop")
-    :init (add-hook 'tuareg-mode-hook 'utop-minor-mode))
+  ;; (use-package utop-minor-mode
+  ;;   :ensure t
+  ;;   :pin melpa
+  ;;   :if (executable-find "utop")
+  ;;   :init (add-hook 'tuareg-mode-hook 'utop-minor-mode))
 
   )
 

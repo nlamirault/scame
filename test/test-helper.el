@@ -106,8 +106,7 @@
   (let ((output (f-join scame-test/sandbox-path "init.el")))
     (when (f-exists? output)
       (f-delete output 'force))
-    (f-copy (f-join scame-test/test-path "init.el")
-            scame-test/sandbox-path)))
+    (f-copy (f-join scame-test/test-path "init.el") output)))
 
 
 (defun setup-scame (path)
@@ -141,7 +140,7 @@
   `(unwind-protect
        (condition-case nil
            (let ((default-directory scame-test/sandbox-path)
-                 (scame-user-directory (concat scame-test/sandbox-path "/scame"))
+                 (scame-user-directory (f-join scame-test/sandbox-path "scame"))
                  (user-emacs-directory scame-test/sandbox-path)
                  )
              (install-scame)

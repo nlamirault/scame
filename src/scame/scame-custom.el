@@ -1,6 +1,6 @@
 ;; scame-custom.el --- Scame customization
 
-;; Copyright (c) 2014-2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -28,11 +28,6 @@
   :group 'scame
   :type 'string)
 
-;; (defcustom scame-cask-file "~/.cask/cask.el"
-;;   "Scame Cask file."
-;;   :group 'scame
-;;   :type 'string)
-
 (defcustom scame-keymap-prefix (kbd "C-c s")
   "Scame keymap prefix."
   :group 'scame
@@ -50,9 +45,27 @@
   :group 'scame
   :type 'string)
 
+(defcustom scame-emacs-custom-file
+  (concat user-emacs-directory "custom.el")
+  "File used for storing customization information."
+  :group 'scame
+  :type 'string)
+
 (defcustom scame-user-customization-file
   (concat user-home-directory ".config/scame/scame-user.el")
   "File used to store user customization."
+  :group 'scame
+  :type 'string)
+
+(defcustom scame-cache-directory
+  (concat user-home-directory ".cache/emacs")
+  "Cache directory for Emacs."
+  :group 'scame
+  :type 'string)
+
+(defcustom scame-abrev-filename
+  (concat user-emacs-directory "abbrev_defs")
+  "Tell Emacs where to read abbrev definitions."
   :group 'scame
   :type 'string)
 
@@ -61,18 +74,28 @@
   :group 'scame
   :type 'boolean)
 
-(defcustom scame-defer-package t
-  "Set if you want defer loading packages."
+(defcustom scame-use-custom-modeline t
+  "Set if you want to use the Scame modline."
   :group 'scame
   :type 'boolean)
 
-(defcustom scame-completion-method 'ido
-  "Method to select a candidate from a list of strings."
-  :group 'scame
-  :type '(choice
-          (const :tag "Ido" ido)
-          (const :tag "Helm" helm)
-          (const :tag "Ivy" ivy)))
+
+;; Networking
+;; ------------------
+
+(defcustom scame-proxy-url ""
+  "Set network proxy."
+  :type 'string)
+
+
+(defcustom scame-proxy-username ""
+  "Proxy username."
+  :type 'string)
+
+(defcustom scame-proxy-password ""
+  "Proxy password."
+  :type 'string)
+
 
 ;; Mail
 ;; ------------------

@@ -1,6 +1,6 @@
 ;; 51_arduino.el --- Arduino configuration
 
-;; Copyright (C) 2014, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -22,10 +22,23 @@
 (when scame-iot
 
   (use-package arduino-mode
+    :ensure t
+    :pin melpa
     :mode (("\\.ino\\'" . arduino-mode)))
 
-  ;; Test it
-  ;; (use-package company-arduino)
+  (use-package platformio-mode
+    :ensure t
+    :pin melpa
+    :init (add-hook 'c++-mode-hook 'platformio-mode)
+    :mode (("\\.ino\\'" . arduino-mode))
+    :config (platformio-setup-compile-buffer))
+
+  ;; Not really active
+  ;; (use-package company-arduino
+  ;;   :ensure t
+  ;;   :pin melpa
+  ;;   :init (require #'company-arduino)
+  ;;   :config (add-to-list 'company-backends 'company-arduino))
 
   )
 

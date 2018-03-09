@@ -4,20 +4,33 @@ machine:
 
 dependencies:
   pre:
-    #- sudo rm /etc/apt/sources.list.d/google-chrome.list
-    #- sudo add-apt-repository -y ppa:cassou/emacs
-    #- sudo add-apt-repository -y ppa:ubuntu-elisp/ppa
-    #- sudo apt-get update -qq
-    #- sudo apt-get install -qq emacs24-nox emacs-snapshot
-    #- sudo update-alternatives --set emacs /usr/bin/emacs24-nox
+    # - sudo rm -f /etc/apt/sources.list.d/google-chrome.list
+    # - sudo add-apt-repository -y ppa:cassou/emacs
+    # - sudo add-apt-repository -y ppa:ubuntu-elisp/ppa
+    # - sudo apt-get update -qq
+    # - sudo apt-get install -qq emacs24-nox emacs-snapshot
+    # # - sudo update-alternatives --set emacs /usr/bin/emacs-nox
+    # - sudo update-alternatives --set emacs /usr/bin/emacs-snapshot
+
     #- export PATH="$HOME/.cask/bin:$HOME/.evm/bin:$PATH"
     #- git clone https://github.com/rejeep/evm.git $HOME/.evm
     #- $HOME/.evm/bin/evm config path /tmp
     #- $HOME/.evm/bin/evm install emacs-24.5 --use --skip
-    - sudo add-apt-repository -y ppa:adrozdoff/emacs
-    - sudo apt-get update -qq
-    - sudo apt-get install -qq emacs24
+
+    # - sudo add-apt-repository -y ppa:adrozdoff/emacs
+    # - sudo apt-get update -qq
+    # - sudo apt-get install -qq emacs25
+
+    # - sudo apt-get install erlang
+
+    - curl -o /tmp/emacs-25.1.tar.xz https://ftp.gnu.org/gnu/emacs/emacs-25.1.tar.xz
+    - tar xf /tmp/emacs-25.1.tar.xz -C /tmp
+    - mv /tmp/emacs-25.1 /tmp/emacs
+    - cd '/tmp/emacs' && ./configure --quiet --enable-silent-rules --prefix="$(HOME)" --with-x-toolkit=no --without-x --without-all --with-xml2 CFLAGS='-O2 -march=native' CXXFLAGS='-O2 -march=native'
+    - sudo make -j2 -C '/tmp/emacs' V=0 install
+    - sudo cp /tmp/emacs/src/emacs /usr/bin/emacs
     - curl -fsSkL "https://raw.github.com/cask/cask/master/go" | python
+
 test:
   override:
     - PATH="${HOME}/.cask/bin:$PATH" make clean elpa install test

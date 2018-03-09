@@ -1,4 +1,4 @@
-# Copyright (C) 2014-2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+# Copyright (C) 2014-2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@ DOCKER ?= docker
 NAMESPACE = nlamirault
 IMAGE = scame
 
-# ELS = $(wildcard src/scame/*.el)
+ELS = `find src -name "*.el"`
 # OBJECTS = $(ELS:.el=.elc)
 
 VERSION=$(shell \
@@ -87,6 +87,12 @@ test-tag: elpa
 	@echo -e "$(OK_COLOR)[$(APP)] Launch unit tests$(NO_COLOR)"
 	@$(CASK) exec ert-runner -L test/sandbox --verbose --debug -t $(tag)
 
+.PHONY: checkdoc
+checkdoc: ## Checks the EmacsLisp code
+	@echo -e "$(OK_COLOR)[$(APP)] Check EmacsLisp code$(NO_COLOR)"
+	for i in $(ELS); do \
+		echo $$i && $(CASK) exec $(EMACS) --batch -L . --eval="(checkdoc)" -Q $$i; \
+	done
 
 .PHONY: virtual-test
 virtual-test:
@@ -97,11 +103,11 @@ release:
 	@echo -e "$(OK_COLOR)[$(APP)] Make archive $(VERSION) $(NO_COLOR)"
 	@rm -fr $(PACKAGE) && mkdir $(PACKAGE)
 	@cp -r src/* $(PACKAGE)
+	@cp -r fonts $(PACKAGE)
 	@tar cf $(ARCHIVE) $(PACKAGE)
 	@gzip $(ARCHIVE)
 	@rm -fr $(PACKAGE)
 	@addons/github.sh $(VERSION)
-
 
 #
 # Docker

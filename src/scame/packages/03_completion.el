@@ -1,6 +1,6 @@
 ;;; 03_completion.el --- Completion system
 
-;; Copyright (c) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,20 +19,44 @@
 
 ;;; Code:
 
-;;(require 'auto-complete)
-;;(ac-config-default)
-;;(setq ac-ignore-case nil)
-;;(add-to-list 'ac-modes 'web-mode)
-;;(add-to-list 'ac-modes 'php-mode)
-
 (use-package company
-  ;; :defer scame-defer-package
+  :ensure t
+  :pin melpa
   :init (add-hook 'after-init-hook 'global-company-mode)
+  :bind (("M-/" . company-complete)
+         ("C-c C-y" . company-yasnippet)
+         :map company-active-map
+         ("C-p" . company-select-previous)
+         ("C-n" . company-select-next)
+         ("<tab>" . company-complete-common-or-cycle)
+         ("<backtab>" . company-select-previous)
+         :map company-search-map
+         ("C-p" . company-select-previous)
+         ("C-n" . company-select-next))
+  :config (setq company-tooltip-align-annotations t
+                company-idle-delay 0.5
+                company-minimum-prefix-length 2
+                company-require-match nil
+                company-dabbrev-ignore-case nil
+                company-dabbrev-downcase nil)
   :diminish company-mode)
 
-(use-package company-shell
-  :config (progn
-            (add-to-list 'company-backends 'company-shell)))
+(use-package company-quickhelp
+  :if (display-graphic-p)
+  :bind (:map company-active-map
+              ("M-h" . company-quickhelp-manual-begin))
+  :config (company-quickhelp-mode 1))
+
+;; (use-package company-shell
+;;   :ensure t
+;;   :pin melpa
+;;   :config (progn
+;;             (add-to-list 'company-backends 'company-shell)))
+
+;; (use-package company-emoji
+;;   :ensure t
+;;   :pin melpa
+;;   :config (add-to-list 'company-backends 'company-emoji))
 
 
 (provide '03_completion)

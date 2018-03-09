@@ -1,6 +1,6 @@
 ;; scame-user.el --- Scame customization file
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -21,9 +21,19 @@
 
 ;;; Code:
 
+;; User
 (setq user-full-name "Emacs Scame")
 (setq user-mail-address "emacs.scame@gmail.com")
+
+;; Theme
 (load-theme 'monokai t)
+
+;; GPG
+(setq user-fingerprint "xxx")
+(setq epg-user-id "xxxx")
+
+
+
 
 (provide 'scame-user)
 ;;; scame-user.el ends here

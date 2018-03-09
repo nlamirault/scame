@@ -1,6 +1,6 @@
 ;;; 93_email.el --- Scame Email configuration
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -21,23 +21,22 @@
 
 (when scame-email
 
-  (use-package notmuch
-    ;; :defer scame-defer-package)
-    )
+  ;; (use-package notmuch
+  ;;   :ensure t
+  ;;   :pin melpa
+  ;;   )
 
-  (use-package notmuch-labeler
-    ;; :defer scame-defer-package)
-    )
+  ;; (use-package notmuch-labeler
+  ;;   :ensure t
+  ;;   :pin melpa
+  ;;   )
 
-  (use-package bbdb-com
-    ;; :defer scame-defer-package
+  (use-package bbdb
+    :ensure t
+    :pin melpa
     :bind (("C-c d s" . bbdb)
            ("C-c d n" . bbdb-search-name)
            ("C-c d m" . bbdb-search-mail)))
-
-  (use-package helm-bbdb
-    ;; :defer scame-defer-package
-    :bind (("C-c d h" . helm-bbdb)))
 
   )
 

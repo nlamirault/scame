@@ -1,5 +1,23 @@
 # Scame ChangeLog
 
+## Version 1.6.0
+
+- Refactoring *hydra* menus
+- Add *ivy-rich* mode
+- Add *all-the-icons-ivy* mode
+
+## Version 1.5.0
+
+- Initialize Scame custom modeline
+- Add origami
+- Setup xwidget for web browsing
+- ``#58``: Add dumb-jump
+- Add application launcher
+- Add *cask-mode*
+- Magit status and log windows in fullscreen
+- Update Arduino setup with *PlatformIO*
+- Add *counsel-projectile*
+
 ## Version 1.4.0
 
 - Setup Arduino development

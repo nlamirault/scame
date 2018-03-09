@@ -27,7 +27,6 @@
             (add-hook 'gnus-startup-hook 'bbdb-insinuate-gnus)
             (add-hook 'message-mode-hook
                       '(lambda ()
-                         ;;(bbdb-initialize 'message)
                          (bbdb-insinuate-message)
                          (local-set-key "<TAB>" 'bbdb-complete-name)))
             ))

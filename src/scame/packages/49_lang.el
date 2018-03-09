@@ -1,6 +1,6 @@
-;;; 61_ci.el -- Continuous integration
+;;; 49_lang.el -- Some development languages
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015, 2016, 2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -20,9 +20,10 @@
 ;;; Code:
 
 
-(use-package butler
-  ;; :defer scame-defer-package)
-  )
+(use-package protobuf-mode
+  :mode ("\\.proto\\'" . protobuf-mode))
 
-(provide '61_ci)
-;;; 61_ci.el ends here
+
+
+(provide '49_lang)
+;;; 49_lang.el ends here

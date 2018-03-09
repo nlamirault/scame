@@ -1,6 +1,6 @@
 ;; 02_scame_utils.el --- Scame utilities
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -96,32 +96,6 @@
   "File a bug report about the `scame' project."
   (interactive)
   (browse-url "https://github.com/nlamirault/scame/issues/new"))
-
-
-;; See: http://oremacs.com/2015/03/05/testing-init-sanity/
-;;;###autoload
-(defun scame-test-emacs ()
-  "Run a batch Emacs with current config to see if it errors out or not."
-  (interactive)
-  (require 'async)
-  (async-start
-   (lambda () (shell-command-to-string
-          "emacs --batch --eval \"
-(condition-case e
-    (progn
-      (load \\\"~/.emacs.d/init.el\\\")
-      (message \\\"-OK-\\\"))
-  (error
-   (message \\\"ERROR!\\\")
-   (signal (car e) (cdr e))))\""))
-   `(lambda (output)
-      (if (string-match "-OK-" output)
-          (when ,(called-interactively-p 'any)
-            (message "All is well"))
-        (switch-to-buffer-other-window "*startup error*")
-        (delete-region (point-min) (point-max))
-        (insert output)
-        (search-backward "ERROR!")))))
 
 
 (provide '02_scame_utils)

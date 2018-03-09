@@ -1,6 +1,6 @@
 ;;; 32_commonlisp.el --- Slime configuration
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -32,11 +32,13 @@
   ;;   :config (slime-setup '(slime-company)))
 
   (use-package sly
-    ;; :defer scame-defer-package)
+    :ensure t
+    :pin melpa
     )
 
   (use-package sly-company
-    ;; :defer scame-defer-package
+    :ensure t
+    :pin melpa
     :init (add-hook 'sly-mode-hook 'sly-company-mode))
 
   ;; Use Quicklisp to install Slime

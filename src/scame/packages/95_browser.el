@@ -1,6 +1,6 @@
 ;;; 95_browser.el --- Browser configuration
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,35 +19,20 @@
 
 ;;; Code:
 
-;; FIX:
-;;
-;; Debugger entered--Lisp error: (file-error "Cannot open load file" "w3m-cookie")
-;;   w3m-cookie-shutdown()
-;;   kill-emacs(t)
-;;   command-line()
-;;   normal-top-level()
-;; Use:
-;; (remove-hook 'kill-emacs-hook 'w3m-cookie-shutdown)
+(defalias 'gk-urls-external-browser 'browse-url-xdg-open)
 
-;; (use-package w3m
-;;   :commands w3m
-;;   ;;:init (remove-hook 'kill-emacs-hook 'w3m-cookie-shutdown)
-;;   :config (progn
-;;             (setq w3m-coding-system 'utf-8)
-;;             (setq w3m-file-coding-system 'utf-8)
-;;             (setq w3m-file-name-coding-system 'utf-8)
-;;             (setq w3m-input-coding-system 'utf-8)
-;;             (setq w3m-output-coding-system 'utf-8)
-;;             (setq w3m-terminal-coding-system 'utf-8)))
-
-;; (use-package w3m-cookie
-;;   :config (setq w3m-use-cookies t))
-
-
+(defun gk-browse-url (&rest args)
+  "Prompt for whether or not to browse with EWW, if no browse
+with external browser."
+  (apply
+   (if (y-or-n-p "Browse with EWW? ")
+       'eww-browse-url
+     #'gk-urls-external-browser)
+   args))
 
 (use-package eww
-  ;; :defer scame-defer-package
   :config (progn
+            (setq browse-url-browser-function #'gk-browse-url)
             (setq shr-color-visible-luminance-min 70)))
 
 (provide '95_browser)

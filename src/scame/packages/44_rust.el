@@ -1,6 +1,6 @@
 ;;; 44_rust.el -- Rust configuration
 
-;; Copyright (C) 2014, 2015, 2016  Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014-2017  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,14 +19,21 @@
 
 ;;; Code:
 
+
 (when scame-rust
 
+  (require 'f)
+
   (use-package rust-mode
+    :ensure t
+    :pin melpa
     :mode (("\\.rs\\'" . rust-mode))
     :init (add-hook 'rust-mode-hook 'flycheck-mode)
     :config (setq tab-width 4))
 
   (use-package cargo
+    :ensure t
+    :pin melpa
     :config (progn
               (add-hook 'rust-mode-hook 'cargo-minor-mode)
               (add-hook 'rust-mode-hook
@@ -37,25 +44,30 @@
                           ))))
 
   (use-package racer
+    :ensure t
+    :pin melpa
     :init (progn
             (setq racer-rust-src-path (getenv "RUST_HOME"))
-            (setq racer-cmd (executable-find "racer")))
+            (setq racer-cmd (f-expand "~/.cargo/bin/racer"))
     :config (add-hook 'rust-mode-hook
                       '(lambda ()
                          (racer-activate)
                          (racer-turn-on-eldoc)
                          (local-set-key (kbd "M-.") #'racer-find-definition)
-                         (local-set-key (kbd "TAB") #'racer-complete-or-indent))))
+                         (local-set-key (kbd "TAB") #'racer-complete-or-indent)))))
 
   (use-package flycheck-rust
+    :ensure t
+    :pin melpa
     :init (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
   (use-package company-racer
+    :ensure t
+    :pin melpa
     :init (set (make-local-variable 'company-backends) '(company-racer)))
 
 
-
-  )
+)
 
 
 (provide '44_rust)

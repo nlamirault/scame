@@ -1,6 +1,6 @@
 ;; 06_scame_keys.el --- Scame customization for Emacs
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014-2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -21,20 +21,31 @@
 
 ;;; Code:
 
-(defhydra hydra-scame (:color teal)
+
+(global-set-key (kbd "C-<down>")
+                (function (lambda ()
+                            (interactive)
+                            (scroll-up 1))))
+
+(global-set-key (kbd "C-<up>")
+                (function (lambda ()
+                            (interactive)
+                            (scroll-down 1))))
+
+(defhydra scame-hydra (:color teal)
         "
-   ^Calendars^          ^Search^               ^Launcher^        ^Email^            ^Help^
+   ^ Calendars^       ^ Search^            ^ Launcher^          ^  Email^            ^ Help^
   ╭────────────────────────────────────────────────────────────────────────────────────────────────────
-   _g_: google          _G_: Google            _a_: calc         _O_: local         _v_: version
-   _w_: work            _H_: Github            _m_: man          _M_: Gmail         _z_: customization
-   _d_: diary           _T_: Twitter           _p_: packages     _E_: Exchange      ^ ^
-   _o_: org             _L_: Launchpad         _h_: proced       ^ ^                ^ ^
-   ^ ^                  _S_: Stackoverflow     _t_: term         ^ ^                ^ ^
-   ^ ^                  _W_: Wikipedia         _r_: ranger       ^ ^                ^ ^
-   ^ ^                  _R_: RFC               ^ ^               ^ ^                ^ ^
+   _g_:  google       _G_: Google            _a_:  application   _O_:  local         _v_:  version
+   _w_:  work         _H_: Github            _m_:  man           _M_:  Gmail         _z_:  customization
+   _d_:  diary        _T_: Twitter           _p_:  packages      _E_:  Exchange      ^ ^
+   _o_:  org          _L_: Launchpad         _h_:  proced        ^ ^                   ^ ^
+   ^ ^                  _S_: Stackoverflow     _t_:  term          ^ ^                   ^ ^
+   ^ ^                  _W_: Wikipedia         _r_:  ranger        ^ ^                   ^ ^
+   ^ ^                  _R_: RFC               ^ ^                   ^ ^                   ^ ^
   ---------------------------------------------------------------------------------------------------------------
         "
-        ("q" nil "quit")
+        ("q" nil " quit")
 
         ("g" scame-google-calendar nil)
         ("w" scame-work-calendar nil)
@@ -49,11 +60,11 @@
         ("W" engine/search-wikipedia nil)
         ("R" engine/search-rfcs nil)
 
-        ("a" calc nil)
+        ("a" counsel-linux-app nil)
         ("m" man nil)
         ("p" paradox-list-packages nil)
         ("h" proced nil)
-        ("t" helm-mt nil)
+        ("t" multi-term nil)
         ("r" ranger nil)
 
         ("O" scame-mail-local nil)
@@ -65,31 +76,8 @@
 
         )
 
-;; (defhydra hydra-scame-ng (:color blue :columns 4)
-;;   "Scame hydra."
 
-;;   ("g" scame-google-calendar nil)
-;;   ("w" scame-work-calendar nil)
-;;   ("d" scame-diary-calendar nil)
-;;   ("o" scame-org-calendar nil)
-
-;;   ("a" calc nil)
-;;   ("m" man nil)
-;;   ("p" paradox-list-packages nil)
-;;   ("h" proced nil)
-;;   ("t" helm-mt nil)
-;;   ("r" ranger nil)
-
-;;   ("O" scame-mail-local nil)
-;;   ("M" scame-mail-gmail nil)
-;;   ("E" scame-mail-exchange nil)
-
-;;   ("v" scame-version nil)
-;;   ("z" scame-customization nil)
-;;   ("q" nil "cancel"))
-
-
-(defhydra hydra-scame-projectile (:color teal)
+(defhydra scame-hydra-projectile (:color teal)
   "
 
     Files             Search          Buffer             Do
@@ -150,8 +138,7 @@
         ("x"   fixmee-view-listing))
 
 
-
-(defhydra hydra-scame-org (:color teal)
+(defhydra scame-hydra-org (:color teal)
   "
 
     Timer           Clock               Capture
@@ -177,18 +164,92 @@
   ("l" org-capture-goto-last-stored))
 
 
-(defhydra hydra-scame-zoom (:color teal)
+(defhydra scame-hydra-zoom (:color teal)
   "zoom"
   ("g" text-scale-increase "in")
   ("l" text-scale-decrease "out"))
 
 
-(global-set-key (kbd "C-c s SPC") 'hydra-scame/body)
-;; (global-set-key (kbd "C-c s i") 'hydra-scame-ng/body)
-(global-set-key (kbd "C-c s P") 'hydra-scame-projectile/body)
-(global-set-key (kbd "C-c s o") 'hydra-scame-org/body)
-(global-set-key (kbd "C-c s z") 'hydra-scame-zoom/body)
 
+(defhydra scame-hydra-toggle (:color pink :hint nil)
+  "
+_a_ abbrev-mode:       %`abbrev-mode
+_d_ debug-on-error:    %`debug-on-error
+_f_ auto-fill-mode:    %`auto-fill-function
+_h_ highlight          %`highlight-nonselected-windows
+_t_ truncate-lines:    %`truncate-lines
+_w_ whitespace-mode:   %`whitespace-mode
+_l_ org link display:  %`org-descriptive-links
+"
+  ("a" abbrev-mode)
+  ("d" toggle-debug-on-error)
+  ("f" auto-fill-mode)
+  ("h" (setq highlight-nonselected-windows (not highlight-nonselected-windows)))
+  ("t" toggle-truncate-lines)
+  ("w" whitespace-mode)
+  ("l" org-toggle-link-display)
+  ("q" nil "quit"))
+
+
+(defhydra scame-hydra-insert (:color red :hint nil)
+  "
+_e_ insert emoji
+_a_ insert all the icon
+_f_ insert FontAwesome icon
+_m_ insert Material icon
+_i_ insert Atom File icon
+_o_ insert Github Octicon
+_w_ insert weather icon
+_d_ insert current timestamp
+_c_ insert copyright
+"
+  ("e" emojify-insert-emoji)
+  ;; Icons
+  ("a" all-the-icons-insert-alltheicon)
+  ("f" all-the-icons-insert-faicon)
+  ("m" all-the-icons-insert-material)
+  ("i" all-the-icons-insert-fileicon)
+  ("o" all-the-icons-insert-octicon)
+  ("w" all-the-icons-insert-wicon)
+  ;; Misc
+  ("d" scame-insert-timestamp)
+  ("c" scame-insert-copyright)
+  ("q" nil "quit"))
+
+
+
+(defhydra scame-hydra-counsel (:color yellow)
+  "
+    Describe           Search          Jump
+  ╭──────────────────────────────────────────────────────────────────────────
+    [_v_] variable     [_A_] Ag        [_b_] Bookmark
+    [_f_] function     [_F_] Fzf       [_d_] Dired
+    [_l_] library      [_P_] Pt        [_r_] Recentf
+    [_y_] symbol       [_R_] Rg
+  --------------------------------------------------------------------------------
+"
+
+
+  ("v" counsel-describe-variable)
+  ("f" counsel-describe-function)
+  ("l" counsel-describe-library)
+  ("y" counsel-info-lookup-symbol)
+  ("A" counsel-ag)
+  ("F" counsel-fzf)
+  ("P" counsel-pt)
+  ("R" counsel-rg)
+  ("b" counsel-bookmark)
+  ("d" counsel-dired-jump)
+  ("r" counsel-recentf))
+
+
+(global-set-key (kbd "C-c s SPC") 'scame-hydra/body)
+(global-set-key (kbd "C-c s P") 'scame-hydra-projectile/body)
+(global-set-key (kbd "C-c s o") 'scame-hydra-org/body)
+(global-set-key (kbd "C-c s z") 'scame-hydra-zoom/body)
+(global-set-key (kbd "C-c s t") 'scame-hydra-toggle/body)
+(global-set-key (kbd "C-c s i") 'scame-hydra-insert/body)
+(global-set-key (kbd "C-c s c") 'scame-hydra-counsel/body)
 
 
 (provide '06_scame_keys)

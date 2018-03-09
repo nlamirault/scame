@@ -1,6 +1,6 @@
 ;;; 06_keys.el -- keys tools
 
-;; Copyright (C) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,14 +19,10 @@
 
 ;;; Code:
 
-;; (use-package guide-key
-;;   :init (progn
-;;          (setq guide-key/guide-key-sequence '("C-x" "C-c"))
-;;          (setq guide-key/idle-delay 0.5)
-;;          (setq guide-key/align-command-by-space-flag t)
-;;          (guide-key-mode 1)))
 
 (use-package which-key
+  :ensure t
+  :pin melpa
   :init (progn
           (which-key-mode)
           ;; (setq which-key-popup-type 'minibuffer)
@@ -36,12 +32,10 @@
   :diminish which-key-mode)
 
 (use-package hydra
+  :ensure t
+  :pin melpa
   :config (progn
             (setq hydra-is-helpful t)))
-
-(use-package discover-my-major
-  :bind ("C-h C-m" . discover-my-major))
-
 
 (provide '06_keys)
 ;;; 06_keys.el ends here

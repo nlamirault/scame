@@ -1,6 +1,6 @@
 ;;; 33_erlang.el -- Erlang configuration
 
-;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -21,32 +21,32 @@
 
 (when scame-erlang
 
-  ;; (eval-after-load "erlang"
-  ;;   '(progn
-  ;;      (require 'erlang-start)
-  ;;      (require 'erlang-flymake)))
-
-  ;; (require 'erlang)
-  ;; (add-to-list 'auto-mode-alist '("\\.erl?$" . erlang-mode))
-  ;; (add-to-list 'auto-mode-alist '("\\.hrl?$" . erlang-mode))
+  (defun scame--erlang-get-home-directory ()
+    (cond ((f-directory-p "/usr/lib/erlang")
+           "/usr/lib/erlang")
+          ((f-directory-p "/usr/local/lib/erlang")
+           "/usr/local/lib/erlang")
+          (t nil)))
 
   (use-package erlang
-    ;; :defer scame-defer-package
+    :ensure t
+    :pin melpa
     :mode (("\\.erl?$" . erlang-mode)
            ("\\.hrl?$" . erlang-mode)
            ("\\.spec?$" . erlang-mode))
     :config (progn
-              (setq erlang-root-dir "/usr/lib/erlang/erts-5.10.3")
-              (add-to-list 'exec-path "/usr/lib/erlang/erts-5.10.3/bin")
-              (setq erlang-man-root-dir "/usr/lib/erlang/erts-5.10.3/man")
-              (setq erlang-compile-extra-opts '(debug_info))
-              (require 'erlang-start)
-              (add-hook 'erlang-mode-hook
-                        (lambda ()
-                          (setq inferior-erlang-machine-options
-                                '("-sname" "syl20bnr"))))
-              ))
-  ;;(require 'edts-start)))
+              (let ((erlang-home (scame--erlang-get-home-directory)))
+                (when erlang-home
+                  (setq erlang-root-dir erlang-home)
+                  (add-to-list 'exec-path (f-join erlang-home "bin"))
+                  (setq erlang-man-root-dir (f-join erlang-home "man"))
+                  (setq erlang-compile-extra-opts '(debug_info))
+                  (require 'erlang-start)
+                  (add-hook 'erlang-mode-hook
+                            (lambda ()
+                              (setq inferior-erlang-machine-options
+                                    '("-sname" "scame"))))
+                  ))))
 
   )
 

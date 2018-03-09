@@ -1,6 +1,6 @@
 ;;; 13_modeline.el --- Mode-line configuration
 
-;; Copyright (c) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -21,78 +21,57 @@
 
 
 ;; (use-package powerline
-;;   :config (progn
-;; 	    (powerline-default-theme)
-;; 	    (setq ;powerline-height 25
-;;                   powerline-default-separator 'slant))) ;;'arrow-fade)))
+;;   :ensure t
+;;   :pin melpa
+;;   :config
+;;   (powerline-center-theme))
+
+;; (setq powerline-default-separator 'wave)
 
 
-(use-package smart-mode-line
- :init (setq sml/no-confirm-load-theme t)
- :config (progn
-           (sml/setup)
-           (sml/apply-theme 'smart-mode-line-dark)))
-(setq sml/theme 'respectful)
+(use-package spaceline :ensure t
+  :config
+  (setq-default mode-line-format '("%e" (:eval (spaceline-ml-main)))))
 
+(use-package spaceline-config :ensure spaceline
+  :config
+  (spaceline-toggle-buffer-position-off)
+  (spaceline-toggle-hud-off)
+  (spaceline-toggle-projectile-root-on)
+  (spaceline-toggle-minor-modes-off)
+  (spaceline-toggle-flycheck-error-on)
+  (spaceline-toggle-flycheck-warning-on)
+  (spaceline-toggle-flycheck-info-on)
+  (spaceline-toggle-which-function-on))
 
-;; (use-package spaceline-segments
-;;   :init (setq-default
-;; 	 powerline-default-separator 'wave
-;; 	 ;;spaceline-window-numbers-unicode t
-;; 	 powerline-height 18)
-;;   :config (require 'spaceline-segments))
+(setq-default
+ powerline-height 20
+ spaceline-workspace-numbers-unicode 't
+ spaceline-window-numbers-unicode 't
+ spaceline-separator-dir-left '(right . right)
+ spaceline-separator-dir-right '(left . left))
 
-;; (spaceline-install
-;;  '(((workspace-number window-number)
-;;     :fallback evil-state
-;;     :separator "|"
-;;     :face highlight-face)
-;;    anzu
-;;    (buffer-modified buffer-size buffer-id remote-host)
-;;    major-mode
-;;    ((flycheck-error flycheck-warning flycheck-info)
-;;     :when active)
-;;    (((minor-modes :separator spaceline-minor-modes-separator)
-;;      process)
-;;     :when active)
-;;    (erc-track :when active)
-;;    (version-control :when active)
-;;    (org-pomodoro :when active)
-;;    (org-clock :when active)
-;;    nyan-cat)
-;;  `(;;(battery :when active)
-;;    selection-info
-;;    ((buffer-encoding-abbrev
-;;      point-position
-;;      line-column)
-;;     :separator " | ")
-;;    (global :when active)
-;;    buffer-position
-;;    hud))
-
-(use-package spaceline
-  :config (use-package spaceline-config
-            :config
-            (setq powerline-default-separator 'wave)
-            (spaceline-define-segment line-column
-                                      "The current line and column numbers."
-                                      "l:%l c:%2c")
-            ;;(spaceline-helm-mode)
-            (spaceline-toggle-battery-on)
-            (spaceline-toggle-minor-modes-on)
-            (spaceline-toggle-flycheck-info-off)
-            (spaceline-toggle-buffer-encoding-off)
-            (spaceline-toggle-buffer-encoding-abbrev-off)
-            (spaceline-toggle-buffer-size-off)
-            (spaceline-toggle-persp-name-on)
-            ;; (spaceline-define-segment time
-            ;;                           "The current time."
-            ;;                           (format-time-string "%H:%M"))
-            ;; (spaceline-define-segment date
-            ;;                           "The current date."
-            ;;                           (format-time-string "%h %d"))
-            ;; (spaceline-toggle-time-on)
-            (spaceline-emacs-theme 'date 'time)))
+;; (use-package spaceline-all-the-icons
+;;   :ensure t
+;;   :after spaceline
+;;   :config
+;;   (spaceline-all-the-icons-theme)
+;;   (spaceline-all-the-icons--setup-neotree)
+;;   (setq spaceline-all-the-icons-clock-always-visible nil)
+;;   (setq spaceline-all-the-icons-flycheck-alternate 1)
+;;   ;; (setq spaceline-all-the-icons-slim-render 1)
+;;   (setq spaceline-all-the-icons-separator-type 'none)
+;;   ;; (setq spaceline-all-the-icons-icon-set-flycheck-slim 'outline)
+;;   (spaceline-toggle-all-the-icons-time-off)
+;;   (spaceline-toggle-all-the-icons-buffer-path-off)
+;;   (spaceline-toggle-all-the-icons-eyebrowse-workspace-on)
+;;   (spaceline-toggle-all-the-icons-projectile-on)
+;;   (spaceline-toggle-all-the-icons-hud-off)
+;;   (spaceline-toggle-all-the-icons-modified-on)
+;;   (spaceline-toggle-all-the-icons-process-on)
+;;   ;; (setq spaceline-separator-dir-left '(left . left))
+;;   ;; (setq spaceline-separator-dir-right '(right . right))
+;;   )
 
 
 

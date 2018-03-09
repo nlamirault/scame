@@ -1,6 +1,6 @@
-;; 03_scame_email.el ---  Email setup in Scame
+;; scame_email.el ---  Email setup in Scame
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014, 2015, 2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -37,23 +37,23 @@
 (defun scame-mail-local ()
   "Launch Gnus using localhost IMAP server."
   (interactive)
-  (setq gnus-init-file (scame--gnus-init-file "scame/gnus/gnus-local.el")
-        gnus-startup-file (scame--gnus-startup-file ".localhost-newsrc"))
+  (setq gnus-init-file (scame--gnus-init-file "scame/gnus/gnus-local.el"))
+  (setq gnus-startup-file (scame--gnus-startup-file ".localhost-newsrc"))
   (gnus))
 
 (defun scame-mail-gmail ()
   "Launch Gnus using GMail configuration."
   (interactive)
-  (setq gnus-init-file (scame--gnus-init-file "scame/gnus/gnus-gmail.el")
-        gnus-startup-file (scame--gnus-startup-file ".gmail-newsrc")
-        scame--gmail-backend 'imap)
+  (setq gnus-init-file (scame--gnus-init-file "scame/gnus/gnus-gmail.el"))
+  (setq gnus-startup-file (scame--gnus-startup-file ".gmail-newsrc"))
+  (setq scame--gmail-backend 'imap)
   (gnus))
 
 (defun scame-mail-exchange ()
   "Launch Gnus using Exchange configuration."
   (interactive)
-  (setq gnus-init-file (scame--gnus-init-file "scame/gnus/gnus-exchange.el")
-        gnus-startup-file (scame--gnus-startup-file ".exchange-newsrc"))
+  (setq gnus-init-file (scame--gnus-init-file "scame/gnus/gnus-exchange.el"))
+  (setq gnus-startup-file (scame--gnus-startup-file ".exchange-newsrc"))
   (gnus))
 
 

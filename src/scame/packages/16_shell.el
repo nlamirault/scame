@@ -1,6 +1,6 @@
 ;;; 16_shell.el --- Terminal configuration
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -20,29 +20,19 @@
 ;;; Code:
 
 (use-package fish-mode
-  ;; :defer scame-defer-package
+  :ensure t
+  :pin melpa
   :mode (("\\.fish$" . fish-mode)))
 
 ;; Terminal
 ;; ---------
 
-
 (use-package multi-term
-  ;; :defer scame-defer-package
+  :ensure t
+  :pin melpa
   :config (progn
 	    (setq multi-term-program "/bin/bash")))
 
-
-(use-package helm-mt
-  ;; :defer scame-defer-package)
-  )
-
-;; (defun scame-launch-term ()
-;;   "Launch a new terminal."
-;;   (interactive)
-;;   (unless (multi-term-dedicated-exist-p)
-;;     (multi-term-dedicated-open))
-;;   (multi-term-dedicated-select))
 
 (provide '16_shell)
 ;;; 16_shell.el ends here

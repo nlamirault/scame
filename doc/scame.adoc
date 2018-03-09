@@ -1,8 +1,8 @@
 = Scame
 Nicolas Lamirault
-v0.1.0
-:revnumber: 1.3.0
-:revdate: 03/03/2016
+v1.5.0
+:revnumber: 1.5.0
+:revdate: 09/20/2016
 :description: Scame documentation
 :doctype: book
 // Settings:
@@ -15,13 +15,13 @@ v0.1.0
 :toclevels: 3
 ifdef::backend-pdf[]
 // :title-logo-image: image:chapters/images/sample-title-logo.jpg[pdfwidth=4.25in,align=center]
-:title-logo-image: image:chapters/images/cover.svg[scaledwidth=30%,align=center]
+:title-logo-image: image:scame.svg[scaledwidth=30%,align=center]
 :pygments-style: tango
 //:source-highlighter: pygments
 :source-highlighter: coderay
 endif::[]
 
-:ScameVersion: 1.3.0
+:ScameVersion: 1.5.0
 
 include::license.adoc[]
 
@@ -38,7 +38,7 @@ Download the last version from Github and install it into the Emacs directory :
 ----
 $ wget https://github.com/nlamirault/scame/releases/download/x.y.z/scame-x.y.z.tar.gz
 $ tar zxvf scame-x.y.z.tar.gz
-$ rm -r ~/.emacs.d && mkdir -p ~/.emacs.d/scame
+$ rm -r ~/.emacs.d && mkdir -p ~/.emacs.d/
 $ cp -r scame-x.y.z/* ~/.emacs.d
 ----
 
@@ -51,11 +51,13 @@ You could clone the repository into the Emacs directory:
 $ rm -r ~/.emacs.d && mkdir -p ~/.emacs.d/scame
 $ git clone https://github.com/nlamirault/scame
 $ cp -r scame/src/* ~/.emacs.d/
+$ mkdir -p ~/.local/share/fonts/
+$ cp fonts/* ~/.local/share/fonts/
 ----
 
 === Configuration
 
-You could enable or not some modules using *init.el* file :
+You could enable or not some modules using *custom.el* file :
 
 [source,elisp]
 ----
@@ -68,7 +70,10 @@ You could enable or not some modules using *init.el* file :
 ----
 
 .Customization
-NOTE: You could use Emacs customization features (scame group)
+
+NOTE: You could use the customization features to specify which module is active or not
+
+NOTE: You could use the customization features to specify the custom file to used (variable *scame-emacs-custom-file*)
 
 
 === Vendoring
@@ -76,6 +81,7 @@ NOTE: You could use Emacs customization features (scame group)
 If directory `$HOME/.emacs.d/vendor` exists, Scame will add to load-path
 each directory in this directory.
 
+NOTE: You could use the customization features to specify the vendoring directory (variable *scame-vendoring-directory*
 
 ===  Personalisation
 
@@ -96,7 +102,7 @@ If file `$HOME/.config/scame/scame-user.el` exists, Scame load it.
         ("https://www.google.com/calendar/ical/.../basic.ics" "Work" "Green")))
 
 ;; UI
-(load-theme 'monokai t)
+(load-theme 'zerodark t)
 
 ;; Fonts
 (custom-set-faces
@@ -110,9 +116,14 @@ If file `$HOME/.config/scame/scame-user.el` exists, Scame load it.
 (provide 'scame-user)
 ----
 
+NOTE: You could use the customization features to specify the personalisation file (variable *scame-user-customization-file*)
+
+
+
 == Keymap
 
 .Launch menu
+
 NOTE: Scame provides a main menu : *C-c s SPC*
 
 === UI
@@ -158,6 +169,19 @@ C-x c x,helm-M-x
 C-x c y,helm-show-kill-ring
 C-x c i,helm-imenu
 C-x c r,helm-recentf
+|====================================
+
+=== IO
+
+.File explorer
+[grid="rows",format="csv"]
+[options="header",cols="^,<"]
+|====================================
+Keybinding,Description
+C-x d d,launch Dired
+C-x t t,launch Neotree
+C-x t p,launch Neotree on a Projectile project
+C-x T t,launch dired-sidebar
 |====================================
 
 
@@ -214,6 +238,19 @@ C-x p f,launch tests in current file
 C-x p p,launch tests in all project
 |====================================
 
+.Arduino
+[grid="rows",format="csv"]
+[options="header",cols="^,<"]
+|====================================
+Keybinding,Description
+C-c i b,Build project without auto-uploading
+C-c i c,Clean compiled objects
+C-c i u,Build and upload (if no errors)
+C-c i p,Build and upload using external programmer
+C-c i s,Upload files to file system SPIFFS
+C-c i d,Update installed platforms and libraries
+|====================================
+
 .Git
 [grid="rows",format="csv"]
 [options="header",cols="^,<"]
@@ -246,6 +283,29 @@ C-x x a,persp-add-buffer
 C-x x i,persp-import
 C-x x r,persp-rename
 |====================================
+
+.Dumb-jump
+[grid="rows",format="csv"]
+[options="header",cols="^,<"]
+|====================================
+Keybinding,Description
+C-x j g,dumb-jump-go
+C-x j b,dumb-jump-back
+C-x j q,dumb-jump-quick-look
+|====================================
+
+
+.Origami
+[grid="rows",format="csv"]
+[options="header",cols="^,<"]
+|===================================================
+Keybinding,Descriptioni
+C-x o +,origami-open-node
+C-x o *,origami-open-all-nodes
+C-x o -,origami-close-node
+C-x o =,origami-close-all-nodes
+C-x o /,origami-recursively-toggle-node
+|===================================================
 
 === Misc
 

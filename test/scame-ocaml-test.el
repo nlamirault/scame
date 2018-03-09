@@ -1,6 +1,6 @@
 ;;; scame-ocaml-test.el --- Unit tests for Scame OCaml development.
 
-;; Copyright (C) 2014, 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014-2016 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -23,8 +23,9 @@
 (ert-deftest test-scame-ocaml ()
   :tags '(ocaml)
   (with-test-sandbox
-   (let ((opam (executable-find "opam")))
-     (if opam
+   (let ((opam (executable-find "opam"))
+         (ocamlmerlin (executable-find "ocamlmerlin")))
+     (if (and opam ocamlmerlin)
          (let ((opam-dir (s-concat user-home-directory ".opam")))
            (unless (f-directory? opam-dir)
              (f-mkdir opam-dir))

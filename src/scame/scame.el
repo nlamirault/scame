@@ -1,6 +1,6 @@
 ;; scame.el --- Scame Emacs initialization file
 
-;; Copyright (c) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -35,27 +35,19 @@
 ;; -----------------
 
 (require 'scame-custom)
-;; (message "Scame defer packages: %s" scame-defer-package)
+(when (file-exists-p scame-emacs-custom-file)
+  (load scame-emacs-custom-file))
 
-;; Load Gnus from Emacs or Gnus development version
-(when (eql 'gnus-dev scame-gnus-version)
-  (push (concat scame-gnus-dev-directory "/lisp") load-path)
-  (message "Load Gnus development version")
-  (require 'gnus-load))
-
+(require 'scame-pkg)
 (require 'scame-io)
 (require 'scame-ui)
-(require 'scame-pkg)
 
 (require 'f)
-(require 's)
-;; (require 'benchmark-init)
-(require 'use-package)
 
-(scame--msg-buffer "--> Scame modules ...\n"
-                   'font-lock-string-face)
-(redisplay)
+
 (use-package el-init
+  :ensure t
+  :pin melpa
   :config (progn
             (setq el-init-meadow-regexp       "\\`meadow-"
                   el-init-carbon-emacs-regexp "\\`carbon-emacs-"
@@ -71,9 +63,6 @@
                                       el-init-require/record-error
                                       el-init-require/system-case))))
 
-(scame--msg-buffer "--> Vendoring modules ...\n"
-                   'font-lock-string-face)
-(redisplay)
 (when (and scame-use-vendoring
            (f-exists? scame-vendoring-directory)
            (f-directory? scame-vendoring-directory))
@@ -87,21 +76,12 @@
                       (when (string= (f-ext elem) "el")
                         (load-file elem)))))))
 
-(scame--msg-buffer "--> Customization file ...\n"
-                   'font-lock-string-face)
-(redisplay)
 (when (file-readable-p scame-user-customization-file)
   (load scame-user-customization-file))
 
-(scame--msg-buffer "--> Addons modules ...\n"
-                   'font-lock-string-face)
-(redisplay)
-(scame--install-packages scame-addons)
-
-(scame--msg-buffer (format "--> Version %s ready.\n"
-                           scame-version-number)
-                   'font-lock-string-face)
-(redisplay)
+;; Enable mine ?
+;; (when scame-use-custom-modeline
+;;   (setq-default mode-line-format (scame--modeline)))
 
 (setq warning-minimum-level :warning)
 
