@@ -171,6 +171,19 @@ C-x c i,helm-imenu
 C-x c r,helm-recentf
 |====================================
 
+=== IO
+
+.File explorer
+[grid="rows",format="csv"]
+[options="header",cols="^,<"]
+|====================================
+Keybinding,Description
+C-x d d,launch Dired
+C-x t t,launch Neotree
+C-x t p,launch Neotree on a Projectile project
+C-x T t,launch dired-sidebar
+|====================================
+
 
 === Development
 
