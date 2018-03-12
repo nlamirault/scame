@@ -119,7 +119,7 @@
 (use-package counsel-projectile
   :ensure t
   :pin melpa
-  :config (counsel-projectile-on))
+  :config (counsel-projectile-mode 1))
 
 
 (setq-default indent-tabs-mode nil)
