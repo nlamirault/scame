@@ -42,6 +42,9 @@
 (require 'scame-io)
 (require 'scame-ui)
 
+(require 'f)
+
+
 (use-package el-init
   :ensure t
   :pin melpa

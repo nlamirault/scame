@@ -1,6 +1,6 @@
 ;;; 04_search.el --- Emacs search frameworks configuration
 
-;; Copyright (c) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014-2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -32,14 +32,17 @@
          ("C-x c f" . counsel-describe-function)
          ("C-x c l" . counsel-describe-library)
          ("C-x c y" . counsel-info-lookup-symbol)
+
          ("C-x c o" . counsel-bookmark)
          ("C-x c p" . counsel-package)
-         ("C-x c i" . counsel-imenu)))
 
-(use-package counsel-projectile
-  :ensure t
-  :pin melpa
-  :config (counsel-projectile-on))
+         ;; Search
+         ;; ("C-x s a" . counsel-ag)
+         ;; ("C-x s f" . counsel-fzf)
+         ;; ("C-x s p" . counsel-pt)
+         ;; ("C-x s r" . counsel-rg)
+
+         ("C-x c i" . counsel-imenu)))
 
 (use-package ivy
   :ensure t

@@ -25,17 +25,23 @@
         ("melpa-stable" . "https://stable.melpa.org/packages/")
         ("melpa" . "https://melpa.org/packages/")
         ))
+
+(setq package-enable-at-startup nil)    ; To prevent initialising twice
 (package-initialize)
 
-(when (not package-archive-contents)
-  (package-refresh-contents))
+;; (when (not package-archive-contents)
+;;   (package-refresh-contents))
 
 ;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
+  (package-refresh-contents)
   (package-install 'use-package))
 
-(require 'use-package)
+(eval-when-compile
+  (require 'use-package))
+
 (setq use-package-verbose t
+      ;; use-package-always-defer t
       use-package-enable-imenu-support t
       use-package-minimum-reported-time 0.03)
 

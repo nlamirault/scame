@@ -1,7 +1,7 @@
 
 ;;; 30_dev.el -- Commons configurations for development
 
-;; Copyright (C) 2014, 2015, 2016, 2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015, 2016, 2017, 2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@
 ;; change-log-mode is hard-coded to use TABs for indentation. Get around that with:
 (add-hook 'change-log-mode-hook
           (function (lambda () (setq indent-tabs-mode nil))))
-
+(setq tab-width 8)
 (add-hook 'text-mode-hook #'bug-reference-mode)
 (add-hook 'prog-mode-hook #'bug-reference-prog-mode)
 

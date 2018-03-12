@@ -64,6 +64,15 @@
     :pin melpa
     :config (setq terraform-indent-level 2))
 
+  (use-package salt-mode
+    :ensure t
+    :pin melpa
+    :mode (("\\.sls\\'" . salt-mode))
+    ;; :bind
+    ;; (("" . salt-mode-browse-doc)
+    ;;  ("" . salt-mode-backward-state-function)
+    ;;  ("" . salt-mode-forward-state-function)))
+    )
   )
 
 (provide '14_cloud)

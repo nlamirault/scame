@@ -1,6 +1,6 @@
 ;;; 13_modeline.el --- Mode-line configuration
 
-;; Copyright (c) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014-2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -20,37 +20,49 @@
 ;;; Code:
 
 
-;; (use-package powerline
-;;   :ensure t
-;;   :pin melpa
-;;   :config
-;;   (powerline-center-theme))
+(use-package moody
+  :ensure t
+  :pin melpa
+  :config
+  (setq x-underline-at-descent-line t)
+  (moody-replace-mode-line-buffer-identification)
+  (moody-replace-vc-mode))
+
+(use-package minions
+  :ensure t
+  :pin melpa
+  :config (progn
+            (minions-mode 1)
+            (setq minions-mode-line-lighter "#")))
 
 ;; (setq powerline-default-separator 'wave)
 
 
-(use-package spaceline :ensure t
-  :config
-  (setq-default mode-line-format '("%e" (:eval (spaceline-ml-main)))))
+;; (use-package spaceline :ensure t
+;;   :config
+;;   (setq-default mode-line-format '("%e" (:eval (spaceline-ml-main)))))
 
-(use-package spaceline-config :ensure spaceline
-  :config
-  (spaceline-toggle-buffer-position-off)
-  (spaceline-toggle-hud-off)
-  (spaceline-toggle-projectile-root-on)
-  (spaceline-toggle-minor-modes-off)
-  (spaceline-toggle-flycheck-error-on)
-  (spaceline-toggle-flycheck-warning-on)
-  (spaceline-toggle-flycheck-info-on)
-  (spaceline-toggle-which-function-on))
 
-(setq-default
- powerline-height 20
- spaceline-workspace-numbers-unicode 't
- spaceline-window-numbers-unicode 't
- spaceline-separator-dir-left '(right . right)
- spaceline-separator-dir-right '(left . left))
+;; (use-package spaceline-config :ensure spaceline
+;;   :config
+;;   (spaceline-toggle-buffer-position-off)
+;;   (spaceline-toggle-hud-off)
+;;   (spaceline-toggle-projectile-root-on)
+;;   (spaceline-toggle-minor-modes-off)
+;;   (spaceline-toggle-flycheck-error-on)
+;;   (spaceline-toggle-flycheck-warning-on)
+;;   (spaceline-toggle-flycheck-info-on)
+;;   (spaceline-toggle-which-function-on))
 
+;; (setq-default
+;;  powerline-height 20
+;;  spaceline-workspace-numbers-unicode 't
+;;  spaceline-window-numbers-unicode 't
+;;  spaceline-separator-dir-left '(right . right)
+;;  spaceline-separator-dir-right '(left . left))
+
+
+;; TODO ?
 ;; (use-package spaceline-all-the-icons
 ;;   :ensure t
 ;;   :after spaceline

@@ -1,5 +1,11 @@
 # Scame ChangeLog
 
+## Version 1.6.0
+
+- Refactoring *hydra* menus
+- Add *ivy-rich* mode
+- Add *all-the-icons-ivy* mode
+
 ## Version 1.5.0
 
 - Initialize Scame custom modeline
