@@ -233,36 +233,35 @@
 ;;            :priority 5)
 ;;          additional-segments))
 
-(defun scame-spaceline-scame-theme ()
-  (spaceline-compile
-    `(major-mode
-      (process :when active)
-      buffer-modified
-      ((flycheck-error flycheck-warning flycheck-info)
-       :when active
-       :priority 3)
-      '((buffer-id remote-host)
-        :priority 5)
-      (version-control :when active :priority 7)
-      )
-    `(which-function
-      (python-pyvenv :fallback python-pyenv)
-      purpose
-      (selection-info :priority 2)
-      input-method
-      ((buffer-encoding-abbrev
-        point-position
-        line-column)
-       :separator " | "
-       :priority 3)
-      (global :when active)
-      ))
+;; (defun scame-spaceline-scame-theme ()
+;;   (spaceline-compile
+;;     `(major-mode
+;;       (process :when active)
+;;       buffer-modified
+;;       ((flycheck-error flycheck-warning flycheck-info)
+;;        :when active
+;;        :priority 3)
+;;       '((buffer-id remote-host)
+;;         :priority 5)
+;;       (version-control :when active :priority 7)
+;;       )
+;;     `(which-function
+;;       (python-pyvenv :fallback python-pyenv)
+;;       purpose
+;;       (selection-info :priority 2)
+;;       input-method
+;;       ((buffer-encoding-abbrev
+;;         point-position
+;;         line-column)
+;;        :separator " | "
+;;        :priority 3)
+;;       (global :when active)
+;;       ))
 
-  (setq-default mode-line-format '("%e" (:eval (spaceline-ml-main)))))
+;;   (setq-default mode-line-format '("%e" (:eval (spaceline-ml-main)))))
 
 
-(scame-spaceline-scame-theme)
-
+;; (scame-spaceline-scame-theme)
 
 (provide '08_scame_modeline)
 ;;; 08_scame_modeline.el ends here
