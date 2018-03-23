@@ -1,7 +1,6 @@
+;;; scame-email.el --- Scame Email configuration
 
-;; init.el --- Emacs initialization file
-
-;; Copyright (c) 2014-2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014-2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -20,26 +19,26 @@
 
 ;;; Code:
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
+(when scame-email
 
-;; (package-initialize)
+  ;; (use-package notmuch
+  ;;   :ensure t
+  ;;   :pin melpa
+  ;;   )
 
-(setq custom-file "~/.emacs.d/custom.el")
+  ;; (use-package notmuch-labeler
+  ;;   :ensure t
+  ;;   :pin melpa
+  ;;   )
 
-(mapc (lambda (path)
-        (add-to-list 'load-path (concat user-emacs-directory path)))
-      '("scame/"))
+  (use-package bbdb
+    :ensure t
+    :pin melpa
+    :bind (("C-c d s" . bbdb)
+           ("C-c d n" . bbdb-search-name)
+           ("C-c d m" . bbdb-search-mail)))
 
-(require 'scame)
-(scame-global-mode 1)
+  )
 
-(require 'f)
-(require 's)
-
-(load custom-file)
-
-(provide 'init)
-;;; init.el ends here
+(provide 'scame-email)
+;;; scame-email.el ends here

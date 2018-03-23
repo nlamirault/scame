@@ -1,7 +1,6 @@
+;;; scame-perl -- Perl configuration
 
-;; init.el --- Emacs initialization file
-
-;; Copyright (c) 2014-2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014-2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -20,26 +19,12 @@
 
 ;;; Code:
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
 
-;; (package-initialize)
+(when scame-perl
 
-(setq custom-file "~/.emacs.d/custom.el")
+  )
 
-(mapc (lambda (path)
-        (add-to-list 'load-path (concat user-emacs-directory path)))
-      '("scame/"))
 
-(require 'scame)
-(scame-global-mode 1)
 
-(require 'f)
-(require 's)
-
-(load custom-file)
-
-(provide 'init)
-;;; init.el ends here
+(provide 'scame-perl)
+;;; 38_perl.el ends here

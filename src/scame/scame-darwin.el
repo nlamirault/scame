@@ -1,7 +1,6 @@
+;; scame-darwin.el --- Emacs configuration for OSX
 
-;; init.el --- Emacs initialization file
-
-;; Copyright (c) 2014-2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014-2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -20,26 +19,21 @@
 
 ;;; Code:
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
+;; Mac specified setting(Meta key, input method, terminfo)
 
-;; (package-initialize)
+;; (setq ns-command-modifier 'meta
+;;       ns-alternate-modifier 'super
+;;       ns-use-native-fullscreen nil ;; Don't use system fullscreen
+;;       default-input-method "MacOSX"
+;;       system-uses-terminfo nil)
 
-(setq custom-file "~/.emacs.d/custom.el")
+;; Switch the Cmd and Meta keys
+(setq mac-option-key-is-meta nil)
+(setq mac-command-key-is-meta t)
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier nil)
 
-(mapc (lambda (path)
-        (add-to-list 'load-path (concat user-emacs-directory path)))
-      '("scame/"))
+(setq w3m-command "w3m")
 
-(require 'scame)
-(scame-global-mode 1)
-
-(require 'f)
-(require 's)
-
-(load custom-file)
-
-(provide 'init)
-;;; init.el ends here
+(provide 'scame-darwin)
+;;; scame-darwin.el ends here

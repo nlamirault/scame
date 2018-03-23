@@ -1,6 +1,6 @@
 ;; scame.el --- Scame Emacs initialization file
 
-;; Copyright (c) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014-2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -22,6 +22,15 @@
 (when (version< emacs-version "24.4")
   (error "Scame requires at least GNU Emacs 24.4"))
 
+(defun scame--setup-hook ()
+  (setq gc-cons-threshold most-positive-fixnum))
+
+(defun scame--exit-hook ()
+  (setq gc-cons-threshold 800000))
+
+(add-hook 'minibuffer-setup-hook #'scame--setup-hook)
+(add-hook 'minibuffer-exit-hook #'scame--exit-hook)
+
 ;; Debug or not
 (setq debug-on-error t)
 
@@ -35,33 +44,71 @@
 ;; -----------------
 
 (require 'scame-custom)
-(when (file-exists-p scame-emacs-custom-file)
-  (load scame-emacs-custom-file))
+;; (when (file-exists-p scame-emacs-custom-file)
+;;   (load scame-emacs-custom-file))
 
 (require 'scame-pkg)
-(require 'scame-io)
-(require 'scame-ui)
 
 (require 'f)
 
+(require 'scame-setup)
+(require 'scame-ui)
+(require 'scame-fonts)
+(require 'scame-encodings)
+(require 'scame-completion)
+(require 'scame-search)
+(require 'scame-server)
+(require 'scame-keys)
+(require 'scame-buffers)
+(require 'scame-crypto)
+(require 'scame-directories)
+(require 'scame-modeline)
+(require 'scame-cloud)
+(require 'scame-shell)
+(require 'scame-flycheck)
 
-(use-package el-init
-  :ensure t
-  :pin melpa
-  :config (progn
-            (setq el-init-meadow-regexp       "\\`meadow-"
-                  el-init-carbon-emacs-regexp "\\`carbon-emacs-"
-                  el-init-cocoa-emacs-regexp  "\\`cocoa-emacs-"
-                  el-init-nw-regexp           "\\`nw-"
-                  el-init-mac-regexp          "\\`mac-"
-                  el-init-windows-regexp      "\\`windows-"
-                  el-init-linux-regexp        "\\`linux-"
-                  el-init-freebsd-regexp      "\\`freebsd-")
-            (el-init-load (f-parent (f-this-file))
-                          :subdirectories '("packages" "core")
-                          :wrappers '(el-init-require/benchmark
-                                      el-init-require/record-error
-                                      el-init-require/system-case))))
+(require 'scame-vc)
+(require 'scame-dev)
+(require 'scame-python)
+(require 'scame-go)
+(require 'scame-commonlisp)
+(require 'scame-erlang)
+(require 'scame-ocaml)
+(require 'scame-php)
+(require 'scame-scheme)
+(require 'scame-perl)
+(require 'scame-haskell)
+(require 'scame-elisp)
+(require 'scame-clojure)
+(require 'scame-ruby)
+(require 'scame-c-cpp)
+(require 'scame-rust)
+(require 'scame-web)
+(require 'scame-javascript)
+(require 'scame-elixir)
+(require 'scame-java)
+(require 'scame-serialization)
+(require 'scame-lua)
+(require 'scame-arduino)
+(require 'scame-markup)
+
+(require 'scame-notifs)
+(require 'scame-packages)
+(require 'scame-languages)
+(require 'scame-orga)
+(require 'scame-email)
+(require 'scame-browser)
+
+(require 'scame-hydra)
+(require 'scame-core)
+
+(when linux-p
+  (require 'scame-linux))
+(when darwin-p
+  (require 'scame-darwin))
+(when cygwin-p
+  (require 'scame-windows))
+
 
 (when (and scame-use-vendoring
            (f-exists? scame-vendoring-directory)

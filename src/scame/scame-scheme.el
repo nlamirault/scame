@@ -1,7 +1,6 @@
+;;; scame-scheme.el --- Scheme configuration
 
-;; init.el --- Emacs initialization file
-
-;; Copyright (c) 2014-2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014-2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -20,26 +19,24 @@
 
 ;;; Code:
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
+(when scame-scheme
 
-;; (package-initialize)
+  ;;(require 'geiser-install)
 
-(setq custom-file "~/.emacs.d/custom.el")
+  (use-package geiser
+    :ensure t
+    :pin melpa
+    :defer t
+    :config (progn
+              (setq geiser-active-implementations
+                    '(guile racket chicken))))
 
-(mapc (lambda (path)
-        (add-to-list 'load-path (concat user-emacs-directory path)))
-      '("scame/"))
+  ;;(setq geiser-default-implementation 'guile)))
 
-(require 'scame)
-(scame-global-mode 1)
+  ;;(setq geiser-impl-installed-implementations '(guile))
 
-(require 'f)
-(require 's)
+  )
 
-(load custom-file)
 
-(provide 'init)
-;;; init.el ends here
+(provide 'scame-scheme)
+;;; scame-scheme.el ends here
