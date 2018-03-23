@@ -1,6 +1,6 @@
 ;; scame-custom.el --- Scame customization
 
-;; Copyright (c) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014-2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -45,11 +45,11 @@
   :group 'scame
   :type 'string)
 
-(defcustom scame-emacs-custom-file
-  (concat user-emacs-directory "custom.el")
-  "File used for storing customization information."
-  :group 'scame
-  :type 'string)
+;; (defcustom scame-emacs-custom-file
+;;   (concat user-emacs-directory "custom.el")
+;;   "File used for storing customization information."
+;;   :group 'scame
+;;   :type 'string)
 
 (defcustom scame-user-customization-file
   (concat user-home-directory ".config/scame/scame-user.el")

@@ -1,5 +1,4 @@
-
-;; init.el --- Emacs initialization file
+;;; scame-flycheck.el --- Settings for flycheck
 
 ;; Copyright (c) 2014-2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -20,26 +19,24 @@
 
 ;;; Code:
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
+;;(require 'flycheck-color-mode-line)
 
-;; (package-initialize)
+(use-package flycheck
+  :ensure t
+  :pin melpa
+  :config (add-hook 'after-init-hook #'global-flycheck-mode)
+  :diminish flycheck-mode)
 
-(setq custom-file "~/.emacs.d/custom.el")
+(use-package flycheck-color-mode-line
+  :ensure t
+  :pin melpa
+  :config (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
 
-(mapc (lambda (path)
-        (add-to-list 'load-path (concat user-emacs-directory path)))
-      '("scame/" "scame/packages" "scame/core" "scame/gnus"))
+(use-package flycheck-cask
+  :ensure t
+  :pin melpa
+  :config (add-hook 'flycheck-mode-hook #'flycheck-cask-setup))
 
-(require 'scame)
-(scame-global-mode 1)
 
-(require 'f)
-(require 's)
-
-(load custom-file)
-
-(provide 'init)
-;;; init.el ends here
+(provide 'scame-flycheck)
+;;; scame-flycheck.el ends here

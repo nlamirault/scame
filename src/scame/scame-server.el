@@ -1,5 +1,4 @@
-
-;; init.el --- Emacs initialization file
+;;; scame-server.el --- Server configuration
 
 ;; Copyright (c) 2014-2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -20,26 +19,9 @@
 
 ;;; Code:
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
+(require 'server)
+(unless (server-running-p)
+  (server-start))
 
-;; (package-initialize)
-
-(setq custom-file "~/.emacs.d/custom.el")
-
-(mapc (lambda (path)
-        (add-to-list 'load-path (concat user-emacs-directory path)))
-      '("scame/" "scame/packages" "scame/core" "scame/gnus"))
-
-(require 'scame)
-(scame-global-mode 1)
-
-(require 'f)
-(require 's)
-
-(load custom-file)
-
-(provide 'init)
-;;; init.el ends here
+(provide 'scame-server)
+;;; scame-server.el ends here

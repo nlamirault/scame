@@ -1,6 +1,6 @@
-;; scame-theme.el --- Scame default theme
+;;; scame-ui.el --- Emacs basic UI
 
-;; Copyright (c) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014-2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,14 +19,169 @@
 
 ;;; Code:
 
-;;FIX: Create a theme or not ?
+(setq-default fill-column 120)
 
-(add-to-list 'load-path
-             (concat scame-user-directory "/theme/"))
-(let ((theme-file (concat scame-user-directory "theme/scame-theme.el")))
-  (message "Scame theme : %s" theme-file)
-  (when (file-exists-p theme-file)
-    (load-theme 'scame t)))
+(setq visible-bell t)
+
+(global-linum-mode 1)
+(line-number-mode t)
+(column-number-mode t)
+(blink-cursor-mode nil)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+
+;; Window moves
+(global-set-key (kbd "C-c <left>")  'windmove-left)
+(global-set-key (kbd "C-c <right>") 'windmove-right)
+(global-set-key (kbd "C-c <up>")    'windmove-up)
+(global-set-key (kbd "C-c <down>")  'windmove-down)
+
+;; Window resize
+(global-set-key (kbd "M-<down>") 'enlarge-window)
+(global-set-key (kbd "M-<up>") 'shrink-window)
+(global-set-key (kbd "M-<left>") 'enlarge-window-horizontally)
+(global-set-key (kbd "M-<right>") 'shrink-window-horizontally)
+
+
+
+;; http://www.lunaryorn.com/2016/04/28/fullscreen-magit-status.html
+
+(defun lunaryorn-display-buffer-fullframe (buffer alist)
+  "Display BUFFER in fullscreen.
+
+ALIST is a `display-buffer' ALIST.
+
+Return the new window for BUFFER."
+  (let ((window
+         (or (display-buffer-use-some-window buffer alist)
+             (display-buffer-pop-up-window buffer alist))))
+    (when window
+      (delete-other-windows window))
+    window))
+
+(add-to-list 'display-buffer-alist
+             `(,(rx "*magit: ")
+               (lunaryorn-display-buffer-fullframe)
+               (reusable-frames . nil)))
+
+(add-to-list 'display-buffer-alist
+             `(,(rx "*magit-log: ")
+               (lunaryorn-display-buffer-fullframe)
+               (reusable-frames . nil)))
+
+(add-to-list 'display-buffer-alist
+             `(,(rx "*Compilation*")
+               (lunaryorn-display-buffer-fullframe)
+               (reusable-frames . nil)))
+
+(add-to-list 'display-buffer-alist
+             `(,(rx "*Go Test*")
+               (lunaryorn-display-buffer-fullframe)
+               (reusable-frames . nil)))
+
+
+
+(setq x-select-enable-clipboard t)
+
+(use-package all-the-icons
+  :ensure t
+  :pin melpa)
+
+(use-package mode-icons
+  :ensure t
+  :pin melpa
+  :config (mode-icons-mode))
+
+(use-package ace-window
+  :ensure t
+  :pin melpa
+  :config (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  :bind (("C-x o" . ace-window)))
+
+(use-package page-break-lines
+  :ensure t
+  :pin melpa)
+
+(use-package nlinum-hl
+  :ensure t
+  :pin melpa
+  :after nlinum
+  :config (add-hook 'nlinum-mode-hook #'nlinum-hl-mode))
+
+(use-package dashboard
+  :ensure t
+  :pin melpa
+  :config (progn
+            (setq dashboard-items '(;(agenda . 5)
+                                    (recents  . 5)
+                                    (projects . 5)
+                                    (bookmarks . 5)))
+            (setq dashboard-banner-logo-title "Welcome to Scame")
+            (setq dashboard-startup-banner "~/.emacs.d/scame.png")
+            (dashboard-setup-startup-hook)))
+
+
+(use-package emojify
+  :ensure
+  :defer t
+  :init (global-emojify-mode))
+
+
+(use-package emojify-logos :ensure
+  :defer t
+  :after emojify)
+
+
+;; Xwidget
+
+(use-package xwidget
+  ;;(when (require 'xwidget nil 'noerror)
+  :defer t
+  :config
+  (progn
+
+    (add-hook 'xwidget-webkit-mode-hook
+            (lambda ()
+              (define-key xwidget-webkit-mode-map [mouse-4] 'xwidget-webkit-scroll-down)
+              (define-key xwidget-webkit-mode-map [mouse-5] 'xwidget-webkit-scroll-up)
+              (define-key xwidget-webkit-mode-map (kbd "<up>") 'xwidget-webkit-scroll-down)
+              (define-key xwidget-webkit-mode-map (kbd "<down>") 'xwidget-webkit-scroll-up)
+              (define-key xwidget-webkit-mode-map (kbd "M-w") 'xwidget-webkit-copy-selection-as-kill)
+              (define-key xwidget-webkit-mode-map (kbd "C-c") 'xwidget-webkit-copy-selection-as-kill)
+
+              ;; make xwidget default browser (not for now... maybe in the future!)
+              ;; (setq browse-url-browser-function (lambda (url session)
+              ;;                                     (other-window 1)
+              ;;                                     (xwidget-browse-url-no-reuse url)))
+
+              ;; adapt webkit according to window configuration change automatically
+              ;; without this hook, every time you change your window configuration,
+              ;; you must press 'a' to adapt webkit content to new window size
+              (add-hook 'window-configuration-change-hook
+                        (lambda ()
+                          (when (equal major-mode 'xwidget-webkit-mode)
+                            (xwidget-webkit-adjust-size-dispatch))))
+
+              ;; by default, xwidget reuses previous xwidget window,
+              ;; thus overriding your current website, unless a prefix argument
+              ;; is supplied
+              ;;
+              ;; This function always opens a new website in a new window
+              (defun xwidget-browse-url-no-reuse (url &optional sessoin)
+                (interactive (progn
+                               (require 'browse-url)
+                               (browse-url-interactive-arg "xwidget-webkit URL: "
+                                                           )))
+                (xwidget-webkit-browse-url url t)))
+
+            )))
+
+
+
+
+
+
 
 (provide 'scame-ui)
 ;;; scame-ui.el ends here

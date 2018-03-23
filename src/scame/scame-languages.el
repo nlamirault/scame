@@ -1,5 +1,4 @@
-
-;; init.el --- Emacs initialization file
+;;; scame-languages.el --- Languages utilities
 
 ;; Copyright (c) 2014-2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -20,26 +19,32 @@
 
 ;;; Code:
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
+(setq ispell-program-name (executable-find "hunspell")
+      ispell-dictionary "fr_FR")
 
-;; (package-initialize)
 
-(setq custom-file "~/.emacs.d/custom.el")
+(bind-key "C-c l F"
+          (lambda ()
+            (interactive)
+            (ispell-change-dictionary "fr_FR")
+            (flyspell-buffer)))
 
-(mapc (lambda (path)
-        (add-to-list 'load-path (concat user-emacs-directory path)))
-      '("scame/" "scame/packages" "scame/core" "scame/gnus"))
+(bind-key "C-c l E"
+          (lambda ()
+            (interactive)
+            (ispell-change-dictionary "en_GB")
+            (flyspell-buffer)))
 
-(require 'scame)
-(scame-global-mode 1)
 
-(require 'f)
-(require 's)
+(use-package flyspell-correct
+  :ensure t
+  :pin melpa
+  :after flyspell
+  :bind (:map flyspell-mode-map
+              ("C-c $" . flyspell-correct-word-generic))
+  :config (progn
+            (setq flyspell-correct-interface 'flyspell-correct-ivy)))
 
-(load custom-file)
 
-(provide 'init)
-;;; init.el ends here
+(provide 'scame-languages)
+;;; scame-languages.el ends here

@@ -1,6 +1,6 @@
 ;; scame.el --- Scame packages utility
 
-;; Copyright (c) 2014-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (c) 2014-2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -40,7 +40,11 @@
 (eval-when-compile
   (require 'use-package))
 
+
 (setq use-package-verbose t
+      use-package-expand-minimally nil
+      use-package-compute-statistics t
+      debug-on-error t
       ;; use-package-always-defer t
       use-package-enable-imenu-support t
       use-package-minimum-reported-time 0.03)

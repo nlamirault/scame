@@ -1,6 +1,5 @@
-
-;; init.el --- Emacs initialization file
-
+;;; scame-crypto.el --- Some crypto tools.
+;;
 ;; Copyright (c) 2014-2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software: you can redistribute it and/or modify
@@ -20,26 +19,19 @@
 
 ;;; Code:
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
 
-;; (package-initialize)
+;; EasyPG
+;; --------
 
-(setq custom-file "~/.emacs.d/custom.el")
+(use-package epa-file
+  :config (progn
+            (epa-file-enable)
+            (setq epg-debug t))
+  :bind (("C-c c f" . epa-encrypt-file)
+         ("C-c c r" . epa-encrypt-region)
+         ("C-c c F" . epa-decrypt-file)
+         ("C-c c R" . epa-encrypt-region)
+         ("C-c c l" . epa-list-keys)))
 
-(mapc (lambda (path)
-        (add-to-list 'load-path (concat user-emacs-directory path)))
-      '("scame/" "scame/packages" "scame/core" "scame/gnus"))
-
-(require 'scame)
-(scame-global-mode 1)
-
-(require 'f)
-(require 's)
-
-(load custom-file)
-
-(provide 'init)
-;;; init.el ends here
+(provide 'scame-crypto)
+;;; scame-crypto.el ends here

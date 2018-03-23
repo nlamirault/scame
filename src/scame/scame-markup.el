@@ -1,5 +1,4 @@
-
-;; init.el --- Emacs initialization file
+;;; scame-markup.el --- Markup language
 
 ;; Copyright (c) 2014-2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -20,26 +19,44 @@
 
 ;;; Code:
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
 
-;; (package-initialize)
+(use-package yaml-mode
+  :ensure t
+  :pin melpa
+  :defer t
+  :mode (("\\.ya?ml$" . yaml-mode)))
 
-(setq custom-file "~/.emacs.d/custom.el")
+(use-package markdown-mode
+  :ensure t
+  :pin melpa
+  :defer t
+  :mode (("\\.\\(m\\(ark\\)?down\\|md\\)$" . markdown-mode)))
 
-(mapc (lambda (path)
-        (add-to-list 'load-path (concat user-emacs-directory path)))
-      '("scame/" "scame/packages" "scame/core" "scame/gnus"))
+(use-package fountain-mode
+  :ensure t
+  :pin melpa
+  :defer t
+  :mode (("\\.fountain$" . fountain-mode)))
 
-(require 'scame)
-(scame-global-mode 1)
+(use-package toml-mode
+  :ensure t
+  :pin melpa
+  :defer t
+  :mode (("\\.toml$" . toml-mode)))
 
-(require 'f)
-(require 's)
+(use-package adoc-mode
+  :ensure t
+  :pin melpa
+  :defer t
+  :mode (("\\.adoc$" . adoc-mode)))
 
-(load custom-file)
 
-(provide 'init)
-;;; init.el ends here
+(use-package nov
+  :ensure t
+  :pin melpa
+  :defer t
+  :mode (("\\.epub$" . nov-mode)))
+
+
+(provide 'scame-markup)
+;;; scame-markup.el ends here

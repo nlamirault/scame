@@ -1,5 +1,4 @@
-
-;; init.el --- Emacs initialization file
+;;; scame-encodings.el --- Coding system
 
 ;; Copyright (c) 2014-2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -20,26 +19,20 @@
 
 ;;; Code:
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
+;; (set-terminal-coding-system 'utf-8)
+;; (set-keyboard-coding-system 'utf-8)
+;; (set-language-environment "UTF-8")
+;; (prefer-coding-system 'utf-8)
 
-;; (package-initialize)
+;; Set locale to UTF8
+(set-language-environment 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(setq locale-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-selection-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
 
-(setq custom-file "~/.emacs.d/custom.el")
 
-(mapc (lambda (path)
-        (add-to-list 'load-path (concat user-emacs-directory path)))
-      '("scame/" "scame/packages" "scame/core" "scame/gnus"))
-
-(require 'scame)
-(scame-global-mode 1)
-
-(require 'f)
-(require 's)
-
-(load custom-file)
-
-(provide 'init)
-;;; init.el ends here
+(provide 'scame-encodings)
+;;; scame-encodings.el ends here
