@@ -31,7 +31,7 @@
 
 (mapc (lambda (path)
         (add-to-list 'load-path (concat user-emacs-directory path)))
-      '("scame/" "scame/packages" "scame/core" "scame/gnus"))
+      '("scame/"))
 
 (require 'scame)
 (scame-global-mode 1)
