@@ -17,6 +17,8 @@
 ;(require 'eglot)
 (require 'find-lisp)
 
+(add-to-list 'load-path "./src")
+
 (let ((files (find-lisp-find-files-internal
               "."
               (lambda (file dir)
