@@ -19,10 +19,10 @@
 (use-package magit
   :straight t
   :bind
-  (:map global-map
-		("C-x g" . magit-status))
+  (:map global-map ("C-x g" . magit-status))
 )
 
+;; -----------------------------
 ;; Golang
 
 (use-package go-mode
@@ -31,15 +31,12 @@
   ;(go-mode . lsp-deferred)
   ;(go-mode . company-mode)
   :config
-  ;; GOPATH to gopls
-  ;; (add-to-list 'exec-path "~/go/bin")
-  ;; Set up before-save hooks to format buffer and add/delete imports.
-  ;; Make sure you don't have other gofmt/goimports hooks enabled.
-  (defun lsp-go-install-save-hooks ()
-	(add-hook 'before-save-hook #'lsp-format-buffer t t)
-	(add-hook 'before-save-hook #'lsp-organize-imports t t))
-  (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
-  )
+  ;; (add-to-list 'eglot-server-programs '(go-mode . ("gopls")))
+  (add-hook 'go-mode-hook 'eglot-ensure))
+
+
+;; -----------------------------
+;; Rust
 
 (use-package rustic
   :straight t
@@ -63,5 +60,62 @@
 (use-package cargo
   :hook
   (rust-mode . cargo-minor-mode))
+
+
+;; -----------------------------
+;; Python
+
+(use-package python-mode
+  :config
+  (add-hook 'python-mode-hook 'eglot-ensure)
+  :hook
+  (python-mode . (lambda ()
+		   (setq tab-width 4)
+		   (setq indent-tabs-mode nil))))
+
+;; -----------------------------
+;; C/C++
+
+;; (use-package c-mode
+;;   :straight nil
+;;   :config
+;;   (add-hook 'c-mode-hook 'eglot-ensure))
+
+;; (use-package c++-mode
+;;   :config
+;;   (add-hook 'c++-mode-hook 'eglot-ensure))
+
+;; -----------------------------
+;; Others
+
+;; (use-package sh-mode
+;;   :straight t
+;;   :mode
+;;   (("bashrc$" . sh-mode)
+;;    ("bash_profile$" . sh-mode)
+;;    ("bash_aliases$" . sh-mode)
+;;    ("bash_local$" . sh-mode)
+;;    ("bash_completion$" . sh-mode)
+;;    ("\\.zsh" . sh-mode)
+;;    ("runcoms/[a-zA-Z]+$" . sh-mode))
+;;   :config
+;;   (setq-default sh-indentation 4)
+;;   (add-hook 'sh-mode-hook 'eglot-ensure))
+
+(use-package yaml-mode
+  :ensure t
+  :mode ("\\.yaml" . yaml-mode))
+
+;; Markdown
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("\\.md'" . markdown-mode)
+         ("\\.markdown'" . markdown-mode)))
+
+;; Protocol Buffer
+(use-package protobuf-mode
+  :ensure t
+  :mode ("\\.proto" . protobuf-mode))
 
 (provide 'dev)

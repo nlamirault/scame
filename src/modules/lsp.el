@@ -22,6 +22,9 @@
   (c++-mode . eglot-ensure)
   :config
   (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
-  )
+  (add-to-list 'eglot-server-programs '(sh-mode . ("bash-language-server" "start")))
+  (add-to-list 'eglot-server-programs '(python-mode . ("pylsp")))
+  (add-to-list 'eglot-server-programs '(go-mode . ("gopls"))))
+
 
 (provide 'lsp)
