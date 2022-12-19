@@ -95,9 +95,9 @@
                         (registers . 5)))
   )
 
-;; (use-package doom-modeline
-;;   :ensure t
-;;   :init (doom-modeline-mode 1))
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1))
 
 ;; (use-package spaceline
 ;;   :straight t
