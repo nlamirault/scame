@@ -28,15 +28,18 @@ DIR = $(shell pwd)
 
 SRC_DIR = src
 
-ELS  = $(SRC_DIR)/init.el
-ELS += $(SRC_DIR)/core/os.el
-ELS += $(SRC_DIR)/core/straight.el
-ELS += $(SRC_DIR)/modules/keymaps.el
-ELS += $(SRC_DIR)/modules/ui.el
-ELS += $(SRC_DIR)/modules/lsp.el
-ELS += $(SRC_DIR)/modules/dev.el
+# ELS  = $(SRC_DIR)/init.el
+# ELS += $(SRC_DIR)/core/os.el
+# ELS += $(SRC_DIR)/core/straight.el
+# ELS += $(SRC_DIR)/modules/keymaps.el
+# ELS += $(SRC_DIR)/modules/ui.el
+# ELS += $(SRC_DIR)/modules/lsp.el
+# ELS += $(SRC_DIR)/modules/dev.el
+ELS = $(shell find $(SRC_DIR) -name "*.el")
+# OBJECTS = $(ELS:.el=.elc)
 
 EMACS ?= emacs
+CASK ?= cask
 EMACSFLAGS = -Q -batch -L $(SRC_DIR) $(NO_LOAD_WARNINGS)
 COMPILE_COMMAND  = --eval "(setq byte-compile-error-on-warn t)" -f batch-byte-compile
 CHECKDOC_COMMAND = -l "test/checkdock.el"
@@ -86,6 +89,42 @@ check: check-terraform check-tflint check-terraform-docs check-pre-commit ## Che
 validate: ## Execute git-hooks
 	@pre-commit run -a
 
-%.elc: %.el
-	@printf "Compiling $<\n"
-	$(CASK) exec $(EMACS) $(EMACSFLAGS) $(COMPILE_COMMAND) $<
+# %.elc: %.el
+# 	@printf "Compiling $<\n"
+# 	$(CASK) exec $(EMACS) $(EMACSFLAGS) $(COMPILE_COMMAND) $<
+
+.PHONY: elpa
+elpa:
+	@echo -e "$(OK_COLOR)[$(APP)] Cask setup $(NO_COLOR)"
+	@$(CASK) install
+	@$(CASK) update
+	@touch .cask
+
+.PHONY: deps
+deps:
+	@echo -e "$(OK_COLOR)[$(APP)] Outdated dependencies $(NO_COLOR)"
+	@$(CASK) --path src outdated
+
+.PHONY: install
+install: clean ## Install Scame dependencies
+	$(CASK) exec $(EMACS) -Q --batch -L . -L test \
+		--eval "(progn (require 'test-helper) (install-scame))"
+	$(CASK) exec $(EMACS) -Q --batch -L . -L test -L test/sandbox/scame \
+		--eval "(progn (require 'test-helper) (cleanup-load-path) (setup-scame-test) (require 'scame))"
+
+.PHONY: test
+test: elpa ## Launch unit tests
+	@echo -e "$(OK_COLOR)[$(APP)] Launch unit tests$(NO_COLOR)"
+	@$(CASK) exec ert-runner -L test/sandbox
+
+.PHONY: test-tag
+test-tag: elpa
+	@echo -e "$(OK_COLOR)[$(APP)] Launch unit tests$(NO_COLOR)"
+	@$(CASK) exec ert-runner -L test/sandbox --verbose --debug -t $(tag)
+
+.PHONY: checkdoc
+checkdoc: ## Checks the EmacsLisp code
+	@echo -e "$(OK_COLOR)[$(APP)] Check EmacsLisp code$(NO_COLOR)"
+	for i in $(ELS); do \
+		echo $$i && $(CASK) exec $(EMACS) --batch -L . --eval="(checkdoc)" -Q $$i; \
+	done

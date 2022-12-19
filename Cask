@@ -14,18 +14,25 @@
 ;;
 ;; SPDX-License-Identifier: Apache-2.0
 
-;;; keymaps.el -*- lexical-binding: t; -*-
+(source gnu)
+(source melpa)
 
-(use-package which-key
-  :straight t
-  :init
-   (which-key-mode)
-   (setq which-key-popup-type 'side-window)
-   (setq which-key-side-window-max-width 0.33)
-   (setq which-key-side-window-max-height 0.25)
-   (setq which-key-idle-delay 0.3)
-   (which-key-setup-minibuffer))
+(package "scame" "0.0.0" "An Emacs configuration")
 
+(package-file "src/init.el")
 
+(files "*.el")
 
-(provide 'keymaps)
+;; Development
+(development
+ (depends-on "cask")
+ (depends-on "ansi")
+ (depends-on "s")
+ (depends-on "f")
+ (depends-on "pkg-info")
+ (depends-on "el-mock")
+ (depends-on "ert")
+ (depends-on "ert-runner")
+ (depends-on "shut-up")
+ (depends-on "undercover")
+ (depends-on "cask-package-toolset"))
