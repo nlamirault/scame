@@ -1,0 +1,41 @@
+name: Build / EmacsLisp
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        emacs_version:
+          - 27.1
+          - 28.1
+          - 29.1
+        ignore_warnings:
+          - true
+        include:
+          - emacs_version: snapshot
+            ignore_warnings: false
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: purcell/setup-emacs@v3.0
+      with:
+        version: ${{ matrix.emacs_version }}
+
+    - uses: leotaku/elisp-check@v1.3.1
+      with:
+        check: load-file
+        file: src/init.el
+        ignore_warnings: ${{ matrix.ignore_warnings }}
+
+    - uses: leotaku/elisp-check@v1.3.1
+      with:
+        check: byte-compile
+        file: src/init.el
+        ignore_warnings: ${{ matrix.ignore_warnings }}
