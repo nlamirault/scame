@@ -14,22 +14,14 @@
 ;
 ; SPDX-License-Identifier: Apache-2.0
 
-;;; init.el -*- lexical-binding: t; -*-
+;;; lsp.el -*- lexical-binding: t; -*-
 
-(add-to-list 'load-path "~/.emacs.d/core/")
-(add-to-list 'load-path "~/.emacs.d/modules/")
+(use-package eglot
+  :hook
+  (c-mode . eglot-ensure)
+  (c++-mode . eglot-ensure)
+  :config
+  (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
+  )
 
-;; core
-(load-library "os")
-(load-library "straight")
-
-;; modules
-(load-library "keymaps")
-(load-library "ui")
-(load-library "completion")
-
-(load-library "lsp")
-(load-library "dev")
-
-
-(provide 'init)
+(provide 'lsp)

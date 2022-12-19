@@ -1,141 +1,72 @@
-# Copyright (C) 2014-2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+# Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# SPDX-License-Identifier: Apache-2.0
 
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
+#
+# SPDX-License-Identifier: Apache-2.0
 
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
+#
+# SPDX-License-Identifier: Apache-2.0
 
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+APP = S C A M E
 
+SHELL = /bin/bash -o pipefail
 
-APP = scame
-
-SHELL = /bin/bash
-
-EMACS ?= emacs
-CASK ?= cask
-VAGRANT ?= vagrant
-
-DOCKER ?= docker
-NAMESPACE = nlamirault
-IMAGE = scame
-
-ELS = `find src -name "*.el"`
-# OBJECTS = $(ELS:.el=.elc)
-
-VERSION=$(shell \
-        grep "defvar scame-version-number" src/scame/core/01_scame_version.el \
-	|awk -F'"' '{print $$2}')
-
-PACKAGE=$(APP)-$(VERSION)
-ARCHIVE=$(PACKAGE).tar
+DIR = $(shell pwd)
 
 NO_COLOR=\033[0m
 OK_COLOR=\033[32;01m
 ERROR_COLOR=\033[31;01m
 WARN_COLOR=\033[33;01m
+INFO_COLOR=\033[36m
+WHITE_COLOR=\033[1m
 
 MAKE_COLOR=\033[33;01m%-20s\033[0m
 
 .DEFAULT_GOAL := help
 
+OK=[✅]
+KO=[❌]
+WARN=[⚠️]
+
 .PHONY: help
 help:
-	@echo -e "$(OK_COLOR)==== $(APP) [$(VERSION)] ====$(NO_COLOR)"
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "$(MAKE_COLOR) : %s\n", $$1, $$2}'
+	@echo -e "$(OK_COLOR)                            $(APP)$(NO_COLOR)"
+	@echo "------------------------------------------------------------------"
+	@echo ""
+	@awk 'BEGIN {FS = ":.*##"; printf "Usage: make ${INFO_COLOR}<target>${NO_COLOR}\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  ${INFO_COLOR}%-25s${NO_COLOR} %s\n", $$1, $$2 } /^##@/ { printf "\n${WHITE_COLOR}%s${NO_COLOR}\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
+	@echo ""
 
-.PHONY: clean
-clean: ## clean Scame installation
-	@$(CASK) clean-elc
-	@rm -fr dist $(ARCHIVE).gz test/sandboxorg-clock-save.el test/sandbox
+guard-%:
+	@if [ "${${*}}" = "" ]; then \
+		echo -e "$(ERROR_COLOR)Environment variable $* not set$(NO_COLOR)"; \
+		exit 1; \
+	fi
 
-reset: clean
-	@rm -fr .cask
+check-%:
+	@if $$(hash $* 2> /dev/null); then \
+		echo -e "$(OK_COLOR)$(OK)$(NO_COLOR) $*"; \
+	else \
+		echo -e "$(ERROR_COLOR)$(KO)$(NO_COLOR) $*"; \
+	fi
 
-.PHONY: elpa
-elpa:
-	@echo -e "$(OK_COLOR)[$(APP)] Cask setup $(NO_COLOR)"
-	@$(CASK) install
-	@$(CASK) update
-	@touch .cask
+##@ Development
 
-.PHONY: deps
-deps:
-	@echo -e "$(OK_COLOR)[$(APP)] Outdated dependencies $(NO_COLOR)"
-	@$(CASK) --path src outdated
+.PHONY: check
+check: check-terraform check-tflint check-terraform-docs check-pre-commit ## Check requirements
 
-.PHONY: install
-install: clean ## Install Scame dependencies
-	$(CASK) exec $(EMACS) -Q --batch -L . -L test \
-		--eval "(progn (require 'test-helper) (install-scame))"
-	$(CASK) exec $(EMACS) -Q --batch -L . -L test -L test/sandbox/scame \
-		--eval "(progn (require 'test-helper) (cleanup-load-path) (setup-scame-test) (require 'scame))"
-
-.PHONY: test
-test: elpa ## Launch unit tests
-	@echo -e "$(OK_COLOR)[$(APP)] Launch unit tests$(NO_COLOR)"
-	@$(CASK) exec ert-runner -L test/sandbox
-
-.PHONY: test-tag
-test-tag: elpa
-	@echo -e "$(OK_COLOR)[$(APP)] Launch unit tests$(NO_COLOR)"
-	@$(CASK) exec ert-runner -L test/sandbox --verbose --debug -t $(tag)
-
-.PHONY: checkdoc
-checkdoc: ## Checks the EmacsLisp code
-	@echo -e "$(OK_COLOR)[$(APP)] Check EmacsLisp code$(NO_COLOR)"
-	for i in $(ELS); do \
-		echo $$i && $(CASK) exec $(EMACS) --batch -L . --eval="(checkdoc)" -Q $$i; \
-	done
-
-.PHONY: virtual-test
-virtual-test:
-	@$(VAGRANT) up
-	@$(VAGRANT) ssh -c "make -C /vagrant EMACS=$(EMACS) clean test"
-
-release:
-	@echo -e "$(OK_COLOR)[$(APP)] Make archive $(VERSION) $(NO_COLOR)"
-	@rm -fr $(PACKAGE) && mkdir $(PACKAGE)
-	@cp -r src/* $(PACKAGE)
-	@cp -r fonts $(PACKAGE)
-	@tar cf $(ARCHIVE) $(PACKAGE)
-	@gzip $(ARCHIVE)
-	@rm -fr $(PACKAGE)
-	@addons/github.sh $(VERSION)
-
-#
-# Docker
-#
-
-
-.PHONY: docker-build
-docker-build:
-	@echo -e "$(OK_COLOR)[$(APP)] Build $(IMAGE):$(VERSION) $(NO_COLOR)"
-	@$(DOCKER) build -t $(NAMESPACE)/$(IMAGE):$(VERSION) .
-
-.PHONY: docker-publish
-docker-publish: docker-build
-	@echo -e "$(OK_COLOR)[$(APP)] Publish $(IMAGE):$(VERSION) $(NO_COLOR)"
-	@$(DOCKER) tag $(NAMESPACE)/$(IMAGE):$(VERSION) $(NAMESPACE)/$(IMAGE):$(VERSION)
-	@$(DOCKER) push $(NAMESPACE)/$(IMAGE):$(VERSION)
-
-.PHONY: docker-clean
-docker-clean:
-	@echo -e "$(OK_COLOR)[$(APP)] Clean $(IMAGE):$(VERSION) $(NO_COLOR)"
-	@$(DOCKER) rm $(NAMESPACE)/$(IMAGE):$(VERSION)
-
-.PHONY: docker-run
-docker-run:
-	@echo -e "$(OK_COLOR)[$(APP)] Run $(IMAGE):$(VERSION) $(NO_COLOR)"
-	@$(DOCKER) run -it --rm=true -e DISPLAY=unix${DISPLAY} -v /tmp/.X11-unix:/tmp/.X11-unix emacs-snapshot --name scame $(NAMESPACE)/$(IMAGE):$(VERSION)
-
-.PHONY: docker-debug
-docker-debug:
-	@echo -e "$(OK_COLOR)[$(APP)] Run $(IMAGE):$(VERSION) $(NO_COLOR)"
-	@$(DOCKER) run -it --rm=true $(NAMESPACE)/$(IMAGE):$(VERSION) /bin/bash
+.PHONY: validate
+validate: ## Execute git-hooks
+	@pre-commit run -a

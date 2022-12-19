@@ -14,22 +14,18 @@
 ;
 ; SPDX-License-Identifier: Apache-2.0
 
-;;; init.el -*- lexical-binding: t; -*-
+;;; keymaps.el -*- lexical-binding: t; -*-
 
-(add-to-list 'load-path "~/.emacs.d/core/")
-(add-to-list 'load-path "~/.emacs.d/modules/")
-
-;; core
-(load-library "os")
-(load-library "straight")
-
-;; modules
-(load-library "keymaps")
-(load-library "ui")
-(load-library "completion")
-
-(load-library "lsp")
-(load-library "dev")
+(use-package which-key
+  :straight t
+  :init
+   (which-key-mode)
+   (setq which-key-popup-type 'side-window)
+   (setq which-key-side-window-max-width 0.33)
+   (setq which-key-side-window-max-height 0.25)
+   (setq which-key-idle-delay 0.3)
+   (which-key-setup-minibuffer))
 
 
-(provide 'init)
+
+(provide 'keymaps)

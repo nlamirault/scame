@@ -1,17 +1,9 @@
 # Emacs
 *~
-src/.recentf
-src/anaconda-mode/
-src/bbdb
-src/bookmarks
-src/emojis/
-src/org-clock-save.el
-src/places
-src/projectile-bookmarks.eld
-src/projectile.cache
+src/straight
+src/transient
+src/.cache
 src/recentf
-src/request/
-src/url/
 
 # Emacslisp
 .cask
