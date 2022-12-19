@@ -14,22 +14,12 @@
 ;;
 ;; SPDX-License-Identifier: Apache-2.0
 
-;;; init.el -*- lexical-binding: t; -*-
+;;; test.el --- unit tests -*- lexical-binding: t; -*-
 
-(add-to-list 'load-path "~/.emacs.d/core/")
-(add-to-list 'load-path "~/.emacs.d/modules/")
+;;; Commentary:
+(require 'ert)
 
-;; core
-(load-library "os")
-(load-library "straight")
+(ert-deftest test-general ()
+  (should t))
 
-;; modules
-(load-library "keymaps")
-(load-library "ui")
-(load-library "completion")
-
-(load-library "lsp")
-(load-library "dev")
-
-
-(provide 'init)
+(ert-run-tests-batch-and-exit)

@@ -1,7 +1,0 @@
-== Description
-
-Scame is a "Starter Kit" for *Gnu Emacs* (>= 24).
-Current version is {ScameVersion}.
-
-NOTE: Development version of this documentation could be find on this website :
-https://github.com/nlamirault/scame/tree/develop/doc
