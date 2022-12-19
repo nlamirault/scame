@@ -40,9 +40,7 @@ ELS = $(shell find $(SRC_DIR) -name "*.el")
 
 EMACS ?= emacs
 CASK ?= cask
-EMACSFLAGS = -Q -batch -L $(SRC_DIR) $(NO_LOAD_WARNINGS)
-COMPILE_COMMAND  = --eval "(setq byte-compile-error-on-warn t)" -f batch-byte-compile
-CHECKDOC_COMMAND = -l "test/checkdock.el"
+EMACS_BATCH_OPTS = --batch -Q --debug-init --eval "(setq my-disable-idle-timer t)"
 
 NO_COLOR=\033[0m
 OK_COLOR=\033[32;01m
@@ -82,6 +80,10 @@ check-%:
 
 ##@ Development
 
+.PHONY: clean
+clean: ## clean Scame installation
+	@rm -fr *.elc
+
 .PHONY: check
 check: check-terraform check-tflint check-terraform-docs check-pre-commit ## Check requirements
 
@@ -93,38 +95,13 @@ validate: ## Execute git-hooks
 # 	@printf "Compiling $<\n"
 # 	$(CASK) exec $(EMACS) $(EMACSFLAGS) $(COMPILE_COMMAND) $<
 
-.PHONY: elpa
-elpa:
-	@echo -e "$(OK_COLOR)[$(APP)] Cask setup $(NO_COLOR)"
-	@$(CASK) install
-	@$(CASK) update
-	@touch .cask
+install: clean ## Clean environment
+	@$(EMACS) $(EMACS_BATCH_OPTS) -l src/init.el
 
-.PHONY: deps
-deps:
-	@echo -e "$(OK_COLOR)[$(APP)] Outdated dependencies $(NO_COLOR)"
-	@$(CASK) --path src outdated
+compile: install ## Compile Emacs Lisp files
+	@$(EMACS) $(EMACS_BATCH_OPTS) -l src/init.el -l test/byte-compile.el 2>&1
 
-.PHONY: install
-install: clean ## Install Scame dependencies
-	$(CASK) exec $(EMACS) -Q --batch -L . -L test \
-		--eval "(progn (require 'test-helper) (install-scame))"
-	$(CASK) exec $(EMACS) -Q --batch -L . -L test -L test/sandbox/scame \
-		--eval "(progn (require 'test-helper) (cleanup-load-path) (setup-scame-test) (require 'scame))"
+# | grep -Ev "init-(hydra|evil).el:.*Warning: docstring wider than 80 characters|an obsolete" | grep -E "[0-9]: ([Ee]rror|[Ww]arning):" && exit 1 || exit 0
 
-.PHONY: test
-test: elpa ## Launch unit tests
-	@echo -e "$(OK_COLOR)[$(APP)] Launch unit tests$(NO_COLOR)"
-	@$(CASK) exec ert-runner -L test/sandbox
-
-.PHONY: test-tag
-test-tag: elpa
-	@echo -e "$(OK_COLOR)[$(APP)] Launch unit tests$(NO_COLOR)"
-	@$(CASK) exec ert-runner -L test/sandbox --verbose --debug -t $(tag)
-
-.PHONY: checkdoc
-checkdoc: ## Checks the EmacsLisp code
-	@echo -e "$(OK_COLOR)[$(APP)] Check EmacsLisp code$(NO_COLOR)"
-	for i in $(ELS); do \
-		echo $$i && $(CASK) exec $(EMACS) --batch -L . --eval="(checkdoc)" -Q $$i; \
-	done
+test: compile
+	@$(EMACS) $(EMACS_BATCH_OPTS) -l src/init.el -l test/test.el
