@@ -57,5 +57,5 @@ repos:
     - --license-filepath
     - LICENSE
     - --comment-style
-    - ;
+    - ;;
     # - --remove-header

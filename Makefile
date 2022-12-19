@@ -26,6 +26,21 @@ SHELL = /bin/bash -o pipefail
 
 DIR = $(shell pwd)
 
+SRC_DIR = src
+
+ELS  = $(SRC_DIR)/init.el
+ELS += $(SRC_DIR)/core/os.el
+ELS += $(SRC_DIR)/core/straight.el
+ELS += $(SRC_DIR)/modules/keymaps.el
+ELS += $(SRC_DIR)/modules/ui.el
+ELS += $(SRC_DIR)/modules/lsp.el
+ELS += $(SRC_DIR)/modules/dev.el
+
+EMACS ?= emacs
+EMACSFLAGS = -Q -batch -L $(SRC_DIR) $(NO_LOAD_WARNINGS)
+COMPILE_COMMAND  = --eval "(setq byte-compile-error-on-warn t)" -f batch-byte-compile
+CHECKDOC_COMMAND = -l "test/checkdock.el"
+
 NO_COLOR=\033[0m
 OK_COLOR=\033[32;01m
 ERROR_COLOR=\033[31;01m
@@ -70,3 +85,7 @@ check: check-terraform check-tflint check-terraform-docs check-pre-commit ## Che
 .PHONY: validate
 validate: ## Execute git-hooks
 	@pre-commit run -a
+
+%.elc: %.el
+	@printf "Compiling $<\n"
+	$(CASK) exec $(EMACS) $(EMACSFLAGS) $(COMPILE_COMMAND) $<
