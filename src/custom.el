@@ -14,23 +14,8 @@
 ;;
 ;; SPDX-License-Identifier: Apache-2.0
 
-;;; init.el -*- lexical-binding: t; -*-
-
-(add-to-list 'load-path (concat user-emacs-directory "core/"))
-(add-to-list 'load-path (concat user-emacs-directory "modules/"))
-
-;; core
-(load-library "os")
-(load-library "straight")
-(load-library "settings")
-
-;; modules
-(load-library "keymaps")
-(load-library "ui")
-(load-library "completion")
-
-(load-library "lsp")
-(load-library "dev")
+;;; custom.el -*- lexical-binding: t; -*-
 
 
-(provide 'init)
+
+(provide 'custom)
